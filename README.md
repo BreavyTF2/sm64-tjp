@@ -1,177 +1,53 @@
-# Super Mario 64
+# Super Mario 64 Enhancements
 
-- This repo contains a full decompilation of Super Mario 64 (J), (U), and (E) with minor exceptions in the audio subsystem.
-- Naming and documentation of the source code and data structures are in progress.
-- Efforts to decompile the Shindou ROM steadily advance toward a matching build.
+This directory contains unofficial patches to the source code that provide various features
+and enhancements.
 
-It builds the following ROMs:
+To apply a patch, run `tools/apply_patch.sh [patch]` where `[patch]` is the name of the
+.patch file you wish to apply. This will perform all of the patch's changes
+to the source code.
 
-* sm64.jp.z64 `sha1: 8a20a5c83d6ceb0f0506cfc9fa20d8f438cafe51`
-* sm64.us.z64 `sha1: 9bef1128717f958171a4afac3ed78ee2bb4e86ce`
-* sm64.eu.z64 `sha1: 4ac5721683d0e0b6bbb561b58a71740845dceea9`
+Likewise, to undo the changes from a patch you applied, run
+`tools/revert_patch.sh` with the name of the .patch file you wish to undo. 
 
-This repo does not include all assets necessary for compiling the ROMs.
-A prior copy of the game is required to extract the assets.
+To create your own enhancement patch, switch to the `master` Git
+branch, make your changes to the code (but do not commit), then run `tools/create_patch.sh`. Your changes will be stored in the .patch file you specify. 
 
-## Quick Start (for Ubuntu)
+The following enhancements are included in this directory:
 
-1. Install prerequisites: `sudo apt install -y build-essential git binutils-mips-linux-gnu python3 libaudiofile-dev`
-2. Clone the repo from within Linux: `git clone https://github.com/n64decomp/sm64.git`
-3. Place a Super Mario 64 ROM called `baserom.<VERSION>.z64` into the project folder for asset extraction, where `VERSION` can be `us`, `jp`, or `eu`.
-4. Run `make` to build. Qualify the version through `make VERSION=<VERSION>`. Add `-j4` to improve build speed (hardware dependent).
+## Crash Screen - `crash.patch`
 
-Ensure the repo path length does not exceed 255 characters. Long path names result in build errors.
+This enhancement provides a crash screen that is displayed when the code throws a hardware exception. This may be useful for diagnosing crashes in game code.
 
-## Installation
+## Debug Box - `debug_box.patch`
 
-### Windows
+This allows you to draw 3D boxes for debugging purposes.
 
-Install WSL and a distro of your choice following
-[Windows Subsystem for Linux Installation Guide for Windows 10.](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-We recommend either Debian or Ubuntu 18.04 Linux distributions under WSL.
-Note: WSL1 does not currently support Ubuntu 20.04.
+Call the `debug_box` function whenever you want to draw one. `debug_box` by default takes two arguments: a center and bounds vec3f. This will draw a box starting from the point (center - bounds) to (center + bounds).
+Use `debug_box_rot` to draw a box rotated in the xz-plane. If you want to draw a box by specifying min and max points, use `debug_box_pos` instead.
 
-Next, clone the SM64 repo from within the Linux shell:
-`git clone https://github.com/n64decomp/sm64.git`
+## FPS Counter - `fps.patch`
 
-Then continue following the directions in the [Linux](#linux) installation section below.
+This patch provides an in-game FPS counter to measure the frame rate.
 
-### Linux
+## iQue Player Support - `ique_support.patch`
 
-There are 3 steps to set up a working build.
+This enhancement allows the same ROM to work on both the Nintendo 64 and the iQue Player.
 
-#### Step 1: Install dependencies
+## Memory Expansion Pak Error Screen - `mem_error_screen.patch`
 
-The build system has the following package requirements:
- * binutils-mips
- * python3 >= 3.6
- * libaudiofile
- * qemu-irix
+Use this patch if your game requires over 4 MB of memory and requires the
+Expansion Pak. If the Expansion Pak is not present, an error message will be
+shown on startup.
 
-Dependency installation instructions for common Linux distros are provided below:
+## Demo Input Recorder - `record_demo.patch`
 
-##### Debian / Ubuntu
-To install build dependencies:
-```
-sudo apt install -y build-essential git binutils-mips-linux-gnu python3 libaudiofile-dev
-```
+This patch allows you to record gameplay demos for the attract screen. It requires the latest nightly versions of Project64, and uses the Project64 JavaScript API to dump the demo input data from RAM and write it to a file.
 
-Download latest package from [qemu-irix Releases.](https://github.com/n64decomp/qemu-irix/releases)
+Place the `enhancements/RecordDemo.js` file in the `/Scripts/` folder in the Project64 directory.
 
-Install this package with:
-```
-sudo dpkg -i qemu-irix-2.11.0-2169-g32ab296eef_amd64.deb
-```
+In the Scripts window, double click on "RecordDemo" on the list on the left side.
 
-##### Arch Linux
-To install build dependencies:
-```
-sudo pacman -S base-devel python audiofile
-```
-Install the following AUR packages:
-* [mips64-elf-binutils](https://aur.archlinux.org/packages/mips64-elf-binutils) (AUR)
-* [qemu-irix-git](https://aur.archlinux.org/packages/qemu-irix-git) (AUR)
+When this is done, it should turn green which lets you know that it has started.
 
-
-##### Other Linux distributions
-
-Most modern Linux distributions should have equivalent packages to the other two listed above.
-You may have to use a different version of GNU binutils. Listed below are fully compatible binutils
-distributions with support in the makefile, and examples of distros that offer them:
-
-* `mips64-elf-` (Arch AUR)
-* `mips-linux-gnu-` (Ubuntu and other Debian-based distros)
-* `mips64-linux-gnu-` (RHEL/CentOS/Fedora)
-
-You may also use [Docker](#docker-installation) to handle installing an image with minimal dependencies.
-
-#### Step 2: Copy baserom(s) for asset extraction
-
-For each version (jp/us/eu) for which you want to build a ROM, put an existing ROM at
-`./baserom.<VERSION>.z64` for asset extraction.
-
-##### Step 3: Build the ROM
-
-Run `make` to build the ROM (defaults to `VERSION=us`).
-Other examples:
-```
-make VERSION=jp -j4       # build (J) version instead with 4 jobs
-make VERSION=eu COMPARE=0 # build (EU) version but do not compare ROM hashes
-```
-
-Resulting artifacts can be found in the `build` directory.
-
-The full list of configurable variables are listed below, with the default being the first listed:
-
-* ``VERSION``: ``us``, ``jp``, ``eu``, ``sh`` (WIP)
-* ``GRUCODE``: ``f3d_old``, ``f3d_new``, ``f3dex``, ``f3dex2``, ``f3dzex``
-* ``COMPARE``: ``1`` (compare ROM hash), ``0`` (do not compare ROM hash)
-* ``NON_MATCHING``: Use functionally equivalent C implementations for non-matchings. Also will avoid instances of undefined behavior.
-* ``CROSS``: Cross-compiler tool prefix (Example: ``mips64-elf-``).
-* ``QEMU_IRIX``: Path to a ``qemu-irix`` binary.
-
-### macOS
-
-Installing Docker is the recommended avenue for macOS users. This project does not support macOS natively due to lack of macOS host support.
-
-### Docker Installation
-
-#### Create Docker image
-
-Create the docker image with `docker build -t sm64`.
-
-#### Build
-
-To build, mount the local filesystem into the Docker container and build the ROM with `docker run`.
-
-##### macOS example for (U):
-```
-docker run --rm --mount type=bind,source="$(pwd)",destination=/sm64 sm64 make VERSION=us -j4
-```
-
-##### Linux example for (U):
-For a Linux host, Docker needs to be instructed which user should own the output files:
-```
-docker run --rm --mount type=bind,source="$(pwd)",destination=/sm64 --user $UID:$UID sm64 make VERSION=us -j4
-```
-
-Resulting artifacts can be found in the `build` directory.
-
-## Project Structure
-	
-	sm64
-	├── actors: object behaviors, geo layout, and display lists
-	├── asm: handwritten assembly code, rom header
-	│   └── non_matchings: asm for non-matching sections
-	├── assets: animation and demo data
-	│   ├── anims: animation data
-	│   └── demos: demo data
-	├── bin: C files for ordering display lists and textures
-	├── build: output directory
-	├── data: behavior scripts, misc. data
-	├── doxygen: documentation infrastructure
-	├── enhancements: example source modifications
-	├── include: header files
-	├── levels: level scripts, geo layout, and display lists
-	├── lib: SDK library code
-	├── rsp: audio and Fast3D RSP assembly code
-	├── sound: sequences, sound samples, and sound banks
-	├── src: C source code for game
-	│   ├── audio: audio code
-	│   ├── buffers: stacks, heaps, and task buffers
-	│   ├── engine: script processing engines and utils
-	│   ├── game: behaviors and rest of game source
-	│   ├── goddard: Mario intro screen
-	│   └── menu: title screen and file, act, and debug level selection menus
-	├── text: dialog, level names, act names
-	├── textures: skybox and generic texture data
-	└── tools: build tools
-
-## Contributing
-
-Pull requests are welcome. For major changes, please open an issue first to
-discuss what you would like to change.
-
-Run `clang-format` on your code to ensure it meets the project's coding standards.
-
-Official Discord: [discord.gg/DuYH3Fh](https://discord.gg/DuYH3Fh)
+When your demo has been recorded, it will be dumped to the newly created `/SM64_DEMOS/` folder within the Project64 directory.
