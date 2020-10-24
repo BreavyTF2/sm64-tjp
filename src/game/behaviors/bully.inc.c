@@ -133,6 +133,7 @@ void bully_backup_check(s16 collisionFlags) {
     if (!(collisionFlags & 0x8) && o->oAction != BULLY_ACT_KNOCKBACK) /* bit 3 */
     {
         o->oPosX = o->oBullyPrevX;
+		o->oPosY = o->oBullyPrevY;
         o->oPosZ = o->oBullyPrevZ;
         o->oAction = BULLY_ACT_BACK_UP;
     }
