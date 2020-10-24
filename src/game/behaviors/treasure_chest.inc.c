@@ -194,7 +194,7 @@ void bhv_treasure_chest_loop(void) {
         case 1:
             if (o->oTimer == 60) {
                 spawn_mist_particles();
-                spawn_default_star(-1900.0f, -4000.0f, -1400.0f);
+                spawn_default_star(-3100.0f, -3600.0f, 0.0f);
                 o->oAction = 2;
             }
             break;

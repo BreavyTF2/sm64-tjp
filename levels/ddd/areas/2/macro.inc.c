@@ -1,7 +1,8 @@
 // 0x0700EFAC - 0x0700F17A
 const MacroObject ddd_seg7_area_2_macro_objs[] = {
-    MACRO_OBJECT(/*preset*/ macro_box_metal_cap,               /*yaw*/   0, /*pos*/  6800,   500,  -850),
-    MACRO_OBJECT(/*preset*/ macro_box_vanish_cap,              /*yaw*/   0, /*pos*/  6800,   500,  -150),
+    MACRO_OBJECT(/*preset*/ macro_box_metal_cap,               /*yaw*/   0, /*pos*/  1100,   350,  3850),
+	MACRO_OBJECT(/*preset*/ macro_box_metal_cap,              /*yaw*/   0, /*pos*/  6700,   350,  3850),
+    MACRO_OBJECT(/*preset*/ macro_box_star_1,              /*yaw*/   0, /*pos*/  3100,   -3750,  -3600),
     MACRO_OBJECT(/*preset*/ macro_floor_switch_hidden_objects, /*yaw*/   0, /*pos*/  6800,   110,  2000),
     MACRO_OBJECT(/*preset*/ macro_hidden_box,                  /*yaw*/   0, /*pos*/  6075,  -100,  2000),
     MACRO_OBJECT(/*preset*/ macro_hidden_box,                  /*yaw*/   0, /*pos*/  5875,   100,  2000),
