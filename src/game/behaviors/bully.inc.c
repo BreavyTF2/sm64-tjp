@@ -61,7 +61,7 @@ void bully_check_mario_collision(void) {
         o->oInteractStatus &= ~INT_STATUS_INTERACTED;
         o->oAction = BULLY_ACT_KNOCKBACK;
         o->oFlags &= ~0x8; /* bit 3 */
-        cur_obj_init_animation(3);
+        cur_obj_init_animation(2);
         o->oBullyMarioCollisionAngle = o->oMoveAngleYaw;
     }
 }
@@ -98,7 +98,7 @@ void bully_act_knockback(void) {
         o->oMoveAngleYaw = o->oFaceAngleYaw;
         obj_turn_toward_object(o, gMarioObject, 16, 1280);
     } else
-        o->header.gfx.unk38.animFrame = 0;
+        o->header.gfx.animInfo.animFrame = 0;
 
     if (o->oBullyKBTimerAndMinionKOCounter == 18) {
         o->oAction = BULLY_ACT_CHASE_MARIO;
@@ -139,7 +139,7 @@ void bully_backup_check(s16 collisionFlags) {
 }
 
 void bully_play_stomping_sound(void) {
-    s16 sp26 = o->header.gfx.unk38.animFrame;
+    s16 sp26 = o->header.gfx.animInfo.animFrame;
     switch (o->oAction) {
         case BULLY_ACT_PATROL:
             if (sp26 == 0 || sp26 == 12) {
@@ -202,7 +202,7 @@ void bully_act_level_death(void) {
             if (o->oBullySubtype == BULLY_STYPE_CHILL)
                 spawn_default_star(130.0f, 1600.0f, -4335.0f);
             else {
-                spawn_default_star(0, 950.0f, -6800.0f);
+                spawn_default_star(-1450.0f, 500.0f, -6700.0f);
                 spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvLllTumblingBridge, 0, 154, -5631, 0, 0,
                                           0);
             }

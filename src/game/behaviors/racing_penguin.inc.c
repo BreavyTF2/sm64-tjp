@@ -152,7 +152,7 @@ static void racing_penguin_act_show_final_text(void) {
 #ifdef VERSION_JP
         spawn_default_star(-7339.0f, -5700.0f, -6774.0f);
 #else
-        cur_obj_spawn_star_at_y_offset(-7339.0f, -5700.0f, -6774.0f, 200.0f);
+        cur_obj_spawn_star_at_y_offset(-6550.0f, -4500.0f, -7500.0f, 200.0f);
 #endif
         o->oRacingPenguinMarioWon = FALSE;
     }

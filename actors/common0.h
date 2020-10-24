@@ -64,12 +64,14 @@ extern const GeoLayout cannon_barrel_geo[];
 extern const Gfx cannon_barrel_seg8_dl_08006408[];
 extern const Gfx cannon_barrel_seg8_dl_080064C0[];
 extern const Gfx cannon_barrel_seg8_dl_08006660[];
+extern const Collision cannon_barrel_collision_080053D0[];
 
 // cannon_base
 extern const GeoLayout cannon_base_geo[];
 extern const Gfx cannon_base_seg8_dl_08005658[];
 extern const Gfx cannon_base_seg8_dl_080056D0[];
 extern const Gfx cannon_base_seg8_dl_080057F8[];
+extern const Collision cannon_body_collision_080043D0[];
 
 // cannon_lid
 extern const Gfx cannon_lid_seg8_dl_08004898[];

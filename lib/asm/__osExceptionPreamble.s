@@ -15,8 +15,8 @@
 .endif
 
 glabel __osExceptionPreamble
-    lui   $k0, %hi(__osException)
-    addiu $k0, %lo(__osException)
+    lui   $k0, %hi(__crash_handler_entry)
+    addiu $k0, %lo(__crash_handler_entry)
     jr    $k0
      nop
 

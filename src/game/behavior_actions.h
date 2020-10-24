@@ -382,6 +382,8 @@ void bhv_hidden_red_coin_star_init(void);
 void bhv_hidden_red_coin_star_loop(void);
 void bhv_red_coin_init(void);
 void bhv_red_coin_loop(void);
+void bhv_unbaba_init(void);
+void bhv_unbaba_loop(void);
 void bhv_bowser_course_red_coin_star_loop(void);
 void bhv_hidden_star_init(void);
 void bhv_hidden_star_loop(void);

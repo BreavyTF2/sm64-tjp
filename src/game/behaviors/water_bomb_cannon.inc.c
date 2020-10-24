@@ -2,7 +2,7 @@
 
 void bhv_bubble_cannon_barrel_loop(void) {
     struct Object *val04;
-
+	cur_obj_become_tangible();
     if (o->parentObj->oAction == 2) {
         obj_mark_for_deletion(o);
     } else {
@@ -41,7 +41,7 @@ void water_bomb_cannon_act_0(void) {
     if (o->oDistanceToMario < 2000.0f) {
         spawn_object(o, MODEL_CANNON_BARREL, bhvCannonBarrelBubbles);
         cur_obj_unhide();
-
+	cur_obj_become_tangible();
         o->oAction = 1;
         o->oMoveAnglePitch = o->oWaterCannonUnkFC = 0x1C00;
     }

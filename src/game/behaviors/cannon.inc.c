@@ -98,11 +98,20 @@ void opened_cannon_act_2(void) {
 }
 
 void opened_cannon_act_3(void) {
-    UNUSED s32 unused;
-    if (o->oTimer > 3)
+    struct Object *gas;
+	f32 scale;
+	if (o->oTimer > 3)
         o->oAction = 0;
+	if (o->oTimer < 30) {
+	    gas = spawn_object(o, MODEL_BURN_SMOKE_UNUSED, bhvBlackSmokeBowser);
+	    gas->oMoveAngleYaw = random_u16();
+	    gas->oForwardVel = random_float()*20+20;
+	    gas->oVelY = coss(gMarioObject->oMoveAnglePitch)*40;
+	    scale = random_float()*3.0+3.0;
+	    gas->header.gfx.scale[0] = scale;
+	   gas->header.gfx.scale[1] = scale;
+	}
 }
-
 void (*sOpenedCannonActions[])(void) = { opened_cannon_act_0, opened_cannon_act_1, opened_cannon_act_2,
                                          opened_cannon_act_3, opened_cannon_act_4, opened_cannon_act_5,
                                          opened_cannon_act_6 };

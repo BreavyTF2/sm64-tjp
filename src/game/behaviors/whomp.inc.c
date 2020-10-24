@@ -1,7 +1,7 @@
 // whomp.c.inc
 
 void whomp_play_sfx_from_pound_animation(void) {
-    UNUSED s32 sp2C = o->header.gfx.unk38.animFrame;
+    UNUSED s32 sp2C = o->header.gfx.animInfo.animFrame;
     s32 sp28 = 0;
     if (o->oForwardVel < 5.0f) {
         sp28 = cur_obj_check_anim_frame(0);
@@ -110,6 +110,8 @@ void whomp_act_4(void) {
     if (o->oTimer == 0)
         o->oVelY = 40.0f;
     if (o->oTimer < 8) {
+		if(o->oTimer % 2) o->oFaceAnglePitch = 0x200;
+		else o->oFaceAnglePitch = 0;
     } else {
         o->oAngleVelPitch += 0x100;
         o->oFaceAnglePitch += o->oAngleVelPitch;

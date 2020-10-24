@@ -66,8 +66,8 @@ void king_bobomb_act_2(void) {
         } else
             cur_obj_init_animation_with_sound(11);
         if (o->oKingBobombUnk108 == 0) {
-            o->oForwardVel = 3.0f;
-            cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x100);
+            o->oForwardVel = 4.0f;
+            cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x300);
         } else {
             o->oForwardVel = 0.0f;
             o->oKingBobombUnk108--;
@@ -103,19 +103,22 @@ void king_bobomb_act_3(void) {
                 o->oKingBobombUnk108 = 35;
                 o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
             } else {
-                o->oForwardVel = 3.0f;
-                if (o->oKingBobombUnk104 > 20 && cur_obj_rotate_yaw_toward(0, 0x400)) {
+                o->oForwardVel = 6.0f;
+                if (o->oKingBobombUnk104 > 60 && cur_obj_rotate_yaw_toward(0, 0x400)) {
                     o->oSubAction++;
-                    cur_obj_init_animation_and_anim_frame(9, 22);
+                    cur_obj_init_animation_and_anim_frame(9, 1);
                 }
             }
             o->oKingBobombUnk104++;
         } else {
-            cur_obj_init_animation_with_sound(9);
-            if (cur_obj_check_anim_frame(31)) {
+			o->oForwardVel = 2.0f;
+			cur_obj_init_animation_with_sound(9);
+				if (cur_obj_check_anim_frame(31)) {
+								o->oForwardVel = 0.0f;
                 o->oKingBobombUnk88 = 2;
                 cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN4);
-            } else if (cur_obj_check_if_near_animation_end()) {
+			}			
+			else if (cur_obj_check_if_near_animation_end()) {
                 o->oAction = 1;
                 o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
             }

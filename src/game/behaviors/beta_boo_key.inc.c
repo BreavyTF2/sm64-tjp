@@ -20,11 +20,22 @@
  * of the same object. It is a less developed version of
  * bhvBetaBooKey, hence the "alpha" moniker.
  */
+ struct ObjectHitbox sBooKeyHitbox = {
+    /* interactType: */ INTERACT_COIN,
+    /* downOffset: */ 0,
+    /* damageOrCoinValue: */ 10,
+    /* health: */ 0,
+    /* numLootCoins: */ 0,
+    /* radius: */ 100,
+    /* height: */ 32,
+    /* hurtboxRadius: */ 0,
+    /* hurtboxHeight: */ 0,
+};
 void bhv_alpha_boo_key_loop(void) {
     // Rotate the key
     o->oFaceAngleRoll += 0x200;
     o->oFaceAngleYaw += 0x200;
-
+	obj_set_hitbox(o, &sBooKeyHitbox);
     if (obj_check_if_collided_with_object(o, gMarioObject)) {
         // This line makes the object inside the key's parent boo drop.
         // Was this intended to make the boo die when the key is collected?
@@ -39,6 +50,7 @@ void bhv_alpha_boo_key_loop(void) {
 
         // Delete the object and spawn sparkles
         obj_mark_for_deletion(o);
+		play_puzzle_jingle();
         spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
     }
 }
@@ -83,6 +95,7 @@ static void beta_boo_key_dropped_loop(void) {
     // become tangible and handle collision.
     if (o->oTimer > 90 || o->oMoveFlags & OBJ_MOVE_LANDED) {
         cur_obj_become_tangible();
+		obj_set_hitbox(o, &sBooKeyHitbox);
 
         if (obj_check_if_collided_with_object(o, gMarioObject)) {
             // This interaction status is 0x01, the first interaction status flag.
@@ -98,6 +111,7 @@ static void beta_boo_key_dropped_loop(void) {
 
             // Delete the object and spawn sparkles
             obj_mark_for_deletion(o);
+			play_puzzle_jingle();
             spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
         }
     }
@@ -151,7 +165,7 @@ static void beta_boo_key_inside_boo_loop(void) {
 
     // Use a Y offset of 40 to make the key model aligned correctly.
     // (Why didn't they use oGraphYOffset?)
-    o->oPosY += 40.0f;
+     o->oPosY += 60.0f;
 
     // If the boo is dying/dead, set the action to BETA_BOO_KEY_ACT_DROPPING.
     if (parent->oBooDeathStatus != BOO_DEATH_STATUS_ALIVE) {

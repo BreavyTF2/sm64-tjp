@@ -276,6 +276,7 @@ extern const BehaviorScript bhvUnused2A54[];
 extern const BehaviorScript bhvCastleFloorTrap[];
 extern const BehaviorScript bhvFloorTrapInCastle[];
 extern const BehaviorScript bhvTree[];
+extern const BehaviorScript bhvTree2[];
 extern const BehaviorScript bhvSparkle[];
 extern const BehaviorScript bhvSparkleSpawn[];
 extern const BehaviorScript bhvSparkleParticleSpawner[];

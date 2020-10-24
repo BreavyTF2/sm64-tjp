@@ -31,7 +31,7 @@ void bhv_boo_init(void) {
 
 static s32 boo_should_be_stopped(void) {
     if (cur_obj_has_behavior(bhvMerryGoRoundBigBoo) || cur_obj_has_behavior(bhvMerryGoRoundBoo)) {
-        if (gMarioOnMerryGoRound == FALSE) {
+        if (!gMarioOnMerryGoRound) {
             return TRUE;
         } else {
             return FALSE;
@@ -141,11 +141,11 @@ static void boo_oscillate(s32 ignoreOpacity) {
 }
 
 static s32 boo_vanish_or_appear(void) {
-    s16 relativeAngleToMario = abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw);
+    s16 relativeAngleToMario = abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw);
     s16 relativeMarioFaceAngle = abs_angle_diff(o->oMoveAngleYaw, gMarioObject->oFaceAngleYaw);
     // magic?
-    s16 relativeAngleToMarioThreshhold = 0x1568;
-    s16 relativeMarioFaceAngleThreshhold = 0x6b58;
+    s16 relativeAngleToMarioThreshhold = 0x5000;
+    s16 relativeMarioFaceAngleThreshhold = 0x5000;
     s32 doneAppearing = FALSE;
 
     o->oVelY = 0.0f;
@@ -154,10 +154,10 @@ static s32 boo_vanish_or_appear(void) {
         relativeAngleToMario > relativeAngleToMarioThreshhold ||
         relativeMarioFaceAngle < relativeMarioFaceAngleThreshhold
     ) {
-        if (o->oOpacity == 40) {
+//      if (o->oOpacity == 40) {
             o->oBooTargetOpacity = 255;
-            cur_obj_play_sound_2(SOUND_OBJ_BOO_LAUGH_LONG);
-        }
+//          cur_obj_play_sound_2(SOUND_OBJ_BOO_LAUGH_LONG);
+//      }
 
         if (o->oOpacity > 180) {
             doneAppearing = TRUE;
@@ -190,16 +190,15 @@ static void boo_move_during_hit(s32 roll, f32 fVel) {
     // so the Y velocity goes from 1 to -1 and back to 1 over 32 frames.
     // This is such a small change that the Y position only changes by 5 units.
     // It's completely unnoticable in-game.
+
     s32 oscillationVel = o->oTimer * 0x800 + 0x800;
 
     o->oForwardVel = fVel;
     o->oVelY = coss(oscillationVel);
     o->oMoveAngleYaw = o->oBooMoveYawDuringHit;
 
-    if (roll != FALSE) {
         o->oFaceAngleYaw  += D_8032F0CC[o->oTimer];
         o->oFaceAngleRoll += D_8032F0CC[o->oTimer];
-    }
 }
 
 static void big_boo_shake_after_hit(void) {
@@ -216,14 +215,15 @@ static void boo_reset_after_hit(void) {
 
 // called iff boo/big boo/cage boo is in action 2, which only occurs if it was non-attack-ly interacted with/bounced on?
 static s32 boo_update_after_bounced_on(f32 a0) {
-    boo_stop();
+    o->oForwardVel = 0;
+	o->oVelY = 0;
 
     if (o->oTimer == 0) {
         boo_set_move_yaw_for_during_hit(FALSE);
     }
 
     if (o->oTimer < 32) {
-        boo_move_during_hit(FALSE, D_8032F0CC[o->oTimer]/5000.0f * a0);
+        boo_move_during_hit(FALSE, D_8032F0CC[o->oTimer]/5000.0f);
     } else {
         cur_obj_become_tangible();
         boo_reset_after_hit();
@@ -312,7 +312,7 @@ static s32 boo_get_attack_status(void) {
     s32 attackStatus = BOO_NOT_ATTACKED;
 
     if (o->oInteractStatus & INT_STATUS_INTERACTED) {
-        if ((o->oInteractStatus & INT_STATUS_WAS_ATTACKED) && obj_has_attack_type(ATTACK_FROM_ABOVE) == FALSE) {
+        if ((o->oInteractStatus & INT_STATUS_WAS_ATTACKED) && !obj_has_attack_type(ATTACK_FROM_ABOVE)) {
             cur_obj_become_intangible();
 
             o->oInteractStatus = 0;
@@ -352,14 +352,14 @@ static void boo_chase_mario(f32 a0, s16 a1, f32 a2) {
         if (mario_is_in_air_action() == 0) {
             sp1C = o->oPosY - gMarioObject->oPosY;
             if (a0 < sp1C && sp1C < 500.0f) {
-                o->oVelY = increment_velocity_toward_range(o->oPosY, gMarioObject->oPosY + 50.0f, 10.f, 2.0f);
+ o->oVelY = increment_velocity_toward_range(o->oPosY,(gMarioObject->oPosY + 60.0f*o->oBooBaseScale), 10.0f, 2.0f);
             }
         }
 
-        cur_obj_set_vel_from_mario_vel(10.0f - o->oBooNegatedAggressiveness, a2);
+        cur_obj_set_vel_from_mario_vel(10.0f,0.5f);
 
         if (o->oForwardVel != 0.0f) {
-            boo_oscillate(FALSE);
+            boo_oscillate(TRUE);
         }
     } else {
         o->oInteractType = 0;
@@ -459,6 +459,7 @@ static void boo_act_4(void) {
 
     // If there are no remaining "minion" boos, show the dialog of the Big Boo
     if (cur_obj_nearest_object_with_behavior(bhvGhostHuntBoo) == NULL) {
+		spawn_object_abs_with_rot(o, 1, MODEL_BOO, bhvGhostHuntBigBoo, 995,100,984,0, 0,0);
         dialogID = DIALOG_108;
     } else {
         dialogID = DIALOG_107;
@@ -554,7 +555,7 @@ static void big_boo_act_1(void) {
 
     // redundant; this check is in boo_should_be_stopped
     if (cur_obj_has_behavior(bhvMerryGoRoundBigBoo)) {
-        if (gMarioOnMerryGoRound == FALSE) {
+        if (!gMarioOnMerryGoRound) {
             o->oAction = 0;
         }
     } else if (boo_should_be_stopped()) {
@@ -581,11 +582,11 @@ static void big_boo_act_2(void) {
 }
 
 static void big_boo_spawn_ghost_hunt_star(void) {
-    spawn_default_star(980.0f, 1100.0f, 250.0f);
+    spawn_default_star(100.0f, 200.0f, 800.0f);
 }
 
 static void big_boo_spawn_balcony_star(void) {
-    spawn_default_star(700.0f, 3200.0f, 1900.0f);
+    spawn_default_star(2500.0f, 2000.0f, 250.0f);
 }
 
 static void big_boo_spawn_merry_go_round_star(void) {

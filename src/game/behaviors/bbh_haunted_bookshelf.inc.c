@@ -19,7 +19,8 @@ void bhv_haunted_bookshelf_loop(void) {
         case HAUNTED_BOOKSHELF_ACT_IDLE:
             // ???
             if (o->oTimer == 0) {
-            }
+			spawn_object_abs_with_rot(o, 0, MODEL_BETA_BOO_KEY, bhvAlphaBooKey, -2090,1100,-199,0, 0,0);
+			 }
 
             // This code never runs, since the action is set to 1 directly
             // by bhvHauntedBookshelfManager. Maybe this was

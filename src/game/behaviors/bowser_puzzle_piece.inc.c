@@ -118,7 +118,7 @@ void bhv_lll_bowser_puzzle_spawn_pieces(f32 pieceWidth) {
  * Does the initial spawn of the puzzle pieces and then waits to spawn 5 coins.
  */
 void bhv_lll_bowser_puzzle_loop(void) {
-    s32 i;
+    UNUSED s32 i;
     UNUSED struct Object *sp28;
     switch (o->oAction) {
         case BOWSER_PUZZLE_ACT_SPAWN_PIECES:
@@ -126,10 +126,9 @@ void bhv_lll_bowser_puzzle_loop(void) {
             break;
         case BOWSER_PUZZLE_ACT_WAIT_FOR_COMPLETE:
             // If both completion flags are set and Mario is within 1000 units...
-            if (o->oBowserPuzzleCompletionFlags == 3 && o->oDistanceToMario < 1000.0f) {
+            if (o->oBowserPuzzleCompletionFlags == 3 && o->oDistanceToMario < 500.0f) {
                 // Spawn 5 coins.
-                for (i = 0; i < 5; i++)
-                    sp28 = spawn_object(o, MODEL_YELLOW_COIN, bhvSingleCoinGetsSpawned);
+				spawn_default_star( -5119,  302.0f,  2024);
 
                 // Reset completion flags (even though they never get checked again).
                 o->oBowserPuzzleCompletionFlags = 0;

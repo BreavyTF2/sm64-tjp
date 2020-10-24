@@ -65,12 +65,6 @@ void tumbling_bridge_act_1(void) {
             relativePlatformZ = sTumblingBridgeParams[bridgeID].bridgeRelativeStartingXorZ
                                 + sTumblingBridgeParams[bridgeID].platformWidth * i;
 
-        if (cur_obj_has_behavior(bhvLllTumblingBridge)) {
-            if (i % 3 == 0)
-                relativePlatformY -= 150;
-            relativeInitialPlatformY = 450;
-        }
-
         platformObj = spawn_object_relative(
             0, relativePlatformX, relativePlatformY + relativeInitialPlatformY, relativePlatformZ, o,
             sTumblingBridgeParams[bridgeID].model, bhvTumblingBridgePlatform);

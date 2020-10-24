@@ -19,9 +19,11 @@ UNUSED static const u64 binid_1 = 1;
 UNUSED static const u64 binid_2 = 2;
 
 #include "cannon_base/model.inc.c"
+#include "cannon_base/collision.inc.c"
 UNUSED static const u64 binid_3 = 3;
 
 #include "cannon_barrel/model.inc.c"
+#include "cannon_barrel/collision.inc.c"
 UNUSED static const u64 binid_4 = 4;
 
 #include "chuckya/model.inc.c"
