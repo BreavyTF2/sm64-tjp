@@ -57,7 +57,7 @@ const MacroObject bob_seg7_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_goomba_triplet_spawner,    /*yaw*/   0, /*pos*/  3640,   768,  6280),
     MACRO_OBJECT(/*preset*/ macro_goomba_triplet_spawner,    /*yaw*/   0, /*pos*/  6060,   877,  2000),
     MACRO_OBJECT(/*preset*/ macro_goomba_triplet_spawner,    /*yaw*/   0, /*pos*/ -6050,   768,  1250),
-    MACRO_OBJECT(/*preset*/ macro_box_wing_cap,              /*yaw*/   0, /*pos*/   400,   350,  6500),
+//    MACRO_OBJECT(/*preset*/ macro_box_wing_cap,              /*yaw*/   0, /*pos*/   400,   350,  6500),
     MACRO_OBJECT_WITH_BEH_PARAM(/*preset*/ macro_wooden_signpost,           /*yaw*/ 270, /*pos*/    66,     0,  6977, /*behParam*/ DIALOG_113),
     MACRO_OBJECT_WITH_BEH_PARAM(/*preset*/ macro_wooden_signpost,           /*yaw*/   0, /*pos*/  3394,  3072,  1846, /*behParam*/ DIALOG_064),
     MACRO_OBJECT_WITH_BEH_PARAM(/*preset*/ macro_wooden_signpost,           /*yaw*/ 270, /*pos*/ -3110,   104,  5064, /*behParam*/ DIALOG_035),

@@ -77,7 +77,6 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_STAR,                    star_geo),
     LOAD_MODEL_FROM_GEO(MODEL_TRANSPARENT_STAR,        transparent_star_geo),
     LOAD_MODEL_FROM_GEO(MODEL_WOODEN_SIGNPOST,         wooden_signpost_geo),
-	LOAD_MODEL_FROM_GEO(MODEL_UNKNOWN_7D,			   koopa_shell3_geo),
     LOAD_MODEL_FROM_DL( MODEL_WHITE_PARTICLE_SMALL,    white_particle_small_dl,     LAYER_ALPHA),
     LOAD_MODEL_FROM_GEO(MODEL_RED_FLAME,               red_flame_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BLUE_FLAME,              blue_flame_geo),
@@ -173,6 +172,7 @@ static const LevelScript script_exec_ ## folder [] = { \
 const LevelScript script_func_global_1[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BLUE_COIN_SWITCH,        blue_coin_switch_geo),
     LOAD_MODEL_FROM_GEO(MODEL_AMP,                     amp_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_UNKNOWN_7D,			   koopa_shell2_geo),
     LOAD_MODEL_FROM_GEO(MODEL_PURPLE_SWITCH,           purple_switch_geo),
     LOAD_MODEL_FROM_GEO(MODEL_CHECKERBOARD_PLATFORM,   checkerboard_platform_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BREAKABLE_BOX,           breakable_box_geo),
