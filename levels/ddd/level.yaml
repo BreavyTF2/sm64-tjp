@@ -6,7 +6,7 @@ area-count: 2
 objects: [pole, sub_door, submarine]
 shared-path: []
 # loaded files
-skybox-bin: water
+skybox-bin: wdw
 texture-bin: water
 effects: true
 actor-bins: [group4, group13]

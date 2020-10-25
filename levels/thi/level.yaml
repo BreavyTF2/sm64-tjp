@@ -6,7 +6,7 @@ area-count: 3
 objects: []
 shared-path: ["/areas/2/", "/areas/1/"]
 # loaded files
-skybox-bin: water
+skybox-bin: bbh
 texture-bin: grass
 effects: false
 actor-bins: [group11, group14]

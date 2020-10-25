@@ -1,25 +1,25 @@
 // 0x07001000 - 0x07001018
 static const Lights1 thi_seg7_lights_07001000 = gdSPDefLights1(
-    0x7f, 0x7f, 0x7f,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
+    0x4f, 0x4f, 0x4f,
+    0xaf, 0xaf, 0xaf, 0x28, 0x28, 0x28
 );
 
 // 0x07001018 - 0x07001030
 static const Lights1 thi_seg7_lights_07001018 = gdSPDefLights1(
-    0x4c, 0x4c, 0x4c,
-    0x99, 0x99, 0x99, 0x28, 0x28, 0x28
+    0x1c, 0x1c, 0x1c,
+    0x69, 0x69, 0x69, 0x28, 0x28, 0x28
 );
 
 // 0x07001030 - 0x07001048
 static const Lights1 thi_seg7_lights_07001030 = gdSPDefLights1(
-    0x5d, 0x5d, 0x5d,
-    0xbb, 0xbb, 0xbb, 0x28, 0x28, 0x28
+    0x2d, 0x2d, 0x2d,
+    0x9b, 0x9b, 0x9b, 0x28, 0x28, 0x28
 );
 
 // 0x07001048 - 0x07001060
 static const Lights1 thi_seg7_lights_07001048 = gdSPDefLights1(
-    0x7f, 0x7f, 0x3c,
-    0xff, 0xff, 0x78, 0x28, 0x28, 0x28
+    0x1f, 0x1f, 0x0c,
+    0xbf, 0xbf, 0x48, 0x28, 0x28, 0x28
 );
 
 // 0x07001060 - 0x07001140
@@ -1434,10 +1434,12 @@ const Gfx thi_seg7_dl_07005260[] = {
     gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
     gsSPDisplayList(thi_seg7_dl_07004130),
     gsSPDisplayList(thi_seg7_dl_07004440),
+	    gsSPSetGeometryMode(G_LIGHTING),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, 5, G_TX_NOLOD),
     gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
     gsSPDisplayList(thi_seg7_dl_070044F0),
+	    gsSPSetGeometryMode(G_LIGHTING),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, 5, G_TX_NOLOD),
     gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
@@ -1446,9 +1448,11 @@ const Gfx thi_seg7_dl_07005260[] = {
     gsSPDisplayList(thi_seg7_dl_070050C0),
     gsSPDisplayList(thi_seg7_dl_07005178),
     gsSPDisplayList(thi_seg7_dl_070051E8),
+	gsSPSetGeometryMode(G_LIGHTING),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPDisplayList(thi_seg7_dl_07005240),
+	gsSPSetGeometryMode(G_LIGHTING),
     gsSPEndDisplayList(),
 };
