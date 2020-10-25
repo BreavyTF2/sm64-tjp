@@ -1286,12 +1286,13 @@ const Gfx inside_castle_seg7_dl_07023520[] = {
 
 // 0x07023580 - 0x070235B8
 static const Gfx inside_castle_seg7_painting_dl_07023580[] = {
+	gsSPDisplayList(inside_castle_seg7_dl_07021A48),
     gsSPVertex(inside_castle_seg7_vertex_07021818, 8, 0),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_castle_seg7_texture_07017000),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_castle_seg7_texture_07021800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
     gsSPDisplayList(inside_castle_seg7_dl_07021A18),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_castle_seg7_texture_07021800),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, inside_castle_seg7_texture_07017000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
     gsSPDisplayList(inside_castle_seg7_dl_07021A30),
@@ -1553,15 +1554,15 @@ struct Painting ddd_painting = {
     /* Floor Status */ 0x00, 0x00, 0x00 /* which of the painting's nearby special floors Mario's on */,
     /* Ripple Status */ 0x00,
     /* Rotation */    0.0f, 270.0f,
-    /* Position */ 3456.0f, -1075.2f, 1587.2f,
+    /* Position */ 3456.0f, -1075.0f, 1587.2f,
     /*                         curr   passive     entry */
-    /* Ripple Magnitude */     0.0f,    20.0f,    80.0f,
+    /* Ripple Magnitude */     0.0f,    40.0f,   160.0f,
     /* Ripple Decay */         1.0f,  0.9608f,  0.9524f,
-    /* Ripple Rate */          0.0f,    0.24f,    0.14f,
-    /* Ripple Dispersion */    0.0f,    40.0f,    30.0f,
+    /* Ripple Rate */          0.0f,    0.12f,    0.07f,
+    /* Ripple Dispersion */    0.0f,    80.0f,    60.0f,
     /* Curr Ripple Timer */    0.0f,
-    /* Curr Ripple x, y */     0.0f,   0.0f,
-    /* Normal DList */ inside_castle_seg7_painting_dl_070235B8,
+    /* Curr Ripple x, y */     0.0f,     0.0f,
+    /* Normal DList */ inside_castle_seg7_painting_dl_07023580,
     /* Texture Maps */ inside_castle_seg7_painting_texture_maps_07022518,
     /* Textures */     inside_castle_seg7_painting_textures_070235F4,
     /* Texture w, h */ 64, 32,
@@ -1569,7 +1570,7 @@ struct Painting ddd_painting = {
     /* Ripple Trigger */ RIPPLE_TRIGGER_PROXIMITY,
     /* Alpha */ 0xFF,
     /* Mario Below */  0x00, 0x00, 0x00, /* Whether or not Mario is below the painting */
-    /* Size */  819.2f,
+    /* Size */  816.0f,
 };
 
 // 0x070239E0 - 0x07023A58
