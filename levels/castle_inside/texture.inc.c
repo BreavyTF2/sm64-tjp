@@ -214,3 +214,6 @@ ALIGNED8 static const u8 inside_castle_seg7_texture_0701F800[] = {
 ALIGNED8 static const u8 inside_castle_seg7_texture_07020800[] = {
 #include "levels/castle_inside/40.rgba16.inc.c"
 };
+ALIGNED8 static const u8 inside_castle_seg7_texture_07021800[] = {
+#include "levels/castle_inside/41.rgba16.inc.c"
+};
