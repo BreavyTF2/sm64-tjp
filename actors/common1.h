@@ -138,6 +138,13 @@ extern const Gfx flame_seg3_dl_0301B410[];
 extern const Gfx flame_seg3_dl_0301B428[];
 extern const Gfx flame_seg3_dl_0301B440[];
 extern const Gfx flame_seg3_dl_0301B458[];
+extern const Gfx flame_seg3_dl_0301B668[];
+extern const Gfx flame_seg3_dl_0301B680[];
+extern const Gfx flame_seg3_dl_0301B698[];
+extern const Gfx flame_seg3_dl_0301B6B0[];
+extern const Gfx flame_seg3_dl_0301B6C8[];
+extern const Gfx flame_seg3_dl_0301B6E0[];
+extern const Gfx flame_seg3_dl_0301B6F8[];
 extern const Gfx flame_seg3_dl_0301B470[];
 extern const Gfx flame_seg3_dl_0301B500[];
 extern const Gfx flame_seg3_dl_0301B518[];
@@ -147,6 +154,14 @@ extern const Gfx flame_seg3_dl_0301B560[];
 extern const Gfx flame_seg3_dl_0301B578[];
 extern const Gfx flame_seg3_dl_0301B590[];
 extern const Gfx flame_seg3_dl_0301B5A8[];
+extern const Gfx flame_seg3_dl_0301B5C0[];
+extern const Gfx flame_seg3_dl_0301B5D8[];
+extern const Gfx flame_seg3_dl_0301B5F0[];
+extern const Gfx flame_seg3_dl_0301B608[];
+extern const Gfx flame_seg3_dl_0301B620[];
+extern const Gfx flame_seg3_dl_0301B638[];
+extern const Gfx flame_seg3_dl_0301B650[];
+
 
 // leaves
 extern const GeoLayout leaves_geo[];
