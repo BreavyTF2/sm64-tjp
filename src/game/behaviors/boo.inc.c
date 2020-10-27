@@ -459,7 +459,7 @@ static void boo_act_4(void) {
 
     // If there are no remaining "minion" boos, show the dialog of the Big Boo
     if (cur_obj_nearest_object_with_behavior(bhvGhostHuntBoo) == NULL) {
-		spawn_object_abs_with_rot(o, 1, MODEL_BOO, bhvGhostHuntBigBoo, 995,100,984,0, 0,0);
+		
         dialogID = DIALOG_108;
     } else {
         dialogID = DIALOG_107;
@@ -470,6 +470,7 @@ static void boo_act_4(void) {
         obj_mark_for_deletion(o);
 
         if (dialogID == DIALOG_108) { // If the Big Boo should spawn, play the jingle
+		spawn_object_abs_with_rot(o, 0, MODEL_BOO, bhvGhostHuntBigBoo, 995,100,984,0, 0,0);
             play_puzzle_jingle();
         }
     }
@@ -511,11 +512,7 @@ static void big_boo_act_0(void) {
 
     o->oBooParentBigBoo = NULL;
 
-#ifndef VERSION_JP
-    if (boo_should_be_active() && gDebugInfo[5][0] + 5 <= o->oBigBooNumMinionBoosKilled) {
-#else
-    if (boo_should_be_active() && o->oBigBooNumMinionBoosKilled >= 5) {
-#endif
+
         o->oAction = 1;
 
         cur_obj_set_pos_to_home();
@@ -529,11 +526,7 @@ static void big_boo_act_0(void) {
 
         cur_obj_scale(3.0f);
         cur_obj_become_tangible();
-    } else {
-        cur_obj_hide();
-        cur_obj_become_intangible();
-        boo_stop();
-    }
+
 }
 
 static void big_boo_act_1(void) {

@@ -162,7 +162,7 @@ void bhv_treasure_chest_jrb_loop(void) {
         case 1:
             if (o->oTimer == 60) {
                 spawn_mist_particles();
-                spawn_default_star(-1800.0f, -2500.0f, -1700.0f);
+                spawn_default_star(5100.0f, -4500.0f, -250.0f);
                 o->oAction = 2;
             }
             break;

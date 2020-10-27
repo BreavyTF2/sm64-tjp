@@ -128,7 +128,7 @@ void bhv_lll_bowser_puzzle_loop(void) {
             // If both completion flags are set and Mario is within 1000 units...
             if (o->oBowserPuzzleCompletionFlags == 3 && o->oDistanceToMario < 500.0f) {
                 // Spawn 5 coins.
-				spawn_default_star( -5119,  302.0f,  2024);
+				spawn_default_star( -4404,  302.0f,  204);
 
                 // Reset completion flags (even though they never get checked again).
                 o->oBowserPuzzleCompletionFlags = 0;
