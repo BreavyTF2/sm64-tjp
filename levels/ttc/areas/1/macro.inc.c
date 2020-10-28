@@ -106,7 +106,7 @@ const MacroObject ttc_seg7_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_box_three_coins,       /*yaw*/  45, /*pos*/   520,   300,  1500),
     MACRO_OBJECT(/*preset*/ macro_box_ten_coins,         /*yaw*/   0, /*pos*/  -400,  3600,  1880),
     MACRO_OBJECT(/*preset*/ macro_box_three_coins,       /*yaw*/   0, /*pos*/   -40,  4160, -1280),
-    MACRO_OBJECT(/*preset*/ macro_box_three_coins,       /*yaw*/  45, /*pos*/ -1160,  2920,  -840),
+ //   MACRO_OBJECT(/*preset*/ macro_box_three_coins,       /*yaw*/  45, /*pos*/ -1160,  2920,  -840),
     MACRO_OBJECT(/*preset*/ macro_box_ten_coins,         /*yaw*/  45, /*pos*/  1919,  6316,  1919),
     MACRO_OBJECT(/*preset*/ macro_ttc_large_treadmill_2, /*yaw*/  45, /*pos*/  1313,  6190,  1313),
     MACRO_OBJECT(/*preset*/ macro_ttc_small_treadmill_2, /*yaw*/   0, /*pos*/  1851, -2488,   -98),
