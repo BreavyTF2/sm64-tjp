@@ -1,21 +1,22 @@
 // Bully
 
 // 0x05000000
+// Unreferenced light group
+static const Lights1 bully_lights_unused = gdSPDefLights1(
+    0x3f, 0x29, 0x00,
+    0xff, 0xa5, 0x00, 0x28, 0x28, 0x28
+);
+
 static const Vtx bully_seg5_vertex_05000000[] = {
-    {{{   196,     17,    114}, 0, {   325,    310}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   259,      2,    106}, 0, {   422,      7}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   184,    -14,    137}, 0, {   399,    416}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   196,     17,   -113}, 0, {   105,    286}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   259,      2,   -105}, 0, {    69,    -34}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   171,     17,   -157}, 0, {  -107,    540}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   184,    -14,   -136}, 0, {   -34,    392}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{    91,     42,   -114}, 0, {   236,    784}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   140,     42,    -34}, 0, {   621,    305}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   116,    -38,    -75}, 0, {   344,    489}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   171,     17,    158}, 0, {   417,    557}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   116,    -38,     76}, 0, {   111,    499}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{    91,     42,    115}, 0, {   120,    778}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   140,     42,     35}, 0, {   -40,    311}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{   132,    -29,      0}, 0, {     0,      0}, {0x10, 0xc2, 0x93, 0x00}}},
+    {{{   131,     31,    -35}, 0, {     0,      0}, {0x10, 0xc2, 0x93, 0x00}}},
+    {{{   250,      2,      0}, 0, {     0,      0}, {0x10, 0xc2, 0x93, 0x00}}},
+    {{{   131,     31,     35}, 0, {     0,      0}, {0x10, 0xc2, 0x6d, 0xff}}},
+    {{{   132,    -29,      0}, 0, {     0,      0}, {0x10, 0xc2, 0x6d, 0xff}}},
+    {{{   250,      2,      0}, 0, {     0,      0}, {0x10, 0xc2, 0x6d, 0xff}}},
+    {{{   131,     31,    -35}, 0, {     0,      0}, {0x1e, 0x7b, 0x00, 0xff}}},
+    {{{   131,     31,     35}, 0, {     0,      0}, {0x1e, 0x7b, 0x00, 0xff}}},
+    {{{   250,      2,      0}, 0, {     0,      0}, {0x1e, 0x7b, 0x00, 0xff}}},
 };
 
 // 0x050000E0
@@ -25,39 +26,16 @@ ALIGNED8 static const u8 bully_seg5_texture_050000E0[] = {
 
 // 0x050002E0 - 0x05000398
 const Gfx bully_seg5_dl_050002E0[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, bully_seg5_texture_050000E0),
-    gsDPLoadSync(),
-    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 16 * 16 - 1, CALC_DXT(16, G_IM_SIZ_16b_BYTES)),
-    gsSPVertex(bully_seg5_vertex_05000000, 14, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  5, 0x0),
-    gsSP2Triangles( 5,  4,  6, 0x0,  6,  7,  5, 0x0),
-    gsSP2Triangles( 5,  7,  8, 0x0,  5,  8,  3, 0x0),
-    gsSP2Triangles( 3,  8,  9, 0x0,  3,  9,  6, 0x0),
-    gsSP2Triangles( 6,  4,  3, 0x0,  6,  9,  7, 0x0),
-    gsSP2Triangles(10, 11,  2, 0x0,  0, 12, 10, 0x0),
-    gsSP2Triangles(10, 12, 11, 0x0,  2,  1, 10, 0x0),
-    gsSP2Triangles(10,  1,  0, 0x0,  2, 11, 13, 0x0),
-    gsSP2Triangles( 0, 13, 12, 0x0,  2, 13,  0, 0x0),
+    gsSPLight(&bully_lights_unused.l, 1),
+    gsSPLight(&bully_lights_unused.a, 2),
+    gsSPVertex(bully_seg5_vertex_05000000, 9, 0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(3,4,5,0),
+	gsSP1Triangle(6,7,8,0),
     gsSPEndDisplayList(),
 };
 
 // 0x05000398 - 0x05000408
-const Gfx bully_seg5_dl_05000398[] = {
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_DECALRGB, G_CC_DECALRGB),
-    gsSPClearGeometryMode(G_LIGHTING),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 4, 0, G_TX_RENDERTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, 4, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, 4, G_TX_NOLOD),
-    gsDPSetTileSize(0, 0, 0, (16 - 1) << G_TEXTURE_IMAGE_FRAC, (16 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsSPDisplayList(bully_seg5_dl_050002E0),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-    gsSPSetGeometryMode(G_LIGHTING),
-    gsSPEndDisplayList(),
-};
 
 // 0x05000408
 static const Lights1 bully_seg5_lights_05000408 = gdSPDefLights1(
@@ -69,12 +47,6 @@ static const Lights1 bully_seg5_lights_05000408 = gdSPDefLights1(
 static const Lights1 bully_seg5_lights_05000420 = gdSPDefLights1(
     0x00, 0x3f, 0x00,
     0x00, 0xff, 0x00, 0x28, 0x28, 0x28
-);
-
-// Unreferenced light group
-UNUSED static const Lights1 bully_lights_unused = gdSPDefLights1(
-    0x3f, 0x29, 0x00,
-    0xff, 0xa5, 0x00, 0x28, 0x28, 0x28
 );
 
 // 0x05000450

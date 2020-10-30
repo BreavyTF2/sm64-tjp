@@ -14,7 +14,6 @@ extern const struct Animation *const blargg_seg5_anims_0500616C[];
 extern const GeoLayout bully_geo[];
 extern const GeoLayout bully_boss_geo[];
 extern const Gfx bully_seg5_dl_050002E0[];
-extern const Gfx bully_seg5_dl_05000398[];
 extern const Gfx bully_seg5_dl_05003708[];
 extern const Gfx bully_seg5_dl_050037A0[];
 extern const Gfx bully_seg5_dl_05003838[];

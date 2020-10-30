@@ -69,6 +69,7 @@ extern const struct Animation *const hoot_seg5_anims_05005768[];
 extern const GeoLayout thwomp_geo[];
 extern const Gfx thwomp_seg5_dl_0500B570[];
 extern const Gfx thwomp_seg5_dl_0500B718[];
+extern const Gfx thwomp_seg5_dl_0500B730[];
 extern const Gfx thwomp_seg5_dl_0500B750[];
 extern const Collision thwomp_seg5_collision_0500B7D0[];
 extern const Collision thwomp_seg5_collision_0500B92C[];
