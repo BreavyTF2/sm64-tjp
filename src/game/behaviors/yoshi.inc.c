@@ -132,17 +132,23 @@ void yoshi_finish_jumping_and_despawn_loop(void) {
 
 void yoshi_give_present_loop(void) {
     s32 sp1C = gGlobalTimer;
-
-    if (gHudDisplay.lives == 100) {
+    if (gMarioState->numStars == 0) {
         play_sound(SOUND_GENERAL_COLLECT_1UP, gDefaultSoundArgs);
         gSpecialTripleJump = TRUE;
         o->oAction = YOSHI_ACT_WALK_JUMP_OFF_ROOF;
         return;
+
     }
 
-    if ((sp1C & 0x03) == 0) {
+    if ((sp1C & 0x02) == 0) {
         play_sound(SOUND_MENU_YOSHI_GAIN_LIVES, gDefaultSoundArgs);
-        gMarioState->numLives++;
+		if (gHudDisplay.lives >= 1){
+        gMarioState->numLives--;
+}
+		gMarioState->hurtCounter--;
+		gMarioState->numStars--;
+
+		
     }
 }
 

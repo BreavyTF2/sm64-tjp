@@ -61,7 +61,7 @@ void bully_check_mario_collision(void) {
         o->oInteractStatus &= ~INT_STATUS_INTERACTED;
         o->oAction = BULLY_ACT_KNOCKBACK;
         o->oFlags &= ~0x8; /* bit 3 */
-        cur_obj_init_animation(2);
+        cur_obj_init_animation(3);
         o->oBullyMarioCollisionAngle = o->oMoveAngleYaw;
     }
 }
@@ -114,7 +114,8 @@ void bully_act_back_up(void) {
     }
 
     o->oForwardVel = 5.0;
-
+	o->oVelY = 3.0;
+	cur_obj_init_animation(2);
     //! bully_backup_check() happens after this function, and has the potential to reset
     //  the bully's action to BULLY_ACT_BACK_UP. Because the back up action is only
     //  set to end when the timer EQUALS 15, if this happens on that frame, the bully
@@ -124,7 +125,9 @@ void bully_act_back_up(void) {
 
     if (o->oTimer == 15) {
         o->oMoveAngleYaw = o->oFaceAngleYaw;
+		o->oVelY = 0.0;
         o->oFlags |= 0x8; /* bit 3 */
+		cur_obj_init_animation(0);
         o->oAction = BULLY_ACT_PATROL;
     }
 }
@@ -132,8 +135,9 @@ void bully_act_back_up(void) {
 void bully_backup_check(s16 collisionFlags) {
     if (!(collisionFlags & 0x8) && o->oAction != BULLY_ACT_KNOCKBACK) /* bit 3 */
     {
+		
         o->oPosX = o->oBullyPrevX;
-		o->oPosY = o->oBullyPrevY;
+		o->oPosY = o->oPosY;
         o->oPosZ = o->oBullyPrevZ;
         o->oAction = BULLY_ACT_BACK_UP;
     }
@@ -169,7 +173,7 @@ void bully_step(void) {
     bully_backup_check(collisionFlags);
     bully_play_stomping_sound();
     obj_check_floor_death(collisionFlags, sObjFloor);
-
+	
     if (o->oBullySubtype & BULLY_STYPE_CHILL) {
         if (o->oPosY < 1030.0f)
             o->oAction = BULLY_ACT_LAVA_DEATH;

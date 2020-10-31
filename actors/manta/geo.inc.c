@@ -2,7 +2,7 @@
 const GeoLayout manta_seg5_geo_05008D14[] = {
     GEO_SCALE(0, 16384),
     GEO_OPEN_NODE(),
-      GEO_ANIMATED_PART(1, 0, 0, 0, NULL),
+      GEO_ANIMATED_PART(1, 0, 412, 0, NULL),
       GEO_OPEN_NODE(),
         GEO_ANIMATED_PART(1, 0, 0, 0, manta_seg5_dl_05006750),
         GEO_OPEN_NODE(),
