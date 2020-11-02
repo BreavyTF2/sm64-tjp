@@ -788,7 +788,7 @@ static const Gfx wf_seg7_dl_07004C50[] = {
 
 // 0x07004D08 - 0x07004DD8
 static const Gfx wf_seg7_dl_07004D08[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, grass_09008800),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, grass_09004000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPVertex(wf_seg7_vertex_07003C28, 14, 0),

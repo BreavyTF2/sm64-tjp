@@ -1061,7 +1061,7 @@ const Collision wf_seg7_collision_070102D8[] = {
     COL_TRI(31, 33, 34),
     COL_TRI(31, 34, 35),
     COL_TRI(31, 36, 37),
-    COL_TRI_INIT(SURFACE_BOSS_FIGHT_CAMERA, 5),
+    COL_TRI_INIT(SURFACE_NOT_SLIPPERY, 5),
     COL_TRI(13, 15, 11),
     COL_TRI(9, 10, 11),
     COL_TRI(10, 12, 13),
