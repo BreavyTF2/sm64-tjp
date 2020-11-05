@@ -26,7 +26,7 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 	o->hurtboxHeight = 101;
 	if ( o->oDistanceToMario < 2000 ) {
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40);
-		o->oForwardVel = 1.5f;
+		o->oForwardVel = 0.5f;
 	}
 		if ( o->oDistanceToMario < 1000 ) {
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x80);

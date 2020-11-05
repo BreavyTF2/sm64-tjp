@@ -1981,27 +1981,32 @@ Enjoy!!!"
 #endif
 
 DEFINE_DIALOG(DIALOG_161, 1, 4, 30, 200, _("\
-Mario!!!\n\
-It that really you???\n\
-It has been so long since\n\
-our last adventure!\n\
-They told me that I might\n\
+Oh Hello Mario\n\
+I've been hiding here\n\
+for a long time.\n\
+I overheard that I might\n\
 see you if I waited here,\n\
 but I'd just about given\n\
 up hope!\n\
-Is it true? Have you\n\
-really beaten Bowser? And\n\
-restored the Stars to the\n\
-castle?\n\
-And saved the Princess?\n\
-I knew you could do it!\n\
-Now I have a very special\n\
-message for you.\n\
-『You've Been Trolled\n\
-by the Wario Apparition\n\
-send this to your friends\n\
-to epically troll them』\n\
-From Alieneer"))
+I've heard a lot about you\n\
+So is it true? Have you\n\
+finally beaten Bowser? And\n\
+restored all of the Stars\n\
+to the castle?\n\
+Are the toads no longer\n\
+inside the walls?\n\
+Have you encountered\n\
+a floating head?\n\
+Is the Bob-omb war over?\n\
+and where is Luigi?\n\
+Enough talk, I got\n\
+something for you.\n\
+『Thanks for Playing, the\n\
+Junuary Project! This hack\n\
+couldn't have been done\n\
+without your support.』\n\
+Thank you all!\n\
+From Project Dev Alieneer"))
 
 DEFINE_DIALOG(DIALOG_162, 1, 4, 30, 200, _("\
 No, no, no! Not you\n\

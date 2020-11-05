@@ -2,11 +2,11 @@ void s_motos_hand(void)
 {
 
 //	struct Object *firep;
-    struct Object *parent = o->parentObj;
-    obj_copy_pos(o, parent);
-	o->oPosY += 150.0f;
-	o->oPosX += 0.0f;
-	o->oPosZ += 100.0f;
+ //   struct Object *parent = o->parentObj;
+//    obj_copy_pos(o, parent);
+//	o->oPosY += 150.0f;
+//	o->oPosX += 0.0f;
+//	o->oPosZ += 100.0f;
 	o->oMoveAngleYaw = o->parentObj->oMoveAngleYaw;
 
 	switch (o->parentObj->oMotosUnk88 ){
@@ -61,11 +61,14 @@ void motos_wait(void)
 
 void motos_player_search(void)
 {
+	s32 sp1C = gGlobalTimer;
+	if ((sp1C & 14) == 0) {
+cur_obj_play_sound_2(SOUND_OBJ_BULLY_WALKING);
+}
 
 	cur_obj_init_animation_with_sound(9);
 	o->oForwardVel = 2.0f;
 	cur_obj_rotate_yaw_toward(o->oAngleToMario,300);
-
 
 	if ( o->oInteractStatus & INT_STATUS_GRABBED_MARIO){
 		o->oAction = 2;
@@ -103,7 +106,7 @@ void motos_carry_start(void)
 {
 	cur_obj_init_animation_with_sound(3);
 	if ( cur_obj_check_if_near_animation_end() ){
-		if ( s_ai_pitch(0x20,50) ) o->oAction = 3;
+		if ( s_ai_pitch(0x100,250) ) o->oAction = 3;
 		else			   			 o->oAction = 5;
 	}		
 
@@ -111,11 +114,13 @@ void motos_carry_start(void)
 
 void motos_carry_run(void)
 {
-
+	s32 sp1C = gGlobalTimer;
 	o->oForwardVel = 5.0f;
-
+	if ((sp1C & 4) == 0) {
+cur_obj_play_sound_2(SOUND_ACTION_METAL_STEP);
+}
 	cur_obj_init_animation_with_sound(2);
-	if ( s_ai_pitch(0x20,50) )  o->oAction = 3;
+	if ( s_ai_pitch(0x100,250) )  o->oAction = 3;
 	else			   			  o->oAction = 5;
 
 }
@@ -138,8 +143,10 @@ void motos_fly(void)
 //   o->oForwardVel = 5.0f;
 	cur_obj_init_animation_with_sound(5);
 	if ( o->oMoveFlags & OBJ_MOVE_LANDED ) {
-	}
+	cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);           
+	cur_obj_init_animation_with_sound(4);
 	o->oAction = 0;
+	}
 
 }
 
@@ -162,7 +169,7 @@ void motos_main(void)
 
 void s_motos(void)
 {
-    f32 sp2C = 50.0f;
+    f32 sp2C = 10.0f;
     f32 sp28 = 20.0f;
 
 	cur_obj_scale(2.0f);

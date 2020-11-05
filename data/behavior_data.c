@@ -2287,12 +2287,11 @@ const BehaviorScript bhvStub1D0C[] = {
 const BehaviorScript bhvStub1D0D[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-	    BILLBOARD(),
-	SET_FLOAT(oParentRelativePosX, 0),
-	SET_FLOAT(oParentRelativePosY, -100),
+    BILLBOARD(),
+    SET_FLOAT(oParentRelativePosX, 100),
     SET_FLOAT(oParentRelativePosZ, 150),
-	    BEGIN_LOOP(),
-        CALL_NATIVE(s_motos_hand),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_bobomb_anchor_mario_loop),
 		END_LOOP(),
 };
 
@@ -3591,7 +3590,7 @@ const BehaviorScript bhvToadMessage[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_PERSISTENT_RESPAWN | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_ANIMATIONS(oAnimations, toad_seg6_anims_0600FB58),
-    ANIMATE(6),
+    ANIMATE(5),
     SET_INTERACT_TYPE(INTERACT_TEXT),
     SET_HITBOX(/*Radius*/ 80, /*Height*/ 100),
     SET_INT(oIntangibleTimer, 0),
@@ -5134,7 +5133,7 @@ const BehaviorScript bhvMips[] = {
 const BehaviorScript bhvYoshi[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_ANIMATIONS(oAnimations, yoshi_seg5_anims_05024100),
+    LOAD_ANIMATIONS(oAnimations, motos_seg8_anims_0801DA4C),
     SET_INTERACT_TYPE(INTERACT_TEXT),
     DROP_TO_FLOOR(),
     SET_HITBOX(/*Radius*/ 160, /*Height*/ 150),

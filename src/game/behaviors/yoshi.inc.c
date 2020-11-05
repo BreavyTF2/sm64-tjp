@@ -21,13 +21,13 @@ void yoshi_walk_loop(void) {
     UNUSED s16 sp26;
     s16 sp24 = o->header.gfx.animInfo.animFrame;
 
-    o->oForwardVel = 10.0f;
+    o->oForwardVel = 2.0f;
     sp26 = object_step();
     o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oYoshiTargetYaw, 0x500);
     if (is_point_close_to_object(o, o->oHomeX, 3174.0f, o->oHomeZ, 200))
         o->oAction = YOSHI_ACT_IDLE;
 
-    cur_obj_init_animation(1);
+    cur_obj_init_animation(9);
     if (sp24 == 0 || sp24 == 15)
         cur_obj_play_sound_2(SOUND_GENERAL_YOSHI_WALK);
 
@@ -75,7 +75,7 @@ void yoshi_idle_loop(void) {
 
 void yoshi_talk_loop(void) {
     if ((s16) o->oMoveAngleYaw == (s16) o->oAngleToMario) {
-        cur_obj_init_animation(0);
+        cur_obj_init_animation(8);
         if (set_mario_npc_dialog(1) == 2) {
             o->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;
             if (cutscene_object_with_dialog(CUTSCENE_DIALOG, o, DIALOG_161)) {
@@ -88,7 +88,7 @@ void yoshi_talk_loop(void) {
             }
         }
     } else {
-        cur_obj_init_animation(1);
+        cur_obj_init_animation(9);
         play_puzzle_jingle();
         o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oAngleToMario, 0x500);
     }
@@ -97,15 +97,15 @@ void yoshi_talk_loop(void) {
 void yoshi_walk_and_jump_off_roof_loop(void) {
     s16 sp26 = o->header.gfx.animInfo.animFrame;
 
-    o->oForwardVel = 10.0f;
+    o->oForwardVel = 2.0f;
     object_step();
-    cur_obj_init_animation(1);
+    cur_obj_init_animation(9);
     if (o->oTimer == 0)
         cutscene_object(CUTSCENE_STAR_SPAWN, o);
 
     o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oYoshiTargetYaw, 0x500);
     if (is_point_close_to_object(o, o->oHomeX, 3174.0f, o->oHomeZ, 200)) {
-        cur_obj_init_animation(2);
+        cur_obj_init_animation(5);
         cur_obj_play_sound_2(SOUND_GENERAL_ENEMY_ALERT1);
         o->oForwardVel = 50.0f;
         o->oVelY = 40.0f;
@@ -132,7 +132,7 @@ void yoshi_finish_jumping_and_despawn_loop(void) {
 
 void yoshi_give_present_loop(void) {
     s32 sp1C = gGlobalTimer;
-    if (gMarioState->numStars == 0) {
+    if (gMarioState->numLives == 100) {
         play_sound(SOUND_GENERAL_COLLECT_1UP, gDefaultSoundArgs);
         gSpecialTripleJump = TRUE;
         o->oAction = YOSHI_ACT_WALK_JUMP_OFF_ROOF;
@@ -142,14 +142,14 @@ void yoshi_give_present_loop(void) {
 
     if ((sp1C & 0x03) == 0) {
         play_sound(SOUND_MENU_YOSHI_GAIN_LIVES, gDefaultSoundArgs);
-		if (gHudDisplay.lives >= 1){
-        gMarioState->numLives--;
+//		if (gHudDisplay.lives >= 1){
+        gMarioState->numLives++;
 }
-		gMarioState->hurtCounter--;
-		gMarioState->numStars--;
+//		gMarioState->hurtCounter--;
+//		gMarioState->numStars--;
 
 		
-    }
+    
 }
 
 void bhv_yoshi_loop(void) {
@@ -179,9 +179,9 @@ void bhv_yoshi_loop(void) {
             break;
 
         case YOSHI_ACT_CREDITS:
-            cur_obj_init_animation(0);
+            cur_obj_init_animation(8);
             break;
     }
-
+	cur_obj_scale(2.0f);
     curr_obj_random_blink(&o->oYoshiBlinkTimer);
 }
