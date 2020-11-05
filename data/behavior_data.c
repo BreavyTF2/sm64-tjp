@@ -2249,7 +2249,7 @@ const BehaviorScript bhvMacroUkiki[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvStub1D0C[] = {
+const BehaviorScript bhvBlargg[] = {
     BEGIN(OBJ_LIST_GENACTOR),
 	 OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
 	LOAD_ANIMATIONS(oAnimations, blargg_seg5_anims_0500616C),
@@ -2264,7 +2264,47 @@ const BehaviorScript bhvStub1D0C[] = {
         CALL_NATIVE(bhv_unbaba_loop),
     END_LOOP(),
 };
+const BehaviorScript bhvStub1D0C[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+	OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+	LOAD_ANIMATIONS(oAnimations, motos_seg8_anims_0801DA4C),
+    SET_INT(oInteractType, INTERACT_GRABBABLE),
+	SET_INT(oInteractionSubtype, INT_SUBTYPE_GRABS_MARIO),
+    SET_HITBOX(/*Radius*/ 100, /*Height*/ 100),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+	SPAWN_CHILD(/*Model*/ MODEL_NONE, /*Behavior*/ bhvStub1D0D),
+	ANIMATE(0),
+	    SET_INT(oIntangibleTimer, 0),
+//		SPAWN_CHILD(/*Model*/ MODEL_NONE, /*Behavior*/ bhvStub1D0E),
+//	SET_HOME(),
+//	CALL_NATIVE(motos_main),
+//	DROP_TO_FLOOR(),
+		    BEGIN_LOOP(),
+        CALL_NATIVE(s_motos),
+		END_LOOP(),
+};
 
+const BehaviorScript bhvStub1D0D[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+	    BILLBOARD(),
+	SET_FLOAT(oParentRelativePosX, 0),
+	SET_FLOAT(oParentRelativePosY, -100),
+    SET_FLOAT(oParentRelativePosZ, 150),
+	    BEGIN_LOOP(),
+        CALL_NATIVE(s_motos_hand),
+		END_LOOP(),
+};
+
+const BehaviorScript bhvStub1D0E[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BILLBOARD(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_bobomb_anchor_mario_loop),
+		END_LOOP(),
+};
 const BehaviorScript bhvLllRotatingHexagonalPlatform[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),

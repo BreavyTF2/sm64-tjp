@@ -1997,14 +1997,10 @@ And saved the Princess?\n\
 I knew you could do it!\n\
 Now I have a very special\n\
 message for you.\n\
-『HOLY CANNOLI KIDS!\n\
-I'M MOTOS AND IM\n\
-TELLING YA\n\
-IF YOUR NOT WATCHING\n\
-THE SUPER MARIO\n\
-BROTHERS SUPER SHOW\n\
-YOU'RE GONNA TURN\n\
-INTO A GOOMBA!』\n\
+『Hi Dustin\n\
+\n\
+\n\
+』\n\
 From Alieneer"))
 
 DEFINE_DIALOG(DIALOG_162, 1, 4, 30, 200, _("\

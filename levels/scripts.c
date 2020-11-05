@@ -202,7 +202,7 @@ const LevelScript script_func_global_2[] = {
     LOAD_MODEL_FROM_GEO(MODEL_YELLOW_SPHERE,           yellow_sphere_geo),
     LOAD_MODEL_FROM_GEO(MODEL_HOOT,                    hoot_geo),
     LOAD_MODEL_FROM_GEO(MODEL_YOSHI_EGG,               yoshi_egg_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_THWOMP,                  thwomp_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_THWOMP,                  RCP_HmsDosun),
     LOAD_MODEL_FROM_GEO(MODEL_HEAVE_HO,                heave_ho_geo),
     RETURN(),
 };
@@ -211,6 +211,7 @@ const LevelScript script_func_global_3[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BLARGG,                  blargg_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BULLY,                   bully_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BULLY_BOSS,              bully_boss_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_UNKNOWN_58,			   RCP_HmsEnemymotos_basedata_A),
     RETURN(),
 };
 

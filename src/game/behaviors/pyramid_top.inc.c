@@ -110,6 +110,7 @@ void bhv_pyramid_top_loop(void) {
         case PYRAMID_TOP_ACT_EXPLODE:
             if (o->oTimer == 0) {
                 create_sound_spawner(SOUND_GENERAL2_PYRAMID_TOP_EXPLOSION);
+				spawn_default_star(-2048.0f, 1600.0f, -1024.0f);
             }
 
             bhv_pyramid_top_explode();

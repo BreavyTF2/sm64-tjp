@@ -1,0 +1,256 @@
+From d2b4713f3009ceed116917634aa0f39f5da5e493 Mon Sep 17 00:00:00 2001
+From: farisawan-2000 <faris@S-RAF.localdomain>
+Date: Fri, 21 Aug 2020 15:18:31 -0400
+Subject: [PATCH] Removed need for segment management; Segments are now all
+ shiftable
+
+added 0x100 alignment to main pool start; maybe fixes console crashes?
+
+aligned engine/framebuffers; now actually console compatible!
+---
+ include/segment_symbols.h |  5 +++
+ include/segments.h        | 41 ++++++-----------------
+ sm64.ld                   | 68 ++++++++++++++++++++++-----------------
+ src/game/main.c           |  2 +-
+ src/game/memory.c         |  4 +--
+ 5 files changed, 56 insertions(+), 64 deletions(-)
+
+diff --git a/include/segment_symbols.h b/include/segment_symbols.h
+index 22b37131..306a998f 100644
+--- a/include/segment_symbols.h
++++ b/include/segment_symbols.h
+@@ -40,7 +40,12 @@ DECLARE_SEGMENT(engine)
+ DECLARE_SEGMENT(behavior)
+ DECLARE_SEGMENT(scripts)
+ DECLARE_SEGMENT(goddard)
++DECLARE_SEGMENT(framebuffers)
+ extern u8 _goddardSegmentStart[];
++extern u8 _engineSegmentStart[];
++extern u8 _engineSegmentNoloadEnd[];
++extern u8 _engineSegmentEnd[];
++extern u8 _framebuffersSegmentNoloadEnd[];
+ 
+ DECLARE_LEVEL_SEGMENT(menu)
+ DECLARE_LEVEL_SEGMENT(intro)
+diff --git a/include/segments.h b/include/segments.h
+index 89634464..f4436675 100644
+--- a/include/segments.h
++++ b/include/segments.h
+@@ -1,6 +1,9 @@
+ #ifndef SEGMENTS_H
+ #define SEGMENTS_H
+ 
++#ifndef LINKER
++#include "segment_symbols.h"
++#endif
+ /*
+  * Memory addresses for segments. Ideally, this header file would not be
+  * needed, and the addresses would be defined in sm64.ld and linker-inserted
+@@ -11,46 +14,20 @@
+  * linker script syntax.
+ */
+ 
+-#ifndef USE_EXT_RAM /* Default: Runs out of memory quickly when importing custom assets. */
+-
+-#define SEG_POOL_START   0x8005C000
+-#define SEG_POOL_END     SEG_BUFFERS
+-
+-#define SEG_GODDARD      0x8016F000
+-
+-#define SEG_BUFFERS      0x801C1000
+-
+-#ifdef VERSION_EU
+-#define SEG_MAIN         0x80241800 // TODO: Investigate why it's different?
+-#elif defined(VERSION_SH)
+-#define SEG_MAIN         0x80249000
+-#else
+-#define SEG_MAIN         0x80246000
+-#endif
+-
+-#ifdef VERSION_EU
+-#define SEG_ENGINE       0x8036FF00
++#ifndef USE_EXT_RAM
++#define RAM_END          0x80400000
+ #else
+-#define SEG_ENGINE       0x80378800
++#define RAM_END          0x80800000
+ #endif
+ 
+-#define SEG_FRAMEBUFFERS 0x8038F800
+-
+-#else /* Use Expansion Pak space for pool. */
+-
+ /*
+  * Workaround for running out of pool space due to
+  * importing large custom content.
+  */
+ 
+-#define SEG_BUFFERS      0x8005C000 // 0x0085000 in size
+-#define SEG_MAIN         0x800E1000 // 0x1328000 in size
+-#define SEG_ENGINE       0x80213800 // 0x0017000 in size
+-#define SEG_FRAMEBUFFERS 0x8022A800 // 0x0070800 in size
+-#define SEG_POOL_START   0x8029B000 // 0x0165000 in size
+-#define SEG_POOL_END     0x80800000
+-#define SEG_POOL_END_4MB 0x80400000 // For the error message screen enhancement.
++#define SEG_POOL_START   _framebuffersSegmentNoloadEnd // 0x0165000 in size
+ #define SEG_GODDARD      SEG_POOL_START + 0x113000
+-#endif
++
++#define POOL_SIZE        RAM_END - SEG_POOL_START
+ 
+ #endif // SEGMENTS_H
+diff --git a/sm64.ld b/sm64.ld
+index e6f5c942..6741dacb 100755
+--- a/sm64.ld
++++ b/sm64.ld
+@@ -1,8 +1,8 @@
+ OUTPUT_ARCH (mips)
+ 
+-/* include/segments.h defines SEG_POOL_START, SEG_POOL_END, SEG_BUFFERS,
+- * SEG_GODDARD, SEG_MAIN, SEG_ENGINE, SEG_FRAMEBUFFERS */
++#define LINKER /* Removes externs from preprocessed script */
+ #include "segments.h"
++#undef LINKER
+ 
+ #define BEGIN_SEG(name, addr) \
+     _##name##SegmentStart = ADDR(.name); \
+@@ -79,7 +79,31 @@ SECTIONS
+    BEGIN_NOLOAD(zbuffer) {
+       BUILD_DIR/src/buffers/zbuffer.o(.bss*);
+    }
++   END_NOLOAD(zbuffer)
+ 
++   . = _zbufferSegmentNoloadEnd;
++   BEGIN_NOLOAD(buffers)
++   {
++      BUILD_DIR/src/buffers/buffers.o(.bss*);
++      BUILD_DIR/src/audio/globals_start.o(.bss*);
++      BUILD_DIR/src/audio/synthesis.o(.bss*);
++      BUILD_DIR/src/audio/heap.o(.bss*);
++      BUILD_DIR/src/audio/load.o(.bss*);
++      BUILD_DIR/src/audio/data.o(.bss*);
++      BUILD_DIR/src/audio*.o(.bss*);
++
++#ifdef VERSION_EU
++      . = ALIGN(0x200);
++#else
++      . = ALIGN(0x1000);
++#endif
++      BUILD_DIR/src/buffers/gfx_output_buffer.o(.bss*);
++   }
++   END_NOLOAD(buffers)
++
++   /*ASSERT((. <= SEG_MAIN), "Error: buffers segment extended into main")*/
++
++   . = _buffersSegmentNoloadEnd;
+    /* lib/src/__osDevMgrMain.c and lib/src/osCreateViManager.c contain infinite
+     * loops compiled without -g, which cause the return statements and the .o
+     * files themselves to be aligned to 32-byte boundaries. But the linker
+@@ -87,7 +111,7 @@ SECTIONS
+     * only to 16 bytes, in some cases misaligning them. We force the same to
+     * happen using the SUBALIGN directive. This is harmless; the alignment is
+     * just an optimization. */
+-   BEGIN_SEG(main, SEG_MAIN) SUBALIGN(16)
++   BEGIN_SEG(main, .) SUBALIGN(16)
+    {
+       BUILD_DIR/asm/entry.o(.text);
+       BUILD_DIR/src/game/crash_screen.o(.text);
+@@ -642,9 +666,11 @@ SECTIONS
+    _mainSegmentNoloadSizeLo = SIZEOF (.main.noload) & 0xffff;
+    _mainSegmentNoloadSizeHi = SIZEOF (.main.noload) >> 16;
+ 
+-   ASSERT((. <= SEG_ENGINE), "Error: main segment extended into engine.")
++   /*ASSERT((. <= SEG_ENGINE), "Error: main segment extended into engine.")*/
++
++   . = _mainSegmentNoloadEnd;
+ 
+-   BEGIN_SEG(engine, SEG_ENGINE)
++   BEGIN_SEG(engine, .)
+    {
+       BUILD_DIR/src/engine/math_util.o(.text);
+       BUILD_DIR/src/engine/graph_node.o(.text);
+@@ -700,18 +726,23 @@ SECTIONS
+       BUILD_DIR/src/game/object_helpers.o(.bss*);
+ #endif
+       BUILD_DIR/src/engine*.o(.bss*);
++      . = ALIGN(0x100);
+    }
+    END_NOLOAD(engine)
+ 
+-   ASSERT((. <= SEG_FRAMEBUFFERS), "Error: engine segment extended into framebuffers.")
++   /*ASSERT((. <= SEG_FRAMEBUFFERS), "Error: engine segment extended into framebuffers.")*/
+ 
+-   . = SEG_FRAMEBUFFERS;
++   . = _engineSegmentNoloadEnd;
+    BEGIN_NOLOAD(framebuffers)
+    {
+       BUILD_DIR/src/buffers/framebuffers.o(.bss*);
++      . = ALIGN(0x100);
+    }
+    END_NOLOAD(framebuffers)
+ 
++   __mainPoolStart = .;
++   __mainPoolSize = RAM_END - .;
++
+    __expansionRamStart = 0x80400000;
+    ASSERT((. <= __expansionRamStart), "Error: RDRAM expanded into Expansion RAM, despite Expansion RAM not being defined.")
+ 
+@@ -848,29 +879,8 @@ SECTIONS
+    }
+    END_NOLOAD(goddard)
+ 
+-   ASSERT((. <= SEG_POOL_END), "Error: extended past pool end.")
+-
+-   . = SEG_BUFFERS;
+-   BEGIN_NOLOAD(buffers)
+-   {
+-      BUILD_DIR/src/buffers/buffers.o(.bss*);
+-      BUILD_DIR/src/audio/globals_start.o(.bss*);
+-      BUILD_DIR/src/audio/synthesis.o(.bss*);
+-      BUILD_DIR/src/audio/heap.o(.bss*);
+-      BUILD_DIR/src/audio/load.o(.bss*);
+-      BUILD_DIR/src/audio/data.o(.bss*);
+-      BUILD_DIR/src/audio*.o(.bss*);
+-
+-#ifdef VERSION_EU
+-      . = ALIGN(0x200);
+-#else
+-      . = ALIGN(0x1000);
+-#endif
+-      BUILD_DIR/src/buffers/gfx_output_buffer.o(.bss*);
+-   }
+-   END_NOLOAD(buffers)
++   ASSERT((. <= (SEG_POOL_START + POOL_SIZE)), "Error: extended past pool end.")
+ 
+-   ASSERT((. <= SEG_MAIN), "Error: buffers segment extended into main")
+ 
+    /* 0x268020 0x268020-0 [0] */
+    BEGIN_SEG(intro, 0x14000000)
+diff --git a/src/game/main.c b/src/game/main.c
+index 9e53e50b..4394e9df 100644
+--- a/src/game/main.c
++++ b/src/game/main.c
+@@ -139,7 +139,7 @@ void setup_mesg_queues(void) {
+ 
+ void alloc_pool(void) {
+     void *start = (void *) SEG_POOL_START;
+-    void *end = (void *) SEG_POOL_END;
++    void *end = (void *) (SEG_POOL_START + POOL_SIZE);
+ 
+     main_pool_init(start, end);
+     gEffectsMemoryPool = mem_pool_init(0x4000, MEMORY_POOL_LEFT);
+diff --git a/src/game/memory.c b/src/game/memory.c
+index 5a17ae93..fe99997e 100644
+--- a/src/game/memory.c
++++ b/src/game/memory.c
+@@ -357,8 +357,8 @@ void *load_segment_decompress_heap(u32 segment, u8 *srcStart, u8 *srcEnd) {
+ }
+ 
+ void load_engine_code_segment(void) {
+-    void *startAddr = (void *) SEG_ENGINE;
+-    u32 totalSize = SEG_FRAMEBUFFERS - SEG_ENGINE;
++    void *startAddr = (void *) _engineSegmentStart;
++    u32 totalSize = _engineSegmentEnd - _engineSegmentStart;
+     UNUSED u32 alignedSize = ALIGN16(_engineSegmentRomEnd - _engineSegmentRomStart);
+ 
+     bzero(startAddr, totalSize);

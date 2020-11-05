@@ -55,7 +55,7 @@ const GeoLayout scuttlebug_geo[] = {
                         GEO_OPEN_NODE(),
                            GEO_BILLBOARD(),
                            GEO_OPEN_NODE(),
-                              GEO_DISPLAY_LIST(LAYER_OPAQUE, scuttlebug_seg6_dl_06013AB0),
+                              GEO_DISPLAY_LIST(LAYER_ALPHA, scuttlebug_seg6_dl_06013AE8),
                            GEO_CLOSE_NODE(),
                         GEO_CLOSE_NODE(),
                         GEO_ANIMATED_PART(LAYER_ALPHA, 0, 0, 0, scuttlebug_seg6_dl_06013CB8),

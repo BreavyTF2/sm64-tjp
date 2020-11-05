@@ -66,11 +66,8 @@ extern const Gfx hoot_seg5_dl_05004D48[];
 extern const struct Animation *const hoot_seg5_anims_05005768[];
 
 // thwomp
-extern const GeoLayout thwomp_geo[];
-extern const Gfx thwomp_seg5_dl_0500B570[];
-extern const Gfx thwomp_seg5_dl_0500B718[];
-extern const Gfx thwomp_seg5_dl_0500B730[];
-extern const Gfx thwomp_seg5_dl_0500B750[];
+extern const GeoLayout RCP_HmsDosun[];
+extern const Gfx gfx_dosun[];
 extern const Collision thwomp_seg5_collision_0500B7D0[];
 extern const Collision thwomp_seg5_collision_0500B92C[];
 

@@ -12,6 +12,7 @@
 #include "mario_animation_ids.h"
 #include "mario_geo_switch_case_ids.h"
 #include "surface_terrains.h"
+#include "convert_hms_to_geo_layouts.h"
 #include "macros.h"
 
 // Crash handler enhancement

@@ -205,4 +205,15 @@ extern const GeoLayout test_platform_geo[];
 extern const Gfx unknown_seg8_dl_08026260[];
 extern const Collision unknown_seg8_collision_080262F8[];
 
+extern const GeoLayout RCP_HmsEnemymotos_basedata_A[];
+extern const Gfx RCP_motos_LhandB[];
+extern const Gfx RCP_motos_LhandA[];
+extern const Gfx RCP_motos_RhandA[];
+extern const Gfx RCP_motos_RhandB[];
+extern const Gfx RCP_motos_Lfoot[];
+extern const Gfx RCP_motos_Rfoot[];
+extern const Gfx RCP_motos_Rfoot[];
+extern const Gfx RCP_motos_head[];
+extern const struct Animation *const motos_seg8_anims_0801DA4C[];
+
 #endif
