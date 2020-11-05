@@ -383,7 +383,7 @@ static Vtx vtx_motos_body[] = {
 	{    210/4,   -209/4,      0,     0,   992,  2016,   181,   32,   64,  255}, 
 };
 
-static Gfx RCP_motos_body[] = {
+const Gfx RCP_motos_body[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
 	gsSPClearGeometryMode(G_LIGHTING), 
@@ -421,7 +421,7 @@ static Vtx vtx_motos_arm[] = {
 	{    -49/4,     50/4,      0,     0,     0,     0,   181,   32,   64,  255}, 
 };
 
-static Gfx RCP_motos_arm[] = {
+const Gfx RCP_motos_arm[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
 	gsSPClearGeometryMode(G_LIGHTING), 
@@ -453,7 +453,7 @@ static Vtx vtx_motos_leg[] = {
 	{    -53/4,     54/4,      0,     0,     0,     0,   181,   32,   64,  255}, 
 };
 
-static Gfx RCP_motos_leg[] = {
+const Gfx RCP_motos_leg[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
 	gsSPClearGeometryMode(G_LIGHTING), 
@@ -696,7 +696,8 @@ static Vtx vtx_motos_head_2[] = {
 	{     51,      0,    -62,     0,  1668,   -34,    93,  243,  171,  255}, 
 	{     51,     55,     31,     0,   320,   -28,    93,   80,   31,  255}, 
 };
-static Gfx gfx_motos_LhandB_0[] = {
+
+const Gfx gfx_motos_LhandB_0[] = {
 	gs_Tani_LoadTextureImage2(motos_skinC_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPLight((&light_motos_basedata_A[5].l[0]),1 ),
 	gsSPLight((&light_motos_basedata_A[5].a   ),2 ),
@@ -709,14 +710,14 @@ static Gfx gfx_motos_LhandB_0[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_LhandB_1[] = {
+const Gfx gfx_motos_LhandB_1[] = {
 	gs_Tani_LoadTextureImage2(motos_skinD_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPVertex(&vtx_motos_LhandB_1[0],  3, 0), 
 	gsSP1Triangle( 0, 1, 2, 0),
 	gsSPEndDisplayList() 
 };
 
-static Gfx RCP_motos_LhandB[] = {
+const Gfx RCP_motos_LhandB[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
 	gsDPSetTile(G_IM_FMT_RGBA,G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
@@ -735,7 +736,7 @@ static Gfx RCP_motos_LhandB[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_LhandA_0[] = {
+const Gfx gfx_motos_LhandA_0[] = {
 	gs_Tani_LoadTextureImage2(motos_skinD_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPLight((&light_motos_basedata_A[5].l[0]),1 ),
 	gsSPLight((&light_motos_basedata_A[5].a   ),2 ),
@@ -744,7 +745,7 @@ static Gfx gfx_motos_LhandA_0[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_LhandA_1[] = {
+const Gfx gfx_motos_LhandA_1[] = {
 	gs_Tani_LoadTextureImage2(motos_skinC_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPVertex(&vtx_motos_LhandA_1[0], 13, 0), 
 	gsSP1Triangle( 0, 1, 2, 0),
@@ -755,7 +756,7 @@ static Gfx gfx_motos_LhandA_1[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx RCP_motos_LhandA[] = {
+const Gfx RCP_motos_LhandA[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
 	gsDPSetTile(G_IM_FMT_RGBA,G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
@@ -774,7 +775,7 @@ static Gfx RCP_motos_LhandA[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_RhandA_0[] = {
+const Gfx gfx_motos_RhandA_0[] = {
 	gs_Tani_LoadTextureImage2(motos_skinC_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPLight((&light_motos_basedata_A[5].l[0]),1 ),
 	gsSPLight((&light_motos_basedata_A[5].a   ),2 ),
@@ -787,14 +788,14 @@ static Gfx gfx_motos_RhandA_0[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_RhandA_1[] = {
+const Gfx gfx_motos_RhandA_1[] = {
 	gs_Tani_LoadTextureImage2(motos_skinD_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPVertex(&vtx_motos_RhandA_1[0],  3, 0), 
 	gsSP1Triangle( 0, 1, 2, 0),
 	gsSPEndDisplayList() 
 };
 
-static Gfx RCP_motos_RhandA[] = {
+const Gfx RCP_motos_RhandA[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
 	gsDPSetTile(G_IM_FMT_RGBA,G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
@@ -813,7 +814,7 @@ static Gfx RCP_motos_RhandA[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_RhandB_0[] = {
+const Gfx gfx_motos_RhandB_0[] = {
 	gs_Tani_LoadTextureImage2(motos_skinD_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 
 	gsSPLight((&light_motos_basedata_A[5].l[0]),1 ),
@@ -824,7 +825,7 @@ static Gfx gfx_motos_RhandB_0[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_RhandB_1[] = {
+const Gfx gfx_motos_RhandB_1[] = {
 	gs_Tani_LoadTextureImage2(motos_skinC_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPVertex(&vtx_motos_RhandB_1[0], 13, 0), 
 	gsSP1Triangle( 0, 1, 2, 0),
@@ -835,7 +836,7 @@ static Gfx gfx_motos_RhandB_1[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx RCP_motos_RhandB[] = {
+const Gfx RCP_motos_RhandB[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
 	gsDPSetTile(G_IM_FMT_RGBA,G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
@@ -855,7 +856,7 @@ static Gfx RCP_motos_RhandB[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_Lfoot_0[] = {
+const Gfx gfx_motos_Lfoot_0[] = {
 	gs_Tani_LoadTextureImage2(motos_skinD_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPLight((&light_motos_basedata_A[5].l[0]),1 ),
 	gsSPLight((&light_motos_basedata_A[5].a   ),2 ),
@@ -867,7 +868,7 @@ static Gfx gfx_motos_Lfoot_0[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_Lfoot_1[] = {
+const Gfx gfx_motos_Lfoot_1[] = {
 	gs_Tani_LoadTextureImage2(motos_skinC_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPVertex(&vtx_motos_Lfoot[6], 15, 0), 
 	gsSP1Triangle( 0, 1, 2, 0),
@@ -882,7 +883,7 @@ static Gfx gfx_motos_Lfoot_1[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_Lfoot_2[] = {
+const Gfx gfx_motos_Lfoot_2[] = {
 	gs_Tani_LoadTextureImage2(motos_skinA_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPVertex(&vtx_motos_Lfoot[28], 10, 0), 
 	gsSP1Triangle( 0, 1, 2, 0),
@@ -892,7 +893,7 @@ static Gfx gfx_motos_Lfoot_2[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx RCP_motos_Lfoot[] = {
+const Gfx RCP_motos_Lfoot[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
 	gsDPSetTile(G_IM_FMT_RGBA,G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
@@ -911,7 +912,7 @@ static Gfx RCP_motos_Lfoot[] = {
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList() 
 };
-static Gfx gfx_motos_Rfoot_0[] = {
+const Gfx gfx_motos_Rfoot_0[] = {
 	gs_Tani_LoadTextureImage2(motos_skinC_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPLight((&light_motos_basedata_A[5].l[0]),1 ),
 	gsSPLight((&light_motos_basedata_A[5].a   ),2 ),
@@ -930,7 +931,7 @@ static Gfx gfx_motos_Rfoot_0[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_Rfoot_1[] = {
+const Gfx gfx_motos_Rfoot_1[] = {
 	gs_Tani_LoadTextureImage2(motos_skinD_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPVertex(&vtx_motos_Rfoot[28],  6, 0), 
 	gsSP1Triangle( 0, 1, 2, 0),
@@ -940,7 +941,7 @@ static Gfx gfx_motos_Rfoot_1[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_Rfoot_2[] = {
+const Gfx gfx_motos_Rfoot_2[] = {
 	gs_Tani_LoadTextureImage2(motos_skinA_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPVertex(&vtx_motos_Rfoot[34],  4, 0), 
 	gsSP1Triangle( 0, 1, 2, 0),
@@ -948,7 +949,7 @@ static Gfx gfx_motos_Rfoot_2[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx RCP_motos_Rfoot[] = {
+const Gfx RCP_motos_Rfoot[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
 	gsDPSetTile(G_IM_FMT_RGBA,G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
@@ -967,7 +968,7 @@ static Gfx RCP_motos_Rfoot[] = {
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList() 
 };
-static Gfx gfx_motos_head_0[] = {
+const Gfx gfx_motos_head_0[] = {
 	gs_Tani_LoadTextureImage2(motos_skinC_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
 	gsSPLight((&light_motos_basedata_A[5].l[0]),1 ),
 	gsSPLight((&light_motos_basedata_A[5].a   ),2 ),
@@ -982,7 +983,7 @@ static Gfx gfx_motos_head_0[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_head_1[] = {
+const Gfx gfx_motos_head_1[] = {
 	gs_Tani_LoadTextureImage2(motos_eye_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 64, 32, 0, 7),
 	gsSPVertex(&vtx_motos_head_1[0],  4, 0), 
 	gsSP1Triangle( 0, 1, 2, 0),
@@ -990,7 +991,7 @@ static Gfx gfx_motos_head_1[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx gfx_motos_head_2[] = {
+const Gfx gfx_motos_head_2[] = {
 	gs_Tani_LoadTextureImage2(motos_skinB_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 64, 32, 0, 7),
 	gsSPVertex(&vtx_motos_head_2[0], 15, 0), 
 	gsSP1Triangle( 0, 1, 2, 0),
@@ -1007,7 +1008,7 @@ static Gfx gfx_motos_head_2[] = {
 	gsSPEndDisplayList() 
 };
 
-static Gfx RCP_motos_head[] = {
+const Gfx RCP_motos_head[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
 	gsDPSetTile(G_IM_FMT_RGBA,G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
@@ -1167,147 +1168,6 @@ static const struct Animation motos_basedata_A_anm={
 	0,
 };
 
-/*-------------------------------------------------------------*/
-/*	Hms data 			                                       */
-/*-------------------------------------------------------------*/
-
-Hierarchy RCP_HmsEnemymotos_basedata_A[] = {
- hmsShadow(100, 155, 1)
- hmsBegin()
-  GEO_TRANSLATE_NODE(0x00,0,-65,0),
-  hmsBegin()
-  hmsScale(0.25f)
-    hmsBegin()
-      hmsJoint(RM_SURF,NULL,0,279,0)  /* body_sprite(35) */
-	  hmsBegin()
-		hmsBboard(0,0,0)
-	    hmsBegin()
-		  hmsGfx(RM_SPRITE,RCP_motos_body)
-	  	hmsEnd()
-	  hmsEnd()
-      hmsBegin()
-         hmsJoint(RM_SURF,NULL,0,0,0)  /* chn29(34) */
-         hmsBegin()
-            hmsJoint(RM_SURF,NULL,0,0,0)  /* jnt29_1(29) */
-            hmsBegin()
-               hmsJoint(RM_SURF,NULL,209,0,0)  /* chn33(25) */
-               hmsBegin()
-                  hmsJoint(RM_SURF,NULL,0,0,0)  /* jnt33_1(13) */
-                  hmsBegin()
-                     hmsJoint(RM_SURF,RCP_motos_LhandB,0,0,0)  /* cube5(1) */
-                  hmsEnd()
-               hmsEnd()
-               hmsJoint(RM_SURF,NULL,208,1,0)  /* chn32(20) */
-               hmsBegin()
-                  hmsJoint(RM_SURF,NULL,0,0,0)  /* jnt32_1(14) */
-                  hmsBegin()
-                     hmsJoint(RM_SURF,RCP_motos_LhandA,0,0,0)  /* cube6(2) */
-                  hmsEnd()
-               hmsEnd()
-               hmsJoint(RM_SURF,NULL,209,0,0)  /* eff29(11) */
-               hmsBegin()
-                  hmsJoint(RM_SURF,NULL,0,0,0)  /* R_arm_sprite(3) */
-				  hmsBegin()
-				  		hmsBboard(0,0,0)
-						hmsBegin()
-						  hmsGfx(RM_SPRITE, RCP_motos_arm)
-						hmsEnd()
-				  hmsEnd()
-               hmsEnd()
-            hmsEnd()
-         hmsEnd()
-         hmsJoint(RM_SURF,NULL,0,0,0)  /* chn31(33) */
-         hmsBegin()
-            hmsJoint(RM_SURF,NULL,0,0,0)  /* jnt31_1(30) */
-            hmsBegin()
-               hmsJoint(RM_SURF,NULL,208,1,0)  /* chn35(26) */
-               hmsBegin()
-                  hmsJoint(RM_SURF,NULL,0,0,0)  /* jnt35_1(15) */
-                  hmsBegin()
-                     hmsJoint(RM_SURF,RCP_motos_RhandA,0,0,0)  /* cube3(4) */
-                  hmsEnd()
-               hmsEnd()
-               hmsJoint(RM_SURF,NULL,209,0,0)  /* chn37(21) */
-               hmsBegin()
-                  hmsJoint(RM_SURF,NULL,0,0,0)  /* jnt37_1(16) */
-                  hmsBegin()
-                     hmsJoint(RM_SURF,RCP_motos_RhandB,0,0,0)  /* cube4(5) */
-                  hmsEnd()
-               hmsEnd()
-               hmsJoint(RM_SURF,NULL,209,0,0)  /* eff31(12) */
-               hmsBegin()
-
-                  hmsJoint(RM_SURF,NULL,0,0,0)  /* R_arm_sprite(3) */
-				  hmsBegin()
-				    hmsBboard(0,0,0)
-				    hmsBegin()
-					  hmsGfx(RM_SPRITE, RCP_motos_arm)
-				    hmsEnd()
-				  hmsEnd()
-
-
-               hmsEnd()
-
-            hmsEnd()
-         hmsEnd()
-         hmsJoint(RM_SURF,NULL,87,0,0)  /* chn38(32) */
-         hmsBegin()
-            hmsJoint(RM_SURF,NULL,0,0,0)  /* jnt38_1(27) */
-            hmsBegin()
-               hmsJoint(RM_SURF,NULL,181,0,0)  /* jnt38_2(22) */
-               hmsBegin()
-                  hmsJoint(RM_SURF,NULL,71,0,0)  /* jnt38_3(17) */
-                  hmsBegin()
-                     hmsJoint(RM_SURF,RCP_motos_Lfoot,0,0,0)  /* cube2(6) */
-                  hmsEnd()
-
-                  hmsJoint(RM_SURF, NULL,0,0,0)  /* L_foot_sprite(7) */
-				  hmsBegin()
-				    hmsBboard(0,0,0)
-				    hmsBegin()
-					  hmsGfx(RM_SPRITE, RCP_motos_leg)
-				    hmsEnd()
-				  hmsEnd()
-
-               hmsEnd()
-            hmsEnd()
-         hmsEnd()
-         hmsJoint(RM_SURF,NULL,-87,0,0)  /* chn40(31) */
-         hmsBegin()
-            hmsJoint(RM_SURF,NULL,0,0,0)  /* jnt40_1(28) */
-            hmsBegin()
-               hmsJoint(RM_SURF,NULL,181,0,0)  /* jnt40_2(23) */
-               hmsBegin()
-                  hmsJoint(RM_SURF,NULL,71,0,0)  /* jnt40_3(18) */
-                  hmsBegin()
-                     hmsJoint(RM_SURF,RCP_motos_Rfoot,0,0,0)  /* cube7(8) */
-                  hmsEnd()
-
-                  hmsJoint(RM_SURF,NULL,0,0,0)  /* R_foot_sprite(9) */
-				  hmsBegin()
-				      hmsBboard(0,0,0)
-					  hmsBegin()
-					 	 hmsGfx(RM_SPRITE, RCP_motos_leg)
-				      hmsEnd()
-				  hmsEnd()
-
-
-               hmsEnd()
-            hmsEnd()
-         hmsEnd()
-         hmsJoint(RM_SURF,NULL,0,178,0)  /* chn41(24) */
-         hmsBegin()
-            hmsJoint(RM_SURF,NULL,0,0,0)  /* jnt41_1(19) */
-            hmsBegin()
-               hmsJoint(RM_SURF,RCP_motos_head,0,0,0)  /* sphere3(10) */
-            hmsEnd()
-         hmsEnd()
-      hmsEnd()
-   hmsEnd()
-  hmsEnd()
- hmsEnd()
- hmsExit()
-};
 
 
 /*=============================================================*/
@@ -3237,9 +3097,6 @@ const struct Animation *const motos_seg8_anims_0801DA4C[] = {
 	&motos_wait_anm,
 	&motos_walk_anm,
 };
-
-
-static long long int	motos_dmmy = 0 ;
 
 /*=============================================================*/
 /*  END END */

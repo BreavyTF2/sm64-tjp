@@ -2,7 +2,11 @@ void s_motos_hand(void)
 {
 
 //	struct Object *firep;
-
+    struct Object *parent = o->parentObj;
+    obj_copy_pos(o, parent);
+	o->oPosY += 150.0f;
+	o->oPosX += 0.0f;
+	o->oPosZ += 100.0f;
 	o->oMoveAngleYaw = o->parentObj->oMoveAngleYaw;
 
 	switch (o->parentObj->oMotosUnk88 ){
@@ -99,7 +103,7 @@ void motos_carry_start(void)
 {
 	cur_obj_init_animation_with_sound(3);
 	if ( cur_obj_check_if_near_animation_end() ){
-		if ( s_ai_pitch(0x200,500) ) o->oAction = 3;
+		if ( s_ai_pitch(0x20,50) ) o->oAction = 3;
 		else			   			 o->oAction = 5;
 	}		
 
@@ -111,7 +115,7 @@ void motos_carry_run(void)
 	o->oForwardVel = 5.0f;
 
 	cur_obj_init_animation_with_sound(2);
-	if ( s_ai_pitch(0x200,500) )  o->oAction = 3;
+	if ( s_ai_pitch(0x20,50) )  o->oAction = 3;
 	else			   			  o->oAction = 5;
 
 }
@@ -131,7 +135,7 @@ void motos_pitch(void)
 
 void motos_fly(void)
 {
-    o->oForwardVel = 5.0f;
+//   o->oForwardVel = 5.0f;
 	cur_obj_init_animation_with_sound(5);
 	if ( o->oMoveFlags & OBJ_MOVE_LANDED ) {
 	}

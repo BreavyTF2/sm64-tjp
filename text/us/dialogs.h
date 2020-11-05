@@ -1997,10 +1997,10 @@ And saved the Princess?\n\
 I knew you could do it!\n\
 Now I have a very special\n\
 message for you.\n\
-『Hi Dustin\n\
-\n\
-\n\
-』\n\
+『You've Been Trolled\n\
+by the Wario Apparition\n\
+send this to your friends\n\
+to epically troll them』\n\
 From Alieneer"))
 
 DEFINE_DIALOG(DIALOG_162, 1, 4, 30, 200, _("\
