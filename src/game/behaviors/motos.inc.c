@@ -120,8 +120,8 @@ void motos_carry_run(void)
 cur_obj_play_sound_2(SOUND_ACTION_METAL_STEP);
 }
 	cur_obj_init_animation_with_sound(2);
-	if ( s_ai_pitch(0x200,500) )  o->oAction = 3;
-	else			   			  o->oAction = 5;
+	if ( cur_obj_check_if_near_animation_end() & s_ai_pitch(0x200,500) )  o->oAction = 3;
+	else cur_obj_init_animation_with_sound(2);
 
 }
 
@@ -152,13 +152,21 @@ void motos_fly(void)
 
 void motos_recover(void) {
 //   o->oForwardVel = 5.0f;
-         
+    o->oForwardVel = 2.0f;
 	cur_obj_init_animation_with_sound(4);
+if ( cur_obj_check_anim_frame(14) )	
+	o->oAction = 9;
+}
+	
+void motos_recover2(void) {
+//   o->oForwardVel = 5.0f;
+         	o->oForwardVel = 0.0f;
+	cur_obj_init_animation_with_sound(7);
 if ( cur_obj_check_if_near_animation_end() )	
 	o->oAction = 0;
-	}
+}
 
-void (*sMotosActions[])(void) = { motos_wait, motos_player_search, motos_player_carry, motos_player_pitch, motos_carry_start, motos_carry_run, motos_pitch, motos_fly, motos_recover};
+void (*sMotosActions[])(void) = { motos_wait, motos_player_search, motos_player_carry, motos_player_pitch, motos_carry_start, motos_carry_run, motos_pitch, motos_fly, motos_recover, motos_recover2};
 
 void motos_main(void)
 {
@@ -211,6 +219,9 @@ void s_motos(void)
 	break;
 	case 8:
 	motos_recover();
+	break;
+	case 9:
+	motos_recover2();
 	break;
 	}
 cur_obj_call_action_function(sMotosActions);
