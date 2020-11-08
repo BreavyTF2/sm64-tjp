@@ -120,8 +120,8 @@ void motos_carry_run(void)
 cur_obj_play_sound_2(SOUND_ACTION_METAL_STEP);
 }
 	cur_obj_init_animation_with_sound(2);
-	if ( cur_obj_check_if_near_animation_end() & s_ai_pitch(0x200,500) )  o->oAction = 3;
-	else cur_obj_init_animation_with_sound(2);
+	if ( s_ai_pitch(0x200,500) )  o->oAction = 3;
+	else			   			  o->oAction = 5;
 
 }
 

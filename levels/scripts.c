@@ -343,6 +343,7 @@ const LevelScript script_func_global_17[] = {
     LOAD_MODEL_FROM_GEO(MODEL_CHILL_BULLY,             chilly_chief_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BIG_CHILL_BULLY,         chilly_chief_big_geo),
     LOAD_MODEL_FROM_GEO(MODEL_MONEYBAG,                moneybag_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_UNKNOWN_58,			   RCP_HmsEnemyicemotos_basedata_A),
     RETURN(),
 };
 

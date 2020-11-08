@@ -35,4 +35,17 @@ extern const Gfx moneybag_seg6_dl_06005980[];
 extern const Gfx moneybag_seg6_dl_060059F0[];
 extern const struct Animation *const moneybag_seg6_anims_06005E5C[];
 
+extern const GeoLayout RCP_HmsEnemyicemotos_basedata_A[];
+extern const Gfx RCP_icemotos_LhandB[];
+extern const Gfx RCP_icemotos_LhandA[];
+extern const Gfx RCP_icemotos_RhandA[];
+extern const Gfx RCP_icemotos_RhandB[];
+extern const Gfx RCP_icemotos_Lfoot[];
+extern const Gfx RCP_icemotos_Rfoot[];
+extern const Gfx RCP_icemotos_Rfoot[];
+extern const Gfx RCP_icemotos_head[];
+extern const Gfx RCP_icemotos_body[];
+extern const Gfx RCP_icemotos_leg[];
+extern const Gfx RCP_icemotos_arm[];
+extern const struct Animation *const icemotos_seg8_anims_0801DA4C[];
 #endif

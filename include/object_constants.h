@@ -679,6 +679,8 @@
     #define UKIKI_CAGE_ACT_FALL           2
     #define UKIKI_CAGE_ACT_HIDE           3
 
+//#define MOTOS_ACT_LEVEL_DEATH 100
+//#define MOTOS_ACT_LEVEL_DEATH2 101
 	/* Blargg */
 	/* Animations */
 #define UNBABA_ANIM_SWIM 0

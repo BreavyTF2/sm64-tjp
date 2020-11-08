@@ -70,7 +70,7 @@ void bully_act_chase_mario(void) {
     f32 homeX = o->oHomeX;
     f32 posY = o->oPosY;
     f32 homeZ = o->oHomeZ;
-
+	
     if (o->oTimer < 10) {
         o->oForwardVel = 3.0;
         obj_turn_toward_object(o, gMarioObject, 16, 4096);
