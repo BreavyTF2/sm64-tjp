@@ -142,8 +142,31 @@ void motos_fly(void)
 {
 //   o->oForwardVel = 5.0f;
 	cur_obj_init_animation_with_sound(5);
+		if ((gCurrLevelNum == LEVEL_SL) & (o->oPosY < 1050.0f)) {
+							cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);     
+			o->oHealth--;
+			o->oPosY = o->oHomeY;
+			o->oPosX = o->oHomeX;
+			o->oPosZ = o->oHomeZ;
+			if (o->oHealth) 
+                o->oAction = 8;
+            if (o->oHealth == 0) 
+                o->oAction = 10;
+	}
+		if (o->oFloor->type == SURFACE_BURNING) {
+							cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);     
+			o->oHealth--;
+			o->oPosY = o->oHomeY;
+			o->oPosX = o->oHomeX;
+			o->oPosZ = o->oHomeZ;
+			if (o->oHealth) 
+                o->oAction = 8;
+            if (o->oHealth == 0) 
+                o->oAction = 10;
+	}
 	if ( o->oMoveFlags & OBJ_MOVE_LANDED ) {
-	cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);           
+//	cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);      
+	
 //	cur_obj_init_animation_with_sound(4);
 	o->oAction = 8;
 	}
@@ -153,20 +176,63 @@ void motos_fly(void)
 void motos_recover(void) {
 //   o->oForwardVel = 5.0f;
     o->oForwardVel = 2.0f;
+
 	cur_obj_init_animation_with_sound(4);
 if ( cur_obj_check_anim_frame(14) )	
-	o->oAction = 9;
+	o->oAction = 1;
 }
 	
 void motos_recover2(void) {
+    struct Surface *floor = cur_obj_update_floor_height_and_get_floor();
+    o->oFloor = floor;
 //   o->oForwardVel = 5.0f;
          	o->oForwardVel = 0.0f;
 	cur_obj_init_animation_with_sound(7);
-if ( cur_obj_check_if_near_animation_end() )	
-	o->oAction = 0;
+			if ((gCurrLevelNum == LEVEL_SL) & (o->oPosY < 1050.0f)) {
+							cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);     
+			o->oHealth--;
+			o->oPosY = o->oHomeY;
+			o->oPosX = o->oHomeX;
+			o->oPosZ = o->oHomeZ;
+			if (o->oHealth) 
+                o->oAction = 1;
+            if (o->oHealth == 0) 
+                o->oAction = 10;
+	}
+		if (o->oFloor->type == SURFACE_BURNING) {
+							cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);     
+			o->oHealth--;
+			o->oPosY = o->oHomeY;
+			o->oPosX = o->oHomeX;
+			o->oPosZ = o->oHomeZ;
+			if (o->oHealth) 
+                o->oAction = 1;
+            if (o->oHealth == 0) 
+                o->oAction = 10;
+	}
+//	if (o->oFloor->type != SURFACE_BURNING) {
+//		cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);     
+o->oAction = 1;
 }
 
-void (*sMotosActions[])(void) = { motos_wait, motos_player_search, motos_player_carry, motos_player_pitch, motos_carry_start, motos_carry_run, motos_pitch, motos_fly, motos_recover, motos_recover2};
+void motos_death(void) { 
+
+        create_sound_spawner(SOUND_OBJ_KING_WHOMP_DEATH);
+
+        spawn_mist_particles_variable(0, 0, 200.0f);
+        spawn_triangle_break_particles(20, 138, 3.0f, 4);
+        cur_obj_shake_screen(SHAKE_POS_SMALL);
+		cur_obj_hide();
+        cur_obj_become_intangible();
+		if (gCurrLevelNum == LEVEL_SL) {
+        spawn_default_star(300.0f, 1500.0f, -5335.0f);
+		o->oAction = 8;
+		}
+		else 
+        spawn_default_star(3700.0f, 600.0f, -5500.0f);
+        o->oAction = 8;
+		}
+void (*sMotosActions[])(void) = { motos_wait, motos_player_search, motos_player_carry, motos_player_pitch, motos_carry_start, motos_carry_run, motos_pitch, motos_fly, motos_recover, motos_recover2, motos_death};
 
 void motos_main(void)
 {
@@ -222,6 +288,9 @@ void s_motos(void)
 	break;
 	case 9:
 	motos_recover2();
+	break;
+	case 10:
+	motos_death();
 	break;
 	}
 cur_obj_call_action_function(sMotosActions);

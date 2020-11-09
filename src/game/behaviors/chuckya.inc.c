@@ -191,7 +191,7 @@ void chuckya_move(void) {
 void bhv_chuckya_loop(void) {
     f32 sp2C = 20.0f;
     f32 sp28 = 50.0f;
-//    cur_obj_scale(2.0f);
+    cur_obj_scale(1.5f);
     o->oInteractionSubtype |= INT_SUBTYPE_GRABS_MARIO;
     switch (o->oHeldState) {
         case HELD_FREE:

@@ -68,9 +68,11 @@ static const LevelScript script_func_local_3[] = {
 static const LevelScript script_func_local_4[] = {
     OBJECT(/*model*/ MODEL_NONE,            /*pos*/ -3199,  307,  3456, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvMrI),
     OBJECT(/*model*/ MODEL_BULLY_BOSS,      /*pos*/     0,  307, -4385, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBigBully),
-    OBJECT(/*model*/ MODEL_BULLY_BOSS,      /*pos*/  4046, 2234, -5521, /*angle*/ 0,   0, 0, /*behParam*/ 0x01000000, /*beh*/ bhvBigBullyWithMinions),
+	OBJECT(/*model*/ MODEL_CHUCKYA,      /*pos*/  4454,  307,  -5426, /*angle*/ 0,   0, 0, /*behParam*/ 0x01000000, /*beh*/ bhvChuckya),
+	OBJECT(/*model*/ MODEL_CHUCKYA,      /*pos*/  3840,  307,  -6041, /*angle*/ 0,   0, 0, /*behParam*/ 0x01000000, /*beh*/ bhvChuckya),
+	OBJECT(/*model*/ MODEL_CHUCKYA,      /*pos*/  3226,  307,  -5426, /*angle*/ 0,   0, 0, /*behParam*/ 0x01000000, /*beh*/ bhvChuckya),
     OBJECT(/*model*/ MODEL_BULLY,           /*pos*/ -5119,  307, -2482, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSmallBully),
-    OBJECT(/*model*/ MODEL_UNKNOWN_58,           /*pos*/     0,  307,  3712, /*angle*/ 0,   0, 0, /*behParam*/ 0x01000000, /*beh*/ bhvStub1D0C),
+    OBJECT(/*model*/ MODEL_UNKNOWN_58,      /*pos*/  3850,  323,  -5600, /*angle*/ 0,   0, 0, /*behParam*/ 0x01000000, /*beh*/ bhvStub1D0C),
     OBJECT(/*model*/ MODEL_BULLY,           /*pos*/  6813,  307,  1613, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSmallBully),
     OBJECT(/*model*/ MODEL_BULLY,           /*pos*/  7168,  307,   998, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSmallBully),
     OBJECT(/*model*/ MODEL_BULLY,           /*pos*/ -5130,  285, -1663, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSmallBully),
