@@ -40,8 +40,8 @@ int s_ai_pitch(s32 angle, f32 dist)
 {
 
 	if ( (cur_obj_rotate_yaw_toward(o->oAngleToMario,angle)) && (o->oDistanceToMario < dist) ) 
-	return(1);
-	else																	  return(0);
+	return TRUE;
+	else																	  return FALSE;
 	
 }
 
@@ -93,7 +93,7 @@ void motos_player_pitch(void){
 	cur_obj_init_animation_with_sound(6);
 	if ( cur_obj_check_anim_frame(14) ){
 		o->oMotosUnk88 = 2;		/* nageru shyn kan	*/
-		o->oMotosUnk100 = 10;		/* hit time wait!!	*/
+		o->oMotosUnk100 = 10;		/* hit time wait!!	*/ //Despite what it says, it doesn't work
 	}
 	if ( cur_obj_check_if_near_animation_end() ){
 		o->oAction = 0;
@@ -145,7 +145,7 @@ void motos_fly(void)
 		if ((gCurrLevelNum == LEVEL_SL) & (o->oPosY < 1050.0f)) {
 							cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);     
 			o->oHealth--;
-			o->oPosY = o->oHomeY;
+			o->oPosY = o->oHomeY; //This is a horrible way of making motos return to it's home
 			o->oPosX = o->oHomeX;
 			o->oPosZ = o->oHomeZ;
 			if (o->oHealth) 
@@ -188,10 +188,10 @@ void motos_recover2(void) {
 //   o->oForwardVel = 5.0f;
          	o->oForwardVel = 0.0f;
 	cur_obj_init_animation_with_sound(7);
-			if ((gCurrLevelNum == LEVEL_SL) & (o->oPosY < 1050.0f)) {
+			if ((gCurrLevelNum == LEVEL_SL) & (o->oPosY < 1050.0f)) { //Repeat for good measure
 							cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);     
 			o->oHealth--;
-			o->oPosY = o->oHomeY;
+			o->oPosY = o->oHomeY; //This is a horrible way of making motos return to it's home
 			o->oPosX = o->oHomeX;
 			o->oPosZ = o->oHomeZ;
 			if (o->oHealth) 
@@ -202,7 +202,7 @@ void motos_recover2(void) {
 		if (o->oFloor->type == SURFACE_BURNING) {
 							cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);     
 			o->oHealth--;
-			o->oPosY = o->oHomeY;
+			o->oPosY = o->oHomeY; //This is a horrible way of making motos return to it's home
 			o->oPosX = o->oHomeX;
 			o->oPosZ = o->oHomeZ;
 			if (o->oHealth) 
