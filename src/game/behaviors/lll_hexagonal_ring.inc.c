@@ -15,7 +15,7 @@ void hexagonal_ring_spawn_flames(void) {
 }
 
 void bhv_lll_rotating_hexagonal_ring_loop(void) {
-    UNUSED s32 unused;
+    
     o->oCollisionDistance = 4000.0f;
     o->oDrawingDistance = 8000.0f;
     switch (o->oAction) {

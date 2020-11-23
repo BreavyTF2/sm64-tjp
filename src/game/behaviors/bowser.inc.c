@@ -478,7 +478,7 @@ void bowser_short_second_hop(void) {
 }
 
 void bowser_act_jump(void) {
-    UNUSED s32 unused;
+    
     if (o->oSubAction == 0) {
         if (bowser_set_anim_in_air()) {
             if (BITS && o->oBowserUnkF4 & 0x10000)
@@ -644,7 +644,7 @@ s32 bowser_check_hit_mine(void) {
 
 void bowser_act_thrown_dropped(void)
 {
-    UNUSED s32 unused;
+    
     if (o->oTimer < 2)
         o->oBowserUnkF8 = 0;
     if (o->oSubAction == 0) {
@@ -676,7 +676,7 @@ void bowser_set_goal_invisible(void) {
 
 void bowser_act_jump_onto_stage(void) {
     s32 sp2C;
-    UNUSED s32 unused;
+    
     struct Surface *sp24 = o->oFloor;
     if (sp24 != NULL && sp24->flags & 1)
         sp2C = 1;
@@ -850,7 +850,7 @@ s32 bowser_dead_not_bits_end(void) {
 }
 
 s32 bowser_dead_bits_end(void) {
-    UNUSED s32 unused;
+    
     s32 ret = 0;
     s32 dialogID;
     if (o->oBowserUnkF8 < 2) {
@@ -923,7 +923,7 @@ void bowser_act_ride_tilting_platform(void) {
     struct Object *platform = cur_obj_nearest_object_with_behavior(bhvTiltingBowserLavaPlatform);
     UNUSED s16 sp2A = o->oBowserAngleToCentre + 0x8000;
     s16 sp28;
-    UNUSED s32 unused;
+    
     s32 i;
     s32 sp1C;
     if (platform == NULL)
@@ -1239,7 +1239,7 @@ void bowser_open_eye_switch(struct Object *a0, struct GraphNodeSwitchCase *switc
  */
 Gfx *geo_switch_bowser_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *mtx) {
     UNUSED s16 sp36;
-    UNUSED s32 unused;
+    
     struct Object *obj = (struct Object *) gCurGraphNodeObject;
     struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
     if (run == TRUE) {
@@ -1291,7 +1291,7 @@ void falling_bowser_plat_act_0(void) {
 }
 
 void falling_bowser_plat_act_1(void) {
-    UNUSED s32 unused;
+    
     struct Object *sp0 = o->oPlatformUnkF8;
     if (sp0->platform == o)
         if (sp0->oAction == 13 && sp0->oBowserUnkF4 & 0x10000)
@@ -1455,7 +1455,7 @@ void bhv_flame_moving_forward_growing_init(void) {
 }
 
 void bhv_flame_moving_forward_growing_loop(void) {
-    UNUSED s32 unused;
+    
     UNUSED struct Object *sp18;
     obj_set_hitbox(o, &sGrowingBowserFlameHitbox);
     o->oFlameUnkF4 = o->oFlameUnkF4 + 0.5;
@@ -1486,7 +1486,7 @@ void bhv_flame_floating_landing_init(void) {
 }
 
 void bhv_flame_floating_landing_loop(void) {
-    UNUSED s32 unused;
+    
     cur_obj_update_floor_and_walls();
     cur_obj_move_standard(0x4e);
     bowser_flame_move();

@@ -24,7 +24,7 @@ s32 update_angle_from_move_flags(s32 *angle) {
 }
 
 void bhv_scuttlebug_loop(void) {
-    UNUSED s32 unused;
+    
     f32 sp18;
     cur_obj_update_floor_and_walls();
     if (o->oSubAction != 0

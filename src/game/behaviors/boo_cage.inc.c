@@ -25,7 +25,7 @@ static struct ObjectHitbox sBooCageHitbox = {
  * Update function for bhvBooCage.
  */
 void bhv_boo_cage_loop(void) {
-    UNUSED s32 unused;
+    
 
     obj_set_hitbox(o, &sBooCageHitbox);
 

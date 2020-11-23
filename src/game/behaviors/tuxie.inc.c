@@ -13,7 +13,7 @@ void play_penguin_walking_sound(s32 walk) {
 
 void tuxies_mother_act_2(void) {
     f32 sp24;
-    UNUSED s32 unused;
+    
     struct Object *sp1C = cur_obj_find_nearest_object_with_behavior(bhvSmallPenguin, &sp24);
 
     if (cur_obj_find_nearby_held_actor(bhvUnused20E0, 1000.0f) != NULL) {

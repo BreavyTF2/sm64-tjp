@@ -319,7 +319,7 @@ void obj_set_speed_to_zero(void) {
 }
 
 void bhv_klepto_update(void) {
-    UNUSED s32 unused;
+    
 
     cur_obj_update_floor_and_walls();
 

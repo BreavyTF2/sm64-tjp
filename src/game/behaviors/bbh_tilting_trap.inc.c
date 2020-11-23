@@ -8,7 +8,7 @@
  * Update function for bhvBbhTiltingTrapPlatform.
  */
 void bhv_bbh_tilting_trap_platform_loop(void) {
-    UNUSED s32 unused;
+    
 
     // US (and probably later) versions use oAction for the
     // if statement, while immediately setting it over here.

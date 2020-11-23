@@ -101,7 +101,7 @@ void bubba_act_1(void) {
 }
 
 void bhv_bubba_loop(void) {
-    UNUSED s32 unused;
+    
     struct Object *sp38;
     s16 sp36;
 

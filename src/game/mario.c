@@ -1232,7 +1232,10 @@ void squish_mario_model(struct MarioState *m) {
 void debug_print_speed_action_normal(struct MarioState *m) {
     f32 steepness;
     f32 floor_nY;
-
+	if (gShowSpeedText) {
+	print_text_fmt_int(210, 72, "HSPD %d", m->forwardVel);
+	print_text_fmt_int(210, 56, "VSPD %x", (m->vel[1]));
+}
     if (gShowDebugText) {
         steepness = sqrtf(
             ((m->floor->normal.x * m->floor->normal.x) + (m->floor->normal.z * m->floor->normal.z)));
@@ -1271,6 +1274,10 @@ void update_mario_button_inputs(struct MarioState *m) {
 
         if (m->controller->buttonPressed & Z_TRIG) {
             m->input |= INPUT_Z_PRESSED;
+        }
+		if (m->controller->buttonPressed & L_TRIG) {
+           if (gShowSpeedText == FALSE) gShowSpeedText = TRUE;
+		   else gShowSpeedText = FALSE;
         }
     }
 

@@ -253,7 +253,7 @@ void bhv_coin_sparkles_loop(void) {
 
 void bhv_golden_coin_sparkles_loop(void) {
     struct Object *sp2C;
-    UNUSED s32 unused;
+    
     f32 sp24 = 30.0f;
     sp2C = spawn_object(o, MODEL_SPARKLES, bhvCoinSparkles);
     sp2C->oPosX += random_float() * sp24 - sp24 / 2;

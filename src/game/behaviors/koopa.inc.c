@@ -517,7 +517,7 @@ static void koopa_the_quick_act_wait_before_race(void) {
 static void koopa_the_quick_act_show_init_text(void) {
     s32 response = obj_update_race_proposition_dialog(
         sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].initText);
-    UNUSED s32 unused;
+    
 
     if (response == 1) {
         gMarioShotFromCannon = FALSE;

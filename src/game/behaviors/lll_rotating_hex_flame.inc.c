@@ -12,7 +12,7 @@ void bhv_lll_rotating_hex_flame_loop(void) {
 
 void fire_bar_spawn_flames(s16 a0) {
     struct Object *sp2C;
-    UNUSED s32 unused;
+    
     s32 i;
     s32 sp20;
     f32 sp1C = sins(a0) * 200.0f;

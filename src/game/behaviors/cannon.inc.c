@@ -86,7 +86,7 @@ void opened_cannon_act_5(void) {
 }
 
 void opened_cannon_act_1(void) {
-    UNUSED s32 unused;
+    
     cur_obj_become_intangible();
     cur_obj_disable_rendering();
     o->oCannonUnk10C = 0;
