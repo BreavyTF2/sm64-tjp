@@ -184,7 +184,7 @@ static void boo_set_move_yaw_for_during_hit(s32 hurt) {
     }
 }
 
-static void boo_move_during_hit(s32 roll, f32 fVel) {
+static void boo_move_during_hit(UNUSED s32 roll, f32 fVel) {
     // Boos seem to have been supposed to oscillate up then down then back again
     // when hit. However it seems the programmers forgot to scale the cosine,
     // so the Y velocity goes from 1 to -1 and back to 1 over 32 frames.
@@ -214,7 +214,7 @@ static void boo_reset_after_hit(void) {
 }
 
 // called iff boo/big boo/cage boo is in action 2, which only occurs if it was non-attack-ly interacted with/bounced on?
-static s32 boo_update_after_bounced_on(f32 a0) {
+static s32 boo_update_after_bounced_on(UNUSED f32 a0) {
     o->oForwardVel = 0;
 	o->oVelY = 0;
 
@@ -333,7 +333,7 @@ static s32 boo_get_attack_status(void) {
 }
 
 // boo idle/chasing movement?
-static void boo_chase_mario(f32 a0, s16 a1, f32 a2) {
+static void boo_chase_mario(f32 a0, s16 a1, UNUSED f32 a2) {
     f32 sp1C;
     s16 sp1A;
 
@@ -363,10 +363,7 @@ static void boo_chase_mario(f32 a0, s16 a1, f32 a2) {
         }
     } else {
         o->oInteractType = 0;
-        // why is boo_stop not used here
-        o->oForwardVel = 0.0f;
-        o->oVelY = 0.0f;
-        o->oGravity = 0.0f;
+		boo_stop();
     }
 }
 
@@ -574,10 +571,6 @@ static void big_boo_act_2(void) {
     }
 }
 
-static void big_boo_spawn_ghost_hunt_star(void) {
-    spawn_default_star(100.0f, 200.0f, 800.0f);
-}
-
 static void big_boo_spawn_balcony_star(void) {
     spawn_default_star(2500.0f, 2000.0f, 250.0f);
 }
@@ -608,11 +601,11 @@ static void big_boo_act_3(void) {
             obj_set_angle(o, 0, 0, 0);
 
             if (o->oBehParams2ndByte == 0) {
-                big_boo_spawn_ghost_hunt_star();
-            } else if (o->oBehParams2ndByte == 1) {
-                big_boo_spawn_merry_go_round_star();
+				boo_stop();
+            } else if (o->oBehParams2ndByte == 2) {
+				big_boo_spawn_balcony_star();
             } else {
-                big_boo_spawn_balcony_star();
+                big_boo_spawn_merry_go_round_star();
             }
         }
     } else {
@@ -633,18 +626,19 @@ static void big_boo_act_4(void) {
 #endif
 
     if (o->oBehParams2ndByte == 0) {
-        obj_set_pos(o, 973, 0, 626);
-
-        if (o->oTimer > 60 && o->oDistanceToMario < 600.0f) {
+		if (o->oTimer == 0) {
             obj_set_pos(o,  973, 0, 717);
-
+			obj_set_angle(o, 0, 0, 0);
             spawn_object_relative(0, 0, 0,    0, o, MODEL_BBH_STAIRCASE_STEP, bhvBooBossSpawnedBridge);
             spawn_object_relative(1, 0, 0, -200, o, MODEL_BBH_STAIRCASE_STEP, bhvBooBossSpawnedBridge);
             spawn_object_relative(2, 0, 0,  200, o, MODEL_BBH_STAIRCASE_STEP, bhvBooBossSpawnedBridge);
+		}
+	if (o->oTimer > 100) {
+		spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStar, 972,819+200,292, 0, 0,0);
+        obj_mark_for_deletion(o);
+    }
 
-            obj_mark_for_deletion(o);
-        }
-    } else {
+	} else {
         obj_mark_for_deletion(o);
     }
 }
@@ -898,7 +892,7 @@ void bhv_boo_boss_spawned_bridge_loop(void) {
 
             break;
         case 3:
-            if (o->oTimer == 0 && o->oBehParams2ndByte == 1) {
+            if (o->oTimer == 0 && o->oBehParams2ndByte == 0) {
                 play_puzzle_jingle();
             }
 

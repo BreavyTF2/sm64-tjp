@@ -18,13 +18,17 @@ void bhv_haunted_bookshelf_loop(void) {
     switch (o->oAction) {
         case HAUNTED_BOOKSHELF_ACT_IDLE:
             // ???
-            if (o->oTimer == 0) {
-			spawn_object_abs_with_rot(o, 0, MODEL_BETA_BOO_KEY, bhvAlphaBooKey, -2090,1100,-199,0, 0,0);
-			 }
+//            if (o->oTimer == 0) {
+//			spawn_object_abs_with_rot(o, 0, MODEL_BETA_BOO_KEY, bhvAlphaBooKey, -2090,1100,-199,0, 0,0);
+//			 }
 
             // This code never runs, since the action is set to 1 directly
             // by bhvHauntedBookshelfManager. Maybe this was
             // intended to be used to set the action instead?
+			if (o->oDistanceToMario < 400 && gHudDisplay.keys >= 1) {
+				gMarioState->numKeys--;
+				o->oAction++;
+			}
             if (o->oHauntedBookshelfShouldOpen != FALSE) {
                 o->oAction++;
             }
