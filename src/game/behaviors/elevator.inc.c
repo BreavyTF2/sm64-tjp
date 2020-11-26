@@ -89,7 +89,7 @@ void bhv_elevator_init(void) {
         o->oElevatorUnkF4 = D_8032F38C[o->oBehParams2ndByte * 3];
         o->oElevatorUnkF8 = o->oHomeY;
         o->oElevatorUnkFC = (o->oElevatorUnkF4 + o->oElevatorUnkF8) / 2;
-        o->oElevatorUnk100 = cur_obj_has_behavior(bhvRrElevatorPlatform);
+        o->oElevatorUnk100 = 0;
     } else {
         o->oElevatorUnkF4 = D_8032F38C[o->oBehParams2ndByte * 3];
         o->oElevatorUnkF8 = D_8032F38C[o->oBehParams2ndByte * 3 + 1];

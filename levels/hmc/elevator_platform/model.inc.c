@@ -24,7 +24,7 @@ static const Vtx hmc_seg7_vertex_07022928[] = {
 
 // 0x07022A08 - 0x07022AA0
 static const Gfx hmc_seg7_dl_07022A08[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_09002800),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, cave_0900A000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPLight(&hmc_seg7_lights_07022910.l, 1),

@@ -21,11 +21,11 @@ struct Struct80331A54 D_80331A54[][5] = {
         { bitdw_seg7_collision_0700F91C, MODEL_BITDW_STAIRCASE_FRAME4 },
     },
     {
-        { rr_seg7_collision_0702A6B4, MODEL_RR_TRICKY_TRIANGLES_FRAME4 },
-        { rr_seg7_collision_0702A32C, MODEL_RR_TRICKY_TRIANGLES_FRAME3 },
-        { rr_seg7_collision_07029FA4, MODEL_RR_TRICKY_TRIANGLES_FRAME2 },
-        { rr_seg7_collision_07029C1C, MODEL_RR_TRICKY_TRIANGLES_FRAME1 },
-        { rr_seg7_collision_07029924, MODEL_RR_TRICKY_TRIANGLES },
+        { NULL, MODEL_RR_TRICKY_TRIANGLES_FRAME4 },
+        { NULL, MODEL_RR_TRICKY_TRIANGLES_FRAME3 },
+        { NULL, MODEL_RR_TRICKY_TRIANGLES_FRAME2 },
+        { NULL, MODEL_RR_TRICKY_TRIANGLES_FRAME1 },
+        { NULL, MODEL_RR_TRICKY_TRIANGLES },
     },
 };
 

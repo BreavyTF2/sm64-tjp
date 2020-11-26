@@ -5,8 +5,8 @@ void const *D_80331A24[] = {
     bits_seg7_collision_0701AA0C,
     bitfs_seg7_collision_07015714,
     bitfs_seg7_collision_07015768,
-    rr_seg7_collision_070295F8,
-    rr_seg7_collision_0702967C,
+    NULL,
+    NULL,
     NULL,
     bitdw_seg7_collision_0700F688,
 };

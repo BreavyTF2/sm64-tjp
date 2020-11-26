@@ -10,7 +10,7 @@ static struct RacingPenguinData sRacingPenguinData[] = {
 };
 
 void bhv_racing_penguin_init(void) {
-    if (gMarioState->numStars == 120) {
+    if (gMarioState->numStars >= 113) {
         cur_obj_scale(8.0f);
         o->header.gfx.scale[1] = 5.0f;
         o->oBehParams2ndByte = 1;

@@ -2031,7 +2031,7 @@ losing to you!\n\
 My troops...worthless!\n\
 They've turned over all\n\
 the Power Stars! What?!\n\
-There are 120 in all???\n\
+There are 113 in all???\n\
 \n\
 Amazing! There were some\n\
 in the castle that I\n\

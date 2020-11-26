@@ -8,7 +8,6 @@
 #include "level_update.h"
 #include "levels/castle_inside/header.h"
 #include "levels/ending/header.h"
-#include "levels/rr/header.h"
 #include "mario.h"
 #include "mario_actions_cutscene.h"
 #include "memory.h"
@@ -130,65 +129,6 @@ Gfx *geo_exec_flying_carpet_timer_update(s32 callContext, UNUSED struct GraphNod
 /**
  * Create a display list for a flying carpet with dynamic ripples.
  */
-Gfx *geo_exec_flying_carpet_create(s32 callContext, struct GraphNode *node, UNUSED f32 mtx[4][4]) {
-    s16 n, row, col, x, y, z, tx, ty;
-    Vtx *verts;
-    struct GraphNodeGenerated *generatedNode = (struct GraphNodeGenerated *) node;
-
-    s16 *sp64 = segmented_to_virtual(&flying_carpet_static_vertex_data);
-    Gfx *displayList = NULL;
-    Gfx *displayListHead = NULL;
-    struct Object *curGraphNodeObject;
-
-    if (callContext == GEO_CONTEXT_RENDER) {
-        verts = alloc_display_list(NUM_FLYING_CARPET_VERTICES * sizeof(*verts));
-        displayList = alloc_display_list(7 * sizeof(*displayList));
-        displayListHead = displayList;
-
-        if (verts == NULL || displayList == NULL) {
-            return NULL;
-        }
-
-        generatedNode->fnNode.node.flags = (generatedNode->fnNode.node.flags & 0xFF) | 0x100;
-
-        for (n = 0; n <= 20; n++) {
-            row = n / 3;
-            col = n % 3;
-
-            x = sp64[n * 4 + 0];
-            y = round_float(sins(sFlyingCarpetRippleTimer + (row << 12) + (col << 14)) * 20.0);
-            z = sp64[n * 4 + 1];
-            tx = sp64[n * 4 + 2];
-            ty = sp64[n * 4 + 3];
-
-            make_vertex(verts, n, x, y, z, tx, ty, 0, 127, 0, 255);
-        }
-
-        gSPDisplayList(displayListHead++, dl_flying_carpet_begin);
-
-        // The forward half.
-        gSPVertex(displayListHead++, verts, 12, 0);
-        gSPDisplayList(displayListHead++, dl_flying_carpet_model_half);
-
-        // The back half.
-        gSPVertex(displayListHead++, verts + 9, 12, 0);
-        gSPDisplayList(displayListHead++, dl_flying_carpet_model_half);
-
-        gSPDisplayList(displayListHead++, dl_flying_carpet_end);
-        gSPEndDisplayList(displayListHead);
-
-        curGraphNodeObject = (struct Object *) gCurGraphNodeObject;
-        if (gMarioObject->platform == curGraphNodeObject) {
-            gFlyingCarpetState = FLYING_CARPET_MOVING_WITH_MARIO;
-        } else if (curGraphNodeObject->oForwardVel != 0.0) {
-            gFlyingCarpetState = FLYING_CARPET_MOVING_WITHOUT_MARIO;
-        } else {
-            gFlyingCarpetState = FLYING_CARPET_IDLE;
-        }
-    }
-
-    return displayList;
-}
 
 /**
  * Create a display list for the end screen with Peach's delicious cake.

@@ -64,9 +64,3 @@ void bhv_flamethrower_loop(void) {
     } else if (o->oTimer > 60)
         o->oAction = 0;
 }
-
-void bhv_rr_rotating_bridge_platform_loop(void) {
-    o->oMoveAngleYaw -= 0x80;
-    o->oAngleVelYaw = -0x80;
-    bhv_flamethrower_loop();
-}

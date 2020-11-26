@@ -8,7 +8,6 @@
 extern const u8 cave_09000000[];
 extern const u8 cave_09001000[];
 extern const u8 cave_09001800[];
-extern const u8 cave_09002800[];
 extern const u8 cave_09003000[];
 extern const u8 cave_09003800[];
 extern const u8 cave_09004800[];

@@ -17,11 +17,6 @@ ALIGNED8 const u8 cave_09001800[] = {
 #include "textures/cave/hmc_textures.01800.rgba16.inc.c"
 };
 
-// 0x09002800
-ALIGNED8 const u8 cave_09002800[] = {
-#include "textures/cave/hmc_textures.02800.rgba16.inc.c"
-};
-
 // 0x09003000
 ALIGNED8 const u8 cave_09003000[] = {
 #include "textures/cave/hmc_textures.03000.rgba16.inc.c"

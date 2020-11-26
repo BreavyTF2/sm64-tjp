@@ -2,7 +2,7 @@
 
 void const *D_80331A44[] = {
     bits_seg7_collision_0701AA84,
-    rr_seg7_collision_07029508,
+    NULL,
 };
 
 s16 D_80331A4C[] = { 300, -300, 600, -600 };
