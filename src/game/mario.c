@@ -1233,8 +1233,8 @@ void debug_print_speed_action_normal(struct MarioState *m) {
     f32 steepness;
     f32 floor_nY;
 	if (gShowSpeedText) {
-	print_text_fmt_int(210, 72, "HSPD %d", m->forwardVel);
-	print_text_fmt_int(210, 56, "VSPD %x", (m->vel[1]));
+	print_text_fmt_int(208, 36, "HSPD %d", m->forwardVel);
+	print_text_fmt_int(208, 20, "VSPD %x", (m->vel[1]));
 }
     if (gShowDebugText) {
         steepness = sqrtf(
