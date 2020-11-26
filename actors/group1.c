@@ -13,9 +13,6 @@ UNUSED static const u64 binid_0 = 0;
 #include "hoot/anims/table.inc.c"
 UNUSED static const u64 binid_1 = 1;
 
-#include "yoshi_egg/model.inc.c"
-UNUSED static const u64 binid_2 = 2;
-
 #include "thwomp/model.inc.c"
 #include "thwomp/collision.inc.c"
 UNUSED static const u64 binid_3 = 3;

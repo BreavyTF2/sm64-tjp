@@ -65,7 +65,6 @@ void bobomb_check_interactions(void) {
 }
 
 void bobomb_act_patrol(void) {
-    UNUSED s8 filler[4];
     UNUSED s16 sp22;
     s16 collisionFlags;
 
@@ -82,7 +81,6 @@ void bobomb_act_patrol(void) {
 }
 
 void bobomb_act_chase_mario(void) {
-    UNUSED u8 filler[4];
     s16 sp1a, collisionFlags;
 
     sp1a = ++o->header.gfx.animInfo.animFrame;
@@ -285,7 +283,6 @@ void bhv_bobomb_buddy_init(void) {
 }
 
 void bobomb_buddy_act_idle(void) {
-    UNUSED u8 filler[4];
     s16 sp1a = o->header.gfx.animInfo.animFrame;
     UNUSED s16 collisionFlags = 0;
 

@@ -594,19 +594,6 @@ Gfx *create_shadow_player(f32 xPos, f32 yPos, f32 zPos, s16 shadowScale, u8 soli
     s8 ret;
     s32 i;
 
-    // Update global variables about whether Mario is on a flying carpet.
-    if (gCurrLevelNum == LEVEL_RR && sSurfaceTypeBelowShadow != SURFACE_DEATH_PLANE) {
-        switch (gFlyingCarpetState) {
-            case FLYING_CARPET_MOVING_WITHOUT_MARIO:
-                gMarioOnIceOrCarpet = 1;
-                sMarioOnFlyingCarpet = 1;
-                break;
-            case FLYING_CARPET_MOVING_WITH_MARIO:
-                gMarioOnIceOrCarpet = 1;
-                break;
-        }
-    }
-
     switch (correct_shadow_solidity_for_animations(isLuigi, solidity, &shadow)) {
         case SHADOW_SOLIDITY_NO_SHADOW:
             return NULL;

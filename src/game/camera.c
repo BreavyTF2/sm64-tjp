@@ -127,7 +127,6 @@ extern s16 sSelectionFlags;
 extern s16 unused8033B316;
 extern s16 s2ndRotateFlags;
 extern s16 unused8033B31A;
-extern s16 sCameraSoundFlags;
 extern u16 sCButtonsPressed;
 extern s16 sCutsceneDialogID;
 extern struct LakituState gLakituState;
@@ -1177,11 +1176,9 @@ void mode_8_directions_camera(struct Camera *c) {
 
     if (gPlayer1Controller->buttonPressed & R_CBUTTONS) {
         s8DirModeYawOffset += DEGREES(45);
-        play_sound_cbutton_side();
     }
     if (gPlayer1Controller->buttonPressed & L_CBUTTONS) {
         s8DirModeYawOffset -= DEGREES(45);
-        play_sound_cbutton_side();
     }
 
     lakitu_zoom(400.f, 0x900);
@@ -1451,8 +1448,6 @@ s32 update_fixed_camera(struct Camera *c, Vec3f focus, UNUSED Vec3f pos) {
     Vec3f basePos;
     UNUSED u8 filler[12];
 
-    play_camera_buzz_if_c_sideways();
-
     // Don't move closer to Mario in these areas
     switch (gCurrLevelArea) {
         case AREA_RR:
@@ -1472,7 +1467,6 @@ s32 update_fixed_camera(struct Camera *c, Vec3f focus, UNUSED Vec3f pos) {
     }
 
     handle_c_button_movement(c);
-    play_camera_buzz_if_cdown();
 
     calc_y_to_curr_floor(&focusFloorOff, 1.f, 200.f, &focusFloorOff, 0.9f, 200.f);
     vec3f_copy(focus, sMarioCamState->pos);
@@ -1811,12 +1805,12 @@ s32 update_behind_mario_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
 
     if (sBehindMarioSoundTimer == 28) {
         if (sCSideButtonYaw < 5 || sCSideButtonYaw > 28) {
-            play_sound_cbutton_up();
+
         }
     }
     if (sCSideButtonYaw == 28) {
         if (sBehindMarioSoundTimer < 5 || sBehindMarioSoundTimer > 28) {
-            play_sound_cbutton_up();
+
         }
     }
 
@@ -1826,7 +1820,7 @@ s32 update_behind_mario_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     // Rotate right
     if (sCButtonsPressed & L_CBUTTONS) {
         if (gPlayer1Controller->buttonPressed & L_CBUTTONS) {
-            play_sound_cbutton_side();
+
         }
         if (dist < maxDist) {
             camera_approach_f32_symmetric_bool(&dist, maxDist, 5.f);
@@ -1838,7 +1832,7 @@ s32 update_behind_mario_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     // Rotate left
     if (sCButtonsPressed & R_CBUTTONS) {
         if (gPlayer1Controller->buttonPressed & R_CBUTTONS) {
-            play_sound_cbutton_side();
+
         }
         if (dist < maxDist) {
             camera_approach_f32_symmetric_bool(&dist, maxDist, 5.f);
@@ -1850,7 +1844,7 @@ s32 update_behind_mario_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     // Rotate up
     if (sCButtonsPressed & D_CBUTTONS) {
         if (gPlayer1Controller->buttonPressed & (U_CBUTTONS | D_CBUTTONS)) {
-            play_sound_cbutton_side();
+
         }
         if (dist < maxDist) {
             camera_approach_f32_symmetric_bool(&dist, maxDist, 5.f);
@@ -1862,7 +1856,6 @@ s32 update_behind_mario_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     // Rotate down
     if (sCButtonsPressed & U_CBUTTONS) {
         if (gPlayer1Controller->buttonPressed & (U_CBUTTONS | D_CBUTTONS)) {
-            play_sound_cbutton_side();
         }
         if (dist < maxDist) {
             camera_approach_f32_symmetric_bool(&dist, maxDist, 5.f);
@@ -1968,7 +1961,7 @@ s16 update_slide_camera(struct Camera *c) {
     }
 
     // No C-Button input in this mode, notify the player with a buzzer
-    play_camera_buzz_if_cbutton();
+
 
     // Focus on Mario
     vec3f_copy(c->focus, sMarioCamState->pos);
@@ -2529,7 +2522,6 @@ s32 set_mode_c_up(struct Camera *c) {
     if (!(gCameraMovementFlags & CAM_MOVE_C_UP_MODE)) {
         gCameraMovementFlags |= CAM_MOVE_C_UP_MODE;
         store_lakitu_cam_info_for_c_up(c);
-        sCameraSoundFlags &= ~CAM_SOUND_C_UP_PLAYED;
         return 1;
     }
     return 0;
@@ -2636,7 +2628,6 @@ s32 exit_c_up(struct Camera *c) {
             gCameraMovementFlags &= ~(CAM_MOVE_STARTED_EXITING_C_UP | CAM_MOVE_C_UP_MODE);
             vec3f_set_dist_and_angle(checkFoc, c->pos, curDist, curPitch, curYaw + checkYaw);
         }
-        play_sound_cbutton_down();
     }
     return 0;
 }
@@ -2723,11 +2714,6 @@ void move_into_c_up(struct Camera *c) {
 s32 mode_c_up_camera(struct Camera *c) {
     UNUSED u8 unused[12];
 
-    // Play a sound when entering C-Up mode
-    if (!(sCameraSoundFlags & CAM_SOUND_C_UP_PLAYED)) {
-        play_sound_cbutton_up();
-        sCameraSoundFlags |= CAM_SOUND_C_UP_PLAYED;
-    }
 
     // Zoom in first
     if (gCameraMovementFlags & CAM_MOVING_INTO_MODE) {
@@ -3009,7 +2995,6 @@ void update_camera(struct Camera *c) {
     UNUSED u8 unused[24];
 
     gCamera = c;
-    update_camera_hud_status(c);
     if (c->cutscene == 0) {
         // Only process R_TRIG if 'fixed' is not selected in the menu
         if (cam_select_alt_mode(0) == CAM_SELECTION_MARIO) {
@@ -3021,7 +3006,6 @@ void update_camera(struct Camera *c) {
                 }
             }
         }
-        play_sound_if_cam_switched_to_lakitu_or_mario();
     }
 
     // Initialize the camera
@@ -3168,8 +3152,6 @@ void update_camera(struct Camera *c) {
             // If this is the first frame that R_TRIG is held, play the "click" sound
             if (c->cutscene == 0 && (gPlayer1Controller->buttonPressed & R_TRIG)
                 && cam_select_alt_mode(0) == CAM_SELECTION_FIXED) {
-                sCameraSoundFlags |= CAM_SOUND_FIXED_ACTIVE;
-                play_sound_rbutton_changed();
             }
 
             // Fixed mode only prevents Lakitu from moving. The camera pos still updates, so
@@ -3180,16 +3162,9 @@ void update_camera(struct Camera *c) {
             c->nextYaw = calculate_yaw(gLakituState.focus, gLakituState.pos);
             c->yaw = c->nextYaw;
             gCameraMovementFlags &= ~CAM_MOVE_FIX_IN_PLACE;
-        } else {
-            // Play the "click" sound when fixed mode is released
-            if (sCameraSoundFlags & CAM_SOUND_FIXED_ACTIVE) {
-                play_sound_rbutton_changed();
-                sCameraSoundFlags &= ~CAM_SOUND_FIXED_ACTIVE;
-            }
         }
     } else {
         if ((gPlayer1Controller->buttonPressed & R_TRIG) && cam_select_alt_mode(0) == CAM_SELECTION_FIXED) {
-            play_sound_button_change_blocked();
         }
     }
 
@@ -3229,7 +3204,6 @@ void reset_camera(struct Camera *c) {
     unused8033B316 = 0;
     sStatusFlags = 0;
     unused8033B31A = 0;
-    sCameraSoundFlags = 0;
     sCUpCameraPitch = 0;
     sModeOffsetYaw = 0;
     sSpiralStairsYawOffset = 0;
@@ -3689,7 +3663,6 @@ s32 cam_select_alt_mode(s32 selection) {
         if (!(sSelectionFlags & CAM_MODE_MARIO_SELECTED)) {
             sSelectionFlags |= CAM_MODE_MARIO_SELECTED;
         }
-        sCameraSoundFlags |= CAM_SOUND_UNUSED_SELECT_MARIO;
     }
 
     // The alternate mode is up-close, but the player just selected fixed in the pause menu
@@ -3697,7 +3670,6 @@ s32 cam_select_alt_mode(s32 selection) {
         // So change to normal mode in case the user paused in up-close mode
         set_cam_angle(CAM_ANGLE_LAKITU);
         sSelectionFlags &= ~CAM_MODE_MARIO_SELECTED;
-        sCameraSoundFlags |= CAM_SOUND_UNUSED_SELECT_FIXED;
     }
 
     if (sSelectionFlags & CAM_MODE_MARIO_SELECTED) {
@@ -3723,7 +3695,7 @@ s32 set_cam_angle(s32 mode) {
             sSelectionFlags |= CAM_MODE_LAKITU_WAS_ZOOMED_OUT;
             gCameraMovementFlags &= ~CAM_MOVE_ZOOMED_OUT;
         }
-        sCameraSoundFlags |= CAM_SOUND_MARIO_ACTIVE;
+
     }
 
     // Switch back to normal mode
@@ -3735,7 +3707,6 @@ s32 set_cam_angle(s32 mode) {
         } else {
             gCameraMovementFlags &= ~CAM_MOVE_ZOOMED_OUT;
         }
-        sCameraSoundFlags |= CAM_SOUND_NORMAL_ACTIVE;
     }
     if (sSelectionFlags & CAM_MODE_MARIO_ACTIVE) {
         curMode = CAM_ANGLE_MARIO;
@@ -3885,26 +3856,6 @@ s32 find_c_buttons_pressed(u16 currentState, u16 buttonsPressed, u16 buttonsDown
 /**
  * Determine which icon to show on the HUD
  */
-s32 update_camera_hud_status(struct Camera *c) {
-    s16 status = CAM_STATUS_NONE;
-
-    if (c->cutscene != 0
-        || ((gPlayer1Controller->buttonDown & R_TRIG) && cam_select_alt_mode(0) == CAM_SELECTION_FIXED)) {
-        status |= CAM_STATUS_FIXED;
-    } else if (set_cam_angle(0) == CAM_ANGLE_MARIO) {
-        status |= CAM_STATUS_MARIO;
-    } else {
-        status |= CAM_STATUS_LAKITU;
-    }
-    if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
-        status |= CAM_STATUS_C_DOWN;
-    }
-    if (gCameraMovementFlags & CAM_MOVE_C_UP_MODE) {
-        status |= CAM_STATUS_C_UP;
-    }
-    set_hud_camera_status(status);
-    return status;
-}
 
 /**
  * Check `pos` for collisions within `radius`, and update `pos`
@@ -4794,55 +4745,6 @@ void cutscene_intro_peach_play_lakitu_flying_music(void) {
     play_music(SEQ_PLAYER_LEVEL, SEQUENCE_ARGS(15, SEQ_EVENT_CUTSCENE_INTRO), 0);
 }
 
-void play_camera_buzz_if_cdown(void) {
-    if (gPlayer1Controller->buttonPressed & D_CBUTTONS) {
-        play_sound_button_change_blocked();
-    }
-}
-
-void play_camera_buzz_if_cbutton(void) {
-    if (gPlayer1Controller->buttonPressed & CBUTTON_MASK) {
-        play_sound_button_change_blocked();
-    }
-}
-
-void play_camera_buzz_if_c_sideways(void) {
-    if ((gPlayer1Controller->buttonPressed & L_CBUTTONS)
-        || (gPlayer1Controller->buttonPressed & R_CBUTTONS)) {
-        play_sound_button_change_blocked();
-    }
-}
-
-void play_sound_cbutton_up(void) {
-    play_sound(SOUND_MENU_CAMERA_ZOOM_IN, gDefaultSoundArgs);
-}
-
-void play_sound_cbutton_down(void) {
-    play_sound(SOUND_MENU_CAMERA_ZOOM_OUT, gDefaultSoundArgs);
-}
-
-void play_sound_cbutton_side(void) {
-    play_sound(SOUND_MENU_CAMERA_TURN, gDefaultSoundArgs);
-}
-
-void play_sound_button_change_blocked(void) {
-    play_sound(SOUND_MENU_CAMERA_BUZZ, gDefaultSoundArgs);
-}
-
-void play_sound_rbutton_changed(void) {
-    play_sound(SOUND_MENU_CLICK_CHANGE_VIEW, gDefaultSoundArgs);
-}
-
-void play_sound_if_cam_switched_to_lakitu_or_mario(void) {
-    if (sCameraSoundFlags & CAM_SOUND_MARIO_ACTIVE) {
-        play_sound_rbutton_changed();
-    }
-    if (sCameraSoundFlags & CAM_SOUND_NORMAL_ACTIVE) {
-        play_sound_rbutton_changed();
-    }
-    sCameraSoundFlags &= ~(CAM_SOUND_MARIO_ACTIVE | CAM_SOUND_NORMAL_ACTIVE);
-}
-
 /**
  * Handles input for radial, outwards radial, parallel tracking, and 8 direction mode.
  */
@@ -4873,22 +4775,9 @@ s32 radial_camera_input(struct Camera *c, UNUSED f32 unused) {
                     if (sModeOffsetYaw > 0x22AA) {
                         s2ndRotateFlags |= CAM_MOVE_ROTATE_RIGHT;
                     }
-
-                    if (sModeOffsetYaw == DEGREES(105)) {
-                        play_sound_button_change_blocked();
-                    } else {
-                        play_sound_cbutton_side();
-                    }
-                } else {
-                    if (sModeOffsetYaw == DEGREES(60)) {
-                        play_sound_button_change_blocked();
-                    } else {
-                        play_sound_cbutton_side();
-                    }
                 }
             } else {
                 gCameraMovementFlags |= CAM_MOVE_RETURN_TO_MIDDLE;
-                play_sound_cbutton_up();
             }
         }
         if (gPlayer1Controller->buttonPressed & L_CBUTTONS) {
@@ -4902,22 +4791,9 @@ s32 radial_camera_input(struct Camera *c, UNUSED f32 unused) {
                     if (sModeOffsetYaw < -0x22AA) {
                         s2ndRotateFlags |= CAM_MOVE_ROTATE_LEFT;
                     }
-
-                    if (sModeOffsetYaw == DEGREES(-105)) {
-                        play_sound_button_change_blocked();
-                    } else {
-                        play_sound_cbutton_side();
-                    }
-                } else {
-                    if (sModeOffsetYaw == DEGREES(-60)) {
-                        play_sound_button_change_blocked();
-                    } else {
-                        play_sound_cbutton_side();
-                    }
                 }
             } else {
                 gCameraMovementFlags |= CAM_MOVE_RETURN_TO_MIDDLE;
-                play_sound_cbutton_up();
             }
         }
     }
@@ -4926,7 +4802,6 @@ s32 radial_camera_input(struct Camera *c, UNUSED f32 unused) {
     if (gPlayer1Controller->buttonPressed & U_CBUTTONS) {
         if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
             gCameraMovementFlags &= ~CAM_MOVE_ZOOMED_OUT;
-            play_sound_cbutton_up();
         } else {
             set_mode_c_up(c);
         }
@@ -4937,11 +4812,9 @@ s32 radial_camera_input(struct Camera *c, UNUSED f32 unused) {
         if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
             gCameraMovementFlags |= CAM_MOVE_ALREADY_ZOOMED_OUT;
 #ifndef VERSION_JP
-            play_camera_buzz_if_cdown();
 #endif
         } else {
             gCameraMovementFlags |= CAM_MOVE_ZOOMED_OUT;
-            play_sound_cbutton_down();
         }
     }
 
@@ -4974,7 +4847,6 @@ void handle_c_button_movement(struct Camera *c) {
     if (gPlayer1Controller->buttonPressed & U_CBUTTONS) {
         if (c->mode != CAMERA_MODE_FIXED && (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT)) {
             gCameraMovementFlags &= ~CAM_MOVE_ZOOMED_OUT;
-            play_sound_cbutton_up();
         } else {
             set_mode_c_up(c);
             if (sZeroZoomDist > gCameraZoomDist) {
@@ -4990,13 +4862,9 @@ void handle_c_button_movement(struct Camera *c) {
             if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
                 gCameraMovementFlags |= CAM_MOVE_ALREADY_ZOOMED_OUT;
                 sZoomAmount = gCameraZoomDist + 400.f;
-#ifndef VERSION_JP
-                play_camera_buzz_if_cdown();
-#endif
             } else {
                 gCameraMovementFlags |= CAM_MOVE_ZOOMED_OUT;
                 sZoomAmount = gCameraZoomDist + 400.f;
-                play_sound_cbutton_down();
             }
         }
 
@@ -5007,9 +4875,6 @@ void handle_c_button_movement(struct Camera *c) {
                 gCameraMovementFlags &= ~CAM_MOVE_ROTATE_LEFT;
             } else {
                 gCameraMovementFlags |= CAM_MOVE_ROTATE_RIGHT;
-                if (sCSideButtonYaw == 0) {
-                    play_sound_cbutton_side();
-                }
                 sCSideButtonYaw = -cSideYaw;
             }
         }
@@ -5018,9 +4883,6 @@ void handle_c_button_movement(struct Camera *c) {
                 gCameraMovementFlags &= ~CAM_MOVE_ROTATE_RIGHT;
             } else {
                 gCameraMovementFlags |= CAM_MOVE_ROTATE_LEFT;
-                if (sCSideButtonYaw == 0) {
-                    play_sound_cbutton_side();
-                }
                 sCSideButtonYaw = cSideYaw;
             }
         }
@@ -9586,7 +9448,6 @@ BAD_RETURN(s32) intro_pipe_exit_text(UNUSED struct Camera *c) {
 
 #ifndef VERSION_JP
 BAD_RETURN(s32) play_sound_intro_turn_on_hud(UNUSED struct Camera *c) {
-    play_sound_rbutton_changed();
 }
 #endif
 
