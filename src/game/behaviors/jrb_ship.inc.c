@@ -17,7 +17,6 @@ void bhv_sunken_ship_part_loop(void) {
         o->oOpacity = 140;
     else
         o->oOpacity = o->oDistanceToMario * 140.0f / 10000.0;
-    cur_obj_disable_rendering();
 }
 
 void bhv_ship_part_3_loop(void) {

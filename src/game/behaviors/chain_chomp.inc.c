@@ -171,15 +171,15 @@ static void chain_chomp_sub_act_turn(void) {
     o->oGravity = -4.0f;
 
     chain_chomp_restore_normal_chain_lengths();
-    obj_move_pitch_approach(0, 0x300);
+    obj_move_pitch_approach(0, 0x100);
 
     if (o->oMoveFlags & OBJ_MOVE_MASK_ON_GROUND) {
         cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x400);
         if (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x800) {
-            if (o->oTimer > 1) {
+            if (o->oTimer > 30) {
                 if (cur_obj_check_anim_frame(0)) {
                     cur_obj_reverse_animation();
-                    if (o->oTimer > 2) {
+                    if (o->oTimer > 40) {
                         // Increase the maximum distance from the pivot and enter
                         // the lunging sub-action.
                         cur_obj_play_sound_2(SOUND_GENERAL_CHAIN_CHOMP2);
@@ -200,7 +200,7 @@ static void chain_chomp_sub_act_turn(void) {
             }
         } else {
             cur_obj_play_sound_2(SOUND_GENERAL_CHAIN_CHOMP1);
-            o->oForwardVel = 30.0f;
+            o->oForwardVel = 10.0f;
             o->oVelY = 20.0f;
         }
     } else {
@@ -246,7 +246,7 @@ static void chain_chomp_sub_act_lunge(void) {
         }
     }
 
-    if (o->oTimer < 10) {
+    if (o->oTimer < 30) {
         cur_obj_reverse_animation();
     }
 }
@@ -279,7 +279,7 @@ static void chain_chomp_released_lunge_around(void) {
         // Before first bounce, turn toward mario and wait 2 seconds
         if (o->oChainChompNumLunges == 0) {
             if (cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x320)) {
-                if (o->oTimer > 10) {
+                if (o->oTimer > 60) {
                     o->oChainChompNumLunges += 1;
                     // enable wall collision
                     o->oWallHitboxRadius = 200.0f;
