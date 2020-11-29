@@ -45,13 +45,9 @@ o->oParentRelativePosZ = 150.0f;
 
 }
 
-int s_ai_pitch(s32 angle, f32 dist)
+s32 s_ai_pitch()
 {
-
-	if ( (cur_obj_rotate_yaw_toward(o->oAngleToMario,angle)) && (o->oDistanceToMario < dist) ) 
-	return TRUE;
-	else																	  return FALSE;
-	
+	return (o->oTimer > 45) || (o->oMoveFlags & OBJ_MOVE_HIT_EDGE); //Credit to Render96 Team	
 }
 
 void bhv_motos_anchor_mario_loop(void) {
@@ -114,17 +110,14 @@ void motos_player_pitch(void){
 void motos_carry_start(void)
 {
 	cur_obj_init_animation_with_sound(3);
-	if ( cur_obj_check_if_near_animation_end() ){
-		if ( s_ai_pitch(0x200,250) ) o->oAction = 5;
+		if(s_ai_pitch()) o->oAction = 5;
 		else			   			 o->oAction = 5;
-	}		
-
 }
 
 void motos_carry_run(void)
 {
 	s32 sp1C = gGlobalTimer;
-	o->oForwardVel = 6.5f;
+	o->oForwardVel = 10.0f;
 	if ((sp1C & 4) == 0) {
 cur_obj_play_sound_2(SOUND_ACTION_METAL_STEP);
 }	
@@ -136,10 +129,8 @@ cur_obj_play_sound_2(SOUND_ACTION_METAL_STEP);
 	o->oMotosUnk100 = 0;
 }
 	cur_obj_init_animation_with_sound(2);
-	if ( cur_obj_check_if_near_animation_end() ){
-	if ( s_ai_pitch(0x200,250) )  o->oAction = 3;
+	if (s_ai_pitch())  o->oAction = 3;
 	else			   			  o->oAction = 5;
-	}
 }
 
 void motos_pitch(void)
