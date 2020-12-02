@@ -1361,16 +1361,33 @@ static s32 act_hold_metal_water_jump(struct MarioState *m) {
 }
 
 static s32 act_metal_water_falling(struct MarioState *m) {
+	s16 intendedDYaw;
+	f32 intendedMag;
+	f32 buoyancy = get_buoyancy(m);
+    m->vel[1] = approach_f32(m->vel[1], buoyancy, 2.0f, 1.0f);
+	m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.35f, 0.35f);
     if (!(m->flags & MARIO_METAL_CAP)) {
         return set_mario_action(m, ACT_WATER_IDLE, 0);
     }
-
+	{
     if (m->input & INPUT_NONZERO_ANALOG) {
         m->faceAngle[1] += 0x400 * sins(m->intendedYaw - m->faceAngle[1]);
-    }
+		            intendedDYaw = m->intendedYaw - m->faceAngle[1];
+            intendedMag = m->intendedMag / 64.0f;
 
+            m->forwardVel += 1.0f * coss(intendedDYaw) * intendedMag;
+    }
+        if (m->forwardVel > 16.0f) {
+            m->forwardVel -= 1.0f;
+        }
+        if (m->forwardVel < -16.0f) {
+            m->forwardVel += 1.0f;
+        }
+	}
+		m->vel[0] = m->slideVelX = m->forwardVel * sins(m->faceAngle[1]);
+        m->vel[2] = m->slideVelZ = m->forwardVel * coss(m->faceAngle[1]);
     set_mario_animation(m, m->actionArg == 0 ? MARIO_ANIM_GENERAL_FALL : MARIO_ANIM_FALL_FROM_WATER);
-    stationary_slow_down(m);
+//    stationary_slow_down(m);
 
     if (perform_water_step(m) & WATER_STEP_HIT_FLOOR) { // hit floor or cancelled
         set_mario_action(m, ACT_METAL_WATER_FALL_LAND, 0);
@@ -1380,6 +1397,11 @@ static s32 act_metal_water_falling(struct MarioState *m) {
 }
 
 static s32 act_hold_metal_water_falling(struct MarioState *m) {
+	s16 intendedDYaw;
+    f32 intendedMag;
+	f32 buoyancy = get_buoyancy(m);
+    m->vel[1] = approach_f32(m->vel[1], buoyancy, 2.0f, 1.0f);
+	m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.35f, 0.35f);
     if (m->marioObj->oInteractStatus & INT_STATUS_MARIO_DROP_OBJECT) {
         return drop_and_set_mario_action(m, ACT_METAL_WATER_FALLING, 0);
     }
@@ -1387,13 +1409,25 @@ static s32 act_hold_metal_water_falling(struct MarioState *m) {
     if (!(m->flags & MARIO_METAL_CAP)) {
         return set_mario_action(m, ACT_HOLD_WATER_IDLE, 0);
     }
-
+	{
     if (m->input & INPUT_NONZERO_ANALOG) {
         m->faceAngle[1] += 0x400 * sins(m->intendedYaw - m->faceAngle[1]);
-    }
+		            intendedDYaw = m->intendedYaw - m->faceAngle[1];
+            intendedMag = m->intendedMag / 64.0f;
 
+            m->forwardVel += 1.0f * coss(intendedDYaw) * intendedMag;
+    }
+        if (m->forwardVel > 16.0f) {
+            m->forwardVel -= 1.0f;
+        }
+        if (m->forwardVel < -16.0f) {
+            m->forwardVel += 1.0f;
+        }
+	}
+		m->vel[0] = m->slideVelX = m->forwardVel * sins(m->faceAngle[1]);
+        m->vel[2] = m->slideVelZ = m->forwardVel * coss(m->faceAngle[1]);
     set_mario_animation(m, MARIO_ANIM_FALL_WITH_LIGHT_OBJ);
-    stationary_slow_down(m);
+ //   stationary_slow_down(m);
 
     if (perform_water_step(m) & WATER_STEP_HIT_FLOOR) { // hit floor or cancelled
         set_mario_action(m, ACT_HOLD_METAL_WATER_FALL_LAND, 0);

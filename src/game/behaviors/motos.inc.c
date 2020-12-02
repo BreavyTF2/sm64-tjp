@@ -83,7 +83,6 @@ cur_obj_play_sound_2(SOUND_OBJ_BULLY_WALKING);
 
 }
 
-
 void motos_player_carry(void)
 {
 
@@ -110,10 +109,11 @@ void motos_player_pitch(void){
 void motos_carry_start(void)
 {
 	cur_obj_init_animation_with_sound(3);
+	if ( cur_obj_check_if_near_animation_end() ){
 		if(s_ai_pitch()) o->oAction = 5;
 		else			   			 o->oAction = 5;
 }
-
+}
 void motos_carry_run(void)
 {
 	s32 sp1C = gGlobalTimer;
@@ -123,14 +123,14 @@ cur_obj_play_sound_2(SOUND_ACTION_METAL_STEP);
 }	
 	o->oMotosUnk100 += player_performed_grab_escape_action();
     if (o->oMotosUnk100 > 10) {
-		o->oMotosUnk88 = 3;
-	o->oAction = 1;
+	o->oAction = 10;
 	o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
+	o->oMotosUnk88 = 3;
 	o->oMotosUnk100 = 0;
+	
 }
 	cur_obj_init_animation_with_sound(2);
-	if (s_ai_pitch())  o->oAction = 3;
-	else			   			  o->oAction = 5;
+	if ((s_ai_pitch()) & (o->oMotosUnk88 == 1))  o->oAction = 3;
 }
 
 void motos_pitch(void)
@@ -150,32 +150,23 @@ void motos_fly(void)
 {
 //   o->oForwardVel = 5.0f;
 	cur_obj_init_animation_with_sound(5);
-		if ((gCurrLevelNum == LEVEL_SL) & (o->oPosY < 1050.0f)) {
+		if ((gCurrLevelNum == LEVEL_SL) & (o->oPosY < 1000.0f)) {
 							cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);     
 			o->oHealth--;
-			o->oPosY = o->oHomeY; //This is a horrible way of making motos return to it's home
-			o->oPosX = o->oHomeX;
-			o->oPosZ = o->oHomeZ;
 			if (o->oHealth) 
-                o->oAction = 8;
+                o->oAction = 11;
             if (o->oHealth == 0) 
                 o->oAction = 9;
 	}
-		if (o->oFloor->type == SURFACE_BURNING) {
+		if ((o->oFloor->type == SURFACE_BURNING) && ( o->oMoveFlags & OBJ_MOVE_LANDED)) {
 							cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);     
 			o->oHealth--;
-			o->oPosY = o->oHomeY;
-			o->oPosX = o->oHomeX;
-			o->oPosZ = o->oHomeZ;
 			if (o->oHealth) 
-                o->oAction = 8;
+                o->oAction = 11;
             if (o->oHealth == 0) 
                 o->oAction = 9;
 	}
-	if ( o->oMoveFlags & OBJ_MOVE_LANDED ) {
-//	cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);      
-	
-//	cur_obj_init_animation_with_sound(4);
+	if (( o->oMoveFlags & OBJ_MOVE_LANDED) && (o->oFloor->type != SURFACE_BURNING)  ) {
 	o->oAction = 8;
 	}
 
@@ -186,15 +177,90 @@ void motos_recover(void) {
     o->oForwardVel = 2.0f;
 
 	cur_obj_init_animation_with_sound(4);
-if ( cur_obj_check_anim_frame(14) )	
+if ( cur_obj_check_if_near_animation_end() )	
 	o->oAction = 1;
 }
-	
+
+void motos_recover2(void) {
+//   o->oForwardVel = 5.0f;
+    o->oForwardVel = 0.0f;
+
+	cur_obj_init_animation_with_sound(7);
+if ( cur_obj_check_if_near_animation_end() )	
+	o->oAction = 1;
+}
+
+void motos_returnhome(void) {
+    switch (o->oSubAction) {
+        case 0:
+		    cur_obj_become_intangible();
+            if (o->oTimer == 0)
+                cur_obj_play_sound_2(SOUND_OBJ_KING_BOBOMB_JUMP);
+            cur_obj_init_animation_and_extend_if_at_end(5);
+            o->oMoveAngleYaw =  cur_obj_angle_to_home();
+            if (o->oPosY < o->oHomeY)
+                o->oVelY = 60.0f;
+            else {
+                arc_to_goal_pos(&o->oHomeX, &o->oPosX, 50.0f, -4.0f);
+                o->oSubAction++;
+				o->oMotosUnk88 = 0;
+				o->oMotosUnk100 = 0;
+            }
+            break;
+        case 1:
+            cur_obj_init_animation_and_extend_if_at_end(4);
+            if (o->oVelY < 0 && o->oPosY < o->oHomeY) {
+                o->oPosY = o->oHomeY;
+                o->oVelY = 0;
+                o->oForwardVel = 0;
+                o->oGravity = -4.0f;
+				o->oMotosUnk88 = 0;
+				o->oMotosUnk100 = 0;
+                cur_obj_play_sound_2(SOUND_OBJ_KING_BOBOMB);
+                cur_obj_shake_screen(SHAKE_POS_SMALL);
+                o->oSubAction++;
+            }
+            break;
+        case 2:
+		cur_obj_become_tangible();
+                                o->oAction = 1;
+            break;
+    }
+}	
+
+void motos_spawn_minion(s32 arg0, s32 arg1, s32 arg2, s16 arg3) {
+    struct Object *mbully =
+        spawn_object_abs_with_rot(o, 0, MODEL_BULLY, bhvSmallBully, arg0, arg1, arg2, 0, arg3, 00);
+    mbully->oBullySubtype = BULLY_STYPE_MINION;
+    mbully->oBehParams2ndByte = BULLY_BP_SIZE_SMALL;
+}
+
+void motos_minions(void) {
+    motos_spawn_minion(4454, 307, -5426, 0);
+    motos_spawn_minion(3840, 307, -6041, 0);
+    motos_spawn_minion(3226, 307, -5426, 0);
+
+    o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
+
+    cur_obj_become_intangible();
+
+    o->oAction = 13;
+}
+void motos_inactive(void) {
+	            if (o->oBullyKBTimerAndMinionKOCounter == 3) {
+                play_puzzle_jingle();
+				if (o->oTimer == 91) {
+				o->oPosY = 1037.0f;
+				}
+                if (o->oTimer >= 91)
+			o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
+            cur_obj_become_tangible();
+                    o->oAction = 10;
+            }
+}
 
 void motos_death(void) { 
-
         create_sound_spawner(SOUND_OBJ_KING_WHOMP_DEATH);
-
         spawn_mist_particles_variable(0, 0, 200.0f);
         spawn_triangle_break_particles(20, 138, 3.0f, 4);
         cur_obj_shake_screen(SHAKE_POS_SMALL);
@@ -202,13 +268,19 @@ void motos_death(void) {
         cur_obj_become_intangible();
 		if (gCurrLevelNum == LEVEL_SL) {
         spawn_default_star(300.0f, 1500.0f, -5335.0f);
-		o->oAction = 8;
+		o->oAction = 12;
 		}
 		else 
         spawn_default_star(3700.0f, 600.0f, -5500.0f);
-        o->oAction = 8;
+        o->oAction = 12;
 		}
-void (*sMotosActions[])(void) = { motos_wait, motos_player_search, motos_player_carry, motos_player_pitch, motos_carry_start, motos_carry_run, motos_pitch, motos_fly, motos_recover, motos_death};
+		
+void motos_deactivate(void) {  //Added so motos doesn't make walking sounds after death
+//        create_sound_spawner(SOUND_OBJ_KING_WHOMP_DEATH);
+		cur_obj_hide();
+        cur_obj_become_intangible();
+		}
+void (*sMotosActions[])(void) = { motos_wait, motos_player_search, motos_player_carry, motos_player_pitch, motos_carry_start, motos_carry_run, motos_pitch, motos_fly, motos_recover, motos_death, motos_recover2, motos_returnhome, motos_deactivate, motos_inactive};
 
 void motos_main(void)
 {
@@ -264,6 +336,18 @@ void s_motos(void)
 	break;
 	case 9:
 	motos_death();
+	break;
+	case 10:
+	motos_recover2();
+	break;
+	case 11:
+	motos_returnhome();
+	break;
+	case 12:
+	motos_deactivate();
+	break;
+	case 13:
+	motos_inactive();
 	break;
 	}
 cur_obj_call_action_function(sMotosActions);

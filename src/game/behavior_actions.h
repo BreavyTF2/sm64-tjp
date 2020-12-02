@@ -386,6 +386,7 @@ void bhv_unbaba_init(void);
 void bhv_unbaba_loop(void);
 void s_motos_hand(void);
 void s_motos(void);
+void motos_minions(void);
 void bhv_motos_anchor_mario_loop(void);
 void bhv_unbaba_loop(void);
 void bhv_bowser_course_red_coin_star_loop(void);

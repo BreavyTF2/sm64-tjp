@@ -122,7 +122,10 @@ s32 act_idle(struct MarioState *m) {
     if (m->actionState == 3) {
         if ((m->area->terrainType & TERRAIN_MASK) == TERRAIN_SNOW) {
             return set_mario_action(m, ACT_SHIVERING, 0);
-        } else {
+        }
+		if ((m->area->terrainType & TERRAIN_MASK) == TERRAIN_SPOOKY) {
+            return set_mario_action(m, ACT_CRYING, 0);			
+		} else {
             return set_mario_action(m, ACT_START_SLEEPING, 0);
         }
     }
@@ -405,6 +408,64 @@ s32 act_shivering(struct MarioState *m) {
         case 2:
             set_mario_animation(m, MARIO_ANIM_SHIVERING_RETURN_TO_IDLE);
             if (is_anim_past_end(m)) {
+                set_mario_action(m, ACT_IDLE, 0);
+            }
+            break;
+    }
+    return FALSE;
+}
+
+s32 act_crying(struct MarioState *m) {
+    s32 animFrame;
+
+    if (m->input & INPUT_UNKNOWN_10) {
+        return set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
+    }
+
+    if (m->input & INPUT_OFF_FLOOR) {
+        return set_mario_action(m, ACT_FREEFALL, 0);
+    }
+
+    if (m->input & INPUT_ABOVE_SLIDE) {
+        return set_mario_action(m, ACT_BEGIN_SLIDING, 0);
+    }
+
+    if (m->input
+        & (INPUT_NONZERO_ANALOG | INPUT_A_PRESSED | INPUT_OFF_FLOOR | INPUT_ABOVE_SLIDE
+           | INPUT_FIRST_PERSON | INPUT_UNKNOWN_10 | INPUT_B_PRESSED | INPUT_Z_PRESSED)) {
+        m->actionState = 2;
+    }
+
+    stationary_ground_step(m);
+    switch (m->actionState) {
+        case 0:
+		m->marioBodyState->eyeState = MARIO_EYES_HALF_CLOSED;
+            animFrame = set_mario_animation(m, MARIO_ANIM_START_REACH_POCKET);
+            if (animFrame == 19) {
+                m->particleFlags |= PARTICLE_BREATH;
+                play_sound(SOUND_MARIO_PANTING, m->marioObj->header.gfx.cameraToObject);
+            }
+            if (animFrame == 31) {
+                play_sound(SOUND_MARIO_PANTING, m->marioObj->header.gfx.cameraToObject);
+            }
+            if (is_anim_past_end(m)) {
+                m->actionState = 1;
+            }
+            break;
+
+        case 1:
+            animFrame = set_mario_animation(m, MARIO_ANIM_REACH_POCKET);
+			m->marioBodyState->eyeState = MARIO_EYES_CLOSED;
+            if (animFrame == 25) {
+                play_sound(SOUND_MARIO_PANTING, m->marioObj->header.gfx.cameraToObject);
+            }
+            break;
+
+        case 2:
+		m->marioBodyState->eyeState = MARIO_EYES_HALF_CLOSED;
+            set_mario_animation(m, MARIO_ANIM_STOP_REACH_POCKET);
+            if (is_anim_past_end(m)) {
+				m->marioBodyState->eyeState = MARIO_EYES_OPEN;
                 set_mario_action(m, ACT_IDLE, 0);
             }
             break;
@@ -1152,6 +1213,7 @@ s32 mario_execute_stationary_action(struct MarioState *m) {
         case ACT_BRAKING_STOP:            cancel = act_braking_stop(m);                     break;
         case ACT_BUTT_SLIDE_STOP:         cancel = act_butt_slide_stop(m);                  break;
         case ACT_HOLD_BUTT_SLIDE_STOP:    cancel = act_hold_butt_slide_stop(m);             break;
+		case ACT_CRYING:    cancel = act_crying(m);             break;
     }
     /* clang-format on */
 

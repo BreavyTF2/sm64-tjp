@@ -49,17 +49,17 @@ void unbaba_act_attack(void) // Define Attacking Action for Blargg
 	
 	cur_obj_init_animation_with_sound(UNBABA_ANIM_ATTACK);
 		if (animTimer < (20)){
-			o->oForwardVel = 1.25*(animTimer)+1;
+			o->oForwardVel = 1.5*(animTimer)+1;
 			o->hurtboxRadius = 350;
 			o->hurtboxHeight = 200;
 		}
 		if (animTimer >= (20)){
-			o->oForwardVel = 0.75*(animTimer)+5;
+			o->oForwardVel = 1*(animTimer)+5;
 				o->hurtboxRadius = 425;
 				o->hurtboxHeight = 240;
 	}
 			if (animTimer > (25)){
-			o->oForwardVel = 30/(animTimer-12)+3;
+			o->oForwardVel = 36/(animTimer-12)+3;
 			o->hurtboxRadius = 350;
 			o->hurtboxHeight = 200;
 	}

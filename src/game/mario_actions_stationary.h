@@ -13,6 +13,7 @@ s32 act_start_sleeping(struct MarioState *m);
 s32 act_sleeping(struct MarioState *m);
 s32 act_waking_up(struct MarioState *m);
 s32 act_shivering(struct MarioState *m);
+s32 act_crying(struct MarioState *m);
 s32 act_coughing(struct MarioState *m);
 s32 act_standing_against_wall(struct MarioState *m);
 s32 act_in_quicksand(struct MarioState *m);
