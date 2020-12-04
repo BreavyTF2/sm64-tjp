@@ -17,7 +17,7 @@
 
 // NOTE: Be sure to edit sZoomOutAreaMasks in camera.c, as there isnt a good way to macro those right now.
 // TODO: Figure something out for sZoomOutAreaMasks?
-STUB_LEVEL(  "",               LEVEL_UNKNOWN_1,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
+STUB_LEVEL(  "TPP ROM",               LEVEL_UNKNOWN_1,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",               LEVEL_UNKNOWN_2,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",               LEVEL_UNKNOWN_3,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("TERESA OBAKE",   LEVEL_BBH,              COURSE_BBH,      bbh,              spooky,   28000,    0x28, 0x28, 0x28, sDynBbh,   sCamBBH)

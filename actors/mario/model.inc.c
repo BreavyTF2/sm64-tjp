@@ -2,43 +2,43 @@
 
 // 0x04000000 # solid color blue - butt, left thigh, right thigh - all poly types
 static const Lights1 mario_blue_lights_group = gdSPDefLights1(
-    0x00, 0x00, 0x7f,
+    0x00, 0x00, 0x40,
     0x00, 0x00, 0xff, 0x28, 0x28, 0x28
 );
 
 // 0x04000018 # solid color red - left & right arm, torso (tshirt part), caps - all poly types
 static const Lights1 mario_red_lights_group = gdSPDefLights1(
-    0x7f, 0x00, 0x00,
+    0x40, 0x00, 0x00,
     0xff, 0x00, 0x00, 0x28, 0x28, 0x28
 );
 
 // 0x04000030 # solid color white - metal butt & left thigh - normal left & right hand closed & open (with cap too) and all wings - all poly types
 static const Lights1 mario_white_lights_group = gdSPDefLights1(
-    0x7f, 0x7f, 0x7f,
+    0x40, 0x40, 0x40,
     0xff, 0xff, 0xff, 0x28, 0x28, 0x28
 );
 
 // 0x04000048 # solid color brown 1 - foot - all poly types
 static const Lights1 mario_brown1_lights_group = gdSPDefLights1(
-    0x39, 0x0e, 0x07,
+    0x13, 0x07, 0x04,
     0x72, 0x1c, 0x0e, 0x28, 0x28, 0x28
 );
 
 // 0x04000060 # solid color beige skin - face (cap on and off dls) - all poly types
 static const Lights1 mario_beige_lights_group = gdSPDefLights1(
-    0x7f, 0x60, 0x3c,
+    0x40, 0x30, 0x1e,
     0xfe, 0xc1, 0x79, 0x28, 0x28, 0x28
 );
 
 // 0x04000078  # solid color brown 2 - hair - all poly types
 static const Lights1 mario_brown2_lights_group = gdSPDefLights1(
-    0x22, 0x03, 0x00,
+    0x17, 0x03, 0x00,
     0x44, 0x06, 0x00, 0x28, 0x28, 0x28
 );
 
 // 0x04000090
 ALIGNED8 static const u8 mario_texture_metal[] = {
-#include "actors/mario/mario_metal.rgba16.inc.c"
+#include "actors/mario/mario_metal.ia16.inc.c"
 };
 
 // 0x04001090
@@ -125,12 +125,12 @@ ALIGNED8 static const u8 mario_texture_wings_half_2[] = {
 
 // 0x0400A090
 ALIGNED8 static const u8 mario_texture_metal_wings_half_1[] = {
-#include "actors/mario/mario_metal_wing_unused.rgba16.inc.c"
+#include "actors/mario/mario_metal_wing_unused.ia16.inc.c"
 };
 
 // 0x0400B090
 ALIGNED8 static const u8 mario_texture_metal_wings_half_2[] = {
-#include "actors/mario/mario_metal_wing_tip_unused.rgba16.inc.c"
+#include "actors/mario/mario_metal_wing_tip_unused.ia16.inc.c"
 };
 
 // 0x0400C090
@@ -392,7 +392,7 @@ const Gfx mario_metal_butt[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN),
     gsDPSetCombineMode(G_CC_DECALFADE, G_CC_DECALFADE),
-    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_RGBA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_IA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPTexture(0x0F80, 0x07C0, 0, G_TX_RENDERTILE, G_ON),
     gsSPLight(&mario_white_lights_group.l, 1),
     gsSPLight(&mario_white_lights_group.a, 2),
@@ -990,7 +990,7 @@ const Gfx mario_metal_left_thigh[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN),
     gsDPSetCombineMode(G_CC_DECALFADE, G_CC_DECALFADE),
-    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_RGBA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_IA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPTexture(0x0F80, 0x07C0, 0, G_TX_RENDERTILE, G_ON),
     gsSPLight(&mario_white_lights_group.l, 1),
     gsSPLight(&mario_white_lights_group.a, 2),
@@ -3335,7 +3335,7 @@ const Gfx mario_metal_medium_poly_butt[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN),
     gsDPSetCombineMode(G_CC_DECALFADE, G_CC_DECALFADE),
-    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_RGBA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_IA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPTexture(0x0F80, 0x07C0, 0, G_TX_RENDERTILE, G_ON),
     gsSPLight(&mario_white_lights_group.l, 1),
     gsSPLight(&mario_white_lights_group.a, 2),
@@ -3724,7 +3724,7 @@ const Gfx mario_metal_medium_poly_left_thigh[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN),
     gsDPSetCombineMode(G_CC_DECALFADE, G_CC_DECALFADE),
-    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_RGBA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_IA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPTexture(0x0F80, 0x07C0, 0, G_TX_RENDERTILE, G_ON),
     gsSPLight(&mario_white_lights_group.l, 1),
     gsSPLight(&mario_white_lights_group.a, 2),
@@ -4214,7 +4214,7 @@ const Gfx mario_metal_low_poly_butt[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN),
     gsDPSetCombineMode(G_CC_DECALFADE, G_CC_DECALFADE),
-    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_RGBA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_IA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPTexture(0x0F80, 0x07C0, 0, G_TX_RENDERTILE, G_ON),
     gsSPLight(&mario_white_lights_group.l, 1),
     gsSPLight(&mario_white_lights_group.a, 2),
@@ -4459,7 +4459,7 @@ const Gfx mario_metal_low_poly_left_thigh[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN),
     gsDPSetCombineMode(G_CC_DECALFADE, G_CC_DECALFADE),
-    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_RGBA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_IA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPTexture(0x0F80, 0x07C0, 0, G_TX_RENDERTILE, G_ON),
     gsSPLight(&mario_white_lights_group.l, 1),
     gsSPLight(&mario_white_lights_group.a, 2),
@@ -6187,11 +6187,13 @@ const Gfx mario_metal_right_hand_cap_shared_dl[] = {
 // 0x0401B278 - 0x0401B2D0
 const Gfx mario_metal_right_hand_cap_shared_dl_wings[] = {
     gsSPDisplayList(mario_right_hand_cap_wings_intial_dl),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_1),
+	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
+    gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (64 - 1) << G_TEXTURE_IMAGE_FRAC),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_1),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPDisplayList(mario_right_hand_cap_wings_half_1_dl),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_2),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_2),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPDisplayList(mario_right_hand_cap_wings_half_2_dl),
@@ -6694,7 +6696,7 @@ const Gfx mario_metal_cap_unused_dl[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
-    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_RGBA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_IA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPTexture(0x0F80, 0x07C0, 0, G_TX_RENDERTILE, G_ON),
     gsSPLight(&mario_white_lights_group.l, 1),
     gsSPLight(&mario_white_lights_group.a, 2),
@@ -6726,11 +6728,11 @@ const Gfx mario_cap_wings_unused[] = {
 // 0x0401C8E8 - 0x0401C940 # Unreferenced, unused like the duplicated cap, same case
 const Gfx mario_metal_cap_wings_unused[] = {
     gsSPDisplayList(mario_cap_wings_unused_intial_dl),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_1),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_1),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPDisplayList(mario_wings_half_1_unused_dl),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_2),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_2),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPDisplayList(mario_wings_half_2_unused_dl),
@@ -6827,18 +6829,18 @@ const Gfx mario_metal_cap_wings[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
     gsSPClearGeometryMode(G_CULL_BACK | G_SHADING_SMOOTH),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (64 - 1) << G_TEXTURE_IMAGE_FRAC),
     gsSPLight(&mario_white_lights_group.l, 1),
     gsSPLight(&mario_white_lights_group.a, 2),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_1),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_1),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPDisplayList(mario_wings_half_1_dl),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_2),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_2),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPDisplayList(mario_wings_half_2_dl),
@@ -6856,16 +6858,16 @@ const Gfx mario_metal_cap_wings_transparent[] = {
     gsSPTexture(0x0F80, 0x07C0, 0, G_TX_RENDERTILE, G_OFF),
     gsDPSetCombineMode(G_CC_DECALFADEA, G_CC_DECALFADEA),
     gsSPClearGeometryMode(G_CULL_BACK | G_SHADING_SMOOTH),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
+    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
     gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (64 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_1),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_1),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPDisplayList(mario_wings_half_1_dl),
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_2),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, mario_texture_metal_wings_half_2),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPDisplayList(mario_wings_half_2_dl),
@@ -6873,7 +6875,7 @@ const Gfx mario_metal_cap_wings_transparent[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_TEXTURE_GEN | G_CULL_BACK | G_SHADING_SMOOTH),
     gsDPSetCombineMode(G_CC_DECALFADE, G_CC_DECALFADE),
-    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_RGBA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(mario_texture_metal, G_IM_FMT_IA, G_IM_SIZ_16b, 64, 32, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_WRAP | G_TX_NOMIRROR, 6, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPTexture(0x0F80, 0x07C0, 0, G_TX_RENDERTILE, G_ON),
     gsSPEndDisplayList(),
 };

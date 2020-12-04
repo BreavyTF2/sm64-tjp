@@ -20,14 +20,16 @@ void bhv_castle_floor_trap_open_detect(void) {
     else {
         o->oAngleVelRoll = 0x400;
         if (o->oInteractStatus & INT_STATUS_TRAP_TURN)
-			cur_obj_play_sound_2(SOUND_GENERAL_CASTLE_TRAP_OPEN);
             o->oAction = 1; // detects interact then opens the trapdoor
     }
 }
 
 void bhv_castle_floor_trap_open(void) {
+    if (o->oTimer == 0)
+        cur_obj_play_sound_2(SOUND_GENERAL_CASTLE_TRAP_OPEN);
     o->oAngleVelRoll -= 0x100;
     o->oFaceAngleRoll += o->oAngleVelRoll;
+
     if (o->oFaceAngleRoll < -0x4000) {
         o->oFaceAngleRoll = -0x4000;
         o->oAction = 2; // after opening is done, enable close detection

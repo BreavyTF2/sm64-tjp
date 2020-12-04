@@ -3188,7 +3188,7 @@ const BehaviorScript bhvUnused2A54[] = {
 
 const BehaviorScript bhvCastleFloorTrap[] = {
     BEGIN(OBJ_LIST_DEFAULT),
-    DISABLE_RENDERING(),
+//    DISABLE_RENDERING(),
     CALL_NATIVE(bhv_castle_floor_trap_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_castle_floor_trap_loop),
