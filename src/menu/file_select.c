@@ -2679,7 +2679,7 @@ void print_score_file_star_score(s8 fileIndex, s16 courseIndex, s16 x, s16 y) {
     PRINT_COURSE_SCORES(COURSE_TTM, 0) // TTM
     PRINT_COURSE_SCORES(COURSE_THI, 0) // THI
     PRINT_COURSE_SCORES(COURSE_TTC, 0) // TTC
-    PRINT_COURSE_SCORES(COURSE_RR, 0) // RR
+//    PRINT_COURSE_SCORES(COURSE_RR, 0) // RR
 #undef PRINT_COURSE_SCORES
 #undef PADCHAR
 

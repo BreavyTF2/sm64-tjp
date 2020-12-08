@@ -288,22 +288,14 @@ void render_hud_coins(void) {
  * Disables "X" glyph when Mario has 100 stars or more.
  */
 void render_hud_stars(void) {
-    s8 showX = 0;
 
     if (gHudFlash == 1 && gGlobalTimer & 0x08) {
         return;
     }
 
-    if (gHudDisplay.stars < 100) {
-        showX = 1;
-    }
-
     print_text(168, HUD_TOP_Y, "-"); // 'Star' glyph
-    if (showX == 1) {
-        print_text(184, HUD_TOP_Y, "*"); // 'X' glyph
-    }
-    print_text_fmt_int((showX * 14) + 184,
-                       HUD_TOP_Y, "%d", gHudDisplay.stars);
+    print_text(184, HUD_TOP_Y, "*"); // 'X' glyph
+    print_text_fmt_int(198, HUD_TOP_Y, "%d", gHudDisplay.stars);
 }
 
 /**
@@ -311,11 +303,10 @@ void render_hud_stars(void) {
  * Leftover function from the beta version of the game.
  */
 void render_hud_keys(void) {
-	s8 showX = 0;
 	if ((gHudDisplay.keys >= 1) & (gCurrLevelNum == LEVEL_BBH)) {
 	print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(HUD_STARS_X), 185, "/"); // 'Coin' glyph
     print_text(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(HUD_STARS_X) + 16, 185, "*"); // 'X' glyph
-    print_text_fmt_int((showX * 14) + GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(HUD_STARS_X - 30), 185, "%d", gHudDisplay.keys);
+    print_text_fmt_int(GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(HUD_STARS_X - 30), 185, "%d", gHudDisplay.keys);
     }
 }
 

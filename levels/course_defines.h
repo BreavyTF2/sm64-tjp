@@ -25,8 +25,8 @@ DEFINE_COURSE(COURSE_WDW,  0x22102240)            // (11) Wet Dry World
 DEFINE_COURSE(COURSE_TTM,  0x00000040)            // (12) Tall Tall Mountain
 DEFINE_COURSE(COURSE_THI,  0x11112140)            // (13) Tiny Huge Island
 DEFINE_COURSE(COURSE_TTC,  0x22222240)            // (14) Tick Tock Clock
-DEFINE_COURSE(COURSE_RR,   0x00000040)            // (15) Rainbow Ride
 DEFINE_COURSES_END()
+DEFINE_BONUS_COURSE(COURSE_RR,   0x00000040)            // (15) Rainbow Ride
 DEFINE_BONUS_COURSE(COURSE_BITDW,    0x34444440) // (16) Bowser in the Dark World
 DEFINE_BONUS_COURSE(COURSE_BITFS,    0x34444440) // (17) Bowser in the Fire Sea
 DEFINE_BONUS_COURSE(COURSE_BITS,     0x34444440) // (18) Bowser in the Sky

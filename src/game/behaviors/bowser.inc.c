@@ -854,7 +854,7 @@ s32 bowser_dead_bits_end(void) {
     s32 ret = 0;
     s32 dialogID;
     if (o->oBowserUnkF8 < 2) {
-        if (gHudDisplay.stars < 120)
+        if (gHudDisplay.stars < 113)
             dialogID = DIALOG_121;
         else
             dialogID = DIALOG_163;
