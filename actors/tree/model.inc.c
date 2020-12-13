@@ -1,5 +1,6 @@
 // Tree
-
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 // 0x0302DE10
 static const Lights1 tree_seg3_lights_0302DE10 = gdSPDefLights1(
     0x3f, 0x3f, 0x3f,
@@ -213,3 +214,5 @@ const Gfx tree_seg3_dl_03033258[] = {
     gsSPSetGeometryMode(G_SHADING_SMOOTH),
     gsSPEndDisplayList(),
 };
+#pragma GCC diagnostic pop
+

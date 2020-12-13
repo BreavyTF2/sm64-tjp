@@ -78,4 +78,6 @@ UNUSED static const u64 binid_16 = 16;
 UNUSED static const u64 binid_18 = 18;
 
 #include "motos/model.inc.c"
+#include "motos/anims/data.inc.c"
+#include "motos/anims/table.inc.c"
 #include "icemotos/model.inc.c"

@@ -1,5 +1,6 @@
 // Cannon Barrel
-
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 // 0x08005878
 static const Lights1 cannon_barrel_seg8_lights_08005878 = gdSPDefLights1(
     0x4c, 0x4c, 0x4c,
@@ -156,3 +157,5 @@ const Gfx cannon_barrel_seg8_dl_08006660[] = {
     gsSPDisplayList(cannon_barrel_seg8_dl_080064C0),
     gsSPEndDisplayList(),
 };
+#pragma GCC diagnostic pop
+

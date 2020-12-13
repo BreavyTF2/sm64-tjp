@@ -1,5 +1,4 @@
-// 0x060202F4
-static const s16 whomp_seg6_animvalue_060202F4[] = {
+static short wallman_walk_prm[]={
 	    0,    5,  178,  180,  186,  194,  203,  213,
 	  223,  231,  236,  238,  237,  233,  228,  221,
 	  213,  205,  197,  190,  183,  178,  175,  173,
@@ -101,11 +100,9 @@ static const s16 whomp_seg6_animvalue_060202F4[] = {
 	16429,16362,16412,16468,16428,16372,16449,16736,
 	17139,17556,17883,18015,17971,17852,17676,17464,
 	17232,17000,16787,16612,16493,16449,16486,16515,
-	16445,16377,16390,16428,16449,16449,
-};
+	16445,16377,16390,16428,16449,16449,};
 
-// 0x06020950
-static const u16 whomp_seg6_animindex_06020950[] = {
+static unsigned short wallman_walk_tbl[]= {
 	     1,     1,	/* chn18(11) */
 	    50,     2,
 	     1,     0,
@@ -147,15 +144,14 @@ static const u16 whomp_seg6_animindex_06020950[] = {
 	     1,     0,
 };
 
-// 0x060209EC
-static const struct Animation whomp_seg6_anim_060209EC = {
-    0,
-    0,
-    0,
-    0,
-    50-1,
-    ANIMINDEX_NUMPARTS(whomp_seg6_animindex_06020950),
-    whomp_seg6_animvalue_060202F4,
-    whomp_seg6_animindex_06020950,
-    0,
+static const struct Animation wallman_walk_anm={
+	0,	/* attr 	*/
+	0,					/* code 	*/
+	0,					/* start 	*/
+	0,					/* loop 	*/
+	50-1,
+	12,
+	wallman_walk_prm,
+	wallman_walk_tbl,
+	0,
 };

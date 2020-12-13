@@ -8,7 +8,7 @@ static Movtex thi_movtex_area2_short_side_water_data[] = {
     MOV_TEX_4_BOX_TRIS(-1535,  1874),
     MOV_TEX_4_BOX_TRIS(-1535, -2457),
     MOV_TEX_ROT(     ROTATE_COUNTER_CLOCKWISE),
-    MOV_TEX_ALPHA(    0x96),
+    MOV_TEX_ALPHA(    0x64),
     MOV_TEX_DEFINE(  TEXTURE_WATER),
     MOV_TEX_END(),
 };
@@ -23,7 +23,7 @@ static Movtex thi_movtex_area2_large_side_water_data[] = {
     MOV_TEX_4_BOX_TRIS( 2089,  2458),
     MOV_TEX_4_BOX_TRIS( 2089,  1352),
     MOV_TEX_ROT(     ROTATE_COUNTER_CLOCKWISE),
-    MOV_TEX_ALPHA(    0x96),
+    MOV_TEX_ALPHA(    0x64),
     MOV_TEX_DEFINE(  TEXTURE_WATER),
     MOV_TEX_END(),
 };
@@ -38,7 +38,7 @@ static Movtex thi_movtex_area2_mountain_top_water_data[] = {
     MOV_TEX_4_BOX_TRIS(  307,  -152),
     MOV_TEX_4_BOX_TRIS(  307,  -766),
     MOV_TEX_ROT(     ROTATE_COUNTER_CLOCKWISE),
-    MOV_TEX_ALPHA(    0x96),
+    MOV_TEX_ALPHA(    0x64),
     MOV_TEX_DEFINE(  TEXTURE_WATER),
     MOV_TEX_END(),
 };

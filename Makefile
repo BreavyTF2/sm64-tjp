@@ -12,7 +12,7 @@ default: all
 # Version of the game to build
 VERSION ?= us
 # Graphics microcode used
-GRUCODE ?= f3dzex
+GRUCODE ?= f3dex2
 # If COMPARE is 1, check the output sha1sum when building 'all'
 COMPARE ?= 0
 # If NON_MATCHING is 1, define the NON_MATCHING and AVOID_UB macros when building (recommended)
@@ -125,6 +125,11 @@ ifeq ($(DUMMY),FAIL)
 endif
 
 endif
+endif
+
+VERBOSE ?= 1
+ifeq ($(VERBOSE),0)
+  V := @
 endif
 
 ################ Target Executable and Sources ###############

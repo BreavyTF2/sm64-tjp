@@ -35,6 +35,8 @@
 #include "levels/bbh/header.h"
 #include "levels/castle_inside/header.h"
 #include "levels/hmc/header.h"
+#include "levels/athletic/header.h"
+#include "levels/plane/header.h"
 #include "levels/ssl/header.h"
 #include "levels/bob/header.h"
 #include "levels/sl/header.h"

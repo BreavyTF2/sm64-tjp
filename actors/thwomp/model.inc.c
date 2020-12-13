@@ -1,9 +1,5 @@
-/********************************************************************************
-		RCP_HmsDosun
-														[ Oct 23, 1995 ]
-*********************************************************************************/
-
-#define SCALE 0.25
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 #define ShapeColor_dosun(r,g,b)   {{r/4 ,g/4 ,b/4 ,0 ,r/4 ,g/4 ,b/4 ,0 },{ r,g,b,0, r,g,b,0, 40, 40, 40, 0} }
 
 static Lights1 light_dosun[] = {
@@ -11,9 +7,6 @@ static Lights1 light_dosun[] = {
 	ShapeColor_dosun(149,203,255),
 };
 
-/********************************************************************************/
-/*	Texture data of Dosun.														*/
-/********************************************************************************/
 static unsigned short dosun_skin3_txt[] = {
     0x3221,  0x299f,  0x3a63,  0x4aa7,  0x3a23,  0x3a23,  0x29df,  0x219d,  0x31e1,  0x29df,  0x215d,  0x3221,  0x3a23,  0x31df,  0x3a23,  0x3a23,  0x31e1,  0x3221,  0x29df,  0x4265,  0x31df,  0x4ae7,  0x3a21,  0x3a21,  0x31e1,  0x4aa7,  0x299f,  0x191b,  0x29df,  0x31e1,  0x31e1,  0x29df,  
     0x42a5,  0x3221,  0x299f,  0x29df,  0x299f,  0x299f,  0x215d,  0x215b,  0x3a63,  0x3a23,  0x215b,  0x3a23,  0x195b,  0x29df,  0x219d,  0x4aa7,  0x3a63,  0x215d,  0x31df,  0x299f,  0x3a21,  0x29df,  0x4265,  0x29df,  0x195b,  0x31e1,  0x299f,  0x299f,  0x299d,  0x3a21,  0x191b,  0x219d,  
@@ -381,3 +374,4 @@ Gfx gfx_dosun[] = {
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList() 
 };
+#pragma GCC diagnostic pop

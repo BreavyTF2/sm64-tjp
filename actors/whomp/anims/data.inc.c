@@ -1,2 +1,2 @@
-#include "anim_060202DC.inc.c"
-#include "anim_060209EC.inc.c"
+#include "wallman_walk_anm.inc.c"
+#include "wallman_falldown_anm.inc.c"

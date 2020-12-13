@@ -46,7 +46,6 @@ extern const Gfx koopa_seg6_dl_060089B0[];
 extern const Gfx koopa_seg6_dl_06008A68[];
 extern const Gfx koopa_seg6_dl_06008AC0[];
 extern const Gfx koopa_seg6_dl_06008B50[];
-extern const Gfx koopa_seg6_dl_0600B6E0[];
 extern const Gfx koopa_seg6_dl_0600B838[];
 extern const Gfx koopa_seg6_dl_0600B8B8[];
 extern const Gfx koopa_seg6_dl_0600BA10[];
@@ -54,8 +53,6 @@ extern const Gfx koopa_seg6_dl_0600BA90[];
 extern const Gfx koopa_seg6_dl_0600BC18[];
 extern const Gfx koopa_seg6_dl_0600BC88[];
 extern const Gfx koopa_seg6_dl_0600BE10[];
-extern const Gfx koopa_seg6_dl_0600BE80[];
-extern const Gfx koopa_seg6_dl_0600C240[];
 extern const Gfx koopa_seg6_dl_0600C498[];
 extern const struct Animation *const koopa_seg6_anims_06011364[];
 
@@ -114,22 +111,13 @@ extern const Collision poundable_pole_collision_06002490[];
 
 // whomp
 extern const GeoLayout whomp_geo[];
-extern const Gfx whomp_seg6_dl_0601F4F8[];
-extern const Gfx whomp_seg6_dl_0601F570[];
-extern const Gfx whomp_seg6_dl_0601F5A8[];
-extern const Gfx whomp_seg6_dl_0601F5E0[];
-extern const Gfx whomp_seg6_dl_0601F7F0[];
-extern const Gfx whomp_seg6_dl_0601F880[];
-extern const Gfx whomp_seg6_dl_0601FA58[];
-extern const Gfx whomp_seg6_dl_0601FAE8[];
-extern const Gfx whomp_seg6_dl_0601FB88[];
-extern const Gfx whomp_seg6_dl_0601FBC0[];
-extern const Gfx whomp_seg6_dl_0601FC70[];
-extern const Gfx whomp_seg6_dl_0601FCA8[];
-extern const Gfx whomp_seg6_dl_0601FE10[];
-extern const Gfx whomp_seg6_dl_0601FEA8[];
-extern const Gfx whomp_seg6_dl_0601FFA0[];
-extern const Gfx whomp_seg6_dl_06020038[];
+extern const Gfx RCP_wallman_body[];
+extern const Gfx RCP_wallman_Rfoot[];
+extern const Gfx RCP_wallman_Lfoot[];
+extern const Gfx RCP_wallman_Rarm[];
+extern const Gfx RCP_wallman_Rhand[];
+extern const Gfx RCP_wallman_Larm[];
+extern const Gfx RCP_wallman_Lhand[];
 extern const struct Animation *const whomp_seg6_anims_06020A04[];
 extern const Collision whomp_seg6_collision_06020A0C[];
 

@@ -1,44 +1,39 @@
-// 0x0C000104
 const GeoLayout penguin_geo[] = {
-#ifdef VERSION_EU
-       GEO_SHADOW(SHADOW_CIRCLE_9_VERTS, 0x96, 60),
-#else
-       GEO_SHADOW(SHADOW_CIRCLE_4_VERTS, 0x96, 100),
-#endif
-       GEO_OPEN_NODE(),
-          GEO_SCALE(0x00, 16384),
-          GEO_OPEN_NODE(),
-             GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 40, penguin_seg5_dl_05007540),
-             GEO_OPEN_NODE(),
-                GEO_ANIMATED_PART(LAYER_OPAQUE, -51, 84, -13, NULL),
-                GEO_OPEN_NODE(),
-                   GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, penguin_seg5_dl_05007198),
-                GEO_CLOSE_NODE(),
-                GEO_ANIMATED_PART(LAYER_OPAQUE, 51, 84, -13, NULL),
-                GEO_OPEN_NODE(),
-                   GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, penguin_seg5_dl_050071E8),
-                GEO_CLOSE_NODE(),
-                GEO_ANIMATED_PART(LAYER_OPAQUE, -38, -54, -13, NULL),
-                GEO_OPEN_NODE(),
-                   GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, penguin_seg5_dl_05007238),
-                GEO_CLOSE_NODE(),
-                GEO_ANIMATED_PART(LAYER_OPAQUE, 38, -54, -13, NULL),
-                GEO_OPEN_NODE(),
-                   GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, penguin_seg5_dl_050072C8),
-                GEO_CLOSE_NODE(),
-                GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 111, -19, NULL),
-                GEO_OPEN_NODE(),
-                   GEO_SWITCH_CASE(5, geo_switch_tuxie_mother_eyes),
-                   GEO_OPEN_NODE(),
-                      GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, penguin_seg5_dl_05006428),
-                      GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, penguin_seg5_dl_05006458),
-                      GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, penguin_seg5_dl_05006488),
-                      GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, penguin_seg5_dl_050064B8),
-                      GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, penguin_seg5_dl_050064E8), // unused, seen in Shoshinkai 1995 footage
-                   GEO_CLOSE_NODE(),
-                GEO_CLOSE_NODE(),
-             GEO_CLOSE_NODE(),
-          GEO_CLOSE_NODE(),
-       GEO_CLOSE_NODE(),
-       GEO_END(),
+ hmsShadow(50, 155, 1)
+ hmsBegin()
+ hmsScale(0.25f)
+    hmsBegin()
+      hmsJoint(RM_SURF,RCP_ping_base5,0,0,40)  /* ping_body1_2(10) */
+      hmsBegin()
+         hmsJoint(RM_SURF,NULL,-51,84,-13)  /* chn21_2(9) */
+         hmsBegin()
+            hmsJoint(RM_SURF,RCP_ping_base0,0,0,0)  /* ping_Rhand1_2(0) */
+         hmsEnd()
+         hmsJoint(RM_SURF,NULL,51,84,-13)  /* chn19_2(8) */
+         hmsBegin()
+            hmsJoint(RM_SURF,RCP_ping_base1,0,0,0)  /* ping_Lhand1_2(1) */
+         hmsEnd()
+         hmsJoint(RM_SURF,NULL,-38,-54,-13)  /* chn24_2(7) */
+         hmsBegin()
+            hmsJoint(RM_SURF,RCP_ping_base2,0,0,0)  /* ping_Rfoot1_2(2) */
+         hmsEnd()
+         hmsJoint(RM_SURF,NULL,38,-54,-13)  /* chn22_2(6) */
+         hmsBegin()
+            hmsJoint(RM_SURF,RCP_ping_base3,0,0,0)  /* ping_Lfoot1_2(3) */
+         hmsEnd()
+         hmsJoint(RM_SURF,NULL,0,111,-19)  /* chn18_2(5) */
+         hmsBegin()
+			hmsSelect(5, geo_switch_tuxie_mother_eyes)
+			hmsBegin()
+	            hmsJoint(RM_SURF,RCP_ping_head_eye1,0,0,0)  /* ping_head1_2(4) */
+	            hmsJoint(RM_SURF,RCP_ping_head_eye2,0,0,0)  /* ping_head1_2(4) */
+	            hmsJoint(RM_SURF,RCP_ping_head_eye3,0,0,0)  /* ping_head1_2(4) */
+	            hmsJoint(RM_SURF,RCP_ping_head_eye4,0,0,0)  /* ping_head1_2(4) */
+	            hmsJoint(RM_SURF,RCP_ping_head_eye5,0,0,0)  /* ping_head1_2(4) */
+			hmsEnd()
+         hmsEnd()
+      hmsEnd()
+   hmsEnd()
+ hmsEnd()
+ hmsExit()
 };

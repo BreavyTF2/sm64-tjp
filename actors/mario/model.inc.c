@@ -1,5 +1,6 @@
 // Mario
-
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 // 0x04000000 # solid color blue - butt, left thigh, right thigh - all poly types
 static const Lights1 mario_blue_lights_group = gdSPDefLights1(
     0x00, 0x00, 0x40,
@@ -6879,3 +6880,5 @@ const Gfx mario_metal_cap_wings_transparent[] = {
     gsSPTexture(0x0F80, 0x07C0, 0, G_TX_RENDERTILE, G_ON),
     gsSPEndDisplayList(),
 };
+#pragma GCC diagnostic pop
+

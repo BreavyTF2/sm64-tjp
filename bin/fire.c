@@ -1,7 +1,6 @@
 #include "sm64.h"
 
 #include "make_const_nonconst.h"
-
 // 0x09000000
 ALIGNED8 const u8 fire_09000000[] = {
 #include "textures/fire/lll_textures.00000.rgba16.inc.c"
