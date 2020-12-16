@@ -9,7 +9,7 @@
 #include "dialog_ids.h"
 
 #include "make_const_nonconst.h"
-#include "levels/athletic/header.h"
+//#include "levels/athletic/header.h"
 
 #include "levels/athletic/areas/1/1/model.inc.c"
 #include "levels/athletic/areas/1/collision.inc.c"

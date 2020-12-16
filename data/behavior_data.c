@@ -44,6 +44,7 @@
 #include "levels/jrb/header.h"
 #include "levels/thi/header.h"
 #include "levels/ttc/header.h"
+#include "levels/castle/header.h"
 #include "levels/castle_grounds/header.h"
 #include "levels/bitdw/header.h"
 #include "levels/lll/header.h"
@@ -1821,8 +1822,9 @@ const BehaviorScript bhvBetaTrampolineSpring[] = {
 
 const BehaviorScript bhvJumpingBox[] = {
     BEGIN(OBJ_LIST_GENACTOR),
-    OR_INT(oFlags, (OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO  | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 600, /*Unused*/ 0, 0),
+    OR_INT(oFlags, (OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO  | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW)),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 10000, /*Friction*/ 10000, /*Buoyancy*/ 600, /*Unused*/ 0, 0),
+	LOAD_ANIMATIONS(oAnimations, hopper_anime),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_jumping_box_loop),
     END_LOOP(),
@@ -4544,6 +4546,16 @@ const BehaviorScript bhvHiddenAt120Stars[] = {
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     LOAD_COLLISION_DATA(castle_grounds_seg7_collision_cannon_grill),
     SET_FLOAT(oCollisionDistance, 4000),
+    CALL_NATIVE(bhv_castle_cannon_grate_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+const BehaviorScript bhvHiddenAt113Stars[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(castle_inside_seg7_collision_cannon_grill),
+    SET_FLOAT(oCollisionDistance, 2000),
     CALL_NATIVE(bhv_castle_cannon_grate_init),
     BEGIN_LOOP(),
         CALL_NATIVE(load_object_collision_model),

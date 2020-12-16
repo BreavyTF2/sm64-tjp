@@ -918,7 +918,6 @@ void update_hud_values(void) {
         if (gMarioState->numCoins > 999) {
             gMarioState->numCoins = 999;
         }
-
         if (gHudDisplay.coins > 999) {
             gHudDisplay.coins = 999;
         }
@@ -927,7 +926,10 @@ void update_hud_values(void) {
             gMarioState->numLives = (s8) 999; //! Wrong variable
         }
 #endif
-
+		if (gMarioState->numStars > 114) {
+			gMarioState->numStars = 114;
+			gHudDisplay.stars = 114;
+		}
         gHudDisplay.stars = gMarioState->numStars;
         gHudDisplay.lives = gMarioState->numLives;
         gHudDisplay.keys = gMarioState->numKeys;

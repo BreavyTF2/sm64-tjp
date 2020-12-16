@@ -74,15 +74,15 @@ cur_obj_play_sound_2(SOUND_OBJ_BULLY_WALKING);
 	cur_obj_init_animation_with_sound(9);
 	o->oForwardVel = 2.5f;
 	cur_obj_rotate_yaw_toward(o->oAngleToMario,300);
-
+		if ((o->oPosY < 200.0f) & (o->oTimer >= 20)) {
+			o->oAction = 11;
+		}
 	if ( o->oInteractStatus & INT_STATUS_GRABBED_MARIO){
 		o->oAction = 2;
 	 	o->oMotosUnk88 = 1;
 	}
 
-
 }
-
 void motos_player_carry(void)
 {
 
@@ -174,8 +174,9 @@ void motos_fly(void)
 
 void motos_recover(void) {
 //   o->oForwardVel = 5.0f;
-    o->oForwardVel = 2.0f;
-
+if (o->oForwardVel > 0.0) { 
+    o->oForwardVel -= 0.3;
+}
 	cur_obj_init_animation_with_sound(4);
 if ( cur_obj_check_if_near_animation_end() )	
 	o->oAction = 1;
@@ -186,8 +187,10 @@ void motos_recover2(void) {
     o->oForwardVel = 0.0f;
 
 	cur_obj_init_animation_with_sound(7);
-if ( cur_obj_check_if_near_animation_end() )	
+if ( cur_obj_check_if_near_animation_end() )	{
+	cur_obj_become_tangible();
 	o->oAction = 1;
+	}
 }
 
 void motos_returnhome(void) {
@@ -252,11 +255,11 @@ void motos_inactive(void) {
 				if (o->oTimer == 91) {
 				o->oPosY = 1037.0f;
 				}
-                if (o->oTimer >= 91)
+                if (o->oTimer >= 91) {
 			o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
-            cur_obj_become_tangible();
                     o->oAction = 10;
             }
+}
 }
 
 void motos_death(void) { 

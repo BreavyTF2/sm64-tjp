@@ -20,5 +20,6 @@
 #include "levels/castle_inside/clock_minute_hand/geo.inc.c"
 #include "levels/castle_inside/clock_hour_hand/geo.inc.c"
 #include "levels/castle_inside/areas/2/geo.inc.c"
+#include "levels/castle_inside/areas/2/16/geo.inc.c"
 #include "levels/castle_inside/water_level_pillar/geo.inc.c"
 #include "levels/castle_inside/areas/3/geo.inc.c"

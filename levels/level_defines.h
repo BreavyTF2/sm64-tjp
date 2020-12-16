@@ -17,8 +17,8 @@
 
 // NOTE: Be sure to edit sZoomOutAreaMasks in camera.c, as there isnt a good way to macro those right now.
 // TODO: Figure something out for sZoomOutAreaMasks?
-STUB_LEVEL("CASTLE *",           LEVEL_UNKNOWN_1,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
-DEFINE_LEVEL("ATHLETIC",       LEVEL_UNKNOWN_2,        COURSE_NONE,        athletic,         generic,   20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("CASTLE",       LEVEL_UNKNOWN_1,        COURSE_CASTLE,     castle,		      generic,  20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("ATHLETIC",       LEVEL_UNKNOWN_2,        COURSE_NONE,     athletic,         generic,  20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL("DONJON *",           LEVEL_UNKNOWN_3,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("TERESA OBAKE",   LEVEL_BBH,              COURSE_BBH,      bbh,              spooky,   28000,    0x28, 0x28, 0x28, sDynBbh,   sCamBBH)
 DEFINE_LEVEL("YYAMA1 % YSLD1", LEVEL_CCM,              COURSE_CCM,      ccm,              snow,     17000,    0x10, 0x38, 0x38, _,         sCamCCM)
@@ -31,7 +31,7 @@ DEFINE_LEVEL("POOL KAI",       LEVEL_WDW,              COURSE_WDW,      wdw,    
 DEFINE_LEVEL("WTDG % TINBOTU", LEVEL_JRB,              COURSE_JRB,      jrb,              water,    20000,    0x10, 0x18, 0x18, sDynJrb,   _)
 DEFINE_LEVEL("BIG WORLD",      LEVEL_THI,              COURSE_THI,      thi,              grass,    20000,    0x0c, 0x0c, 0x20, _,         sCamTHI)
 DEFINE_LEVEL("CLOCK TOWER",    LEVEL_TTC,              COURSE_TTC,      ttc,              machine,  18000,    0x18, 0x18, 0x18, _,         _)
-STUB_LEVEL("RAINBOW CRUISE *",   LEVEL_RR,               COURSE_RR,             20000,    0x20, 0x20, 0x20, _,         sCamRR)
+STUB_LEVEL("", LEVEL_RR,               COURSE_RR,                                   20000,    0x20, 0x20, 0x20, _,         sCamRR)
 DEFINE_LEVEL("MAIN MAP",       LEVEL_CASTLE_GROUNDS,   COURSE_NONE,     castle_grounds,   outside,  25000,    0x08, 0x08, 0x08, _,         _)
 DEFINE_LEVEL("EXT1 YOKO SCRL", LEVEL_BITDW,            COURSE_BITDW,    bitdw,            sky,      16000,    0x28, 0x28, 0x28, _,         _)
 DEFINE_LEVEL("EXT7 HORI MINI", LEVEL_VCUTM,            COURSE_VCUTM,    vcutm,            outside,  30000,    0x28, 0x28, 0x28, _,         _)

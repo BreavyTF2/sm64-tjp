@@ -50,7 +50,7 @@ UNUSED static const u64 binid_9 = 9;
 #include "breakable_box/model.inc.c"
 #include "breakable_box/collision.inc.c"
 UNUSED static const u64 binid_10 = 10;
-
+#include "hopper/model.inc.c"
 UNUSED static const u64 binid_11 = 11;
 
 #include "exclamation_box/model.inc.c"

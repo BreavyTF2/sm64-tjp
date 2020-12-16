@@ -15,17 +15,17 @@
 #include "make_const_nonconst.h"
 #include "levels/plane/header.h"
 static const LevelScript script_func_local_2[] = {
-//   OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     1500, 500, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x01000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
-//	OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     1500, 500, 500, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
-//	OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     2000, 500, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
-//	OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     2000, 500, 500, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
-//	OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     -1500, 500, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
-//	OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     -1500, 500, 500, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
-//	OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     -2000, 500, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
-//    OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     -2000, 500, 500, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
-	OBJECT_WITH_ACTS(/*model*/ MODEL_CHAIN_CHOMP,    /*pos*/     -2500, 0, -1500, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvChainChomp,          /*acts*/ ALL_ACTS),
-	OBJECT_WITH_ACTS(/*model*/ MODEL_CHAIN_CHOMP,    /*pos*/     0, 0, -2000, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvChainChomp,          /*acts*/ ALL_ACTS),
-	OBJECT_WITH_ACTS(/*model*/ MODEL_CHAIN_CHOMP,    /*pos*/     -2500, 0, 1000, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvChainChomp,          /*acts*/ ALL_ACTS),
+   OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     1500, 500, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x01000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
+	OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     1500, 500, 500, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
+	OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     2000, 500, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
+	OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     2000, 500, 500, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
+	OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     -1500, 500, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
+	OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     -1500, 500, 500, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
+	OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     -2000, 500, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
+    OBJECT_WITH_ACTS(/*model*/ MODEL_SWOOP,    /*pos*/     -2000, 500, 500, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSwoop,          /*acts*/ ALL_ACTS),
+//	OBJECT_WITH_ACTS(/*model*/ MODEL_CHAIN_CHOMP,    /*pos*/     -2500, 0, -1500, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvChainChomp,          /*acts*/ ALL_ACTS),
+//	OBJECT_WITH_ACTS(/*model*/ MODEL_CHAIN_CHOMP,    /*pos*/     0, 0, -2000, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvChainChomp,          /*acts*/ ALL_ACTS),
+//	OBJECT_WITH_ACTS(/*model*/ MODEL_CHAIN_CHOMP,    /*pos*/     -2500, 0, 1000, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvChainChomp,          /*acts*/ ALL_ACTS),
 
     RETURN(),
 };
@@ -33,10 +33,10 @@ static const LevelScript script_func_local_2[] = {
 const LevelScript level_plane_entry[] = {
     INIT_LEVEL(),
     LOAD_MIO0(        /*seg*/ 0x07, _plane_segment_7SegmentRomStart, _plane_segment_7SegmentRomEnd),
-	LOAD_MIO0(        /*seg*/ 0x06, _group14_mio0SegmentRomStart, _group14_mio0SegmentRomEnd),
-    LOAD_RAW(         /*seg*/ 0x0D, _group14_geoSegmentRomStart,  _group14_geoSegmentRomEnd),
-//    LOAD_MIO0(        /*seg*/ 0x06, _group17_mio0SegmentRomStart, _group17_mio0SegmentRomEnd),
- //   LOAD_RAW(         /*seg*/ 0x0D, _group17_geoSegmentRomStart, _group17_geoSegmentRomEnd),
+//	LOAD_MIO0(        /*seg*/ 0x06, _group14_mio0SegmentRomStart, _group14_mio0SegmentRomEnd),
+//    LOAD_RAW(         /*seg*/ 0x0D, _group14_geoSegmentRomStart,  _group14_geoSegmentRomEnd),
+    LOAD_MIO0(        /*seg*/ 0x06, _group17_mio0SegmentRomStart, _group17_mio0SegmentRomEnd),
+    LOAD_RAW(         /*seg*/ 0x0D, _group17_geoSegmentRomStart, _group17_geoSegmentRomEnd),
     ALLOC_LEVEL_POOL(),
     MARIO(/*model */ MODEL_MARIO, /*behParam*/ 0x00000001, /*beh*/ bhvMario),
 
@@ -45,8 +45,8 @@ const LevelScript level_plane_entry[] = {
  //       SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0002, /*seq*/ SEQ_LEVEL_SLIDE),
 //        TERRAIN_TYPE(/*terrainType*/ TERRAIN_STONE),
 //    JUMP_LINK(script_func_global_1),
-    JUMP_LINK(script_func_global_15),
-//    JUMP_LINK(script_func_global_18),
+//    JUMP_LINK(script_func_global_15),
+    JUMP_LINK(script_func_global_18),
 	        JUMP_LINK(script_func_local_2),
     END_AREA(),
 

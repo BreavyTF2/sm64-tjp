@@ -9,8 +9,7 @@
 #include "dialog_ids.h"
 
 #include "make_const_nonconst.h"
-#include "levels/plane/header.h"
+//#include "levels/plane/header.h"
 
 #include "levels/plane/areas/1/1/model.inc.c"
 #include "levels/plane/areas/1/collision.inc.c"
-//#include "levels/athletic/texture.inc.c"

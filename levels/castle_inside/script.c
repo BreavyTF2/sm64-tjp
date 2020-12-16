@@ -117,9 +117,10 @@ static const LevelScript script_func_local_2[] = {
     PAINTING_WARP_NODE(/*id*/ 0x27, /*destLevel*/ LEVEL_THI, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
     PAINTING_WARP_NODE(/*id*/ 0x28, /*destLevel*/ LEVEL_THI, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
     PAINTING_WARP_NODE(/*id*/ 0x29, /*destLevel*/ LEVEL_THI, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
-    PAINTING_WARP_NODE(/*id*/ 0x2A, /*destLevel*/ LEVEL_RR, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
-    OBJECT(/*model*/ MODEL_NONE, /*pos*/  3002, 2816,  5886, /*angle*/ 0,   0, 0, /*behParam*/ 0x0F0A0000, /*beh*/ bhvWarp),
+    OBJECT(/*model*/ MODEL_NONE, /*pos*/  -3372, 2816,  5886, /*angle*/ 0,   0, 0, /*behParam*/ 0x0F0A0000, /*beh*/ bhvWarp),
     WARP_NODE(/*id*/ 0x0A, /*destLevel*/ LEVEL_WMOTR, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
+    OBJECT(/*model*/ MODEL_NONE, /*pos*/  3002, 2816,  5886, /*angle*/ 0,   0, 0, /*behParam*/ 0x0F0C0000, /*beh*/ bhvWarp),
+    WARP_NODE(/*id*/ 0x0A, /*destLevel*/ LEVEL_UNKNOWN_1, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
     OBJECT(/*model*/ MODEL_NONE, /*pos*/  -230, 4813, -3352, /*angle*/ 0,   0, 0, /*behParam*/ 0x0F0B0000, /*beh*/ bhvWarp),
     WARP_NODE(/*id*/ 0x0B, /*destLevel*/ LEVEL_BITS, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
     OBJECT(/*model*/ MODEL_NONE, /*pos*/  -659, 1613,  -350, /*angle*/ 0, 180, 0, /*behParam*/ 0x00320000, /*beh*/ bhvPaintingStarCollectWarp),
@@ -156,6 +157,7 @@ static const LevelScript script_func_local_2[] = {
     WARP_NODE(/*id*/ 0x6B, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x02, /*destNode*/ 0x6B, /*flags*/ WARP_NO_CHECKPOINT),
     WARP_NODE(/*id*/ 0x6C, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x02, /*destNode*/ 0x6C, /*flags*/ WARP_NO_CHECKPOINT),
     WARP_NODE(/*id*/ 0x6D, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x02, /*destNode*/ 0x6D, /*flags*/ WARP_NO_CHECKPOINT),
+	OBJECT(/*model*/ MODEL_UNKNOWN_58, /*pos*/    -2652,    2872,     5678, /*angle*/ 270,   270, 0, /*behParam*/ 0x00000000, /*beh*/ bhvHiddenAt113Stars),
     RETURN(),
 };
 
@@ -248,6 +250,7 @@ const LevelScript level_castle_inside_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_CASTLE_STAR_DOOR_8_STARS,  castle_geo_000F00),
     LOAD_MODEL_FROM_GEO(MODEL_CASTLE_STAR_DOOR_50_STARS, castle_geo_000F00),
     LOAD_MODEL_FROM_GEO(MODEL_CASTLE_STAR_DOOR_70_STARS, castle_geo_000F00),
+	LOAD_MODEL_FROM_GEO(MODEL_UNKNOWN_58, castle_inside_geo_000724),
 
     AREA(/*index*/ 1, castle_geo_001400),
         OBJECT(/*model*/ MODEL_NONE,       /*pos*/ -5513,  717, -4324, /*angle*/ 0,  45, 0, /*behParam*/ 0x00140000, /*beh*/ bhvCastleFloorTrap),

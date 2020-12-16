@@ -70,6 +70,36 @@ extern const Gfx breakable_box_seg8_dl_08012CD8[];
 extern const Gfx breakable_box_seg8_dl_08012D20[];
 extern const Gfx breakable_box_seg8_dl_08012D48[];
 extern const Collision breakable_box_seg8_collision_08012D70[];
+// hopper
+extern const GeoLayout RCP_HmsEnemyhopper[];
+extern const Gfx RCP_hopper_cons_test1[];
+extern const Gfx RCP_hopper_cons_test2[];
+extern const Gfx RCP_hopper_cons_test3[];
+extern const Gfx RCP_hopper_cons_test4[];
+extern const Gfx RCP_hopper_cons_test5[];
+extern const Gfx RCP_hopper_cons_test6[];
+extern const Gfx RCP_hopper_cons_test7[];
+extern const Gfx RCP_hopper_cons_test8[];
+extern const Gfx RCP_hopper_cons_test9[];
+extern const Gfx RCP_hopper_cons_test10[];
+extern const Gfx RCP_hopper_cons_test11[];
+extern const Gfx RCP_hopper_cons_test12[];
+extern const Gfx RCP_hopper_cons_test13[];
+extern const Gfx RCP_hopper_cons_test14[];
+extern const Gfx RCP_hopper_cons_test15[];
+extern const Gfx RCP_hopper_cons_test16[];
+extern const Gfx RCP_hopper_cons_test17[];
+extern const Gfx RCP_hopper_cons_test18[];
+extern const Gfx RCP_hopper_cons_test19[];
+extern const Gfx RCP_hopper_cons_test20[];
+extern const Gfx RCP_hopper_cons_test21[];
+extern const Gfx RCP_hopper_cons_test22[];
+extern const Gfx RCP_hopper_cons_test23[];
+extern const Gfx RCP_hopper_cons_test24[];
+extern const Gfx RCP_hopper_cons_test25[];
+extern const Gfx RCP_hopper_cons_test26[];
+extern const Gfx hopper_light_sourcex[];
+extern const struct Animation *const hopper_anime[];
 
 // cannon_barrel
 extern const GeoLayout cannon_barrel_geo[];

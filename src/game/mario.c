@@ -1232,6 +1232,11 @@ void squish_mario_model(struct MarioState *m) {
 void debug_print_speed_action_normal(struct MarioState *m) {
     f32 steepness;
     f32 floor_nY;
+	if (0){		
+print_text_fmt_int(210, 88, "X %d", m->pos[0]);
+print_text_fmt_int(210, 72, "Y %d", m->pos[1]);
+print_text_fmt_int(210, 56, "Z %d", m->pos[2]);
+}
 	if (gShowSpeedText) {
 	print_text_fmt_int(208, 36, "HSPD %d", m->forwardVel);
 	print_text_fmt_int(208, 20, "VSPD %x", (m->vel[1]));
