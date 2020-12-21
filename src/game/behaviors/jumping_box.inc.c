@@ -44,7 +44,7 @@ void (*sJumpingBoxActions[])(void) = { jumping_box_act_0, jumping_box_act_1 };
 
 void jumping_box_free_update(void) {
     cur_obj_set_model(MODEL_UNKNOWN_B8);
-    cur_obj_scale(0.25f);
+    cur_obj_scale(0.4f);
     obj_set_hitbox(o, &sJumpingBoxHitbox);
     cur_obj_update_floor_and_walls();
     cur_obj_move_standard(78);
