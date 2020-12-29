@@ -893,7 +893,7 @@ void update_hud_values(void) {
         if (gCurrCourseNum >= COURSE_MIN) {
             gHudDisplay.flags |= HUD_DISPLAY_FLAG_COIN_COUNT;
         } else {
-            gHudDisplay.flags &= ~HUD_DISPLAY_FLAG_COIN_COUNT;
+            gHudDisplay.flags |= HUD_DISPLAY_FLAG_COIN_COUNT;
         }
 
         if (gHudDisplay.coins < gMarioState->numCoins) {
@@ -926,10 +926,6 @@ void update_hud_values(void) {
             gMarioState->numLives = (s8) 999; //! Wrong variable
         }
 #endif
-		if (gMarioState->numStars > 114) {
-			gMarioState->numStars = 114;
-			gHudDisplay.stars = 114;
-		}
         gHudDisplay.stars = gMarioState->numStars;
         gHudDisplay.lives = gMarioState->numLives;
         gHudDisplay.keys = gMarioState->numKeys;

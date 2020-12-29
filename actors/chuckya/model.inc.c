@@ -51,7 +51,9 @@ ALIGNED8 static const u8 chuckya_seg8_texture_08006778[] = {
 ALIGNED8 static const u8 chuckya_seg8_texture_08007778[] = {
 #include "actors/chuckya/chuckya_hand_antenna.rgba16.inc.c"
 };
-
+ALIGNED8 static const u8 chuckya_seg8_texture_08007779[] = {
+#include "actors/chuckya/chuckya_hair.rgba16.inc.c"
+};
 // 0x08007F78
 ALIGNED8 static const u8 chuckya_seg8_texture_08007F78[] = {
 #include "actors/chuckya/chuckya_body_arm_left_side.rgba16.inc.c"
@@ -309,7 +311,7 @@ static const Vtx chuckya_seg8_vertex_0800A580[] = {
 
 // 0x0800A5C0 - 0x0800A5F8
 const Gfx chuckya_seg8_dl_0800A5C0[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, chuckya_seg8_texture_08007778),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, chuckya_seg8_texture_08007779),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPVertex(chuckya_seg8_vertex_0800A580, 4, 0),

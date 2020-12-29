@@ -54,7 +54,7 @@
 #include "levels/wf/header.h"
 #include "levels/bowser_2/header.h"
 #include "levels/ttm/header.h"
-
+#include "levels/yajima/header.h"
 #include "make_const_nonconst.h"
 #include "behavior_data.h"
 

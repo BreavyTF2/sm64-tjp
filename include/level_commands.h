@@ -313,5 +313,11 @@
 
 #define GET_OR_SET(op, var) \
     CMD_BBBB(0x3C, 0x04, op, var)
+	
+#define OBJECT_LEAK(model, posX, posY, posZ, angleX, angleY, angleZ, code1, code2, flags, beh) \
+    CMD_BBBB(0x24, 0x18, 0x1F, model), \
+    CMD_HHHHHH(posX, posY, posZ, angleX, angleY, angleZ), \
+    CMD_BBH(code1,code2,flags), \
+    CMD_PTR(beh)
 
 #endif // LEVEL_COMMANDS_H
