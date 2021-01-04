@@ -147,7 +147,7 @@ void moneybag_act_return_home(void) {
     moneybag_check_mario_collision();
 
     if (is_point_close_to_object(o, o->oHomeX, o->oHomeY, o->oHomeZ, 100)) {
-        spawn_object(o, MODEL_YELLOW_COIN, bhvMoneybagHidden);
+        spawn_object(o, MODEL_BLUE_COIN, bhvMoneybagHidden);
 #ifndef VERSION_JP
         cur_obj_play_sound_2(SOUND_GENERAL_VANISH_SFX);
 #endif
@@ -171,9 +171,13 @@ void moneybag_act_disappear(void) {
 }
 
 void moneybag_act_death(void) {
+	    struct Object *kura_coinPtr;
     if (o->oTimer == 1) {
-        obj_spawn_yellow_coins(o, 5);
         create_sound_spawner(SOUND_GENERAL_SPLATTERING);
+		kura_coinPtr = s_makeobj_nowpos(execstp,MODEL_BLUE_COIN,bhvBlueCoinJumping);
+		kura_coinPtr->oMoveAngleYaw = obj_angleY;
+		kura_coinPtr->oForwardVel = 10;
+		kura_coinPtr->oVelY = 50;
         spawn_mist_particles();
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
     }

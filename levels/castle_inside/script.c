@@ -259,7 +259,7 @@ const LevelScript level_castle_inside_entry[] = {
         OBJECT(/*model*/ MODEL_NONE,       /*pos*/  3672,  507, -1307, /*angle*/ 0,  45, 0, /*behParam*/ 0x00000000, /*beh*/ bhvTankFishGroup),
         OBJECT(/*model*/ MODEL_NONE,       /*pos*/  3748,  507,   773, /*angle*/ 0, -45, 0, /*behParam*/ 0x00000000, /*beh*/ bhvTankFishGroup),
         OBJECT(/*model*/ MODEL_NONE,       /*pos*/  2778,  507,  1255, /*angle*/ 0, -90, 0, /*behParam*/ 0x00000000, /*beh*/ bhvTankFishGroup),
-        OBJECT(/*model*/ MODEL_BOO_CASTLE, /*pos*/ -1000,   50, -3500, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBooInCastle),
+//       OBJECT(/*model*/ MODEL_BOO_CASTLE, /*pos*/ -1000,   50, -3500, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBooInCastle),
 //        OBJECT(/*model*/ MODEL_TOAD,       /*pos*/ -1671,    0,  1313, /*angle*/ 0,  83, 0, /*behParam*/ DIALOG_133 << 24, /*beh*/ bhvToadMessage),
 //        OBJECT(/*model*/ MODEL_TOAD,       /*pos*/  1524,  307,   458, /*angle*/ 0, 110, 0, /*behParam*/ DIALOG_134 << 24, /*beh*/ bhvToadMessage),
 //        OBJECT(/*model*/ MODEL_TOAD,       /*pos*/   596, -306, -2637, /*angle*/ 0, 152, 0, /*behParam*/ DIALOG_135 << 24, /*beh*/ bhvToadMessage),

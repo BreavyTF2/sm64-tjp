@@ -89,8 +89,10 @@
 /* not verified */ #define SOUND_ACTION_UNKNOWN434      SOUND_ARG_LOAD(0, 4, 0x34, 0x80, 8)
 #define SOUND_ACTION_THROW                              SOUND_ARG_LOAD(0, 4, 0x35, 0x80, 8)
 #define SOUND_ACTION_KEY_SWISH                          SOUND_ARG_LOAD(0, 4, 0x36, 0x80, 8)
+#define SOUND_ACTION_KICK_OLD                           SOUND_ARG_LOAD(0, 4, 0x36, 0x90, 8)
 #define SOUND_ACTION_SPIN                               SOUND_ARG_LOAD(0, 4, 0x37, 0x80, 8)
 #define SOUND_ACTION_TWIRL                              SOUND_ARG_LOAD(0, 4, 0x38, 0x80, 8) // same sound as spin
+#define SOUND_ACTION_SLIP_OLD                           SOUND_ARG_LOAD(0, 4, 0x39, 0x80, 8) // same sound as spin
 /* not verified */ #define SOUND_ACTION_CLIMB_UP_TREE   SOUND_ARG_LOAD(0, 4, 0x3A, 0x80, 8)
 /* not verified */ #define SOUND_ACTION_CLIMB_DOWN_TREE 0x003B
 /* not verified */ #define SOUND_ACTION_UNK3C           0x003C

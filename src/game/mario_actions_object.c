@@ -112,7 +112,7 @@ s32 mario_update_punch_sequence(struct MarioState *m) {
             break;
 
         case 6:
-            play_mario_action_sound(m, SOUND_MARIO_PUNCH_HOO, 1);
+            play_mario_action_sound(m, SOUND_ACTION_KICK_OLD, 1);
             animFrame = set_mario_animation(m, MARIO_ANIM_GROUND_KICK);
             if (animFrame == 0) {
                 m->marioBodyState->punchState = (2 << 6) | 6;
@@ -128,7 +128,7 @@ s32 mario_update_punch_sequence(struct MarioState *m) {
             break;
 
         case 9:
-            play_mario_action_sound(m, SOUND_MARIO_PUNCH_HOO, 1);
+            play_mario_action_sound(m, SOUND_ACTION_KICK_OLD, 1);
             set_mario_animation(m, MARIO_ANIM_BREAKDANCE);
             animFrame = m->marioObj->header.gfx.animInfo.animFrame;
 

@@ -294,7 +294,7 @@ struct MacroPreset MacroObjectPresets[] = {
     {bhvYellowCoin, MODEL_YELLOW_COIN, 0},
     {bhvYellowCoin, MODEL_YELLOW_COIN, 0},
     {bhvYellowCoin, MODEL_YELLOW_COIN, 0},
-    {bhvMoneybagHidden, MODEL_YELLOW_COIN, 0},
+    {bhvMoneybagHidden, MODEL_BLUE_COIN, 0},
     {bhvYellowCoin, MODEL_YELLOW_COIN, 0},
     {bhvYellowCoin, MODEL_YELLOW_COIN, 0},
     {bhvYellowCoin, MODEL_YELLOW_COIN, 0},

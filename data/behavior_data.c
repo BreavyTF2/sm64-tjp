@@ -2927,38 +2927,6 @@ const BehaviorScript bhvTweester[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvMerryGoRoundBooManager[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_merry_go_round_boo_manager_loop),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvAnimatedTexture[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -70, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-    BILLBOARD(),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_animated_texture_loop),
-        ADD_INT(oAnimState, 1),
-        ANIMATE_TEXTURE(oAnimState, 2),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvBooInCastle[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    SET_HOME(),
-    SET_FLOAT(oGraphYOffset, 60),
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-    CALL_NATIVE(bhv_init_room),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_boo_in_castle_loop),
-    END_LOOP(),
-};
-
 const BehaviorScript bhvBooWithCage[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -2968,26 +2936,11 @@ const BehaviorScript bhvBooWithCage[] = {
     SET_HITBOX(/*Radius*/ 180, /*Height*/ 140),
     SET_FLOAT(oGraphYOffset, 60),
     SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-    CALL_NATIVE(bhv_boo_with_cage_init),
+    CALL_NATIVE(s_kagoteresa_makekago),
     CALL_NATIVE(bhv_init_room),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_boo_with_cage_loop),
+        CALL_NATIVE(s_kagoteresa),
     END_LOOP(),
-};
-
-const BehaviorScript bhvBalconyBigBoo[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    SET_INT(oBehParams2ndByte, 2),
-    SET_INT(oBigBooNumMinionBoosKilled, 10),
-    GOTO(bhvGhostHuntBigBoo + 1),
-};
-
-const BehaviorScript bhvMerryGoRoundBigBoo[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    SET_INT(oBehParams2ndByte, 1),
-    // Set number of minion boos killed to 10, which is greater than 5 so that the boo always loads without needing to kill any boos.
-    SET_INT(oBigBooNumMinionBoosKilled, 10),
-    GOTO(bhvGhostHuntBigBoo + 1),
 };
 
 const BehaviorScript bhvGhostHuntBigBoo[] = {
@@ -2998,28 +2951,22 @@ const BehaviorScript bhvGhostHuntBigBoo[] = {
     SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
     CALL_NATIVE(bhv_init_room),
 	SPAWN_CHILD(/*Model*/ MODEL_BETA_BOO_KEY, /*Behavior*/ bhvBetaBooKey),
-    CALL_NATIVE(bhv_boo_init),
+    CALL_NATIVE(bhv_init_room),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_big_boo_loop),
+        CALL_NATIVE(s_kaidanteresa),
     END_LOOP(),
 };
 
 const BehaviorScript bhvCourtyardBooTriplet[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     DISABLE_RENDERING(),
-    CALL_NATIVE(bhv_courtyard_boo_triplet_init),
+    CALL_NATIVE(s_make3teresa),
     DEACTIVATE(),
 };
 
 const BehaviorScript bhvBoo[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     SET_INT(oBehParams2ndByte, 1),
-    GOTO(bhvGhostHuntBoo + 1),
-};
-
-const BehaviorScript bhvMerryGoRoundBoo[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    SET_INT(oBehParams2ndByte, 2),
     GOTO(bhvGhostHuntBoo + 1),
 };
 
@@ -3036,9 +2983,9 @@ const BehaviorScript bhvGhostHuntBoo[] = {
     CALL_NATIVE(bhv_init_room),
     SPAWN_CHILD(/*Model*/ MODEL_YELLOW_COIN, /*Behavior*/ bhvCoinInsideBoo),
     SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-    CALL_NATIVE(bhv_boo_init),
+    CALL_NATIVE(bhv_init_room),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_boo_loop),
+        CALL_NATIVE(s_oba),
     END_LOOP(),
 };
 

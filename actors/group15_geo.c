@@ -10,4 +10,3 @@
 #include "lakitu_cameraman/geo.inc.c"
 #include "toad/geo.inc.c"
 #include "mips/geo.inc.c"
-#include "boo_castle/geo.inc.c"

@@ -19,6 +19,3 @@ UNUSED static const u64 binid_1 = 1;
 #include "mips/anims/data.inc.c"
 #include "mips/anims/table.inc.c"
 UNUSED static const u64 binid_2 = 2;
-
-#include "boo_castle/model.inc.c"
-UNUSED static const u64 binid_3 = 3;

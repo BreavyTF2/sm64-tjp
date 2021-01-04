@@ -890,12 +890,6 @@ void update_hud_values(void) {
     if (gCurrCreditsEntry == NULL) {
         s16 numHealthWedges = gMarioState->health > 0 ? gMarioState->health >> 8 : 0;
 
-        if (gCurrCourseNum >= COURSE_MIN) {
-            gHudDisplay.flags |= HUD_DISPLAY_FLAG_COIN_COUNT;
-        } else {
-            gHudDisplay.flags |= HUD_DISPLAY_FLAG_COIN_COUNT;
-        }
-
         if (gHudDisplay.coins < gMarioState->numCoins) {
             if (gGlobalTimer & 0x00000001) {
                 u32 coinSound;

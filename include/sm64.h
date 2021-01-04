@@ -14,7 +14,7 @@
 #include "surface_terrains.h"
 #include "convert_hms_to_geo_layouts.h"
 #include "macros.h"
-
+#include "enemy_macros.h"
 // Crash handler enhancement
 #ifdef CRASH_SCREEN_INCLUDED
 #define DEBUG_ASSERT(exp) do { if (!(exp)) _n64_assert(__FILE__, __LINE__, #exp, 1); } while (0)

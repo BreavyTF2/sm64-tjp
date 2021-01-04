@@ -121,8 +121,8 @@ void motos_carry_run(void)
 {
 	s32 sp1C = gGlobalTimer;
 	o->oForwardVel = 10.0f;
-	if ((sp1C & 4) == 0) {
-cur_obj_play_sound_2(SOUND_ACTION_METAL_STEP);
+	if ((sp1C & 6) == 0) {
+cur_obj_play_sound_2(SOUND_OBJ_POUNDING1_HIGHPRIO);
 }	
 	o->oMotosUnk100 += player_performed_grab_escape_action();
     if (o->oMotosUnk100 > 10) {
@@ -143,6 +143,7 @@ void motos_pitch(void)
 
 	if ( cur_obj_check_anim_frame(14) ){
 		o->oMotosUnk88 = 0;
+			cur_obj_play_sound_2(SOUND_OBJ_BULLY_METAL);
 	}
 	if ( cur_obj_check_if_near_animation_end() )	
 	o->oAction = 0;
@@ -154,7 +155,8 @@ void motos_fly(void)
 //   o->oForwardVel = 5.0f;
 	cur_obj_init_animation_with_sound(5);
 		if ((gCurrLevelNum == LEVEL_SL) & (o->oPosY < 1000.0f)) {
-							cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);     
+			cur_obj_play_sound_2(SOUND_OBJ_BULLY_EXPLODE_2);
+							cur_obj_play_sound_2(SOUND_OBJ2_LARGE_BULLY_ATTACKED);     
 			o->oHealth--;
 			if (o->oHealth) 
                 o->oAction = 11;
@@ -162,7 +164,8 @@ void motos_fly(void)
                 o->oAction = 9;
 	}
 		if ((o->oFloor->type == SURFACE_BURNING) && ( o->oMoveFlags & OBJ_MOVE_LANDED)) {
-							cur_obj_play_sound_2(SOUND_OBJ2_KING_BOBOMB_DAMAGE);     
+			cur_obj_play_sound_2(SOUND_OBJ_BULLY_EXPLODE_2);
+							cur_obj_play_sound_2(SOUND_OBJ2_LARGE_BULLY_ATTACKED);     
 			o->oHealth--;
 			if (o->oHealth) 
                 o->oAction = 11;
@@ -170,6 +173,7 @@ void motos_fly(void)
                 o->oAction = 9;
 	}
 	if (( o->oMoveFlags & OBJ_MOVE_LANDED) && (o->oFloor->type != SURFACE_BURNING)  ) {
+		cur_obj_play_sound_2(SOUND_OBJ2_BULLY_ATTACKED);
 	o->oAction = 8;
 	}
 
@@ -188,11 +192,17 @@ if ( cur_obj_check_if_near_animation_end() )
 void motos_recover2(void) {
 //   o->oForwardVel = 5.0f;
     o->oForwardVel = 0.0f;
-
-	cur_obj_init_animation_with_sound(7);
-if ( cur_obj_check_if_near_animation_end() )	{
+if (o->oTimer == 0) {
+cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
+cur_obj_init_animation_with_sound(8);
+}
+	
+	if (o->oPosY < (o->oHomeY + 50)) {
+		cur_obj_init_animation_with_sound(7);
+	if ( cur_obj_check_if_near_animation_end() )	{
 	cur_obj_become_tangible();
 	o->oAction = 1;
+	}
 	}
 }
 
@@ -253,16 +263,15 @@ void motos_minions(void) {
     o->oAction = 13;
 }
 void motos_inactive(void) {
+	
 	            if (o->oBullyKBTimerAndMinionKOCounter == 3) {
                 play_puzzle_jingle();
-				if (o->oTimer == 91) {
-				o->oPosY = 1037.0f;
-				}
                 if (o->oTimer >= 91) {
+									o->oPosY = 1037.0f;
 			o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
                     o->oAction = 10;
             }
-}
+		}
 }
 
 void motos_death(void) { 
