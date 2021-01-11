@@ -118,10 +118,16 @@ void mr_i_act_3(void) {
         if (o->oMrISize < 0)
             o->oMrISize = 0;
         cur_obj_scale(o->oMrISize);
-    } else
+    } else {
         obj_mark_for_deletion(o);
 }
-
+//	 	if ( obj_playerdist > 2000 ){
+//			obj_mode = 1;
+//			obj_angleY = 0;
+//			obj_angleX = 0;
+//			s_set_scale(1.0);
+//		} 
+}
 void mr_i_act_2(void) {
     s16 sp1E;
     s16 sp1C;

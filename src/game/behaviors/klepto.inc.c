@@ -304,7 +304,7 @@ static void klepto_act_reset_position(void) {
         if (o->oPosY > 5000.0f) {
             obj_mark_for_deletion(o);
         } else {
-            klepto_approach_target(20.0f);
+            klepto_approach_target(10.0f);
         }
     } else {
         o->oAction = KLEPTO_ACT_WAIT_FOR_MARIO;
@@ -337,7 +337,7 @@ void bhv_klepto_update(void) {
                 klepto_circle_target(300.0f, 40.0f);
                 break;
             case KLEPTO_ACT_APPROACH_TARGET_HOLDING:
-                klepto_approach_target(50.0f);
+                klepto_approach_target(10.0f);
                 break;
             case KLEPTO_ACT_WAIT_FOR_MARIO:
                 klepto_act_wait_for_mario();

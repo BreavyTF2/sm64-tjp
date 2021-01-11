@@ -19,7 +19,7 @@
 // TODO: Figure something out for sZoomOutAreaMasks?
 DEFINE_LEVEL("CASTLE",       LEVEL_UNKNOWN_1,        COURSE_CASTLE,     castle,		      generic,  20000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("ATHLETIC",       LEVEL_UNKNOWN_2,        COURSE_NONE,     athletic,         generic,  20000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL("DONJON *",           LEVEL_UNKNOWN_3,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("DONJON",           LEVEL_UNKNOWN_3,        COURSE_NONE,   donjon,           generic,  20000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("TERESA OBAKE",   LEVEL_BBH,              COURSE_BBH,      bbh,              spooky,   28000,    0x28, 0x28, 0x28, sDynBbh,   sCamBBH)
 DEFINE_LEVEL("YYAMA1 % YSLD1", LEVEL_CCM,              COURSE_CCM,      ccm,              snow,     17000,    0x10, 0x38, 0x38, _,         sCamCCM)
 DEFINE_LEVEL("SELECT ROOM",    LEVEL_CASTLE,           COURSE_NONE,     castle_inside,    inside,   20000,    0x20, 0x20, 0x30, _,         sCamCastle)
@@ -51,7 +51,7 @@ DEFINE_LEVEL("EXT8 BLUE SKY",  LEVEL_WMOTR,            COURSE_WMOTR,    wmotr,  
 DEFINE_LEVEL("TESTMAP1",     LEVEL_UNKNOWN_32,       COURSE_NONE,     yajima,           generic,  20000,    0x70, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("KUPPA2",         LEVEL_BOWSER_2,         COURSE_BITFS,    bowser_2,         fire,     VAL_DIFF, 0x40, 0x40, 0x40, _,         _)
 DEFINE_LEVEL("KUPPA3",         LEVEL_BOWSER_3,         COURSE_BITS,     bowser_3,         generic,  VAL_DIFF, 0x40, 0x40, 0x40, _,         _)
-STUB_LEVEL("DUMMY *",            LEVEL_UNKNOWN_35,       COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("DUMMY",          LEVEL_UNKNOWN_35,       COURSE_NONE,     dummy,			  generic,  20000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("DONKEY % SLID2", LEVEL_TTM,              COURSE_TTM,      ttm,              mountain, 15000,    0x08, 0x08, 0x08, _,         _)
 DEFINE_LEVEL("PLANE",          LEVEL_UNKNOWN_37,       COURSE_NONE,     plane,            generic,  20000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL("SAND *",             LEVEL_UNKNOWN_38,       COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, sDynUnk38, _)
+DEFINE_LEVEL("SAND",             LEVEL_UNKNOWN_38,       COURSE_NONE,   sand,             generic,  20000,    0x00, 0x00, 0x00, sDynUnk38, _)

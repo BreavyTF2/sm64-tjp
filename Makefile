@@ -528,7 +528,7 @@ $(BUILD_DIR)/assets/demo_data.c: assets/demo_data.json $(wildcard assets/demos/*
 
 ifeq ($(COMPILER),ido)
 # Source code
-$(BUILD_DIR)/levels/%/leveldata.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/levels/%.o: OPT_FLAGS := -O2
 $(BUILD_DIR)/actors/%.o: OPT_FLAGS := -O2
 $(BUILD_DIR)/bin/%.o: OPT_FLAGS := -O2
 $(BUILD_DIR)/src/goddard/%.o: OPT_FLAGS := -O2

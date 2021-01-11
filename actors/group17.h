@@ -49,25 +49,25 @@ extern const Gfx mr_i_iris_seg6_dl_06004220[];
 
 // scuttlebug
 extern const GeoLayout scuttlebug_geo[];
-extern const Gfx scuttlebug_seg6_dl_06013988[];
-extern const Gfx scuttlebug_seg6_dl_060139C0[];
-extern const Gfx scuttlebug_seg6_dl_060139F8[];
-extern const Gfx scuttlebug_seg6_dl_06013AB0[];
-extern const Gfx scuttlebug_seg6_dl_06013AE8[];
-extern const Gfx scuttlebug_seg6_dl_06013B98[];
-extern const Gfx scuttlebug_seg6_dl_06013BD0[];
-extern const Gfx scuttlebug_seg6_dl_06013C80[];
-extern const Gfx scuttlebug_seg6_dl_06013CB8[];
-extern const Gfx scuttlebug_seg6_dl_06013D68[];
-extern const Gfx scuttlebug_seg6_dl_06013DA0[];
-extern const Gfx scuttlebug_seg6_dl_06013FC8[];
-extern const Gfx scuttlebug_seg6_dl_060140F0[];
-extern const Gfx scuttlebug_seg6_dl_06014150[];
-extern const Gfx scuttlebug_seg6_dl_06014188[];
-extern const Gfx scuttlebug_seg6_dl_06014238[];
-extern const Gfx scuttlebug_seg6_dl_06014270[];
-extern const Gfx scuttlebug_seg6_dl_06014338[];
-extern const Gfx scuttlebug_seg6_dl_06014378[];
+extern const Gfx RCP_walker_F_walk0[];
+extern const Gfx RCP_walker_F_walk1[];
+extern const Gfx RCP_walker_F_walk2[];
+extern const Gfx RCP_walker_F_walk3[];
+extern const Gfx RCP_walker_F_walk4[];
+extern const Gfx RCP_walker_F_walk5[];
+extern const Gfx RCP_walker_F_walk17[];
+extern const Gfx RCP_walker_F_walk15[];
+extern const Gfx RCP_walker_F_walk6[];
+extern const Gfx RCP_walker_F_walk16[];
+extern const Gfx RCP_walker_F_walk7[];
+extern const Gfx RCP_walker_F_walk8[];
+extern const Gfx RCP_walker_F_walk9[];
+extern const Gfx RCP_walker_F_walk10[];
+extern const Gfx RCP_walker_F_walk11[];
+extern const Gfx RCP_walker_F_walk12[];
+extern const Gfx RCP_walker_F_walk13[];
+extern const Gfx RCP_walker_F_walk14[];
+extern const Gfx light_sourcex[];
 extern const struct Animation *const scuttlebug_seg6_anims_06015064[];
 
 // snufit

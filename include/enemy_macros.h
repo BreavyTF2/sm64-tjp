@@ -1,3 +1,9 @@
+#define		StrategyRecord		struct Object
+#define		contOr		m
+#define	 	trigger		input
+#define		player_posX	gMarioObject->oPosX
+#define		player_posY	gMarioObject->oPosY
+#define		player_posZ	gMarioObject->oPosZ
 #define     player_worldY   gMarioObject->oPosY
 #define		obj_actor_high	o->oBehParams
 #define		enemydemo_flag	o->oDialogResponse

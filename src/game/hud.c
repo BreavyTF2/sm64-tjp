@@ -91,15 +91,19 @@ void render_hud_small_tex_lut(s32 x, s32 y, u8 *texture) {
 void render_power_meter_health_segment(s16 numHealthWedges) {
     u8 *(*healthLUT)[];
 
+
     healthLUT = segmented_to_virtual(&power_meter_health_segments_lut);
 
     gDPPipeSync(gDisplayListHead++);
-    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1,
-                       (*healthLUT)[numHealthWedges - 1]);
-    gDPLoadSync(gDisplayListHead++);
-    gDPLoadBlock(gDisplayListHead++, G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES));
+	gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, (*healthLUT)[(8-numHealthWedges)*2]);
+	gSPDisplayList(gDisplayListHead++, RCP_damegemeter_txt);
     gSP1Triangle(gDisplayListHead++, 0, 1, 2, 0);
     gSP1Triangle(gDisplayListHead++, 0, 2, 3, 0);
+	
+    gDPSetTextureImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, (*healthLUT)[(((8-numHealthWedges)*2)+1)]);
+	gSPDisplayList(gDisplayListHead++, RCP_damegemeter_txt);
+    gSP1Triangle(gDisplayListHead++, 4, 5, 6, 0);
+    gSP1Triangle(gDisplayListHead++, 4, 6, 7, 0);
 }
 
 /**
@@ -115,19 +119,14 @@ void render_dl_power_meter(s16 numHealthWedges) {
         return;
     }
 
-    guTranslate(mtx, (f32) sPowerMeterHUD.x, (f32) sPowerMeterHUD.y, 0);
+    guTranslate(mtx,(f32) sPowerMeterHUD.x,(f32) sPowerMeterHUD.y,0);
+	gSPMatrix(gDisplayListHead++,VIRTUAL_TO_PHYSICAL(mtx++), G_MTX_MODELVIEW|G_MTX_MUL|G_MTX_PUSH);
 
-    gSPMatrix(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(mtx++),
-              G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
-    gSPDisplayList(gDisplayListHead++, &dl_power_meter_base);
-
-    if (numHealthWedges != 0) {
-        gSPDisplayList(gDisplayListHead++, &dl_power_meter_health_segments_begin);
+        gSPDisplayList(gDisplayListHead++, RCP_damegemeter_on);	
         render_power_meter_health_segment(numHealthWedges);
-        gSPDisplayList(gDisplayListHead++, &dl_power_meter_health_segments_end);
-    }
+        gSPDisplayList(gDisplayListHead++, RCP_damegemeter_off);	
 
-    gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
+    gSPPopMatrix(gDisplayListHead++,G_MTX_MODELVIEW);
 }
 
 /**

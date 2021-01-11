@@ -12,7 +12,7 @@ static Lights1 light_plane[] = {
 	ShapeColor( 255,  0,  0 ),  /* attr (4) */
 };
 
-static Vtx vtx_plane[] = {
+static BetaVtx vtx_plane[] = {
 	{   -20,     0,     0,0,0,0,   0, 127,   0,0 },
 	{   -20,     0,    20,0,0,0,   0, 127,   0,0 },
 	{     0,     0,     0,0,0,0,   0, 127,   0,0 },

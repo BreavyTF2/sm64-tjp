@@ -14,7 +14,7 @@ extern const GeoLayout RCP_HmsEnemyomurobo[];
 
 // leveldata
 extern const Gfx RCP_testmap1[];
-extern const Gfx RCP_testmap2[];
+extern Gfx RCP_testmap2[];
 extern const Gfx RCP_testmap10[];
 extern Gfx RCP_monky_F_run0[];
 extern Gfx RCP_monky_F_run1[];

@@ -437,7 +437,7 @@ static Vtx vtx_testmap2[] = {
    Gfx Data                                                            
 ---------------------------------------------------------------------*/
 
-const Gfx RCP_testmap2[] = {
+Gfx RCP_testmap2[] = {
 
 	gsSPNumLights(1),
 	gsSPLight((&light_testmap2[0].l[0]),1),

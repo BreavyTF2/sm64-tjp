@@ -32,8 +32,8 @@ static const LevelScript script_func_local_6[] = {
 static const LevelScript script_func_local_7[] = {
     OBJECT(/*model*/ MODEL_THI_WARP_PIPE, /*pos*/  4350, 0, 4400, /*angle*/ 0, 0, 0, /*behParam*/ 0x00320000, /*beh*/ bhvWarpPipe),
     WARP_NODE(/*id*/ 0x32, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x02, /*destNode*/ 0x32, /*flags*/ WARP_NO_CHECKPOINT),
-//   OBJECT(/*model*/ MODEL_THI_WARP_PIPE, /*pos*/  -4000, 0, 4350, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
-//    WARP_NODE(/*id*/ 0x32, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x03, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
+   OBJECT(/*model*/ MODEL_THI_WARP_PIPE, /*pos*/  -4000, 0, 4350, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
+       WARP_NODE(/*id*/ 0x33, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x03, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
     RETURN(),
 };
 
@@ -44,8 +44,8 @@ static const LevelScript script_func_local_8[] = {
 };
 
 static const LevelScript script_func_local_9[] = {
-//		  OBJECT(/*model*/ MODEL_THI_WARP_PIPE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
-//		  WARP_NODE(/*id*/ 0x33, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
+		  OBJECT(/*model*/ MODEL_THI_WARP_PIPE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
+		  WARP_NODE(/*id*/ 0x33, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
     RETURN(),
 };
 
