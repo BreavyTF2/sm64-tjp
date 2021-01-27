@@ -24,9 +24,13 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 {
 	o->hurtboxRadius = 301;
 	o->hurtboxHeight = 101;
+	if ( o->oDistanceToMario > 2000 ) {
+		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x20);
+		o->oForwardVel = 0.0f;
+	}
 	if ( o->oDistanceToMario < 2000 ) {
-		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40);
-		o->oForwardVel = 0.5f;
+		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x60);
+		o->oForwardVel = 1.0f;
 	}
 		if ( o->oDistanceToMario < 1000 ) {
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x80);
@@ -65,7 +69,7 @@ void unbaba_act_attack(void) // Define Attacking Action for Blargg
 	}
 	if (cur_obj_check_if_near_animation_end()) {	
 	 o->oAction = 1;
-	 o->oForwardVel = 1.5f;
+	 o->oForwardVel = 2.5f;
 	}
 }
 

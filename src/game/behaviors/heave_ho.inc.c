@@ -33,7 +33,7 @@ void heave_ho_act_1(void) {
             break;
         }
         if (o->oTimer < D_8032F460[sp1C][0]) {
-            cur_obj_init_animation_with_accel_and_sound(2, D_8032F460[sp1C][1]);
+            cur_obj_init_animation_with_accel_and_sound(0, D_8032F460[sp1C][1]);
             break;
         }
         sp1C++;

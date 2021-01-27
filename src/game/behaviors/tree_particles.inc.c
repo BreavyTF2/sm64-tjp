@@ -19,8 +19,8 @@ void bhv_tree_snow_or_leaf_loop(void) {
     o->oFaceAnglePitch += o->oAngleVelPitch;
     o->oFaceAngleRoll += o->oAngleVelRoll;
     o->oVelY += -3.0f;
-    if (o->oVelY < -8.0f)
-        o->oVelY = -8.0f;
+    if (o->oVelY < -20.0f)
+        o->oVelY = -20.0f;
     if (o->oForwardVel > 0)
         o->oForwardVel -= 0.3;
     else

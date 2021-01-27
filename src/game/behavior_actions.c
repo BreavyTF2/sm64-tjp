@@ -2,6 +2,7 @@
 
 #include "types.h"
 #include "actors/common1.h"
+#include "actors/group1.h"
 #include "actors/group12.h"
 #include "actors/group13.h"
 #include "area.h"

@@ -139,11 +139,12 @@ cur_obj_play_sound_2(SOUND_OBJ_POUNDING1_HIGHPRIO);
 void motos_pitch(void)
 {
 	o->oForwardVel = 0.0f;
+	if (o->oTimer == 0) {
 	cur_obj_init_animation_with_sound(6);
-
+			cur_obj_play_sound_2(SOUND_OBJ_BULLY_METAL);
+}
 	if ( cur_obj_check_anim_frame(14) ){
 		o->oMotosUnk88 = 0;
-			cur_obj_play_sound_2(SOUND_OBJ_BULLY_METAL);
 	}
 	if ( cur_obj_check_if_near_animation_end() )	
 	o->oAction = 0;
@@ -191,13 +192,19 @@ if ( cur_obj_check_if_near_animation_end() )
 
 void motos_recover2(void) {
 //   o->oForwardVel = 5.0f;
-    o->oForwardVel = 0.0f;
+if (o->oForwardVel > 0.0) { 
+    o->oForwardVel -= 0.6;
+}
+	if (o->oVelY > 0.0) { 
+	    o->oVelY -= 1.0f;
+	}
 if (o->oTimer == 0) {
+cur_obj_become_intangible();
 cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
 cur_obj_init_animation_with_sound(8);
 }
 	
-	if (o->oPosY < (o->oHomeY + 50)) {
+	if (o->oPosY < (o->oHomeY + 30)) {
 		cur_obj_init_animation_with_sound(7);
 	if ( cur_obj_check_if_near_animation_end() )	{
 	cur_obj_become_tangible();

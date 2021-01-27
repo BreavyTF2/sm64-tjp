@@ -1,4 +1,4 @@
-// yoshi.c.inc
+// yoshi.c.inc //Currently Motos NPC
 
 // X/Z coordinates of Yoshi's homes that he switches between.
 // Note that this doesn't contain the Y coordinate since the castle roof is flat,
@@ -21,15 +21,15 @@ void yoshi_walk_loop(void) {
     UNUSED s16 sp26;
     s16 sp24 = o->header.gfx.animInfo.animFrame;
 
-    o->oForwardVel = 2.0f;
+    o->oForwardVel = 2.5f;
     sp26 = object_step();
     o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oYoshiTargetYaw, 0x500);
     if (is_point_close_to_object(o, o->oHomeX, 3174.0f, o->oHomeZ, 200))
         o->oAction = YOSHI_ACT_IDLE;
 
     cur_obj_init_animation(9);
-    if (sp24 == 0 || sp24 == 15)
-        cur_obj_play_sound_2(SOUND_GENERAL_YOSHI_WALK);
+   if (sp24 == 0 || sp24 == 14)
+        cur_obj_play_sound_2(SOUND_OBJ_BULLY_WALKING);
 
     if (o->oInteractStatus == INT_STATUS_INTERACTED)
         o->oAction = YOSHI_ACT_TALK;
@@ -95,9 +95,9 @@ void yoshi_talk_loop(void) {
 }
 
 void yoshi_walk_and_jump_off_roof_loop(void) {
-    s16 sp26 = o->header.gfx.animInfo.animFrame;
+    s16 sp24 = o->header.gfx.animInfo.animFrame;
 
-    o->oForwardVel = 2.0f;
+    o->oForwardVel = 2.5f;
     object_step();
     cur_obj_init_animation(9);
     if (o->oTimer == 0)
@@ -113,9 +113,9 @@ void yoshi_walk_and_jump_off_roof_loop(void) {
         o->oAction = YOSHI_ACT_FINISH_JUMPING_AND_DESPAWN;
     }
 
-    if (sp26 == 0 || sp26 == 15) {
-        cur_obj_play_sound_2(SOUND_GENERAL_YOSHI_WALK);
-    }
+   if (sp24 == 0 || sp24 == 14)
+        cur_obj_play_sound_2(SOUND_OBJ_BULLY_WALKING);
+
 }
 
 void yoshi_finish_jumping_and_despawn_loop(void) {
@@ -142,7 +142,8 @@ void yoshi_give_present_loop(void) {
 
     if ((sp1C & 0x03) == 0) {
         play_sound(SOUND_MENU_YOSHI_GAIN_LIVES, gDefaultSoundArgs);
-//		if (gHudDisplay.lives >= 1){
+//		if (gHudDisplay.lives >= 1){ //Yoshi kills you and steals your stars.
+ //       gMarioState->numLives--;
         gMarioState->numLives++;
 }
 //		gMarioState->hurtCounter--;
@@ -183,5 +184,5 @@ void bhv_yoshi_loop(void) {
             break;
     }
 	cur_obj_scale(2.0f);
-    curr_obj_random_blink(&o->oYoshiBlinkTimer);
+//    curr_obj_random_blink(&o->oYoshiBlinkTimer);
 }

@@ -407,8 +407,8 @@ static const Vtx chuckya_seg8_vertex_0800A7E0[] = {
 
 // 0x0800A870 - 0x0800A8D0
 const Gfx chuckya_seg8_dl_0800A870[] = {
-    gsSPLight(&chuckya_seg8_lights_0800A7C8.l, 1),
-    gsSPLight(&chuckya_seg8_lights_0800A7C8.a, 2),
+	gsSPLight(&chuckya_lights_unused4.l, 1),
+    gsSPLight(&chuckya_lights_unused4.a, 2),
     gsSPVertex(chuckya_seg8_vertex_0800A7E0, 9, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  3,  0,  2, 0x0),
     gsSP2Triangles( 1,  4,  2, 0x0,  5,  6,  2, 0x0),
@@ -427,7 +427,7 @@ const Gfx chuckya_seg8_dl_0800A8D0[] = {
 
 // 0x0800A8F0
 static const Lights1 chuckya_seg8_lights_0800A8F0 = gdSPDefLights1(
-    0x4c, 0x4c, 0x00,
+    0x3f, 0x3f, 0x00,
     0xff, 0xff, 0x00, 0x28, 0x28, 0x28
 );
 
@@ -442,8 +442,8 @@ static const Vtx chuckya_seg8_vertex_0800A908[] = {
 
 // 0x0800A958 - 0x0800A998
 const Gfx chuckya_seg8_dl_0800A958[] = {
-    gsSPLight(&chuckya_seg8_lights_0800A8F0.l, 1),
-    gsSPLight(&chuckya_seg8_lights_0800A8F0.a, 2),
+    gsSPLight(&chuckya_lights_unused7.l, 1),
+    gsSPLight(&chuckya_lights_unused7.a, 2),
     gsSPVertex(chuckya_seg8_vertex_0800A908, 5, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  4, 0x0),
     gsSP2Triangles( 0,  2,  3, 0x0,  0,  4,  1, 0x0),
@@ -500,8 +500,8 @@ static const Vtx chuckya_seg8_vertex_0800AAC0[] = {
 
 // 0x0800AB70 - 0x0800ABE8
 const Gfx chuckya_seg8_dl_0800AB70[] = {
-    gsSPLight(&chuckya_seg8_lights_0800A9B8.l, 1),
-    gsSPLight(&chuckya_seg8_lights_0800A9B8.a, 2),
+    gsSPLight(&chuckya_lights_unused7.l, 1),
+    gsSPLight(&chuckya_lights_unused7.a, 2),
     gsSPVertex(chuckya_seg8_vertex_0800A9D0, 15, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  5, 0x0),
     gsSP2Triangles( 6,  7,  8, 0x0,  9, 10, 11, 0x0),

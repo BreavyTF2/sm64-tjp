@@ -2,6 +2,7 @@
 #define COMMON0_H
 
 #include "types.h"
+
 extern const GeoLayout RCP_HmsEnemymotos_basedata_A[];
 extern const Gfx RCP_motos_LhandB[];
 extern const Gfx RCP_motos_LhandA[];
@@ -15,6 +16,19 @@ extern const Gfx RCP_motos_body[];
 extern const Gfx RCP_motos_leg[];
 extern const Gfx RCP_motos_arm[];
 extern const struct Animation *const motos_seg8_anims_0801DA4C[];
+
+extern const GeoLayout RCP_HmsEnemyicemotos_basedata_A[];
+extern const Gfx RCP_icemotos_LhandB[];
+extern const Gfx RCP_icemotos_LhandA[];
+extern const Gfx RCP_icemotos_RhandA[];
+extern const Gfx RCP_icemotos_RhandB[];
+extern const Gfx RCP_icemotos_Lfoot[];
+extern const Gfx RCP_icemotos_Rfoot[];
+extern const Gfx RCP_icemotos_Rfoot[];
+extern const Gfx RCP_icemotos_head[];
+extern const Gfx RCP_icemotos_body[];
+extern const Gfx RCP_icemotos_leg[];
+extern const Gfx RCP_icemotos_arm[];
 // amp
 extern const GeoLayout amp_geo[];
 extern const Gfx amp_seg8_dl_08002B68[];
@@ -240,16 +254,5 @@ extern const Gfx purple_switch_seg8_dl_0800C6E0[];
 extern const Gfx purple_switch_seg8_dl_0800C718[];
 extern const Collision purple_switch_seg8_collision_0800C7A8[];
 
-extern const GeoLayout RCP_HmsEnemyicemotos_basedata_A[];
-extern const Gfx RCP_icemotos_LhandB[];
-extern const Gfx RCP_icemotos_LhandA[];
-extern const Gfx RCP_icemotos_RhandA[];
-extern const Gfx RCP_icemotos_RhandB[];
-extern const Gfx RCP_icemotos_Lfoot[];
-extern const Gfx RCP_icemotos_Rfoot[];
-extern const Gfx RCP_icemotos_Rfoot[];
-extern const Gfx RCP_icemotos_head[];
-extern const Gfx RCP_icemotos_body[];
-extern const Gfx RCP_icemotos_leg[];
-extern const Gfx RCP_icemotos_arm[];
+
 #endif

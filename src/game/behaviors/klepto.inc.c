@@ -304,7 +304,7 @@ static void klepto_act_reset_position(void) {
         if (o->oPosY > 5000.0f) {
             obj_mark_for_deletion(o);
         } else {
-            klepto_approach_target(10.0f);
+            klepto_approach_target(20.0f);
         }
     } else {
         o->oAction = KLEPTO_ACT_WAIT_FOR_MARIO;
@@ -319,7 +319,7 @@ void obj_set_speed_to_zero(void) {
 }
 
 void bhv_klepto_update(void) {
-    
+    UNUSED s32 unused;
 
     cur_obj_update_floor_and_walls();
 
@@ -337,7 +337,7 @@ void bhv_klepto_update(void) {
                 klepto_circle_target(300.0f, 40.0f);
                 break;
             case KLEPTO_ACT_APPROACH_TARGET_HOLDING:
-                klepto_approach_target(10.0f);
+                klepto_approach_target(50.0f);
                 break;
             case KLEPTO_ACT_WAIT_FOR_MARIO:
                 klepto_act_wait_for_mario();
@@ -363,7 +363,7 @@ void bhv_klepto_update(void) {
                 save_file_clear_flags(SAVE_FLAG_CAP_ON_KLEPTO);
                 spawn_object(o, MODEL_MARIOS_CAP, bhvNormalCap);
             } else if (o->oAnimState == KLEPTO_ANIM_STATE_HOLDING_STAR) {
-                spawn_default_star(-5580.0f, 1380.0f, -2557.0f);
+                spawn_default_star(-5550.0f, 300.0f, -930.0f);
             }
 
             o->oAnimState = KLEPTO_ANIM_STATE_HOLDING_NOTHING;

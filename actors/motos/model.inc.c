@@ -4,7 +4,8 @@
 /*	shape data motos_basedata_A (skeleton & animation) 		  */
 /**************************************************************/
 
-
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 
 #define	softspriteON	1
 #define ShapeColor_motos_basedata_A(r,g,b)   {{r/4 ,g/4 ,b/4 ,0 ,r/4 ,g/4 ,b/4 ,0 },{ r,g,b,0, r,g,b,0, 40, 40, 40, 0} }

@@ -10,7 +10,6 @@ extern const GeoLayout RCP_Stage32Scene2[];
 extern const GeoLayout RCP_Stage32Scene3[];
 extern const GeoLayout RCP_HmsEnemymonky_F_run[];
 extern const GeoLayout RCP_HmsEnemynokonoko[];
-extern const GeoLayout RCP_HmsEnemyomurobo[];
 
 // leveldata
 extern const Gfx RCP_testmap1[];
@@ -44,19 +43,8 @@ extern Gfx RCP_nokonoko_down7[];
 extern Gfx RCP_nokonoko_down8[];
 extern Gfx RCP_nokonoko_down9[];
 extern Gfx nokonoko_light_sourcex[];
-extern Gfx RCP_omurobo_anim_run9[];
-extern Gfx RCP_omurobo_anim_run8[];
-extern Gfx RCP_omurobo_anim_run5[];
-extern Gfx RCP_omurobo_anim_run0[];
-extern Gfx RCP_omurobo_anim_run7[];
-extern Gfx RCP_omurobo_anim_run6[];
-extern Gfx RCP_omurobo_anim_run1[];
-extern Gfx RCP_omurobo_anim_run3[];
-extern Gfx RCP_omurobo_anim_run2[];
-extern Gfx RCP_omurobo_anim_run4[];
 extern const struct Animation *const monky_anime[];
 extern const struct Animation *const nokonoko_anime[];
-extern const struct Animation *const omurobo_anime[];
 extern const Collision testmap1_info[];
 extern const Collision testmap2_info[];
 extern const Collision testmap10_info[];

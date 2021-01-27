@@ -34,5 +34,4 @@ extern const Gfx moneybag_seg6_dl_06005750[];
 extern const Gfx moneybag_seg6_dl_06005980[];
 extern const Gfx moneybag_seg6_dl_060059F0[];
 extern const struct Animation *const moneybag_seg6_anims_06005E5C[];
-
 #endif
