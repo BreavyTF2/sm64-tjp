@@ -1496,9 +1496,9 @@ void bhv_flame_floating_landing_loop(void) {
         o->oVelY = D_8032F748[o->oBehParams2ndByte];
     if (o->oMoveFlags & OBJ_MOVE_LANDED) {
         if (o->oBehParams2ndByte == 0)
-            spawn_object(o, MODEL_RED_FLAME, bhvFlameLargeBurningOut);
+            spawn_object(o, MODEL_YELLOW_FLAME, bhvFlameLargeBurningOut);
         else
-            spawn_object(o, MODEL_NONE, bhvBlueFlamesGroup); //? wonder if they meant MODEL_BLUE_FLAME?
+            spawn_object(o, MODEL_YELLOW_FLAME, bhvBlueFlamesGroup); //? wonder if they meant MODEL_BLUE_FLAME?
         obj_mark_for_deletion(o);
     }
     o->oGraphYOffset = o->header.gfx.scale[1] * 14.0f;
@@ -1531,7 +1531,7 @@ void bhv_blue_bowser_flame_loop(void) {
         else {
             spawn_object_relative_with_scale(1, 0, 0, 0, 8.0f, o, MODEL_BLUE_FLAME,
                                              bhvFlameFloatingLanding);
-            spawn_object_relative_with_scale(2, 0, 0, 0, 8.0f, o, MODEL_BLUE_FLAME,
+            spawn_object_relative_with_scale(2, 0, 0, 0, 8.0f, o, MODEL_YELLOW_FLAME,
                                              bhvFlameFloatingLanding);
         }
         obj_mark_for_deletion(o);

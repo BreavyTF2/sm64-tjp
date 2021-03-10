@@ -1180,13 +1180,13 @@ static s32 act_metal_water_standing(struct MarioState *m) {
 
     switch (m->actionState) {
         case 0:
-            set_mario_animation(m, MARIO_ANIM_QUICKLY_PUT_CAP_ON);
+            set_mario_animation(m, MARIO_ANIM_METAL_UNDERWATER_STAND);
             break;
         case 1:
-            set_mario_animation(m, MARIO_ANIM_QUICKLY_PUT_CAP_ON);
+            set_mario_animation(m, MARIO_ANIM_METAL_UNDERWATER_STAND);
             break;
         case 2:
-            set_mario_animation(m, MARIO_ANIM_QUICKLY_PUT_CAP_ON);
+            set_mario_animation(m, MARIO_ANIM_METAL_UNDERWATER_STAND);
             break;
     }
 
