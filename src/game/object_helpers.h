@@ -196,6 +196,7 @@ void cur_obj_spawn_loot_coin_at_mario_pos(void);
 s32 cur_obj_advance_looping_anim(void);
 s32 cur_obj_resolve_wall_collisions(void);
 void cur_obj_update_floor_and_walls(void);
+void cur_obj_update_walls2(void);
 void cur_obj_move_standard(s16 steepSlopeAngleDegrees);
 void cur_obj_move_using_vel_and_gravity(void);
 void cur_obj_move_using_fvel_and_gravity(void);

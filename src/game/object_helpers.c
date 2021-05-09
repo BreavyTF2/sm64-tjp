@@ -1778,9 +1778,35 @@ static void cur_obj_update_floor_and_resolve_wall_collisions(s16 steepSlopeDegre
         }
     }
 }
+static void cur_obj_update_resolve_wall_collisions(s16 steepSlopeDegrees) {
+
+    if (o->activeFlags & (ACTIVE_FLAG_FAR_AWAY | ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
+        o->oMoveFlags &= ~(OBJ_MOVE_HIT_WALL | OBJ_MOVE_MASK_IN_WATER);
+
+        if (o->oPosY > o->oFloorHeight) {
+            o->oMoveFlags |= OBJ_MOVE_IN_AIR;
+        }
+    } else {
+        o->oMoveFlags &= ~OBJ_MOVE_HIT_WALL;
+        if (cur_obj_resolve_wall_collisions()) {
+            o->oMoveFlags |= OBJ_MOVE_HIT_WALL;
+        }
+
+        if (o->oPosY > o->oFloorHeight) {
+            o->oMoveFlags |= OBJ_MOVE_IN_AIR;
+        }
+
+        if (cur_obj_detect_steep_floor(steepSlopeDegrees)) {
+            o->oMoveFlags |= OBJ_MOVE_HIT_WALL;
+        }
+    }
+}
 
 void cur_obj_update_floor_and_walls(void) {
     cur_obj_update_floor_and_resolve_wall_collisions(60);
+}
+void cur_obj_update_walls2(void) {
+    cur_obj_update_resolve_wall_collisions(60);
 }
 
 void cur_obj_move_standard(s16 steepSlopeAngleDegrees) {
