@@ -207,11 +207,17 @@ Would you like to Save?\n\
 \n\
 //Yes////No"))
 
-DEFINE_DIALOG(DIALOG_013, 1, 5, 30, 200, _("\
-You've collected 100\n\
-coins! Mario gains more\n\
-power from the castle.\n\
-Do you want to Save?\n\
+DEFINE_DIALOG(DIALOG_013, 1, 4, 30, 200, _("\
+You've just stepped on\n\
+the Koopa Shell Switch!\n\
+The Koopa Shell allows\n\
+Mario to surf on liquids\n\
+and reach higher speeds.\n\
+Now Koopa Shells will\n\
+pop out of some of the\n\
+yellow blocks you find.\n\
+Would you like to Save?\n\
+\n\
 //Yes////No"))
 
 DEFINE_DIALOG(DIALOG_014, 1, 4, 30, 200, _("\
@@ -1298,14 +1304,12 @@ DEFINE_DIALOG(DIALOG_106, 1, 2, 95, 200, _("\
 Ready for blastoff! Come\n\
 on, hop into the cannon!"))
 
-DEFINE_DIALOG(DIALOG_107, 1, 3, 95, 200, _("\
-Ghosts...\n\
-...don't...\n\
-...DIE!\n\
-Heh, heh, heh!\n\
-Can you get out of here...\n\
-...alive?"))
-
+DEFINE_DIALOG(DIALOG_107, 1, 5, 30, 200, _("\
+You've collected 100\n\
+coins! Mario gains more\n\
+power from the castle.\n\
+Do you want to Save?\n\
+//Yes////No"))
 DEFINE_DIALOG(DIALOG_108, 1, 2, 95, 200, _("\
 Boooooo-m! Here comes\n\
 the master of mischief,\n\

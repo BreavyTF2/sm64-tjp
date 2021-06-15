@@ -15,6 +15,11 @@
 #include "make_const_nonconst.h"
 #include "levels/pss/header.h"
 
+static const LevelScript script_func_local_1[] = {
+    OBJECT(/*model*/ MODEL_CAP_SWITCH, /*pos*/   -5400, -4610, 6250, /*angle*/ 0, 0, 0, /*behParam*/ 0x00030000, /*beh*/ bhvCapSwitch),
+    RETURN(),
+};
+
 const LevelScript level_pss_entry[] = {
     INIT_LEVEL(),
     LOAD_MIO0(        /*seg*/ 0x07, _pss_segment_7SegmentRomStart, _pss_segment_7SegmentRomEnd),
@@ -34,6 +39,7 @@ const LevelScript level_pss_entry[] = {
         WARP_NODE(/*id*/ 0xF3, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x20, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ 0xF0, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x26, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ 0xF1, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x23, /*flags*/ WARP_NO_CHECKPOINT),
+		JUMP_LINK(script_func_local_1),
         TERRAIN(/*terrainData*/ pss_seg7_collision),
         MACRO_OBJECTS(/*objList*/ pss_seg7_macro_objs),
         TERRAIN_TYPE(/*terrainType*/ TERRAIN_SLIDE),
