@@ -48,7 +48,7 @@ void bhv_pyramid_top_spinning(void) {
         o->oFaceAngleYaw += o->oAngleVelYaw;
         o->oPosY += o->oVelY;
     }
-
+	set_environmental_camera_shake(SHAKE_ENV_PYRAMID_EXPLODE);
     // Every frame until 90 frames have passed, generate a pyramid fragment
     // with a random velocity and angle.
     if (o->oTimer < 90) {
@@ -101,6 +101,7 @@ void bhv_pyramid_top_loop(void) {
 
         case PYRAMID_TOP_ACT_SPINNING:
             if (o->oTimer == 0) {
+				cutscene_object(CUTSCENE_SSL_PYRAMID_EXPLODE, o);
                 cur_obj_play_sound_2(SOUND_GENERAL2_PYRAMID_TOP_SPIN);
             }
 

@@ -443,10 +443,10 @@ s32 act_crying(struct MarioState *m) {
             animFrame = set_mario_animation(m, MARIO_ANIM_START_REACH_POCKET);
             if (animFrame == 19) {
                 m->particleFlags |= PARTICLE_BREATH;
-                play_sound(SOUND_MARIO_PANTING, m->marioObj->header.gfx.cameraToObject);
+                play_sound(SOUND_MARIO_PANTING_COLD, m->marioObj->header.gfx.cameraToObject);
             }
             if (animFrame == 31) {
-                play_sound(SOUND_MARIO_PANTING, m->marioObj->header.gfx.cameraToObject);
+                play_sound(SOUND_MARIO_PANTING_COLD, m->marioObj->header.gfx.cameraToObject);
             }
             if (is_anim_past_end(m)) {
                 m->actionState = 1;
@@ -457,7 +457,7 @@ s32 act_crying(struct MarioState *m) {
             animFrame = set_mario_animation(m, MARIO_ANIM_REACH_POCKET);
 			m->marioBodyState->eyeState = MARIO_EYES_CLOSED;
             if (animFrame == 25) {
-                play_sound(SOUND_MARIO_PANTING, m->marioObj->header.gfx.cameraToObject);
+                play_sound(SOUND_MARIO_PANTING_COLD, m->marioObj->header.gfx.cameraToObject);
             }
             break;
 

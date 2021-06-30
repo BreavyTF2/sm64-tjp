@@ -54,7 +54,7 @@ void koopa_shell_spawn_sparkles(f32 a) {
 void bhv_koopa_shell_loop(void) {
     struct Surface *sp34;
     obj_set_hitbox(o, &sKoopaShellHitbox);
-    cur_obj_scale(1.0f);
+    cur_obj_scale(1.6f);
     switch (o->oAction) {
         case 0:
             cur_obj_update_floor_and_walls();

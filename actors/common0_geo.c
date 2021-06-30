@@ -27,5 +27,6 @@
 #include "metal_box/geo.inc.c"
 #include "exclamation_box_outline/geo.inc.c"
 #include "koopa_shell/geo.inc.c"
+#include "koopa_shell2/geo.inc.c"
 #include "motos/geo.inc.c"
 #include "icemotos/geo.inc.c"

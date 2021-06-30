@@ -62,6 +62,7 @@ void bhv_alpha_boo_key_loop(void) {
  * Continue to make the key fall, and handle collection.
  */
 static void beta_boo_key_dropped_loop(void) {
+
     // Apply standard physics to the key
     cur_obj_update_floor_and_walls();
     cur_obj_move_standard(78);
@@ -93,7 +94,7 @@ static void beta_boo_key_dropped_loop(void) {
 
     // If the key hits the floor or 90 frames have elapsed since it was dropped,
     // become tangible and handle collision.
-    if (o->oTimer > 90 || o->oMoveFlags & OBJ_MOVE_LANDED) {
+    if (o->oMoveFlags & OBJ_MOVE_LANDED) {
         cur_obj_become_tangible();
 		obj_set_hitbox(o, &sBooKeyHitbox);
 
@@ -124,7 +125,7 @@ static void beta_boo_key_dropped_loop(void) {
 static void beta_boo_key_drop(void) {
     s16 velocityDirection;
     f32 velocityMagnitude;
-
+	cur_obj_become_intangible();
     // Update the key to be inside the boo
     struct Object *parent = o->parentObj;
     obj_copy_pos(o, parent);

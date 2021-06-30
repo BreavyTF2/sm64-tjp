@@ -171,6 +171,7 @@
 #define SOUND_MARIO_PANTING_COLD                        SOUND_ARG_LOAD(2, 4, 0x16, 0x80, 8)
 
 // A random number 0-2 is added to the sound ID before playing
+#define SOUND_MARIO_COUGH                       SOUND_ARG_LOAD(2, 4, 0x17, 0x80, 8)
 #define SOUND_MARIO_PANTING                     SOUND_ARG_LOAD(2, 4, 0x18, 0x80, 8)
 
 #define SOUND_MARIO_COUGHING1                   SOUND_ARG_LOAD(2, 4, 0x1B, 0x80, 8)

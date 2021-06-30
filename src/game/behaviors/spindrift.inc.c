@@ -19,6 +19,7 @@ void bhv_spindrift_loop(void) {
     cur_obj_update_floor_and_walls();
     switch (o->oAction) {
         case 0:
+		if (o->oForwardVel > 3.0f) cur_obj_play_sound_1(SOUND_AIR_UNK07);
             approach_forward_vel(&o->oForwardVel, 4.0f, 1.0f);
             if (cur_obj_lateral_dist_from_mario_to_home() > 1000.0f)
                 o->oAngleToMario = cur_obj_angle_to_home();

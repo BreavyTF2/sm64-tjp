@@ -1767,7 +1767,7 @@ void check_kick_or_punch_wall(struct MarioState *m) {
                 if (m->action == ACT_PUNCHING) {
                     m->action = ACT_MOVE_PUNCHING;
                 }
-
+				set_environmental_camera_shake(SHAKE_ENV_UNUSED_5);
                 mario_set_forward_vel(m, -48.0f);
                 play_sound(SOUND_ACTION_HIT_2, m->marioObj->header.gfx.cameraToObject);
                 m->particleFlags |= PARTICLE_TRIANGLE;

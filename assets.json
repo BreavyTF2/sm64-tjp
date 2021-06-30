@@ -276,8 +276,6 @@
 "actors/koopa/koopa_eyes_open.rgba16.png": [32,32,2048,{"jp":[1844608,17992],"us":[1851952,17992],"eu":[1723920,17992],"sh":[1700432,17992]}],
 "actors/koopa/koopa_nostrils.rgba16.png": [64,32,4096,{"jp":[1844608,24136],"us":[1851952,24136],"eu":[1723920,24136],"sh":[1700432,24136]}],
 "actors/koopa_flag/koopa_flag_banner.rgba16.png": [32,32,2048,{"jp":[1844608,72],"us":[1851952,72],"eu":[1723920,72],"sh":[1700432,72]}],
-"actors/koopa_shell/koopa_shell_back.rgba16.png": [32,32,2048,{"jp":[1844608,11848],"us":[1851952,11848],"eu":[1723920,11848],"sh":[1700432,11848]}],
-"actors/koopa_shell/koopa_shell_front.rgba16.png": [32,32,2048,{"jp":[1844608,9800],"us":[1851952,9800],"eu":[1723920,9800],"sh":[1700432,9800]}],
 "actors/lakitu_cameraman/lakitu_camera_lens.rgba16.png": [16,16,512,{"jp":[1926752,14336],"us":[1934096,14336],"eu":[1806064,14336],"sh":[1782576,14336]}],
 "actors/lakitu_cameraman/lakitu_cameraman_cloud_face_unused.rgba16.png": [32,32,2048,{"jp":[1568640,60640],"us":[1575856,60640],"eu":[1447824,60640],"sh":[1424336,60640]}],
 "actors/lakitu_cameraman/lakitu_cameraman_eyes_closed.rgba16.png": [64,32,4096,{"jp":[1568640,66784],"us":[1575856,66784],"eu":[1447824,66784],"sh":[1424336,66784]}],

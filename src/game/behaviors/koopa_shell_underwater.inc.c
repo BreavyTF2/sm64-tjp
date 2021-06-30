@@ -35,4 +35,5 @@ void bhv_koopa_shell_underwater_loop(void) {
         spawn_mist_particles();
     }
     o->oInteractStatus = 0;
+	cur_obj_scale(1.5f);
 }

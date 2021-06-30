@@ -1,6 +1,6 @@
 // 0x0700DE30 - 0x0700DE48
 static const Lights1 bob_seg7_lights_0700DE30 = gdSPDefLights1(
-    0x33, 0x33, 0x33,
+    0x3f, 0x3f, 0x3f,
     0xff, 0xff, 0xff, 0x28, 0x28, 0x28
 );
 
@@ -112,13 +112,7 @@ static const Gfx bob_seg7_dl_0700E1E8[] = {
 // 0x0700E338 - 0x0700E3E0
 const Gfx bob_seg7_dl_0700E338[] = {
     gsDPPipeSync(),
-    gsDPSetCycleType(G_CYC_2CYCLE),
-    gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
-    gsDPSetDepthSource(G_ZS_PIXEL),
-    gsDPSetFogColor(160, 160, 160, 255),
-    gsSPFogPosition(980, 1000),
-    gsSPSetGeometryMode(G_FOG),
-    gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_PASS2),
+    gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPTileSync(),
@@ -127,9 +121,6 @@ const Gfx bob_seg7_dl_0700E338[] = {
     gsSPDisplayList(bob_seg7_dl_0700E1E8),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
-    gsDPSetCycleType(G_CYC_1CYCLE),
-    gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_NOOP2),
-    gsSPClearGeometryMode(G_FOG),
-    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPSetGeometryMode(G_LIGHTING),
     gsSPEndDisplayList(),
 };
