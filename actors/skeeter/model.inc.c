@@ -1527,6 +1527,8 @@ const Gfx skeeter_seg6_dl_06004678[] = {
 
 // 0x06004A40 - 0x06005328
 const Gfx skeeter_seg6_dl_06004A40[] = {
+	gsSPLight(&skeeter_lights_unused1.l, 1),
+	gsSPLight(&skeeter_lights_unused1.a, 2),
     gsSPVertex(skeeter_seg6_vertex_060023B0, 16, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  1,  0,  3, 0x0),
     gsSP2Triangles( 1,  3,  4, 0x0,  4,  3,  5, 0x0),
@@ -1693,6 +1695,8 @@ const Gfx skeeter_seg6_dl_06005328[] = {
 
 // 0x06005358 - 0x06005720
 const Gfx skeeter_seg6_dl_06005358[] = {
+	gsSPLight(&skeeter_lights_unused3.l, 1),
+    gsSPLight(&skeeter_lights_unused3.a, 2),
     gsSPVertex(skeeter_seg6_vertex_060037F0, 16, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  1,  0,  3, 0x0),
     gsSP2Triangles( 1,  3,  4, 0x0,  4,  3,  5, 0x0),

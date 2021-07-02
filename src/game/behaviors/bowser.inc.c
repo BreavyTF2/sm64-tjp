@@ -842,6 +842,7 @@ s32 bowser_dead_not_bits_end(void) {
     } else if (bowser_dead_twirl_into_trophy()) {
         bowser_dead_hide();
         spawn_triangle_break_particles(20, 116, 1.0f, 0);
+		obj_spawn_loot_yellow_coins(o, 20, 0.0f);
         bowser_spawn_grand_star_key();
         set_mario_npc_dialog(0);
         ret = 1;
@@ -1374,7 +1375,7 @@ void bhv_falling_bowser_platform_loop(void) {
 
 void bowser_flame_despawn(void) {
     obj_mark_for_deletion(o);
-    spawn_object_with_scale(o, MODEL_NONE, bhvBlackSmokeUpward, 1.0f);
+    spawn_object_with_scale(o, MODEL_BURN_SMOKE, bhvBlackSmokeBowser, 1.0f);
     if (random_float() < 0.1)
         spawn_object(o, MODEL_YELLOW_COIN, bhvTemporaryYellowCoin);
 }

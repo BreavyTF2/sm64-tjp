@@ -74,7 +74,7 @@ cur_obj_play_sound_2(SOUND_OBJ_BULLY_WALKING);
 	cur_obj_init_animation_with_sound(9);
 	o->oForwardVel = 2.5f;
 	cur_obj_rotate_yaw_toward(o->oAngleToMario,300);
-		if ((o->oPosY < 500.0f) & (gCurrLevelNum == LEVEL_SL) & (o->oTimer >= 20)) {
+		if ((o->oPosY < 1300.0f) & (gCurrLevelNum == LEVEL_SL) & (o->oTimer >= 20)) {
 			o->oAction = 11;
 		}
 		if ((o->oPosY < 200.0f) & (gCurrLevelNum == LEVEL_LLL) & (o->oTimer >= 20)) {

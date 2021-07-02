@@ -125,11 +125,10 @@ static void beta_boo_key_dropped_loop(void) {
 static void beta_boo_key_drop(void) {
     s16 velocityDirection;
     f32 velocityMagnitude;
-	cur_obj_become_intangible();
     // Update the key to be inside the boo
     struct Object *parent = o->parentObj;
     obj_copy_pos(o, parent);
-
+	cur_obj_become_intangible();
     // This if statement to only run this code on the first frame
     // is redundant, since it instantly sets the action to BETA_BOO_KEY_ACT_DROPPED
     // which stops this function from running again.
