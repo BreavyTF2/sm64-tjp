@@ -1,29 +1,36 @@
-// 0x050015D0
-static const s16 clam_shell_seg5_animvalue_050015D0[] = {
-    0x0000, 0x3FFF, 0x0E08, 0x1135, 0x1458, 0x1118, 0x0DBA, 0x1055,
-    0x1326, 0x10AE, 0x0E3E, 0x1121, 0x13F2, 0x116A, 0x0E81, 0x0FAA,
-    0x1127, 0x0FDC, 0x0E5C, 0x0E11, 0x0E00, 0x0E0D, 0x0E19, 0x0E08,
-    0x22E4, 0x4D59, 0x6EC3, 0x7A37, 0x7C9F, 0x7E13, 0x7D78, 0x7E13,
-    0x8001, 0x8001, 0x8001, 0x0000,
+static short big_shell_close_prm[]={
+	    0,16383, 3592, 4405, 5208, 4376, 3514, 4181,
+	 4902, 4270, 3646, 4385, 5106, 4458, 3713, 4010,
+	 4391, 4060, 3676, 3601, 3584, 3597, 3609, 3592,
+	 8932,19801,28355,31287,31903,32275,32120,32275,
+	-32767,-32767,-32767,};
+
+static unsigned short big_shell_close_tbl[]= {
+	     1,     0,	/* chn2(3) */
+	     1,     0,
+	     1,     0,
+	     1,     0,	/* chn2(3) */
+	     1,     1,
+	     1,     0,
+	     1,     0,	/* shell_B(2) */
+	     1,     0,
+	     1,    34,
+	     1,    32,	/* chn1(1) */
+	     1,    33,
+	     1,     0,
+	     1,     0,	/* shell_A(0) */
+	     1,     0,
+	    30,     2,
 };
 
-// 0x05001618
-static const u16 clam_shell_seg5_animindex_05001618[] = {
-    0x0001, 0x0000, 0x0001, 0x0000, 0x0001, 0x0000, 0x0001, 0x0000, 0x0001, 0x0001, 0x0001, 0x0000,
-    0x0001, 0x0000, 0x0001, 0x0000, 0x0001, 0x0022,
-    0x0001, 0x0020, 0x0001, 0x0021, 0x0001, 0x0000,
-    0x0001, 0x0000, 0x0001, 0x0000, 0x001E, 0x0002,
-};
-
-// 0x05001654
-static const struct Animation clam_shell_seg5_anim_05001654 = {
-    1,
-    0,
-    0,
-    0,
-    0x1E,
-    ANIMINDEX_NUMPARTS(clam_shell_seg5_animindex_05001618),
-    clam_shell_seg5_animvalue_050015D0,
-    clam_shell_seg5_animindex_05001618,
-    0,
+static const struct Animation big_shell_close_anm={
+	1,	/* attr 	*/
+	0,					/* code 	*/
+	0,					/* start 	*/
+	0,					/* loop 	*/
+	30,
+	4,
+	big_shell_close_prm,
+	big_shell_close_tbl,
+	0
 };

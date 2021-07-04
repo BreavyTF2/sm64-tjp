@@ -1,5 +1,4 @@
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmissing-braces"
+
 /**************************************************************/
 /*	shape data motos_basedata_A (skeleton & animation) 		  */
 /**************************************************************/
