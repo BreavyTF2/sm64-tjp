@@ -74,7 +74,7 @@ void bhv_beta_trampoline_top_loop(void) {
 	}
 
 	if (o->oBetaTrampolineMarioOnTrampoline == FALSE) {
-		cur_obj_play_sound_2(SOUND_GENERAL_BOING3);
+		//cur_obj_play_sound_2(SOUND_GENERAL_BOING3);
 				o->oPosY += 16.0f;
 				if (o->oPosY >= (o->oHomeY)) {
 				o->oPosY += 0.0f;
