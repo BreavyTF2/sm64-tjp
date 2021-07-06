@@ -66,7 +66,7 @@ void bhv_beta_trampoline_top_loop(void) {
     }
 	
 	if (o->oBetaTrampolineMarioOnTrampoline == TRUE){
-			o->oPosY -= 2.0f;
+			o->oPosY -= 12.0f;
 		if (o->oPosY <= (o->oHomeY - 60) ) {
 		o->oGraphYOffset = 0.0f;
 		o->oPosY = (o->oHomeY -60);
@@ -74,7 +74,8 @@ void bhv_beta_trampoline_top_loop(void) {
 	}
 
 	if (o->oBetaTrampolineMarioOnTrampoline == FALSE) {
-				o->oPosY += 8.0f;
+		cur_obj_play_sound_2(SOUND_GENERAL_BOING3);
+				o->oPosY += 16.0f;
 				if (o->oPosY >= (o->oHomeY)) {
 				o->oPosY += 0.0f;
 				o->oPosY = (o->oHomeY);

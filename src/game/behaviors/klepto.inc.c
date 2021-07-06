@@ -135,7 +135,7 @@ static void klepto_circle_target(f32 radius, f32 targetSpeed) {
         o->oKleptoTimeUntilTargetChange = random_linear_offset(300, 300);
         o->oAction = KLEPTO_ACT_APPROACH_TARGET_HOLDING;
     } else {
-        turnAmount = 0x4000 - atan2s(radius, o->oKleptoDistanceToTarget - radius);
+        turnAmount = 0x2000 - atan2s(radius, o->oKleptoDistanceToTarget - radius);
         accel = 0.05f;
         if ((s16)(o->oMoveAngleYaw - o->oKleptoYawToTarget) < 0) {
             turnAmount = -turnAmount;
@@ -200,7 +200,7 @@ static void klepto_act_turn_toward_mario(void) {
         cur_obj_init_animation_with_sound(3);
     }
 
-    klepto_circle_target(1000.0f, 40.0f);
+    klepto_circle_target(500.0f, 40.0f);
     obj_face_yaw_approach(o->oAngleToMario, 1000);
 }
 
@@ -382,6 +382,6 @@ void bhv_klepto_update(void) {
         }
     }
 
-    obj_roll_to_match_yaw_turn(o->oKleptoYawToTarget, 0x3000, 600);
+//    obj_roll_to_match_yaw_turn(o->oKleptoYawToTarget, 0x3000, 600);
     cur_obj_move_standard(78);
 }

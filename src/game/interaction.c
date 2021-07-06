@@ -1160,7 +1160,7 @@ u32 interact_strong_wind(struct MarioState *m, UNUSED u32 interactType, struct O
 }
 
 u32 interact_flame(struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
-    u32 burningAction = ACT_BURNING_JUMP;
+    u32 burningAction = ACT_BURNING_GROUND;
 
     if (!sInvulnerable && !(m->flags & MARIO_METAL_CAP) && !(m->flags & MARIO_VANISH_CAP)
         && !(o->oInteractionSubtype & INT_SUBTYPE_DELAY_INVINCIBILITY)) {

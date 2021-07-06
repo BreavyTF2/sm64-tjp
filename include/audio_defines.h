@@ -213,6 +213,7 @@
 
 /* General Sound Effects */
 #define SOUND_GENERAL_ACTIVATE_CAP_SWITCH                   SOUND_ARG_LOAD(3, 0, 0x00, 0x80, 8)
+#define SOUND_GENERAL_TRAMPOLINE                            SOUND_ARG_LOAD(3, 0, 0x01, 0x80, 8)
 /* not verified */ #define SOUND_GENERAL_FLAME_OUT          SOUND_ARG_LOAD(3, 0, 0x03, 0x80, 8)
 /* not verified */ #define SOUND_GENERAL_OPEN_WOOD_DOOR     SOUND_ARG_LOAD(3, 0, 0x04, 0xC0, 8)
 /* not verified */ #define SOUND_GENERAL_CLOSE_WOOD_DOOR    SOUND_ARG_LOAD(3, 0, 0x05, 0xC0, 8)
@@ -322,7 +323,7 @@
 /* not verified */ #define SOUND_GENERAL_ENEMY_ALERT1       SOUND_ARG_LOAD(3, 0, 0x6F, 0x30, 8)
 /* not verified */ #define SOUND_GENERAL_YOSHI_TALK         SOUND_ARG_LOAD(3, 0, 0x70, 0x30, 8)
 /* not verified */ #define SOUND_GENERAL_SPLATTERING        SOUND_ARG_LOAD(3, 0, 0x71, 0x30, 8)
-/* not verified */ #define SOUND_GENERAL_BOING3             0x3072
+/* not verified */ #define SOUND_GENERAL_BOING3             SOUND_ARG_LOAD(3, 0, 0x72, 0x30, 8)
 /* not verified */ #define SOUND_GENERAL_GRAND_STAR         SOUND_ARG_LOAD(3, 0, 0x73, 0x00, 8)
 /* not verified */ #define SOUND_GENERAL_GRAND_STAR_JUMP    SOUND_ARG_LOAD(3, 0, 0x74, 0x00, 8)
 /* not verified */ #define SOUND_GENERAL_BOAT_ROCK          SOUND_ARG_LOAD(3, 0, 0x75, 0x00, 8)

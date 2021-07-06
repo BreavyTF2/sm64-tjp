@@ -197,12 +197,12 @@ void bhv_manta_ray_water_ring_init(void) {
 }
 
 void manta_water_ring_act_not_collected(void) {
-    f32 avgScale = (f32) o->oTimer / 50.0f * 1.3 + 0.1;
+    f32 avgScale = (f32) o->oTimer / 50.0f * 1.0 + 0.1;
     struct Object *ringSpawner = o->parentObj;
     struct Object *ringManager = ringSpawner->parentObj;
 
-    if (avgScale > 1.3)
-        avgScale = 1.3;
+    if (avgScale > 1.0)
+        avgScale = 1.0;
 
     if (o->oTimer >= 151) {
         o->oOpacity -= 2;

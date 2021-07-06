@@ -1217,7 +1217,7 @@ s32 act_riding_shell_ground(struct MarioState *m) {
     }
 
     update_shell_speed(m);
-    set_mario_animation(m, m->actionArg == 0 ? MARIO_ANIM_START_RIDING_SHELL : MARIO_ANIM_RIDING_SHELL);
+    set_mario_animation(m, m->actionArg == 0 ? MARIO_ANIM_BEND_KNESS_RIDING_SHELL : MARIO_ANIM_RIDING_SHELL);
 
     switch (perform_ground_step(m)) {
         case GROUND_STEP_LEFT_GROUND:
@@ -1306,7 +1306,7 @@ s32 act_burning_ground(struct MarioState *m) {
         return set_mario_action(m, ACT_BURNING_JUMP, 0);
     }
 
-    m->marioObj->oMarioBurnTimer += 2;
+    m->marioObj->oMarioBurnTimer += 3;
     if (m->marioObj->oMarioBurnTimer > 160) {
         return set_mario_action(m, ACT_WALKING, 0);
     }
