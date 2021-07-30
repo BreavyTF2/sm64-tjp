@@ -23,7 +23,7 @@ const LevelScript level_athletic_entry[] = {
 
     AREA(/*index*/ 1, RCP_Stage2Scene1),
         TERRAIN(/*terrainData*/ test_info),
-        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0002, /*seq*/ SEQ_LEVEL_SLIDE),
+//        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0002, /*seq*/ SEQ_LEVEL_SLIDE),
  //       TERRAIN_TYPE(/*terrainType*/ TERRAIN_GRASS),
     END_AREA(),
 

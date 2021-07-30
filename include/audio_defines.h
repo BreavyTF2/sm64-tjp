@@ -348,7 +348,7 @@
 /* not verified */ #define SOUND_ENV_MOVINGSAND             SOUND_ARG_LOAD(4, 0, 0x0E, 0x00, 0)
 /* not verified */ #define SOUND_ENV_MERRY_GO_ROUND_CREAKING    SOUND_ARG_LOAD(4, 0, 0x0F, 0x40, 0)
 /* not verified */ #define SOUND_ENV_WIND2                  SOUND_ARG_LOAD(4, 0, 0x10, 0x80, 0)
-/* not verified */ #define SOUND_ENV_UNK12                  0x4012
+/* not verified */ #define SOUND_ENV_UNK12                  SOUND_ARG_LOAD(4, 0, 0x12, 0x00, 1)
 /* not verified */ #define SOUND_ENV_SLIDING                SOUND_ARG_LOAD(4, 0, 0x13, 0x00, 0)
 /* not verified */ #define SOUND_ENV_STAR                   SOUND_ARG_LOAD(4, 0, 0x14, 0x00, 1)
 /* not verified */ #define SOUND_ENV_UNKNOWN4               SOUND_ARG_LOAD(4, 1, 0x15, 0x00, 0)

@@ -1,22 +1,22 @@
 // 0x0D0005EC
 const GeoLayout chain_chomp_geo[] = {
-   GEO_SHADOW(SHADOW_CIRCLE_4_VERTS, 0x96, 200),
-   GEO_OPEN_NODE(),
-      GEO_SCALE(0x00, 16384),
-      GEO_OPEN_NODE(),
-         GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-         GEO_OPEN_NODE(),
-            GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, chain_chomp_seg6_dl_06024940),
-            GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, chain_chomp_seg6_dl_06024FC0),
-         GEO_CLOSE_NODE(),
-         GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-         GEO_OPEN_NODE(),
-            GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, chain_chomp_seg6_dl_06024240),
-            GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, chain_chomp_seg6_dl_06024D60),
-            GEO_ANIMATED_PART(LAYER_ALPHA, 0, 0, 0, chain_chomp_seg6_dl_06024B00),
-         GEO_CLOSE_NODE(),
-      GEO_CLOSE_NODE(),
-   GEO_CLOSE_NODE(),
-GEO_CLOSE_NODE(), //! more close than open nodes
-GEO_END(),
+ hmsShadow(200,150,1)
+ hmsBegin()
+ hmsScale(0.25f)
+    hmsBegin()
+      hmsJoint(RM_SURF,NULL,0,0,0)					/* ,XXX, */
+      hmsBegin()
+         hmsJoint(RM_SURF,RCP_wanwan_anim2,0,0,0)  /* ,wan_bodyB,(2) */
+         hmsJoint(RM_SURF,RCP_wanwan_anim0,0,0,0)  /* ,wan_toothB,(0) */
+      hmsEnd()
+      hmsJoint(RM_SURF,NULL,0,0,0)  /* ,chn2,(5) */
+      hmsBegin()
+         hmsJoint(RM_SURF,RCP_wanwan_anim4,0,0,0)  /* ,wan_bodyA,(4) */
+         hmsJoint(RM_SURF,RCP_wanwan_anim3,0,0,0)  /* ,wan_toothA,(3) */
+         hmsJoint(LAYER_ALPHA,RCP_wanwan_anim1,0,0,0)  /* ,wan_eye,(1) */
+      hmsEnd()
+   hmsEnd()
+ hmsEnd()
+ hmsEnd()
+ hmsExit()
 };

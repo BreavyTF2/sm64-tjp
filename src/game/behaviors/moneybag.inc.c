@@ -78,7 +78,7 @@ void moneybag_jump(s8 collisionFlags) {
             {
                 o->oForwardVel = 0;
                 o->oVelY = 0;
-                o->oMoneybagJumpState = MONEYBAG_JUMP_LANDING;
+                o->oMoneybagJumpState = MONEYBAG_JUMP_JUMP_AND_BOUNCE;
             }
             break;
 

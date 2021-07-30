@@ -9,77 +9,77 @@ const GeoLayout red_flame_shadow_geo[] = {
 
 // 0x16000B2C
 const GeoLayout red_flame_geo[] = {
-   GEO_NODE_START(),
-   GEO_OPEN_NODE(),
-      GEO_SWITCH_CASE(15, geo_switch_anim_state),
-      GEO_OPEN_NODE(),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B3B0),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B3C8),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B3E0),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B3F8),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B410),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B428),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B440),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B458),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B668),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B680),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B698),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B6B0),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B6C8),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B6E0),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B6F8),
-      GEO_CLOSE_NODE(),
-   GEO_CLOSE_NODE(),
-   GEO_END(),
+	hmsGroup()
+	hmsBegin()
+		hmsSelect(15, geo_switch_anim_state)
+		hmsBegin()
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow01)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow02)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow03)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow04)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow05)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow06)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow07)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow08)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow09)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow10)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow11)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow12)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow13)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow14)
+			hmsGfx(RM_XSURF, RCP_FireC_Yellow15)
+		hmsEnd()
+	hmsEnd()
+  	hmsExit()
 };
 
 const GeoLayout yellow_flame_geo[] = {
-   GEO_NODE_START(),
-   GEO_OPEN_NODE(),
-      GEO_SWITCH_CASE(15, geo_switch_anim_state),
-      GEO_OPEN_NODE(),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B3B01),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B3C81),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B3E01),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B3F81),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B4101),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B4281),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B4401),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B4581),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B6681),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B6801),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B6981),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B6B01),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B6C81),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B6E01),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B6F81),
-      GEO_CLOSE_NODE(),
-   GEO_CLOSE_NODE(),
-   GEO_END(),
+	hmsGroup()
+	hmsBegin()
+		hmsSelect(15, geo_switch_anim_state)
+		hmsBegin()
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow01)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow02)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow03)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow04)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow05)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow06)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow07)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow08)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow09)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow10)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow11)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow12)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow13)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow14)
+			hmsGfx(RM_XSURF, RCP_FireC_2_Yellow15)
+		hmsEnd()
+	hmsEnd()
+  	hmsExit()
 };
 
 // 0x16000B8C
 const GeoLayout blue_flame_geo[] = {
-   GEO_NODE_START(),
-   GEO_OPEN_NODE(),
-      GEO_SWITCH_CASE(15, geo_switch_anim_state),
-      GEO_OPEN_NODE(),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B500),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B518),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B530),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B548),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B560),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B578),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B590),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B5A8),
-		 GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B5C0),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B5D8),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B5F0),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B608),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B620),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B638),
-         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, flame_seg3_dl_0301B650),
-      GEO_CLOSE_NODE(),
-   GEO_CLOSE_NODE(),
-   GEO_END(),
+	hmsGroup()
+	hmsBegin()
+		hmsSelect(15, geo_switch_anim_state)
+		hmsBegin()
+			hmsGfx(RM_XSURF, RCP_FireC_Blue01)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue02)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue03)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue04)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue05)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue06)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue07)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue08)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue09)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue10)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue11)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue12)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue13)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue14)
+			hmsGfx(RM_XSURF, RCP_FireC_Blue15)
+		hmsEnd()
+	hmsEnd()
+  	hmsExit()
 };

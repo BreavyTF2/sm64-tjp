@@ -9,18 +9,11 @@ extern const Gfx chain_ball_seg6_dl_060212E8[];
 
 // chain_chomp
 extern const GeoLayout chain_chomp_geo[];
-extern const Gfx chain_chomp_seg6_dl_06024000[];
-extern const Gfx chain_chomp_seg6_dl_06024040[];
-extern const Gfx chain_chomp_seg6_dl_06024240[];
-extern const Gfx chain_chomp_seg6_dl_06024700[];
-extern const Gfx chain_chomp_seg6_dl_06024900[];
-extern const Gfx chain_chomp_seg6_dl_06024940[];
-extern const Gfx chain_chomp_seg6_dl_06024AA8[];
-extern const Gfx chain_chomp_seg6_dl_06024B00[];
-extern const Gfx chain_chomp_seg6_dl_06024CF0[];
-extern const Gfx chain_chomp_seg6_dl_06024D60[];
-extern const Gfx chain_chomp_seg6_dl_06024F50[];
-extern const Gfx chain_chomp_seg6_dl_06024FC0[];
+extern const Gfx RCP_wanwan_anim0[];
+extern const Gfx RCP_wanwan_anim1[];
+extern const Gfx RCP_wanwan_anim2[];
+extern const Gfx RCP_wanwan_anim3[];
+extern const Gfx RCP_wanwan_anim4[];
 extern const struct Animation *const chain_chomp_seg6_anims_06025178[];
 
 // koopa
@@ -61,19 +54,13 @@ extern const struct Animation *const koopa_seg6_anims_06011364[];
 
 // koopa_flag
 extern const GeoLayout koopa_flag_geo[];
-extern const Gfx koopa_flag_seg6_dl_06000968[];
-extern const Gfx koopa_flag_seg6_dl_06000A08[];
-extern const Gfx koopa_flag_seg6_dl_06000AB8[];
-extern const Gfx koopa_flag_seg6_dl_06000AE8[];
-extern const Gfx koopa_flag_seg6_dl_06000B08[];
-extern const Gfx koopa_flag_seg6_dl_06000BC0[];
-extern const Gfx koopa_flag_seg6_dl_06000BF8[];
-extern const Gfx koopa_flag_seg6_dl_06000CA8[];
-extern const Gfx koopa_flag_seg6_dl_06000CE0[];
-extern const Gfx koopa_flag_seg6_dl_06000D90[];
-extern const Gfx koopa_flag_seg6_dl_06000DB0[];
-extern const Gfx koopa_flag_seg6_dl_06000E20[];
-extern const Gfx koopa_flag_seg6_dl_06000E38[];
+extern const Gfx RCP_animed_patapata0[];
+extern const Gfx RCP_animed_patapata1[];
+extern const Gfx RCP_animed_patapata2[];
+extern const Gfx RCP_animed_patapata3[];
+extern const Gfx RCP_animed_patapata4[];
+extern const Gfx RCP_animed_patapata5[];
+extern const Gfx animed_light_sourcex[];
 extern const struct Animation *const koopa_flag_seg6_anims_06001028[];
 
 // piranha_plant

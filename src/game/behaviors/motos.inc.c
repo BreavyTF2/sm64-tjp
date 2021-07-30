@@ -6,7 +6,7 @@ void s_motos_hand(void)
 //    obj_copy_pos(o, parent);
 	o->oParentRelativePosX = 100.0f;
 	o->oParentRelativePosY = 0.0f;
-o->oParentRelativePosZ = 150.0f;
+	o->oParentRelativePosZ = 150.0f;
 	o->oMoveAngleYaw = o->parentObj->oMoveAngleYaw;
 
 	switch (o->parentObj->oMotosUnk88 ){
@@ -43,6 +43,21 @@ o->oParentRelativePosZ = 150.0f;
 //	}
 
 
+}
+
+Gfx *MotosProc1(s32 run, UNUSED struct GraphNode *node, Mat4 mtx) {
+    Mat4 sp20;
+    struct Object *sp1C;
+
+    if (run == TRUE) {
+        sp1C = (struct Object *) gCurGraphNodeObject;
+        if (sp1C->prevObj != NULL) {
+            create_transformation_from_matrices(sp20, mtx, *gCurGraphNodeCamera->matrixPtr);
+            obj_update_pos_from_parent_transformation(sp20, sp1C->prevObj);
+            obj_set_gfx_pos_from_pos(sp1C->prevObj);
+        }
+    }
+    return NULL;
 }
 
 s32 s_ai_pitch()
@@ -165,6 +180,7 @@ void motos_fly(void)
                 o->oAction = 9;
 	}
 		if ((o->oFloor->type == SURFACE_BURNING) && ( o->oMoveFlags & OBJ_MOVE_LANDED)) {
+			spawn_object_with_scale(o, MODEL_BURN_SMOKE, bhvBlackSmokeBowser, o->header.gfx.scale[0]);
 			cur_obj_play_sound_2(SOUND_OBJ_BULLY_EXPLODE_2);
 							cur_obj_play_sound_2(SOUND_OBJ2_LARGE_BULLY_ATTACKED);     
 			o->oHealth--;
@@ -174,6 +190,7 @@ void motos_fly(void)
                 o->oAction = 9;
 	}
 	if (( o->oMoveFlags & OBJ_MOVE_LANDED) && (o->oFloor->type != SURFACE_BURNING)  ) {
+		
 		cur_obj_play_sound_2(SOUND_OBJ2_BULLY_ATTACKED);
 	o->oAction = 8;
 	}

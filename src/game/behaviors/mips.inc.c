@@ -14,29 +14,25 @@ void bhv_mips_init(void) {
     if (save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= 15
         && !(starFlags & SAVE_FLAG_TO_STAR_FLAG(SAVE_FLAG_COLLECTED_MIPS_STAR_1))) {
         o->oBehParams2ndByte = 0;
-#ifndef VERSION_JP
         o->oMipsForwardVelocity = 40.0f;
-#endif
     }
     // If the player has >= 50 stars and hasn't collected second MIPS star...
     else if (save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= 50
              && !(starFlags & SAVE_FLAG_TO_STAR_FLAG(SAVE_FLAG_COLLECTED_MIPS_STAR_2))) {
         o->oBehParams2ndByte = 1;
-#ifndef VERSION_JP
         o->oMipsForwardVelocity = 45.0f;
-#endif
-    } else {
+    }
+    else if (save_file_get_total_star_count(gCurrSaveFileNum - 1, COURSE_MIN - 1, COURSE_MAX - 1) >= 114) {
+        o->oBehParams2ndByte = 2;
+        o->oMipsForwardVelocity = 50.0f;
+    }	else {
         // No MIPS stars are available, hide MIPS.
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
     }
 
    // o->oInteractionSubtype = INT_SUBTYPE_HOLDABLE_NPC;
 
-#ifndef VERSION_JP
-    o->oGravity = 15.0f;
-#else
-    o->oGravity = 0.5f;
-#endif
+    o->oGravity = 1.5f;
     o->oFriction = 0.89f;
     o->oBuoyancy = 1.2f;
 
@@ -187,7 +183,7 @@ void bhv_mips_act_idle(void) {
     collisionFlags = object_step();
 
     // Spawn a star if he was just picked up for the first time.
-    if (o->oMipsStarStatus == MIPS_STAR_STATUS_SHOULD_SPAWN_STAR) {
+    if (o->oMipsStarStatus == MIPS_STAR_STATUS_SHOULD_SPAWN_STAR && (o->oBehParams2ndByte != 2)){
         bhv_spawn_star_no_level_exit(o->oBehParams2ndByte + 3);
         o->oMipsStarStatus = MIPS_STAR_STATUS_ALREADY_SPAWNED_STAR;
     }
@@ -245,6 +241,7 @@ void bhv_mips_held(void) {
                 o->oInteractionSubtype |= INT_SUBTYPE_DROP_IMMEDIATELY;
                 o->activeFlags &= ~ACTIVE_FLAG_INITIATED_TIME_STOP;
                 o->oMipsStarStatus = MIPS_STAR_STATUS_SHOULD_SPAWN_STAR;
+				
                 set_mario_npc_dialog(0);
             }
         }

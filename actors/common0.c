@@ -81,4 +81,3 @@ UNUSED static const u64 binid_18 = 18;
 #include "motos/anims/data.inc.c"
 #include "motos/anims/table.inc.c"
 #include "icemotos/model.inc.c"
-#include "koopa_shell2/model.inc.c"
