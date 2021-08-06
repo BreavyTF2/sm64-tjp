@@ -1,6 +1,6 @@
 static const struct Animation anim_CD[] = {
 	 1,			/* attribute       	 */
-	 0,							/* syncro			 */
+	 189,							/* syncro			 */
 	 0,							/* start frame     	 */
 	 0,							/* loop frame		 */
 	125,						/* number of frames	 */

@@ -33,12 +33,12 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x100);
 			o->oForwardVel = 0.0f;}
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x20);
-//		o->oForwardVel = 0.0f;
+		o->oForwardVel = 0.0f;
 
 	}
 	if ( o->oDistanceToMario >= 2000 ) {
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40);
-//		o->oForwardVel = 0.0f;
+		o->oForwardVel = 1.0f;
 						if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
 			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x180);
 			o->oForwardVel = 2.0f;
@@ -47,14 +47,14 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 	}
 	if ( o->oDistanceToMario < 2000 ) {
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x60);
-//		o->oForwardVel = 0.0f;
+		o->oForwardVel = 2.0f;
 					if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
 			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x240);
 			o->oForwardVel = 4.0f;}
 	}
 		if ( o->oDistanceToMario < 1500 ) {
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x60);
-		o->oForwardVel = 0.0f;
+		o->oForwardVel = 2.0f;
 					if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
 			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x240);
 			o->oForwardVel = 8.0f;}

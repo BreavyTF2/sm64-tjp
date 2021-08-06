@@ -181,7 +181,7 @@ void bobomb_held_loop(void) {
         //! Although the Bob-omb's action is set to explode when the fuse timer expires,
         //  bobomb_act_explode() will not execute until the bob-omb's held state changes.
         //  This allows the Bob-omb to be regrabbed indefinitely.
-        //gMarioObject->oInteractStatus |= INT_STATUS_MARIO_DROP_OBJECT;
+        gMarioObject->oInteractStatus |= INT_STATUS_MARIO_DROP_OBJECT;
         o->oAction = BOBOMB_ACT_EXPLODE;
     }
 }

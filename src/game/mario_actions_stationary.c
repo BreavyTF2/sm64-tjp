@@ -618,8 +618,7 @@ s32 act_crouching(struct MarioState *m) {
     if (m->input & INPUT_B_PRESSED) {
         return set_mario_action(m, ACT_SQUAT_KICKING, 0);
     }
-
-    stationary_ground_step(m);
+	    stationary_ground_step(m);
     set_mario_animation(m, MARIO_ANIM_CROUCHING);
     return FALSE;
 }
@@ -763,6 +762,10 @@ s32 act_start_crouching(struct MarioState *m) {
     if (m->input & INPUT_A_PRESSED) {
         return set_jumping_action(m, ACT_BACKFLIP, 0);
     }
+	
+	if (m->input & INPUT_B_PRESSED) {
+        return set_mario_action(m, ACT_SQUAT_KICKING, 0);
+    }
 
     if (m->input & INPUT_ABOVE_SLIDE) {
         return set_mario_action(m, ACT_BEGIN_SLIDING, 0);
@@ -787,6 +790,10 @@ s32 act_stop_crouching(struct MarioState *m) {
 
     if (m->input & INPUT_A_PRESSED) {
         return set_jumping_action(m, ACT_BACKFLIP, 0);
+    }
+	
+	if (m->input & INPUT_B_PRESSED) {
+        return set_mario_action(m, ACT_SQUAT_KICKING, 0);
     }
 
     if (m->input & INPUT_ABOVE_SLIDE) {

@@ -1,6 +1,6 @@
 static const struct Animation anim_D2[] = {
 	 1,			/* attribute       	 */
-	 152,							/* syncro			 */
+	 189,							/* syncro			 */
 	 0,							/* start frame     	 */
 	 0,							/* loop frame		 */
 	 4,							/* number of frames	 */

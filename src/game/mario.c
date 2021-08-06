@@ -1492,7 +1492,12 @@ void update_mario_health(struct MarioState *m) {
                     }
                 }
             }
-        }
+		}
+		if ((gGlobalTimer % 0x03) == 0) {
+			if (!(m->action & ACT_FLAG_SWIMMING)) { 
+						m->health += 0x01;
+			}
+		}
 
         if (m->healCounter > 0) {
             m->health += 0x40;

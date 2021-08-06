@@ -1,10 +1,10 @@
 static const struct Animation anim_D3[] = {
 	 1,			/* attribute       	 */
-	210,							/* syncro			 */
+	189,							/* syncro			 */
 	 0,							/* start frame     	 */
 	 0,							/* loop frame		 */
 	10,							/* number of frames	 */
-    20,
+    ANIMINDEX_NUMPARTS(anim_D3_indices),
     anim_D3_values,
     anim_D3_indices,
 	0,

@@ -929,14 +929,10 @@ s32 act_steep_jump(struct MarioState *m) {
 
 s32 act_ground_pound(struct MarioState *m) {
     u32 stepResult;
-    f32 yOffset;
     play_sound_if_no_flag(m, SOUND_ACTION_THROW, MARIO_ACTION_SOUND_PLAYED);
-	update_air_without_turn(m);
     if (m->actionState == 0) {
-
-
-//        mario_set_forward_vel(m, 0.0f);
-
+		
+		mario_set_forward_vel(m, 0.0f);
         set_mario_animation(m, m->actionArg == 0 ? MARIO_ANIM_START_GROUND_POUND
                                                  : MARIO_ANIM_TRIPLE_JUMP_GROUND_POUND);
         if (m->actionTimer == 0) {
@@ -1391,31 +1387,34 @@ s32 act_forward_rollout(struct MarioState *m) {
 }
 s32 act_squat_kicking(struct MarioState *m) {
     if (m->actionState == 0) {
-	   mario_set_forward_vel(m, 16.0f);
-	   
-	   m->vel[1] += 10.0f;	
+	   m->forwardVel += 6.0f;
+	   if (m->vel[1] < 0.0f) {
+		m->vel[1] = 0.0f;	   
+	   }
+	   m->vel[1] += 10.5f;	
        set_mario_animation(m, MARIO_ANIM_SQUAT_KICK_START);	   
+	   if (m->marioObj->header.gfx.animInfo.animFrame >= 2) {
+		perform_air_step(m, 0);
+	}
+	play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, 0);
 	   if (is_anim_past_end(m)) {
         m->actionState = 1;
     }
-	if (m->marioObj->header.gfx.animInfo.animFrame >= 2) {
-		perform_air_step(m, 0);
-	}}
-    play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, 0);
- if (m->actionState >= 1 ){
+}	
+    
+ if (m->actionState > 0 ){
+	 update_air_without_turn(m);
     switch (perform_air_step(m, 0)) {
         case AIR_STEP_NONE:
             if (m->actionState == 1) {	
                 set_mario_animation(m, MARIO_ANIM_SQUAT_KICKING);
 				m->flags |= MARIO_KICKING;
-				update_air_without_turn(m);
-				if (is_anim_past_end(m)) {
+				if (is_anim_at_end(m)) {
                 m->actionState = 2;
 			}
             }
 			if (m->actionState == 2) {
                 set_mario_animation(m, MARIO_ANIM_SQUAT_KICK_END);
-				update_air_without_turn(m);
             }
             break;
 
@@ -1429,30 +1428,19 @@ s32 act_squat_kicking(struct MarioState *m) {
                 set_mario_animation(m, MARIO_ANIM_SQUAT_KICKING);
 				m->flags |= MARIO_KICKING;
 				update_air_without_turn(m);
-				if (is_anim_past_end(m)) {
+				if (is_anim_at_end(m)) {
                 m->actionState = 2;
 			}
             }
 			if (m->actionState == 2) {
                 set_mario_animation(m, MARIO_ANIM_SQUAT_KICK_END);
+				m->flags |= MARIO_KICKING;
 				update_air_without_turn(m);
             }
             mario_set_forward_vel(m, 0.0f);
             break;
 
         case AIR_STEP_HIT_LAVA_WALL:
-		    if (m->actionState == 1) {	
-                set_mario_animation(m, MARIO_ANIM_SQUAT_KICKING);
-				m->flags |= MARIO_KICKING;
-				update_air_without_turn(m);
-				if (is_anim_past_end(m)) {
-                m->actionState = 2;
-			}
-            }
-			if (m->actionState == 2) {
-                set_mario_animation(m, MARIO_ANIM_SQUAT_KICK_END);
-				update_air_without_turn(m);
-            }
             lava_boost_on_wall(m);
             break;
     }

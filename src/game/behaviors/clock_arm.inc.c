@@ -41,7 +41,7 @@ void bhv_rotating_clock_arm_loop(void) {
             // Increment the action to stop animating the hands.
             o->oAction++;
         } else {
-		cur_obj_play_sound_1(SOUND_ENV_UNK12);
+			cur_obj_play_sound_1(SOUND_ENV_UNK12); //MY EARS HURT
         }
     }
 

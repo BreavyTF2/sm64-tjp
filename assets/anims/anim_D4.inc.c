@@ -1,10 +1,10 @@
 static const struct Animation anim_D4[] = {
 	 1,			/* attribute       	 */
-	 211,							/* syncro			 */
-	 0,							/* start frame     	 */
+	 189,							/* syncro			 */
+	 1,							/* start frame     	 */
 	 0,							/* loop frame		 */
 	 9,							/* number of frames	 */
-    20,
+    ANIMINDEX_NUMPARTS(anim_D4_indices),
     anim_D4_values,
     anim_D4_indices,
 	0,
