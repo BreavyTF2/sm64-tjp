@@ -404,6 +404,7 @@ extern const BehaviorScript bhvCastleFlagWaving[];
 extern const BehaviorScript bhvBirdsSoundLoop[];
 extern const BehaviorScript bhvAmbientSounds[];
 extern const BehaviorScript bhvSandSoundLoop[];
+extern const BehaviorScript bhvSandPitSoundLoop[];
 extern const BehaviorScript bhvHiddenAt120Stars[];
 extern const BehaviorScript bhvHiddenAt113Stars[];
 extern const BehaviorScript bhvSnowmansBottom[];

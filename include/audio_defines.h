@@ -231,7 +231,7 @@
 /* not verified */ #define SOUND_GENERAL_COIN_WATER         SOUND_ARG_LOAD(3, 8, 0x12, 0x80, 8)
 /* not verified */ #define SOUND_GENERAL_SHORT_STAR         SOUND_ARG_LOAD(3, 0, 0x16, 0x00, 9)
 /* not verified */ #define SOUND_GENERAL_BIG_CLOCK          SOUND_ARG_LOAD(3, 0, 0x17, 0x00, 8)
-/* not verified */ #define SOUND_GENERAL_LOUD_POUND         0x3018 // _TERRAIN?
+/* not verified */ #define SOUND_GENERAL_LOUD_POUND         SOUND_ARG_LOAD(3, 0, 0x18, 0x80, 8) //Box Slide
 /* not verified */ #define SOUND_GENERAL_LOUD_POUND2        0x3019
 /* not verified */ #define SOUND_GENERAL_SHORT_POUND1       0x301A
 /* not verified */ #define SOUND_GENERAL_SHORT_POUND2       0x301B
@@ -336,7 +336,7 @@
 /* not verified */ #define SOUND_ENV_DRONING1               SOUND_ARG_LOAD(4, 1, 0x03, 0x00, 0)
 /* not verified */ #define SOUND_ENV_DRONING2               SOUND_ARG_LOAD(4, 0, 0x04, 0x00, 0)
 /* not verified */ #define SOUND_ENV_WIND1                  SOUND_ARG_LOAD(4, 0, 0x05, 0x00, 0)
-/* not verified */ #define SOUND_ENV_MOVING_SAND_SNOW       0x4006
+/* not verified */ #define SOUND_ENV_MOVING_SAND_SNOW       SOUND_ARG_LOAD(4, 0, 0x06, 0x00, 1)
 /* not verified */ #define SOUND_ENV_UNK07                  0x4007
 /* not verified */ #define SOUND_ENV_ELEVATOR2              SOUND_ARG_LOAD(4, 0, 0x08, 0x00, 0)
 /* not verified */ #define SOUND_ENV_WATER                  SOUND_ARG_LOAD(4, 0, 0x09, 0x00, 0)
@@ -506,13 +506,13 @@
 #define SOUND_MENU_BOWSER_LAUGH                             SOUND_ARG_LOAD(7, 0, 0x18, 0x80, 8)
 #define SOUND_MENU_ENTER_HOLE                               SOUND_ARG_LOAD(7, 1, 0x19, 0x80, 8)
 /* not verified */ #define SOUND_MENU_CLICK_CHANGE_VIEW     SOUND_ARG_LOAD(7, 0, 0x1A, 0x80, 8)
-/* not verified */ #define SOUND_MENU_CAMERA_UNUSED1        0x701B
-/* not verified */ #define SOUND_MENU_CAMERA_UNUSED2        0x701C
+/* not verified */ #define SOUND_MENU_CAMERA_UNUSED1        SOUND_ARG_LOAD(7, 0, 0x1B, 0x80, 8)
+/* not verified */ #define SOUND_MENU_CAMERA_UNUSED2        SOUND_ARG_LOAD(7, 0, 0x1C, 0x80, 8)
 /* not verified */ #define SOUND_MENU_MARIO_CASTLE_WARP     SOUND_ARG_LOAD(7, 0, 0x1D, 0xB0, 8)
 #define SOUND_MENU_STAR_SOUND                               SOUND_ARG_LOAD(7, 0, 0x1E, 0xFF, 8)
 #define SOUND_MENU_THANK_YOU_PLAYING_MY_GAME                SOUND_ARG_LOAD(7, 0, 0x1F, 0xFF, 8)
-/* not verified */ #define SOUND_MENU_READ_A_SIGN           0x7020
-/* not verified */ #define SOUND_MENU_EXIT_A_SIGN           0x7021
+/* not verified */ #define SOUND_MENU_READ_A_SIGN           SOUND_ARG_LOAD(7, 0, 0x20, 0x20, 8)
+/* not verified */ #define SOUND_MENU_EXIT_A_SIGN           SOUND_ARG_LOAD(7, 0, 0x21, 0x20, 8)
 /* not verified */ #define SOUND_MENU_MARIO_CASTLE_WARP2    SOUND_ARG_LOAD(7, 0, 0x22, 0x20, 8)
 #define SOUND_MENU_STAR_SOUND_OKEY_DOKEY                    SOUND_ARG_LOAD(7, 0, 0x23, 0xFF, 8)
 #define SOUND_MENU_STAR_SOUND_LETS_A_GO                     SOUND_ARG_LOAD(7, 0, 0x24, 0xFF, 8)

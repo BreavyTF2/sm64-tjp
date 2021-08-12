@@ -4492,6 +4492,13 @@ const BehaviorScript bhvSandSoundLoop[] = {
     END_LOOP(),
 };
 
+const BehaviorScript bhvSandPitSoundLoop[] = { //Beta Restoration
+    BEGIN(OBJ_LIST_DEFAULT),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_sand_pit_sound_loop),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvHiddenAt120Stars[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),

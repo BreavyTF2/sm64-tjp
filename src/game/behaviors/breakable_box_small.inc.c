@@ -33,7 +33,7 @@ void small_breakable_box_act_move(void) {
 
     obj_attack_collided_from_other_object(o);
     if (sp1E == 1)
-        cur_obj_play_sound_2(SOUND_GENERAL_BOX_LANDING_2);
+        cur_obj_play_sound_2(SOUND_GENERAL_LOUD_POUND);
     if (sp1E & 1) {
         if (o->oForwardVel > 20.0f) {
             cur_obj_play_sound_2(SOUND_ENV_SLIDING);

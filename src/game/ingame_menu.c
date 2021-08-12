@@ -1710,7 +1710,12 @@ void render_dialog_entries(void) {
         case DIALOG_STATE_OPENING:
             if (gDialogBoxOpenTimer == DEFAULT_DIALOG_BOX_ANGLE) {
                 play_dialog_sound(gDialogID);
-                play_sound(SOUND_MENU_MESSAGE_APPEAR, gDefaultSoundArgs);
+				if (gDialogBoxType == DIALOG_TYPE_ZOOM) {
+                play_sound(SOUND_MENU_READ_A_SIGN, gDefaultSoundArgs);
+				}
+				else {
+				play_sound(SOUND_MENU_MESSAGE_APPEAR, gDefaultSoundArgs);
+				}	
             }
 
             if (gDialogBoxType == DIALOG_TYPE_ROTATE) {
@@ -1761,7 +1766,12 @@ void render_dialog_entries(void) {
         case DIALOG_STATE_CLOSING:
             if (gDialogBoxOpenTimer == 20.0f) {
                 level_set_transition(0, NULL);
-                play_sound(SOUND_MENU_MESSAGE_DISAPPEAR, gDefaultSoundArgs);
+				if (gDialogBoxType == DIALOG_TYPE_ZOOM) {
+                play_sound(SOUND_MENU_EXIT_A_SIGN, gDefaultSoundArgs);
+				}
+				else{
+				play_sound(SOUND_MENU_MESSAGE_DISAPPEAR, gDefaultSoundArgs);
+				}	
 
                 if (gDialogBoxType == DIALOG_TYPE_ZOOM) {
                     trigger_cutscene_dialog(2);

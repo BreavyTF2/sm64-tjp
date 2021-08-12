@@ -25,6 +25,11 @@ static const LevelScript script_func_local_2[] = {
     OBJECT(/*model*/ MODEL_SSL_TOX_BOX,     /*pos*/  1283,    0, -4865, /*angle*/ 0, 0, 0, /*behParam*/ 0x00010000, /*beh*/ bhvToxBox),
     OBJECT(/*model*/ MODEL_SSL_TOX_BOX,     /*pos*/  4873,    0, -3335, /*angle*/ 0, 0, 0, /*behParam*/ 0x00020000, /*beh*/ bhvToxBox),
     OBJECT(/*model*/ MODEL_TWEESTER,        /*pos*/ -3600, -200,  2940, /*angle*/ 0, 0, 0, /*behParam*/ 0x00120000, /*beh*/ bhvTweester),
+	OBJECT(/*model*/ MODEL_NONE,            /*pos*/  5760,    0,  5751, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSandPitSoundLoop),
+    OBJECT(/*model*/ MODEL_NONE,            /*pos*/ -3583,    0,  2935, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSandPitSoundLoop),
+    OBJECT(/*model*/ MODEL_NONE,            /*pos*/  -511,    0,  2935, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSandPitSoundLoop),
+	OBJECT(/*model*/ MODEL_NONE,            /*pos*/  1024,    0,  3822, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSandPitSoundLoop),
+    OBJECT(/*model*/ MODEL_NONE,            /*pos*/  3072,    0,   375, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSandPitSoundLoop),
     OBJECT_WITH_ACTS(/*model*/ MODEL_TWEESTER,        /*pos*/  1017, -200,  3832, /*angle*/ 0, 0, 0, /*behParam*/ 0x00190000, /*beh*/ bhvTweester, /*acts*/ ACT_4 | ACT_5 | ACT_6),
     OBJECT_WITH_ACTS(/*model*/ MODEL_TWEESTER,        /*pos*/  3066, -200,   400, /*angle*/ 0, 0, 0, /*behParam*/ 0x00190000, /*beh*/ bhvTweester, /*acts*/ ACT_4 | ACT_5 | ACT_6),
     OBJECT_WITH_ACTS(/*model*/ MODEL_KLEPTO,          /*pos*/  2200, 1174, -2820, /*angle*/ 0, 0, 0, /*behParam*/ 0x01010000, /*beh*/ bhvKlepto,   /*acts*/ ACT_2),
@@ -53,6 +58,9 @@ static const LevelScript script_func_local_4[] = {
     OBJECT(/*model*/ MODEL_NONE,                    /*pos*/  1198, -133,  2396, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSandSoundLoop),
     OBJECT(/*model*/ MODEL_NONE,                    /*pos*/     7, 1229,  -708, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSandSoundLoop),
     OBJECT(/*model*/ MODEL_NONE,                    /*pos*/     7, 4317,  -708, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSandSoundLoop),
+	OBJECT(/*model*/ MODEL_NONE,                    /*pos*/ -1740, -101,  1843, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSandPitSoundLoop),
+    OBJECT(/*model*/ MODEL_NONE,                    /*pos*/     0, -101,   528, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSandPitSoundLoop),
+    OBJECT(/*model*/ MODEL_NONE,                    /*pos*/  1741, -101,  1843, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSandPitSoundLoop),
     RETURN(),
 };
 

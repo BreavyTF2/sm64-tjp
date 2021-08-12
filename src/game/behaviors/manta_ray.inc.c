@@ -1,14 +1,14 @@
 // manta_ray.c.inc
 
 static Trajectory sMantaRayTraj[] = { 
-    TRAJECTORY_POS(0, /*pos*/ -4500, -1380,   -40), 
-    TRAJECTORY_POS(1, /*pos*/ -4120, -2240,   740), 
-    TRAJECTORY_POS(2, /*pos*/ -3280, -3080,  1040), 
-    TRAJECTORY_POS(3, /*pos*/ -2240, -3320,   720), 
-    TRAJECTORY_POS(4, /*pos*/ -1840, -3140,  -280), 
-    TRAJECTORY_POS(5, /*pos*/ -2320, -2480, -1100), 
-    TRAJECTORY_POS(6, /*pos*/ -3220, -1600, -1360), 
-    TRAJECTORY_POS(7, /*pos*/ -4180, -1020, -1040), 
+    TRAJECTORY_POS(0, /*pos*/  2200, -1380,   -40), 
+    TRAJECTORY_POS(1, /*pos*/  2580, -2240,   740), 
+    TRAJECTORY_POS(2, /*pos*/  3420, -3080,  1040), 
+    TRAJECTORY_POS(3, /*pos*/  4460, -3320,   720), 
+    TRAJECTORY_POS(4, /*pos*/  4860, -3140,  -280), 
+    TRAJECTORY_POS(5, /*pos*/  4380, -2480, -1100), 
+    TRAJECTORY_POS(6, /*pos*/  3480, -1600, -1360), 
+    TRAJECTORY_POS(7, /*pos*/  2520, -1020, -1040), 
     TRAJECTORY_END(),
 };
 
@@ -87,8 +87,10 @@ void bhv_manta_ray_loop(void) {
             manta_ray_move();
             manta_ray_act_spawn_ring();
             if (o->oMantaUnk1AC == 5) {
+    struct Object *sp1C = spawn_object(o, MODEL_STAR, bhvSpawnedStar);
+    sp1C->oBehParams2ndByte = 4;
+	obj_set_angle(sp1C, 0, 0, 0);
                 spawn_mist_particles();
-                spawn_default_star(-3180.0f, -3600.0f, 120.0f);
                 o->oAction = 1;
             }
             break;

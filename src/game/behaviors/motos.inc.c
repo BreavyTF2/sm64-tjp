@@ -159,6 +159,7 @@ void motos_pitch(void)
 			cur_obj_play_sound_2(SOUND_OBJ_BULLY_METAL);
 }
 	if ( cur_obj_check_anim_frame(14) ){
+		cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN4);
 		o->oMotosUnk88 = 0;
 	}
 	if ( cur_obj_check_if_near_animation_end() )	
