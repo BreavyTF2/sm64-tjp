@@ -6,8 +6,8 @@ static struct ObjectHitbox sBowlingBallHitbox = {
     /* damageOrCoinValue: */ 2,
     /* health:            */ 0,
     /* numLootCoins:      */ 0,
-    /* radius:            */ 100,
-    /* height:            */ 150,
+    /* radius:            */ 25,
+    /* height:            */ 37.5,
     /* hurtboxRadius:     */ 0,
     /* hurtboxHeight:     */ 0,
 };
@@ -43,6 +43,7 @@ void bhv_bowling_ball_init(void) {
     o->oGravity = 5.5f;
     o->oFriction = 1.0f;
     o->oBuoyancy = 2.0f;
+	cur_obj_scale(4.0f);
 }
 
 void bowling_ball_set_hitbox(void) {

@@ -232,9 +232,17 @@ extern const Gfx sand_seg3_dl_0302BCD0[];
 
 // star
 extern const GeoLayout star_geo[];
+extern const GeoLayout star_dust_geo[];
 extern const Gfx gfx_polystar[];
 extern const Gfx gfx_polystar_eye[];
-
+extern const Gfx RCP_star_dust1[];
+extern const Gfx RCP_star_dust2[];
+extern const Gfx RCP_star_dust3[];
+extern const Gfx RCP_star_dust4[];
+extern const Gfx RCP_star_dust5[];
+extern const Gfx RCP_star_dust6[];
+extern const Gfx RCP_star_dust7[];
+extern const Gfx RCP_star_dust8[];
 // transparent_star
 extern const GeoLayout transparent_star_geo[];
 extern const Gfx transparent_star_seg3_dl_0302C560[];

@@ -17,6 +17,7 @@ void bhv_bobomb_init(void) {
     o->oFriction = 0.8;
     o->oBuoyancy = 1.3;
     o->oInteractionSubtype = INT_SUBTYPE_KICKABLE;
+	cur_obj_scale(2.0f);
 }
 
 void bobomb_spawn_coin(void) {
@@ -29,8 +30,9 @@ void bobomb_spawn_coin(void) {
 
 void bobomb_act_explode(void) {
     struct Object *explosion;
+	cur_obj_init_animation(1);
     if (o->oTimer < 5)
-        cur_obj_scale(1.0 + (f32) o->oTimer / 5.0);
+	cur_obj_init_animation(1);	
     else {
         explosion = spawn_object(o, MODEL_EXPLOSION, bhvExplosion);
         explosion->oGraphYOffset += 100.0f;
@@ -67,7 +69,7 @@ void bobomb_check_interactions(void) {
 void bobomb_act_patrol(void) {
     UNUSED s16 sp22;
     s16 collisionFlags;
-
+    cur_obj_init_animation(3);
     sp22 = o->header.gfx.animInfo.animFrame;
     o->oForwardVel = 5.0;
 
@@ -82,7 +84,7 @@ void bobomb_act_patrol(void) {
 
 void bobomb_act_chase_mario(void) {
     s16 sp1a, collisionFlags;
-
+    cur_obj_init_animation(3);
     sp1a = ++o->header.gfx.animInfo.animFrame;
     o->oForwardVel = 20.0;
 
@@ -173,7 +175,7 @@ void bobomb_free_loop(void) {
 
 void bobomb_held_loop(void) {
     o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
-    cur_obj_init_animation(1);
+    cur_obj_init_animation(2);
     cur_obj_set_pos_relative(gMarioObject, 0, 60.0f, 100.0);
 
     o->oBobombFuseLit = 1;
@@ -190,7 +192,7 @@ void bobomb_dropped_loop(void) {
     cur_obj_get_dropped();
 
     o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
-    cur_obj_init_animation(0);
+    cur_obj_init_animation(1);
 
     o->oHeldState = 0;
     o->oAction = BOBOMB_ACT_PATROL;
@@ -280,12 +282,13 @@ void bhv_bobomb_buddy_init(void) {
     o->oFriction = 0.8;
     o->oBuoyancy = 1.3;
     o->oInteractionSubtype = INT_SUBTYPE_NPC;
+	cur_obj_scale(2.0f);
 }
 
 void bobomb_buddy_act_idle(void) {
     s16 sp1a = o->header.gfx.animInfo.animFrame;
     UNUSED s16 collisionFlags = 0;
-
+    cur_obj_init_animation(3);
     o->oBobombBuddyPosXCopy = o->oPosX;
     o->oBobombBuddyPosYCopy = o->oPosY;
     o->oBobombBuddyPosZCopy = o->oPosZ;
@@ -313,7 +316,7 @@ void bobomb_buddy_act_idle(void) {
 void bobomb_buddy_cannon_dialog(s16 dialogFirstText, s16 dialogSecondText) {
     struct Object *cannonClosed;
     s16 buddyText, cutscene;
-
+	cur_obj_init_animation(0);
     switch (o->oBobombBuddyCannonStatus) {
         case BOBOMB_BUDDY_CANNON_UNOPENED:
             buddyText = cutscene_object_with_dialog(CUTSCENE_DIALOG, o, dialogFirstText);
@@ -353,6 +356,7 @@ void bobomb_buddy_cannon_dialog(s16 dialogFirstText, s16 dialogSecondText) {
 }
 
 void bobomb_buddy_act_talk(void) {
+	cur_obj_init_animation(0);
     if (set_mario_npc_dialog(1) == 2) {
         o->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;
 

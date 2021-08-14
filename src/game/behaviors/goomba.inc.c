@@ -35,7 +35,7 @@ struct GoombaProperties {
  */
 static struct GoombaProperties sGoombaProperties[] = {
     { 1.5f, SOUND_OBJ_DYING_ENEMY2, 4000, 1 },
-    { 3.5f, SOUND_OBJ_ENEMY_DEATH_LOW, 4000, 2 },
+    { 3.5f, SOUND_OBJ_DYING_ENEMY2, 4000, 2 },
     { 0.5f, SOUND_OBJ_DYING_ENEMY2, 1500, 0 },
 };
 

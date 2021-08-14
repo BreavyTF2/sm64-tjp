@@ -16,8 +16,7 @@ void s_motos_hand(void)
 			obj_set_gfx_pos_at_obj_pos(gMarioObject, o);
 			break;
 		case	2:
-            gMarioObject->oInteractStatus |=
-                (INT_STATUS_MARIO_UNK2 + INT_STATUS_MARIO_UNK6); 
+                gMarioObject->oInteractStatus |= (INT_STATUS_MARIO_UNK6 + INT_STATUS_MARIO_UNK2);
 			gMarioStates[0].forwardVel = 65.0f;
 			gMarioStates[0].vel[1] = 10.0f;
 			o->parentObj->oMotosUnk88 = 0;
@@ -27,6 +26,7 @@ void s_motos_hand(void)
                 (INT_STATUS_MARIO_UNK2 + INT_STATUS_MARIO_UNK6); // loads 2 interactions at once?
             gMarioStates[0].forwardVel = 20.0f;
             gMarioStates[0].vel[1] = 10.0f;
+			o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
             o->parentObj->oMotosUnk88 = 0;
             break;
     }
@@ -140,7 +140,7 @@ void motos_carry_run(void)
 cur_obj_play_sound_2(SOUND_OBJ_POUNDING1_HIGHPRIO);
 }	
 	o->oMotosUnk100 += player_performed_grab_escape_action();
-    if (o->oMotosUnk100 > 10) {
+    if (o->oMotosUnk100 > 20) {
 	o->oAction = 10;
 	o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
 	o->oMotosUnk88 = 3;
@@ -222,7 +222,7 @@ cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
 cur_obj_init_animation_with_sound(8);
 }
 	
-	if (o->oPosY < (o->oHomeY + 30)) {
+		if ( o->oMoveFlags & OBJ_MOVE_LANDED){
 		cur_obj_init_animation_with_sound(7);
 	if ( cur_obj_check_if_near_animation_end() )	{
 	cur_obj_become_tangible();

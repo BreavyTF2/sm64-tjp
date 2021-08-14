@@ -31,11 +31,16 @@ void bhv_collect_star_loop(void) {
     o->oFaceAngleYaw += 0x800;
 
     if (o->oInteractStatus & INT_STATUS_INTERACTED) {
+		 spawn_object(o, MODEL_STAR_DUST_SCRAPPED, bhvStarDust);
         mark_obj_for_deletion(o);
         o->oInteractStatus = 0;
     }
 }
-
+void bhv_star_dust_loop(void) {
+    cur_obj_scale(2.0f);
+	if (o->oAnimState > 7)
+    mark_obj_for_deletion(o);
+}
 void bhv_star_spawn_init(void) {
     o->oMoveAngleYaw = atan2s(o->oHomeZ - o->oPosZ, o->oHomeX - o->oPosX);
     o->oStarSpawnDisFromHome = sqrtf(sqr(o->oHomeX - o->oPosX) + sqr(o->oHomeZ - o->oPosZ));

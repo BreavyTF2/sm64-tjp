@@ -1,99 +1,41 @@
 // 0x0F0007B8
 const GeoLayout black_bobomb_geo[] = {
-   GEO_SHADOW(SHADOW_CIRCLE_4_VERTS, 0xC8, 70),
-   GEO_OPEN_NODE(),
-      GEO_SCALE(0x00, 24576),
-      GEO_OPEN_NODE(),
-         GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-         GEO_OPEN_NODE(),
-            GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-            GEO_OPEN_NODE(),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-               GEO_OPEN_NODE(),
-                  GEO_BILLBOARD(),
-                  GEO_OPEN_NODE(),
-                     GEO_DISPLAY_LIST(LAYER_ALPHA, bobomb_seg8_dl_08022D08),
-                  GEO_CLOSE_NODE(),
-               GEO_CLOSE_NODE(),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 57, -60, NULL),
-               GEO_OPEN_NODE(),
-                  GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-                  GEO_OPEN_NODE(),
-                     GEO_ANIMATED_PART(LAYER_OPAQUE, 91, 0, 0, NULL),
-                     GEO_OPEN_NODE(),
-                        GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, bobomb_seg8_dl_08023270),
-                     GEO_CLOSE_NODE(),
-                  GEO_CLOSE_NODE(),
-               GEO_CLOSE_NODE(),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 55, 62, NULL),
-               GEO_OPEN_NODE(),
-                  GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-                  GEO_OPEN_NODE(),
-                     GEO_ANIMATED_PART(LAYER_OPAQUE, 91, 0, 0, NULL),
-                     GEO_OPEN_NODE(),
-                        GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, bobomb_seg8_dl_08023378),
-                     GEO_CLOSE_NODE(),
-                  GEO_CLOSE_NODE(),
-               GEO_CLOSE_NODE(),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, bobomb_seg8_dl_08023480),
-               GEO_SWITCH_CASE(2, geo_switch_anim_state),
-               GEO_OPEN_NODE(),
-                  GEO_ANIMATED_PART(LAYER_ALPHA, 0, 0, 0, bobomb_seg8_dl_08022B58),
-                  GEO_ANIMATED_PART(LAYER_ALPHA, 0, 0, 0, bobomb_seg8_dl_08022B88),
-               GEO_CLOSE_NODE(),
-            GEO_CLOSE_NODE(),
-         GEO_CLOSE_NODE(),
-      GEO_CLOSE_NODE(),
-   GEO_CLOSE_NODE(),
-   GEO_END(),
-};
+hmsShadow(70, 200, 1)
+ hmsBegin()
+ hmsScale(0.25f)
+    hmsBegin()
+      hmsJoint(RM_SURF,NULL,0,0,0)  /* body_sprite(35) */
+	  hmsBegin()
+		hmsBboard(0,0,0)
+	    hmsBegin()
+		  hmsGfx(RM_SPRITE,gfx_bom)
+	  	hmsEnd()
+	  hmsEnd()
+      hmsBegin()
+         hmsJoint(RM_SURF,RCP_bom_basedata2,0,0,0)  /* cyl2(8) */
+         hmsJoint(RM_SURF,NULL,42,-39,0)  /* chn5(7) */
+         hmsBegin()
+            hmsJoint(RM_SURF,NULL,0,0,0)  /* jnt5_1(4) */
+            hmsBegin()
+               hmsJoint(RM_SURF,NULL,63,0,0)  /* jnt5_2(2) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,RCP_bom_basedata0,0,0,0)  /* cube3(0) */
+               hmsEnd()
+            hmsEnd()
+         hmsEnd()
+         hmsJoint(RM_SURF,NULL,-42,-39,0)  /* chn7(6) */
+         hmsBegin()
+            hmsJoint(RM_SURF,NULL,0,0,0)  /* jnt7_1(5) */
+            hmsBegin()
+               hmsJoint(RM_SURF,NULL,63,0,0)  /* jnt7_2(3) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,RCP_bom_basedata1,0,0,0)  /* cube2(1) */
+               hmsEnd()
+            hmsEnd()
+         hmsEnd()
+      hmsEnd()
+   hmsEnd()
 
-// 0x0F0008F4
-const GeoLayout bobomb_buddy_geo[] = {
-   GEO_SHADOW(SHADOW_CIRCLE_4_VERTS, 0xC8, 70),
-   GEO_OPEN_NODE(),
-      GEO_SCALE(0x00, 24576),
-      GEO_OPEN_NODE(),
-         GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-         GEO_OPEN_NODE(),
-            GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-            GEO_OPEN_NODE(),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-               GEO_OPEN_NODE(),
-                  GEO_BILLBOARD(),
-                  GEO_OPEN_NODE(),
-                     GEO_DISPLAY_LIST(LAYER_ALPHA, bobomb_seg8_dl_08022D78),
-                  GEO_CLOSE_NODE(),
-               GEO_CLOSE_NODE(),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 57, -60, NULL),
-               GEO_OPEN_NODE(),
-                  GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-                  GEO_OPEN_NODE(),
-                     GEO_ANIMATED_PART(LAYER_OPAQUE, 91, 0, 0, NULL),
-                     GEO_OPEN_NODE(),
-                        GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, bobomb_seg8_dl_08023270),
-                     GEO_CLOSE_NODE(),
-                  GEO_CLOSE_NODE(),
-               GEO_CLOSE_NODE(),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 55, 62, NULL),
-               GEO_OPEN_NODE(),
-                  GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-                  GEO_OPEN_NODE(),
-                     GEO_ANIMATED_PART(LAYER_OPAQUE, 91, 0, 0, NULL),
-                     GEO_OPEN_NODE(),
-                        GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, bobomb_seg8_dl_08023378),
-                     GEO_CLOSE_NODE(),
-                  GEO_CLOSE_NODE(),
-               GEO_CLOSE_NODE(),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, bobomb_seg8_dl_08023480),
-               GEO_SWITCH_CASE(2, geo_switch_anim_state),
-               GEO_OPEN_NODE(),
-                  GEO_ANIMATED_PART(LAYER_ALPHA, 0, 0, 0, bobomb_seg8_dl_08022B58),
-                  GEO_ANIMATED_PART(LAYER_ALPHA, 0, 0, 0, bobomb_seg8_dl_08022B88),
-               GEO_CLOSE_NODE(),
-            GEO_CLOSE_NODE(),
-         GEO_CLOSE_NODE(),
-      GEO_CLOSE_NODE(),
-   GEO_CLOSE_NODE(),
-   GEO_END(),
+ hmsEnd()
+ hmsExit()
 };

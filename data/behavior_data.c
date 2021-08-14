@@ -1013,6 +1013,20 @@ const BehaviorScript bhvGoldenCoinSparkles[] = {
     END_REPEAT(),
     DEACTIVATE(),
 };
+const BehaviorScript bhvStarDust[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BILLBOARD(),
+    SET_FLOAT(oGraphYOffset, -50),
+	  SET_INT(oAnimState, -1),
+	BEGIN_REPEAT(16),
+    ADD_INT(oAnimState, 1),
+    END_REPEAT(),
+    BEGIN_REPEAT(1),
+        CALL_NATIVE(bhv_coin_sparkles_loop),
+    END_REPEAT(),
+    DEACTIVATE(),
+};
 
 const BehaviorScript bhvWallTinyStarParticle[] = {
     BEGIN(OBJ_LIST_UNIMPORTANT),
@@ -3296,6 +3310,16 @@ const BehaviorScript bhvWaterDroplet[] = {
     END_LOOP(),
 };
 
+// Droplets of water that spawn as a result of various water splashes.
+const BehaviorScript bhvWaterDropletFish[] = {
+    BEGIN(OBJ_LIST_UNIMPORTANT),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BILLBOARD(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_water_droplet_fish_loop),
+    END_LOOP(),
+};
+
 // Small splashes that are seen when a water droplet lands back into the water.
 const BehaviorScript bhvWaterDropletSplash[] = {
     BEGIN(OBJ_LIST_DEFAULT),
@@ -3725,7 +3749,7 @@ const BehaviorScript bhvSeaweedBundle[] = {
 const BehaviorScript bhvBobomb[] = {
     BEGIN(OBJ_LIST_DESTRUCTIVE),
     OR_INT(oFlags, (OBJ_FLAG_PERSISTENT_RESPAWN | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_ANIMATIONS(oAnimations, bobomb_seg8_anims_0802396C),
+    LOAD_ANIMATIONS(oAnimations, bom_anime),
     DROP_TO_FLOOR(),
     ANIMATE(0),
     SET_INT(oIntangibleTimer, 0),
@@ -3752,7 +3776,7 @@ const BehaviorScript bhvBobombFuseSmoke[] = {
 const BehaviorScript bhvBobombBuddy[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_ANIMATIONS(oAnimations, bobomb_seg8_anims_0802396C),
+    LOAD_ANIMATIONS(oAnimations, bom_anime),
     SET_INTERACT_TYPE(INTERACT_TEXT),
     DROP_TO_FLOOR(),
     SET_HITBOX(/*Radius*/ 100, /*Height*/ 60),
@@ -3770,7 +3794,7 @@ const BehaviorScript bhvBobombBuddy[] = {
 const BehaviorScript bhvBobombBuddyOpensCannon[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_PERSISTENT_RESPAWN | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_ANIMATIONS(oAnimations, bobomb_seg8_anims_0802396C),
+    LOAD_ANIMATIONS(oAnimations, bom_anime),
     SET_INTERACT_TYPE(INTERACT_TEXT),
     DROP_TO_FLOOR(),
     SET_HITBOX(/*Radius*/ 100, /*Height*/ 60),

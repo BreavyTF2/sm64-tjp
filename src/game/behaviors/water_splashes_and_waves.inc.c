@@ -26,7 +26,7 @@ struct WaterDropletParams gShallowWaterSplashDropletParams = {
 struct WaterDropletParams sWaterDropletFishParams = {
     /* Flags */ WATER_DROPLET_FLAG_RAND_ANGLE | WATER_DROPLET_FLAG_SET_Y_TO_WATER_LEVEL,
     /* Model */ MODEL_FISH,
-    /* Behavior */ bhvWaterDroplet,
+    /* Behavior */ bhvWaterDropletFish,
     /* Unused (flag-specific) */ 0, 0,
     /* Random fvel offset, scale */ 2.0f, 3.0f,
     /* Random yvel offset, scale */ 20.0f, 20.0f,
@@ -74,6 +74,34 @@ void bhv_water_droplet_loop(void) {
     if (o->oVelY < 0.0f) {
         if (waterLevel > o->oPosY) {
             // Create the smaller splash
+            try_to_spawn_object(0, 1.0f, o, MODEL_SMALL_WATER_SPLASH, bhvWaterDropletSplash);
+            obj_mark_for_deletion(o);
+        } else if (o->oTimer > 20)
+            obj_mark_for_deletion(o);
+    }
+    if (waterLevel < -10000.0f)
+        obj_mark_for_deletion(o);
+}
+
+void bhv_water_droplet_fish_loop(void) {
+    UNUSED u32 unusedVar;
+    f32 waterLevel = find_water_level(o->oPosX, o->oPosZ);
+
+    if (o->oTimer == 0) {
+        if (cur_obj_has_model(MODEL_FISH))
+            o->header.gfx.node.flags &= ~GRAPH_RENDER_BILLBOARD;
+        else
+            o->header.gfx.node.flags |= GRAPH_RENDER_BILLBOARD;
+        o->oFaceAngleYaw = random_u16();
+    }
+    // Apply gravity
+    o->oVelY -= 4.0f;
+    o->oPosY += o->oVelY;
+    // Check if fallen back into the water
+    if (o->oVelY < 0.0f) {
+        if (waterLevel > o->oPosY) {
+            // Create the smaller splash
+			cur_obj_play_sound_2(SOUND_OBJ_JUMP_WALK_WATER);
             try_to_spawn_object(0, 1.0f, o, MODEL_SMALL_WATER_SPLASH, bhvWaterDropletSplash);
             obj_mark_for_deletion(o);
         } else if (o->oTimer > 20)

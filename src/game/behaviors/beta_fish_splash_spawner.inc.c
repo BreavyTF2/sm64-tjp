@@ -12,7 +12,7 @@
  * Update function for bhvBetaFishSplashSpawner.
  */
 void bhv_beta_fish_splash_spawner_loop(void) {
-	s32 i;
+	int i;
 	f32 sp29;
 	struct Object *betafishObj;
     f32 water_level = find_water_level(o->oPosX, o->oPosZ);

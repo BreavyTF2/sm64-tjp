@@ -491,7 +491,7 @@
 // find me
 // find me
 // find me
-// find me
+#define MODEL_STAR_DUST_SCRAPPED          0x9B
 #define MODEL_BURN_SMOKE_UNUSED           0x9C        // burn_smoke_geo - unused & duplicated
 // find me
 #define MODEL_WHITE_PARTICLE_DL           0x9E        // white_particle_dl

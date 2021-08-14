@@ -1272,7 +1272,9 @@ void update_mario_button_inputs(struct MarioState *m) {
     if (m->controller->buttonDown & A_BUTTON) {
         m->input |= INPUT_A_DOWN;
     }
-
+    if (m->controller->buttonDown & B_BUTTON) {
+        m->input |= INPUT_UNKNOWN_12;
+    }
     // Don't update for these buttons if squished.
     if (m->squishTimer == 0) {
         if (m->controller->buttonPressed & B_BUTTON) {

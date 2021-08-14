@@ -87,10 +87,10 @@ const LevelScript level_yajima_entry[] = {
 
 			OBJECT_LEAK(MODEL_PURPLE_SWITCH,    0, 0, -900,   0,0,0,  0,0,0,	bhvFloorSwitchGrills ),
 
-//			OBJECT_LEAK(MODEL_PURPLE_SWITCH,    0, 0, -300,   0,0,0,  0,0,0,	bhvFloorSwitchHiddenObjects ),
-//			OBJECT_LEAK(MODEL_BREAKABLE_BOX, -500, 0, -700,   0,0,0,  0,0,0,	bhvHiddenObject ),
-//			OBJECT_LEAK(MODEL_BREAKABLE_BOX,    0, 0, -700,   0,0,0,  0,1,0,	bhvHiddenObject ),
-//			OBJECT_LEAK(MODEL_BREAKABLE_BOX,  500, 0, -700,   0,0,0,  0,2,0,	bhvHiddenObject ),
+			OBJECT_LEAK(MODEL_PURPLE_SWITCH,    0, 0, -300,   0,0,0,  0,0,0,	bhvFloorSwitchHiddenObjects ),
+			OBJECT_LEAK(MODEL_BREAKABLE_BOX, -500, 0, -700,   0,0,0,  0,0,0,	bhvHiddenObject ),
+			OBJECT_LEAK(MODEL_BREAKABLE_BOX,    0, 0, -700,   0,0,0,  0,1,0,	bhvHiddenObject ),
+			OBJECT_LEAK(MODEL_BREAKABLE_BOX,  500, 0, -700,   0,0,0,  0,2,0,	bhvHiddenObject ),
 
 			OBJECT_LEAK(MODEL_METAL_BOX, 1000, 0, -1000,   0,0,0,  0,0,0,	bhvPushableMetalBox ),
 
@@ -106,7 +106,7 @@ const LevelScript level_yajima_entry[] = {
 			OBJECT_LEAK(MODEL_NONE,	      0, 200, 1000,   0,0,0,  0,0x13,0,	bhvCoinFormation  ),
 			OBJECT_LEAK(MODEL_NONE,	    500, 200, 1000,   0,0,0,  0,0x14,0,	bhvCoinFormation  ),
 
-	//		OBJECT_LEAK(MODEL_NONE , 	0, 100,-500,   0,0,0,   0,0,0, bhvSLSnowmanWind	) 
+			OBJECT_LEAK(MODEL_NONE , 	0, 100,-500,   0,0,0,   0,0,0, bhvSLSnowmanWind	), 
 	//		OBJECT_LEAK(MODEL_PENGUIN ,-900,   0, 500,   0,90,0,  0,0,0, bhvSLWalkingPenguin ) 
 
 			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,     000,  250,  1500,   0,0,0,  0,7, 0, bhvExclamationBox 	 	) ,

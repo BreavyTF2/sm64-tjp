@@ -372,7 +372,7 @@
 /* not verified */ #define SOUND_OBJ_CANNON1                SOUND_ARG_LOAD(5, 0, 0x0D, 0xF0, 8)
 /* not verified */ #define SOUND_OBJ_CANNON2                SOUND_ARG_LOAD(5, 0, 0x0E, 0xF0, 8)
 /* not verified */ #define SOUND_OBJ_CANNON3                SOUND_ARG_LOAD(5, 0, 0x0F, 0xF0, 8)
-/* not verified */ #define SOUND_OBJ_JUMP_WALK_WATER        0x5012
+/* not verified */ #define SOUND_OBJ_JUMP_WALK_WATER        SOUND_ARG_LOAD(5, 0, 0x12, 0x00, 8)
 /* not verified */ #define SOUND_OBJ_UNKNOWN2               SOUND_ARG_LOAD(5, 0, 0x13, 0x00, 8)
 #define SOUND_OBJ_MRI_DEATH                                 SOUND_ARG_LOAD(5, 0, 0x14, 0x00, 8)
 /* not verified */ #define SOUND_OBJ_POUNDING1              SOUND_ARG_LOAD(5, 0, 0x15, 0x50, 8)
@@ -394,7 +394,7 @@
 /* not verified */ #define SOUND_OBJ_UNK23                  0x5023
 #define SOUND_OBJ_DYING_ENEMY1                              SOUND_ARG_LOAD(5, 0, 0x24, 0x40, 8)
 /* not verified */ #define SOUND_OBJ_CANNON4                SOUND_ARG_LOAD(5, 0, 0x25, 0x40, 8)
-/* not verified */ #define SOUND_OBJ_DYING_ENEMY2           0x5026
+/* not verified */ #define SOUND_OBJ_DYING_ENEMY2           SOUND_ARG_LOAD(5, 0, 0x26, 0x80, 8) //Old Goomba Death
 #define SOUND_OBJ_BOBOMB_WALK                               SOUND_ARG_LOAD(5, 0, 0x27, 0x00, 8)
 /* not verified */ #define SOUND_OBJ_SOMETHING_LANDING      SOUND_ARG_LOAD(5, 0, 0x28, 0x80, 8)
 /* not verified */ #define SOUND_OBJ_DIVING_IN_WATER        SOUND_ARG_LOAD(5, 0, 0x29, 0xA0, 8)
