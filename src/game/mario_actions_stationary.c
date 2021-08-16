@@ -627,7 +627,9 @@ s32 act_panting(struct MarioState *m) {
     if (m->input & INPUT_UNKNOWN_10) {
         return set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
     }
-
+			if (!(m->action & ACT_FLAG_SWIMMING)) { 
+						m->health += 0x01;
+			}
     if (m->health >= 0x500) {
         return set_mario_action(m, ACT_IDLE, 0);
     }

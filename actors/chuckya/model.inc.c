@@ -342,18 +342,18 @@ static const Lights1 chuckya_seg8_lights_0800A668 = gdSPDefLights1(
     0x66, 0x66, 0x66,
     0xff, 0xff, 0xff, 0x28, 0x28, 0x28
 );
-
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 // 0x0800A680
 static const Vtx chuckya_seg8_vertex_0800A680[] = {
-    {{{    33,    237,      0}, 0, {   480,   1016}, {0x40, 0x65, 0x28, 0xff}}},
-    {{{    27,    198,    107}, 0, {  1012,    932}, {0x40, 0x65, 0x28, 0xff}}},
-    {{{   196,    134,      0}, 0, {   480,    -66}, {0x40, 0x65, 0x28, 0xff}}},
-    {{{   163,    112,    107}, 0, {  1012,     22}, {0x40, 0x65, 0x28, 0xff}}},
-    {{{   196,    134,      0}, 0, {   480,    -66}, {0x40, 0x65, 0xd7, 0xff}}},
-    {{{    27,    198,   -106}, 0, {   -52,    928}, {0x40, 0x65, 0xd7, 0xff}}},
-    {{{    33,    237,      0}, 0, {   480,   1016}, {0x40, 0x65, 0xd7, 0xff}}},
-    {{{   163,    112,   -106}, 0, {   -52,     20}, {0x40, 0x65, 0xd7, 0xff}}},
+	{194,133,0,0,480,-66,67,107,0,255},
+	{146,99,-159,0,-52,20,64,101,-40,255},
+	{23,177,-159,0,-52,928,64,101,-40,255},
+	{32,235,0,0,480,1016,67,107,0,255},
+	{23,177,159,0,1012,932,64,101,40,255},
+	{146,99,159,0,1012,22,64,101,40,255},
 };
+#pragma GCC diagnostic pop
 
 // 0x0800A700 - 0x0800A758
 const Gfx chuckya_seg8_dl_0800A700[] = {
@@ -362,9 +362,11 @@ const Gfx chuckya_seg8_dl_0800A700[] = {
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPLight(&chuckya_seg8_lights_0800A668.l, 1),
     gsSPLight(&chuckya_seg8_lights_0800A668.a, 2),
-    gsSPVertex(chuckya_seg8_vertex_0800A680, 8, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  1,  3,  2, 0x0),
-    gsSP2Triangles( 4,  5,  6, 0x0,  4,  7,  5, 0x0),
+    gsSPVertex(chuckya_seg8_vertex_0800A680, 6, 0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(0,2,3,0),
+	gsSP1Triangle(3,4,5,0),
+	gsSP1Triangle(3,5,0,0),
     gsSPEndDisplayList(),
 };
 
@@ -391,29 +393,34 @@ static const Lights1 chuckya_seg8_lights_0800A7C8 = gdSPDefLights1(
     0x29, 0x29, 0x29,
     0x89, 0x89, 0x8a, 0x28, 0x28, 0x28
 );
-
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 // 0x0800A7E0
 static const Vtx chuckya_seg8_vertex_0800A7E0[] = {
-    {{{    87,     41,    -41}, 0, {     0,      0}, {0xb8, 0x49, 0xb7, 0xff}}},
-    {{{    87,      0,    -58}, 0, {     0,      0}, {0xb8, 0x00, 0x98, 0xff}}},
-    {{{     3,     -1,      0}, 0, {     0,      0}, {0x82, 0x00, 0x00, 0xff}}},
-    {{{    87,     58,      0}, 0, {     0,      0}, {0xb8, 0x67, 0x00, 0xff}}},
-    {{{    87,    -42,    -41}, 0, {     0,      0}, {0xb8, 0xb6, 0xb7, 0xff}}},
-    {{{    87,    -42,     42}, 0, {     0,      0}, {0xb8, 0xb6, 0x49, 0xff}}},
-    {{{    87,      0,     59}, 0, {     0,      0}, {0xb8, 0x00, 0x67, 0xff}}},
-    {{{    87,     41,     42}, 0, {     0,      0}, {0xb7, 0x49, 0x48, 0xff}}},
-    {{{    88,    -59,      0}, 0, {     0,      0}, {0xb9, 0x98, 0x00, 0xff}}},
+	{86,-40,-42,0,0,0,-72,-73,-74,255},
+	{86,-58,-1,0,0,0,-72,-104,-1,255},
+	{2,0,-1,0,0,0,-127,0,0,255},
+	{86,-41,40,0,0,0,-73,-74,72,255},
+	{86,0,-59,0,0,0,-72,0,-104,255},
+	{86,0,57,0,0,0,-73,0,103,255},
+	{86,42,-42,0,0,0,-72,74,-73,255},
+	{86,41,40,0,0,0,-73,73,73,255},
+	{86,59,0,0,0,0,-72,104,0,255},
 };
-
+#pragma GCC diagnostic pop
 // 0x0800A870 - 0x0800A8D0
 const Gfx chuckya_seg8_dl_0800A870[] = {
 	gsSPLight(&chuckya_lights_unused4.l, 1),
     gsSPLight(&chuckya_lights_unused4.a, 2),
     gsSPVertex(chuckya_seg8_vertex_0800A7E0, 9, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  3,  0,  2, 0x0),
-    gsSP2Triangles( 1,  4,  2, 0x0,  5,  6,  2, 0x0),
-    gsSP2Triangles( 6,  7,  2, 0x0,  8,  5,  2, 0x0),
-    gsSP2Triangles( 7,  3,  2, 0x0,  4,  8,  2, 0x0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(1,3,2,0),
+	gsSP1Triangle(4,0,2,0),
+	gsSP1Triangle(3,5,2,0),
+	gsSP1Triangle(6,4,2,0),
+	gsSP1Triangle(5,7,2,0),
+	gsSP1Triangle(8,6,2,0),
+	gsSP1Triangle(7,8,2,0),
     gsSPEndDisplayList(),
 };
 
@@ -430,23 +437,34 @@ static const Lights1 chuckya_seg8_lights_0800A8F0 = gdSPDefLights1(
     0x3f, 0x3f, 0x00,
     0xff, 0xff, 0x00, 0x28, 0x28, 0x28
 );
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 
 // 0x0800A908
 static const Vtx chuckya_seg8_vertex_0800A908[] = {
-    {{{    -9,      2,      0}, 0, {     0,      0}, {0x82, 0xfd, 0x00, 0xff}}},
-    {{{    79,     26,      0}, 0, {     0,      0}, {0xdf, 0x7a, 0x00, 0xff}}},
-    {{{    79,      1,    -33}, 0, {     0,      0}, {0xd4, 0xff, 0x8a, 0xff}}},
-    {{{    80,    -23,      0}, 0, {     0,      0}, {0xde, 0x86, 0x00, 0xff}}},
-    {{{    79,      1,     33}, 0, {     0,      0}, {0xd4, 0xff, 0x76, 0xff}}},
+	{-9,1,0,0,0,0,-27,99,-73,255},
+	{78,25,0,0,0,0,-27,99,-73,255},
+	{78,1,-33,0,0,0,-27,99,-73,255},
+	{-9,1,0,0,0,0,-28,-99,72,255},
+	{78,-23,0,0,0,0,-28,-99,72,255},
+	{78,1,33,0,0,0,-28,-99,72,255},
+	{-9,1,0,0,0,0,-28,-99,-72,255},
+	{78,1,-33,0,0,0,-28,-99,-72,255},
+	{78,-23,0,0,0,0,-28,-99,-72,255},
+	{-9,1,0,0,0,0,-27,99,73,255},
+	{78,1,33,0,0,0,-27,99,73,255},
+	{78,25,0,0,0,0,-27,99,73,255},
 };
-
+#pragma GCC diagnostic pop
 // 0x0800A958 - 0x0800A998
 const Gfx chuckya_seg8_dl_0800A958[] = {
-    gsSPLight(&chuckya_lights_unused7.l, 1),
-    gsSPLight(&chuckya_lights_unused7.a, 2),
-    gsSPVertex(chuckya_seg8_vertex_0800A908, 5, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  4, 0x0),
-    gsSP2Triangles( 0,  2,  3, 0x0,  0,  4,  1, 0x0),
+    gsSPLight(&chuckya_lights_unused2.l, 1),
+    gsSPLight(&chuckya_lights_unused2.a, 2),
+    gsSPVertex(chuckya_seg8_vertex_0800A908, 12, 0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(3,4,5,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(9,10,11,0),
     gsSPEndDisplayList(),
 };
 
@@ -463,53 +481,49 @@ static const Lights1 chuckya_seg8_lights_0800A9B8 = gdSPDefLights1(
     0x0c, 0x0c, 0x0c,
     0x32, 0x32, 0x32, 0x28, 0x28, 0x28
 );
-
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 // 0x0800A9D0
 static const Vtx chuckya_seg8_vertex_0800A9D0[] = {
-    {{{   -99,   -129,    130}, 0, {     0,      0}, {0x24, 0xa9, 0x54, 0xff}}},
-    {{{  -135,   -173,    100}, 0, {     0,      0}, {0x24, 0xa9, 0x54, 0xff}}},
-    {{{   -55,   -236,      0}, 0, {     0,      0}, {0x24, 0xa9, 0x54, 0xff}}},
-    {{{  -135,   -173,    100}, 0, {     0,      0}, {0xa3, 0x11, 0x54, 0xff}}},
-    {{{  -202,    -49,      0}, 0, {     0,      0}, {0xa3, 0x11, 0x54, 0xff}}},
-    {{{  -213,   -113,      1}, 0, {     0,      0}, {0xa3, 0x11, 0x54, 0xff}}},
-    {{{  -135,   -173,    100}, 0, {     0,      0}, {0xa4, 0x12, 0x54, 0xff}}},
-    {{{   -99,   -129,    130}, 0, {     0,      0}, {0xa4, 0x12, 0x54, 0xff}}},
-    {{{  -202,    -49,      0}, 0, {     0,      0}, {0xa4, 0x12, 0x54, 0xff}}},
-    {{{  -135,   -173,    100}, 0, {     0,      0}, {0xb2, 0x9d, 0x00, 0xff}}},
-    {{{  -132,   -175,   -100}, 0, {     0,      0}, {0xb2, 0x9d, 0x00, 0xff}}},
-    {{{   -55,   -236,      0}, 0, {     0,      0}, {0xb2, 0x9d, 0x00, 0xff}}},
-    {{{  -135,   -173,    100}, 0, {     0,      0}, {0xb3, 0x9c, 0x00, 0xff}}},
-    {{{  -213,   -113,      1}, 0, {     0,      0}, {0xb3, 0x9c, 0x00, 0xff}}},
-    {{{  -132,   -175,   -100}, 0, {     0,      0}, {0xb3, 0x9c, 0x00, 0xff}}},
+	{-212,-112,0,0,0,0,-94,14,-83,255},
+	{-201,-49,-1,0,0,0,-94,14,-83,255},
+	{-98,-129,-129,0,0,0,-94,14,-83,255},
+	{-132,-175,-99,0,0,0,-94,14,-83,255},
+	{-132,-175,-99,0,0,0,40,-85,-84,255},
+	{-98,-129,-129,0,0,0,40,-85,-84,255},
+	{2,-209,0,0,0,0,40,-85,-84,255},
+	{-55,-235,-1,0,0,0,40,-85,-84,255},
+	{-99,-129,128,0,0,0,36,-87,83,255},
+	{-135,-172,99,0,0,0,36,-87,83,255},
+	{-55,-235,-1,0,0,0,36,-87,83,255},
+	{2,-209,0,0,0,0,36,-87,83,255},
+	{-135,-172,99,0,0,0,-78,-100,0,255},
+	{-212,-112,0,0,0,0,-78,-100,0,255},
+	{-132,-175,-99,0,0,0,-78,-100,0,255},
+	{-55,-235,-1,0,0,0,-78,-100,0,255},
+	{-135,-172,99,0,0,0,-93,18,84,255},
+	{-99,-129,128,0,0,0,-93,18,84,255},
+	{-201,-49,-1,0,0,0,-93,18,84,255},
+	{-212,-112,0,0,0,0,-93,18,84,255},
 };
-
-// 0x0800AAC0
-static const Vtx chuckya_seg8_vertex_0800AAC0[] = {
-    {{{  -213,   -113,      1}, 0, {     0,      0}, {0xa3, 0x0e, 0xac, 0xff}}},
-    {{{  -202,    -49,      0}, 0, {     0,      0}, {0xa3, 0x0e, 0xac, 0xff}}},
-    {{{   -98,   -130,   -130}, 0, {     0,      0}, {0xa3, 0x0e, 0xac, 0xff}}},
-    {{{  -132,   -175,   -100}, 0, {     0,      0}, {0xa3, 0x0e, 0xac, 0xff}}},
-    {{{   -99,   -129,    130}, 0, {     0,      0}, {0x25, 0xa9, 0x54, 0xff}}},
-    {{{   -55,   -236,      0}, 0, {     0,      0}, {0x25, 0xa9, 0x54, 0xff}}},
-    {{{     3,   -210,      1}, 0, {     0,      0}, {0x25, 0xa9, 0x54, 0xff}}},
-    {{{  -132,   -175,   -100}, 0, {     0,      0}, {0x28, 0xaa, 0xad, 0xff}}},
-    {{{     3,   -210,      1}, 0, {     0,      0}, {0x28, 0xaa, 0xad, 0xff}}},
-    {{{   -55,   -236,      0}, 0, {     0,      0}, {0x28, 0xaa, 0xad, 0xff}}},
-    {{{   -98,   -130,   -130}, 0, {     0,      0}, {0x28, 0xaa, 0xad, 0xff}}},
-};
+#pragma GCC diagnostic pop
 
 // 0x0800AB70 - 0x0800ABE8
 const Gfx chuckya_seg8_dl_0800AB70[] = {
     gsSPLight(&chuckya_lights_unused7.l, 1),
     gsSPLight(&chuckya_lights_unused7.a, 2),
-    gsSPVertex(chuckya_seg8_vertex_0800A9D0, 15, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  5, 0x0),
-    gsSP2Triangles( 6,  7,  8, 0x0,  9, 10, 11, 0x0),
-    gsSP1Triangle(12, 13, 14, 0x0),
-    gsSPVertex(chuckya_seg8_vertex_0800AAC0, 11, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-    gsSP2Triangles( 4,  5,  6, 0x0,  7,  8,  9, 0x0),
-    gsSP1Triangle( 7, 10,  8, 0x0),
+	gsSPVertex(&chuckya_seg8_vertex_0800A9D0[0],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(0,2,3,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(4,6,7,0),
+	gsSP1Triangle(8,9,10,0),
+	gsSP1Triangle(8,10,11,0),
+	gsSP1Triangle(12,13,14,0),
+	gsSP1Triangle(12,14,15,0),
+	gsSPVertex(&chuckya_seg8_vertex_0800A9D0[16],4,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(0,2,3,0),
     gsSPEndDisplayList(),
 };
 

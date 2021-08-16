@@ -584,5 +584,4 @@ const Gfx RCP_star_dust8[] = {
 	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, star_dust8_txt),
 	gsSPBranchList(gfx_star_dust)
 };
-
 #pragma GCC diagnostic pop

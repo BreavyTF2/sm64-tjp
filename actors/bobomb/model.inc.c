@@ -312,6 +312,22 @@ static Gfx gfx_bom_1[] = {
 	gsSPEndDisplayList() 
 };
 
+static Gfx gfx_rbom_0[] = {
+	gs_Tani_LoadTextureImage2(Rbom_body0_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0, 7),
+	gsSPVertex(&vtx_bom_0[0],  4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 3, 1, 0),
+	gsSPEndDisplayList() 
+};
+
+static Gfx gfx_rbom_1[] = {
+	gs_Tani_LoadTextureImage2(Rbom_body1_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64, 0, 7),
+	gsSPVertex(&vtx_bom_1[0],  4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 3, 1, 0),
+	gsSPEndDisplayList() 
+};
+
 const Gfx gfx_bom[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
@@ -332,7 +348,26 @@ const Gfx gfx_bom[] = {
 	gsSPSetGeometryMode(G_LIGHTING), 
 	gsSPEndDisplayList() 
 };
+const Gfx gfx_rbom[] = {
+	gsDPPipeSync(),
+	gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
+	gsSPClearGeometryMode(G_LIGHTING), 
+	gsDPSetTile(G_IM_FMT_RGBA,G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
 
+	gsSPTexture(0xffff,0xffff, 0, 0, G_ON),
+
+	gs_Tani_SetUpTileDescrip(G_IM_FMT_RGBA,G_IM_SIZ_16b, 32, 64,  0, 0, G_TX_CLAMP|G_TX_NOMIRROR, 5, G_TX_NOLOD, G_TX_CLAMP|G_TX_NOMIRROR, 6, G_TX_NOLOD),
+
+		gsSPDisplayList(gfx_rbom_0),
+		gsSPDisplayList(gfx_rbom_1),
+
+	gsSPTexture(0xffff, 0xffff, 0, 0, G_OFF),
+
+	gsDPPipeSync(),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPSetGeometryMode(G_LIGHTING), 
+	gsSPEndDisplayList() 
+};
 /*-------------------------------------------------------------*/
 /*	vertex & polygon data                                      */
 /*-------------------------------------------------------------*/

@@ -124,7 +124,7 @@ const LevelScript level_yajima_entry[] = {
 
 			OBJECT_LEAK(MODEL_NONE				,	  200,    0,      0,  0,0,0,  0,1,0, bhvFloorSwitchHardcodedModel 	 ),
 			OBJECT_LEAK(MODEL_NONE				,	  600,    0,      0,  0,0,0,  0,0,0, bhvFloorSwitchHardcodedModel 	 ),
-
+			OBJECT_LEAK(MODEL_NONE	,	  0,   200,  0,   0,0,0,  0,0,0, bhvFish3	),
 //			OBJECT_LEAK(MODEL_UKIKI_YAJIMA			,      0,   200,     0,   0,0,0,  0,0,0, bhvMacroUkiki			),
 //			OBJECT_LEAK(MODEL_HEAVE_HO_YAJIMA			,   2000,   200,  2000,   0,0,0,  0,0,0, bhvHeaveHo			),
 			OBJECT_LEAK(MODEL_UNKNOWN_58			,	    0,    0, -1500,   0,0,0,  0,0,0, bhvStub1D0C			),

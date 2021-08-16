@@ -6,8 +6,8 @@ static struct ObjectHitbox sBobombHitbox = {
     /* damageOrCoinValue: */ 0,
     /* health:            */ 0,
     /* numLootCoins:      */ 0,
-    /* radius:            */ 65,
-    /* height:            */ 113,
+    /* radius:            */ 32.5,
+    /* height:            */ 56.5,
     /* hurtboxRadius:     */ 0,
     /* hurtboxHeight:     */ 0,
 };
@@ -31,11 +31,11 @@ void bobomb_spawn_coin(void) {
 void bobomb_act_explode(void) {
     struct Object *explosion;
 	cur_obj_init_animation(1);
-    if (o->oTimer < 5)
+    if (o->oTimer <= 12)
 	cur_obj_init_animation(1);	
     else {
         explosion = spawn_object(o, MODEL_EXPLOSION, bhvExplosion);
-        explosion->oGraphYOffset += 100.0f;
+        explosion->oGraphYOffset += 50.0f;
 
         bobomb_spawn_coin();
         create_respawner(MODEL_BLACK_BOBOMB, bhvBobomb, 3000);
@@ -212,24 +212,44 @@ void bobomb_thrown_loop(void) {
 // sp18 = blinkTimer
 
 void curr_obj_random_blink(s32 *blinkTimer) {
+	s32 sp1C = gGlobalTimer;
     if (*blinkTimer == 0) {
-        if ((s16)(random_float() * 100.0f) == 0) {
+        if ((sp1C & 0x05) == 0) {
             o->oAnimState = 1;
             *blinkTimer = 1;
         }
     } else {
         (*blinkTimer)++;
-        if (*blinkTimer >= 6)
+        if (*blinkTimer >= 1)
             o->oAnimState = 0;
-        if (*blinkTimer >= 11)
+        if (*blinkTimer >= 2)
             o->oAnimState = 1;
-        if (*blinkTimer >= 16) {
+        if (*blinkTimer >= 3) {
             o->oAnimState = 0;
             *blinkTimer = 0;
         }
     }
 }
 
+void curr_obj_random_blink2(s32 *blinkTimer) {
+	s32 sp1C = gGlobalTimer;
+    if (*blinkTimer == 0) {
+        if ((sp1C & 0x01) == 0) {
+            o->oAnimState = 1;
+            *blinkTimer = 1;
+        }
+    } else {
+        (*blinkTimer)++;
+        if (*blinkTimer >= 1)
+            o->oAnimState = 0;
+        if (*blinkTimer >= 2)
+            o->oAnimState = 1;
+        if (*blinkTimer >= 3) {
+            o->oAnimState = 0;
+            *blinkTimer = 0;
+        }
+    }
+}
 void bhv_bobomb_loop(void) {
     s8 dustPeriodMinus1;
     if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 4000) != 0) {
@@ -251,18 +271,22 @@ void bhv_bobomb_loop(void) {
                 break;
         }
 
-        curr_obj_random_blink(&o->oBobombBlinkTimer);
-
         if (o->oBobombFuseLit == 1) {
-            if (o->oBobombFuseTimer >= 121)
+			
+            if ((o->oBobombFuseTimer >= 121) & (o->oBobombFuseTimer <= 150)){
                 dustPeriodMinus1 = 1;
-            else
+			curr_obj_random_blink(&o->oBobombBlinkTimer);
+			}else if (o->oBobombFuseTimer >= 151){
+				dustPeriodMinus1 = 1;
+			curr_obj_random_blink2(&o->oBobombBlinkTimer);	
+            } else {
                 dustPeriodMinus1 = 7;
-
+//			curr_obj_random_blink2(&o->oBobombBlinkTimer);
+}
             if ((dustPeriodMinus1 & o->oBobombFuseTimer)
                 == 0) /* oBobombFuseTimer % 2 or oBobombFuseTimer % 8 */
                 spawn_object(o, MODEL_SMOKE, bhvBobombFuseSmoke);
-
+			
             cur_obj_play_sound_1(SOUND_AIR_BOBOMB_LIT_FUSE);
 
             o->oBobombFuseTimer++;
@@ -416,7 +440,7 @@ void bobomb_buddy_actions(void) {
 void bhv_bobomb_buddy_loop(void) {
     bobomb_buddy_actions();
 
-    curr_obj_random_blink(&o->oBobombBuddyBlinkTimer);
+//    curr_obj_random_blink(&o->oBobombBuddyBlinkTimer);
 
     o->oInteractStatus = 0;
 }

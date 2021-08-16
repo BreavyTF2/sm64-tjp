@@ -8,7 +8,11 @@ hmsShadow(70, 200, 1)
 	  hmsBegin()
 		hmsBboard(0,0,0)
 	    hmsBegin()
-		  hmsGfx(RM_SPRITE,gfx_bom)
+		hmsSelect(2, geo_switch_anim_state)
+			hmsBegin()
+	            hmsGfx(LAYER_ALPHA,gfx_bom)  /* ping_head1_2(4) */
+	            hmsGfx(LAYER_ALPHA,gfx_rbom)  /* ping_head1_2(4) */
+			hmsEnd()
 	  	hmsEnd()
 	  hmsEnd()
       hmsBegin()
