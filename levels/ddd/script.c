@@ -34,17 +34,17 @@ static const LevelScript script_func_local_2[] = {
 
 static const LevelScript script_func_local_3[] = {
 	OBJECT_WITH_ACTS(/*model*/ MODEL_MANTA_RAY, /*pos*/ 5000,    0,     0, /*angle*/ 0, 0, 0, /*behParam*/ 0x04000000, /*beh*/ bhvMantaRay,       /*acts*/ ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
-    OBJECT(/*model*/ MODEL_DDD_BOWSER_SUB_DOOR, /*pos*/    0,    0,     0, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBowserSubDoor),
+    OBJECT_WITH_ACTS(/*model*/ MODEL_DDD_BOWSER_SUB_DOOR, /*pos*/    0,    0,     0, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBowserSubDoor, ACT_1),
     OBJECT(/*model*/ MODEL_DDD_BOWSER_SUB,      /*pos*/    0,    0,     0, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBowsersSub),
-    OBJECT(/*model*/ MODEL_DDD_POLE,            /*pos*/ 5120, 1005,  3584, /*angle*/ 0, 180, 0, /*behParam*/ 0x001E0000, /*beh*/ bhvDDDPole),
-    OBJECT(/*model*/ MODEL_DDD_POLE,            /*pos*/ 5605, 1005,  3380, /*angle*/ 0, 270, 0, /*behParam*/ 0x00150000, /*beh*/ bhvDDDPole),
-    OBJECT(/*model*/ MODEL_DDD_POLE,            /*pos*/ 1800, 1005,  1275, /*angle*/ 0,   0, 0, /*behParam*/ 0x000B0000, /*beh*/ bhvDDDPole),
-    OBJECT(/*model*/ MODEL_DDD_POLE,            /*pos*/ 4000, 1005,  1075, /*angle*/ 0, 180, 0, /*behParam*/ 0x000B0000, /*beh*/ bhvDDDPole),
-    OBJECT(/*model*/ MODEL_DDD_POLE,            /*pos*/ 1830, 1005,   520, /*angle*/ 0, 270, 0, /*behParam*/ 0x00140000, /*beh*/ bhvDDDPole),
-    OBJECT(/*model*/ MODEL_DDD_POLE,            /*pos*/ 4000, 1005,  1275, /*angle*/ 0,   0, 0, /*behParam*/ 0x000B0000, /*beh*/ bhvDDDPole),
-    OBJECT(/*model*/ MODEL_DDD_POLE,            /*pos*/ 5760, 1005,   360, /*angle*/ 0, 270, 0, /*behParam*/ 0x00170000, /*beh*/ bhvDDDPole),
-    OBJECT(/*model*/ MODEL_DDD_POLE,            /*pos*/ 3310, 1005, -1945, /*angle*/ 0,   0, 0, /*behParam*/ 0x00170000, /*beh*/ bhvDDDPole),
-    OBJECT(/*model*/ MODEL_DDD_POLE,            /*pos*/ 3550, 1005, -2250, /*angle*/ 0,   0, 0, /*behParam*/ 0x000D0000, /*beh*/ bhvDDDPole),
+    OBJECT(/*model*/ MODEL_BREAKABLE_BOX,            /*pos*/ 5120, 700,  3584, /*angle*/ 0, 180, 0, /*behParam*/ 0x00010000, /*beh*/ bhvHiddenObject),
+    OBJECT(/*model*/ MODEL_BREAKABLE_BOX,            /*pos*/ 5605, 700,  3380, /*angle*/ 0, 270, 0, /*behParam*/ 0x00010000, /*beh*/ bhvHiddenObject),
+    OBJECT(/*model*/ MODEL_BREAKABLE_BOX,            /*pos*/ 1800, 700,  1275, /*angle*/ 0,   0, 0, /*behParam*/ 0x00010000, /*beh*/ bhvHiddenObject),
+    OBJECT(/*model*/ MODEL_BREAKABLE_BOX,            /*pos*/ 4000, 700,  1075, /*angle*/ 0, 180, 0, /*behParam*/ 0x00010000, /*beh*/ bhvHiddenObject),
+    OBJECT(/*model*/ MODEL_BREAKABLE_BOX,            /*pos*/ 1830, 700,   520, /*angle*/ 0, 270, 0, /*behParam*/ 0x00010000, /*beh*/ bhvHiddenObject),
+    OBJECT(/*model*/ MODEL_BREAKABLE_BOX,            /*pos*/ 4000, 700,  1275, /*angle*/ 0,   0, 0, /*behParam*/ 0x00010000, /*beh*/ bhvHiddenObject),
+    OBJECT(/*model*/ MODEL_BREAKABLE_BOX,            /*pos*/ 5760, 700,   360, /*angle*/ 0, 270, 0, /*behParam*/ 0x00010000, /*beh*/ bhvHiddenObject),
+    OBJECT(/*model*/ MODEL_BREAKABLE_BOX,            /*pos*/ 3310, 700, -1945, /*angle*/ 0,   0, 0, /*behParam*/ 0x00010000, /*beh*/ bhvHiddenObject),
+    OBJECT(/*model*/ MODEL_BREAKABLE_BOX,            /*pos*/ 3550, 700, -2250, /*angle*/ 0,   0, 0, /*behParam*/ 0x00010000, /*beh*/ bhvHiddenObject),
     RETURN(),
 };
 

@@ -77,7 +77,6 @@ extern const Gfx breakable_box_seg8_dl_08012CD8[];
 extern const Gfx breakable_box_seg8_dl_08012D20[];
 extern const Gfx breakable_box_seg8_dl_08012D48[];
 extern const Collision breakable_box_seg8_collision_08012D70[];
-extern const Collision wdw_seg7_collision_07018528_2[];
 // hopper
 extern const GeoLayout RCP_HmsEnemyhopper[];
 extern const Gfx RCP_hopper_cons_test1[];

@@ -1,11 +1,7 @@
 
 void bhv_ddd_pole_init(void) {
-    if (!(save_file_get_flags() & (SAVE_FLAG_HAVE_KEY_2 | SAVE_FLAG_UNLOCKED_UPSTAIRS_DOOR))) {
-        obj_mark_for_deletion(o);
-    } else {
         o->hitboxDownOffset = 100.0f;
         o->oDDDPoleMaxOffset = 100.0f * o->oBehParams2ndByte;
-    }
 }
 
 void bhv_ddd_pole_update(void) {
