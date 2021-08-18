@@ -222,7 +222,7 @@ cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
 cur_obj_init_animation_with_sound(8);
 }
 	
-		if ( o->oMoveFlags & OBJ_MOVE_LANDED){
+		if (o->oPosY < (o->oHomeY + 15)){
 		cur_obj_init_animation_with_sound(7);
 	if ( cur_obj_check_if_near_animation_end() )	{
 	cur_obj_become_tangible();

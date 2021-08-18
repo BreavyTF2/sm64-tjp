@@ -27,6 +27,12 @@ static const Gfx sl_seg7_dl_0700A848[] = {
 // 0x0700A890 - 0x0700A910
 const Gfx sl_seg7_dl_0700A890[] = {
     gsDPPipeSync(),
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_XLU_SURF2),
+	gsDPSetDepthSource(G_ZS_PIXEL),
+	gsDPSetFogColor(STAGE10_FOG_R, STAGE10_FOG_G, STAGE10_FOG_B, 255),
+	gsSPFogPosition(STAGE10_FOG_START, 1000),
+	gsSPSetGeometryMode(G_FOG),
     gsDPSetEnvColor(255, 255, 255, 100),
     gsDPSetCombineMode(G_CC_MODULATERGBFADE, G_CC_MODULATERGBFADE),
     gsSPClearGeometryMode(G_SHADING_SMOOTH),
@@ -38,6 +44,9 @@ const Gfx sl_seg7_dl_0700A890[] = {
     gsSPDisplayList(sl_seg7_dl_0700A848),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsDPSetRenderMode(G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF),
+	gsSPClearGeometryMode(G_FOG),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPSetGeometryMode(G_SHADING_SMOOTH),
     gsDPSetEnvColor(255, 255, 255, 255),

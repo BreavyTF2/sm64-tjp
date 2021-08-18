@@ -718,7 +718,7 @@ const BehaviorScript bhvRotatingPlatform[] = {
 
 const BehaviorScript bhvTower[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    OR_INT(oFlags, OBJ_FLAG_ACTIVE_FROM_AFAR),
     LOAD_COLLISION_DATA(wf_seg7_collision_tower),
     SET_FLOAT(oCollisionDistance, 32000),
     SET_FLOAT(oDrawingDistance, 32000),
@@ -2703,12 +2703,11 @@ const BehaviorScript bhvBowserSubDoor[] = {
 
 const BehaviorScript bhvBowsersSub[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR |OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    SET_FLOAT(oDrawingDistance, 20000),
-    SET_FLOAT(oCollisionDistance, 20000),
+    OR_INT(oFlags, OBJ_FLAG_ACTIVE_FROM_AFAR),
+    SET_FLOAT(oCollisionDistance, 32000),
+    SET_FLOAT(oDrawingDistance, 32000),
     LOAD_COLLISION_DATA(ddd_seg7_collision_submarine),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_bowsers_sub_loop),
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

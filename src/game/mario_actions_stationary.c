@@ -111,7 +111,7 @@ s32 act_idle(struct MarioState *m) {
         return set_mario_action(m, ACT_COUGHING, 0);
     }
 
-    if (!(m->actionArg & 1) && m->health < 0x300) {
+    if (!(m->actionArg & 1) && m->health < 0x500) {
         return set_mario_action(m, ACT_PANTING, 0);
     }
 
@@ -510,6 +510,10 @@ s32 act_hold_idle(struct MarioState *m) {
         return drop_and_set_mario_action(m, ACT_IN_QUICKSAND, 0);
     }
 
+    if (!(m->actionArg & 1) && m->health < 0x500) {
+        return set_mario_action(m, ACT_HOLD_PANTING_UNUSED, 0);
+    }
+
     if (check_common_hold_idle_cancels(m)) {
         return TRUE;
     }
@@ -628,7 +632,7 @@ s32 act_panting(struct MarioState *m) {
         return set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
     }
 			if (!(m->action & ACT_FLAG_SWIMMING)) { 
-						m->health += 0x01;
+						m->health += 1;
 			}
     if (m->health >= 0x500) {
         return set_mario_action(m, ACT_IDLE, 0);

@@ -1006,6 +1006,9 @@ s32 play_mode_paused(void) {
     if (gPauseScreenMode == 0) {
         set_menu_mode(RENDER_PAUSE_SCREEN);
     } else if (gPauseScreenMode == 1) {
+		if (gPlayer1Controller->buttonDown & L_CBUTTONS && gPlayer1Controller->buttonDown & R_CBUTTONS) {
+		set_mario_action(gMarioState, ACT_DEBUG_FREE_MOVE, 0);
+		}
         raise_background_noise(1);
         gCameraMovementFlags &= ~CAM_MOVE_PAUSE_SCREEN;
         set_play_mode(PLAY_MODE_NORMAL);
@@ -1038,6 +1041,7 @@ s32 play_mode_frame_advance(void) {
         gCameraMovementFlags &= ~CAM_MOVE_PAUSE_SCREEN;
         raise_background_noise(1);
         set_play_mode(PLAY_MODE_NORMAL);
+		
     } else {
         gCameraMovementFlags |= CAM_MOVE_PAUSE_SCREEN;
     }
