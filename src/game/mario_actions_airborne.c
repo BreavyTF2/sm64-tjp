@@ -103,7 +103,7 @@ s32 check_fall_damage(struct MarioState *m, u32 hardFallAction) {
 
 s32 check_kick_or_dive_in_air(struct MarioState *m) {
     if (m->input & INPUT_B_PRESSED) {
-        return set_mario_action(m, m->forwardVel > 28.0f ? ACT_DIVE : ACT_JUMP_KICK, 0);
+        return set_mario_action(m, m->forwardVel > 29.0f && m->controller->stickMag > 48.0f ? ACT_DIVE : ACT_JUMP_KICK, 0);
     }
     return FALSE;
 }
@@ -160,7 +160,7 @@ s32 check_horizontal_wind(struct MarioState *m) {
         if (speed > 48.0f) {
             m->slideVelX = m->slideVelX * 48.0f / speed;
             m->slideVelZ = m->slideVelZ * 48.0f / speed;
-            speed = 32.0f; //! This was meant to be 48?
+            speed = 48.0f; //! This was meant to be 48?
         } else if (speed > 32.0f) {
             speed = 32.0f;
         }
@@ -1114,15 +1114,9 @@ u32 common_air_knockback_step(struct MarioState *m, u32 landAction, u32 hardFall
             }
 #endif
             if (!check_fall_damage_or_get_stuck(m, hardFallAction)) {
-#ifndef VERSION_JP
-                if (m->action == ACT_THROWN_FORWARD || m->action == ACT_THROWN_BACKWARD) {
-                    set_mario_action(m, landAction, m->hurtCounter);
-                } else {
-                    set_mario_action(m, landAction, m->actionArg);
-                }
-#else
+
                 set_mario_action(m, landAction, m->actionArg);
-#endif
+
             }
             break;
 
@@ -1387,10 +1381,9 @@ s32 act_forward_rollout(struct MarioState *m) {
 }
 s32 act_squat_kicking(struct MarioState *m) {
     if (m->actionState == 0) {
-	   m->forwardVel += 6.0f;
-	   if (m->vel[1] < 0.0f) {
-		m->vel[1] = 0.0f;	   
-	   }
+	   m->forwardVel += 6.5f;
+	   if (m->vel[1] < 0.0f) m->vel[1] = 0.0f;
+	   
 	   m->vel[1] += 10.5f;	
        set_mario_animation(m, MARIO_ANIM_SQUAT_KICK_START);	   
 	   if (m->marioObj->header.gfx.animInfo.animFrame >= 2) {

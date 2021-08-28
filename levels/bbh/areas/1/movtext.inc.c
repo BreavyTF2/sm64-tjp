@@ -9,7 +9,7 @@ static Movtex bbh_movtex_merry_go_round_water_entrance_data[] = {
     MOV_TEX_4_BOX_TRIS(  640,  1485),
     MOV_TEX_ROT(     ROTATE_CLOCKWISE),
     MOV_TEX_ALPHA(    0x96),
-    MOV_TEX_DEFINE(  TEXTURE_UNK_WATER),
+    MOV_TEX_DEFINE(  TEXTURE_JRB_WATER),
     MOV_TEX_END(),
 };
 
@@ -24,7 +24,7 @@ static Movtex bbh_movtex_merry_go_round_water_side_data[] = {
     MOV_TEX_4_BOX_TRIS( 3789, -1637),
     MOV_TEX_ROT(     ROTATE_CLOCKWISE),
     MOV_TEX_ALPHA(    0x96),
-    MOV_TEX_DEFINE(  TEXTURE_UNK_WATER),
+    MOV_TEX_DEFINE(  TEXTURE_JRB_WATER),
     MOV_TEX_END(),
 };
 

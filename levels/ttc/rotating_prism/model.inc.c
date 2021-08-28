@@ -89,3 +89,59 @@ const Gfx ttc_seg7_dl_0700EFE0[] = {
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPEndDisplayList(),
 };
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
+static Vtx vtx_mecha_obj02a_0[] = {
+	{    -71,     72,   -204,     0,   990,     0,    -1,   -1,   -1,  255}, 
+	{     72,    -71,   -204,     0,     0,  2012,    -1,   -1,   -1,  255}, 
+	{    -71,    -71,   -204,     0,   990,  2012,    -1,   -1,   -1,  255}, 
+	{     72,     72,   -204,     0,     0,     0,    -1,   -1,   -1,  255}, 
+	{     72,     72,    205,     0,   990,     0,    -1,   -1,   -1,  255}, 
+	{    -71,    -71,    205,     0,     0,  2012,    -1,   -1,   -1,  255}, 
+	{     72,    -71,    205,     0,   990,  2012,    -1,   -1,   -1,  255}, 
+	{    -71,     72,    205,     0,     0,     0,    -1,   -1,   -1,  255}, 
+};
+
+static Gfx gfx_mecha_obj02a_0[] = {
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, machine_09004000),
+    gsDPLoadSync(),
+    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
+	gsSPVertex(&vtx_mecha_obj02a_0[0],  8, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 3, 1, 0),
+	gsSP1Triangle( 4, 5, 6, 0),
+	gsSP1Triangle( 4, 7, 5, 0),
+	gsSPEndDisplayList() 
+};
+
+const Gfx gfx_mecha_obj02a[] = {
+	gsDPPipeSync(),
+
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2),
+	gsDPSetDepthSource(G_ZS_PIXEL),
+    gsDPSetFogColor(200, 255, 255, 255),
+    gsSPFogPosition(900, 1000),
+	gsSPSetGeometryMode(G_FOG),
+
+	gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_PASS2),
+	gsSPClearGeometryMode(G_LIGHTING), 
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
+
+	gsSPTexture(0xffff,0xffff, 0, 0, G_ON),
+
+	gs_Tani_SetUpTileDescrip(G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 64,  0, 0, G_TX_CLAMP|G_TX_NOMIRROR, 5, G_TX_NOLOD, G_TX_CLAMP|G_TX_NOMIRROR, 6, G_TX_NOLOD),
+
+		gsSPDisplayList(gfx_mecha_obj02a_0),
+
+	gsSPTexture(0xffff, 0xffff, 0, 0, G_OFF),
+
+	gsDPPipeSync(),
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE),
+	gsSPClearGeometryMode(G_FOG),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPSetGeometryMode(G_LIGHTING), 
+	gsSPEndDisplayList() 
+};
+#pragma GCC diagnostic pop

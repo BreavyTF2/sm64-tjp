@@ -9,7 +9,7 @@ static Movtex jrb_movtex_water_data[] = {
     MOV_TEX_4_BOX_TRIS( 7992,  -669),
     MOV_TEX_ROT(     ROTATE_COUNTER_CLOCKWISE),
     MOV_TEX_ALPHA(    0xB4),
-    MOV_TEX_DEFINE(  TEXTURE_JRB_WATER),
+    MOV_TEX_DEFINE(  TEXTURE_UNK_WATER),
     MOV_TEX_END(),
 };
 
@@ -24,7 +24,7 @@ static Movtex jrb_movtex_ocean_cave_water_data[] = {
     MOV_TEX_4_BOX_TRIS( 5969, -4253),
     MOV_TEX_ROT(     ROTATE_COUNTER_CLOCKWISE),
     MOV_TEX_ALPHA(    0xB4),
-    MOV_TEX_DEFINE(  TEXTURE_JRB_WATER),
+    MOV_TEX_DEFINE(  TEXTURE_UNK_WATER),
     MOV_TEX_END(),
 };
 

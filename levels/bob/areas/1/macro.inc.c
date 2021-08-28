@@ -29,6 +29,8 @@ const MacroObject bob_seg7_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_coin_ring_horizontal,      /*yaw*/   0, /*pos*/ -6060,  1060, -5340),
     MACRO_OBJECT(/*preset*/ macro_coin_line_horizontal,      /*yaw*/  90, /*pos*/  -129,     0,  5668),
     MACRO_OBJECT(/*preset*/ macro_coin_line_horizontal,      /*yaw*/  75, /*pos*/  1851,  2917, -2234),
+	MACRO_OBJECT(/*preset*/ macro_coin_ring_horizontal,      /*yaw*/   0, /*pos*/  1000,  1500, -2300), //E3 Pos
+	MACRO_OBJECT(/*preset*/ macro_bobomb,                    /*yaw*/   0, /*pos*/  1200,  1300, -2300), //E3 Pos
     MACRO_OBJECT(/*preset*/ macro_red_coin,                  /*yaw*/   0, /*pos*/ -5500,   768,  2400),
     MACRO_OBJECT(/*preset*/ macro_red_coin,                  /*yaw*/   0, /*pos*/ -6500,   768,  2400),
     MACRO_OBJECT(/*preset*/ macro_red_coin,                  /*yaw*/   0, /*pos*/  1135,  1920, -7161),

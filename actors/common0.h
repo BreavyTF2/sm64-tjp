@@ -62,6 +62,7 @@ extern const Gfx RCP_bom_basedata0[];
 extern const Gfx RCP_bom_basedata1[];
 extern const Gfx RCP_bom_basedata2[];
 extern const Gfx gfx_bom[];
+extern const Gfx gfx_bbom[];
 extern const Gfx gfx_rbom[];
 extern const struct Animation *const bom_anime[];
 

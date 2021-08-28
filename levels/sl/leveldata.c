@@ -9,10 +9,10 @@
 #include "dialog_ids.h"
 
 #include "make_const_nonconst.h"
-#define		STAGE10_FOG_R		225
-#define		STAGE10_FOG_G		225
+#define		STAGE10_FOG_R		220
+#define		STAGE10_FOG_G		220
 #define		STAGE10_FOG_B		255
-#define		STAGE10_FOG_START	980
+#define		STAGE10_FOG_START	970
 #include "levels/sl/texture.inc.c"
 #include "levels/sl/areas/1/1/model.inc.c"
 #include "levels/sl/areas/1/2/model.inc.c"

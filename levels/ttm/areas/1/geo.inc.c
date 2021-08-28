@@ -17,6 +17,7 @@ const GeoLayout ttm_geo_000A70[] = {
             GEO_OPEN_NODE(),
                GEO_DISPLAY_LIST(LAYER_OPAQUE, ttm_seg7_dl_0700A120),
                GEO_DISPLAY_LIST(LAYER_OPAQUE, ttm_seg7_dl_0700A2E0),
+			   GEO_DISPLAY_LIST(LAYER_OPAQUE, gfx_dk_yurayura),
                GEO_RENDER_OBJ(),
                GEO_ASM(    0, geo_painting_update),
                GEO_ASM(PAINTING_ID(0, 2), geo_painting_draw),

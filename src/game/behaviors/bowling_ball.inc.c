@@ -43,7 +43,6 @@ void bhv_bowling_ball_init(void) {
     o->oGravity = 5.5f;
     o->oFriction = 1.0f;
     o->oBuoyancy = 2.0f;
-	cur_obj_scale(5.0f);
 }
 
 void bowling_ball_set_hitbox(void) {
@@ -225,7 +224,6 @@ void bhv_bob_pit_bowling_ball_init(void) {
     o->oGravity = 12.0f;
     o->oFriction = 1.0f;
     o->oBuoyancy = 2.0f;
-	cur_obj_scale(5.0f);
 }
 
 void bhv_bob_pit_bowling_ball_loop(void) {
@@ -251,7 +249,6 @@ void bhv_free_bowling_ball_init(void) {
     o->oHomeZ = o->oPosZ;
     o->oForwardVel = 0;
     o->oMoveAngleYaw = 0;
-	cur_obj_scale(5.0f);
 }
 
 void bhv_free_bowling_ball_roll_loop(void) {

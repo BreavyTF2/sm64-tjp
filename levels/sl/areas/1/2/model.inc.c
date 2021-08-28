@@ -50,7 +50,7 @@ const Gfx sl_seg7_dl_070056B0[] = {
 	gsSPSetGeometryMode(G_FOG),
     gsDPSetEnvColor(255, 255, 255, 180),
     gsDPSetCombineMode(G_CC_MODULATERGBFADE, G_CC_PASS2),
-    gsSPClearGeometryMode(G_CULL_BACK | G_SHADING_SMOOTH),
+    gsSPClearGeometryMode(G_CULL_BACK),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPTileSync(),
@@ -63,7 +63,7 @@ const Gfx sl_seg7_dl_070056B0[] = {
 	gsDPSetRenderMode(G_RM_AA_ZB_XLU_SURF, G_RM_AA_ZB_XLU_SURF),
 	gsSPClearGeometryMode(G_FOG),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-    gsSPSetGeometryMode(G_CULL_BACK | G_SHADING_SMOOTH),
+    gsSPSetGeometryMode(G_CULL_BACK),
     gsDPSetEnvColor(255, 255, 255, 255),
     gsSPEndDisplayList(),
 };

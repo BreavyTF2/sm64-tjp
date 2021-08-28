@@ -58,6 +58,7 @@ extern const Gfx bitdw_seg7_dl_0700C670[];
 extern const Gfx bitdw_seg7_dl_0700CC00[];
 extern const Gfx bitdw_seg7_dl_0700D190[];
 extern const Gfx bitdw_seg7_dl_0700D3E8[];
+extern const Gfx gfx_e1_pika[];
 extern const Collision bitdw_seg7_collision_level[];
 extern const MacroObject bitdw_seg7_macro_objs[];
 extern const Collision bitdw_seg7_collision_0700F688[];

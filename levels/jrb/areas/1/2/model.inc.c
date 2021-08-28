@@ -1,7 +1,7 @@
 // 0x070030A8 - 0x070030C0
 static const Lights1 jrb_seg7_lights_070030A8 = gdSPDefLights1(
-    0x10, 0x25, 0x1e,
-    0x41, 0x96, 0x78, 0x28, 0x28, 0x28
+    0x19, 0x27, 0x3f,
+    0x65, 0xb2, 0xff, 0x28, 0x28, 0x28
 );
 
 // 0x070030C0 - 0x070030D8
@@ -535,8 +535,8 @@ const Gfx jrb_seg7_dl_07004940[] = {
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
     gsDPSetDepthSource(G_ZS_PIXEL),
-    gsDPSetFogColor(5, 80, 75, 255),
-    gsSPFogPosition(900, 1000),
+    gsDPSetFogColor(15, 65, 100, 255),
+    gsSPFogPosition(930, 1000),
     gsSPSetGeometryMode(G_FOG),
     gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_PASS2),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),

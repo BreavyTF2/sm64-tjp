@@ -252,7 +252,6 @@ const Gfx RCP_wanwan_anim5[]={
 const Gfx RCP_wanwan_anim1[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_MODULATERGBA, G_CC_MODULATERGBA),
-	gsSPClearGeometryMode(G_SHADING_SMOOTH),
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
 
 	gsSPTexture(0xffff,0xffff, 0, 0, G_ON),
@@ -265,7 +264,6 @@ const Gfx RCP_wanwan_anim1[] = {
 
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-	gsSPSetGeometryMode(G_SHADING_SMOOTH),
 	gsSPEndDisplayList() 
 };
 const Gfx RCP_wanwan_anim2[]={
@@ -337,6 +335,7 @@ const Gfx RCP_wanwan_anim2[]={
 	gsSP1Triangle(0,1,2,0),
 	gsSP1Triangle(0,2,3,0),
 	gsSP1Triangle(0,3,4,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_wanwan_anim3[]={
@@ -352,6 +351,7 @@ const Gfx RCP_wanwan_anim3[]={
 	gsSP1Triangle(0,1,2,0),
 	gsSP1Triangle(3,4,5,0),
 	gsSP1Triangle(6,7,8,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_wanwan_anim4[]={
@@ -423,6 +423,7 @@ const Gfx RCP_wanwan_anim4[]={
 	gsSP1Triangle(0,1,2,0),
 	gsSP1Triangle(0,2,3,0),
 	gsSP1Triangle(0,3,4,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 #pragma GCC diagnostic pop

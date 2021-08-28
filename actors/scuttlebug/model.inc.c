@@ -1,3 +1,4 @@
+
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmissing-braces"
 
@@ -503,6 +504,7 @@ static const Vtx vtx_walker_F_walk15[]={
 	{165,-1,0,0,0,0,127,0,0,0},
 };
 const Gfx RCP_walker_F_walk0[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[0].l[0]),1),
 	gsSPLight((&light_walker_F_walk[0].a),2),
 	gsSPVertex(&vtx_walker_F_walk0[0],12,0),
@@ -510,23 +512,29 @@ const Gfx RCP_walker_F_walk0[]={
 	gsSP1Triangle(3,4,5,0),
 	gsSP1Triangle(6,7,8,0),
 	gsSP1Triangle(9,10,11,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk1[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[2].l[0]),1),
 	gsSPLight((&light_walker_F_walk[2].a),2),
 	gsSPVertex(&vtx_walker_F_walk1[0],3,0),
 	gsSP1Triangle(0,1,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk2[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[2].l[0]),1),
 	gsSPLight((&light_walker_F_walk[2].a),2),
 	gsSPVertex(&vtx_walker_F_walk2[0],3,0),
 	gsSP1Triangle(0,1,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk3[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[0].l[0]),1),
 	gsSPLight((&light_walker_F_walk[0].a),2),
 	gsSPVertex(&vtx_walker_F_walk3[0],12,0),
@@ -534,20 +542,25 @@ const Gfx RCP_walker_F_walk3[]={
 	gsSP1Triangle(3,4,5,0),
 	gsSP1Triangle(6,7,8,0),
 	gsSP1Triangle(9,10,11,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk4[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[2].l[0]),1),
 	gsSPLight((&light_walker_F_walk[2].a),2),
 	gsSPVertex(&vtx_walker_F_walk4[0],3,0),
 	gsSP1Triangle(0,1,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk5[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[2].l[0]),1),
 	gsSPLight((&light_walker_F_walk[2].a),2),
 	gsSPVertex(&vtx_walker_F_walk5[0],3,0),
 	gsSP1Triangle(0,1,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk6[]={
@@ -673,6 +686,7 @@ const Gfx RCP_walker_F_walk6[]={
 	gsSP1Triangle(12,11,13,0),
 	gsSP1Triangle(12,13,14,0),
 	gsSP1Triangle(14,13,15,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk7[]={
@@ -798,9 +812,11 @@ const Gfx RCP_walker_F_walk7[]={
 	gsSP1Triangle(13,14,12,0),
 	gsSP1Triangle(13,12,11,0),
 	gsSP1Triangle(15,14,13,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk8[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[0].l[0]),1),
 	gsSPLight((&light_walker_F_walk[0].a),2),
 	gsSPVertex(&vtx_walker_F_walk8[0],12,0),
@@ -808,23 +824,29 @@ const Gfx RCP_walker_F_walk8[]={
 	gsSP1Triangle(3,4,5,0),
 	gsSP1Triangle(6,7,8,0),
 	gsSP1Triangle(9,10,11,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk9[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[2].l[0]),1),
 	gsSPLight((&light_walker_F_walk[2].a),2),
 	gsSPVertex(&vtx_walker_F_walk9[0],3,0),
 	gsSP1Triangle(0,1,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk10[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[2].l[0]),1),
 	gsSPLight((&light_walker_F_walk[2].a),2),
 	gsSPVertex(&vtx_walker_F_walk10[0],3,0),
 	gsSP1Triangle(0,1,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk11[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[0].l[0]),1),
 	gsSPLight((&light_walker_F_walk[0].a),2),
 	gsSPVertex(&vtx_walker_F_walk11[0],12,0),
@@ -832,23 +854,29 @@ const Gfx RCP_walker_F_walk11[]={
 	gsSP1Triangle(3,4,5,0),
 	gsSP1Triangle(6,7,8,0),
 	gsSP1Triangle(9,10,11,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk12[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[2].l[0]),1),
 	gsSPLight((&light_walker_F_walk[2].a),2),
 	gsSPVertex(&vtx_walker_F_walk12[0],3,0),
 	gsSP1Triangle(0,1,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk13[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[2].l[0]),1),
 	gsSPLight((&light_walker_F_walk[2].a),2),
 	gsSPVertex(&vtx_walker_F_walk13[0],3,0),
 	gsSP1Triangle(0,1,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk14[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_walker_F_walk[1].l[0]),1),
 	gsSPLight((&light_walker_F_walk[1].a),2),
 	gsSPVertex(&vtx_walker_F_walk14[0],6,0),
@@ -856,6 +884,7 @@ const Gfx RCP_walker_F_walk14[]={
 	gsSP1Triangle(0,2,3,0),
 	gsSP1Triangle(4,5,1,0),
 	gsSP1Triangle(4,1,0,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_walker_F_walk15[]={
@@ -981,6 +1010,7 @@ const Gfx RCP_walker_F_walk15[]={
 	gsSP1Triangle(12,11,13,0),
 	gsSP1Triangle(12,13,14,0),
 	gsSP1Triangle(14,13,15,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx light_sourcex[]={

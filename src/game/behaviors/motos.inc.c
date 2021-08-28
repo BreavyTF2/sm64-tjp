@@ -81,14 +81,14 @@ void motos_wait(void)
 
 void motos_player_search(void)
 {
-	s32 sp1C = gGlobalTimer;
-	if ((sp1C & 14) == 0) {
-cur_obj_play_sound_2(SOUND_OBJ_BULLY_WALKING);
+	if (cur_obj_check_anim_frame(13) | cur_obj_check_if_near_animation_end()) {
+	cur_obj_play_sound_2(SOUND_OBJ_BULLY_WALKING);
 }
-
+		
 	cur_obj_init_animation_with_sound(9);
 	o->oForwardVel = 2.5f;
 	cur_obj_rotate_yaw_toward(o->oAngleToMario,300);
+	if ( o->oDistanceToMario > 2000 )	o->oAction = 0;
 		if ((o->oPosY < 1300.0f) & (gCurrLevelNum == LEVEL_SL) & (o->oTimer >= 20)) {
 			o->oAction = 11;
 		}
@@ -115,7 +115,7 @@ void motos_player_pitch(void){
 	cur_obj_init_animation_with_sound(6);
 	if ( cur_obj_check_anim_frame(14) ){
 		o->oMotosUnk88 = 2;		/* nageru shyn kan	*/
-		o->oMotosUnk100 = 0;		/* hit time wait!!	*/ //Despite what it says, it doesn't work
+		o->oMotosUnk100 = 0;		/* hit time wait!!	*/ //Reset MotosEscape for next grab.
 	}
 	if ( cur_obj_check_if_near_animation_end() ){
 		o->oAction = 0;

@@ -3774,17 +3774,16 @@ const BehaviorScript bhvBobombFuseSmoke[] = {
 
 const BehaviorScript bhvBobombBuddy[] = {
     BEGIN(OBJ_LIST_GENACTOR),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    OR_INT(oFlags, (OBJ_FLAG_PERSISTENT_RESPAWN | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_ANIMATIONS(oAnimations, bom_anime),
     SET_INTERACT_TYPE(INTERACT_TEXT),
     DROP_TO_FLOOR(),
-    SET_HITBOX(/*Radius*/ 100, /*Height*/ 60),
     ANIMATE(0),
     SET_INT(oBobombBuddyRole, 0),
     SET_HOME(),
     CALL_NATIVE(bhv_bobomb_buddy_init),
     BEGIN_LOOP(),
-        SET_INT(oIntangibleTimer, 0),
+		SET_INT(oIntangibleTimer, 0),
         CALL_NATIVE(bhv_bobomb_buddy_loop),
     END_LOOP(),
 };
@@ -3796,7 +3795,6 @@ const BehaviorScript bhvBobombBuddyOpensCannon[] = {
     LOAD_ANIMATIONS(oAnimations, bom_anime),
     SET_INTERACT_TYPE(INTERACT_TEXT),
     DROP_TO_FLOOR(),
-    SET_HITBOX(/*Radius*/ 100, /*Height*/ 60),
     ANIMATE(0),
     SET_INT(oBobombBuddyRole, 1),
     SET_HOME(),

@@ -39,6 +39,7 @@ extern const GeoLayout ttm_geo_000DF4[];
 // leveldata
 extern const Gfx ttm_seg7_dl_0700A120[];
 extern const Gfx ttm_seg7_dl_0700A2E0[];
+extern const Gfx gfx_dk_yurayura[];
 extern const Gfx ttm_seg7_dl_0700A8C0[];
 extern const Gfx ttm_seg7_dl_0700AB08[];
 extern const Gfx ttm_seg7_dl_0700AF90[];

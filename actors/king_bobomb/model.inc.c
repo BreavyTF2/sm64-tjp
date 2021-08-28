@@ -1183,6 +1183,7 @@ const Gfx RCP_bom_king_carry0[]={
 	gsSP1Triangle(0,3,4,0),
 	gsSP1Triangle(0,4,5,0),
 	gsSP1Triangle(0,5,6,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_bom_king_carry1[]={
@@ -1308,6 +1309,7 @@ const Gfx RCP_bom_king_carry1[]={
 	gsSP1Triangle(13,14,12,0),
 	gsSP1Triangle(13,12,11,0),
 	gsSP1Triangle(15,14,13,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_bom_king_carry2[]={
@@ -1353,6 +1355,7 @@ const Gfx RCP_bom_king_carry2[]={
 	gsSP1Triangle(0,3,4,0),
 	gsSP1Triangle(0,4,5,0),
 	gsSP1Triangle(0,5,6,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_bom_king_carry3[]={
@@ -1478,6 +1481,7 @@ const Gfx RCP_bom_king_carry3[]={
 	gsSP1Triangle(12,11,13,0),
 	gsSP1Triangle(12,13,14,0),
 	gsSP1Triangle(14,13,15,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_bom_king_carry4[]={
@@ -1603,6 +1607,7 @@ const Gfx RCP_bom_king_carry4[]={
 	gsSP1Triangle(13,14,12,0),
 	gsSP1Triangle(13,12,11,0),
 	gsSP1Triangle(15,14,13,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_bom_king_carry5[]={
@@ -1728,6 +1733,7 @@ const Gfx RCP_bom_king_carry5[]={
 	gsSP1Triangle(12,11,13,0),
 	gsSP1Triangle(12,13,14,0),
 	gsSP1Triangle(14,13,15,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_bom_king_carry6[]={
@@ -1853,6 +1859,7 @@ const Gfx RCP_bom_king_carry6[]={
 	gsSP1Triangle(13,14,12,0),
 	gsSP1Triangle(13,12,11,0),
 	gsSP1Triangle(15,14,13,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_bom_king_carry7[]={
@@ -1978,6 +1985,7 @@ const Gfx RCP_bom_king_carry7[]={
 	gsSP1Triangle(12,11,13,0),
 	gsSP1Triangle(12,13,14,0),
 	gsSP1Triangle(14,13,15,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_bom_king_carry8[]={
@@ -2174,6 +2182,7 @@ const Gfx RCP_bom_king_carry11[]={
 	gsSP1Triangle(12,11,13,0),
 	gsSP1Triangle(12,13,14,0),
 	gsSP1Triangle(14,13,15,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 

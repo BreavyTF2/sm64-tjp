@@ -4,11 +4,11 @@
 
 // 0x0F000640
 const GeoLayout bowling_ball_geo[] = {
- hmsShadow(70, 200, 1)
+ hmsShadow(280, 200, 1)
    GEO_OPEN_NODE(),
 //      GEO_SCALE(0x00, 170393),
       GEO_OPEN_NODE(),
-         GEO_DISPLAY_LIST(LAYER_ALPHA, gfx_bom),
+         GEO_DISPLAY_LIST(LAYER_ALPHA, gfx_bbom),
       GEO_CLOSE_NODE(),
    GEO_CLOSE_NODE(),
    GEO_END(),
@@ -20,7 +20,7 @@ const GeoLayout bowling_ball_track_geo[] = {
    GEO_OPEN_NODE(),
 //      GEO_SCALE(0x00, 170393),
       GEO_OPEN_NODE(),
-         GEO_DISPLAY_LIST(LAYER_ALPHA, gfx_bom),
+         GEO_DISPLAY_LIST(LAYER_ALPHA, gfx_bbom),
       GEO_CLOSE_NODE(),
    GEO_CLOSE_NODE(),
    GEO_END(),

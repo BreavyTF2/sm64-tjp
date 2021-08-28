@@ -40,6 +40,8 @@ extern const Gfx ttc_seg7_dl_07011B38[];
 extern const Gfx ttc_seg7_dl_07012028[];
 extern const Gfx ttc_seg7_dl_07012148[];
 extern const Gfx ttc_seg7_dl_07012278[];
+extern const Gfx gfx_mecha_obj01a[];
+extern const Gfx gfx_mecha_obj02a[];
 extern const Collision ttc_seg7_collision_level[];
 extern const Collision ttc_seg7_collision_07014F70[];
 extern const Collision ttc_seg7_collision_07015008[];
