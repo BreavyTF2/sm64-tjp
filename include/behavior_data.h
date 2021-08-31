@@ -501,6 +501,7 @@ extern const BehaviorScript bhvTTCPitBlock[];
 extern const BehaviorScript bhvTTCElevator[];
 extern const BehaviorScript bhvTTC2DRotator[];
 extern const BehaviorScript bhvTTCSpinner[];
+extern const BehaviorScript bhvBigMrBlizzard[];
 extern const BehaviorScript bhvMrBlizzard[];
 extern const BehaviorScript bhvMrBlizzardSnowball[];
 extern const BehaviorScript bhvSlidingPlatform2[];

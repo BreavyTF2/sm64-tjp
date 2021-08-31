@@ -51,3 +51,7 @@ build/*
 *.map
 .assets-local.txt
 
+# Ubuntu Junk
+*.Identifier
+*.lnk
+

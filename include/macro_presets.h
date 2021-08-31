@@ -180,7 +180,7 @@ struct MacroPreset MacroObjectPresets[] = {
     {bhvYellowCoin, MODEL_YELLOW_COIN, 0},
     {bhvSpindrift, MODEL_SPINDRIFT, 0},
     {bhvMrBlizzard, MODEL_MR_BLIZZARD_HIDDEN, 0},
-    {bhvMrBlizzard, MODEL_MR_BLIZZARD_HIDDEN, 0}, // unused
+    {bhvBigMrBlizzard, MODEL_MR_BLIZZARD_HIDDEN, 0}, // unused
     {bhvYellowCoin, MODEL_YELLOW_COIN, 0},
     {bhvSmallPenguin, MODEL_PENGUIN, 0}, // unused
     {bhvTuxiesMother, MODEL_PENGUIN, 0}, // unused
