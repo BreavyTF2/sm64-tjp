@@ -270,7 +270,7 @@ struct MacroPreset MacroObjectPresets[] = {
     {bhvYellowCoin, MODEL_YELLOW_COIN, 0},
     {bhvSmallWhomp, MODEL_WHOMP, 0},
     {bhvChainChomp, MODEL_CHAIN_CHOMP, 0},
-    {bhvYellowCoin, MODEL_YELLOW_COIN, 0},
+    {bhvBowserBomb, MODEL_WATER_MINE, 0},
     {bhvKoopa, MODEL_KOOPA_WITH_SHELL, 1},
     {bhvKoopa, MODEL_KOOPA_WITHOUT_SHELL, 0}, // unused
     {bhvWoodenPost, MODEL_WOODEN_POST, 0}, // unused

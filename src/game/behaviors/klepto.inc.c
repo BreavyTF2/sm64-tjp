@@ -135,7 +135,7 @@ static void klepto_circle_target(f32 radius, f32 targetSpeed) {
         o->oKleptoTimeUntilTargetChange = random_linear_offset(300, 300);
         o->oAction = KLEPTO_ACT_APPROACH_TARGET_HOLDING;
     } else {
-        turnAmount = 0x2000 - atan2s(radius, o->oKleptoDistanceToTarget - radius);
+        turnAmount = 0x3000 - atan2s(radius, o->oKleptoDistanceToTarget - radius);
         accel = 0.05f;
         if ((s16)(o->oMoveAngleYaw - o->oKleptoYawToTarget) < 0) {
             turnAmount = -turnAmount;

@@ -9,3 +9,4 @@
 
 #include "king_bobomb/geo.inc.c"
 #include "water_bubble/geo.inc.c"
+#include "ground_mine/geo.inc.c"

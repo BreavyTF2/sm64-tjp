@@ -9,7 +9,7 @@ static Movtex wdw_movtex_area1_water_data[] = {
     MOV_TEX_4_BOX_TRIS( 4608, -3839),
     MOV_TEX_ROT(     ROTATE_COUNTER_CLOCKWISE),
     MOV_TEX_ALPHA(    0x96),
-    MOV_TEX_DEFINE(  TEXTURE_WATER),
+    MOV_TEX_DEFINE(  TEXTURE_JRB_WATER),
     MOV_TEX_END(),
 };
 

@@ -259,7 +259,7 @@ enum MacroPresets {
     macro_empty_254,
     macro_whomp,
     macro_chain_chomp,
-    macro_empty_257,
+    macro_groundmine,
     macro_koopa,
     macro_koopa_shellless,
     macro_wooden_post_copy,

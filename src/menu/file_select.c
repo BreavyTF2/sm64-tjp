@@ -1616,15 +1616,15 @@ void handle_controller_cursor_input(void) {
     sCursorPos[1] += rawStickY / 8;
 
     // Stop cursor from going offscreen
-    if (sCursorPos[0] > 132.0f) {
-        sCursorPos[0] = 132.0f;
+    if (sCursorPos[0] > 120.0f) {
+        sCursorPos[0] = 120.0f;
     }
-    if (sCursorPos[0] < -132.0f) {
-        sCursorPos[0] = -132.0f;
+    if (sCursorPos[0] < -150.0f) {
+        sCursorPos[0] = -150.0f;
     }
 
-    if (sCursorPos[1] > 90.0f) {
-        sCursorPos[1] = 90.0f;
+    if (sCursorPos[1] > 110.0f) {
+        sCursorPos[1] = 110.0f;
     }
     if (sCursorPos[1] < -90.0f) {
         sCursorPos[1] = -90.0f;

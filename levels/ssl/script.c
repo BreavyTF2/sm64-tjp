@@ -39,7 +39,7 @@ static const LevelScript script_func_local_2[] = {
 
 static const LevelScript script_func_local_3[] = {
     OBJECT_WITH_ACTS(/*model*/ MODEL_STAR, /*pos*/ -2000, 1500, -650, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvStar,                 /*acts*/ ALL_ACTS),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_NONE, /*pos*/  6000,  800, 3500, /*angle*/ 0, 0, 0, /*behParam*/ 0x04000000, /*beh*/ bhvHiddenRedCoinStar, /*acts*/ ALL_ACTS), //Remove Red coins and Star, later on
+//    OBJECT_WITH_ACTS(/*model*/ MODEL_NONE, /*pos*/  6000,  800, 3500, /*angle*/ 0, 0, 0, /*behParam*/ 0x04000000, /*beh*/ bhvHiddenRedCoinStar, /*acts*/ ALL_ACTS), //Remove Red coins and Star, later on
     RETURN(),
 };
 
@@ -66,7 +66,7 @@ static const LevelScript script_func_local_4[] = {
 
 static const LevelScript script_func_local_5[] = {
     OBJECT_WITH_ACTS(/*model*/ MODEL_STAR, /*pos*/ 1300, 4900, -400, /*angle*/ 0, 0, 0, /*behParam*/ 0x03000000, /*beh*/ bhvStar,        /*acts*/ ALL_ACTS),
-//    OBJECT_WITH_ACTS(/*model*/ MODEL_NONE, /*pos*/ 0, 1200, 1600, /*angle*/ 0, 0, 0, /*behParam*/ 0x05040000, /*beh*/ bhvHiddenStar, /*acts*/ ALL_ACTS), //Add 8 Red Coins later
+    OBJECT_WITH_ACTS(/*model*/ MODEL_NONE, /*pos*/ 0, 1200, 1600, /*angle*/ 0, 0, 0, /*behParam*/ 0x04000000, /*beh*/ bhvHiddenRedCoinStar, /*acts*/ ALL_ACTS), //Add 8 Red Coins later
     RETURN(),
 };
 

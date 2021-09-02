@@ -11,10 +11,16 @@ const MacroObject ssl_seg7_area_2_macro_objs[] = {
     MACRO_OBJECT_WITH_BEH_PARAM(/*preset*/ macro_circling_amp,                /*yaw*/   0, /*pos*/  3056,   736, -3267, /*behParam*/ 1),
     MACRO_OBJECT(/*preset*/ macro_goomba,                      /*yaw*/   0, /*pos*/  3263,   652,  2200),
     MACRO_OBJECT(/*preset*/ macro_goomba,                      /*yaw*/   0, /*pos*/  3431,   673, -1373),
-    MACRO_OBJECT(/*preset*/ macro_coin_line_horizontal_flying, /*yaw*/  90, /*pos*/    -2,  1774,  2794),
-    MACRO_OBJECT(/*preset*/ macro_coin_ring_horizontal_flying, /*yaw*/   0, /*pos*/  2694,   850, -2889),
-    MACRO_OBJECT(/*preset*/ macro_recovery_heart,              /*yaw*/   0, /*pos*/  -400,  1978, -2250),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/   736,  2652, -2250),
+	MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/  2500,   800, -3000), //100 Star build location
+	MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/     0,  1750,  2800), //Coin Line Replaced
+    MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/  -400,  2000,  -2250),//Recovery Heart Replaced
+    MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/  -900,  4500,   100), //Above the final Grindel
+    MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/  -260,  2940,  -600), //Secret 1 Replaced
+    MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/  0, /*pos*/   260,   1967,  -600), //Secret 2 Replaced
+    MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/ -1940,  1229,  -600), //Secret 3 Replaced
+    MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/ -1940,  1229,  2320), //Secret 4 Replaced
+    MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/  260,   3913,  -600), //Secret 5 Replaced
     MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/   736,  2546, -2250),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/  1368,  3263, -2250),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/  1368,  3135, -2250),
@@ -31,20 +37,10 @@ const MacroObject ssl_seg7_area_2_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_hidden_1up_trigger,          /*yaw*/   0, /*pos*/  2698,   -81, -2535),
     MACRO_OBJECT(/*preset*/ macro_hidden_1up_trigger,          /*yaw*/   0, /*pos*/  2698,   -81, -3049),
     MACRO_OBJECT_WITH_BEH_PARAM(/*preset*/ macro_hidden_1up,                  /*yaw*/   0, /*pos*/  1940,   -81, -1360, /*behParam*/ 4),
-    MACRO_OBJECT(/*preset*/ macro_hidden_star_trigger,         /*yaw*/   0, /*pos*/  -260,  2940,  -600),
-    MACRO_OBJECT(/*preset*/ macro_hidden_star_trigger,         /*yaw*/   0, /*pos*/   260,  1967,  -600),
-    MACRO_OBJECT(/*preset*/ macro_hidden_star_trigger,         /*yaw*/   0, /*pos*/ -1940,  1229,  -600),
-    MACRO_OBJECT(/*preset*/ macro_hidden_star_trigger,         /*yaw*/   0, /*pos*/ -1940,  1229,  2320),
     MACRO_OBJECT(/*preset*/ macro_coin_line_vertical,          /*yaw*/   0, /*pos*/   290,  4479,  -940),
     MACRO_OBJECT_WITH_BEH_PARAM(/*preset*/ macro_wooden_signpost,             /*yaw*/   0, /*pos*/ -3560,     0, -4065, /*behParam*/ DIALOG_103),
-    MACRO_OBJECT(/*preset*/ macro_hidden_star_trigger,         /*yaw*/   0, /*pos*/   260,  3913,  -600),
-    MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/  -260,  2950,  -600),
-    MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/   260,  1977,  -600),
-    MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/ -1940,  1239,  -600),
-    MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/ -1940,  1239,  2320),
-    MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/   260,  3923,  -600),
-    MACRO_OBJECT(/*preset*/ macro_goomba_triplet_spawner,      /*yaw*/   0, /*pos*/  3181,     0,  3587),
-    MACRO_OBJECT(/*preset*/ macro_1up,                         /*yaw*/   0, /*pos*/ -3350,   980, -1240),
+    MACRO_OBJECT(/*preset*/ macro_goomba_quintuplet_spawner,      /*yaw*/   0, /*pos*/  3181,     0,  3587),
+    MACRO_OBJECT(/*preset*/ macro_yellow_coin,                         /*yaw*/   0, /*pos*/ -3350,   980, -1240),
     MACRO_OBJECT(/*preset*/ macro_1up,                         /*yaw*/   0, /*pos*/  2870,  1050, -2640),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,               /*yaw*/   0, /*pos*/ -2047,  1664,  3076),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,               /*yaw*/   0, /*pos*/ -2047,  1536,  2870),

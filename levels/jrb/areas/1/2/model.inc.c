@@ -477,7 +477,7 @@ static const Gfx jrb_seg7_dl_07004658[] = {
 
 // 0x070046C0 - 0x07004940
 static const Gfx jrb_seg7_dl_070046C0[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, water_09004800),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, water_09003800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
     gsSPLight(&jrb_seg7_lights_070030C0.l, 1),

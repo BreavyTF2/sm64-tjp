@@ -30,6 +30,11 @@ ALIGNED8 static const u8 klepto_seg5_texture_05003008[] = {
 #include "actors/klepto/klepto_wing_flap.rgba16.inc.c"
 };
 
+// 0x05003008
+ALIGNED8 static const u8 klepto_seg5_texture_05004008[] = {
+#include "actors/klepto/angry_sun.rgba16.inc.c"
+};
+
 // 0x05003808
 static const Lights1 klepto_seg5_lights_05003808 = gdSPDefLights1(
     0x3f, 0x3f, 0x3f,
@@ -875,5 +880,41 @@ const Gfx klepto_seg5_dl_05005178[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPSetGeometryMode(G_CULL_BACK),
+    gsSPEndDisplayList(),
+};
+
+// 0x08022BB8
+static const Vtx angry_sun_seg5_vertex[] = {
+    {{{     0*8,     49*4+100,      0}, 0, {   992,      0}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{   -49*8,    -49*4+100,      0}, 0, {     0,   2012}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{     0*8,    -49*4+100,      0}, 0, {   992,   2012}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{   -49*8,     49*4+100,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
+};
+
+// 0x08022C38 - 0x08022CA0
+const Gfx angry_sun_seg8_dl_0[] = {
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, klepto_seg5_texture_05004008),
+    gsDPLoadSync(),
+    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
+    gsSPVertex(angry_sun_seg5_vertex, 4, 0),
+    gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  1, 0x0),
+    gsSPEndDisplayList(),
+};
+
+// 0x08022D08 - 0x08022D78
+const Gfx angry_sun_seg8_dl_1[] = {
+    gsDPPipeSync(),
+    gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
+    gsSPClearGeometryMode(G_LIGHTING),
+    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
+    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
+    gsDPTileSync(),
+    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
+    gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (64 - 1) << G_TEXTURE_IMAGE_FRAC),
+    gsSPDisplayList(angry_sun_seg8_dl_0),
+    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
+    gsDPPipeSync(),
+    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+    gsSPSetGeometryMode(G_LIGHTING),
     gsSPEndDisplayList(),
 };

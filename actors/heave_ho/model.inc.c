@@ -529,6 +529,7 @@ const Gfx RCP_omurobo_anim_run0[]={
 	gsSPLight((&light_omurobo_anim_run[1].a),2),
 	gsSPVertex(&vtx_omurobo_anim_run0[11],3,0),
 	gsSP1Triangle(0,1,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_omurobo_anim_run1[]={
@@ -561,20 +562,25 @@ const Gfx RCP_omurobo_anim_run1[]={
 	gsSP1Triangle(1,4,7,0),
 	gsSP1Triangle(11,12,10,0),
 	gsSP1Triangle(7,2,1,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_omurobo_anim_run2[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_omurobo_anim_run[4].l[0]),1),
 	gsSPLight((&light_omurobo_anim_run[4].a),2),
 	gsSPVertex(&vtx_omurobo_anim_run2[0],3,0),
 	gsSP1Triangle(0,1,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_omurobo_anim_run3[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_omurobo_anim_run[5].l[0]),1),
 	gsSPLight((&light_omurobo_anim_run[5].a),2),
 	gsSPVertex(&vtx_omurobo_anim_run3[0],3,0),
 	gsSP1Triangle(0,1,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_omurobo_anim_run4[]={
@@ -700,6 +706,7 @@ const Gfx RCP_omurobo_anim_run4[]={
 	gsSP1Triangle(12,11,13,0),
 	gsSP1Triangle(12,13,14,0),
 	gsSP1Triangle(14,13,15,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_omurobo_anim_run5[]={
@@ -719,6 +726,7 @@ const Gfx RCP_omurobo_anim_run5[]={
 	gsSPLight((&light_omurobo_anim_run[1].a),2),
 	gsSPVertex(&vtx_omurobo_anim_run5[11],3,0),
 	gsSP1Triangle(0,1,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_omurobo_anim_run6[]={
@@ -844,6 +852,7 @@ const Gfx RCP_omurobo_anim_run6[]={
 	gsSP1Triangle(12,11,13,0),
 	gsSP1Triangle(12,13,14,0),
 	gsSP1Triangle(14,13,15,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_omurobo_anim_run7[]={
@@ -969,6 +978,7 @@ const Gfx RCP_omurobo_anim_run7[]={
 	gsSP1Triangle(12,11,13,0),
 	gsSP1Triangle(12,13,14,0),
 	gsSP1Triangle(14,13,15,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_omurobo_anim_run8[]={
@@ -983,6 +993,7 @@ const Gfx RCP_omurobo_anim_run8[]={
 	gsSP1Triangle(3,10,11,0),
 	gsSP1Triangle(1,7,9,0),
 	gsSP1Triangle(1,9,2,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 const Gfx RCP_omurobo_anim_run9[]={
@@ -995,6 +1006,7 @@ const Gfx RCP_omurobo_anim_run9[]={
 	gsSP1Triangle(0,2,5,0),
 	gsSP1Triangle(0,3,1,0),
 	gsSP1Triangle(2,4,5,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 

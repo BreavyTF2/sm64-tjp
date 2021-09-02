@@ -25,4 +25,12 @@ extern const GeoLayout water_bomb_shadow_geo[];
 extern const Gfx water_bubble_seg5_dl_05010D30[];
 extern const Gfx water_bubble_seg5_dl_05011000[];
 
+// ground_mine
+extern const GeoLayout ground_mine_geo[];
+extern const Gfx ground_mine_seg6_dl_0600D1F8[];
+extern const Gfx ground_mine_seg6_dl_0600D230[];
+extern const Gfx ground_mine_seg6_dl_0600D268[];
+extern const Gfx ground_mine_seg6_dl_0600D2E0[];
+extern const Gfx ground_mine_seg6_dl_0600D3F8[];
+
 #endif

@@ -576,7 +576,7 @@ const Collision ssl_seg7_area_1_collision[] = {
     COL_VERTEX(-6141, -255, -5499),
     COL_VERTEX(-5403, -255, -6845),
     COL_VERTEX(-5874, -255, -6354),
-    COL_TRI_INIT(SURFACE_DEFAULT, 111),
+    COL_TRI_INIT(SURFACE_SLOW, 111),
     COL_TRI(452, 506, 505),
     COL_TRI(455, 452, 505),
     COL_TRI(506, 463, 510),

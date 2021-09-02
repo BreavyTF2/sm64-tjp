@@ -42,7 +42,7 @@ const MacroObject jrb_seg7_area_1_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_hidden_blue_coin,            /*yaw*/   0, /*pos*/  4100, -2966, -7347),
     MACRO_OBJECT(/*preset*/ macro_hidden_blue_coin,            /*yaw*/   0, /*pos*/  3500, -2966, -7347),
     MACRO_OBJECT(/*preset*/ macro_hidden_blue_coin,            /*yaw*/   0, /*pos*/  2900, -2966, -7347),
-    MACRO_OBJECT(/*preset*/ macro_goomba_triplet_spawner,      /*yaw*/   0, /*pos*/  3305, -2966, -6147),
+    MACRO_OBJECT(/*preset*/ macro_goomba_quintuplet_spawner,      /*yaw*/   0, /*pos*/  3305, -2966, -6147),
     MACRO_OBJECT(/*preset*/ macro_coin_line_vertical,          /*yaw*/   0, /*pos*/   255,  1160,  7633),
     MACRO_OBJECT(/*preset*/ macro_coin_ring_horizontal_flying, /*yaw*/   0, /*pos*/    51,   960,  2744),
     MACRO_OBJECT(/*preset*/ macro_hidden_1up_trigger,          /*yaw*/   0, /*pos*/  5060, -4220,   720),

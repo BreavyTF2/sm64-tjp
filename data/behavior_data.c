@@ -3995,7 +3995,7 @@ const BehaviorScript bhvExplosion[] = {
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     BILLBOARD(),
     SET_INTERACT_TYPE(INTERACT_DAMAGE),
-    SET_INT(oDamageOrCoinValue, 2),
+    SET_INT(oDamageOrCoinValue, 4),
     SET_INT(oIntangibleTimer, 0),
     SET_HITBOX_WITH_OFFSET(/*Radius*/ 150, /*Height*/ 150, /*Downwards offset*/ 0),
     SET_INT(oAnimState, -1),

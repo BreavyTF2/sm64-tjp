@@ -106,7 +106,7 @@ void bhv_scuttlebug_loop(void) {
         sp18 = 3.0f;
     cur_obj_init_animation_with_accel_and_sound(0, sp18);
     if (o->oMoveFlags & OBJ_MOVE_MASK_ON_GROUND)
-        set_obj_anim_with_accel_and_sound(1, 23, SOUND_OBJ2_SCUTTLEBUG_WALK);
+        set_obj_anim_with_accel_and_sound(1, 7, SOUND_OBJ2_SCUTTLEBUG_WALK);
     if (o->parentObj != o) {
         if (obj_is_hidden(o))
             obj_mark_for_deletion(o);
@@ -123,7 +123,7 @@ void bhv_scuttlebug_spawn_loop(void) {
             cur_obj_play_sound_2(SOUND_OBJ2_SCUTTLEBUG_ALERT);
             scuttlebug = spawn_object(o, MODEL_SCUTTLEBUG, bhvScuttlebug);
             scuttlebug->oScuttlebugUnkF4 = o->oScuttlebugSpawnerUnkF4;
-            scuttlebug->oForwardVel = 30.0f;
+            scuttlebug->oForwardVel = 20.0f;
             scuttlebug->oVelY = 80.0f;
             o->oAction++;
             o->oScuttlebugUnkF4 = 1;
