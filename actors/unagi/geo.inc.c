@@ -1,20 +1,20 @@
 // 0x0C00010C
 const GeoLayout unagi_geo[] = {
-   GEO_CULLING_RADIUS(2000),
-   GEO_OPEN_NODE(),
-      GEO_SCALE(0x00, 16384),
-      GEO_OPEN_NODE(),
-         GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-         GEO_OPEN_NODE(),
-            GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, unagi_seg5_dl_0500D268),
-            GEO_OPEN_NODE(),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 245, 0, 0, unagi_seg5_dl_0500D468),
-               GEO_OPEN_NODE(),
-                  GEO_ANIMATED_PART(LAYER_OPAQUE, 494, 0, 0, unagi_seg5_dl_0500D668),
-                  GEO_OPEN_NODE(),
-                     GEO_ANIMATED_PART(LAYER_OPAQUE, 475, 0, 0, unagi_seg5_dl_0500D828),
-                     GEO_OPEN_NODE(),
-                        GEO_SWITCH_CASE(2, geo_switch_anim_state),
+ hmsGroup()
+ hmsBegin()
+ hmsScale(0.25f)
+    hmsBegin()
+      hmsJoint(RM_SURF,NULL,0,0,0)			/* ,xx(), */
+      hmsBegin()
+         hmsJoint(RM_SURF,RCP_animed_swim11,0,0,0)  /* ,nn_body2,(13) */
+         hmsBegin()
+            hmsJoint(RM_SURF,RCP_animed_swim10,245,0,0)  /* ,nn_body3,(12) */
+            hmsBegin()
+               hmsJoint(RM_SURF,RCP_animed_swim1,494,0,0)  /* ,nn_body4,(1) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,RCP_animed_swim0,475,0,0)  /* ,nn_body5,(0) */
+				    GEO_OPEN_NODE(),
+				       GEO_SWITCH_CASE(2, geo_switch_anim_state),
                         GEO_OPEN_NODE(),
                            GEO_NODE_START(),
                            GEO_NODE_START(),
@@ -28,28 +28,29 @@ const GeoLayout unagi_geo[] = {
                         GEO_CLOSE_NODE(),
                      GEO_CLOSE_NODE(),
                   GEO_CLOSE_NODE(),
-               GEO_CLOSE_NODE(),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, -254, 0, 0, NULL),
-               GEO_OPEN_NODE(),
-                  GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, unagi_seg5_dl_0500D050),
-                  GEO_OPEN_NODE(),
-                     GEO_ANIMATED_PART(LAYER_ALPHA, 527, 0, 0, unagi_seg5_dl_0500DEB8),
-                     GEO_OPEN_NODE(),
-                        GEO_ANIMATED_PART(LAYER_OPAQUE, 226, 65, 0, NULL),
-                        GEO_OPEN_NODE(),
-                           GEO_ANIMATED_PART(LAYER_ALPHA, 0, 0, 0, unagi_seg5_dl_0500E258),
-                           GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, unagi_seg5_dl_0500CDD0),
-                           GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-                        GEO_CLOSE_NODE(),
-                     GEO_CLOSE_NODE(),
-                     GEO_ANIMATED_PART(LAYER_ALPHA, 527, 0, 0, unagi_seg5_dl_0500E088),
-                     GEO_ANIMATED_PART(LAYER_OPAQUE, 527, 0, 0, unagi_seg5_dl_0500DD08),
-                     GEO_ANIMATED_PART(LAYER_OPAQUE, 527, 0, 0, NULL),
-                  GEO_CLOSE_NODE(),
-               GEO_CLOSE_NODE(),
-            GEO_CLOSE_NODE(),
-         GEO_CLOSE_NODE(),
-      GEO_CLOSE_NODE(),
-   GEO_CLOSE_NODE(),
-   GEO_END(),
+               hmsEnd()
+            hmsEnd()
+            hmsJoint(RM_SURF,NULL,-254,0,0)  /* ,chn5,(11) */
+            hmsBegin()
+               hmsJoint(RM_SURF,RCP_animed_swim9,0,0,0)  /* ,nn_body1,(10) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,RCP_animed_swim8,527,0,0)  /* ,nn_eye,(9) */
+                  hmsBegin()
+                     hmsJoint(RM_SURF,NULL,226,65,0)  /* ,chn7,(8) */
+                     hmsBegin()
+                        hmsJoint(RM_SURF,RCP_animed_swim7,0,0,0)  /* ,nn_ha2,(7) */
+                        hmsJoint(RM_SURF,RCP_animed_swim4,0,0,0)  /* ,nn_ago,(4) */
+                        hmsJoint(RM_SURF,RCP_animed_swim2,0,0,0)  /* ,nn_mouth2,(2) */
+                     hmsEnd()
+                  hmsEnd()
+                  hmsJoint(RM_SURF,RCP_animed_swim6,527,0,0)  /* ,nn_ha1,(6) */
+                  hmsJoint(RM_SURF,RCP_animed_swim5,527,0,0)  /* ,nn_head,(5) */
+                  hmsJoint(RM_SURF,RCP_animed_swim3,527,0,0)  /* ,nn_mouth1,(3) */
+               hmsEnd()
+            hmsEnd()
+         hmsEnd()
+      hmsEnd()
+   hmsEnd()
+ hmsEnd()
+ hmsExit()
 };

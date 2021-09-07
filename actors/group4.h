@@ -65,29 +65,18 @@ extern const struct Animation *const sushi_seg5_anims_0500AE54[];
 
 // unagi
 extern const GeoLayout unagi_geo[];
-extern const Gfx unagi_seg5_dl_0500CCE0[];
-extern const Gfx unagi_seg5_dl_0500CD30[];
-extern const Gfx unagi_seg5_dl_0500CDD0[];
-extern const Gfx unagi_seg5_dl_0500CF88[];
-extern const Gfx unagi_seg5_dl_0500D038[];
-extern const Gfx unagi_seg5_dl_0500D050[];
-extern const Gfx unagi_seg5_dl_0500D1C0[];
-extern const Gfx unagi_seg5_dl_0500D268[];
-extern const Gfx unagi_seg5_dl_0500D3C0[];
-extern const Gfx unagi_seg5_dl_0500D468[];
-extern const Gfx unagi_seg5_dl_0500D5C0[];
-extern const Gfx unagi_seg5_dl_0500D668[];
-extern const Gfx unagi_seg5_dl_0500D7A0[];
-extern const Gfx unagi_seg5_dl_0500D828[];
-extern const Gfx unagi_seg5_dl_0500DB60[];
-extern const Gfx unagi_seg5_dl_0500DBC0[];
-extern const Gfx unagi_seg5_dl_0500DD08[];
-extern const Gfx unagi_seg5_dl_0500DE70[];
-extern const Gfx unagi_seg5_dl_0500DEB8[];
-extern const Gfx unagi_seg5_dl_0500E030[];
-extern const Gfx unagi_seg5_dl_0500E088[];
-extern const Gfx unagi_seg5_dl_0500E200[];
-extern const Gfx unagi_seg5_dl_0500E258[];
+extern const Gfx RCP_animed_swim0[];
+extern const Gfx RCP_animed_swim1[];
+extern const Gfx RCP_animed_swim2[];
+extern const Gfx RCP_animed_swim3[];
+extern const Gfx RCP_animed_swim4[];
+extern const Gfx RCP_animed_swim5[];
+extern const Gfx RCP_animed_swim6[];
+extern const Gfx RCP_animed_swim7[];
+extern const Gfx RCP_animed_swim8[];
+extern const Gfx RCP_animed_swim9[];
+extern const Gfx RCP_animed_swim10[];
+extern const Gfx RCP_animed_swim11[];
 extern const struct Animation *const unagi_seg5_anims_05012824[];
 
 // whirlpool

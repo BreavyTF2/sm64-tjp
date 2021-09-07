@@ -27,7 +27,7 @@ static Vtx vtx_e1_pika_0[] = {
 };
 
 static Gfx gfx_e1_pika_0[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, bitdw_seg7_texture_07001800),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, bitdw_seg7_texture_07002000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
 	gsSPVertex(&vtx_e1_pika_0[0], 12, 0), 
@@ -70,8 +70,8 @@ const Gfx bitdw_seg7_dl_070020C8[] = {
 const Gfx gfx_e1_pika[] = {
 	gsDPPipeSync(),
 	gsDPSetEnvColor(255,255,255,180),
-	gsDPSetCombineMode(G_CC_MODULATERGB_TEXELENVA, G_CC_MODULATERGB_TEXELENVA),
-	gsSPClearGeometryMode(G_LIGHTING), 
+	gsDPSetCombineMode(G_CC_MODULATERGBFADEA, G_CC_MODULATERGBFADEA),
+	gsSPClearGeometryMode(G_LIGHTING| G_CULL_BACK), 
 	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
 
 	gsSPTexture(0xffff,0xffff, 0, 0, G_ON),
@@ -84,7 +84,7 @@ const Gfx gfx_e1_pika[] = {
 
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-	gsSPSetGeometryMode(G_LIGHTING), 
+	gsSPSetGeometryMode(G_LIGHTING| G_CULL_BACK), 
 	gsDPSetEnvColor(255,255,255,255),
 	gsSPEndDisplayList() 
 };
