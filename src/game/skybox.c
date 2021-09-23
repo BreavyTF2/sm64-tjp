@@ -91,7 +91,6 @@ SkyboxTexture *sSkyboxTextures[10] = {
  * The final color of each pixel is computed from the bitwise AND of the color and the texture.
  */
 u8 sSkyboxColors[][3] = {
-    { 0x50, 0x64, 0x5A },
     { 0xFF, 0xFF, 0xFF },
 };
 
@@ -300,12 +299,7 @@ Gfx *create_skybox_facing_camera(s8 player, s8 background, f32 fov,
     f32 cameraFaceX = focX - posX;
     f32 cameraFaceY = focY - posY;
     f32 cameraFaceZ = focZ - posZ;
-    s8 colorIndex = 1;
-
-    // If the first star is collected in JRB, make the sky darker and slightly green
-    if (background == 8 && !(save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_JRB - 1) & 1)) {
-        colorIndex = 0;
-    }
+    s8 colorIndex = 0;
 
     //! fov is always set to 90.0f. If this line is removed, then the game crashes because fov is 0 on
     //! the first frame, which causes a floating point divide by 0

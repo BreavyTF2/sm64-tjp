@@ -22,71 +22,62 @@ obj_set_hitbox(o, &sBlarggHitbox);
 }
 void unbaba_act_swim(void) // Define Swimming Action for Blargg
 {
+	s32 shellspeed; //Turn Multiplier
+	shellspeed = 4;
 	cur_obj_become_tangible();
 	    if (o->oMoveFlags & OBJ_MOVE_HIT_WALL) {
         o->oAction = 2;
     }
-	o->hurtboxRadius = 301;
-	o->hurtboxHeight = 101;
-		if ( o->oDistanceToMario >= 3000 ) {
-			if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
-			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x100);
-			o->oForwardVel = 0.0f;}
-		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x20);
-		o->oForwardVel = 0.0f;
-
-	}
+	
 	if ( o->oDistanceToMario >= 2000 ) {
-		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40);
-		o->oForwardVel = 1.0f;
-						if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
-			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x180);
-			o->oForwardVel = 2.0f;
+			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40);
+			o->oForwardVel = 1.0f;
+				if (gMarioState->action & ACT_FLAG_RIDING_SHELL) {
+				cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40*shellspeed);
+				o->oForwardVel = 2.0f;
 			}
-
 	}
 	if ( o->oDistanceToMario < 2000 ) {
-		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x60);
-		o->oForwardVel = 2.0f;
-					if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
-			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x240);
-			o->oForwardVel = 4.0f;}
+			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x60);
+			o->oForwardVel = 2.0f;
+				if (gMarioState->action & ACT_FLAG_RIDING_SHELL) {
+					cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x60*shellspeed);
+					o->oForwardVel = 4.0f;
+			}
 	}
-		if ( o->oDistanceToMario < 1500 ) {
-		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x60);
-		o->oForwardVel = 2.0f;
-					if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
-			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x240);
-			o->oForwardVel = 8.0f;}
+	if ( o->oDistanceToMario < 1500 ) {
+			o->oForwardVel = 2.0f;
+				if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
+					o->oForwardVel = 8.0f;
+				}
 	}
-		if ( o->oDistanceToMario < 1000 ) {
-			if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
-		if (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x200) {
-		o->oAction = 2;}}
+	if ( o->oDistanceToMario < 1000 ) {
+		if (gMarioState->action & ACT_FLAG_RIDING_SHELL) {
+			if (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x200) {
+		o->oAction = 2;
+				}
+			}
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0xA0);
 		o->oForwardVel = 3.75f;
 
 		}
-		if ( o->oDistanceToMario < 750) {
+	if ( o->oDistanceToMario < 750) {
 		if (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x200) {
-		o->oAction = 2;
+	o->oAction = 2;
 		}
 	}
-					if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
-	cur_obj_init_animation_with_accel_and_sound(0, 2);
-	if (cur_obj_check_if_near_animation_end()) {
+	if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
 		cur_obj_init_animation_with_accel_and_sound(0, 2);
+		if (cur_obj_check_if_near_animation_end()) {
+			cur_obj_init_animation_with_accel_and_sound(0, 2);
+			}
 		}
-					}
 			
 	cur_obj_init_animation_with_sound(UNBABA_ANIM_SWIM);
-	if (cur_obj_check_if_near_animation_end()) {
-		cur_obj_init_animation_with_sound(UNBABA_ANIM_SWIM);
-	}
 }
 void unbaba_act_attack(void) // Define Attacking Action for Blargg
 {
-	s32 animTimer;
+	s32 animTimer;	
     animTimer = o->header.gfx.animInfo.animFrame;
 	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x20);
 	cur_obj_become_tangible();
@@ -97,37 +88,33 @@ void unbaba_act_attack(void) // Define Attacking Action for Blargg
 	cur_obj_init_animation_with_sound(UNBABA_ANIM_ATTACK);
 		if (animTimer < (20)){
 			o->oForwardVel = 2.0*(animTimer)+1;
-			o->hurtboxRadius = 350;
-			o->hurtboxHeight = 200;
-			if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
-			o->oForwardVel = 3.0*(animTimer)+1;
 			o->hurtboxRadius = 355;
 			o->hurtboxHeight = 205;
+			if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
+			o->oForwardVel = 3.0*(animTimer)+1;
 			}
 		}
 		if (animTimer >= (20)){
 			o->oForwardVel = 1*(animTimer)+5;
-				o->hurtboxRadius = 425;
-				o->hurtboxHeight = 240;
-			if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
-			o->oForwardVel = 3.0*(animTimer)+6;
 			o->hurtboxRadius = 430;
 			o->hurtboxHeight = 245;
+			if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
+			o->oForwardVel = 3.0*(animTimer)+6;
 			}
 	}
 			if (animTimer > (25)){
 			o->oForwardVel = 36/(animTimer-12)+3;
-			o->hurtboxRadius = 350;
-			o->hurtboxHeight = 200;
-				if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
-			o->oForwardVel = 60/(animTimer-18)+4;
 			o->hurtboxRadius = 355;
 			o->hurtboxHeight = 205;
+				if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
+			o->oForwardVel = 60/(animTimer-18)+4;
 			}
 	}
 	if (cur_obj_check_if_near_animation_end()) {	
 	 o->oAction = 1;
 	 o->oForwardVel = 2.5f;
+	 o->hurtboxRadius = 301;
+	 o->hurtboxHeight = 101;
 	}
 }
 
@@ -156,6 +143,7 @@ void bhv_unbaba_loop(void) // Define what to do as well.
     obj_check_attacks(&sBlarggHitbox, o->oAction);
 	 }
 	cur_obj_call_action_function(sBlarggActions);
+//	s_erase_shape(obj_playerdist,3000);
 //	o->oInteractStatus = 0;
 
 }

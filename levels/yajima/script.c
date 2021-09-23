@@ -69,6 +69,7 @@ const LevelScript level_yajima_entry[] = {
 
 		AREA(1, RCP_Stage32Scene1),
         JUMP_LINK(script_func_local_7),
+		SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0001, /*seq*/ SEQ_LEVEL_GRASS),
 		OBJECT_LEAK(MODEL_METAL_BOX,	1242, 200, 1959,   0,0,0,  0,0,0, bhvPushableMetalBox	),
 
 			 OBJECT_LEAK(MODEL_CHUCKYA		,	-1000, 0,  0,   0,0,0,  0,0,0, bhvChuckya	), 
@@ -165,10 +166,12 @@ const LevelScript level_yajima_entry[] = {
 		END_AREA(),
 		AREA(2, RCP_Stage32Scene2),
         JUMP_LINK(script_func_local_8),
+		SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0001, /*seq*/ SEQ_LEVEL_GRASS),
 					TERRAIN(testmap2_info),	
 					END_AREA(),
 		AREA(3, RCP_Stage32Scene3),
         JUMP_LINK(script_func_local_9),
+		SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0001, /*seq*/ SEQ_LEVEL_GRASS),
 					TERRAIN(testmap10_info),	
 					END_AREA(),
 	FREE_LEVEL_POOL(),

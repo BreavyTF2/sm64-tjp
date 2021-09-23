@@ -243,7 +243,7 @@ const LevelScript level_castle_inside_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_CASTLE_DOOR_0_STARS,       castle_door_0_star_geo),
     LOAD_MODEL_FROM_GEO(MODEL_CASTLE_DOOR_1_STAR,        castle_door_1_star_geo),
     LOAD_MODEL_FROM_GEO(MODEL_CASTLE_DOOR_3_STARS,       castle_door_3_stars_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_CASTLE_KEY_DOOR,           key_door_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_CASTLE_KEY_DOOR,           castle_door_geo),
     // The different sets of star doors all use different model IDs, despite them all loading the same geo layout.
     // It is possible that star doors were originally going to have numbers on them, similar to the other locked doors.
     LOAD_MODEL_FROM_GEO(MODEL_CASTLE_STAR_DOOR_30_STARS, castle_geo_000F00),

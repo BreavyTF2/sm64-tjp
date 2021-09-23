@@ -95,7 +95,7 @@
 #define SOUND_ACTION_SLIP_OLD                           SOUND_ARG_LOAD(0, 4, 0x39, 0x80, 8) // same sound as spin
 /* not verified */ #define SOUND_ACTION_CLIMB_UP_TREE   SOUND_ARG_LOAD(0, 4, 0x3A, 0x80, 8)
 /* not verified */ #define SOUND_ACTION_CLIMB_DOWN_TREE 0x003B
-/* not verified */ #define SOUND_ACTION_UNK3C           0x003C
+/* not verified */ #define SOUND_ACTION_UNK3C           SOUND_ARG_LOAD(0, 4, 0x3C, 0x80, 8) // Old Ground Pound
 /* not verified */ #define SOUND_ACTION_UNKNOWN43D      SOUND_ARG_LOAD(0, 4, 0x3D, 0x80, 8)
 /* not verified */ #define SOUND_ACTION_UNKNOWN43E      SOUND_ARG_LOAD(0, 4, 0x3E, 0x80, 8)
 /* not verified */ #define SOUND_ACTION_PAT_BACK        SOUND_ARG_LOAD(0, 4, 0x3F, 0x80, 8)
@@ -113,7 +113,7 @@
 #define SOUND_ACTION_METAL_LAND_WATER                   SOUND_ARG_LOAD(0, 4, 0x51, 0x90, 8)
 #define SOUND_ACTION_METAL_STEP_WATER                   SOUND_ARG_LOAD(0, 4, 0x52, 0x90, 8)
 /* not verified */ #define SOUND_ACTION_UNK53           0x0053
-/* not verified */ #define SOUND_ACTION_UNK54           0x0054
+/* not verified */ #define SOUND_ACTION_UNK54           SOUND_ARG_LOAD(0, 4, 0x54, 0x90, 8)
 /* not verified */ #define SOUND_ACTION_UNK55           0x0055
 /* not verified */ #define SOUND_ACTION_FLYING_FAST     SOUND_ARG_LOAD(0, 4, 0x56, 0x80, 8) // "swoop"?
 #define SOUND_ACTION_TELEPORT                           SOUND_ARG_LOAD(0, 4, 0x57, 0xC0, 8)
@@ -480,7 +480,7 @@
 
 /* Menu Sound Effects */
 #define SOUND_MENU_CHANGE_SELECT                            SOUND_ARG_LOAD(7, 0, 0x00, 0xF8, 8)
-/* not verified */ #define SOUND_MENU_REVERSE_PAUSE         0x7001
+/* not verified */ #define SOUND_MENU_REVERSE_PAUSE         SOUND_ARG_LOAD(7, 0, 0x01, 0x00, 8)
 #define SOUND_MENU_PAUSE                                    SOUND_ARG_LOAD(7, 0, 0x02, 0xF0, 8)
 #define SOUND_MENU_PAUSE_HIGHPRIO                           SOUND_ARG_LOAD(7, 0, 0x02, 0xFF, 8)
 #define SOUND_MENU_PAUSE_2                                  SOUND_ARG_LOAD(7, 0, 0x03, 0xFF, 8)

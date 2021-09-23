@@ -128,7 +128,7 @@ s16 level_select_input_loop(void) {
             gDebugLevelSelect = FALSE;
             return -1;
         }
-        play_sound(SOUND_MENU_STAR_SOUND, gDefaultSoundArgs);
+        play_sound(SOUND_MENU_REVERSE_PAUSE, gDefaultSoundArgs);
         return gCurrLevelNum;
     }
     return 0;

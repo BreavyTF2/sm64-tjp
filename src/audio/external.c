@@ -182,7 +182,6 @@ s16 sDynJrb[] = {
     DYN1(MARIO_IS_IN_AREA, AREA_JRB_SHIP & 0xf, 0),
     DYN1(MARIO_Y_GE, 1000, 0),
     DYN2(MARIO_Y_GE, -3100, MARIO_Z_LT, -900, 2),
-    1,
     5, // bogus entry, ignored (was JRB originally intended to have spooky music?)
 };
 s16 sDynWdw[] = {

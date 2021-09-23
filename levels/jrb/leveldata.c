@@ -8,6 +8,11 @@
 #include "textures.h"
 #include "dialog_ids.h"
 
+#define		STAGE12_FOG_R		  5
+#define		STAGE12_FOG_G		 80
+#define		STAGE12_FOG_B		175
+#define		STAGE12_FOG_START	900
+
 #include "make_const_nonconst.h"
 #include "levels/jrb/texture.inc.c"
 #include "levels/jrb/areas/1/1/model.inc.c"

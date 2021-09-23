@@ -56,7 +56,7 @@ static f32 get_buoyancy(struct MarioState *m) {
         if (m->action & ACT_FLAG_INVULNERABLE) {
             buoyancy = -2.0f;
         } else {
-            buoyancy = -18.0f;
+            buoyancy = -19.0f;
         }
     } else if (swimming_near_surface(m)) {
         buoyancy = 1.25f;
@@ -1103,26 +1103,44 @@ static void play_metal_water_jumping_sound(struct MarioState *m, u32 landing) {
                           MARIO_ACTION_SOUND_PLAYED);
 }
 
-static void play_metal_water_walking_sound(struct MarioState *m) {
-    if (is_anim_past_frame(m, 10) || is_anim_past_frame(m, 49)) {
-        play_sound(SOUND_ACTION_METAL_STEP_WATER, m->marioObj->header.gfx.cameraToObject);
-        m->particleFlags |= PARTICLE_DUST;
+static void play_metal_water_walking_sound(struct MarioState *m, s16 frame1, s16 frame2) {
+    if (is_anim_past_frame(m, frame1) || is_anim_past_frame(m, frame2)) {
+            if (m->marioObj->header.gfx.animInfo.animID == MARIO_ANIM_TIPTOE) {
+                play_sound(SOUND_ACTION_UNK54, m->marioObj->header.gfx.cameraToObject);
+		        m->particleFlags |= PARTICLE_DUST;
+            } else {
+                play_sound(SOUND_ACTION_METAL_STEP_WATER, m->marioObj->header.gfx.cameraToObject);
+		       m->particleFlags |= PARTICLE_DUST;
+            }
     }
 }
 
 static void update_metal_water_walking_speed(struct MarioState *m) {
-    f32 val = m->intendedMag / 1.5f;
+    f32 maxTargetSpeed;
+    f32 targetSpeed;
+
+    if (m->floor != NULL && m->floor->type == SURFACE_SLOW) {
+        maxTargetSpeed = 24.0f;
+    } else {
+        maxTargetSpeed = 32.0f;
+    }
+
+    targetSpeed = m->intendedMag < maxTargetSpeed ? m->intendedMag : maxTargetSpeed;
+
+    if (m->quicksandDepth > 10.0f) {
+        targetSpeed *= 6.25 / m->quicksandDepth;
+    }
 
     if (m->forwardVel <= 0.0f) {
         m->forwardVel += 1.1f;
-    } else if (m->forwardVel <= val) {
+    } else if (m->forwardVel <= targetSpeed) {
         m->forwardVel += 1.1f - m->forwardVel / 43.0f;
     } else if (m->floor->normal.y >= 0.95f) {
         m->forwardVel -= 1.0f;
     }
 
-    if (m->forwardVel > 32.0f) {
-        m->forwardVel = 32.0f;
+    if (m->forwardVel > 48.0f) {
+        m->forwardVel = 48.0f;
     }
 
     m->faceAngle[1] =
@@ -1136,35 +1154,121 @@ static void update_metal_water_walking_speed(struct MarioState *m) {
     m->vel[2] = m->slideVelZ;
 }
 
-static s32 update_metal_water_jump_speed(struct MarioState *m) {
-    UNUSED f32 nextY = m->pos[1] + m->vel[1];
-    f32 waterSurface = m->waterLevel - 100;
+void anim_and_audio_for_walk2(struct MarioState *m) {
+    s32 val14;
+    s32 val0C = TRUE;
+    f32 val04;
 
-    if (m->vel[1] > 0.0f && m->pos[1] > waterSurface) {
-        return TRUE;
+    val04 = m->intendedMag > m->forwardVel ? m->intendedMag : m->forwardVel;
+
+    if (val04 < 4.0f) {
+        val04 = 4.0f;
     }
 
-    if (m->input & INPUT_NONZERO_ANALOG) {
-        s16 intendedDYaw = m->intendedYaw - m->faceAngle[1];
-        m->forwardVel += 0.8f * coss(intendedDYaw);
-        m->faceAngle[1] += 0x200 * sins(intendedDYaw);
-    } else {
-        m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.25f, 0.25f);
+	{
+        while (val0C) {
+            switch (m->actionTimer) {
+                case 0:
+                    if (val04 > 8.0f) {
+                        m->actionTimer = 2;
+                    } else {
+                        //! (Speed Crash) If Mario's speed is more than 2^17.
+                        if ((val14 = (s32)(val04 / 4.0f * 0x10000)) < 0x1000) {
+                            val14 = 0x1000;
+                        }
+                        set_mario_anim_with_accel(m, MARIO_ANIM_START_TIPTOE, val14);
+                        play_metal_water_walking_sound(m, 7, 22);
+                        if (is_anim_past_frame(m, 23)) {
+                            m->actionTimer = 2;
+                        }
+
+                        val0C = FALSE;
+                    }
+                    break;
+
+                case 1:
+                    if (val04 > 8.0f) {
+                        m->actionTimer = 2;
+                    } else {
+                        //! (Speed Crash) If Mario's speed is more than 2^17.
+                        if ((val14 = (s32)(val04 * 0x10000)) < 0x1000) {
+                            val14 = 0x1000;
+                        }
+                        set_mario_anim_with_accel(m, MARIO_ANIM_TIPTOE, val14);
+                        play_metal_water_walking_sound(m, 14, 72);
+
+                        val0C = FALSE;
+                    }
+                    break;
+
+                case 2:
+                    if (val04 < 5.0f) {
+                        m->actionTimer = 1;
+                    } else if (val04 > 22.0f) {
+                        m->actionTimer = 3;
+                    } else {
+                        //! (Speed Crash) If Mario's speed is more than 2^17.
+                        val14 = (s32)(val04 / 4.0f * 0x10000);
+                        set_mario_anim_with_accel(m, MARIO_ANIM_WALKING, val14);
+                        play_metal_water_walking_sound(m, 10, 49);
+
+                        val0C = FALSE;
+                    }
+                    break;
+
+                case 3:
+                    if (val04 < 18.0f) {
+                        m->actionTimer = 2;
+                    } else {
+                        //! (Speed Crash) If Mario's speed is more than 2^17.
+                        val14 = (s32)(val04 / 4.0f * 0x10000);
+                        set_mario_anim_with_accel(m, MARIO_ANIM_RUNNING, val14);
+                        play_metal_water_walking_sound(m, 9, 45);
+
+                        val0C = FALSE;
+                    }
+                    break;
+            }
+        }
     }
 
-    if (m->forwardVel > 16.0f) {
-        m->forwardVel -= 1.0f;
-    }
-
-    if (m->forwardVel < 0.0f) {
-        m->forwardVel += 2.0f;
-    }
-
-    m->vel[0] = m->slideVelX = m->forwardVel * sins(m->faceAngle[1]);
-    m->vel[2] = m->slideVelZ = m->forwardVel * coss(m->faceAngle[1]);
-    return FALSE;
 }
 
+static s32 update_metal_water_jump_speed(struct MarioState *m) {
+    f32 sidewaysSpeed = 0.0f;
+    f32 dragThreshold;
+    s16 intendedDYaw;
+    f32 intendedMag;
+
+		dragThreshold = 32.0f;
+        m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.35f, 0.35f);
+
+        if (m->input & INPUT_NONZERO_ANALOG) {
+            intendedDYaw = m->intendedYaw - m->faceAngle[1];
+            intendedMag = m->intendedMag / 32.0f;
+
+            m->forwardVel += intendedMag * coss(intendedDYaw) * 1.5f;
+            sidewaysSpeed = intendedMag * sins(intendedDYaw) * 10.0f;
+        }
+
+        //! Uncapped air speed. Net positive when moving forward.
+        if (m->forwardVel > dragThreshold) {
+            m->forwardVel -= 1.0f;
+        }
+        if (m->forwardVel < -16.0f) {
+            m->forwardVel += 2.0f;
+        }
+
+        m->slideVelX = m->forwardVel * sins(m->faceAngle[1]);
+        m->slideVelZ = m->forwardVel * coss(m->faceAngle[1]);
+
+        m->slideVelX += sidewaysSpeed * sins(m->faceAngle[1] + 0x4000);
+        m->slideVelZ += sidewaysSpeed * coss(m->faceAngle[1] + 0x4000);
+
+        m->vel[0] = m->slideVelX;
+        m->vel[2] = m->slideVelZ;
+	return FALSE;
+}
 static s32 act_metal_water_standing(struct MarioState *m) {
     if (!(m->flags & MARIO_METAL_CAP)) {
         return set_mario_action(m, ACT_WATER_IDLE, 0);
@@ -1247,8 +1351,7 @@ static s32 act_metal_water_walking(struct MarioState *m) {
         val04 = 0x1000;
     }
 
-    set_mario_anim_with_accel(m, MARIO_ANIM_WALKING, val04);
-    play_metal_water_walking_sound(m);
+	anim_and_audio_for_walk2(m);
     update_metal_water_walking_speed(m);
 
     switch (perform_ground_step(m)) {
@@ -1290,7 +1393,7 @@ static s32 act_hold_metal_water_walking(struct MarioState *m) {
     }
 
     set_mario_anim_with_accel(m, MARIO_ANIM_RUN_WITH_LIGHT_OBJ, val04);
-    play_metal_water_walking_sound(m);
+    play_metal_water_walking_sound(m, 9, 45);
     update_metal_water_walking_speed(m);
 
     switch (perform_ground_step(m)) {
@@ -1361,38 +1464,22 @@ static s32 act_hold_metal_water_jump(struct MarioState *m) {
 }
 
 static s32 act_metal_water_falling(struct MarioState *m) {
-	s16 intendedDYaw;
-	f32 intendedMag;
-	f32 buoyancy = get_buoyancy(m);
-    m->vel[1] = approach_f32(m->vel[1], buoyancy, 2.0f, 1.0f);
-	m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.35f, 0.35f);
     if (!(m->flags & MARIO_METAL_CAP)) {
         return set_mario_action(m, ACT_WATER_IDLE, 0);
     }
-	{
-    if (m->input & INPUT_NONZERO_ANALOG) {
-        m->faceAngle[1] += 0x400 * sins(m->intendedYaw - m->faceAngle[1]);
-		            intendedDYaw = m->intendedYaw - m->faceAngle[1];
-            intendedMag = m->intendedMag / 64.0f;
 
-            m->forwardVel += 1.0f * coss(intendedDYaw) * intendedMag;
-    }
-        if (m->forwardVel > 16.0f) {
-            m->forwardVel -= 1.0f;
-        }
-        if (m->forwardVel < -16.0f) {
-            m->forwardVel += 1.0f;
-        }
-	}
-		m->vel[0] = m->slideVelX = m->forwardVel * sins(m->faceAngle[1]);
-        m->vel[2] = m->slideVelZ = m->forwardVel * coss(m->faceAngle[1]);
+	update_metal_water_jump_speed(m);
     set_mario_animation(m, m->actionArg == 0 ? MARIO_ANIM_GENERAL_FALL : MARIO_ANIM_FALL_FROM_WATER);
-//    stationary_slow_down(m);
+	
+	    switch (perform_air_step(m, 0)) {
+        case AIR_STEP_LANDED:
+            set_mario_action(m, ACT_METAL_WATER_JUMP_LAND, 0);
+            break;
 
-    if (perform_water_step(m) & WATER_STEP_HIT_FLOOR) { // hit floor or cancelled
-        set_mario_action(m, ACT_METAL_WATER_FALL_LAND, 0);
+        case AIR_STEP_HIT_WALL:
+            m->forwardVel = 0.0f;
+            break;
     }
-
     return FALSE;
 }
 

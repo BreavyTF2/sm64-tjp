@@ -285,36 +285,3 @@ const GeoLayout castle_door_3_stars_geo[] = {
 GEO_CLOSE_NODE(), //! more close than open nodes
 GEO_END(),
 };
-
-// 0x160009D0
-const GeoLayout key_door_geo[] = {
-   GEO_TRANSLATE_NODE(0x00, 78, 0, 0),
-   GEO_OPEN_NODE(),
-      GEO_SCALE(0x00, 16384),
-      GEO_OPEN_NODE(),
-         GEO_ANIMATED_PART(LAYER_OPAQUE, -300, 0, 0, NULL),
-         GEO_OPEN_NODE(),
-            GEO_OPEN_NODE(),
-               GEO_RENDER_RANGE(-2048, 1000),
-               GEO_OPEN_NODE(),
-                  GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, door_seg3_dl_03013E28),
-                  GEO_OPEN_NODE(),
-                     GEO_DISPLAY_LIST(LAYER_OPAQUE, door_seg3_dl_03014540),
-                  GEO_CLOSE_NODE(),
-               GEO_CLOSE_NODE(),
-               GEO_RENDER_RANGE(1000, 32767),
-               GEO_OPEN_NODE(),
-                  GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, door_seg3_dl_03013E28),
-                  GEO_OPEN_NODE(),
-                     GEO_DISPLAY_LIST(LAYER_OPAQUE_DECAL, door_seg3_dl_03014528),
-                  GEO_CLOSE_NODE(),
-               GEO_CLOSE_NODE(),
-            GEO_CLOSE_NODE(),
-            GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-            GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-         GEO_CLOSE_NODE(),
-      GEO_CLOSE_NODE(),
-   GEO_CLOSE_NODE(),
-GEO_CLOSE_NODE(), //! more close than open nodes
-GEO_END(),
-};

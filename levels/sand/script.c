@@ -28,6 +28,7 @@ const LevelScript level_sand_entry[] = {
         WARP_NODE(/*id*/ 10, /*destLevel*/ 38, /*destArea*/ 1, /*destNode*/ 20, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ 20, /*destLevel*/ 38, /*destArea*/ 0x01, /*destNode*/ 10, /*flags*/ WARP_NO_CHECKPOINT),
         TERRAIN(/*terrainData*/ sand_info),
+	SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0003, /*seq*/ SEQ_LEVEL_UNDERGROUND),
     END_AREA(),
 
     FREE_LEVEL_POOL(),

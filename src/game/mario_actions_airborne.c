@@ -1381,7 +1381,7 @@ s32 act_forward_rollout(struct MarioState *m) {
 }
 s32 act_squat_kicking(struct MarioState *m) {
     if (m->actionState == 0) {
-	   m->forwardVel += 6.5f;
+	   m->forwardVel += 7.0f;
 	   if (m->vel[1] < 0.0f) m->vel[1] = 0.0f;
 	   
 	   m->vel[1] += 10.5f;	

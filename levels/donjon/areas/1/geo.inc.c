@@ -17,13 +17,13 @@
 const GeoLayout RCP_Stage3Scene1[] = {
 	GEO_NODE_SCREEN_AREA(10, 160, 120, 160, 120),
 	GEO_OPEN_NODE(),
-//		hmsLayer(0)
-//		hmsBegin()
-//			hmsOrtho(100)
-//			hmsBegin()
-//				hmsClear(RGBA16(10,20,25,1), NULL)
-//			hmsEnd()
-//		hmsEnd()
+		GEO_ZBUFFER(0),
+		GEO_OPEN_NODE(),
+			GEO_NODE_ORTHO(100),
+			GEO_OPEN_NODE(),
+				GEO_BACKGROUND_COLOR(RGBA16(10,20,25,1)),
+			GEO_CLOSE_NODE(),
+		GEO_CLOSE_NODE(),
 
 		GEO_ZBUFFER(1),
 		GEO_OPEN_NODE(),

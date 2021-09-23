@@ -30,3 +30,5 @@
 #define hmsHeader(x) GEO_CULLING_RADIUS(x),
 #define hmsBboard(px,py,pz) GEO_BILLBOARD_WITH_PARAMS(0,px,py,pz),
 #define Hierarchy const GeoLayout
+
+#define	RGBA16(r,g,b,a)		(((r)<<11) | ((g)<<6) | ((b)<<1) | (a))

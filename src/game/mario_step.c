@@ -173,7 +173,7 @@ u32 mario_update_moving_sand(struct MarioState *m) {
     struct Surface *floor = m->floor;
     s32 floorType = floor->type;
 
-    if (floorType == SURFACE_DEEP_MOVING_QUICKSAND || floorType == SURFACE_SHALLOW_MOVING_QUICKSAND
+    if (floorType == SURFACE_DEEP_MOVING_QUICKSAND || floorType == SURFACE_SHALLOW_MOVING_QUICKSAND || floorType == SURFACE_0004
         || floorType == SURFACE_MOVING_QUICKSAND || floorType == SURFACE_INSTANT_MOVING_QUICKSAND) {
         s16 pushAngle = floor->force << 8;
         f32 pushSpeed = sMovingSandSpeeds[floor->force >> 8];
@@ -561,9 +561,9 @@ void apply_gravity(struct MarioState *m) {
     } else if (should_strengthen_gravity_for_jump_ascent(m)) {
         m->vel[1] /= 4.0f;
     } else if (m->action & ACT_FLAG_METAL_WATER) {
-        m->vel[1] -= 1.6f;
-        if (m->vel[1] < -16.0f) {
-            m->vel[1] = -16.0f;
+        m->vel[1] -= 1.5f;
+        if (m->vel[1] < -37.5f) {
+            m->vel[1] = -37.5f;
         }
     } else if ((m->flags & MARIO_WING_CAP) && m->vel[1] < 0.0f && (m->input & INPUT_A_DOWN)) {
         m->marioBodyState->wingFlutter = TRUE;

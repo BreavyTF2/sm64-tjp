@@ -59,7 +59,7 @@ const LevelScript level_castle_courtyard_entry[] = {
         JUMP_LINK(script_func_local_2),
         TERRAIN(/*terrainData*/ castle_courtyard_seg7_collision),
         MACRO_OBJECTS(/*objList*/ castle_courtyard_seg7_macro_objs),
-        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0000, /*seq*/ SEQ_SOUND_PLAYER),
+        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0000, /*seq*/ SEQ_LEVEL_GRASS),
         TERRAIN_TYPE(/*terrainType*/ TERRAIN_STONE),
     END_AREA(),
 
