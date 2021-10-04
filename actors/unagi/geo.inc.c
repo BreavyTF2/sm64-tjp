@@ -13,21 +13,23 @@ const GeoLayout unagi_geo[] = {
                hmsJoint(RM_SURF,RCP_animed_swim1,494,0,0)  /* ,nn_body4,(1) */
                hmsBegin()
                   hmsJoint(RM_SURF,RCP_animed_swim0,475,0,0)  /* ,nn_body5,(0) */
-				    GEO_OPEN_NODE(),
-				       GEO_SWITCH_CASE(2, geo_switch_anim_state),
-                        GEO_OPEN_NODE(),
-                           GEO_NODE_START(),
-                           GEO_NODE_START(),
-                           GEO_OPEN_NODE(),
-                              GEO_SCALE(0x00, 16384),
-                              GEO_OPEN_NODE(),
+/*------------------------------*/
+					hmsBegin()
+						hmsSelect(2,geo_switch_anim_state)
+					    hmsBegin()
+							hmsGroup()
+
+							hmsGroup()
+					    	hmsBegin()
+	 							hmsScale(0.25f)
+								hmsBegin()
                                  GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_OPAQUE, 2000, 0, 0, 0, 0, 0, gfx_polystar),
                                  GEO_TRANSLATE_ROTATE_WITH_DL(LAYER_ALPHA, 2000, 0, 0, 0, 0, 0, gfx_polystar_eye),
-                              GEO_CLOSE_NODE(),
-                           GEO_CLOSE_NODE(),
-                        GEO_CLOSE_NODE(),
-                     GEO_CLOSE_NODE(),
-                  GEO_CLOSE_NODE(),
+								hmsEnd()
+							hmsEnd()
+	            				hmsEnd()
+					hmsEnd()
+/*------------------------------*/
                hmsEnd()
             hmsEnd()
             hmsJoint(RM_SURF,NULL,-254,0,0)  /* ,chn5,(11) */
