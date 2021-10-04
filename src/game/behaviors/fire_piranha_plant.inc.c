@@ -66,7 +66,7 @@ static void fire_piranha_plant_act_hide(void) {
 
             if ((u16)(o->oBehParams >> 16) != 0 && o->oHealth == 0) {
                 if (++sNumKilledFirePiranhaPlants == 5) {
-                    spawn_default_star(-6300.0f, -1850.0f, -6300.0f);
+                    spawn_default_star(-6300.0f, -1750.0f, -6300.0f);
                 }
 
                 obj_die_if_health_non_positive();

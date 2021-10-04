@@ -8,9 +8,9 @@
 #include "textures.h"
 #include "dialog_ids.h"
 
-#define		STAGE12_FOG_R		  5
-#define		STAGE12_FOG_G		 80
-#define		STAGE12_FOG_B		175
+#define		STAGE12_FOG_R		75/3
+#define		STAGE12_FOG_G		180/3
+#define		STAGE12_FOG_B		230/2
 #define		STAGE12_FOG_START	900
 
 #include "make_const_nonconst.h"

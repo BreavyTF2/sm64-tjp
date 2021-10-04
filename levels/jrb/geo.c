@@ -11,6 +11,10 @@
 
 #include "make_const_nonconst.h"
 
+#define		STAGE12_CLEAR_R		 9
+#define		STAGE12_CLEAR_G		22
+#define		STAGE12_CLEAR_B		28
+
 #include "levels/jrb/header.h"
 
 #include "levels/jrb/falling_pillar/geo.inc.c"

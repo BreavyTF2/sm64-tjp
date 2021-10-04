@@ -143,7 +143,4 @@ void bhv_unbaba_loop(void) // Define what to do as well.
     obj_check_attacks(&sBlarggHitbox, o->oAction);
 	 }
 	cur_obj_call_action_function(sBlarggActions);
-//	s_erase_shape(obj_playerdist,3000);
-//	o->oInteractStatus = 0;
-
 }

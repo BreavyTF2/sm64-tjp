@@ -2,8 +2,7 @@ void s_motos_hand(void)
 {
 
 //	struct Object *firep;
- //   struct Object *parent = o->parentObj;
-//    obj_copy_pos(o, parent);
+
 	o->oParentRelativePosX = 100.0f;
 	o->oParentRelativePosY = 0.0f;
 	o->oParentRelativePosZ = 150.0f;
@@ -14,11 +13,12 @@ void s_motos_hand(void)
 			break;
 		case	1:
 			obj_set_gfx_pos_at_obj_pos(gMarioObject, o);
+			vec3f_copy(gMarioState->pos, gMarioObject->header.gfx.pos); // Added to fix camera
 			break;
 		case	2:
                 gMarioObject->oInteractStatus |= (INT_STATUS_MARIO_UNK6 + INT_STATUS_MARIO_UNK2);
-			gMarioStates[0].forwardVel = 65.0f;
-			gMarioStates[0].vel[1] = 10.0f;
+			gMarioStates[0].forwardVel = 40.0f;
+			gMarioStates[0].vel[1] = 20.0f;
 			o->parentObj->oMotosUnk88 = 0;
 			break;
 		case 3:
@@ -87,7 +87,7 @@ void motos_player_search(void)
 		
 	cur_obj_init_animation_with_sound(9);
 	o->oForwardVel = 2.5f;
-	cur_obj_rotate_yaw_toward(o->oAngleToMario,300);
+	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x300);
 	if ( o->oDistanceToMario > 2000 )	o->oAction = 0;
 		if ((o->oPosY < 1300.0f) & (gCurrLevelNum == LEVEL_SL) & (o->oTimer >= 20)) {
 			o->oAction = 11;
@@ -140,8 +140,8 @@ void motos_carry_run(void)
 cur_obj_play_sound_2(SOUND_OBJ_POUNDING1_HIGHPRIO);
 }	
 	o->oMotosUnk100 += player_performed_grab_escape_action();
-    if (o->oMotosUnk100 > 20) {
-	o->oAction = 10;
+    if (o->oMotosUnk100 > 10) {
+	o->oAction = 8;
 	o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
 	o->oMotosUnk88 = 3;
 	o->oMotosUnk100 = 0;
@@ -203,9 +203,20 @@ void motos_recover(void) {
 if (o->oForwardVel > 0.0) { 
     o->oForwardVel -= 0.3;
 }
-	cur_obj_init_animation_with_sound(4);
-if ( cur_obj_check_if_near_animation_end() )	
-	o->oAction = 1;
+    if (o->oSubAction == 0) {
+        cur_obj_init_animation_with_sound(5);
+		if (o->oTimer == 10) {
+		cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
+		}
+        if (cur_obj_check_if_near_animation_end()) {
+			
+            o->oSubAction++;
+}
+    } else if (o->oSubAction == 1) {
+        cur_obj_init_animation_with_sound(4);
+        if (cur_obj_check_if_near_animation_end())
+            o->oAction = 1;
+}
 }
 
 void motos_recover2(void) {
@@ -307,7 +318,7 @@ void motos_death(void) {
 		cur_obj_hide();
         cur_obj_become_intangible();
 		if (gCurrLevelNum == LEVEL_SL) {
-        spawn_default_star(300.0f, 1500.0f, -5335.0f);
+        spawn_default_star(300.0f, 1500.0f, -4800.0f);
 		o->oAction = 12;
 		}
 		else 
@@ -320,32 +331,12 @@ void motos_deactivate(void) {  //Added so motos doesn't make walking sounds afte
 		cur_obj_hide();
         cur_obj_become_intangible();
 		}
-void (*sMotosActions[])(void) = { motos_wait, motos_player_search, motos_player_carry, motos_player_pitch, motos_carry_start, motos_carry_run, motos_pitch, motos_fly, motos_recover, motos_death, motos_recover2, motos_returnhome, motos_deactivate, motos_inactive};
 
 void motos_main(void)
 {
     cur_obj_update_floor_and_walls();
 //cur_obj_move_using_fvel_and_gravity();	
 	
-
-//	default: rmonpf(("Error objmode motos\n")); }
-
-	    cur_obj_move_standard(-78);							/*	monky moving 	*/
-    if (o->oDistanceToMario < 5000.0f)
-        cur_obj_enable_rendering();
-    else
-        cur_obj_disable_rendering();
-}
-
-void s_motos(void)
-{
-    f32 sp2C = 10.0f;
-    f32 sp28 = 20.0f;
-
-	cur_obj_scale(2.0f);
-
-    o->oInteractionSubtype |= INT_SUBTYPE_GRABS_MARIO;
-
 	switch (o->oAction) {
 	case 0:
 	motos_wait();
@@ -390,7 +381,24 @@ void s_motos(void)
 	motos_inactive();
 	break;
 	}
-cur_obj_call_action_function(sMotosActions);
+//	default: rmonpf(("Error objmode motos\n")); }
+
+	    cur_obj_move_standard(-78);							/*	monky moving 	*/
+    if (o->oDistanceToMario < 5000.0f)
+        cur_obj_enable_rendering();
+    else
+        cur_obj_disable_rendering();
+}
+
+void s_motos(void)
+{
+    f32 sp2C = 10.0f;
+    f32 sp28 = 25.0f;
+
+	cur_obj_scale(2.0f);
+
+    o->oInteractionSubtype |= INT_SUBTYPE_GRABS_MARIO;
+
 	switch (o->oHeldState) {
         case HELD_FREE:
             motos_main();

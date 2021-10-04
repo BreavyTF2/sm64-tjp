@@ -1380,13 +1380,20 @@ s32 act_forward_rollout(struct MarioState *m) {
     return FALSE;
 }
 s32 act_squat_kicking(struct MarioState *m) {
+	    f32 yOffset;
     if (m->actionState == 0) {
+		   		yOffset = 10 - 4 * m->actionTimer;
+				if (m->pos[1] + yOffset + 160.0f < m->ceilHeight) {
+					m->pos[1] += yOffset;
+					m->peakHeight = m->pos[1];
+				}
 	   m->forwardVel += 7.0f;
 	   if (m->vel[1] < 0.0f) m->vel[1] = 0.0f;
-	   
-	   m->vel[1] += 10.5f;	
+
+	   m->vel[1] = 15.0f;	
        set_mario_animation(m, MARIO_ANIM_SQUAT_KICK_START);	   
 	   if (m->marioObj->header.gfx.animInfo.animFrame >= 2) {
+
 		perform_air_step(m, 0);
 	}
 	play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, 0);
@@ -1401,7 +1408,7 @@ s32 act_squat_kicking(struct MarioState *m) {
         case AIR_STEP_NONE:
             if (m->actionState == 1) {	
                 set_mario_animation(m, MARIO_ANIM_SQUAT_KICKING);
-				m->flags |= MARIO_KICKING;
+				m->flags |= MARIO_TRIPPING;
 				if (is_anim_at_end(m)) {
                 m->actionState = 2;
 			}
@@ -1419,7 +1426,7 @@ s32 act_squat_kicking(struct MarioState *m) {
         case AIR_STEP_HIT_WALL:
 		    if (m->actionState == 1) {	
                 set_mario_animation(m, MARIO_ANIM_SQUAT_KICKING);
-				m->flags |= MARIO_KICKING;
+				m->flags |= MARIO_TRIPPING;
 				update_air_without_turn(m);
 				if (is_anim_at_end(m)) {
                 m->actionState = 2;
@@ -1427,7 +1434,7 @@ s32 act_squat_kicking(struct MarioState *m) {
             }
 			if (m->actionState == 2) {
                 set_mario_animation(m, MARIO_ANIM_SQUAT_KICK_END);
-				m->flags |= MARIO_KICKING;
+				m->flags |= MARIO_TRIPPING;
 				update_air_without_turn(m);
             }
             mario_set_forward_vel(m, 0.0f);

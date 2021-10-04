@@ -102,6 +102,7 @@
 #define CAMERA_MODE_OUTWARD_RADIAL    0x02
 #define CAMERA_MODE_BEHIND_MARIO      0x03
 #define CAMERA_MODE_CLOSE             0x04 // Inside Castle / Big Boo's Haunt
+#define	CAMERA_MODE_TWOPLAY			  0x05
 #define CAMERA_MODE_C_UP              0x06
 #define CAMERA_MODE_WATER_SURFACE     0x08
 #define CAMERA_MODE_SLIDE_HOOT        0x09
