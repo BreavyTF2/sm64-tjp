@@ -5,10 +5,10 @@ struct ObjectHitbox sBlarggHitbox = { //Custom Hitbox
     /* damageOrCoinValue: */ 2,
     /* health: */ 0,
     /* numLootCoins: */ 0,
-    /* radius: */ 300,
-    /* height: */ 100,
-    /* hurtboxRadius: */ 301,
-    /* hurtboxHeight: */ 101,
+    /* radius: */ 200,
+    /* height: */ 113,
+    /* hurtboxRadius: */ 201,
+    /* hurtboxHeight: */ 123,
 };
 void bhv_unbaba_init(void)
 {
@@ -45,6 +45,8 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 					o->oForwardVel = 4.0f;
 			}
 	}
+
+
 	if ( o->oDistanceToMario < 1500 ) {
 			o->oForwardVel = 2.0f;
 				if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
@@ -85,10 +87,11 @@ void unbaba_act_attack(void) // Define Attacking Action for Blargg
 			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x80);
 		cur_obj_init_animation_with_accel_and_sound(1, 1.5f);
 	}
+	        cur_obj_play_sound_2(SOUND_OBJ_SUSHI_SHARK_WATER_SOUND);
 	cur_obj_init_animation_with_sound(UNBABA_ANIM_ATTACK);
 		if (animTimer < (20)){
 			o->oForwardVel = 2.0*(animTimer)+1;
-			o->hurtboxRadius = 355;
+			o->hurtboxRadius = 255;
 			o->hurtboxHeight = 205;
 			if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
 			o->oForwardVel = 3.0*(animTimer)+1;
@@ -96,7 +99,7 @@ void unbaba_act_attack(void) // Define Attacking Action for Blargg
 		}
 		if (animTimer >= (20)){
 			o->oForwardVel = 1*(animTimer)+5;
-			o->hurtboxRadius = 430;
+			o->hurtboxRadius = 330;
 			o->hurtboxHeight = 245;
 			if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
 			o->oForwardVel = 3.0*(animTimer)+6;
@@ -104,17 +107,18 @@ void unbaba_act_attack(void) // Define Attacking Action for Blargg
 	}
 			if (animTimer > (25)){
 			o->oForwardVel = 36/(animTimer-12)+3;
-			o->hurtboxRadius = 355;
+			o->hurtboxRadius = 255;
 			o->hurtboxHeight = 205;
 				if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
 			o->oForwardVel = 60/(animTimer-18)+4;
 			}
 	}
 	if (cur_obj_check_if_near_animation_end()) {	
-	 o->oAction = 1;
 	 o->oForwardVel = 2.5f;
-	 o->hurtboxRadius = 301;
-	 o->hurtboxHeight = 101;
+	 o->hurtboxRadius = 201;
+	 o->hurtboxHeight = 123;
+	 o->oAction = 1;
+
 	}
 }
 
@@ -139,8 +143,6 @@ void bhv_unbaba_loop(void) // Define what to do as well.
 	cur_obj_if_hit_wall_bounce_away();// Initiate Wall Collision
 	 cur_obj_scale(2.0f); // Scale Model to 2.0
 	 cur_obj_move_standard(-87); // Set wall collision type
-	 if ( o->oDistanceToMario < 600 ) {
     obj_check_attacks(&sBlarggHitbox, o->oAction);
-	 }
 	cur_obj_call_action_function(sBlarggActions);
 }

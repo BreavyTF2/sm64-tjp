@@ -70,6 +70,6 @@ void bhv_jet_stream_loop(void) {
         gEnvFxBubbleConfig[ENVFX_STATE_SRC_Z] = o->oPosZ;
     } else
         gEnvFxBubbleConfig[ENVFX_STATE_PARTICLECOUNT] = 0;
-
+	o->oFaceAngleYaw -= 0x1F40;
     cur_obj_play_sound_1(SOUND_ENV_WATER);
 }
