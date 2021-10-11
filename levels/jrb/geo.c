@@ -11,9 +11,9 @@
 
 #include "make_const_nonconst.h"
 
-#define		STAGE12_CLEAR_R		 9
-#define		STAGE12_CLEAR_G		22
-#define		STAGE12_CLEAR_B		28
+#define		STAGE12_CLEAR_R		 9 //70? 75?
+#define		STAGE12_CLEAR_G		22 //175? 180?
+#define		STAGE12_CLEAR_B		28 //225? 230?
 
 #include "levels/jrb/header.h"
 

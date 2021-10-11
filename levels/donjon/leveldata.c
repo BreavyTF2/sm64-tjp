@@ -8,6 +8,11 @@
 #include "textures.h"
 #include "dialog_ids.h"
 
+#define		ENABLE_STAGE3_FOG	1 //Toggle custom Fog in donjon?
+#define		STAGE3_FOG_R		80
+#define		STAGE3_FOG_G		160
+#define		STAGE3_FOG_B		200
+#define		STAGE3_FOG_START	950
 #include "make_const_nonconst.h"
 #include "levels/donjon/areas/1/1/model.inc.c"
 #include "levels/donjon/areas/1/collision.inc.c"

@@ -66,8 +66,6 @@
 "textures/crash_screen/crash_font_UVWXY.ia1.png": [32,7,28,{"eu":[757336],"sh":[805848]}],
 "textures/crash_screen/crash_font_Zsym1.ia1.png": [32,7,28,{"eu":[757364],"sh":[805876]}],
 "textures/crash_screen/crash_font_sym2.ia1.png": [32,7,28,{"eu":[757392],"sh":[805904]}],
-"actors/amp/amp_body.rgba16.png": [32,32,2048,{"jp":[2032944,6936],"us":[2040320,6936],"eu":[1912288,6936],"sh":[1888800,6936]}],
-"actors/amp/amp_electricity.rgba16.png": [16,32,1024,{"jp":[2032944,3864],"us":[2040320,3864],"eu":[1912288,3864],"sh":[1888800,3864]}],
 "actors/amp/amp_eyes.rgba16.png": [32,32,2048,{"jp":[2032944,4888],"us":[2040320,4888],"eu":[1912288,4888],"sh":[1888800,4888]}],
 "actors/amp/amp_mouth.rgba16.png": [32,32,2048,{"jp":[2032944,8984],"us":[2040320,8984],"eu":[1912288,8984],"sh":[1888800,8984]}],
 "actors/blue_coin_switch/blue_coin_switch_side.rgba16.png": [32,16,1024,{"jp":[2032944,24],"us":[2040320,24],"eu":[1912288,24],"sh":[1888800,24]}],

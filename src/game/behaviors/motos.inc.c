@@ -19,7 +19,9 @@ void s_motos_hand(void)
                 gMarioObject->oInteractStatus |= (INT_STATUS_MARIO_UNK6 + INT_STATUS_MARIO_UNK2);
 			gMarioStates[0].forwardVel = 40.0f;
 			gMarioStates[0].vel[1] = 20.0f;
+			o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
 			o->parentObj->oMotosUnk88 = 0;
+			o->parentObj->oMotosUnk100 = 0;
 			break;
 		case 3:
             gMarioObject->oInteractStatus |=
@@ -28,6 +30,7 @@ void s_motos_hand(void)
             gMarioStates[0].vel[1] = 10.0f;
 			o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
             o->parentObj->oMotosUnk88 = 0;
+			o->parentObj->oMotosUnk100 = 0;
             break;
     }
 	
@@ -89,10 +92,7 @@ void motos_player_search(void)
 	o->oForwardVel = 2.5f;
 	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x300);
 	if ( o->oDistanceToMario > 2000 )	o->oAction = 0;
-		if ((o->oPosY < 1300.0f) & (gCurrLevelNum == LEVEL_SL) & (o->oTimer >= 20)) {
-			o->oAction = 11;
-		}
-		if ((o->oPosY < 200.0f) & (gCurrLevelNum == LEVEL_LLL) & (o->oTimer >= 20)) {
+		if ((o->oPosY < o->oHomeY - 100) & (o->oTimer >= 20)) {
 			o->oAction = 11;
 		}
 	if ( o->oInteractStatus & INT_STATUS_GRABBED_MARIO){
@@ -101,9 +101,8 @@ void motos_player_search(void)
 	}
 
 }
-void motos_player_carry(void)
+void motos_player_carry(void) //Convert into subaction later?
 {
-
 	cur_obj_init_animation_with_sound(3);
 	if ( cur_obj_check_if_near_animation_end() )	o->oAction = 5;
 
@@ -114,8 +113,7 @@ void motos_player_pitch(void){
 	o->oForwardVel = 0.0f;
 	cur_obj_init_animation_with_sound(6);
 	if ( cur_obj_check_anim_frame(14) ){
-		o->oMotosUnk88 = 2;		/* nageru shyn kan	*/
-		o->oMotosUnk100 = 0;		/* hit time wait!!	*/ //Reset MotosEscape for next grab.
+		o->oMotosUnk88 = 2;		/* nageru shyn kan	*/ //Set Mario's held state to 2.
 	}
 	if ( cur_obj_check_if_near_animation_end() ){
 		o->oAction = 0;
@@ -134,21 +132,22 @@ void motos_carry_start(void)
 }
 void motos_carry_run(void)
 {
-	s32 sp1C = gGlobalTimer;
 	o->oForwardVel = 10.0f;
-	if ((sp1C & 6) == 0) {
-cur_obj_play_sound_2(SOUND_OBJ_POUNDING1_HIGHPRIO);
-}	
+		if (cur_obj_check_anim_frame(5) | cur_obj_check_anim_frame(10) | cur_obj_check_if_near_animation_end()) 
+		cur_obj_play_sound_2(SOUND_OBJ_POUNDING1_HIGHPRIO);
+
 	o->oMotosUnk100 += player_performed_grab_escape_action();
-    if (o->oMotosUnk100 > 10) {
-	o->oAction = 8;
-	o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
-	o->oMotosUnk88 = 3;
-	o->oMotosUnk100 = 0;
-	
-}
+		if (o->oMotosUnk100 > 10) {
+		o->oAction = 8;
+		o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
+		o->oMotosUnk88 = 3;
+		}
+
 	cur_obj_init_animation_with_sound(2);
-	if ((s_ai_pitch()) & (o->oMotosUnk88 == 1))  o->oAction = 3;
+	if ((s_ai_pitch()) & (o->oMotosUnk88 == 1)) {
+		o->oAction = 3;
+		cur_obj_play_sound_2(SOUND_OBJ_POUNDING1_HIGHPRIO);
+	}
 }
 
 void motos_pitch(void)

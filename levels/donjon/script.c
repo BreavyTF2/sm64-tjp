@@ -45,6 +45,7 @@ const LevelScript level_donjon_entry[] = {
 
 		AREA(1, RCP_Stage3Scene1),
 			TERRAIN(donjon_info),
+			SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0004, /*seq*/ SEQ_LEVEL_INSIDE_CASTLE),
 		END_AREA(),
 
 	FREE_LEVEL_POOL(),

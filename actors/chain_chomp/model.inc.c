@@ -215,6 +215,7 @@ static Vtx vtx_wanwan_anim4[]={
 	{0,0,-577,0,0,0,0,127,0,255},
 };
 const Gfx RCP_wanwan_anim0[]={
+	gsDPPipeSync(),
 	gsSPLight((&light_wanwan_anim[0].l[0]),1),
 	gsSPLight((&light_wanwan_anim[0].a),2),
 	gsSPVertex(&vtx_wanwan_anim0[0],15,0),
@@ -227,6 +228,7 @@ const Gfx RCP_wanwan_anim0[]={
 	gsSP1Triangle(0,1,2,0),
 	gsSP1Triangle(3,4,5,0),
 	gsSP1Triangle(6,7,8,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
 // 0x060249D0
@@ -267,6 +269,7 @@ const Gfx RCP_wanwan_anim1[] = {
 	gsSPEndDisplayList() 
 };
 const Gfx RCP_wanwan_anim2[]={
+	gsDPPipeSync(),
 	gsSPLight((&light_wanwan_anim[1].l[0]),1),
 	gsSPLight((&light_wanwan_anim[1].a),2),
 	gsSPVertex(&vtx_wanwan_anim2[0],16,0),
@@ -339,6 +342,7 @@ const Gfx RCP_wanwan_anim2[]={
 	gsSPEndDisplayList()
 };
 const Gfx RCP_wanwan_anim3[]={
+	gsDPPipeSync(),
 	gsSPLight((&light_wanwan_anim[0].l[0]),1),
 	gsSPLight((&light_wanwan_anim[0].a),2),
 	gsSPVertex(&vtx_wanwan_anim3[0],15,0),
@@ -355,6 +359,7 @@ const Gfx RCP_wanwan_anim3[]={
 	gsSPEndDisplayList()
 };
 const Gfx RCP_wanwan_anim4[]={
+	gsDPPipeSync(),
 	gsSPLight((&light_wanwan_anim[1].l[0]),1),
 	gsSPLight((&light_wanwan_anim[1].a),2),
 	gsSPVertex(&vtx_wanwan_anim4[0],16,0),
