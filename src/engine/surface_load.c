@@ -756,7 +756,6 @@ void load_object_surfaces(s16 **data, s16 *vertexData) {
  * Transform an object's vertices, reload them, and render the object.
  */
 void load_object_collision_model(void) {
-    UNUSED s32 unused;
     s16 vertexData[600];
 
     s16 *collisionData = gCurrentObject->collisionData;

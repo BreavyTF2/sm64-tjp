@@ -47,7 +47,6 @@ extern const Gfx koopa_seg6_dl_0600BA90[];
 extern const Gfx koopa_seg6_dl_0600BC18[];
 extern const Gfx koopa_seg6_dl_0600BC88[];
 extern const Gfx koopa_seg6_dl_0600BE10[];
-extern const Gfx koopa_seg6_dl_0600BE80[];
 extern const Gfx koopa_seg6_dl_0600C240[];
 extern const Gfx koopa_seg6_dl_0600C498[];
 extern const struct Animation *const koopa_seg6_anims_06011364[];

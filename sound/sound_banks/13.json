@@ -3,13 +3,13 @@
     "sample_bank": "instruments",
     "envelopes": {
         "envelope0": [
-            [6, 32700],
+            [2, 32700],
             [1, 32700],
             [32700, 29430],
             "hang"
         ],
         "envelope1": [
-            [6, 32700],
+            [2, 32700],
             [1, 32700],
             [32700, 29430],
             "hang"
@@ -39,36 +39,36 @@
             "hang"
         ],
         "envelope6": [
-            [6, 32700],
-            [298, 0],
-            [1, 0],
+            [2, 32700],
+            [103, 24112],
+            [409, 0],
             "hang"
         ],
         "envelope7": [
-            [3, 32700],
-            [298, 0],
-            [1, 0],
+            [2, 32700],
+            [103, 24112],
+            [409, 0],
             "hang"
         ]
     },
     "instruments": {
         "inst0": {
-            "release_rate": 15,
-            "normal_range_lo": 27,
-            "normal_range_hi": 46,
+            "release_rate": 19,
+            "normal_range_lo": 29,
+            "normal_range_hi": 63,
             "envelope": "envelope0",
-            "sound_lo": "23",
-            "sound": "24",
-            "sound_hi": "25"
+            "sound_lo": "3B",
+            "sound": "3C",
+            "sound_hi": "3D"
         },
         "inst1": {
-            "release_rate": 15,
-            "normal_range_lo": 27,
-            "normal_range_hi": 46,
+            "release_rate": 19,
+            "normal_range_lo": 29,
+            "normal_range_hi": 63,
             "envelope": "envelope1",
-            "sound_lo": "23",
-            "sound": "24",
-            "sound_hi": "25"
+            "sound_lo": "3B",
+            "sound": "3C",
+            "sound_hi": "3D"
         },
         "inst2": {
             "release_rate": 208,

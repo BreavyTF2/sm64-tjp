@@ -16,7 +16,7 @@ VERSION ?= us
 # Graphics microcode used
 GRUCODE ?= f3dex2
 # If COMPARE is 1, check the output sha1sum when building 'all'
-COMPARE ?= 0
+COMPARE ?= 1
 # If NON_MATCHING is 1, define the NON_MATCHING and AVOID_UB macros when building (recommended)
 NON_MATCHING ?= 0
 # Build for the N64 (turn this off for ports)
@@ -55,7 +55,7 @@ endif
 endif
 endif
 
-TARGET := sm64.$(VERSION)
+TARGET := sm64tjp.$(VERSION)
 VERSION_CFLAGS := -D$(VERSION_DEF)
 VERSION_ASFLAGS := --defsym $(VERSION_DEF)=1
 
@@ -531,16 +531,16 @@ $(BUILD_DIR)/assets/demo_data.c: assets/demo_data.json $(wildcard assets/demos/*
 ifeq ($(COMPILER),ido)
 # Source code
 $(BUILD_DIR)/levels/%.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/actors/%.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/bin/%.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/actors/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/bin/%.o: OPT_FLAGS := -O3
 $(BUILD_DIR)/src/goddard/%.o: OPT_FLAGS := -O2
 $(BUILD_DIR)/src/goddard/%.o: MIPSISET := -mips1
 $(BUILD_DIR)/lib/src/%.o: OPT_FLAGS := -O2
 $(BUILD_DIR)/lib/src/math/ll%.o: MIPSISET := -mips3 -32
-$(BUILD_DIR)/lib/src/math/%.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/lib/src/math/ll%.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/lib/src/ldiv.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/lib/src/string.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/lib/src/math/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/lib/src/math/ll%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/lib/src/ldiv.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/lib/src/string.o: OPT_FLAGS := -O3
 $(BUILD_DIR)/lib/src/gu%.o: OPT_FLAGS := -O3
 $(BUILD_DIR)/lib/src/al%.o: OPT_FLAGS := -O3
 

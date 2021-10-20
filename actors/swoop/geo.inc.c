@@ -1,32 +1,26 @@
 // 0x0D0000DC
 const GeoLayout swoop_geo[] = {
-   GEO_SHADOW(SHADOW_CIRCLE_4_VERTS, 0x96, 100),
-   GEO_OPEN_NODE(),
-      GEO_SCALE(0x00, 16384),
-      GEO_OPEN_NODE(),
-         GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-         GEO_OPEN_NODE(),
-            GEO_ANIMATED_PART(LAYER_OPAQUE, 0, 0, 0, NULL),
-            GEO_OPEN_NODE(),
-               GEO_BILLBOARD(),
-               GEO_OPEN_NODE(),
-                  GEO_DISPLAY_LIST(LAYER_ALPHA, swoop_seg6_dl_06006880),
-               GEO_CLOSE_NODE(),
-            GEO_CLOSE_NODE(),
-            GEO_OPEN_NODE(),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 54, 0, 0, swoop_seg6_dl_06006758),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 54, 0, 0, swoop_seg6_dl_06006A88),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 57, -48, 0, NULL),
-               GEO_OPEN_NODE(),
-                  GEO_ANIMATED_PART(LAYER_ALPHA, 0, 0, 0, swoop_seg6_dl_06006BD0),
-               GEO_CLOSE_NODE(),
-               GEO_ANIMATED_PART(LAYER_OPAQUE, 57, -48, 0, NULL),
-               GEO_OPEN_NODE(),
-                  GEO_ANIMATED_PART(LAYER_ALPHA, 0, 0, 0, swoop_seg6_dl_06006D00),
-               GEO_CLOSE_NODE(),
-            GEO_CLOSE_NODE(),
-         GEO_CLOSE_NODE(),
-      GEO_CLOSE_NODE(),
-   GEO_CLOSE_NODE(),
-   GEO_END(),
+ hmsShadow(100,150,1)
+ hmsBegin()
+ hmsScale(0.25f)
+    hmsBegin()
+      hmsJoint(RM_SURF,NULL,0,0,0)						/* ,null, 			*/
+      hmsBegin()
+         hmsJoint(RM_SURF,RCP_bat_fly4,0,0,0)  			/* ,bat_body,(6) 	*/
+         hmsBegin()
+            hmsJoint(RM_SURF,RCP_bat_fly3,54,0,0)  		/* ,bat_head,(5) 	*/
+            hmsJoint(RM_SURF,RCP_bat_fly2,54,0,0)  		/* ,bat_ear,(4) 	*/
+            hmsJoint(RM_SURF,NULL,57,-48,0)  			/* ,chn1,(3)		*/
+            hmsBegin()
+               hmsJoint(RM_SURF,RCP_bat_fly0,0,0,0)  	/* ,bat_Lwing,(0)	*/
+            hmsEnd()
+            hmsJoint(RM_SURF,NULL,57,-48,0)  			/* ,chn3,(2) 		*/
+            hmsBegin()
+               hmsJoint(RM_SURF,RCP_bat_fly1,0,0,0)  	/* ,bat_Rwing,(1)	*/
+            hmsEnd()
+         hmsEnd()
+      hmsEnd()
+   hmsEnd()
+ hmsEnd()
+ hmsExit()
 };

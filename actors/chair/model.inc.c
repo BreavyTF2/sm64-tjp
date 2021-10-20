@@ -218,7 +218,7 @@ static const Vtx chair_seg5_vertex_05005308[] = {
 
 // 0x05005378 - 0x05005408
 const Gfx chair_seg5_dl_05005378[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, chair_seg5_texture_05003860),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, chair_seg5_texture_05004460),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPLight(&chair_seg5_lights_05005200.l, 1),
