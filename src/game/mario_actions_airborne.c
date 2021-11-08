@@ -676,7 +676,7 @@ s32 act_riding_shell_air(struct MarioState *m) {
 
     switch (perform_air_step(m, 0)) {
         case AIR_STEP_LANDED:
-            set_mario_action(m, ACT_RIDING_SHELL_GROUND, 0);
+            set_mario_action(m, ACT_RIDING_SHELL_GROUND, 1);
             break;
 
         case AIR_STEP_HIT_WALL:

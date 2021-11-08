@@ -333,6 +333,7 @@ void bowser_act_breath_fire(void) {
     o->oForwardVel = 0.0f;
     if (o->oTimer == 0)
         cur_obj_play_sound_2(SOUND_OBJ_BOWSER_INHALING);
+	o->oBowserEyesShut = 3;
     if (cur_obj_init_animation_and_check_if_near_end(6))
         o->oAction = 0;
 }
@@ -427,7 +428,7 @@ void bowser_act_hit_mine(void) {
         o->oForwardVel = -400.0f;
         o->oVelY = 100.0f;
         o->oMoveAngleYaw = o->oBowserAngleToCentre + 0x8000;
-        o->oBowserEyesShut = 1;
+        o->oBowserEyesShut = 2;
     }
     if (o->oSubAction == 0) {
         cur_obj_init_animation_with_sound(25);
@@ -1212,10 +1213,17 @@ void bowser_open_eye_switch(struct Object *a0, struct GraphNodeSwitchCase *switc
             if (a0->oBowserUnk1AE > 2)
                 switchCase->selectedCase = 9;
             break;
-        case 9:
-            if (a0->oBowserUnk1AE > 2)
-                switchCase->selectedCase = 0;
+        case 3:
+            if (a0->oBowserUnk1AE > 2) {
+                switchCase->selectedCase = 4;
+                if (a0->oAngleVelYaw >= 0)
+                    switchCase->selectedCase = 0;
+            }
             break;
+        case 4:
+            if (a0->oAngleVelYaw >= 0)
+                switchCase->selectedCase = 3;
+            break;			
         case 5:
             if (a0->oBowserUnk1AE > 2) {
                 switchCase->selectedCase = 6;
@@ -1227,17 +1235,14 @@ void bowser_open_eye_switch(struct Object *a0, struct GraphNodeSwitchCase *switc
             if (a0->oAngleVelYaw <= 0)
                 switchCase->selectedCase = 5;
             break;
-        case 3:
-            if (a0->oBowserUnk1AE > 2) {
-                switchCase->selectedCase = 4;
-                if (a0->oAngleVelYaw >= 0)
-                    switchCase->selectedCase = 0;
-            }
+		case 8:
+            if (a0->oBowserUnk1AE > 2)
+                switchCase->selectedCase = 0;
             break;
-        case 4:
-            if (a0->oAngleVelYaw >= 0)
-                switchCase->selectedCase = 3;
-            break;
+        case 9:
+            if (a0->oBowserUnk1AE > 2)
+                switchCase->selectedCase = 0;
+            break;			
         default:
             switchCase->selectedCase = 0;
     }
@@ -1263,6 +1268,12 @@ Gfx *geo_switch_bowser_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *mtx) {
                 break;
             case 1: // eyes closed, blinking
                 switchCase->selectedCase = 2;
+                break;
+			case 2: // Hit Bomb
+                switchCase->selectedCase = 7;
+                break;
+			case 3: // Hit Bomb
+                switchCase->selectedCase = 8;
                 break;
         }
         obj->oBowserUnk1AE++;

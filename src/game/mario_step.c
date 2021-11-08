@@ -561,9 +561,9 @@ void apply_gravity(struct MarioState *m) {
     } else if (should_strengthen_gravity_for_jump_ascent(m)) {
         m->vel[1] /= 4.0f;
     } else if (m->action & ACT_FLAG_METAL_WATER) {
-        m->vel[1] -= 1.5f;
-        if (m->vel[1] < -37.5f) {
-            m->vel[1] = -37.5f;
+        m->vel[1] -= 2.0f;
+        if (m->vel[1] < -40.0f) {
+            m->vel[1] = -40.0f;
         }
     } else if ((m->flags & MARIO_WING_CAP) && m->vel[1] < 0.0f && (m->input & INPUT_A_DOWN)) {
         m->marioBodyState->wingFlutter = TRUE;

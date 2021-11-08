@@ -19,7 +19,7 @@ static Movtex ddd_movtex_area2_water_data[] = {
     MOV_TEX_4_BOX_TRIS(-2048,  -768),
     MOV_TEX_ROT(     ROTATE_CLOCKWISE),
     MOV_TEX_ALPHA(    0xA0),
-    MOV_TEX_DEFINE(  TEXTURE_WATER),
+    MOV_TEX_DEFINE(  TEXTURE_UNK_WATER),
     MOV_TEX_END(),
 };
 

@@ -1217,7 +1217,7 @@ s32 act_riding_shell_ground(struct MarioState *m) {
     }
 
     update_shell_speed(m);
-    set_mario_animation(m, m->actionArg == 0 ? MARIO_ANIM_BEND_KNESS_RIDING_SHELL : MARIO_ANIM_RIDING_SHELL);
+    set_mario_animation(m, m->actionArg == 1 ? MARIO_ANIM_BEND_KNESS_RIDING_SHELL : MARIO_ANIM_RIDING_SHELL);
 
     switch (perform_ground_step(m)) {
         case GROUND_STEP_LEFT_GROUND:
@@ -1435,8 +1435,17 @@ s32 common_slide_action_with_jump(struct MarioState *m, u32 stopAction, u32 jump
 
 s32 act_butt_slide(struct MarioState *m) {
     s32 cancel = common_slide_action_with_jump(m, ACT_BUTT_SLIDE_STOP, ACT_JUMP, ACT_BUTT_SLIDE_AIR,
-                                               MARIO_ANIM_SLIDE);
+                                               MARIO_ANIM_SLIDE_MOTIONLESS);
     tilt_body_butt_slide(m);
+	if (is_anim_at_end(m)){
+	if (m->intendedMag > 0.3f) {
+        set_mario_animation(m, MARIO_ANIM_SLIDE_ACCELE);
+    }
+	else if (m->intendedMag < -0.3f) {
+        set_mario_animation(m, MARIO_ANIM_SLIDE_BRAKE);
+    }
+	else set_mario_animation(m, MARIO_ANIM_SLIDE_MOTIONLESS);
+}	
     return cancel;
 }
 

@@ -946,7 +946,7 @@ static u32 set_mario_action_moving(struct MarioState *m, u32 action, UNUSED u32 
  */
 static u32 set_mario_action_submerged(struct MarioState *m, u32 action, UNUSED u32 actionArg) {
     if (action == ACT_METAL_WATER_JUMP || action == ACT_HOLD_METAL_WATER_JUMP) {
-        m->vel[1] = 32.0f;
+    set_mario_y_vel_based_on_fspeed(m, 42.0f, 0.0f);
     }
 
     return action;
@@ -1178,10 +1178,10 @@ s32 transition_submerged_to_walking(struct MarioState *m) {
  * non-submerged action. This also applies the water surface camera preset.
  */
 s32 set_water_plunge_action(struct MarioState *m) {
-    m->forwardVel = m->forwardVel / 4.0f;
+    m->forwardVel = m->forwardVel / 2.0f;
     m->vel[1] = m->vel[1] / 2.0f;
 
-    m->pos[1] = m->waterLevel - 100;
+//    m->pos[1] = m->waterLevel - 100;
 
     m->faceAngle[2] = 0;
 
