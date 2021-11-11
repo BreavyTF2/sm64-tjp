@@ -1437,15 +1437,16 @@ s32 act_butt_slide(struct MarioState *m) {
     s32 cancel = common_slide_action_with_jump(m, ACT_BUTT_SLIDE_STOP, ACT_JUMP, ACT_BUTT_SLIDE_AIR,
                                                MARIO_ANIM_SLIDE_MOTIONLESS);
     tilt_body_butt_slide(m);
-	if (is_anim_at_end(m)){
+#if 0 //Fix and add later
+	s32 anim;
 	if (m->intendedMag > 0.3f) {
-        set_mario_animation(m, MARIO_ANIM_SLIDE_ACCELE);
+        anim = MARIO_ANIM_SLIDE_ACCELE;
     }
 	else if (m->intendedMag < -0.3f) {
-        set_mario_animation(m, MARIO_ANIM_SLIDE_BRAKE);
+        anim = MARIO_ANIM_SLIDE_BRAKE;
     }
-	else set_mario_animation(m, MARIO_ANIM_SLIDE_MOTIONLESS);
-}	
+	else anim = MARIO_ANIM_SLIDE_MOTIONLESS;
+#endif	
     return cancel;
 }
 
@@ -1532,7 +1533,7 @@ s32 act_slide_kick_slide(struct MarioState *m) {
 
 s32 stomach_slide_action(struct MarioState *m, u32 stopAction, u32 airAction, s32 animation) {
     if (m->actionTimer == 5) {
-        if (!(m->input & INPUT_ABOVE_SLIDE) && (m->input & (INPUT_A_PRESSED || INPUT_B_PRESSED))) {
+        if (!(m->input & INPUT_ABOVE_SLIDE) && (m->input & (INPUT_A_PRESSED | INPUT_B_PRESSED))) {
 #ifdef VERSION_SH
             queue_rumble_data(5, 80);
 #endif
