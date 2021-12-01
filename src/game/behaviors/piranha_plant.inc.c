@@ -12,16 +12,8 @@
 void piranha_plant_act_idle(void) {
     cur_obj_become_intangible();
     cur_obj_init_animation_with_sound(8);
-
-#if BUGFIX_PIRANHA_PLANT_STATE_RESET
-    /**
-     * This call is necessary because a Piranha Plant may enter this state
-     * with a scale below 1, which would cause it to appear shrunken. See
-     * documentation for, and calls to, piranha_plant_reset_when_far().
-     */
-    cur_obj_scale(1);
-#endif
-
+	
+	cur_obj_scale(o->oPiranhaPlantNeutralScale/2);
     if (o->oDistanceToMario < 1200.0f) {
         o->oAction = PIRANHA_PLANT_ACT_SLEEPING;
     }
@@ -167,7 +159,7 @@ void piranha_plant_attacked(void) {
 void piranha_plant_act_shrink_and_die(void) {
     if (o->oTimer == 0) {
         cur_obj_play_sound_2(SOUND_OBJ_ENEMY_DEFEAT_SHRINK);
-        o->oPiranhaPlantScale = 1.0f;
+        o->oPiranhaPlantScale = o->oPiranhaPlantNeutralScale/2;
     }
 
     /**
@@ -218,11 +210,11 @@ void piranha_plant_act_respawn(void) {
      * sets the Piranha Plant's scale to 0, therefore the Piranha Plant will
      * grow from the ground unconditionally when in this state.
      */
-    if (o->oPiranhaPlantScale < 1.0) {
+    if (o->oPiranhaPlantScale < o->oPiranhaPlantNeutralScale/2) {
         // Grow by 0.02 per frame.
         o->oPiranhaPlantScale += 0.02;
     } else {
-        o->oPiranhaPlantScale = 1.0f;
+        o->oPiranhaPlantScale = o->oPiranhaPlantNeutralScale/2;
         o->oAction = PIRANHA_PLANT_ACT_IDLE;
     }
     cur_obj_scale(o->oPiranhaPlantScale);

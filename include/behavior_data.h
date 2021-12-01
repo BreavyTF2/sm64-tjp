@@ -204,6 +204,7 @@ extern const BehaviorScript bhvKoopaShell[];
 extern const BehaviorScript bhvKoopaShellFlame[];
 extern const BehaviorScript bhvToxBox[];
 extern const BehaviorScript bhvPiranhaPlant[];
+extern const BehaviorScript bhvSmallPiranhaPlant[];
 extern const BehaviorScript bhvLllHexagonalMesh[];
 extern const BehaviorScript bhvLllBowserPuzzlePiece[];
 extern const BehaviorScript bhvLllBowserPuzzle[];

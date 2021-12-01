@@ -25,4 +25,5 @@ extern const Gfx RCP_right2_0[];
 extern const Gfx RCP_right2_1[];
 extern const Gfx RCP_TitleLeft1[];
 extern const Gfx RCP_TitleRight2[];
+extern const Gfx RCP_TitleFace[];
 #endif // DEBUG_LEVEL_SELECT_H

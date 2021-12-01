@@ -37,7 +37,7 @@ void bhv_piranha_plant_bubble_loop(void) {
     f32 doneShrinkingFrame; // the first frame after shrinking is done
     f32 beginGrowingFrame;  // the frame just before growing begins
 
-    cur_obj_set_pos_relative(parent, 0, 72.0f, 180.0f);
+    cur_obj_set_pos_relative(parent, 0, (72.0f*(o->parentObj->oPiranhaPlantNeutralScale/2)), (180.0f*(o->parentObj->oPiranhaPlantNeutralScale/2)));
 
     switch (o->oAction) {
         case PIRANHA_PLANT_BUBBLE_ACT_IDLE:
@@ -101,5 +101,5 @@ void bhv_piranha_plant_bubble_loop(void) {
             scale = 1.0f; // this has no effect; it is set to 0 in the idle state
             break;
     }
-    cur_obj_scale(scale);
+    cur_obj_scale((o->parentObj->oPiranhaPlantNeutralScale/2)*scale);
 }

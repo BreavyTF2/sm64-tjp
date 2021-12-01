@@ -331,8 +331,8 @@ const Gfx piranha_plant_seg6_dl_06015EA8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, piranha_plant_seg6_texture_060133F8),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
-    gsSPLight(&piranha_plant_seg6_lights_060113C8.l, 1),
-    gsSPLight(&piranha_plant_seg6_lights_060113C8.a, 2),
+    gsSPLight(&piranha_plant_seg6_lights_060113B0.l, 1),
+    gsSPLight(&piranha_plant_seg6_lights_060113B0.a, 2),
     gsSPVertex(piranha_plant_seg6_vertex_06015990, 15, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  5, 0x0),
     gsSP2Triangles( 6,  7,  3, 0x0,  3,  5,  8, 0x0),
@@ -561,8 +561,8 @@ const Gfx piranha_plant_seg6_dl_060167B8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, piranha_plant_seg6_texture_060133F8),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
-    gsSPLight(&piranha_plant_seg6_lights_060113C8.l, 1),
-    gsSPLight(&piranha_plant_seg6_lights_060113C8.a, 2),
+    gsSPLight(&piranha_plant_seg6_lights_060113B0.l, 1),
+    gsSPLight(&piranha_plant_seg6_lights_060113B0.a, 2),
     gsSPVertex(piranha_plant_seg6_vertex_06016270, 15, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  5, 0x0),
     gsSP2Triangles( 5,  6,  3, 0x0,  7,  6,  5, 0x0),
@@ -613,8 +613,8 @@ const Gfx piranha_plant_seg6_dl_06016960[] = {
 
 // 0x060169A8 - 0x060169E8
 const Gfx piranha_plant_seg6_dl_060169A8[] = {
-    gsSPLight(&piranha_plant_seg6_lights_060113C8.l, 1),
-    gsSPLight(&piranha_plant_seg6_lights_060113C8.a, 2),
+    gsSPLight(&piranha_plant_seg6_lights_060113B0.l, 1),
+    gsSPLight(&piranha_plant_seg6_lights_060113B0.a, 2),
     gsSPVertex(piranha_plant_seg6_vertex_060166E0, 7, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  2,  1,  3, 0x0),
     gsSP2Triangles( 3,  4,  5, 0x0,  5,  4,  6, 0x0),
