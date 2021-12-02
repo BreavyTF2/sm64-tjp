@@ -41,3 +41,11 @@ const GeoLayout lakitu_geo[] = {
    GEO_CLOSE_NODE(),
    GEO_END(),
 };
+
+const GeoLayout cloud_geo[] = {
+   GEO_CULLING_RADIUS(200),
+   GEO_OPEN_NODE(),
+      GEO_DISPLAY_LIST(LAYER_TRANSPARENT, cloud_seg5_dl_05016040),
+   GEO_CLOSE_NODE(),
+   GEO_END(),
+};

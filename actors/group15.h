@@ -5,6 +5,7 @@
 
 // lakitu_cameraman
 extern const GeoLayout lakitu_geo[];
+extern const GeoLayout cloud_geo[];
 extern const Gfx lakitu_seg6_dl_06003C80[];
 extern const Gfx lakitu_seg6_dl_06003DB0[];
 extern const Gfx lakitu_seg6_dl_06003E30[];
@@ -23,6 +24,8 @@ extern const Gfx lakitu_seg6_dl_06005360[];
 extern const Gfx lakitu_seg6_dl_06005598[];
 extern const Gfx lakitu_seg6_dl_060055E8[];
 extern const Gfx lakitu_seg6_dl_06005610[];
+extern const Gfx cloud_seg5_dl_05016008[];
+extern const Gfx cloud_seg5_dl_05016040[];
 extern const struct Animation *const lakitu_seg6_anims_060058F8[];
 
 // mips

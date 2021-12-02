@@ -43,7 +43,7 @@ const LevelScript level_castle_entry[] = {
  //       SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0002, /*seq*/ SEQ_LEVEL_SLIDE),
          JUMP_LINK(script_func_local_1),
 		 
-		         OBJECT(/*model*/ MODEL_NONE, /*pos*/ -67, 1800, -16, /*angle*/ 0, 270, 0, /*behParam*/ 0x000A0000, /*beh*/ bhvAirborneWarp),
+		         OBJECT(/*model*/ MODEL_NONE, /*pos*/ 0, 2024, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x000A0000, /*beh*/ bhvAirborneWarp),
         WARP_NODE(/*id*/ 0x0A, /*destLevel*/ LEVEL_UNKNOWN_1, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ 0x0B, /*destLevel*/ LEVEL_UNKNOWN_1, /*destArea*/ 0x01, /*destNode*/ 0x0C, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ 0x0C, /*destLevel*/ LEVEL_UNKNOWN_1, /*destArea*/ 0x01, /*destNode*/ 0x0B, /*flags*/ WARP_NO_CHECKPOINT),

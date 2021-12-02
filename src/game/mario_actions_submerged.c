@@ -1239,7 +1239,11 @@ static s32 update_metal_water_jump_speed(struct MarioState *m) {
     f32 dragThreshold;
     s16 intendedDYaw;
     f32 intendedMag;
+    f32 waterSurface = m->waterLevel - 100;
 
+    if (m->vel[1] > 0.0f && m->pos[1] > waterSurface) {
+        return TRUE;
+    }
 		dragThreshold = 32.0f;
         m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.35f, 0.35f);
 
@@ -1419,7 +1423,7 @@ static s32 act_metal_water_jump(struct MarioState *m) {
     }
 
     if (update_metal_water_jump_speed(m)) {
-        return set_mario_action(m, ACT_WATER_JUMP, 1);
+        return set_mario_action(m, ACT_WATER_JUMP, 0);
     }
 
     play_metal_water_jumping_sound(m, FALSE);

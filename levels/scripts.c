@@ -337,6 +337,7 @@ const LevelScript script_func_global_15[] = {
 const LevelScript script_func_global_16[] = {
     LOAD_MODEL_FROM_GEO(MODEL_MIPS,                    mips_geo),
     LOAD_MODEL_FROM_GEO(MODEL_LAKITU,                  lakitu_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_FWOOSH,                  cloud_geo),
     LOAD_MODEL_FROM_GEO(MODEL_TOAD,                    toad_geo),
     RETURN(),
 };

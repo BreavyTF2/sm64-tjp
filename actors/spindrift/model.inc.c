@@ -130,3 +130,93 @@ const Gfx spindrift_seg5_dl_05000328[] = {
     gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
+static Vtx vtx_furafura_anim_waitfly0[]={
+	{28,-6,21,0,0,0,126,-3,11,0},
+	{42,-23,-134,0,0,0,126,-3,11,0},
+	{42,100,-96,0,0,0,126,-3,11,0},
+};
+static Vtx vtx_furafura_anim_waitfly2[]={
+	{28,18,12,0,0,0,126,10,6,0},
+	{42,-135,-16,0,0,0,126,10,6,0},
+	{42,-63,-124,0,0,0,126,10,6,0},
+};
+static Vtx vtx_furafura_anim_waitfly4[]={
+	{28,17,-13,0,0,0,126,9,-7,0},
+	{42,-55,124,0,0,0,126,9,-7,0},
+	{42,-137,23,0,0,0,126,9,-7,0},
+};
+static Vtx vtx_furafura_anim_waitfly5[]={
+	{28,-10,-20,0,0,0,126,-4,-11,0},
+	{42,101,89,0,0,0,126,-4,-11,0},
+	{42,-19,138,0,0,0,126,-4,-11,0},
+};
+static Vtx vtx_furafura_anim_waitfly6[]={
+	{28,-22,0,0,0,0,126,-12,0,0},
+	{42,122,-62,0,0,0,126,-12,0,0},
+	{42,122,68,0,0,0,126,-12,0,0},
+};
+
+static Vtx vtx_furafura_anim_waitfly11[]={
+	{36,-110,-44,0,0,0,68,-106,0,0},
+	{83,-80,0,0,0,0,68,-106,0,0},
+	{36,-110,44,0,0,0,68,-106,0,0},
+};
+
+const Gfx RCP_furafura_anim_waitfly0[]={
+	gsSPClearGeometryMode( G_CULL_BACK ),
+    gsSPLight(&spindrift_lights_unused1.l, 1),
+    gsSPLight(&spindrift_lights_unused1.a, 2),
+	gsSPVertex(&vtx_furafura_anim_waitfly0[0],3,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSPSetGeometryMode( G_CULL_BACK ),
+	gsSPEndDisplayList()
+};
+const Gfx RCP_furafura_anim_waitfly2[]={
+	gsSPClearGeometryMode( G_CULL_BACK ),
+    gsSPLight(&spindrift_lights_unused1.l, 1),
+    gsSPLight(&spindrift_lights_unused1.a, 2),
+	gsSPVertex(&vtx_furafura_anim_waitfly2[0],3,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSPSetGeometryMode( G_CULL_BACK ),
+	gsSPEndDisplayList()
+};
+const Gfx RCP_furafura_anim_waitfly4[]={
+	gsSPClearGeometryMode( G_CULL_BACK ),
+    gsSPLight(&spindrift_lights_unused1.l, 1),
+    gsSPLight(&spindrift_lights_unused1.a, 2),
+	gsSPVertex(&vtx_furafura_anim_waitfly4[0],3,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSPSetGeometryMode( G_CULL_BACK ),
+	gsSPEndDisplayList()
+};
+const Gfx RCP_furafura_anim_waitfly5[]={
+	gsSPClearGeometryMode( G_CULL_BACK ),
+    gsSPLight(&spindrift_lights_unused1.l, 1),
+    gsSPLight(&spindrift_lights_unused1.a, 2),
+	gsSPVertex(&vtx_furafura_anim_waitfly5[0],3,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSPSetGeometryMode( G_CULL_BACK ),
+	gsSPEndDisplayList()
+};
+const Gfx RCP_furafura_anim_waitfly6[]={
+	gsSPClearGeometryMode( G_CULL_BACK ),
+    gsSPLight(&spindrift_lights_unused1.l, 1),
+    gsSPLight(&spindrift_lights_unused1.a, 2),
+	gsSPVertex(&vtx_furafura_anim_waitfly6[0],3,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSPSetGeometryMode( G_CULL_BACK ),
+	gsSPEndDisplayList()
+};
+const Gfx RCP_furafura_anim_waitfly11[]={
+	gsSPClearGeometryMode( G_CULL_BACK ),
+    gsSPLight(&spindrift_lights_unused4.l, 1),
+    gsSPLight(&spindrift_lights_unused4.a, 2),
+	gsSPVertex(&vtx_furafura_anim_waitfly11[0],3,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSPSetGeometryMode( G_CULL_BACK ),
+	gsSPEndDisplayList()
+};
+#pragma GCC diagnostic pop
+

@@ -352,7 +352,6 @@
 "actors/spindrift/spindrift_face.rgba16.png": [32,32,2048,{"jp":[1436272,1744],"us":[1443440,1744],"eu":[1315408,1744],"sh":[1291920,1744]}],
 "actors/spindrift/spindrift_head.rgba16.png": [32,32,2048,{"jp":[1436272,7888],"us":[1443440,7888],"eu":[1315408,7888],"sh":[1291920,7888]}],
 "actors/spindrift/spindrift_leaf.rgba16.png": [32,32,2048,{"jp":[1436272,5840],"us":[1443440,5840],"eu":[1315408,5840],"sh":[1291920,5840]}],
-"actors/spindrift/spindrift_petal.rgba16.png": [32,32,2048,{"jp":[1436272,3792],"us":[1443440,3792],"eu":[1315408,3792],"sh":[1291920,3792]}],
 "actors/springboard/springboard_base_unused.rgba16.png": [32,32,2048,{"jp":[1457744,2072],"us":[1464912,2072],"eu":[1336880,2072],"sh":[1313392,2072]}],
 "actors/springboard/springboard_top_unused.rgba16.png": [32,32,2048,{"jp":[1457744,24],"us":[1464912,24],"eu":[1336880,24],"sh":[1313392,24]}],
 "actors/stomp_smoke/stomp_smoke_0.ia16.png": [32,32,2048,{"jp":[1125200,139592],"us":[1132368,139592],"eu":[1004336,139592],"sh":[980848,139592]}],
