@@ -290,6 +290,7 @@ const LevelScript script_func_global_11[] = {
 };
 
 const LevelScript script_func_global_12[] = {
+	LOAD_MODEL_FROM_GEO(MODEL_CLOUD,                  cloud2_geo),
     LOAD_MODEL_FROM_GEO(MODEL_ENEMY_LAKITU,            enemy_lakitu_geo),
     LOAD_MODEL_FROM_GEO(MODEL_SPINY_BALL,              spiny_ball_geo),
     LOAD_MODEL_FROM_GEO(MODEL_SPINY,                   spiny_geo),
@@ -337,7 +338,7 @@ const LevelScript script_func_global_15[] = {
 const LevelScript script_func_global_16[] = {
     LOAD_MODEL_FROM_GEO(MODEL_MIPS,                    mips_geo),
     LOAD_MODEL_FROM_GEO(MODEL_LAKITU,                  lakitu_geo),
-	LOAD_MODEL_FROM_GEO(MODEL_FWOOSH,                  cloud_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_CLOUD,                  cloud_geo),
     LOAD_MODEL_FROM_GEO(MODEL_TOAD,                    toad_geo),
     RETURN(),
 };

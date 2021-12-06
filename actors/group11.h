@@ -20,6 +20,7 @@ extern const Gfx bubba_seg5_dl_05005978[];
 
 // lakitu_enemy
 extern const GeoLayout enemy_lakitu_geo[];
+extern const GeoLayout cloud2_geo[];
 extern const Gfx lakitu_enemy_seg5_dl_05012760[];
 extern const Gfx lakitu_enemy_seg5_dl_05012890[];
 extern const Gfx lakitu_enemy_seg5_dl_05012910[];
@@ -34,6 +35,8 @@ extern const Gfx lakitu_enemy_seg5_dl_050134A8[];
 extern const Gfx lakitu_enemy_seg5_dl_050136A0[];
 extern const Gfx lakitu_enemy_seg5_dl_05013860[];
 extern const Gfx lakitu_enemy_seg5_dl_050138B0[];
+extern const Gfx cloud2_seg5_dl_05016008[];
+extern const Gfx cloud2_seg5_dl_05016040[];
 extern const struct Animation *const lakitu_enemy_seg5_anims_050144D4[];
 
 // spiny

@@ -10,7 +10,8 @@
 #define		STAGE13_FOG_R		41/3
 #define		STAGE13_FOG_G		41/3
 #define		STAGE13_FOG_B		197/3
-#define		STAGE13_FOG_START	970
+#define		STAGE13_FOG_START	940
+#define		STAGE13B_FOG_START	900
 #include "make_const_nonconst.h"
 #include "levels/thi/texture.inc.c"
 #include "levels/thi/areas/1/1/model.inc.c" // Area 2 defines a share path to load these DLs as part of its geo script.
@@ -21,7 +22,6 @@
 #include "levels/thi/areas/2/1/model.inc.c" // This looks a little weird being here but look at the usage and it makes sense.
 #include "levels/thi/areas/1/6/model.inc.c"
 #include "levels/thi/areas/1/7/model.inc.c"
-#include "levels/thi/areas/3/1/model.inc.c"
 #include "levels/thi/areas/3/2/model.inc.c"
 #include "levels/thi/areas/3/3/model.inc.c"
 #include "levels/thi/areas/3/4/model.inc.c"

@@ -387,7 +387,6 @@ static const Vtx blargg_seg5_vertex_050057E0[] = {
 // 0x050058D0 - 0x05005A60
 const Gfx blargg_seg5_dl_050058D0[] = {
 	gsDPPipeSync(),
-	gsSPClearGeometryMode(G_SHADING_SMOOTH),
     gsSPLight(&blargg_seg5_lights_05004758.l, 1),
     gsSPLight(&blargg_seg5_lights_05004758.a, 2),
     gsSPVertex(blargg_seg5_vertex_050047A0, 16, 0),
@@ -419,14 +418,12 @@ const Gfx blargg_seg5_dl_050058D0[] = {
     gsSP2Triangles( 4, 10,  1, 0x0,  4,  7, 11, 0x0),
     gsSP1Triangle( 1, 10,  8, 0x0),
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-	gsSPSetGeometryMode(G_SHADING_SMOOTH),
     gsSPEndDisplayList(),
 };
 
 // 0x05005A60 - 0x05005D00
 const Gfx blargg_seg5_dl_05005A60[] = {
 	gsDPPipeSync(),
-	gsSPClearGeometryMode(G_SHADING_SMOOTH),
     gsSPLight(&blargg_seg5_lights_05004758.l, 1),
     gsSPLight(&blargg_seg5_lights_05004758.a, 2),
     gsSPVertex(blargg_seg5_vertex_05004BE0, 16, 0),
@@ -477,14 +474,12 @@ const Gfx blargg_seg5_dl_05005A60[] = {
     gsSP2Triangles( 3,  4,  5, 0x0,  6,  7,  5, 0x0),
     gsSP2Triangles( 8,  6,  5, 0x0,  9,  0,  2, 0x0),
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-	gsSPSetGeometryMode(G_SHADING_SMOOTH),
     gsSPEndDisplayList(),
 };
 
 // 0x05005D00 - 0x05005EB8
 const Gfx blargg_seg5_dl_05005D00[] = {
 	gsDPPipeSync(),
-	gsSPClearGeometryMode(G_SHADING_SMOOTH),
     gsSPLight(&blargg_seg5_lights_05004758.l, 1),
     gsSPLight(&blargg_seg5_lights_05004758.a, 2),
     gsSPVertex(blargg_seg5_vertex_050053E0, 16, 0),
@@ -520,6 +515,5 @@ const Gfx blargg_seg5_dl_05005D00[] = {
     gsSP2Triangles( 8,  6, 11, 0x0, 14,  4,  7, 0x0),
     gsSP1Triangle(14,  7,  0, 0x0),
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-	gsSPSetGeometryMode(G_SHADING_SMOOTH),
     gsSPEndDisplayList(),
 };

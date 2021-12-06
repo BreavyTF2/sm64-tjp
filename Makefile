@@ -14,7 +14,7 @@ default: all
 # Version of the game to build
 VERSION ?= us
 # Graphics microcode used
-GRUCODE ?= f3dex2
+GRUCODE ?= f3dzex
 # If COMPARE is 1, check the output sha1sum when building 'all'
 COMPARE ?= 1
 # If NON_MATCHING is 1, define the NON_MATCHING and AVOID_UB macros when building (recommended)
@@ -531,9 +531,9 @@ $(BUILD_DIR)/assets/demo_data.c: assets/demo_data.json $(wildcard assets/demos/*
 ifeq ($(COMPILER),ido)
 # Source code
 $(BUILD_DIR)/levels/%.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/actors/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/actors/%.o: OPT_FLAGS := -O2
 $(BUILD_DIR)/bin/%.o: OPT_FLAGS := -O3
-$(BUILD_DIR)/src/goddard/%.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/src/goddard/%.o: OPT_FLAGS := -O3
 $(BUILD_DIR)/src/goddard/%.o: MIPSISET := -mips1
 $(BUILD_DIR)/lib/src/%.o: OPT_FLAGS := -O2
 $(BUILD_DIR)/lib/src/math/ll%.o: MIPSISET := -mips3 -32
@@ -566,8 +566,8 @@ $(BUILD_DIR)/src/audio/load.o: OPT_FLAGS := -O2 -framepointer -Wo,-loopunroll,0
 # acpp, which needs -Wp,-+ to handle C++-style comments.
 # All other files than external.c should really use copt, but only a few have
 # been matched so far.
-$(BUILD_DIR)/src/audio/effects.o: OPT_FLAGS := -O2 -Wo,-loopunroll,0 -sopt,-inline=sequence_channel_process_sound,-scalaroptimize=1 -Wp,-+
-$(BUILD_DIR)/src/audio/synthesis.o: OPT_FLAGS := -O2 -sopt,-scalaroptimize=1 -Wp,-+
+$(BUILD_DIR)/src/audio/effects.o: OPT_FLAGS := -O3 -Wo,-loopunroll,0 -sopt,-inline=sequence_channel_process_sound,-scalaroptimize=1 -Wp,-+
+$(BUILD_DIR)/src/audio/synthesis.o: OPT_FLAGS := -O3 -sopt,-scalaroptimize=1 -Wp,-+
 #$(BUILD_DIR)/src/audio/seqplayer.o: OPT_FLAGS := -O2 -sopt,-inline_manual,-scalaroptimize=1 -Wp,-+ #-Wo,-v,-bb,-l,seqplayer_list.txt
 
 # Add a target for build/eu/src/audio/*.copt to make it easier to see debug

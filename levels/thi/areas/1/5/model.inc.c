@@ -40,7 +40,7 @@ const Gfx thi_seg7_dl_070073C0[] = {
 	gsDPSetRenderMode(G_RM_AA_ZB_XLU_DECAL, G_RM_NOOP2),
 	gsSPClearGeometryMode(G_FOG),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-	gsSPSetGeometryMode(G_SHADING_SMOOTH),
+    gsSPSetGeometryMode(G_SHADING_SMOOTH),
 	gsDPSetEnvColor(255, 255, 255, 255),
     gsSPEndDisplayList(),
 };
