@@ -55,7 +55,7 @@ const LevelScript level_sa_entry[] = {
     END_AREA(),
 
     FREE_LEVEL_POOL(),
-    MARIO_POS(/*area*/ 1, /*yaw*/ 90, /*pos*/ 0, -1535, 0),
+    MARIO_POS(/*area*/ 1, /*yaw*/ 64, /*pos*/ 0, -1535, 0),
     CALL(/*arg*/ 0, /*func*/ lvl_init_or_update),
     CALL_LOOP(/*arg*/ 1, /*func*/ lvl_init_or_update),
     CLEAR_LEVEL(),

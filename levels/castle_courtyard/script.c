@@ -64,7 +64,7 @@ const LevelScript level_castle_courtyard_entry[] = {
     END_AREA(),
 
     FREE_LEVEL_POOL(),
-    MARIO_POS(/*area*/ 1, /*yaw*/ 0, /*pos*/ -14, 0, -201),
+    MARIO_POS(/*area*/ 1, /*yaw*/ 128, /*pos*/ 15, 0, 202),
     CALL(/*arg*/ 0, /*func*/ lvl_init_or_update),
     CALL_LOOP(/*arg*/ 1, /*func*/ lvl_init_or_update),
     CLEAR_LEVEL(),

@@ -92,7 +92,7 @@ const LevelScript level_sl_entry[] = {
     END_AREA(),
 
     AREA(/*index*/ 2, sl_geo_000484),
-        OBJECT(/*model*/ MODEL_NONE, /*pos*/ 0, 0, 2867, /*angle*/ 0, 180, 0, /*behParam*/ 0x000A0000, /*beh*/ bhvInstantActiveWarp),
+        OBJECT(/*model*/ MODEL_NONE, /*pos*/ 0, 0, 2867, /*angle*/ 0, 128, 0, /*behParam*/ 0x000A0000, /*beh*/ bhvInstantActiveWarp),
         OBJECT(/*model*/ MODEL_NONE, /*pos*/ 0, 0, 3277, /*angle*/ 0,   0, 0, /*behParam*/ 0x140B0000, /*beh*/ bhvWarp),
         WARP_NODE(/*id*/ 0x0A, /*destLevel*/ LEVEL_SL, /*destArea*/ 0x02, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ 0x0B, /*destLevel*/ LEVEL_SL, /*destArea*/ 0x01, /*destNode*/ 0x0B, /*flags*/ WARP_NO_CHECKPOINT),

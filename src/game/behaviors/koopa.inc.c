@@ -48,24 +48,6 @@ static u8 sKoopaShelledAttackHandlers[] = {
 };
 
 /**
- * Data to control the behavior of each instance of Koopa the Quick.
- */
-struct KoopaTheQuickProperties {
-    s16 initText;
-    s16 winText;
-    void const *path;
-    Vec3s starPos;
-};
-
-/**
- * Properties for the BoB race and the THI race.
- */
-static struct KoopaTheQuickProperties sKoopaTheQuickProperties[] = {
-    { DIALOG_005, DIALOG_007, bob_seg7_trajectory_koopa, { 3030, 4500, -4600 } },
-    { DIALOG_009, DIALOG_031, thi_seg7_trajectory_koopa, { 7100, -1300, -6000 } }
-};
-
-/**
  * Initialization function.
  */
 void bhv_koopa_init(void) {
@@ -516,7 +498,7 @@ static void koopa_the_quick_act_wait_before_race(void) {
  */
 static void koopa_the_quick_act_show_init_text(void) {
     s32 response = obj_update_race_proposition_dialog(
-        sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].initText);
+        DIALOG_005);
     
 
     if (response == 1) {
@@ -526,7 +508,7 @@ static void koopa_the_quick_act_show_init_text(void) {
 
         o->parentObj = cur_obj_nearest_object_with_behavior(bhvKoopaRaceEndpoint);
         o->oPathedStartWaypoint = o->oPathedPrevWaypoint =
-            segmented_to_virtual(sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].path);
+            segmented_to_virtual(bob_seg7_trajectory_koopa);
 
         o->oKoopaTurningAwayFromWall = FALSE;
         o->oFlags |= OBJ_FLAG_ACTIVE_FROM_AFAR;
@@ -619,8 +601,8 @@ static void koopa_the_quick_act_race(void) {
                         // Move faster if mario has already finished the race or
                         // cheated by shooting from cannon
                         o->oKoopaAgility = 8.0f;
-//                    } else if (o->oKoopaTheQuickRaceIndex != KOOPA_THE_QUICK_BOB_INDEX) {
-//                       o->oKoopaAgility = 6.0f;
+                   } else if (gMarioState->numStars >= 113) {
+                       o->oKoopaAgility = 8.0f;
                     } else {
                         o->oKoopaAgility = 6.0f;
                     }
@@ -720,8 +702,7 @@ static void koopa_the_quick_act_after_race(void) {
                     o->parentObj->oKoopaRaceEndpointUnk100 = DIALOG_006;
                 } else {
                     // Mario won
-                    o->parentObj->oKoopaRaceEndpointUnk100 =
-                        sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].winText;
+                    o->parentObj->oKoopaRaceEndpointUnk100 = DIALOG_007;
                 }
             } else {
                 // KtQ won
@@ -737,9 +718,7 @@ static void koopa_the_quick_act_after_race(void) {
             o->oTimer = 0;
         }
     } else if (o->parentObj->oKoopaRaceEndpointRaceStatus != 0) {
-        spawn_default_star(sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].starPos[0],
-                   sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].starPos[1],
-                   sKoopaTheQuickProperties[o->oKoopaTheQuickRaceIndex].starPos[2]);
+        spawn_default_star(3030, 4500, -4600);
 
         o->parentObj->oKoopaRaceEndpointRaceStatus = 0;
     }

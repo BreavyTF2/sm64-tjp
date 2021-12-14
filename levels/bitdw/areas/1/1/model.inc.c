@@ -27,7 +27,7 @@ static Vtx vtx_e1_pika_0[] = {
 };
 
 static Gfx gfx_e1_pika_0[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, bitdw_seg7_texture_07002000),
+    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, bitdw_seg7_texture_07002000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
 	gsSPVertex(&vtx_e1_pika_0[0], 12, 0), 
@@ -69,14 +69,14 @@ const Gfx bitdw_seg7_dl_070020C8[] = {
 };
 const Gfx gfx_e1_pika[] = {
 	gsDPPipeSync(),
-	gsDPSetEnvColor(255,255,255,180),
-	gsDPSetCombineMode(G_CC_MODULATERGBFADEA, G_CC_MODULATERGBFADEA),
+	gsDPSetEnvColor(255, 255, 255, 180),
+	gsDPSetCombineMode(G_CC_MODULATEIFADEA, G_CC_MODULATEIFADEA),
 	gsSPClearGeometryMode(G_LIGHTING| G_CULL_BACK), 
-	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
+	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
 
 	gsSPTexture(0xffff,0xffff, 0, 0, G_ON),
 
-	gs_Tani_SetUpTileDescrip(G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32,  0, 0, G_TX_CLAMP|G_TX_NOMIRROR, 5, G_TX_NOLOD, G_TX_CLAMP|G_TX_NOMIRROR, 5, G_TX_NOLOD),
+	gs_Tani_SetUpTileDescrip(G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32,  0, 0, G_TX_CLAMP|G_TX_NOMIRROR, 5, G_TX_NOLOD, G_TX_CLAMP|G_TX_NOMIRROR, 5, G_TX_NOLOD),
 
 		gsSPDisplayList(gfx_e1_pika_0),
 
@@ -85,7 +85,7 @@ const Gfx gfx_e1_pika[] = {
 	gsDPPipeSync(),
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPSetGeometryMode(G_LIGHTING| G_CULL_BACK), 
-	gsDPSetEnvColor(255,255,255,255),
+	gsDPSetEnvColor(255, 255, 255, 255),
 	gsSPEndDisplayList() 
 };
 #pragma GCC diagnostic pop

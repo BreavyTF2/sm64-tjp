@@ -1,0 +1,10 @@
+Developer:
+Alieneer/Motosman
+
+
+
+Contributors:
+dietz nuts: Providing the script to me and supporting me along the way.
+Xdelta_: Contributed some code.
+=|[Rick]|=: Recreated the hud icons.
+

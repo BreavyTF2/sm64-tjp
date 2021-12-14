@@ -3052,7 +3052,7 @@ const Gfx RCP_TitleUltraA[]={
 
 
 static Lights1 mat_mariotitle_cube = gdSPDefLights1(
-	255,153,24l,
+	255,153,24,
 	255,153,24,
 	255,255,255
 );

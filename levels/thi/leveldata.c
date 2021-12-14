@@ -32,6 +32,5 @@
 #include "levels/thi/areas/2/macro.inc.c"
 #include "levels/thi/areas/3/macro.inc.c"
 #include "levels/thi/areas/1/6/collision.inc.c"
-#include "levels/thi/areas/1/trajectory.inc.c"
 #include "levels/thi/areas/1/movtext.inc.c"
 #include "levels/thi/areas/2/movtext.inc.c"

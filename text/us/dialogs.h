@@ -152,21 +152,7 @@ appear in the meadow\n\
 across the bridge."))
 
 DEFINE_DIALOG(DIALOG_009, 1, 5, 30, 200, _("\
-Long time, no see! Wow,\n\
-have you gotten fast!\n\
-Have you been training\n\
-on the sly, or is it the\n\
-power of the Stars?\n\
-I've been feeling down\n\
-about losing the last\n\
-race. This is my home\n\
-course--how about a\n\
-rematch?\n\
-The goal is in\n\
-Windswept Valley.\n\
-Ready?\n\
-\n\
-//Go//// Don't Go"))
+")) //KTQ THI Text
 
 DEFINE_DIALOG(DIALOG_010, 1, 4, 30, 200, _("\
 You've stepped on the\n\
@@ -368,15 +354,7 @@ the Lakitu Bros.,\n\
 signing off."))
 
 DEFINE_DIALOG(DIALOG_031, 1, 5, 30, 200, _("\
-No way! You beat me...\n\
-again!! And I just spent\n\
-my entire savings on\n\
-these new Koopa\n\
-Mach 1 Sprint shoes!\n\
-Here, I guess I have to\n\
-hand over this Star to\n\
-the winner of the race.\n\
-Congrats, Mario!"))
+"))//Koopa the Quick THI Win Message, removed for isle
 
 DEFINE_DIALOG(DIALOG_032, 1, 5, 30, 200, _("\
 If you get the Wing Cap,\n\
@@ -1986,31 +1964,37 @@ Enjoy!!!"
 
 DEFINE_DIALOG(DIALOG_161, 1, 4, 30, 200, _("\
 Oh Hello Mario\n\
-I've been hiding here\n\
-for a long time.\n\
+I've been waiting for you\n\
+to show up.\n\
 I overheard that I might\n\
 see you if I waited here,\n\
 but I'd just about given\n\
-up hope!\n\
+up hope to meet you.\n\
 I've heard a lot about you\n\
 So is it true? Have you\n\
 finally beaten Bowser? And\n\
 restored all of the Stars\n\
 to the castle?\n\
-Are the toads no longer\n\
-inside the walls?\n\
-Have you encountered\n\
-a floating head?\n\
-Is the Bob-omb war over?\n\
+Is the Bob-omb war over,\n\
 and where is Luigi?\n\
-Enough talk, I got\n\
+Enough chit-chat, I've got\n\
 something for you.\n\
 『Thanks for Playing, the\n\
 Junuary Project! This hack\n\
 couldn't have been done\n\
 without your support.』\n\
 Thank you all!\n\
-From Project Dev Alieneer"))
+From Project Dev Alieneer\n\
+\n\
+\n\
+PS: Go back to that locked \n\
+area in the castle.\n\
+\n\
+\n\
+Level Select:\n\
+Press C-Left & C-Right &\n\
+Z & START\n\
+at the Title Screen."))
 
 DEFINE_DIALOG(DIALOG_162, 1, 4, 30, 200, _("\
 No, no, no! Not you\n\
@@ -2075,9 +2059,9 @@ from running around\n\
 this post."))
 
 DEFINE_DIALOG(DIALOG_166, 1, 4, 30, 200, _("\
-I'll be back soon.\n\
-I'm out training now,\n\
-so come back later.\n\
+I moved to Battle Field.\n\
+So I'll stash this star\n\
+somewhere safe for now.\n\
 //--Koopa the Quick"))
 
 DEFINE_DIALOG(DIALOG_167, 1, 4, 30, 200, _("\
