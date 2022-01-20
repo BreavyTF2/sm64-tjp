@@ -22,7 +22,7 @@ NON_MATCHING ?= 1
 # Build for the N64 (turn this off for ports)
 TARGET_N64 ?= 1
 # Compiler to use (ido or gcc)
-COMPILER ?= gcc
+COMPILER ?= ido
 
 ifeq ($(COMPILER),gcc)
   NON_MATCHING := 1
@@ -180,7 +180,7 @@ endif
 
 # Use a default opt flag for gcc
 ifeq ($(COMPILER),gcc)
-  OPT_FLAGS := -Ofast
+  OPT_FLAGS := -Os
 # Use -Os for N64, Use -OFast for emulator
 endif
 
@@ -562,6 +562,7 @@ else
 
 $(BUILD_DIR)/src/audio/%.o: OPT_FLAGS := -O2 -Wo,-loopunroll,0
 $(BUILD_DIR)/src/audio/load.o: OPT_FLAGS := -O2 -framepointer -Wo,-loopunroll,0
+$(BUILD_DIR)/src/audio/external.o: OPT_FLAGS := -O3 -Wo,-loopunroll,0
 
 # The source-to-source optimizer copt is enabled for audio. This makes it use
 # acpp, which needs -Wp,-+ to handle C++-style comments.
@@ -569,6 +570,7 @@ $(BUILD_DIR)/src/audio/load.o: OPT_FLAGS := -O2 -framepointer -Wo,-loopunroll,0
 # been matched so far.
 $(BUILD_DIR)/src/audio/effects.o: OPT_FLAGS := -O3 -Wo,-loopunroll,0 -sopt,-inline=sequence_channel_process_sound,-scalaroptimize=1 -Wp,-+
 $(BUILD_DIR)/src/audio/synthesis.o: OPT_FLAGS := -O3 -sopt,-scalaroptimize=1 -Wp,-+
+$(BUILD_DIR)/src/audio/seqplayer.o: OPT_FLAGS := -O3
 #$(BUILD_DIR)/src/audio/seqplayer.o: OPT_FLAGS := -O2 -sopt,-inline_manual,-scalaroptimize=1 -Wp,-+ #-Wo,-v,-bb,-l,seqplayer_list.txt
 
 # Add a target for build/eu/src/audio/*.copt to make it easier to see debug

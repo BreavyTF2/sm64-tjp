@@ -1,10 +1,9 @@
 const GeoLayout whomp_geo[] = {
  hmsHeader(1000)
  hmsBegin()
-  GEO_SHADOW(0x01 + SHADOW_RECTANGLE_HARDCODED_OFFSET, 0xB4, 0),
  hmsScale(0.25f)
     hmsBegin()
-      hmsJoint(RM_SURF,NULL,0,0,0)  /* chn18(11) */
+      hmsJoint(RM_SURF,NULL,0,5,-181)  /* chn18(11) */
       hmsBegin()
          hmsJoint(RM_SURF,RCP_wallman_body,0,0,0)  /* wallman_body(10) */
          hmsBegin()

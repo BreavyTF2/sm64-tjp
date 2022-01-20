@@ -368,7 +368,7 @@ extern const BehaviorScript bhvRespawner[];
 extern const BehaviorScript bhvSmallBully[];
 extern const BehaviorScript bhvBigBully[];
 extern const BehaviorScript bhvBigBullyWithMinions[];
-extern const BehaviorScript bhvSmallChillBully[];;
+extern const BehaviorScript bhvSmallChillBully[];
 extern const BehaviorScript bhvJetStreamRingSpawner[];
 extern const BehaviorScript bhvJetStreamWaterRing[];
 extern const BehaviorScript bhvMantaRayWaterRing[];

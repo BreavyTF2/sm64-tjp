@@ -930,7 +930,6 @@ u32 get_door_save_file_flag(struct Object *door) {
     u32 saveFileFlag = 0;
     s16 requiredNumStars = door->oBehParams >> 24;
 
-    s16 isCcmDoor = door->oPosX < 0.0f;
     s16 isPssDoor = door->oPosY > 500.0f;
 
     switch (requiredNumStars) {
@@ -942,12 +941,12 @@ u32 get_door_save_file_flag(struct Object *door) {
             }
             break;
 
-        case 3:
-            if (isCcmDoor) {
-                saveFileFlag = SAVE_FLAG_UNLOCKED_CCM_DOOR;
-            } else {
-                saveFileFlag = SAVE_FLAG_UNLOCKED_JRB_DOOR;
-            }
+        case 2:
+            saveFileFlag = SAVE_FLAG_UNLOCKED_CCM_DOOR;
+            break;
+			
+        case 5:
+            saveFileFlag = SAVE_FLAG_UNLOCKED_JRB_DOOR;
             break;
 
         case 8:
