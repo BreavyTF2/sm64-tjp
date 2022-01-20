@@ -1,15 +1,8 @@
 // Wiggler Body
-
-// 0x05005A30
-ALIGNED8 static const u8 wiggler_seg5_texture_05005A30[] = {
-#include "actors/wiggler/wiggler_segment_left_side.rgba16.inc.c"
-};
-
-// 0x05006A30
-ALIGNED8 static const u8 wiggler_seg5_texture_05006A30[] = {
-#include "actors/wiggler/wiggler_segment_right_side.rgba16.inc.c"
-};
-
+#define		STAGE13_HANA_FOG_R		 41/6
+#define		STAGE13_HANA_FOG_G		 41/6
+#define		STAGE13_HANA_FOG_B		 197/6
+#define		STAGE13_HANA_FOG_START	800
 // 0x05007A30
 ALIGNED8 static const u8 wiggler_seg5_texture_05007A30[] = {
 #include "actors/wiggler/wiggler_eye.rgba16.inc.c"
@@ -25,32 +18,22 @@ ALIGNED8 static const u8 wiggler_seg5_texture_05008A30[] = {
 #include "actors/wiggler/wiggler_frown.rgba16.inc.c"
 };
 
-// 0x05009230
-ALIGNED8 static const u8 wiggler_seg5_texture_05009230[] = {
-#include "actors/wiggler/wiggler_nose_left_side.rgba16.inc.c"
-};
-
-// 0x0500A230
-ALIGNED8 static const u8 wiggler_seg5_texture_0500A230[] = {
-#include "actors/wiggler/wiggler_nose_right_side.rgba16.inc.c"
-};
-
 // 0x0500B230
 static const Lights1 wiggler_seg5_lights_0500B230 = gdSPDefLights1(
-    0x37, 0x00, 0x00,
-    0xdf, 0x00, 0x00, 0x28, 0x28, 0x28
+    0x37/2, 0x00, 0x00,
+    0xdf/2, 0x00, 0x00, 0x28, 0x28, 0x28
 );
 
 // 0x0500B248
 static const Lights1 wiggler_seg5_lights_0500B248 = gdSPDefLights1(
-    0x39, 0x11, 0x00,
-    0xe7, 0x47, 0x00, 0x28, 0x28, 0x28
+    0x39/2, 0x11/2, 0x00,
+    0xe7/2, 0x47/2, 0x00, 0x28, 0x28, 0x28
 );
 
 // Unreferenced light group
 UNUSED static const Lights1 wiggler_body_lights_unused = gdSPDefLights1(
-    0x3a, 0x22, 0x05,
-    0xea, 0x8b, 0x16, 0x28, 0x28, 0x28
+    0x3a/2, 0x22/2, 0x05/2,
+    0xea/2, 0x8b/2, 0x16/2, 0x28, 0x28, 0x28
 );
 
 // 0x0500B278
@@ -264,9 +247,285 @@ static const Vtx wiggler_seg5_vertex_0500BBC8[] = {
     {{{    42,    -12,      0}, 0, {     0,      0}, {0x7f, 0x00, 0x00, 0xff}}},
     {{{    42,     -2,    -13}, 0, {     0,      0}, {0x2f, 0xc4, 0x9c, 0xff}}},
 };
-
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
+static Vtx vtx_hana_body_walk6[]={
+	{-75,-21,22,0,0,0,-117,-32,34,0},
+	{-75,1,31,0,0,0,-117,1,48,0},
+	{-81,1,0,0,0,0,-127,1,0,0},
+	{-58,-40,40,0,0,0,-90,-61,63,255},
+	{-57,0,57,0,0,0,-90,1,89,255},
+	{-32,-52,53,0,0,0,-50,-82,82,255},
+	{-31,0,75,0,0,0,-48,0,117,255},
+	{0,-57,57,0,0,0,-1,-89,89,255},
+	{0,0,81,0,0,0,0,0,127,255},
+	{30,-53,53,0,0,0,47,-83,82,255},
+	{31,0,75,0,0,0,48,0,117,255},
+	{57,-41,40,0,0,0,89,-64,63,255},
+	{57,0,57,0,0,0,90,-1,89,255},
+	{75,-23,22,0,0,0,116,-35,34,255},
+	{75,-1,31,0,0,0,117,-1,48,255},
+	{81,-1,0,0,0,0,127,-1,0,255},
+	{-75,-30,0,0,0,0,-118,-46,0,255},
+	{-75,-21,22,0,0,0,-117,-32,34,0},
+	{-81,1,0,0,0,0,-127,1,0,0},
+	{-58,-56,0,0,0,0,-91,-88,0,255},
+	{-58,-40,40,0,0,0,-90,-61,63,255},
+	{-32,-75,0,0,0,0,-50,-116,0,255},
+	{-32,-52,53,0,0,0,-50,-82,82,255},
+	{-1,-81,0,0,0,0,-1,-127,0,255},
+	{0,-57,57,0,0,0,-1,-89,89,255},
+	{30,-75,0,0,0,0,47,-117,0,255},
+	{30,-53,53,0,0,0,47,-83,82,255},
+	{56,-58,0,0,0,0,88,-90,0,255},
+	{57,-41,40,0,0,0,89,-64,63,255},
+	{75,-32,0,0,0,0,116,-50,0,255},
+	{75,-23,22,0,0,0,116,-35,34,255},
+	{81,-1,0,0,0,0,127,-1,0,255},
+	{-75,-21,-22,0,0,0,-117,-32,-34,255},
+	{-75,-30,0,0,0,0,-118,-46,0,0},
+	{-81,1,0,0,0,0,-127,1,0,0},
+	{-58,-40,-40,0,0,0,-90,-61,-63,255},
+	{-58,-56,0,0,0,0,-91,-88,0,255},
+	{-32,-52,-53,0,0,0,-50,-82,-82,255},
+	{-32,-75,0,0,0,0,-50,-116,0,255},
+	{0,-57,-57,0,0,0,-1,-89,-89,255},
+	{-1,-81,0,0,0,0,-1,-127,0,255},
+	{30,-53,-53,0,0,0,47,-83,-82,255},
+	{30,-75,0,0,0,0,47,-117,0,255},
+	{57,-41,-40,0,0,0,89,-64,-63,255},
+	{56,-58,0,0,0,0,88,-90,0,255},
+	{75,-23,-22,0,0,0,116,-35,-34,255},
+	{75,-32,0,0,0,0,116,-50,0,255},
+	{81,-1,0,0,0,0,127,-1,0,255},
+	{-75,1,-31,0,0,0,-117,1,-48,255},
+	{-75,-21,-22,0,0,0,-117,-32,-34,0},
+	{-81,1,0,0,0,0,-127,1,0,0},
+	{-57,0,-57,0,0,0,-90,1,-89,255},
+	{-58,-40,-40,0,0,0,-90,-61,-63,255},
+	{-31,0,-75,0,0,0,-48,0,-117,255},
+	{-32,-52,-53,0,0,0,-50,-82,-82,255},
+	{0,0,-81,0,0,0,0,0,-127,255},
+	{0,-57,-57,0,0,0,-1,-89,-89,255},
+	{31,0,-75,0,0,0,48,0,-117,255},
+	{30,-53,-53,0,0,0,47,-83,-82,255},
+	{57,0,-57,0,0,0,90,-1,-89,255},
+	{57,-41,-40,0,0,0,89,-64,-63,255},
+	{75,-1,-31,0,0,0,117,-1,-48,255},
+	{75,-23,-22,0,0,0,116,-35,-34,255},
+	{81,-1,0,0,0,0,127,-1,0,255},
+	{-75,23,-22,0,0,0,-116,35,-34,255},
+	{-75,1,-31,0,0,0,-117,1,-48,0},
+	{-81,1,0,0,0,0,-127,1,0,0},
+	{-57,41,-40,0,0,0,-89,64,-63,255},
+	{-57,0,-57,0,0,0,-90,1,-89,255},
+	{-30,53,-53,0,0,0,-47,83,-82,255},
+	{-31,0,-75,0,0,0,-48,0,-117,255},
+	{0,57,-57,0,0,0,1,89,-89,255},
+	{0,0,-81,0,0,0,0,0,-127,255},
+	{32,52,-53,0,0,0,50,82,-82,255},
+	{31,0,-75,0,0,0,48,0,-117,255},
+	{58,40,-40,0,0,0,90,61,-63,255},
+	{57,0,-57,0,0,0,90,-1,-89,255},
+	{75,21,-22,0,0,0,117,32,-34,255},
+	{75,-1,-31,0,0,0,117,-1,-48,255},
+	{81,-1,0,0,0,0,127,-1,0,255},
+	{-75,32,0,0,0,0,-116,50,0,255},
+	{-75,23,-22,0,0,0,-116,35,-34,0},
+	{-81,1,0,0,0,0,-127,1,0,0},
+	{-56,58,0,0,0,0,-88,90,0,255},
+	{-57,41,-40,0,0,0,-89,64,-63,255},
+	{-30,75,0,0,0,0,-47,117,0,255},
+	{-30,53,-53,0,0,0,-47,83,-82,255},
+	{1,81,0,0,0,0,1,127,0,255},
+	{0,57,-57,0,0,0,1,89,-89,255},
+	{32,75,0,0,0,0,50,116,0,255},
+	{32,52,-53,0,0,0,50,82,-82,255},
+	{58,56,0,0,0,0,91,88,0,255},
+	{58,40,-40,0,0,0,90,61,-63,255},
+	{75,30,0,0,0,0,118,46,0,255},
+	{75,21,-22,0,0,0,117,32,-34,255},
+	{81,-1,0,0,0,0,127,-1,0,255},
+	{-75,23,22,0,0,0,-116,35,34,255},
+	{-75,32,0,0,0,0,-116,50,0,0},
+	{-81,1,0,0,0,0,-127,1,0,0},
+	{-57,41,40,0,0,0,-89,64,63,255},
+	{-56,58,0,0,0,0,-88,90,0,255},
+	{-30,53,53,0,0,0,-47,83,82,255},
+	{-30,75,0,0,0,0,-47,117,0,255},
+	{0,57,57,0,0,0,1,89,89,255},
+	{1,81,0,0,0,0,1,127,0,255},
+	{32,52,53,0,0,0,50,82,82,255},
+	{32,75,0,0,0,0,50,116,0,255},
+	{58,40,40,0,0,0,90,61,63,255},
+	{58,56,0,0,0,0,91,88,0,255},
+	{75,21,22,0,0,0,117,32,34,255},
+	{75,30,0,0,0,0,118,46,0,255},
+	{81,-1,0,0,0,0,127,-1,0,255},
+	{-75,1,31,0,0,0,-117,1,48,255},
+	{-75,23,22,0,0,0,-116,35,34,0},
+	{-81,1,0,0,0,0,-127,1,0,0},
+	{-57,0,57,0,0,0,-90,1,89,255},
+	{-57,41,40,0,0,0,-89,64,63,255},
+	{-31,0,75,0,0,0,-48,0,117,255},
+	{-30,53,53,0,0,0,-47,83,82,255},
+	{0,0,81,0,0,0,0,0,127,255},
+	{0,57,57,0,0,0,1,89,89,255},
+	{31,0,75,0,0,0,48,0,117,255},
+	{32,52,53,0,0,0,50,82,82,255},
+	{57,0,57,0,0,0,90,-1,89,255},
+	{58,40,40,0,0,0,90,61,63,255},
+	{75,-1,31,0,0,0,117,-1,48,255},
+	{75,21,22,0,0,0,117,32,34,255},
+	{81,-1,0,0,0,0,127,-1,0,255},
+};
+#pragma GCC diagnostic pop
+const Gfx RCP_hana_body_walk6[]={
+	gsDPPipeSync(),
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
+	gsDPSetDepthSource(G_ZS_PIXEL),
+	gsDPSetFogColor(STAGE13_HANA_FOG_R, STAGE13_HANA_FOG_G, STAGE13_HANA_FOG_B, 255),
+	gsSPFogPosition(STAGE13_HANA_FOG_START, 1000),
+	gsSPSetGeometryMode(G_FOG),
+    gsSPLight(&wiggler_body_lights_unused.l, 1),
+    gsSPLight(&wiggler_body_lights_unused.a, 2),
+	gsSPVertex(&vtx_hana_body_walk6[0],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(1,0,3,0),
+	gsSP1Triangle(1,3,4,0),
+	gsSP1Triangle(4,3,5,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(6,5,7,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(8,7,9,0),
+	gsSP1Triangle(8,9,10,0),
+	gsSP1Triangle(10,9,11,0),
+	gsSP1Triangle(10,11,12,0),
+	gsSP1Triangle(12,11,13,0),
+	gsSP1Triangle(12,13,14,0),
+	gsSP1Triangle(14,13,15,0),
+	gsSPVertex(&vtx_hana_body_walk6[16],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(1,0,3,0),
+	gsSP1Triangle(1,3,4,0),
+	gsSP1Triangle(4,3,5,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(6,5,7,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(8,7,9,0),
+	gsSP1Triangle(8,9,10,0),
+	gsSP1Triangle(10,9,11,0),
+	gsSP1Triangle(10,11,12,0),
+	gsSP1Triangle(12,11,13,0),
+	gsSP1Triangle(12,13,14,0),
+	gsSP1Triangle(14,13,15,0),
+	gsSPVertex(&vtx_hana_body_walk6[32],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(1,0,3,0),
+	gsSP1Triangle(1,3,4,0),
+	gsSP1Triangle(4,3,5,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(6,5,7,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(8,7,9,0),
+	gsSP1Triangle(8,9,10,0),
+	gsSP1Triangle(10,9,11,0),
+	gsSP1Triangle(10,11,12,0),
+	gsSP1Triangle(12,11,13,0),
+	gsSP1Triangle(12,13,14,0),
+	gsSP1Triangle(14,13,15,0),
+	gsSPVertex(&vtx_hana_body_walk6[48],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(1,0,3,0),
+	gsSP1Triangle(1,3,4,0),
+	gsSP1Triangle(4,3,5,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(6,5,7,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(8,7,9,0),
+	gsSP1Triangle(8,9,10,0),
+	gsSP1Triangle(10,9,11,0),
+	gsSP1Triangle(10,11,12,0),
+	gsSP1Triangle(12,11,13,0),
+	gsSP1Triangle(12,13,14,0),
+	gsSP1Triangle(14,13,15,0),
+	gsSPVertex(&vtx_hana_body_walk6[64],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(1,0,3,0),
+	gsSP1Triangle(1,3,4,0),
+	gsSP1Triangle(4,3,5,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(6,5,7,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(8,7,9,0),
+	gsSP1Triangle(8,9,10,0),
+	gsSP1Triangle(10,9,11,0),
+	gsSP1Triangle(10,11,12,0),
+	gsSP1Triangle(12,11,13,0),
+	gsSP1Triangle(12,13,14,0),
+	gsSP1Triangle(14,13,15,0),
+	gsSPVertex(&vtx_hana_body_walk6[80],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(1,0,3,0),
+	gsSP1Triangle(1,3,4,0),
+	gsSP1Triangle(4,3,5,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(6,5,7,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(8,7,9,0),
+	gsSP1Triangle(8,9,10,0),
+	gsSP1Triangle(10,9,11,0),
+	gsSP1Triangle(10,11,12,0),
+	gsSP1Triangle(12,11,13,0),
+	gsSP1Triangle(12,13,14,0),
+	gsSP1Triangle(14,13,15,0),
+	gsSPVertex(&vtx_hana_body_walk6[96],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(1,0,3,0),
+	gsSP1Triangle(1,3,4,0),
+	gsSP1Triangle(4,3,5,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(6,5,7,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(8,7,9,0),
+	gsSP1Triangle(8,9,10,0),
+	gsSP1Triangle(10,9,11,0),
+	gsSP1Triangle(10,11,12,0),
+	gsSP1Triangle(12,11,13,0),
+	gsSP1Triangle(12,13,14,0),
+	gsSP1Triangle(14,13,15,0),
+	gsSPVertex(&vtx_hana_body_walk6[112],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(1,0,3,0),
+	gsSP1Triangle(1,3,4,0),
+	gsSP1Triangle(4,3,5,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(6,5,7,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(8,7,9,0),
+	gsSP1Triangle(8,9,10,0),
+	gsSP1Triangle(10,9,11,0),
+	gsSP1Triangle(10,11,12,0),
+	gsSP1Triangle(12,11,13,0),
+	gsSP1Triangle(12,13,14,0),
+	gsSP1Triangle(14,13,15,0),
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF),
+	gsSPClearGeometryMode(G_FOG),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPSetGeometryMode(G_LIGHTING), 
+	gsSPEndDisplayList()
+};
 // 0x0500BCB8 - 0x0500BE10
 const Gfx wiggler_seg5_dl_0500BCB8[] = {
+	gsDPPipeSync(),
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
+	gsDPSetDepthSource(G_ZS_PIXEL),
+	gsDPSetFogColor(STAGE13_HANA_FOG_R, STAGE13_HANA_FOG_G, STAGE13_HANA_FOG_B, 255),
+	gsSPFogPosition(STAGE13_HANA_FOG_START, 1000),
+	gsSPSetGeometryMode(G_FOG),
     gsSPLight(&wiggler_seg5_lights_0500B230.l, 1),
     gsSPLight(&wiggler_seg5_lights_0500B230.a, 2),
     gsSPVertex(wiggler_seg5_vertex_0500B278, 16, 0),
@@ -291,11 +550,23 @@ const Gfx wiggler_seg5_dl_0500BCB8[] = {
     gsSP2Triangles(10, 13, 14, 0x0, 10, 14, 15, 0x0),
     gsSPVertex(wiggler_seg5_vertex_0500B578, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF),
+	gsSPClearGeometryMode(G_FOG),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPSetGeometryMode(G_LIGHTING), 
     gsSPEndDisplayList(),
 };
 
 // 0x0500BE10 - 0x0500BE98
 const Gfx wiggler_seg5_dl_0500BE10[] = {
+	gsDPPipeSync(),
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
+	gsDPSetDepthSource(G_ZS_PIXEL),
+	gsDPSetFogColor(STAGE13_HANA_FOG_R, STAGE13_HANA_FOG_G, STAGE13_HANA_FOG_B, 255),
+	gsSPFogPosition(STAGE13_HANA_FOG_START, 1000),
+	gsSPSetGeometryMode(G_FOG),
     gsSPLight(&wiggler_seg5_lights_0500B248.l, 1),
     gsSPLight(&wiggler_seg5_lights_0500B248.a, 2),
     gsSPVertex(wiggler_seg5_vertex_0500B5B8, 15, 0),
@@ -306,11 +577,23 @@ const Gfx wiggler_seg5_dl_0500BE10[] = {
     gsSP2Triangles( 5,  8,  9, 0x0,  5,  9,  6, 0x0),
     gsSP2Triangles(10, 11, 12, 0x0, 10, 12, 13, 0x0),
     gsSP1Triangle(10, 13, 14, 0x0),
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF),
+	gsSPClearGeometryMode(G_FOG),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPSetGeometryMode(G_LIGHTING), 
     gsSPEndDisplayList(),
 };
 
 // 0x0500BE98 - 0x0500BF20
 const Gfx wiggler_seg5_dl_0500BE98[] = {
+	gsDPPipeSync(),
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
+	gsDPSetDepthSource(G_ZS_PIXEL),
+	gsDPSetFogColor(STAGE13_HANA_FOG_R, STAGE13_HANA_FOG_G, STAGE13_HANA_FOG_B, 255),
+	gsSPFogPosition(STAGE13_HANA_FOG_START, 1000),
+	gsSPSetGeometryMode(G_FOG),
     gsSPLight(&wiggler_seg5_lights_0500B248.l, 1),
     gsSPLight(&wiggler_seg5_lights_0500B248.a, 2),
     gsSPVertex(wiggler_seg5_vertex_0500B6A8, 15, 0),
@@ -321,11 +604,23 @@ const Gfx wiggler_seg5_dl_0500BE98[] = {
     gsSP2Triangles( 5,  8,  9, 0x0,  5,  9,  6, 0x0),
     gsSP2Triangles(10, 11, 12, 0x0, 10, 12, 13, 0x0),
     gsSP1Triangle(10, 13, 14, 0x0),
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF),
+	gsSPClearGeometryMode(G_FOG),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPSetGeometryMode(G_LIGHTING), 
     gsSPEndDisplayList(),
 };
 
 // 0x0500BF20 - 0x0500C078
 const Gfx wiggler_seg5_dl_0500BF20[] = {
+	gsDPPipeSync(),
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
+	gsDPSetDepthSource(G_ZS_PIXEL),
+	gsDPSetFogColor(STAGE13_HANA_FOG_R, STAGE13_HANA_FOG_G, STAGE13_HANA_FOG_B, 255),
+	gsSPFogPosition(STAGE13_HANA_FOG_START, 1000),
+	gsSPSetGeometryMode(G_FOG),
     gsSPLight(&wiggler_seg5_lights_0500B230.l, 1),
     gsSPLight(&wiggler_seg5_lights_0500B230.a, 2),
     gsSPVertex(wiggler_seg5_vertex_0500B798, 16, 0),
@@ -350,11 +645,23 @@ const Gfx wiggler_seg5_dl_0500BF20[] = {
     gsSP2Triangles(10, 13, 14, 0x0, 10, 14, 15, 0x0),
     gsSPVertex(wiggler_seg5_vertex_0500BA98, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF),
+	gsSPClearGeometryMode(G_FOG),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPSetGeometryMode(G_LIGHTING), 
     gsSPEndDisplayList(),
 };
 
 // 0x0500C078 - 0x0500C100
 const Gfx wiggler_seg5_dl_0500C078[] = {
+	gsDPPipeSync(),
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
+	gsDPSetDepthSource(G_ZS_PIXEL),
+	gsDPSetFogColor(STAGE13_HANA_FOG_R, STAGE13_HANA_FOG_G, STAGE13_HANA_FOG_B, 255),
+	gsSPFogPosition(STAGE13_HANA_FOG_START, 1000),
+	gsSPSetGeometryMode(G_FOG),
     gsSPLight(&wiggler_seg5_lights_0500B248.l, 1),
     gsSPLight(&wiggler_seg5_lights_0500B248.a, 2),
     gsSPVertex(wiggler_seg5_vertex_0500BAD8, 15, 0),
@@ -365,11 +672,23 @@ const Gfx wiggler_seg5_dl_0500C078[] = {
     gsSP2Triangles( 5,  8,  9, 0x0,  5,  9,  6, 0x0),
     gsSP2Triangles(10, 11, 12, 0x0, 10, 12, 13, 0x0),
     gsSP1Triangle(10, 13, 14, 0x0),
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF),
+	gsSPClearGeometryMode(G_FOG),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPSetGeometryMode(G_LIGHTING), 
     gsSPEndDisplayList(),
 };
 
 // 0x0500C100 - 0x0500C188
 const Gfx wiggler_seg5_dl_0500C100[] = {
+	gsDPPipeSync(),
+	gsDPSetCycleType(G_CYC_2CYCLE),
+	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
+	gsDPSetDepthSource(G_ZS_PIXEL),
+	gsDPSetFogColor(STAGE13_HANA_FOG_R, STAGE13_HANA_FOG_G, STAGE13_HANA_FOG_B, 255),
+	gsSPFogPosition(STAGE13_HANA_FOG_START, 1000),
+	gsSPSetGeometryMode(G_FOG),
     gsSPLight(&wiggler_seg5_lights_0500B248.l, 1),
     gsSPLight(&wiggler_seg5_lights_0500B248.a, 2),
     gsSPVertex(wiggler_seg5_vertex_0500BBC8, 15, 0),
@@ -380,60 +699,10 @@ const Gfx wiggler_seg5_dl_0500C100[] = {
     gsSP2Triangles( 5,  8,  9, 0x0,  5,  9,  6, 0x0),
     gsSP2Triangles(10, 11, 12, 0x0, 10, 12, 13, 0x0),
     gsSP1Triangle(10, 13, 14, 0x0),
-    gsSPEndDisplayList(),
-};
-
-// 0x0500C188
-static const Vtx wiggler_seg5_vertex_0500C188[] = {
-    {{{     0,     21,      0}, 0, {   990,      0}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   -20,    -20,      0}, 0, {     0,   2012}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{     0,    -20,      0}, 0, {   990,   2012}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   -20,     21,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-// 0x0500C1C8
-static const Vtx wiggler_seg5_vertex_0500C1C8[] = {
-    {{{    21,     21,      0}, 0, {   990,      0}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{     0,     21,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{     0,    -20,      0}, 0, {     0,   2012}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{    21,    -20,      0}, 0, {   990,   2012}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-// 0x0500C208 - 0x0500C240
-const Gfx wiggler_seg5_dl_0500C208[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wiggler_seg5_texture_05005A30),
-    gsDPLoadSync(),
-    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
-    gsSPVertex(wiggler_seg5_vertex_0500C188, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  1, 0x0),
-    gsSPEndDisplayList(),
-};
-
-// 0x0500C240 - 0x0500C278
-const Gfx wiggler_seg5_dl_0500C240[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wiggler_seg5_texture_05006A30),
-    gsDPLoadSync(),
-    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
-    gsSPVertex(wiggler_seg5_vertex_0500C1C8, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-    gsSPEndDisplayList(),
-};
-
-// 0x0500C278 - 0x0500C2F0
-const Gfx wiggler_seg5_dl_0500C278[] = {
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
-    gsSPClearGeometryMode(G_LIGHTING),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
-    gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (64 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsSPDisplayList(wiggler_seg5_dl_0500C208),
-    gsSPDisplayList(wiggler_seg5_dl_0500C240),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-    gsSPSetGeometryMode(G_LIGHTING),
+	gsDPSetCycleType(G_CYC_1CYCLE),
+	gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_AA_ZB_OPA_SURF),
+	gsSPClearGeometryMode(G_FOG),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPSetGeometryMode(G_LIGHTING), 
     gsSPEndDisplayList(),
 };

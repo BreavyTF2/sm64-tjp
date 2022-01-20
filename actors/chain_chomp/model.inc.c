@@ -216,6 +216,7 @@ static Vtx vtx_wanwan_anim4[]={
 };
 const Gfx RCP_wanwan_anim0[]={
 	gsDPPipeSync(),
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_wanwan_anim[0].l[0]),1),
 	gsSPLight((&light_wanwan_anim[0].a),2),
 	gsSPVertex(&vtx_wanwan_anim0[0],15,0),
@@ -231,18 +232,14 @@ const Gfx RCP_wanwan_anim0[]={
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList()
 };
-// 0x060249D0
-static const Lights1 chain_chomp_seg6_lights_060249D0 = gdSPDefLights1(
-    0x66, 0x66, 0x66,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
-);
 
 const Gfx RCP_wanwan_anim5[]={
+	gsSPClearGeometryMode(G_CULL_BACK),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, chain_chomp_seg6_texture_060233D0),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
-	gsSPLight(&chain_chomp_seg6_lights_060249D0.l, 1),
-    gsSPLight(&chain_chomp_seg6_lights_060249D0.a, 2),
+	gsSPLight((&light_wanwan_anim[0].l[0]),1),
+	gsSPLight((&light_wanwan_anim[0].a),2),
 	gsSPVertex(&vtx_wanwan_anim1[0],12,0),
 	gsSP1Triangle(0,1,2,0),
 	gsSP1Triangle(1,3,2,0),
@@ -343,6 +340,7 @@ const Gfx RCP_wanwan_anim2[]={
 };
 const Gfx RCP_wanwan_anim3[]={
 	gsDPPipeSync(),
+	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_wanwan_anim[0].l[0]),1),
 	gsSPLight((&light_wanwan_anim[0].a),2),
 	gsSPVertex(&vtx_wanwan_anim3[0],15,0),

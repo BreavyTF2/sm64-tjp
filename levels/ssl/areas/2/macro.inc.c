@@ -38,7 +38,6 @@ const MacroObject ssl_seg7_area_2_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_hidden_1up_trigger,          /*yaw*/   0, /*pos*/  2698,   -81, -3049),
     MACRO_OBJECT_WITH_BEH_PARAM(/*preset*/ macro_hidden_1up,                  /*yaw*/   0, /*pos*/  1940,   -81, -1360, /*behParam*/ 4),
     MACRO_OBJECT(/*preset*/ macro_coin_line_vertical,          /*yaw*/   0, /*pos*/   290,  4479,  -940),
-    MACRO_OBJECT_WITH_BEH_PARAM(/*preset*/ macro_wooden_signpost,             /*yaw*/   0, /*pos*/ -3560,     0, -4065, /*behParam*/ DIALOG_103),
     MACRO_OBJECT(/*preset*/ macro_goomba_quintuplet_spawner,      /*yaw*/   0, /*pos*/  3181,     0,  3587),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin,                         /*yaw*/   0, /*pos*/ -3350,   980, -1240),
     MACRO_OBJECT(/*preset*/ macro_1up,                         /*yaw*/   0, /*pos*/  2870,  1050, -2640),

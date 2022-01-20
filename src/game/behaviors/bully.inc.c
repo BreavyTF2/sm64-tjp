@@ -204,13 +204,9 @@ void bully_act_level_death(void) {
         } else {
             spawn_mist_particles();
 
-            if (o->oBullySubtype == BULLY_STYPE_CHILL)
-                spawn_default_star(130.0f, 1600.0f, -4335.0f);
-            else {
                 spawn_default_star(-1450.0f, 500.0f, -6700.0f);
-                spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvLllTumblingBridge, 0, 154, -5631, 0, 0,
-                                          0);
-            }
+                spawn_object_abs_with_rot(o, 0, MODEL_NONE, bhvLllTumblingBridge, 0, 154, -5631, 0, 0, 0);
+            
         }
     }
 }

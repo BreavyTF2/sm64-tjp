@@ -2,8 +2,6 @@
 // It's possible that bubba and bub used to be 2 "actors" in
 // one actor file.
 
-// Bin ID? What is this?
-UNUSED static const u64 bubba_unused_1 = 0;
 
 // Bubba
 

@@ -134,7 +134,7 @@ static void homing_amp_chase_loop(void) {
         // The amp's average Y will approach Mario's graphical Y position + 250
         // at a rate of 10 units per frame. Interestingly, this is different from
         // the + 150 used while chasing him. Could this be a typo?
-        if (o->oHomingAmpAvgY < gMarioObject->header.gfx.pos[1] + 250.0f) {
+        if (o->oHomingAmpAvgY < gMarioObject->header.gfx.pos[1] + 150.0f) {
             o->oHomingAmpAvgY += 10.0f;
         }
     }

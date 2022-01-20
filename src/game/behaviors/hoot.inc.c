@@ -245,10 +245,8 @@ void hoot_awake_loop(void) {
 void bhv_hoot_loop(void) {
     switch (o->oHootAvailability) {
         case HOOT_AVAIL_ASLEEP_IN_TREE:
-            if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 50)) {
                 o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
                 o->oHootAvailability = HOOT_AVAIL_WANTS_TO_TALK;
-            }
             break;
 
         case HOOT_AVAIL_WANTS_TO_TALK:
@@ -267,4 +265,32 @@ void bhv_hoot_loop(void) {
             hoot_awake_loop();
             break;
     }
+}
+
+struct ObjectHitbox sHootEggHitbox = {
+    /* interactType: */ INTERACT_COIN,
+    /* downOffset: */ 0,
+    /* damageOrCoinValue: */ 0,
+    /* health: */ 0,
+    /* numLootCoins: */ 0,
+    /* radius: */ 64,
+    /* height: */ 64,
+    /* hurtboxRadius: */ 0,
+    /* hurtboxHeight: */ 0,
+};
+void bhv_hoot_egg_loop(void) {
+//	cur_obj_scale(1.25f);
+    o->oAnimState++;
+
+	bhv_hoot_egg_init();
+}
+void bhv_hoot_egg_true_init(void) {
+	obj_set_hitbox(o, &sHootEggHitbox);
+}
+void bhv_hoot_egg_init(void) {
+	if (o->oInteractStatus == INT_STATUS_INTERACTED) {
+	obj_explode_and_spawn_coins(80.0f, 0);
+//	create_sound_spawner(SOUND_GENERAL_WALL_EXPLOSION); //This doesn't work, WHY???
+	spawn_object(o, MODEL_HOOT, bhvHoot);
+	}
 }

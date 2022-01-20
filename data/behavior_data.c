@@ -773,8 +773,10 @@ const BehaviorScript bhvKickableBoard[] = {
 const BehaviorScript bhvTowerDoor[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+	SET_INT(oInteractType, INTERACT_UNKNOWN_08),
     LOAD_COLLISION_DATA(wf_seg7_collision_tower_door),
     SET_HITBOX(/*Radius*/ 100, /*Height*/ 100),
+    SET_HURTBOX(/*Radius*/ 1, /*Height*/ 1),
     SET_INT(oIntangibleTimer, 0),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_tower_door_loop),
@@ -2983,8 +2985,11 @@ const BehaviorScript bhvGhostHuntBigBoo[] = {
     // Big boo - common:
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     SET_HOME(),
+    SET_INT(oDamageOrCoinValue, 3),
+    SET_HURTBOX(/*Radius*/ 80, /*Height*/ 120),
+    SET_HITBOX(/*Radius*/ 180, /*Height*/ 140),
     SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-    CALL_NATIVE(bhv_init_room),
+    SET_FLOAT(oGraphYOffset, 60),
 	SPAWN_CHILD(/*Model*/ MODEL_BETA_BOO_KEY, /*Behavior*/ bhvBetaBooKey),
     CALL_NATIVE(bhv_init_room),
     BEGIN_LOOP(),
@@ -3158,12 +3163,14 @@ const BehaviorScript bhvUnusedFakeStar[] = {
     END_LOOP(),
 };
 
-// What is this?
-static const BehaviorScript unused_1[] = {
-    BREAK(),
-    BREAK(),
-    BREAK(),
-    BREAK(),
+//Old Cap def, replaced with Metal Wing Cap for stage32 functions
+const BehaviorScript bhvMetalWingCap[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    CALL_NATIVE(bhv_metal_cap_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_metal_cap_loop),
+    END_LOOP(),
 };
 
 const BehaviorScript bhvStaticObject[] = {
@@ -3924,6 +3931,17 @@ const BehaviorScript bhvButterfly[] = {
     END_LOOP(),
 };
 
+const BehaviorScript bhvHootEgg[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    BILLBOARD(),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+	DROP_TO_FLOOR(),
+	CALL_NATIVE(bhv_hoot_egg_true_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_hoot_egg_loop),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvHoot[] = {
     BEGIN(OBJ_LIST_POLELIKE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -4136,20 +4154,6 @@ const BehaviorScript bhvSmallChillBully[] = {
     SET_HOME(),
     SET_INT(oBullySubtype, 0x0010),
     CALL_NATIVE(bhv_small_bully_init),
-    BEGIN_LOOP(),
-        SET_INT(oIntangibleTimer, 0),
-        CALL_NATIVE(bhv_bully_loop),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvBigChillBully[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_ANIMATIONS(oAnimations, chilly_chief_seg6_anims_06003994),
-    DROP_TO_FLOOR(),
-    SET_HOME(),
-    SET_INT(oBullySubtype, 0x0010),
-    CALL_NATIVE(bhv_big_bully_init),
     BEGIN_LOOP(),
         SET_INT(oIntangibleTimer, 0),
         CALL_NATIVE(bhv_bully_loop),

@@ -84,7 +84,6 @@ s32 sGameLoopTicked = 0;
 #define BOWS2 7 // Bowser Battle Laugh
 #define GRUNT 8
 #define WIGLR 9
-#define YOSHI 10
 #define _ 0xFF
 
 #ifdef VERSION_JP
@@ -95,7 +94,7 @@ s32 sGameLoopTicked = 0;
 
 u8 sDialogSpeaker[] = {
     //       0      1      2      3      4      5      6      7      8      9
-    /* 0*/ _,     BOMB,  BOMB,  BOMB,  BOMB,  KOOPA, KOOPA, KOOPA, _,     KOOPA,
+    /* 0*/ _,     BOMB,  BOMB,  BOMB,  BOMB,  KOOPA, KOOPA, KOOPA, _,     BOWS1,
     /* 1*/ _,     _,     _,     _,     _,     _,     _,     KBOMB, _,     _,
     /* 2*/ _,     BOWS1, BOWS1, BOWS1, BOWS1, BOWS1, BOWS1, BOWS1, BOWS1, BOWS1,
     /* 3*/ _,     _,     _,     _,     _,     _,     _,     DIFF,  _,     _,
@@ -105,13 +104,13 @@ u8 sDialogSpeaker[] = {
     /* 7*/ _,     _,     _,     _,     _,     _,     _,     _,     _,     UKIKI,
     /* 8*/ UKIKI, _,     _,     _,     _,     BOO,   _,     _,     _,     _,
     /* 9*/ BOWS2, _,     BOWS2, BOWS2, _,     _,     _,     _,     BOO,   BOO,
-    /*10*/ UKIKI, UKIKI, _,     _,     _,     BOMB,  BOMB,  BOO,   BOO,   _,
+    /*10*/ UKIKI, UKIKI, _,     GRUNT, _,     BOMB,  BOMB,  BOO,   BOO,   _,
     /*11*/ _,     _,     _,     _,     GRUNT, GRUNT, KBOMB, GRUNT, GRUNT, _,
     /*12*/ _,     _,     _,     _,     _,     _,     _,     _,     KBOMB, _,
     /*13*/ _,     _,     TUXIE, _,     _,     _,     _,     _,     _,     _,
     /*14*/ _,     _,     _,     _,     _,     _,     _,     _,     _,     _,
     /*15*/ WIGLR, WIGLR, WIGLR, _,     _,     _,     _,     _,     _,     _,
-    /*16*/ _,     YOSHI, _,     _,     _,     _,     _,     _,     WIGLR, _
+    /*16*/ _,     KBOMB, _,     _,     _,     _,     _,     _,     WIGLR, _
 };
 #undef _
 STATIC_ASSERT(ARRAY_COUNT(sDialogSpeaker) == DIALOG_COUNT, "change this array if you are adding dialogs");
@@ -127,13 +126,6 @@ s32 sDialogSpeakerVoice[] = {
     SOUND_OBJ_BOWSER_LAUGH,
     SOUND_OBJ2_BOSS_DIALOG_GRUNT,
     SOUND_OBJ_WIGGLER_TALK,
-    SOUND_GENERAL_YOSHI_TALK,
-#ifndef VERSION_EU
-    NO_SOUND,
-    NO_SOUND,
-    NO_SOUND,
-    NO_SOUND,
-#endif
 };
 
 u8 sNumProcessedSoundRequests = 0;
@@ -201,7 +193,7 @@ s16 sDynUnk38[] = {
     DYN1(MARIO_IS_IN_AREA, 1, 3),
     DYN1(MARIO_IS_IN_AREA, 2, 4),
     DYN1(MARIO_IS_IN_AREA, 3, 7),
-    0,
+    3,
 };
 s16 sDynNone[] = { SEQ_SOUND_PLAYER, 0 };
 
@@ -1995,7 +1987,7 @@ void play_dialog_sound(u8 dialogID) {
 
 #ifndef VERSION_JP
     // "You've stepped on the (Wing|Metal|Vanish) Cap Switch"
-    if (dialogID == DIALOG_010 || dialogID == DIALOG_011 || dialogID == DIALOG_012) {
+    if (dialogID == DIALOG_010 || dialogID == DIALOG_011 || dialogID == DIALOG_012 || dialogID == DIALOG_013) {
         play_puzzle_jingle();
     }
 #endif

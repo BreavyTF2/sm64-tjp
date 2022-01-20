@@ -37,7 +37,7 @@ const Gfx thi_seg7_dl_07009F58[] = {
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2),
     gsDPSetDepthSource(G_ZS_PIXEL),
-	gsDPSetFogColor(STAGE13_FOG_R, STAGE13_FOG_G, STAGE13_FOG_B, 255),
+	gsDPSetFogColor(STAGE13B_FOG_R, STAGE13B_FOG_G, STAGE13B_FOG_B, 255),
 	gsSPFogPosition(STAGE13B_FOG_START, 1000),
     gsSPSetGeometryMode(G_FOG),
 	gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_PASS2),

@@ -630,9 +630,10 @@ s32 act_crouching(struct MarioState *m) {
 
 s32 act_panting(struct MarioState *m) {
 	s32 sp1C = gGlobalTimer;
-	if ((sp1C & 0x03) == 0) {
-		m->health += 2;
+	if ((sp1C & 0x02) == 0) {
+		m->health += 1;
 	}
+	m->health += 1;
     if (m->input & INPUT_UNKNOWN_10) {
         return set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
     }

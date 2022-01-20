@@ -165,6 +165,7 @@ ALIGNED8 static const u8 texture_hud_char_umlaut[] = {
 };
 #endif
 
+#if defined(VERSION_JP) || defined(VERSION_SH)
 ALIGNED8 static const u8 texture_hud_char_exclamation[] = {
 #include "textures/segment2/segment2.04C00.rgba16.inc.c"// JP !
 };
@@ -180,7 +181,7 @@ ALIGNED8 static const u8 texture_hud_char_question[] = {
 ALIGNED8 static const u8 texture_hud_char_ampersand[] = {
 #include "textures/segment2/segment2.05200.rgba16.inc.c"// JP &
 };
-
+#endif
 ALIGNED8 static const u8 texture_hud_char_percent[] = {
 #include "textures/segment2/segment2.05400.rgba16.inc.c"// JP %
 };
@@ -1797,7 +1798,7 @@ const u8 *const main_hud_lut[] = {
     texture_hud_char_O, texture_hud_char_P, texture_hud_char_Q, texture_hud_char_R,
     texture_hud_char_S, texture_hud_char_T, texture_hud_char_U, texture_hud_char_V,
     texture_hud_char_W, texture_hud_char_X, texture_hud_char_Y, texture_hud_char_Z,
-    texture_hud_char_exclamation, texture_hud_char_double_exclamation, texture_hud_char_question, texture_hud_char_ampersand,
+    0x0, 0x0, 0x0, 0x0,
     texture_hud_char_percent,             0x0,               0x0,               0x0,
                   0x0,               0x0,               0x0,               0x0,
                   0x0,               0x0, texture_hud_char_multiply, texture_hud_char_coin,
@@ -2047,8 +2048,6 @@ const u8 *const main_credits_font_lut[] = {
 #elif defined(VERSION_US)
 #include "text/us/define_text.inc.c"
 #endif
-
-UNUSED static const u64 segment2_unused_0 = 0;
 
 // 0x0200EC60 - 0x0200EC98
 const Gfx dl_hud_img_begin[] = {
@@ -2722,56 +2721,6 @@ const Gfx dl_waterbox_end[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_LIGHTING | G_CULL_BACK),
-    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-    gsSPEndDisplayList(),
-};
-
-// 0x02014838 - 0x02014878
-ALIGNED8 static const u8 texture_ia8_up_arrow[] = {
-#include "textures/segment2/segment2.14838.ia8.inc.c"
-};
-
-// 0x02014878 - 0x020148B0
-const Gfx dl_ia8_up_arrow_begin[] = {
-    gsDPPipeSync(),
-    gsSPClearGeometryMode(G_LIGHTING),
-    gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
-    gsDPSetRenderMode(G_RM_XLU_SURF, G_RM_NOOP2),
-    gsSPPerspNormalize(0xFFFF),
-    gsSPMatrix(&matrix_identity, G_MTX_PROJECTION | G_MTX_LOAD | G_MTX_NOPUSH),
-    gsSPEndDisplayList(),
-};
-
-// 0x020148B0 - 0x020148E0
-// Unused, seems to be an early DL for the power meter, seeing that is loading a 64x32 texture
-const Gfx dl_rgba16_unused[] = {
-    gsSPMatrix(&matrix_identity, G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH),
-    gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_CLAMP, 6, G_TX_NOLOD),
-    gsDPSetTileSize(0, 0, 0, (64 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsSPEndDisplayList(),
-};
-
-// 0x020148E0 - 0x02014938
-const Gfx dl_ia8_up_arrow_load_texture_block[] = {
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
-    gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_8b, 1, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 3, G_TX_NOLOD, G_TX_CLAMP, 3, G_TX_NOLOD),
-    gsDPSetTileSize(0, 0, 0, (8 - 1) << G_TEXTURE_IMAGE_FRAC, (8 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_8b, 1, texture_ia8_up_arrow),
-    gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_8b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
-    gsDPLoadSync(),
-    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 8 * 8 - 1, CALC_DXT(8, G_IM_SIZ_8b_BYTES)),
-    gsSPEndDisplayList(),
-};
-
-// 0x02014938 - 0x02014958
-const Gfx dl_ia8_up_arrow_end[] = {
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
-    gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPEndDisplayList(),
 };

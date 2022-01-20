@@ -136,6 +136,7 @@
 #define SOUND_MOVING_LAVA_BURN                  SOUND_ARG_LOAD(1, 4, 0x10, 0x00, 0) // ?
 #define SOUND_MOVING_SLIDE_DOWN_POLE            SOUND_ARG_LOAD(1, 4, 0x11, 0x00, 0) // ?
 #define SOUND_MOVING_SLIDE_DOWN_TREE            SOUND_ARG_LOAD(1, 4, 0x12, 0x80, 0)
+#define SOUND_MOVING_LONG_FALL            		SOUND_ARG_LOAD(1, 4, 0x13, 0x80, 0)
 #define SOUND_MOVING_QUICKSAND_DEATH            SOUND_ARG_LOAD(1, 4, 0x14, 0x00, 0)
 #define SOUND_MOVING_SHOCKED                    SOUND_ARG_LOAD(1, 4, 0x16, 0x00, 0)
 #define SOUND_MOVING_FLYING                     SOUND_ARG_LOAD(1, 4, 0x17, 0x00, 0)
@@ -336,7 +337,7 @@
 /* not verified */ #define SOUND_ENV_DRONING1               SOUND_ARG_LOAD(4, 1, 0x03, 0x00, 0)
 /* not verified */ #define SOUND_ENV_DRONING2               SOUND_ARG_LOAD(4, 0, 0x04, 0x00, 0)
 /* not verified */ #define SOUND_ENV_WIND1                  SOUND_ARG_LOAD(4, 0, 0x05, 0x00, 0)
-/* not verified */ #define SOUND_ENV_MOVING_SAND_SNOW       SOUND_ARG_LOAD(4, 0, 0x06, 0x00, 1)
+/* not verified */ #define SOUND_ENV_MOVING_SAND_SNOW       SOUND_ARG_LOAD(4, 0, 0x06, 0x00, 0)
 /* not verified */ #define SOUND_ENV_UNK07                  0x4007
 /* not verified */ #define SOUND_ENV_ELEVATOR2              SOUND_ARG_LOAD(4, 0, 0x08, 0x00, 0)
 /* not verified */ #define SOUND_ENV_WATER                  SOUND_ARG_LOAD(4, 0, 0x09, 0x00, 0)
@@ -348,7 +349,7 @@
 /* not verified */ #define SOUND_ENV_MOVINGSAND             SOUND_ARG_LOAD(4, 0, 0x0E, 0x00, 0)
 /* not verified */ #define SOUND_ENV_MERRY_GO_ROUND_CREAKING    SOUND_ARG_LOAD(4, 0, 0x0F, 0x40, 0)
 /* not verified */ #define SOUND_ENV_WIND2                  SOUND_ARG_LOAD(4, 0, 0x10, 0x80, 0)
-/* not verified */ #define SOUND_ENV_UNK12                  SOUND_ARG_LOAD(4, 0, 0x12, 0x00, 1)
+/* not verified */ #define SOUND_ENV_UNK12                  SOUND_ARG_LOAD(4, 0, 0x12, 0x00, 0)
 /* not verified */ #define SOUND_ENV_SLIDING                SOUND_ARG_LOAD(4, 0, 0x13, 0x00, 0)
 /* not verified */ #define SOUND_ENV_STAR                   SOUND_ARG_LOAD(4, 0, 0x14, 0x00, 1)
 /* not verified */ #define SOUND_ENV_UNKNOWN4               SOUND_ARG_LOAD(4, 1, 0x15, 0x00, 0)
@@ -471,7 +472,7 @@
 #define SOUND_AIR_BLOW_WIND                     SOUND_ARG_LOAD(6, 0, 0x04, 0x40, 0)
 #define SOUND_AIR_ROUGH_SLIDE                   SOUND_ARG_LOAD(6, 0, 0x05, 0x00, 0)
 #define SOUND_AIR_HEAVEHO_MOVE                  SOUND_ARG_LOAD(6, 0, 0x06, 0x40, 0)
-#define SOUND_AIR_UNK07                         0x6007 // ?
+#define SOUND_AIR_UNK07                         SOUND_ARG_LOAD(6, 0, 0x07, 0x00, 0)
 #define SOUND_AIR_BOBOMB_LIT_FUSE               SOUND_ARG_LOAD(6, 0, 0x08, 0x60, 0)
 #define SOUND_AIR_HOWLING_WIND                  SOUND_ARG_LOAD(6, 0, 0x09, 0x80, 0)
 #define SOUND_AIR_CHUCKYA_MOVE                  SOUND_ARG_LOAD(6, 0, 0x0A, 0x40, 0)

@@ -73,6 +73,7 @@ extern const Gfx wiggler_seg5_dl_0500C100[];
 extern const Gfx wiggler_seg5_dl_0500C208[];
 extern const Gfx wiggler_seg5_dl_0500C240[];
 extern const Gfx wiggler_seg5_dl_0500C278[];
+extern const Gfx RCP_hana_body_walk6[];
 extern const GeoLayout wiggler_body_geo[];
 extern const struct Animation *const wiggler_seg5_anims_0500C874[];
 
@@ -96,6 +97,9 @@ extern const Gfx wiggler_seg5_dl_0500E518[];
 extern const Gfx wiggler_seg5_dl_0500E608[];
 extern const Gfx wiggler_seg5_dl_0500E640[];
 extern const Gfx wiggler_seg5_dl_0500E678[];
+extern const Gfx RCP_hana_head_walk6[];
+extern const Gfx RCP_hana_head_walk10[];
+extern const Gfx RCP_hana_head_walk11[];
 extern const struct Animation *const wiggler_seg5_anims_0500EC8C[];
 
 #endif

@@ -2522,14 +2522,10 @@ void print_score_file_course_coin_score(s8 fileIndex, s16 courseIndex, s16 x, s1
     u8 stars = save_file_get_star_flags(fileIndex, courseIndex);
     unsigned char textCoinX[] = { TEXT_COIN_X };
     unsigned char textStar[] = { TEXT_STAR };
-#if defined(VERSION_JP) || defined(VERSION_SH)
-    #define LENGTH 5
-#else
     #define LENGTH 8
-#endif
-    unsigned char fileNames[][LENGTH] = {
+    unsigned char fileNames[][5] = {
         { TEXT_4DASHES }, // huh?
-        { TEXT_SCORE_MARIO_A }, { TEXT_SCORE_MARIO_B }, { TEXT_SCORE_MARIO_C }, { TEXT_SCORE_MARIO_D },
+        { TEXT_SCORE_MARIO_A }, { TEXT_SCORE_MARIO_B }, { TEXT_SCORE_MARIO_C }, { TEXT_SCORE_MARIO_D }
     };
 #undef LENGTH
     // MYSCORE
@@ -2553,7 +2549,7 @@ void print_score_file_course_coin_score(s8 fileIndex, s16 courseIndex, s16 x, s1
         print_menu_generic_string(x + HISCORE_COIN_TEXT_X, y, coinScoreText);
         // Print coin highscore file
         print_menu_generic_string(x + HISCORE_COIN_NAMES_X, y,
-                         fileNames[(save_file_get_max_coin_score(courseIndex) >> 16) & 0xFFFF]);
+                         fileNames[save_file_get_max_coin_score(courseIndex) >> 15 & 0xFFFF]);
     }
 }
 

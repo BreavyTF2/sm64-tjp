@@ -56,11 +56,6 @@
             "release_rate": 208,
             "envelope": "envelope0",
             "sound": "05"
-        },
-        "inst6": {
-            "release_rate": 208,
-            "envelope": "envelope0",
-            "sound": "06"
         }
     },
     "instrument_list": [
@@ -69,7 +64,6 @@
         "inst2",
         "inst3",
         "inst4",
-        "inst5",
-        "inst6"
+        "inst5"
     ]
 }

@@ -8,12 +8,7 @@ static const Lights1 ground_mine_seg6_lights_0600A4E0 = gdSPDefLights1(
 
 // 0x0600A4F8
 ALIGNED8 static const u8 ground_mine_seg6_texture_0600A4F8[] = {
-#include "actors/ground_mine/ground_mine_left_side.rgba16.inc.c"
-};
-
-// 0x0600B4F8
-ALIGNED8 static const u8 ground_mine_seg6_texture_0600B4F8[] = {
-#include "actors/ground_mine/ground_mine_right_side.rgba16.inc.c"
+#include "actors/ground_mine/ground_mine_body.rgba16.inc.c"
 };
 
 // 0x0600C4F8
@@ -23,53 +18,16 @@ ALIGNED8 static const u8 ground_mine_seg6_texture_0600C4F8[] = {
 
 // 0x0600CCF8
 static const Vtx ground_mine_seg6_vertex_0600CCF8[] = {
-    {{{     0,     40,      0}, 0, {   992,      0}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   -39,    -39,      0}, 0, {     0,   2016}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{     0,    -39,      0}, 0, {   992,   2016}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{   -39,     40,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{    40,     35,      0}, 0, {   992,      0}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{   -39,    -29,      0}, 0, {     0,   992}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{    40,    -29,      0}, 0, {   992,   992}, {0xff, 0xff, 0xff, 0xff}}},
+    {{{   -39,     35,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
 };
-
-// 0x0600CD38
-static const Vtx ground_mine_seg6_vertex_0600CD38[] = {
-    {{{    40,     40,      0}, 0, {   992,      0}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{     0,    -39,      0}, 0, {     0,   2016}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{    40,    -39,      0}, 0, {   992,   2016}, {0xff, 0xff, 0xff, 0xff}}},
-    {{{     0,     40,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
-};
-
-// 0x0600CD78
-static const Vtx ground_mine_seg6_vertex_0600CD78[] = {
-    {{{     0,    -59,      0}, 0, {   502,    -18}, {0xf7, 0x82, 0xf7, 0xff}}},
-    {{{    -9,    -36,      0}, 0, {    14,    976}, {0x8a, 0xd2, 0xfd, 0xff}}},
-    {{{     0,    -36,     -8}, 0, {   938,    980}, {0xfd, 0xd7, 0x89, 0xff}}},
-    {{{     0,     37,     -8}, 0, {    -6,    974}, {0xfd, 0x29, 0x89, 0xff}}},
-    {{{    -9,     37,      0}, 0, {   972,    964}, {0x8a, 0x2e, 0xfd, 0xff}}},
-    {{{     0,     60,      0}, 0, {   434,    -20}, {0xf7, 0x7e, 0xf7, 0xff}}},
-    {{{    10,     37,      0}, 0, {   -14,    962}, {0x74, 0x32, 0xfd, 0xff}}},
-    {{{     0,     37,     -8}, 0, {   960,    962}, {0xfd, 0x29, 0x89, 0xff}}},
-    {{{     0,     60,      0}, 0, {   468,    -16}, {0xf7, 0x7e, 0xf7, 0xff}}},
-    {{{    -9,     37,      0}, 0, {    -8,    974}, {0x8a, 0x2e, 0xfd, 0xff}}},
-    {{{     0,     37,      9}, 0, {   974,    968}, {0xfd, 0x2e, 0x76, 0xff}}},
-    {{{     0,     60,      0}, 0, {   470,     -6}, {0xf7, 0x7e, 0xf7, 0xff}}},
-    {{{     0,     37,      9}, 0, {     4,    974}, {0xfd, 0x2e, 0x76, 0xff}}},
-    {{{    10,     37,      0}, 0, {   960,    986}, {0x74, 0x32, 0xfd, 0xff}}},
-    {{{     0,     60,      0}, 0, {   492,     34}, {0xf7, 0x7e, 0xf7, 0xff}}},
-};
-
 // 0x0600CE68
 static const Vtx ground_mine_seg6_vertex_0600CE68[] = {
     {{{     0,     10,     37}, 0, {   -20,    976}, {0xfd, 0x74, 0x32, 0xff}}},
     {{{    -9,      0,     37}, 0, {   974,    974}, {0x8a, 0xf9, 0x2e, 0xff}}},
     {{{     0,      0,     60}, 0, {   428,      4}, {0xf8, 0xee, 0x7d, 0xff}}},
-    {{{     0,    -59,      0}, 0, {   494,    -12}, {0xf7, 0x82, 0xf7, 0xff}}},
-    {{{     0,    -36,     -8}, 0, {    -2,    946}, {0xfd, 0xd7, 0x89, 0xff}}},
-    {{{    10,    -36,      0}, 0, {   964,    964}, {0x74, 0xce, 0xfd, 0xff}}},
-    {{{     0,    -59,      0}, 0, {   458,    -18}, {0xf7, 0x82, 0xf7, 0xff}}},
-    {{{     0,    -36,      9}, 0, {    10,    944}, {0xfd, 0xd2, 0x76, 0xff}}},
-    {{{    -9,    -36,      0}, 0, {   916,    956}, {0x8a, 0xd2, 0xfd, 0xff}}},
-    {{{     0,    -59,      0}, 0, {   486,     -6}, {0xf7, 0x82, 0xf7, 0xff}}},
-    {{{    10,    -36,      0}, 0, {    -4,    958}, {0x74, 0xce, 0xfd, 0xff}}},
-    {{{     0,    -36,      9}, 0, {   958,    952}, {0xfd, 0xd2, 0x76, 0xff}}},
     {{{    10,      0,     37}, 0, {    -8,    978}, {0x74, 0xf9, 0x32, 0xff}}},
     {{{     0,     10,     37}, 0, {   952,    976}, {0xfd, 0x74, 0x32, 0xff}}},
     {{{     0,      0,     60}, 0, {   428,    -12}, {0xf8, 0xee, 0x7d, 0xff}}},
@@ -129,22 +87,13 @@ static const Vtx ground_mine_seg6_vertex_0600D138[] = {
     {{{    -9,      0,    -36}, 0, {   952,    964}, {0x8a, 0xf9, 0xd2, 0xff}}},
 };
 
+
 // 0x0600D1F8 - 0x0600D230
 const Gfx ground_mine_seg6_dl_0600D1F8[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ground_mine_seg6_texture_0600A4F8),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPVertex(ground_mine_seg6_vertex_0600CCF8, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  1, 0x0),
-    gsSPEndDisplayList(),
-};
-
-// 0x0600D230 - 0x0600D268
-const Gfx ground_mine_seg6_dl_0600D230[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, ground_mine_seg6_texture_0600B4F8),
-    gsDPLoadSync(),
-    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
-    gsSPVertex(ground_mine_seg6_vertex_0600CD38, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  1, 0x0),
     gsSPEndDisplayList(),
 };
@@ -158,9 +107,8 @@ const Gfx ground_mine_seg6_dl_0600D268[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPTileSync(),
     gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
-    gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (64 - 1) << G_TEXTURE_IMAGE_FRAC),
+    gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
     gsSPDisplayList(ground_mine_seg6_dl_0600D1F8),
-    gsSPDisplayList(ground_mine_seg6_dl_0600D230),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
@@ -175,14 +123,8 @@ const Gfx ground_mine_seg6_dl_0600D2E0[] = {
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPLight(&ground_mine_seg6_lights_0600A4E0.l, 1),
     gsSPLight(&ground_mine_seg6_lights_0600A4E0.a, 2),
-    gsSPVertex(ground_mine_seg6_vertex_0600CD78, 15, 0),
+    gsSPVertex(ground_mine_seg6_vertex_0600CE68, 6, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  5, 0x0),
-    gsSP2Triangles( 6,  7,  8, 0x0,  9, 10, 11, 0x0),
-    gsSP1Triangle(12, 13, 14, 0x0),
-    gsSPVertex(ground_mine_seg6_vertex_0600CE68, 15, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  5, 0x0),
-    gsSP2Triangles( 6,  7,  8, 0x0,  9, 10, 11, 0x0),
-    gsSP1Triangle(12, 13, 14, 0x0),
     gsSPVertex(ground_mine_seg6_vertex_0600CF58, 15, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  5, 0x0),
     gsSP2Triangles( 6,  7,  8, 0x0,  9, 10, 11, 0x0),

@@ -61,7 +61,7 @@ SEA_DIRS         := clam_shell manta sushi unagi whirlpool
 AMP_DIRS         := blue_coin_switch amp cannon_lid cannon_base cannon_barrel chuckya purple_switch checkerboard_platform heart flyguy breakable_box exclamation_box goomba bobomb metal_box exclamation_box_outline test_platform koopa_shell
 MOLE_DIRS        := monty_mole_hole monty_mole smoke ukiki fwoosh
 LAKITU_DIRS      := lakitu_cameraman toad mips boo_castle
-PEACH_DIRS       := bird peach yoshi
+PEACH_DIRS       := bird peach
 BOWSER_DIRS      := bowser_flame impact_ring yellow_sphere bowser bomb impact_smoke
 MARIO_DIRS       := mario bubble walk_smoke burn_smoke stomp_smoke water_wave sparkle water_splash white_particle_small sparkle_animation
 

@@ -7,7 +7,7 @@ static const Lights1 thi_seg7_lights_07007C90 = gdSPDefLights1(
 // 0x07007CA8 - 0x07007CC0
 static const Lights1 thi_seg7_lights_07007CA8 = gdSPDefLights1(
     0x1f, 0x1f, 0x1f,
-    0xff, 0xff, 0xff, 0x0a, 0x0a, 0x0a
+    0x7f, 0x7f, 0x7f, 0x0a, 0x0a, 0x0a
 );
 
 // 0x07007CC0 - 0x07007CD8
@@ -596,7 +596,7 @@ const Gfx thi_seg7_dl_07009670[] = {
 	gsDPSetCycleType(G_CYC_2CYCLE),
 	gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
 	gsDPSetDepthSource(G_ZS_PIXEL),
-	gsDPSetFogColor(STAGE13_FOG_R, STAGE13_FOG_G, STAGE13_FOG_B, 255),
+	gsDPSetFogColor(STAGE13B_FOG_R, STAGE13B_FOG_G, STAGE13B_FOG_B, 255),
 	gsSPFogPosition(STAGE13B_FOG_START, 1000),
 	gsSPSetGeometryMode(G_FOG),
 	gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_PASS2),

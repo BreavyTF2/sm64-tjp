@@ -94,9 +94,11 @@ void bhv_pyramid_top_loop(void) {
     switch (o->oAction) {
         case PYRAMID_TOP_ACT_CHECK_IF_SOLVED:
             if (o->oPyramidTopPillarsTouched == 4) {
+				if (cur_obj_update_dialog(2, (DIALOG_UNK1_FLAG_DEFAULT | DIALOG_UNK2_LEAVE_TIME_STOP_ENABLED), DIALOG_103, 0)) {	
                 play_puzzle_jingle();
-                o->oAction = PYRAMID_TOP_ACT_SPINNING;
-            }
+				o->oAction = PYRAMID_TOP_ACT_SPINNING;
+				}
+			}	
             break;
 
         case PYRAMID_TOP_ACT_SPINNING:
@@ -111,7 +113,7 @@ void bhv_pyramid_top_loop(void) {
         case PYRAMID_TOP_ACT_EXPLODE:
             if (o->oTimer == 0) {
                 create_sound_spawner(SOUND_GENERAL2_PYRAMID_TOP_EXPLOSION);
-				spawn_default_star(-2048.0f, 1600.0f, -1024.0f);
+				spawn_default_star(-2048.0f, 1600.0f, -1024.0f); 
             }
 
             bhv_pyramid_top_explode();

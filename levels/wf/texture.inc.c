@@ -27,3 +27,7 @@ ALIGNED8 static const u8 wf_seg7_texture_07002000[] = {
 ALIGNED8 static const u8 wf_seg7_texture_07002800[] = {
 #include "levels/wf/5.ia8.inc.c"
 };
+
+ALIGNED8 static const u8 wf_seg7_texture_07003000[] = {
+#include "levels/wf/6.rgba16.inc.c"
+};

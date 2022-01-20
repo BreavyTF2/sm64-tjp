@@ -18,11 +18,11 @@ GRUCODE ?= f3dzex
 # If COMPARE is 1, check the output sha1sum when building 'all'
 COMPARE ?= 1
 # If NON_MATCHING is 1, define the NON_MATCHING and AVOID_UB macros when building (recommended)
-NON_MATCHING ?= 0
+NON_MATCHING ?= 1
 # Build for the N64 (turn this off for ports)
 TARGET_N64 ?= 1
 # Compiler to use (ido or gcc)
-COMPILER ?= ido
+COMPILER ?= gcc
 
 ifeq ($(COMPILER),gcc)
   NON_MATCHING := 1
@@ -180,7 +180,8 @@ endif
 
 # Use a default opt flag for gcc
 ifeq ($(COMPILER),gcc)
-  OPT_FLAGS := -O2
+  OPT_FLAGS := -Ofast
+# Use -Os for N64, Use -OFast for emulator
 endif
 
 # File dependencies and variables for specific files

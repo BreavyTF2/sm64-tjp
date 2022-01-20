@@ -22,10 +22,10 @@ static const LevelScript script_func_local_1[] = {
     WARP_NODE(/*id*/ 0x02, /*destLevel*/ LEVEL_CASTLE_COURTYARD, /*destArea*/ 0x01, /*destNode*/ 0x01, /*flags*/ WARP_NO_CHECKPOINT),
     OBJECT(/*model*/ MODEL_CASTLE_STAR_DOOR_8_STARS, /*pos*/ -2706,   512, -1409, /*angle*/ 0,  45, 0, /*behParam*/ 0x08000000, /*beh*/ bhvStarDoor),
     OBJECT(/*model*/ MODEL_CASTLE_STAR_DOOR_8_STARS, /*pos*/ -2598,   512, -1517, /*angle*/ 0, 225, 0, /*behParam*/ 0x08000000, /*beh*/ bhvStarDoor),
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR,          /*pos*/ -1100,   512, -1074, /*angle*/ 0,   0, 0, /*behParam*/ 0x01030000, /*beh*/ bhvDoorWarp),
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR,          /*pos*/  -946,   512, -1074, /*angle*/ 0, 180, 0, /*behParam*/ 0x01040000, /*beh*/ bhvDoorWarp),
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR,          /*pos*/ -1100, -1074,   922, /*angle*/ 0,   0, 0, /*behParam*/ 0x02050000, /*beh*/ bhvDoorWarp),
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR,          /*pos*/  -946, -1074,   922, /*angle*/ 0, 180, 0, /*behParam*/ 0x02060000, /*beh*/ bhvDoorWarp),
+    OBJECT(/*model*/ MODEL_CASTLE_CASTLE_DOOR,          /*pos*/ -1100,   512, -1074, /*angle*/ 0,   0, 0, /*behParam*/ 0x01030000, /*beh*/ bhvDoorWarp),
+    OBJECT(/*model*/ MODEL_CASTLE_CASTLE_DOOR,          /*pos*/  -946,   512, -1074, /*angle*/ 0, 180, 0, /*behParam*/ 0x01040000, /*beh*/ bhvDoorWarp),
+    OBJECT(/*model*/ MODEL_CASTLE_CASTLE_DOOR,          /*pos*/ -1100, -1074,   922, /*angle*/ 0,   0, 0, /*behParam*/ 0x02050000, /*beh*/ bhvDoorWarp),
+    OBJECT(/*model*/ MODEL_CASTLE_CASTLE_DOOR,          /*pos*/  -946, -1074,   922, /*angle*/ 0, 180, 0, /*behParam*/ 0x02060000, /*beh*/ bhvDoorWarp),
     WARP_NODE(/*id*/ 0x03, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x02, /*destNode*/ 0x00, /*flags*/ WARP_NO_CHECKPOINT),
     WARP_NODE(/*id*/ 0x04, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x02, /*destNode*/ 0x01, /*flags*/ WARP_NO_CHECKPOINT),
     WARP_NODE(/*id*/ 0x05, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x03, /*destNode*/ 0x00, /*flags*/ WARP_NO_CHECKPOINT),
@@ -91,8 +91,8 @@ static const LevelScript script_func_local_1[] = {
 };
 
 static const LevelScript script_func_local_2[] = {
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR, /*pos*/ -1100, 512, 3021, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvDoorWarp),
-    OBJECT(/*model*/ MODEL_CASTLE_KEY_DOOR, /*pos*/  -946, 512, 3021, /*angle*/ 0, 180, 0, /*behParam*/ 0x00010000, /*beh*/ bhvDoorWarp),
+    OBJECT(/*model*/ MODEL_CASTLE_CASTLE_DOOR, /*pos*/ -1100, 512, 3021, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvDoorWarp),
+    OBJECT(/*model*/ MODEL_CASTLE_CASTLE_DOOR, /*pos*/  -946, 512, 3021, /*angle*/ 0, 180, 0, /*behParam*/ 0x00010000, /*beh*/ bhvDoorWarp),
     WARP_NODE(/*id*/ 0x00, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x03, /*flags*/ WARP_NO_CHECKPOINT),
     WARP_NODE(/*id*/ 0x01, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x04, /*flags*/ WARP_NO_CHECKPOINT),
     OBJECT(/*model*/ MODEL_CASTLE_STAR_DOOR_50_STARS, /*pos*/ -281, 2253, 4762, /*angle*/ 0,   0, 0, /*behParam*/ 0x32000000, /*beh*/ bhvStarDoor),

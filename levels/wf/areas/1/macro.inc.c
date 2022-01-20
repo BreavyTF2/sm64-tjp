@@ -8,7 +8,7 @@ const MacroObject wf_seg7_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_hidden_blue_coin,            /*yaw*/   0, /*pos*/ -2500,   450, -1150),
     MACRO_OBJECT(/*preset*/ macro_hidden_blue_coin,            /*yaw*/   0, /*pos*/ -2500,   450,  -900),
     MACRO_OBJECT(/*preset*/ macro_hidden_blue_coin,            /*yaw*/   0, /*pos*/ -2500,   450,  -650),
-    MACRO_OBJECT(/*preset*/ macro_box_vanish_cap,               /*yaw*/   0, /*pos*/  1270,  4100, 930),
+    MACRO_OBJECT(/*preset*/ macro_box_one_coin,               /*yaw*/   0, /*pos*/  1270,  4100, 930),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/     0,  2650,  2900),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/  -500,  2650,  2900),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/   250,  2650,  2800),

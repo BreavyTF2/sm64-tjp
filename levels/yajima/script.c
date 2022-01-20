@@ -25,26 +25,26 @@
 #include "make_const_nonconst.h"
 #include "levels/yajima/header.h"
 static const LevelScript script_func_local_6[] = {
-		  OBJECT(/*model*/ MODEL_THI_WARP_PIPE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
+		  OBJECT(/*model*/ MODEL_NONE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
 		  WARP_NODE(/*id*/ 0x32, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
     RETURN(),
 };
 static const LevelScript script_func_local_7[] = {
-    OBJECT(/*model*/ MODEL_THI_WARP_PIPE, /*pos*/  4350, 0, 4400, /*angle*/ 0, 0, 0, /*behParam*/ 0x00320000, /*beh*/ bhvWarpPipe),
+    OBJECT(/*model*/ MODEL_NONE, /*pos*/  4350, 0, 4400, /*angle*/ 0, 0, 0, /*behParam*/ 0x00320000, /*beh*/ bhvWarpPipe),
     WARP_NODE(/*id*/ 0x32, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x02, /*destNode*/ 0x32, /*flags*/ WARP_NO_CHECKPOINT),
-   OBJECT(/*model*/ MODEL_THI_WARP_PIPE, /*pos*/  -4000, 0, 4350, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
+   OBJECT(/*model*/ MODEL_NONE, /*pos*/  -4000, 0, 4350, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
        WARP_NODE(/*id*/ 0x33, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x03, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
     RETURN(),
 };
 
 static const LevelScript script_func_local_8[] = {
-		  OBJECT(/*model*/ MODEL_THI_WARP_PIPE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00320000, /*beh*/ bhvWarpPipe),
+		  OBJECT(/*model*/ MODEL_NONE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00320000, /*beh*/ bhvWarpPipe),
 		  WARP_NODE(/*id*/ 0x32, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x32, /*flags*/ WARP_NO_CHECKPOINT),
     RETURN(),
 };
 
 static const LevelScript script_func_local_9[] = {
-		  OBJECT(/*model*/ MODEL_THI_WARP_PIPE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
+		  OBJECT(/*model*/ MODEL_NONE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
 		  WARP_NODE(/*id*/ 0x33, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
     RETURN(),
 };
@@ -57,7 +57,6 @@ const LevelScript level_yajima_entry[] = {
 	LOAD_RAW(0x0C, _group8_geoSegmentRomStart	  , _group8_geoSegmentRomEnd	),
 	LOAD_MIO0(0x08	  ,  _common0_mio0SegmentRomStart,  _common0_mio0SegmentRomEnd),
 	LOAD_RAW(0x0F,  _common0_geoSegmentRomStart,  _common0_geoSegmentRomEnd),
-    LOAD_MODEL_FROM_GEO(MODEL_THI_WARP_PIPE,    warp_pipe_geo),
 	ALLOC_LEVEL_POOL(),
 
 		MARIO(MODEL_MARIO, 0x00000001, bhvMario),
@@ -80,11 +79,11 @@ const LevelScript level_yajima_entry[] = {
 			OBJECT_LEAK(MODEL_CAP_SWITCH	,	 -500,   0,  -1000,   0,0,0,  0,1,0, bhvCapSwitch	),
 			OBJECT_LEAK(MODEL_CAP_SWITCH	,	  500,   0,  -1000,   0,0,0,  0,2,0, bhvCapSwitch	),
 
-			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,    -400,  250,  1500,   0,0,0,  0,0, 0, bhvExclamationBox 	 	),
-			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,    -800,  250,  1500,   0,0,0,  0,1, 0, bhvExclamationBox 	 	),
-			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,   -1200,  250,  1500,   0,0,0,  0,2, 0, bhvExclamationBox 	 	),
+//			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,    -400,  250,  1500,   0,0,0,  0,0, 0, bhvExclamationBox 	 	), //Duplicate objects.
+//			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,    -800,  250,  1500,   0,0,0,  0,1, 0, bhvExclamationBox 	 	),
+//			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,   -1200,  250,  1500,   0,0,0,  0,2, 0, bhvExclamationBox 	 	),
 
-			 OBJECT_LEAK(MODEL_BREAKABLE_BOX		,	-2867, 331,   -895,   0,0,0,  0,0,0, bhvUnused2A54	), 
+			 OBJECT_LEAK(MODEL_BREAKABLE_BOX		,	-2867, 331,   -895,   0,0,0,  0,0,0, bhvUnused2A54	), //Dummy actor.
 
 			OBJECT_LEAK(MODEL_PURPLE_SWITCH,    0, 0, -900,   0,0,0,  0,0,0,	bhvFloorSwitchGrills ),
 
@@ -125,12 +124,12 @@ const LevelScript level_yajima_entry[] = {
 
 			OBJECT_LEAK(MODEL_NONE				,	  200,    0,      0,  0,0,0,  0,1,0, bhvFloorSwitchHardcodedModel 	 ),
 			OBJECT_LEAK(MODEL_NONE				,	  600,    0,      0,  0,0,0,  0,0,0, bhvFloorSwitchHardcodedModel 	 ),
-			OBJECT_LEAK(MODEL_NONE	,	  0,   200,  0,   0,0,0,  0,0,0, bhvFish3	),
+			OBJECT_LEAK(MODEL_NONE	,	  0,   200,  0,   0,0,0,  0,0,0, bhvFish3	), //Added 
 //			OBJECT_LEAK(MODEL_UKIKI_YAJIMA			,      0,   200,     0,   0,0,0,  0,0,0, bhvMacroUkiki			),
 //			OBJECT_LEAK(MODEL_HEAVE_HO_YAJIMA			,   2000,   200,  2000,   0,0,0,  0,0,0, bhvHeaveHo			),
 			OBJECT_LEAK(MODEL_UNKNOWN_58			,	    0,    0, -1500,   0,0,0,  0,0,0, bhvStub1D0C			),
 			OBJECT_LEAK(MODEL_BREAKABLE_BOX		,  	 1000,    0,     0,   0,0,0,  0,0,0, bhvBreakableBox			),
-			OBJECT_LEAK(MODEL_MARIOS_WINGED_METAL_CAP,    -200,  200,  2500,   0,0,0,  0,0,0, bhvVanishCap	),
+			OBJECT_LEAK(MODEL_MARIOS_WINGED_METAL_CAP,    -200,  200,  2500,   0,0,0,  0,0,0, bhvMetalWingCap	),
 			OBJECT_LEAK(MODEL_MARIOS_METAL_CAP 	,    -600,  200,  2500,   0,0,0,  0,0,0, bhvMetalCap 		),
 			OBJECT_LEAK(MODEL_MARIOS_WING_CAP  	,    -400,  200,  2500,   0,0,0,  0,0,0, bhvWingCap 		),
 			OBJECT_LEAK(MODEL_MARIOS_CAP 		,    -800,  200,  2500,   0,0,0,  0,0,0, bhvNormalCap				),
@@ -158,8 +157,6 @@ const LevelScript level_yajima_entry[] = {
 			OBJECT_LEAK(MODEL_BLUE_COIN			,	 -200,    0,   200,   0,0,0,  0,0,0, bhvHiddenBlueCoin			),
 			OBJECT_LEAK(MODEL_BLUE_COIN			,	 -400,    0,   200,   0,0,0,  0,0,0, bhvHiddenBlueCoin			),
 	
-
-//    WARP_NODE(/*id*/ 0x34, /*destLevel*/ LEVEL_THI, /*destArea*/ 0x02, /*destNode*/ 0x34, /*flags*/ WARP_NO_CHECKPOINT),
 
 			TERRAIN(testmap1_info),			
 

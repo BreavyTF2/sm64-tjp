@@ -317,6 +317,8 @@ const Gfx mario_cap_seg3_dl_030230B0[] = {
 // 0x03023108 - 0x03023160
 const Gfx mario_cap_seg3_dl_03023108[] = {
     gsSPDisplayList(mario_cap_seg3_dl_03022ED8),
+	gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
+    gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (64 - 1) << G_TEXTURE_IMAGE_FRAC),
     gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, mario_cap_seg3_texture_03020750),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),

@@ -17,8 +17,7 @@
 static const LevelScript script_func_local_1[] = {
 	OBJECT(/*model*/ MODEL_EXCLAMATION_BOX,                          /*pos*/  -6032, 3420,  2172, /*angle*/ 0, 0, 0,   /*behParam*/ 0x00000000, /*beh*/ bhvExclamationBox),
 	OBJECT(/*model*/ MODEL_HEAVE_HO,                          /*pos*/  -5000, 4916,  -1400, /*angle*/ 0, 0, 0,   /*behParam*/ 0x00000000, /*beh*/ bhvHeaveHo),
-	OBJECT(/*model*/ MODEL_HOOT,                          /*pos*/  -1500, 1550,  4000, /*angle*/ 0, 0, 0,   /*behParam*/ 0x00000000, /*beh*/ bhvHoot),	
-	OBJECT(/*model*/ MODEL_YELLOW_COIN,                          /*pos*/  -1500, 1550,  4000, /*angle*/ 0, 0, 0,   /*behParam*/ 0x00000000, /*beh*/ bhvOneCoin),	
+	OBJECT(/*model*/ MODEL_YOSHI_EGG,                          /*pos*/  -1500, 1550,  4000, /*angle*/ 0, 0, 0,   /*behParam*/ 0x00000000, /*beh*/ bhvHootEgg),	
 	OBJECT(/*model*/ MODEL_METAL_BOX,                          /*pos*/  -5988, 7684,  -5988, /*angle*/ 0, 0, 0,   /*behParam*/ 0x00000000, /*beh*/ bhvPushableMetalBox),
 	OBJECT(/*model*/ MODEL_STAR,                  /*pos*/  -6094, 8500, -6094, /*angle*/ 0, 0, 0,    /*behParam*/ 0x00000000, /*beh*/ bhvStar),
     RETURN(),

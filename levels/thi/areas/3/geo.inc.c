@@ -6,7 +6,7 @@ const GeoLayout thi_geo_00079C[] = {
       GEO_OPEN_NODE(),
          GEO_NODE_ORTHO(100),
          GEO_OPEN_NODE(),
-            GEO_BACKGROUND_COLOR(0x0001),
+            GEO_BACKGROUND_COLOR(RGBA16(0,0,2,1)),
          GEO_CLOSE_NODE(),
       GEO_CLOSE_NODE(),
       GEO_ZBUFFER(1),

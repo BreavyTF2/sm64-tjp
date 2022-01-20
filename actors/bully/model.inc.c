@@ -19,11 +19,6 @@ static const Vtx bully_seg5_vertex_05000000[] = {
     {{{   250,      2,      0}, 0, {     0,      0}, {0x1e, 0x7b, 0x00, 0xff}}},
 };
 
-// 0x050000E0
-ALIGNED8 static const u8 bully_seg5_texture_050000E0[] = {
-#include "actors/bully/bully_horn.rgba16.inc.c"
-};
-
 // 0x050002E0 - 0x05000398
 const Gfx bully_seg5_dl_050002E0[] = {
     gsSPLight(&bully_lights_unused.l, 1),

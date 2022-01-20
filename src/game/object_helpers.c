@@ -467,11 +467,11 @@ struct Object *spawn_object_abs_with_rot(struct Object *parent, s16 uselessArg, 
  * a copy-paste typo by one of the programmers.
  */
 struct Object *spawn_object_rel_with_rot(struct Object *parent, u32 model, const BehaviorScript *behavior,
-                                         s16 xOff, s16 yOff, s16 zOff, s16 rx, s16 ry, UNUSED s16 rz) {
+                                         s16 xOff, s16 yOff, s16 zOff, s16 rx, s16 ry, s16 rz) {
     struct Object *newObj = spawn_object_at_origin(parent, 0, model, behavior);
     newObj->oFlags |= OBJ_FLAG_TRANSFORM_RELATIVE_TO_PARENT;
     obj_set_parent_relative_pos(newObj, xOff, yOff, zOff);
-    obj_set_angle(newObj, rx, ry, zOff); // Nice typo you got there Nintendo.
+    obj_set_angle(newObj, rx, ry, rz); // Nice typo you got there Nintendo.
 
     return newObj;
 }

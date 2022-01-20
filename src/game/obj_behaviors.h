@@ -76,6 +76,7 @@ void hoot_action_loop(void);
 void hoot_turn_to_home(void);
 void hoot_awake_loop(void);
 void bhv_hoot_loop(void);
+void bhv_hoot_egg_loop(void);
 void bhv_beta_holdable_object_init(void); /* unused */
 void bhv_beta_holdable_object_loop(void); /* unused */
 void bhv_object_bubble_init(void);

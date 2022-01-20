@@ -160,17 +160,21 @@ static void beta_boo_key_drop(void) {
  */
 static void beta_boo_key_inside_boo_loop(void) {
     // Update the key to be inside the boo at all times
-    struct Object *parent = o->parentObj;
-    obj_copy_pos(o, parent);
-
+    obj_copy_pos(o, o->parentObj);
+	o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
+	if (o->parentObj->header.gfx.node.flags & GRAPH_RENDER_INVISIBLE) { //Big Boo Boss Fix
+		o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
+	}
+	
     // Use a Y offset of 40 to make the key model aligned correctly.
     // (Why didn't they use oGraphYOffset?)
-     o->oPosY += 60.0f;
-
+     o->oGraphYOffset = 60.0f;
+    
     // If the boo is dying/dead, set the action to BETA_BOO_KEY_ACT_DROPPING.
-    if (parent->oBooDeathStatus != BOO_DEATH_STATUS_ALIVE) {
+    if (o->parentObj->oBooDeathStatus != BOO_DEATH_STATUS_ALIVE) {
         o->oAction = BETA_BOO_KEY_ACT_DROPPING;
     }
+	
 
     // Rotate the key
     o->oFaceAngleRoll += 0x200;

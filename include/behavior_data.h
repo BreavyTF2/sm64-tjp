@@ -348,6 +348,7 @@ extern const BehaviorScript bhvSignOnWall[];
 extern const BehaviorScript bhvHomingAmp[];
 extern const BehaviorScript bhvCirclingAmp[];
 extern const BehaviorScript bhvButterfly[];
+extern const BehaviorScript bhvHootEgg[];
 extern const BehaviorScript bhvHoot[];
 extern const BehaviorScript bhvBetaHoldableObject[];
 extern const BehaviorScript bhvCarrySomething1[];
@@ -367,8 +368,7 @@ extern const BehaviorScript bhvRespawner[];
 extern const BehaviorScript bhvSmallBully[];
 extern const BehaviorScript bhvBigBully[];
 extern const BehaviorScript bhvBigBullyWithMinions[];
-extern const BehaviorScript bhvSmallChillBully[];
-extern const BehaviorScript bhvBigChillBully[];
+extern const BehaviorScript bhvSmallChillBully[];;
 extern const BehaviorScript bhvJetStreamRingSpawner[];
 extern const BehaviorScript bhvJetStreamWaterRing[];
 extern const BehaviorScript bhvMantaRayWaterRing[];
@@ -553,5 +553,5 @@ extern const BehaviorScript bhvEndBirds1[];
 extern const BehaviorScript bhvEndBirds2[];
 extern const BehaviorScript bhvIntroScene[];
 extern const BehaviorScript bhvUnusedFakeStar[];
-
+extern const BehaviorScript bhvMetalWingCap[];
 #endif // BEHAVIOR_DATA_H

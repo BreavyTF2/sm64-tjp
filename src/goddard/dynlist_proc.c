@@ -1799,7 +1799,7 @@ struct ObjGroup *d_get_att_objgroup(void) {
             fatal_printf("%s: Object '%s'(%x) does not support this function.", "dGetAttObjGroup()",
                          sDynListCurInfo->name, sDynListCurObj->type);
     }
-    // No null return due to `fatal_printf()` being a non-returning function?
+   return NULL;
 }
 
 /**
@@ -1821,7 +1821,7 @@ struct GdObj *d_get_att_to_obj(void) {
             fatal_printf("%s: Object '%s'(%x) does not support this function.", "dGetAttToObj()",
                          sDynListCurInfo->name, sDynListCurObj->type);
     }
-    // No null return due to `fatal_printf()` being a non-returning function?
+    return NULL;
 }
 
 /**
@@ -2090,7 +2090,7 @@ struct GdVec3f *d_get_world_pos_ptr(void) {
             fatal_printf("%s: Object '%s'(%x) does not support this function.", "dGetWorldPosPtr()",
                          sDynListCurInfo->name, sDynListCurObj->type);
     }
-    // No null return due to `fatal_printf()` being a non-returning function?
+   return NULL;
 }
 
 /**
@@ -3005,7 +3005,7 @@ Mat4f *d_get_rot_mtx_ptr(void) {
             fatal_printf("%s: Object '%s'(%x) does not support this function.", "dGetRMatrixPtr()",
                          sDynListCurInfo->name, sDynListCurObj->type);
     }
-    // No null return due to `fatal_printf()` being a non-returning function?
+   return NULL;
 }
 
 /**
@@ -3062,7 +3062,7 @@ Mat4f *d_get_matrix_ptr(void) {
             fatal_printf("%s: Object '%s'(%x) does not support this function.", "dGetMatrixPtr()",
                          sDynListCurInfo->name, sDynListCurObj->type);
     }
-    // No null return due to `fatal_printf()` being a non-returning function?
+    return NULL;
 }
 
 /**
@@ -3087,7 +3087,7 @@ Mat4f *d_get_idn_mtx_ptr(void) {
             fatal_printf("%s: Object '%s'(%x) does not support this function.", "dGetIMatrixPtr()",
                          sDynListCurInfo->name, sDynListCurObj->type);
     }
-    // No null return due to `fatal_printf()` being a non-returning function?
+   return NULL;
 }
 
 /**

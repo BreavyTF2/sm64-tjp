@@ -30,6 +30,7 @@ void bobomb_spawn_coin(void) {
 
 void bobomb_act_explode(void) {
     struct Object *explosion;
+	o->oBobombFuseTimer = 151;
 	cur_obj_init_animation(1);
     if (o->oTimer <= 12)
 	cur_obj_init_animation(1);	
@@ -311,7 +312,7 @@ void bhv_bobomb_buddy_init(void) {
 
 void bobomb_buddy_act_idle(void) {
     s16 sp1a = o->header.gfx.animInfo.animFrame;
-    UNUSED s16 collisionFlags = 0;
+    s16 collisionFlags;
     cur_obj_init_animation(3);
     o->oBobombBuddyPosXCopy = o->oPosX;
     o->oBobombBuddyPosYCopy = o->oPosY;
@@ -319,16 +320,17 @@ void bobomb_buddy_act_idle(void) {
 
     collisionFlags = object_step();
 
-    if ((sp1a == 5) || (sp1a == 16))
-        cur_obj_play_sound_2(SOUND_OBJ_BOBOMB_WALK);
+    if ((sp1a == 5) || (sp1a == 16)) cur_obj_play_sound_2(SOUND_OBJ_BOBOMB_WALK);
 
-    o->oForwardVel = 2.5f;
+	if (gCurrLevelNum == LEVEL_JRB) {
+    o->oForwardVel = 0.0f;
+	} else o->oForwardVel = 5.0f;
 
-    collisionFlags = object_step();
+
     if ((obj_return_home_if_safe(o, o->oHomeX, o->oHomeY, o->oHomeZ, 400) == 1)
 		&& (obj_check_if_facing_toward_angle(o->oMoveAngleYaw, o->oAngleToMario, 0x2000) == TRUE)) {
     }
-
+	obj_check_floor_death(collisionFlags, sObjFloor);
     if (o->oInteractStatus == INT_STATUS_INTERACTED)
         o->oAction = BOBOMB_BUDDY_ACT_TURN_TO_TALK;
 }

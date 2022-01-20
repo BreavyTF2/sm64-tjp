@@ -205,6 +205,7 @@ const LevelScript script_func_global_2[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BULLET_BILL,             bullet_bill_geo),
     LOAD_MODEL_FROM_GEO(MODEL_YELLOW_SPHERE,           yellow_sphere_geo),
     LOAD_MODEL_FROM_GEO(MODEL_HOOT,                    hoot_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_YOSHI_EGG,               yoshi_egg_geo),
     LOAD_MODEL_FROM_GEO(MODEL_THWOMP,                  RCP_HmsDosun),
     LOAD_MODEL_FROM_GEO(MODEL_HEAVE_HO,                heave_ho_geo),
     RETURN(),
@@ -345,7 +346,6 @@ const LevelScript script_func_global_16[] = {
 
 const LevelScript script_func_global_17[] = {
     LOAD_MODEL_FROM_GEO(MODEL_CHILL_BULLY,             chilly_chief_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_BIG_CHILL_BULLY,         chilly_chief_big_geo),
     LOAD_MODEL_FROM_GEO(MODEL_MONEYBAG,                moneybag_geo),
 	LOAD_MODEL_FROM_GEO(MODEL_UNKNOWN_58,			   RCP_HmsEnemyicemotos_basedata_A),
     RETURN(),

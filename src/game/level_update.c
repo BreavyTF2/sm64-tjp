@@ -140,7 +140,7 @@ struct CreditsEntry sCreditsSequence[] = {
     { LEVEL_TTM, 1, 2, -33, { 2613, 313, 1074 }, credits13 },
     { LEVEL_THI, 1, 51, 54, { -2609, 512, 856 }, credits14 },
     { LEVEL_TTC, 1, 17, -72, { -1304, -71, -967 }, credits15 },
-    { LEVEL_CASTLE_COURTYARD, 1, 1, -128, { 0, 151, -1000 }, credits16 },
+    { LEVEL_UNKNOWN_2, 1, 1, -128, { 1000, 5000, 1000 }, credits16 },
     { LEVEL_SA, 1, 1, 24, { -1050, -1330, -1559 }, credits17 },
     { LEVEL_COTMC, 1, 49, -16, { -254, 415, -6045 }, credits18 },
     { LEVEL_DDD, 2, -111, -64, { 3948, 1185, -104 }, credits19 },

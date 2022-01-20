@@ -56,5 +56,3 @@ const GeoLayout mips_geo[] = {
  hmsEnd()
  hmsExit()
 };
-
-UNUSED static const u64 mips_unused_1 = 0;
