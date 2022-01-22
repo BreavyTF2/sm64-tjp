@@ -62,10 +62,10 @@ Hey, you! It's dangerous\n\
 ahead, so listen up! Take\n\
 my advice.\n\
 \n\
-Cross the two\n\
-bridges ahead, then\n\
-watch for falling\n\
-water bombs.\n\
+Dodge the water bombs\n\
+and cross the two bridges\n\
+ahead to find the\n\
+Bob-ombs'position.\n\
 Chucking at the\n\
 top of the mountain is\n\
 very powerful--don't let\n\
@@ -76,8 +76,8 @@ You can talk to us\n\
 whenever you'd like to!"))
 
 DEFINE_DIALOG(DIALOG_003, 1, 5, 95, 200, _("\
-Thank you, Mario! The Big\n\
-Bob-omb is nothing but a\n\
+Thank you, Mario! Chucking\n\
+is nothing but a\n\
 big dud now! But the\n\
 battle for the castle has\n\
 just begun.\n\

@@ -1,3 +1,14 @@
+//#define ANM_motos_basedata_A    	0
+//#define ANM_motos_carry         	1
+//#define ANM_motos_carry_run     	2
+//#define ANM_motos_carry_start   	3
+//#define ANM_motos_down_recover  	4
+//#define ANM_motos_down_stop     	5
+//#define ANM_motos_pitch         	6
+//#define ANM_motos_safe_down     	7
+//#define ANM_motos_wait          	8
+//#define ANM_motos_walk          	9
+
 void s_motos_hand(void)
 {
 
@@ -169,7 +180,7 @@ void motos_pitch(void)
 void motos_fly(void)
 {
 //   o->oForwardVel = 5.0f;
-	cur_obj_init_animation_with_sound(5);
+	cur_obj_init_animation_and_extend_if_at_end(5);
 		if ((gCurrLevelNum == LEVEL_SL) & (o->oPosY < 1000.0f)) {
 			cur_obj_play_sound_2(SOUND_OBJ_BULLY_EXPLODE_2);
 							cur_obj_play_sound_2(SOUND_OBJ2_LARGE_BULLY_ATTACKED);     
@@ -202,7 +213,10 @@ void motos_recover(void) {
 if (o->oForwardVel > 0.0) { 
     o->oForwardVel -= 0.3;
 }
+ if (o->oTimer == 0) { cur_obj_become_intangible(); cur_obj_shake_screen(SHAKE_POS_SMALL); }
+ 
     if (o->oSubAction == 0) {
+		
         cur_obj_init_animation_with_sound(5);
 		if (o->oTimer == 10) {
 		cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
@@ -213,12 +227,14 @@ if (o->oForwardVel > 0.0) {
 }
     } else if (o->oSubAction == 1) {
         cur_obj_init_animation_with_sound(4);
-        if (cur_obj_check_if_near_animation_end())
+        if (cur_obj_check_if_near_animation_end()){
+			cur_obj_become_tangible();
             o->oAction = 1;
+		}
 }
 }
 
-void motos_recover2(void) {
+void motos_recover2(void) { //Motos drops down
 //   o->oForwardVel = 5.0f;
 if (o->oForwardVel > 0.0) { 
     o->oForwardVel -= 0.6;
@@ -259,7 +275,7 @@ void motos_returnhome(void) {
             }
             break;
         case 1:
-            cur_obj_init_animation_and_extend_if_at_end(4);
+		cur_obj_init_animation_and_extend_if_at_end(5);
             if (o->oVelY < 0 && o->oPosY < o->oHomeY) {
                 o->oPosY = o->oHomeY;
                 o->oVelY = 0;
@@ -268,13 +284,16 @@ void motos_returnhome(void) {
 				o->oMotosUnk88 = 0;
 				o->oMotosUnk100 = 0;
                 cur_obj_play_sound_2(SOUND_OBJ_KING_BOBOMB);
-                cur_obj_shake_screen(SHAKE_POS_SMALL);
+                cur_obj_shake_screen(SHAKE_POS_MEDIUM);
                 o->oSubAction++;
             }
             break;
         case 2:
-		cur_obj_become_tangible();
-                                o->oAction = 1;
+		cur_obj_init_animation(4);
+		if (cur_obj_check_if_near_animation_end()) {
+			cur_obj_become_tangible();
+        o->oAction = 1;
+		}
             break;
     }
 }	
@@ -329,7 +348,7 @@ void motos_deactivate(void) {  //Added so motos doesn't make walking sounds afte
 //        create_sound_spawner(SOUND_OBJ_KING_WHOMP_DEATH);
 		cur_obj_hide();
         cur_obj_become_intangible();
-		}
+}
 
 void motos_main(void)
 {
