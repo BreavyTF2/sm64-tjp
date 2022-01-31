@@ -54,3 +54,5 @@ build/*
 # Ubuntu Junk
 *.Identifier
 *.lnk
+# Notepad++ Backup
+*.bak

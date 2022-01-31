@@ -84,6 +84,7 @@ s32 sGameLoopTicked = 0;
 #define BOWS2 7 // Bowser Battle Laugh
 #define GRUNT 8
 #define WIGLR 9
+#define YOSHI 10
 #define _ 0xFF
 
 #ifdef VERSION_JP
@@ -110,7 +111,7 @@ u8 sDialogSpeaker[] = {
     /*13*/ _,     _,     TUXIE, _,     _,     _,     _,     _,     _,     _,
     /*14*/ _,     _,     _,     _,     _,     _,     _,     _,     _,     _,
     /*15*/ WIGLR, WIGLR, WIGLR, _,     _,     _,     _,     _,     _,     _,
-    /*16*/ _,     KBOMB, _,     _,     _,     _,     _,     _,     WIGLR, _
+    /*16*/ _,     YOSHI, _,     _,     _,     _,     _,     _,     WIGLR, _
 };
 #undef _
 STATIC_ASSERT(ARRAY_COUNT(sDialogSpeaker) == DIALOG_COUNT, "change this array if you are adding dialogs");
@@ -126,6 +127,7 @@ s32 sDialogSpeakerVoice[] = {
     SOUND_OBJ_BOWSER_LAUGH,
     SOUND_OBJ2_BOSS_DIALOG_GRUNT,
     SOUND_OBJ_WIGGLER_TALK,
+    SOUND_GENERAL_YOSHI_TALK,
 };
 
 u8 sNumProcessedSoundRequests = 0;

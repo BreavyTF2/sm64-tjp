@@ -15,7 +15,7 @@ void s_motos_hand(void)
 //	struct Object *firep;
 
 	o->oParentRelativePosX = 100.0f;
-	o->oParentRelativePosY = 0.0f;
+//	o->oParentRelativePosY = 0.0f;
 	o->oParentRelativePosZ = 150.0f;
 	o->oMoveAngleYaw = o->parentObj->oMoveAngleYaw;
 
@@ -103,60 +103,38 @@ void motos_player_search(void)
 	o->oForwardVel = 2.5f;
 	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x300);
 	if ( o->oDistanceToMario > 2000 )	o->oAction = 0;
-		if ((o->oPosY < o->oHomeY - 100) & (o->oTimer >= 20)) {
-			o->oAction = 11;
-		}
+	
+	if ((o->oPosY < o->oHomeY - 100) & (o->oTimer >= 20)) { //Should not happen unless Light Motos is performed, or the player lures motos of the platform in SL.
+			o->oAction = 9;
+	}
 	if ( o->oInteractStatus & INT_STATUS_GRABBED_MARIO){
 		o->oAction = 2;
 	 	o->oMotosUnk88 = 1;
 	}
-
-}
-void motos_player_carry(void) //Convert into subaction later?
-{
-	cur_obj_init_animation_with_sound(3);
-	if ( cur_obj_check_if_near_animation_end() )	o->oAction = 5;
-
-}
-
-void motos_player_pitch(void){
-
-	o->oForwardVel = 0.0f;
-	cur_obj_init_animation_with_sound(6);
-	if ( cur_obj_check_anim_frame(14) ){
-		o->oMotosUnk88 = 2;		/* nageru shyn kan	*/ //Set Mario's held state to 2.
-	}
-	if ( cur_obj_check_if_near_animation_end() ){
-		o->oAction = 0;
-		o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
-	}
-
 }
 
 void motos_carry_start(void)
 {
 	cur_obj_init_animation_with_sound(3);
-	if ( cur_obj_check_if_near_animation_end() ){
-		if(s_ai_pitch()) o->oAction = 5;
-		else			   			 o->oAction = 5;
+	if (cur_obj_check_if_near_animation_end()) o->oAction = 3;	
 }
-}
+
 void motos_carry_run(void)
 {
 	o->oForwardVel = 10.0f;
-		if (cur_obj_check_anim_frame(5) | cur_obj_check_anim_frame(10) | cur_obj_check_if_near_animation_end()) 
+		if (cur_obj_check_anim_frame(2)| cur_obj_check_anim_frame(11)) 
 		cur_obj_play_sound_2(SOUND_OBJ_POUNDING1_HIGHPRIO);
 
 	o->oMotosUnk100 += player_performed_grab_escape_action();
-		if (o->oMotosUnk100 > 10) {
-		o->oAction = 8;
+	if (o->oMotosUnk100 > 10) {
+		o->oAction = 6;
 		o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
 		o->oMotosUnk88 = 3;
-		}
+	}
 
 	cur_obj_init_animation_with_sound(2);
 	if ((s_ai_pitch()) & (o->oMotosUnk88 == 1)) {
-		o->oAction = 3;
+		o->oAction = 4;
 		cur_obj_play_sound_2(SOUND_OBJ_POUNDING1_HIGHPRIO);
 	}
 }
@@ -167,10 +145,10 @@ void motos_pitch(void)
 	if (o->oTimer == 0) {
 	cur_obj_init_animation_with_sound(6);
 			cur_obj_play_sound_2(SOUND_OBJ_BULLY_METAL);
-}
+	}
 	if ( cur_obj_check_anim_frame(14) ){
 		cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN4);
-		o->oMotosUnk88 = 0;
+		o->oMotosUnk88 = 2;
 	}
 	if ( cur_obj_check_if_near_animation_end() )	
 	o->oAction = 0;
@@ -186,9 +164,9 @@ void motos_fly(void)
 							cur_obj_play_sound_2(SOUND_OBJ2_LARGE_BULLY_ATTACKED);     
 			o->oHealth--;
 			if (o->oHealth) 
-                o->oAction = 11;
-            if (o->oHealth == 0) 
                 o->oAction = 9;
+            if (o->oHealth == 0) 
+                o->oAction = 7;
 	}
 		if ((o->oFloor->type == SURFACE_BURNING) && ( o->oMoveFlags & OBJ_MOVE_LANDED)) {
 			spawn_object_with_scale(o, MODEL_BURN_SMOKE, bhvBlackSmokeBowser, o->header.gfx.scale[0]);
@@ -196,14 +174,14 @@ void motos_fly(void)
 							cur_obj_play_sound_2(SOUND_OBJ2_LARGE_BULLY_ATTACKED);     
 			o->oHealth--;
 			if (o->oHealth) 
-                o->oAction = 11;
-            if (o->oHealth == 0) 
                 o->oAction = 9;
+            if (o->oHealth == 0) 
+                o->oAction = 7;
 	}
 	if (( o->oMoveFlags & OBJ_MOVE_LANDED) && (o->oFloor->type != SURFACE_BURNING)  ) {
 		
 		cur_obj_play_sound_2(SOUND_OBJ2_BULLY_ATTACKED);
-	o->oAction = 8;
+	o->oAction = 6;
 	}
 
 }
@@ -219,19 +197,19 @@ if (o->oForwardVel > 0.0) {
 		
         cur_obj_init_animation_with_sound(5);
 		if (o->oTimer == 10) {
-		cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
+			cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
 		}
         if (cur_obj_check_if_near_animation_end()) {
 			
             o->oSubAction++;
-}
+		}
     } else if (o->oSubAction == 1) {
         cur_obj_init_animation_with_sound(4);
         if (cur_obj_check_if_near_animation_end()){
 			cur_obj_become_tangible();
             o->oAction = 1;
 		}
-}
+	}
 }
 
 void motos_recover2(void) { //Motos drops down
@@ -242,18 +220,18 @@ if (o->oForwardVel > 0.0) {
 	if (o->oVelY > 0.0) { 
 	    o->oVelY -= 1.0f;
 	}
-if (o->oTimer == 0) {
-cur_obj_become_intangible();
-cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
-cur_obj_init_animation_with_sound(8);
-}
+	if (o->oTimer == 0) {
+		cur_obj_become_intangible();
+		cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
+		cur_obj_init_animation_with_sound(8);
+	}
 	
 		if (o->oPosY < (o->oHomeY + 15)){
 		cur_obj_init_animation_with_sound(7);
 	if ( cur_obj_check_if_near_animation_end() )	{
 	cur_obj_become_tangible();
 	o->oAction = 1;
-	}
+		}
 	}
 }
 
@@ -300,7 +278,7 @@ void motos_returnhome(void) {
 
 void motos_spawn_minion(s32 arg0, s32 arg1, s32 arg2, s16 arg3) {
     struct Object *mbully =
-        spawn_object_abs_with_rot(o, 0, MODEL_BULLY, bhvSmallBully, arg0, arg1, arg2, 0, arg3, 00);
+        spawn_object_abs_with_rot(o, 0, MODEL_BULLY, bhvSmallBully, arg0, arg1, arg2, 0, arg3, 0);
     mbully->oBullySubtype = BULLY_STYPE_MINION;
     mbully->oBehParams2ndByte = BULLY_BP_SIZE_SMALL;
 }
@@ -314,7 +292,7 @@ void motos_minions(void) {
 
     cur_obj_become_intangible();
 
-    o->oAction = 13;
+    o->oAction = 11;
 }
 void motos_inactive(void) {
 	
@@ -323,7 +301,7 @@ void motos_inactive(void) {
                 if (o->oTimer >= 91) {
 									o->oPosY = 1037.0f;
 			o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
-                    o->oAction = 10;
+                    o->oAction = 8;
             }
 		}
 }
@@ -337,15 +315,13 @@ void motos_death(void) {
         cur_obj_become_intangible();
 		if (gCurrLevelNum == LEVEL_SL) {
         spawn_default_star(300.0f, 1500.0f, -4800.0f);
-		o->oAction = 12;
 		}
-		else 
+		else {
         spawn_default_star(3700.0f, 600.0f, -5500.0f);
-        o->oAction = 12;
 		}
-		
+		o->oAction = 10;
+}	
 void motos_deactivate(void) {  //Added so motos doesn't make walking sounds after death
-//        create_sound_spawner(SOUND_OBJ_KING_WHOMP_DEATH);
 		cur_obj_hide();
         cur_obj_become_intangible();
 }
@@ -363,39 +339,33 @@ void motos_main(void)
 	motos_player_search();
 	break;
 	case 2:
-	motos_player_carry();
-	break;
-	case 3:
-	motos_player_pitch();
-	break;
-	case 4:
 	motos_carry_start();
 	break;
-	case 5:
+	case 3:
 	motos_carry_run();
 	break;
-	case 6:
+	case 4:
 	motos_pitch();
 	break;
-	case 7:
+	case 5:
 	motos_fly();
 	break;
-	case 8:
+	case 6:
 	motos_recover();
 	break;
-	case 9:
+	case 7:
 	motos_death();
 	break;
-	case 10:
+	case 8:
 	motos_recover2();
 	break;
-	case 11:
+	case 9:
 	motos_returnhome();
 	break;
-	case 12:
+	case 10:
 	motos_deactivate();
 	break;
-	case 13:
+	case 11:
 	motos_inactive();
 	break;
 	}
@@ -426,10 +396,8 @@ void s_motos(void)
             break;
         case HELD_THROWN:
         case HELD_DROPPED:
-            cur_obj_get_thrown_or_placed(sp2C, sp28, 7);
+            cur_obj_get_thrown_or_placed(sp2C, sp28, 5);
             break;
 	}
     o->oInteractStatus = 0;
-//	s_erase_shape(obj_playerdist,2000);
- // cur_obj_become_tangible();
 }

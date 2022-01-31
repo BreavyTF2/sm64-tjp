@@ -21,3 +21,5 @@
 #include "tornado/model.inc.c"
 #include "tornado/geo.inc.c"
 
+#include "sun/model.inc.c"
+

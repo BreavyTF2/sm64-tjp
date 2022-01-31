@@ -803,6 +803,7 @@ void audio_reset_session(void) {
     gMaxAudioCmds = gMaxSimultaneousNotes * 0x10 * gAudioBufferParameters.updatesPerFrame + preset->numReverbs * 0x20 + 0x300;
 #else
     reverbWindowSize = preset->reverbWindowSize;
+	preset->reverbDownsampleRate = 1;
     gAiFrequency = osAiSetFrequency(preset->frequency);
     gMaxSimultaneousNotes = preset->maxSimultaneousNotes;
     gSamplesPerFrameTarget = ALIGN16(gAiFrequency / 60);
@@ -831,8 +832,8 @@ void audio_reset_session(void) {
     gReverbDownsampleRate = preset->reverbDownsampleRate;
     gVolume = preset->volume;
     gMinAiBufferLength = gSamplesPerFrameTarget - 0x10;
-    updatesPerFrame = gSamplesPerFrameTarget / 160 + 1;
-    gAudioUpdatesPerFrame = gSamplesPerFrameTarget / 160 + 1;
+    updatesPerFrame = gSamplesPerFrameTarget / 137 + 1;
+    gAudioUpdatesPerFrame = gSamplesPerFrameTarget / 137 + 1;
 
     // Compute conversion ratio from the internal unit tatums/tick to the
     // external beats/minute (JP) or tatums/minute (US). In practice this is

@@ -1,4 +1,4 @@
-// yoshi.c.inc //Currently Motos NPC
+// yoshi.c.inc
 
 // X/Z coordinates of Yoshi's homes that he switches between.
 // Note that this doesn't contain the Y coordinate since the castle roof is flat,
@@ -21,15 +21,15 @@ void yoshi_walk_loop(void) {
     UNUSED s16 sp26;
     s16 sp24 = o->header.gfx.animInfo.animFrame;
 
-    o->oForwardVel = 2.5f;
+    o->oForwardVel = 10.0f;
     sp26 = object_step();
     o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oYoshiTargetYaw, 0x500);
     if (is_point_close_to_object(o, o->oHomeX, 3174.0f, o->oHomeZ, 200))
         o->oAction = YOSHI_ACT_IDLE;
 
-    cur_obj_init_animation(9);
-   if (sp24 == 0 || sp24 == 14)
-        cur_obj_play_sound_2(SOUND_OBJ_BULLY_WALKING);
+    cur_obj_init_animation(1);
+    if (sp24 == 0 || sp24 == 15)
+        cur_obj_play_sound_2(SOUND_GENERAL_YOSHI_WALK);
 
     if (o->oInteractStatus == INT_STATUS_INTERACTED)
         o->oAction = YOSHI_ACT_TALK;
@@ -75,7 +75,7 @@ void yoshi_idle_loop(void) {
 
 void yoshi_talk_loop(void) {
     if ((s16) o->oMoveAngleYaw == (s16) o->oAngleToMario) {
-        cur_obj_init_animation(8);
+        cur_obj_init_animation(0);
         if (set_mario_npc_dialog(1) == 2) {
             o->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;
             if (cutscene_object_with_dialog(CUTSCENE_DIALOG, o, DIALOG_161)) {
@@ -88,69 +88,60 @@ void yoshi_talk_loop(void) {
             }
         }
     } else {
-        cur_obj_init_animation(9);
+        cur_obj_init_animation(1);
         play_puzzle_jingle();
         o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oAngleToMario, 0x500);
     }
 }
 
 void yoshi_walk_and_jump_off_roof_loop(void) {
-    s16 sp24 = o->header.gfx.animInfo.animFrame;
+    s16 sp26 = o->header.gfx.animInfo.animFrame;
 
-    o->oForwardVel = 2.5f;
+    o->oForwardVel = 10.0f;
     object_step();
-    cur_obj_init_animation(9);
+    cur_obj_init_animation(1);
     if (o->oTimer == 0)
         cutscene_object(CUTSCENE_STAR_SPAWN, o);
 
     o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oYoshiTargetYaw, 0x500);
     if (is_point_close_to_object(o, o->oHomeX, 3174.0f, o->oHomeZ, 200)) {
-        cur_obj_init_animation(5);
-        cur_obj_play_sound_2(SOUND_GENERAL_ENEMY_ALERT1);
-        o->oForwardVel = 50.0f;
-        o->oVelY = 40.0f;
-        o->oMoveAngleYaw = -0x3FFF;
         o->oAction = YOSHI_ACT_FINISH_JUMPING_AND_DESPAWN;
     }
 
-   if (sp24 == 0 || sp24 == 14)
-        cur_obj_play_sound_2(SOUND_OBJ_BULLY_WALKING);
-
+    if (sp26 == 0 || sp26 == 15) {
+        cur_obj_play_sound_2(SOUND_GENERAL_YOSHI_WALK);
+    }
 }
 
 void yoshi_finish_jumping_and_despawn_loop(void) {
-    cur_obj_extend_animation_if_at_end();
-    obj_move_xyz_using_fvel_and_yaw(o);
-    o->oVelY -= 2.0;
-    if (o->oPosY < 2100.0f) {
-        set_mario_npc_dialog(0);
+	struct Object *explosion;
+	if (o->oTimer == 0) {
+		explosion = spawn_object(o, MODEL_EXPLOSION, bhvExplosion);
+        explosion->oGraphYOffset += 100.0f;
+		o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
+	}
+    if (o->oTimer >= 20) {
+		set_mario_npc_dialog(0);
         gObjCutsceneDone = TRUE;
         sYoshiDead = TRUE;
-        o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
-    }
+		o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+	}
 }
 
 void yoshi_give_present_loop(void) {
     s32 sp1C = gGlobalTimer;
-    if (gMarioState->numLives == 100) {
+
+    if (gHudDisplay.lives == 100) {
         play_sound(SOUND_GENERAL_COLLECT_1UP, gDefaultSoundArgs);
         gSpecialTripleJump = TRUE;
         o->oAction = YOSHI_ACT_WALK_JUMP_OFF_ROOF;
         return;
-
     }
 
-    if ((sp1C & 0x03) == 0) {
+    if ((sp1C & 0x01) == 0) {
         play_sound(SOUND_MENU_YOSHI_GAIN_LIVES, gDefaultSoundArgs);
-//		if (gHudDisplay.lives >= 1){ //Yoshi kills you and steals your stars.
- //       gMarioState->numLives--;
         gMarioState->numLives++;
-}
-//		gMarioState->hurtCounter--;
-//		gMarioState->numStars--;
-
-		
-    
+    }
 }
 
 void bhv_yoshi_loop(void) {
@@ -180,9 +171,9 @@ void bhv_yoshi_loop(void) {
             break;
 
         case YOSHI_ACT_CREDITS:
-            cur_obj_init_animation(8);
+            cur_obj_init_animation(0);
             break;
     }
-	cur_obj_scale(2.0f);
-//    curr_obj_random_blink(&o->oYoshiBlinkTimer);
+
+    curr_obj_random_blink(&o->oYoshiBlinkTimer);
 }

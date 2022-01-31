@@ -4,14 +4,14 @@
 const Collision penguin_seg5_collision_05008B88[] = {
     COL_INIT(),
     COL_VERTEX_INIT(0x8),
-    COL_VERTEX(12, 66, -12),
+    COL_VERTEX(12, 69, -12),
     COL_VERTEX(12, 0, -12),
     COL_VERTEX(12, 0, 12),
-    COL_VERTEX(12, 66, 12),
+    COL_VERTEX(12, 69, 12),
     COL_VERTEX(-12, 0, -12),
-    COL_VERTEX(-12, 66, -12),
+    COL_VERTEX(-12, 69, -12),
     COL_VERTEX(-12, 0, 12),
-    COL_VERTEX(-12, 66, 12),
+    COL_VERTEX(-12, 69, 12),
 
     COL_TRI_INIT(SURFACE_NO_CAM_COLLISION, 10),
     COL_TRI(2, 1, 0),

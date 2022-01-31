@@ -502,11 +502,19 @@ void ukiki_free_loop(void) {
  * Possibly unused so AnimState could be used for wearing a cap?
  */
 static void ukiki_blink_timer(void) {
-    if (gGlobalTimer % 50 < 7) {
+	if (o->oUkikiHasCap & UKIKI_CAP_ON) {
+	    if (gGlobalTimer % 50 < 7) {
+        o->oAnimState = UKIKI_ANIM_STATE_CLOSED_CAP;
+		} else {
+        o->oAnimState = UKIKI_ANIM_STATE_CAP_ON;
+		} 
+	} else {
+		if (gGlobalTimer % 50 < 7) {
         o->oAnimState = UKIKI_ANIM_STATE_EYE_CLOSED;
-    } else {
+		} else {
         o->oAnimState = UKIKI_ANIM_STATE_DEFAULT;
-    }
+		}
+	}
 }
 
 /**
@@ -632,12 +640,8 @@ void bhv_ukiki_loop(void) {
             cur_obj_get_dropped();
             break;
     }
-
-    if (o->oUkikiHasCap & UKIKI_CAP_ON) {
-        o->oAnimState = UKIKI_ANIM_STATE_CAP_ON;
-    } else {
-        o->oAnimState = UKIKI_ANIM_STATE_DEFAULT;
-    }
+		
+		 ukiki_blink_timer();  //Blink restored.
 
     o->oInteractStatus = 0;
     print_debug_bottom_up("mode   %d\n", o->oAction);

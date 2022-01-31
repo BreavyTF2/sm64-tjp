@@ -150,7 +150,6 @@ static void platform_on_track_update_pos_or_spawn_ball(s32 ballIndex, f32 x, f32
     struct Waypoint *initialPrevWaypoint;
     struct Waypoint *nextWaypoint;
     struct Waypoint *prevWaypoint;
-    UNUSED s32 unused;
     f32 amountToMove;
     f32 dx;
     f32 dy;
@@ -628,9 +627,6 @@ static void obj_die_if_health_non_positive(void) {
         } else {
             obj_spawn_loot_yellow_coins(o, o->oNumLootCoins, 20.0f);
         }
-        // This doesn't do anything
-        obj_spawn_loot_yellow_coins(o, o->oNumLootCoins, 20.0f);
-
         if (o->oHealth < 0) {
             cur_obj_hide();
             cur_obj_become_intangible();

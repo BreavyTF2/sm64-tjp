@@ -663,6 +663,7 @@
     #define UKIKI_ANIM_STATE_DEFAULT    0
     #define UKIKI_ANIM_STATE_EYE_CLOSED 1
     #define UKIKI_ANIM_STATE_CAP_ON     2
+	#define UKIKI_ANIM_STATE_CLOSED_CAP 3
 
     /* oUkikiHasCap */
     #define UKIKI_CAP_ON 1

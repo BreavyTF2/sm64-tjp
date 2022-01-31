@@ -365,6 +365,7 @@
 #define MODEL_KLEPTO                      0x57        // klepto_geo
 #define MODEL_EYEROK_LEFT_HAND            0x58        // eyerok_left_hand_geo
 #define MODEL_EYEROK_RIGHT_HAND           0x59        // eyerok_right_hand_geo
+#define MODEL_SUN				          0x5A		  // sun_geo
 
 // group 6
 #define MODEL_DL_MONTY_MOLE_HOLE          0x54        // monty_mole_hole_seg5_dl_05000840

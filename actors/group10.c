@@ -15,7 +15,7 @@
 #include "peach/anims/table.inc.c"
 
 
-//#include "yoshi/model.inc.c"
-//#include "yoshi/anims/data.inc.c"
-//#include "yoshi/anims/table.inc.c"
+#include "yoshi/model.inc.c"
+#include "yoshi/anims/data.inc.c"
+#include "yoshi/anims/table.inc.c"
 //

@@ -71,7 +71,7 @@ void transfer_bully_speed(struct BullyCollisionData *obj1, struct BullyCollision
     //! Bully battery
 }
 
-BAD_RETURN(s32) init_bully_collision_data(struct BullyCollisionData *data, f32 posX, f32 posZ,
+void init_bully_collision_data(struct BullyCollisionData *data, f32 posX, f32 posZ,
                                f32 forwardVel, s16 yaw, f32 conversionRatio, f32 radius) {
     if (forwardVel < 0.0f) {
         forwardVel *= -1.0f;
@@ -281,7 +281,7 @@ static s32 perform_ground_quarter_step(struct MarioState *m, Vec3f nextPos) {
     if ((m->action & ACT_FLAG_RIDING_SHELL) && floorHeight < waterLevel) {
         floorHeight = waterLevel;
         floor = &gWaterSurfacePseudoFloor;
-        floor->originOffset = floorHeight; //! Wrong origin offset (no effect)
+        floor->originOffset = -floorHeight;
     }
 
     if (nextPos[1] > floorHeight + 100.0f) {
@@ -424,7 +424,7 @@ s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32 stepAr
     if ((m->action & ACT_FLAG_RIDING_SHELL) && floorHeight < waterLevel) {
         floorHeight = waterLevel;
         floor = &gWaterSurfacePseudoFloor;
-        floor->originOffset = floorHeight; //! Incorrect origin offset (no effect)
+        floor->originOffset = -floorHeight;
     }
 
     //! This check uses f32, but findFloor uses short (overflow jumps)

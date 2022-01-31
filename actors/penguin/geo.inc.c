@@ -3,7 +3,7 @@ const GeoLayout penguin_geo[] = {
  hmsBegin()
  hmsScale(0.25f)
     hmsBegin()
-      hmsJoint(RM_SURF,RCP_ping_base5,0,0,40)  /* ping_body1_2(10) */
+      hmsJoint(RM_SURF,RCP_ping_base5,0,0,0)  /* ping_body1_2(10) */
       hmsBegin()
          hmsJoint(RM_SURF,NULL,-51,84,-13)  /* chn21_2(9) */
          hmsBegin()

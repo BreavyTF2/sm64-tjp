@@ -44,8 +44,7 @@ static Vtx vtx_big_shell_close1[]={
 	{551,-159,432,0,0,0,29,121,24,255},
 	{686,-45,0,0,0,0,13,126,0,255},
 };
-const Gfx RCP_big_shell_close0[]={
-	
+const Gfx RCP_big_shell_close0[]={	
 	gsSPClearGeometryMode(G_CULL_BACK),
 	gsSPLight((&light_big_shell_close[0].l[0]),1),
 	gsSPLight((&light_big_shell_close[0].a),2),

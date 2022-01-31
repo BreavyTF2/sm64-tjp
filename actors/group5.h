@@ -65,8 +65,6 @@ extern const Gfx klepto_seg5_dl_05005020[];
 extern const Gfx klepto_seg5_dl_05005068[];
 extern const Gfx klepto_seg5_dl_05005130[];
 extern const Gfx klepto_seg5_dl_05005178[];
-extern const Gfx angry_sun_seg8_dl_0[];
-extern const Gfx angry_sun_seg8_dl_1[];
 extern const struct Animation *const klepto_seg5_anims_05008CFC[];
 
 // pokey
@@ -83,5 +81,10 @@ extern const Gfx pokey_seg5_dl_050130B0[];
 extern const Gfx tornado_seg5_dl_05014450[];
 extern const Gfx tornado_seg5_dl_050145C0[];
 extern const GeoLayout tweester_geo[];
+
+extern const Gfx angry_sun_seg8_dl_0[];
+extern const Gfx angry_sun_seg8_dl_1[];
+extern const Gfx angry_sun_seg8_dl_2[];
+extern const GeoLayout sun_geo[];
 
 #endif

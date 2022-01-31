@@ -18,9 +18,9 @@ const GeoLayout heave_ho_geo[] = {
             hmsEnd()
             hmsJoint(RM_SURF,NULL,175,0,-84)  /* ,chn6,(12) */
             hmsBegin()
-               hmsJoint(RM_SURF,RCP_omurobo_anim_run7,0,0,0)  /* ,sphere2,(8) */
+               hmsJoint(RM_SURF,RCP_omurobo_anim_run4,0,0,0)  /* ,sphere2,(8) */
                hmsBegin()
-                  hmsJoint(RM_SURF,RCP_omurobo_anim_run6,168,0,0)  /* ,sphere1,(7) */
+                  hmsJoint(RM_SURF,RCP_omurobo_anim_run4,168,0,0)  /* ,sphere1,(7) */
                   hmsJoint(RM_SURF,NULL,168,0,0)  /* ,eff6,(5) */
                hmsEnd()
             hmsEnd()

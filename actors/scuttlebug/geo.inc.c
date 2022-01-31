@@ -30,11 +30,11 @@ hmsBegin()
                   hmsBegin()
                      hmsJoint(RM_SURF,NULL,195,0,0)  /* jnt3_3(18) */
                      hmsBegin()
-                        hmsJoint(RM_SURF,RCP_walker_F_walk3,0,0,0)  /* w_footB(3) */
+                        hmsJoint(RM_SURF,RCP_walker_F_walk0,0,0,0)  /* w_footB(3) */
                      hmsEnd()
-                     hmsJoint(RM_SURF,RCP_walker_F_walk4,0,0,0)  /* w_legB2(4) */
+                     hmsJoint(RM_SURF,RCP_walker_F_walk1,0,0,0)  /* w_legB2(4) */
                   hmsEnd()
-                  hmsJoint(RM_SURF,RCP_walker_F_walk5,0,0,0)  /* w_legB1(5) */
+                  hmsJoint(RM_SURF,RCP_walker_F_walk2,0,0,0)  /* w_legB1(5) */
                hmsEnd()
             hmsEnd()
             hmsJoint(RM_SURF,RCP_walker_F_walk15,0,0,0)  /* w_body(35) */
@@ -54,7 +54,7 @@ hmsBegin()
                hmsBegin()
                   hmsJoint(RM_SURF,NULL,157,0,0)  /* eff10(16) */
                   hmsBegin()
-                     hmsJoint(RM_SURF,RCP_walker_F_walk7,0,0,0)  /* w_eyeR(7) */
+                     hmsJoint(RM_SURF,RCP_walker_F_walk6,0,0,0)  /* w_eyeR(7) */
                   hmsEnd()
                hmsEnd()
             hmsEnd()
@@ -66,11 +66,11 @@ hmsBegin()
                   hmsBegin()
                      hmsJoint(RM_SURF,NULL,195,0,0)  /* jnt12_3(21) */
                      hmsBegin()
-                        hmsJoint(RM_SURF,RCP_walker_F_walk8,0,0,0)  /* w_footC(8) */
+                        hmsJoint(RM_SURF,RCP_walker_F_walk0,0,0,0)  /* w_footC(8) */
                      hmsEnd()
-                     hmsJoint(RM_SURF,RCP_walker_F_walk9,0,0,0)  /* w_legC2(9) */
+                     hmsJoint(RM_SURF,RCP_walker_F_walk1,0,0,0)  /* w_legC2(9) */
                   hmsEnd()
-                  hmsJoint(RM_SURF,RCP_walker_F_walk10,0,0,0)  /* w_legC1(10) */
+                  hmsJoint(RM_SURF,RCP_walker_F_walk2,0,0,0)  /* w_legC1(10) */
                hmsEnd()
             hmsEnd()
             hmsJoint(RM_SURF,NULL,-1,-116,112)  /* chn5(31) */
@@ -81,11 +81,11 @@ hmsBegin()
                   hmsBegin()
                      hmsJoint(RM_SURF,NULL,199,0,0)  /* jnt5_3(22) */
                      hmsBegin()
-                        hmsJoint(RM_SURF,RCP_walker_F_walk11,0,0,0)  /* w_footD(11) */
+                        hmsJoint(RM_SURF,RCP_walker_F_walk0,0,0,0)  /* w_footD(11) */
                      hmsEnd()
-                     hmsJoint(RM_SURF,RCP_walker_F_walk12,0,0,0)  /* w_legD2(12) */
+                     hmsJoint(RM_SURF,RCP_walker_F_walk1,0,0,0)  /* w_legD2(12) */
                   hmsEnd()
-                  hmsJoint(RM_SURF,RCP_walker_F_walk13,0,0,0)  /* w_legD1(13) */
+                  hmsJoint(RM_SURF,RCP_walker_F_walk2,0,0,0)  /* w_legD1(13) */
                hmsEnd()
             hmsEnd()
             hmsJoint(RM_SURF,RCP_walker_F_walk14,0,0,0)  /* w_eyebrow(14) */

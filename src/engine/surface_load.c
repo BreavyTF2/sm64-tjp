@@ -15,8 +15,6 @@
 #include "game/object_list_processor.h"
 #include "surface_load.h"
 
-s32 unused8038BE90;
-
 /**
  * Partitions for course and object surfaces. The arrays represent
  * the 16x16 cells that each level is split into.
@@ -35,7 +33,6 @@ struct Surface *sSurfacePool;
  */
 s16 sSurfacePoolSize;
 
-u8 unused8038EEA8[0x30];
 
 /**
  * Allocate the part of the surface node pool to contain a surface node.
@@ -45,12 +42,6 @@ static struct SurfaceNode *alloc_surface_node(void) {
     gSurfaceNodesAllocated++;
 
     node->next = NULL;
-
-    //! A bounds check! If there's more surface nodes than 7000 allowed,
-    //  we, um...
-    // Perhaps originally just debug feedback?
-    if (gSurfaceNodesAllocated >= 7000) {
-    }
 
     return node;
 }
@@ -63,12 +54,6 @@ static struct Surface *alloc_surface(void) {
 
     struct Surface *surface = &sSurfacePool[gSurfacesAllocated];
     gSurfacesAllocated++;
-
-    //! A bounds check! If there's more surfaces than the 2300 allowed,
-    //  we, um...
-    // Perhaps originally just debug feedback?
-    if (gSurfacesAllocated >= sSurfacePoolSize) {
-    }
 
     surface->type = 0;
     surface->force = 0;
@@ -271,8 +256,7 @@ static void add_surface(struct Surface *surface, s32 dynamic) {
     s16 minCellX, minCellZ, maxCellX, maxCellZ;
 
     s16 cellZ, cellX;
-    // cellY maybe? s32 instead of s16, though.
-    UNUSED s32 unused3 = 0;
+
 
     minX = min_3(surface->vertex1[0], surface->vertex2[0], surface->vertex3[0]);
     minZ = min_3(surface->vertex1[2], surface->vertex2[2], surface->vertex3[2]);
@@ -477,8 +461,6 @@ static void load_static_surfaces(s16 **data, s16 *vertexData, s16 surfaceType, s
  */
 static s16 *read_vertex_data(s16 **data) {
     s32 numVertices;
-    UNUSED s16 unused1[3];
-    UNUSED s16 unused2[3];
     s16 *vertexData;
 
     numVertices = *(*data);
@@ -590,11 +572,9 @@ u32 get_area_terrain_size(s16 *data) {
 void load_area_terrain(s16 index, s16 *data, s8 *surfaceRooms, s16 *macroObjects) {
     s16 terrainLoadType;
     s16 *vertexData;
-    UNUSED s32 unused;
 
     // Initialize the data for this.
     gEnvironmentRegions = NULL;
-    unused8038BE90 = 0;
     gSurfaceNodesAllocated = 0;
     gSurfacesAllocated = 0;
 
@@ -651,9 +631,6 @@ void clear_dynamic_surfaces(void) {
 
         clear_spatial_partition(&gDynamicSurfacePartition[0][0]);
     }
-}
-
-static void unused_80383604(void) {
 }
 
 /**
@@ -715,8 +692,7 @@ void load_object_surfaces(s16 **data, s16 *vertexData) {
 
     hasForce = surface_has_force(surfaceType);
 
-    flags = surf_has_no_cam_collision(surfaceType);
-    flags |= SURFACE_FLAG_DYNAMIC;
+    flags = surf_has_no_cam_collision(surfaceType) | SURFACE_FLAG_DYNAMIC;
 
     // The DDD warp is initially loaded at the origin and moved to the proper
     // position in paintings.c and doesn't update its room, so set it here.

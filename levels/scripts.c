@@ -242,6 +242,7 @@ const LevelScript script_func_global_6[] = {
     LOAD_MODEL_FROM_GEO(MODEL_KLEPTO,                  klepto_geo),
     LOAD_MODEL_FROM_GEO(MODEL_EYEROK_LEFT_HAND,        eyerok_left_hand_geo),
     LOAD_MODEL_FROM_GEO(MODEL_EYEROK_RIGHT_HAND,       eyerok_right_hand_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_SUN,				       sun_geo),
     RETURN(),
 };
 
@@ -286,7 +287,7 @@ const LevelScript script_func_global_10[] = {
 const LevelScript script_func_global_11[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BIRDS,                   birds_geo),
     LOAD_MODEL_FROM_GEO(MODEL_PEACH,                   peach_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_YOSHI,                   RCP_HmsEnemymotos_basedata_A),
+    LOAD_MODEL_FROM_GEO(MODEL_YOSHI,                   yoshi_geo),
     RETURN(),
 };
 

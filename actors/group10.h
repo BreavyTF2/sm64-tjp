@@ -68,30 +68,24 @@ extern const Gfx peach_seg5_us_dl_0500A188[];
 extern const struct Animation *const peach_seg5_anims_0501C41C[];
 
 // yoshi
-/* extern const GeoLayout yoshi_geo[];
-extern const Gfx yoshi_seg5_dl_0501D440[];
-extern const Gfx yoshi_seg5_dl_0501D488[];
-extern const Gfx yoshi_seg5_dl_0501D4E0[];
-extern const Gfx yoshi_seg5_dl_0501D8F8[];
-extern const Gfx yoshi_seg5_dl_0501D940[];
-extern const Gfx yoshi_seg5_dl_0501D970[];
-extern const Gfx yoshi_seg5_dl_0501D998[];
-extern const Gfx yoshi_seg5_dl_050212B0[];
-extern const Gfx yoshi_seg5_dl_05021490[];
-extern const Gfx yoshi_seg5_dl_050215D8[];
-extern const Gfx yoshi_seg5_dl_05021678[];
-extern const Gfx yoshi_seg5_dl_05021718[];
-extern const Gfx yoshi_seg5_dl_05021860[];
-extern const Gfx yoshi_seg5_dl_05021900[];
-extern const Gfx yoshi_seg5_dl_050219A0[];
-extern const Gfx yoshi_seg5_dl_05021B90[];
-extern const Gfx yoshi_seg5_dl_05021CD8[];
-extern const Gfx yoshi_seg5_dl_05021E38[];
-extern const Gfx yoshi_seg5_dl_05021F70[];
-extern const Gfx yoshi_seg5_dl_05022160[];
-extern const Gfx yoshi_seg5_dl_050222A8[];
-extern const Gfx yoshi_seg5_dl_05022408[];
-extern const Gfx yoshi_seg5_dl_05022608[];
-extern const struct Animation *const yoshi_seg5_anims_05024100[]; */
+extern const GeoLayout yoshi_geo[];
+extern const Gfx RCP_yoshi_base_data0[];
+extern const Gfx RCP_yoshi_base_data1[];
+extern const Gfx RCP_yoshi_base_data2[];
+extern const Gfx RCP_yoshi_base_data3[];
+extern const Gfx RCP_yoshi_base_data4[];
+extern const Gfx RCP_yoshi_base_data5[];
+extern const Gfx RCP_yoshi_base_data6[];
+extern const Gfx RCP_yoshi_base_data7[];
+extern const Gfx RCP_yoshi_base_data8[];
+extern const Gfx RCP_yoshi_base_data9[];
+extern const Gfx RCP_yoshi_base_data10[];
+extern const Gfx RCP_yoshi_base_data11[];
+extern const Gfx RCP_yoshi_base_data12[];
+extern const Gfx RCP_yoshi_base_data13[];
+extern const Gfx RCP_yoshi_base_data14[];
+extern const Gfx RCP_yoshi_base_data15[];
+extern const Gfx RCP_yoshi_base_data16[];
+extern const struct Animation *const yoshi_seg5_anims_05024100[];
 
 #endif

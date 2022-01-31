@@ -46,78 +46,6 @@ ALIGNED8 static const u8 skeeter_seg6_texture_06000890[] = {
 #include "actors/skeeter/skeeter_iris.rgba16.inc.c"
 };
 
-// 0x06000990
-static const Vtx skeeter_seg6_vertex_06000990[] = {
-    {{{   -44,     45,      0}, 0, {     0,      0}, {0x00, 0xff, 0xd4, 0xff}}},
-    {{{   -44,    -44,      0}, 0, {     0,    990}, {0x00, 0xff, 0xd4, 0xff}}},
-    {{{    45,    -44,      0}, 0, {   990,    990}, {0x00, 0xff, 0xd4, 0xff}}},
-    {{{    45,     45,      0}, 0, {   990,      0}, {0x00, 0xff, 0xd4, 0xff}}},
-};
-
-// 0x060009D0 - 0x06000A08
-const Gfx skeeter_seg6_dl_060009D0[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, skeeter_seg6_texture_06000090),
-    gsDPLoadSync(),
-    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
-    gsSPVertex(skeeter_seg6_vertex_06000990, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-    gsSPEndDisplayList(),
-};
-
-// 0x06000A08 - 0x06000A78
-const Gfx skeeter_seg6_dl_06000A08[] = {
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_MODULATERGBA, G_CC_MODULATERGBA),
-    gsSPClearGeometryMode(G_LIGHTING),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
-    gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsSPDisplayList(skeeter_seg6_dl_060009D0),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-    gsSPSetGeometryMode(G_LIGHTING),
-    gsSPEndDisplayList(),
-};
-
-// 0x06000A78
-static const Vtx skeeter_seg6_vertex_06000A78[] = {
-    {{{   -14,     15,      0}, 0, {     0,      0}, {0xff, 0x55, 0x00, 0xff}}},
-    {{{   -14,    -14,      0}, 0, {     0,    990}, {0xff, 0x55, 0x00, 0xff}}},
-    {{{    15,    -14,      0}, 0, {   990,    990}, {0xff, 0x55, 0x00, 0xff}}},
-    {{{    15,     15,      0}, 0, {   990,      0}, {0xff, 0x55, 0x00, 0xff}}},
-};
-
-// 0x06000AB8 - 0x06000AF0
-const Gfx skeeter_seg6_dl_06000AB8[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, skeeter_seg6_texture_06000090),
-    gsDPLoadSync(),
-    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
-    gsSPVertex(skeeter_seg6_vertex_06000A78, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-    gsSPEndDisplayList(),
-};
-
-// 0x06000AF0 - 0x06000B60
-const Gfx skeeter_seg6_dl_06000AF0[] = {
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_MODULATERGBA, G_CC_MODULATERGBA),
-    gsSPClearGeometryMode(G_LIGHTING),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_CLAMP, 5, G_TX_NOLOD),
-    gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsSPDisplayList(skeeter_seg6_dl_06000AB8),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-    gsSPSetGeometryMode(G_LIGHTING),
-    gsSPEndDisplayList(),
-};
-
 // 0x06000B60
 static const Vtx skeeter_seg6_vertex_06000B60[] = {
     {{{   -17,     18,      0}, 0, {     0,      0}, {0xff, 0xff, 0xff, 0xff}}},
@@ -278,53 +206,6 @@ static const Vtx skeeter_seg6_vertex_06000FE0[] = {
     {{{   405,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
 };
 
-// 0x060010D0
-static const Vtx skeeter_seg6_vertex_060010D0[] = {
-    {{{   555,      0,    -15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{     0,      0,    -15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{     0,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{   555,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-};
-
-// 0x06001110
-static const Vtx skeeter_seg6_vertex_06001110[] = {
-    {{{   405,      0,    -15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{     0,      0,    -15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{     0,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{   405,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-};
-
-// 0x06001200
-static const Vtx skeeter_seg6_vertex_06001200[] = {
-    {{{     0,      0,    -15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{     0,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{   555,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{   555,      0,    -15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-};
-
-// 0x06001240
-static const Vtx skeeter_seg6_vertex_06001240[] = {
-    {{{     0,      0,    -15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{     0,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{   405,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{   405,      0,    -15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-};
-
-// 0x06001B30
-static const Vtx skeeter_seg6_vertex_06001B30[] = {
-    {{{     0,      0,    -15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{     0,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{   555,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{   555,      0,    -15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-};
-
-// 0x06001B70
-static const Vtx skeeter_seg6_vertex_06001B70[] = {
-    {{{     0,      0,    -15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{     0,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{   405,      0,     15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-    {{{   405,      0,    -15}, 0, {     0,      0}, {0x15, 0x15, 0x08, 0x00}}},
-};
 
 // 0x060023B0
 static const Vtx skeeter_seg6_vertex_060023B0[] = {
@@ -911,62 +792,6 @@ const Gfx skeeter_seg6_dl_06004070[] = {
     gsSPSetGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
     gsSPEndDisplayList(),
 };
-
-// 0x060040F0 - 0x06004120
-const Gfx skeeter_seg6_dl_060040F0[] = {
-    gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPVertex(skeeter_seg6_vertex_060010D0, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  3,  0,  2, 0x0),
-    gsSPSetGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPEndDisplayList(),
-};
-
-// 0x06004120 - 0x06004150
-const Gfx skeeter_seg6_dl_06004120[] = {
-    gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPVertex(skeeter_seg6_vertex_06001110, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  3,  0,  2, 0x0),
-    gsSPSetGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPEndDisplayList(),
-};
-
-// 0x060041A0 - 0x060041D0
-const Gfx skeeter_seg6_dl_060041A0[] = {
-    gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPVertex(skeeter_seg6_vertex_06001200, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-    gsSPSetGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPEndDisplayList(),
-};
-
-// 0x060041D0 - 0x06004200
-const Gfx skeeter_seg6_dl_060041D0[] = {
-    gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPVertex(skeeter_seg6_vertex_06001240, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-    gsSPSetGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPEndDisplayList(),
-};
-
-// 0x06004618 - 0x06004648
-const Gfx skeeter_seg6_dl_06004618[] = {
-    gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPVertex(skeeter_seg6_vertex_06001B30, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-    gsSPSetGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPEndDisplayList(),
-};
-
-// 0x06004648 - 0x06004678
-const Gfx skeeter_seg6_dl_06004648[] = {
-    gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPVertex(skeeter_seg6_vertex_06001B70, 4, 0),
-    gsSP1Triangle( 0,  1,  2, 0x0),
-    gsSP1Triangle( 0,  2,  3, 0x0),
-    gsSPSetGeometryMode(G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH),
-    gsSPEndDisplayList(),
-};
-
 // 0x06004A40 - 0x06005328
 const Gfx skeeter_seg6_dl_06004A40[] = {
 	gsSPLight(&skeeter_lights_unused1.l, 1),

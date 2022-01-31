@@ -999,6 +999,7 @@ s32 act_emerge_from_pipe(struct MarioState *m) {
 
 s32 act_spawn_spin_airborne(struct MarioState *m) {
     // entered water, exit action
+		m->particleFlags |= PARTICLE_SPARKLES;
     if (m->pos[1] < m->waterLevel - 100) {
         load_level_init_text(0);
         return set_water_plunge_action(m);

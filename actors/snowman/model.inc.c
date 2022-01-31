@@ -1,8 +1,8 @@
 // Snowman
 
 // Unreferenced light group
-UNUSED static const Lights1 snowman_lights_unused1 = gdSPDefLights1(
-    0x0d, 0x0c, 0x28,
+static const Lights1 snowman_lights_unused1 = gdSPDefLights1(
+    0x35/2, 0x32/2, 0xa2/2,
     0x35, 0x32, 0xa2, 0x28, 0x28, 0x28
 );
 
@@ -13,8 +13,8 @@ UNUSED static const Lights1 snowman_lights_unused2 = gdSPDefLights1(
 );
 
 // Unreferenced light group
-UNUSED static const Lights1 snowman_lights_unused3 = gdSPDefLights1(
-    0x08, 0x07, 0x04,
+static const Lights1 snowman_lights_unused3 = gdSPDefLights1(
+    0x23/2, 0x1c/2, 0x12/2,
     0x23, 0x1c, 0x12, 0x28, 0x28, 0x28
 );
 
@@ -23,11 +23,6 @@ UNUSED static const Lights1 snowman_lights_unused4 = gdSPDefLights1(
     0x03, 0x03, 0x02,
     0x0e, 0x0d, 0x0b, 0x28, 0x28, 0x28
 );
-
-// 0x05008C70
-ALIGNED8 static const u8 snowman_seg5_texture_05008C70[] = {
-#include "actors/snowman/mr_blizzard_mitten.rgba16.inc.c"
-};
 
 // 0x05009470
 ALIGNED8 static const u8 snowman_seg5_texture_05009470[] = {
@@ -48,28 +43,29 @@ ALIGNED8 static const u8 snowman_seg5_texture_0500B470[] = {
 ALIGNED8 static const u8 snowman_seg5_texture_0500BC70[] = {
 #include "actors/snowman/mr_blizzard_mouth.rgba16.inc.c"
 };
-
-// 0x0500C470
-static const Lights1 snowman_seg5_lights_0500C470 = gdSPDefLights1(
-    0x1c, 0x0f, 0x07,
-    0x38, 0x1e, 0x0e, 0x28, 0x28, 0x28
-);
-
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 // 0x0500C488
 static const Vtx snowman_seg5_vertex_0500C488[] = {
-    {{{   -23,      1,     -6}, 0, {     0,      0}, {0x82, 0xfd, 0xfd, 0xff}}},
-    {{{    76,    -17,     -6}, 0, {     0,      0}, {0xea, 0x84, 0xf9, 0xff}}},
-    {{{    75,     15,     15}, 0, {     0,      0}, {0xe1, 0x36, 0x6e, 0xff}}},
-    {{{    75,     17,    -23}, 0, {     0,      0}, {0xe4, 0x42, 0x99, 0xff}}},
+	{-24,1,-6,0,0,0,-19,105,68,0},
+	{74,14,14,0,0,0,-17,125,6,0},
+	{74,16,-24,0,0,0,-17,125,6,0},
+	{-24,1,-6,0,0,0,-14,5,-125,255},
+	{74,16,-24,0,0,0,-10,-57,-112,255},
+	{75,-17,-6,0,0,0,-10,-57,-112,255},
+	{-24,1,-6,0,0,0,-13,-112,57,255},
+	{75,-17,-6,0,0,0,-12,-68,105,255},
+	{74,14,14,0,0,0,-12,-68,105,255},
 };
 
 // 0x0500C4C8 - 0x0500C500
 const Gfx snowman_seg5_dl_0500C4C8[] = {
-    gsSPLight(&snowman_seg5_lights_0500C470.l, 1),
-    gsSPLight(&snowman_seg5_lights_0500C470.a, 2),
-    gsSPVertex(snowman_seg5_vertex_0500C488, 4, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
-    gsSP1Triangle( 0,  3,  1, 0x0),
+    gsSPLight(&snowman_lights_unused3.l, 1),
+    gsSPLight(&snowman_lights_unused3.a, 2),
+	gsSPVertex(&snowman_seg5_vertex_0500C488[0],9,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(3,4,5,0),
+	gsSP1Triangle(6,7,8,0),
     gsSPEndDisplayList(),
 };
 
@@ -179,86 +175,101 @@ const Gfx snowman_seg5_dl_0500C760[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x0500C7D0
-static const Lights1 snowman_seg5_lights_0500C7D0 = gdSPDefLights1(
-    0x7f, 0x7f, 0x7f,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
-);
-
-// 0x0500C7E8
-static const Vtx snowman_seg5_vertex_0500C7E8[] = {
-    {{{     3,    -44,    -24}, 0, {   672,   1148}, {0xc1, 0xb9, 0xad, 0xff}}},
-    {{{   105,    -63,    -17}, 0, {   720,    626}, {0x31, 0xca, 0x99, 0xff}}},
-    {{{   116,   -101,     11}, 0, {   888,    570}, {0x2d, 0x8c, 0xeb, 0xff}}},
-    {{{    -4,      4,    -29}, 0, {   458,   1184}, {0xad, 0x03, 0xa1, 0xff}}},
-    {{{    96,    -30,    -36}, 0, {   578,    662}, {0x1e, 0xde, 0x8a, 0xff}}},
-    {{{    97,     16,    -36}, 0, {   364,    654}, {0x13, 0x2a, 0x8a, 0xff}}},
-    {{{   208,    -42,     25}, 0, {   588,     84}, {0x57, 0xa8, 0x19, 0xff}}},
-    {{{   128,    -61,      9}, 0, {   704,    502}, {0x69, 0xbf, 0x1b, 0xff}}},
-    {{{    57,    -20,     36}, 0, {   546,    864}, {0x02, 0xf8, 0x7e, 0xff}}},
-    {{{   132,     90,     32}, 0, {    20,    460}, {0x13, 0x52, 0x5e, 0xff}}},
-    {{{   215,     42,     28}, 0, {   206,     34}, {0x45, 0x40, 0xac, 0xff}}},
-    {{{    69,    -56,     36}, 0, {   704,    810}, {0x04, 0xe8, 0x7c, 0xff}}},
-    {{{    -2,     45,    -14}, 0, {   270,   1168}, {0xa1, 0x42, 0xce, 0xff}}},
-    {{{    33,     83,     26}, 0, {    88,    974}, {0xcd, 0x72, 0x0f, 0xff}}},
-    {{{   107,     63,     -2}, 0, {   148,    596}, {0x0f, 0x52, 0xa1, 0xff}}},
-    {{{    36,    -86,     11}, 0, {   850,    988}, {0xbd, 0xa8, 0x3d, 0xff}}},
+static Vtx vtx_snowman_ball_standby0[]={
+	{96,15,-36,0,0,0,15,41,-118,0},
+	{-3,44,-15,0,0,0,-44,71,-94,0},
+	{32,81,26,0,0,0,-5,90,-89,0},
+	{95,-31,-36,0,0,0,32,-34,-117,255},
+	{-5,3,-29,0,0,0,-11,9,-126,255},
+	{3,-44,-25,0,0,0,-10,-63,-109,255},
+	{103,-63,-17,0,0,0,51,-54,-102,255},
+	{115,-101,10,0,0,0,27,-73,-99,255},
+	{68,-56,35,0,0,0,5,-23,124,255},
+	{57,-20,35,0,0,0,2,-8,126,255},
+	{6,0,27,0,0,0,-94,-13,83,255},
+	{105,62,-3,0,0,0,20,74,-100,255},
+	{32,81,26,0,0,0,-50,20,114,255},
+	{127,-61,8,0,0,0,36,-22,119,255},
+	{127,-61,8,0,0,0,80,-48,-85,255},
+	{35,-86,11,0,0,0,-64,-56,93,255},
+	{115,-101,10,0,0,0,21,-42,117,0},
+	{68,-56,35,0,0,0,5,-23,124,0},
+	{127,-61,8,0,0,0,36,-22,119,255},
+	{206,-42,24,0,0,0,2,-39,120,255},
+	{57,-20,35,0,0,0,2,-8,126,255},
+	{130,89,31,0,0,0,0,3,127,255},
+	{213,41,28,0,0,0,7,-2,126,255},
+	{32,81,26,0,0,0,-5,90,-89,255},
+	{130,89,31,0,0,0,19,92,-84,255},
+	{105,62,-3,0,0,0,20,74,-100,255},
+	{115,-101,10,0,0,0,27,-73,-99,255},
+	{35,-86,11,0,0,0,-17,-90,-87,255},
+	{3,-44,-25,0,0,0,-10,-63,-109,255},
+	{127,-61,8,0,0,0,80,-48,-85,255},
+	{103,-63,-17,0,0,0,51,-54,-102,0},
+	{95,-31,-36,0,0,0,32,-34,-117,0},
+	{68,-56,35,0,0,0,5,-23,124,255},
+	{6,0,27,0,0,0,-94,-13,83,255},
+	{35,-86,11,0,0,0,-64,-56,93,255},
+	{57,-20,35,0,0,0,2,-8,126,255},
+	{130,89,31,0,0,0,0,3,127,255},
+	{32,81,26,0,0,0,-50,20,114,255},
+	{-3,44,-15,0,0,0,-105,35,60,255},
+	{3,-44,-25,0,0,0,-117,-32,34,255},
+	{-5,3,-29,0,0,0,-123,-16,23,255},
+	{-3,44,-15,0,0,0,-118,10,43,255},
+	{213,41,28,0,0,0,50,52,-104,255},
+	{105,62,-3,0,0,0,20,74,-100,255},
+	{130,89,31,0,0,0,19,92,-84,255},
+	{96,15,-36,0,0,0,15,41,-118,255},
+	{105,62,-3,0,0,0,20,74,-100,0},
+	{213,41,28,0,0,0,50,52,-104,0},
+	{206,-42,24,0,0,0,56,-22,-111,255},
+	{95,-31,-36,0,0,0,32,-34,-117,255},
+	{127,-61,8,0,0,0,80,-48,-85,255},
 };
+#pragma GCC diagnostic pop
 
-// 0x0500C8E8
-static const Vtx snowman_seg5_vertex_0500C8E8[] = {
-    {{{    69,    -56,     36}, 0, {   704,    810}, {0x04, 0xe8, 0x7c, 0xff}}},
-    {{{    57,    -20,     36}, 0, {   546,    864}, {0x02, 0xf8, 0x7e, 0xff}}},
-    {{{     6,      0,     28}, 0, {   472,   1124}, {0xa3, 0xf5, 0x55, 0xff}}},
-    {{{    33,     83,     26}, 0, {    88,    974}, {0xcd, 0x72, 0x0f, 0xff}}},
-    {{{    -4,      4,    -29}, 0, {   458,   1184}, {0xad, 0x03, 0xa1, 0xff}}},
-    {{{     3,    -44,    -24}, 0, {   672,   1148}, {0xc1, 0xb9, 0xad, 0xff}}},
-    {{{    -2,     45,    -14}, 0, {   270,   1168}, {0xa1, 0x42, 0xce, 0xff}}},
-    {{{    36,    -86,     11}, 0, {   850,    988}, {0xbd, 0xa8, 0x3d, 0xff}}},
-    {{{   116,   -101,     11}, 0, {   888,    570}, {0x2d, 0x8c, 0xeb, 0xff}}},
-};
-
-// 0x0500C978 - 0x0500CAA8
-const Gfx snowman_seg5_dl_0500C978[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, snowman_seg5_texture_05008C70),
-    gsDPLoadSync(),
-    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
-    gsSPLight(&snowman_seg5_lights_0500C7D0.l, 1),
-    gsSPLight(&snowman_seg5_lights_0500C7D0.a, 2),
-    gsSPVertex(snowman_seg5_vertex_0500C7E8, 16, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  4, 0x0),
-    gsSP2Triangles( 4,  1,  0, 0x0,  5,  4,  3, 0x0),
-    gsSP2Triangles( 5,  6,  4, 0x0,  4,  6,  7, 0x0),
-    gsSP2Triangles( 7,  1,  4, 0x0,  7,  6,  8, 0x0),
-    gsSP2Triangles( 9,  8,  6, 0x0,  9,  6, 10, 0x0),
-    gsSP2Triangles( 5, 10,  6, 0x0,  7,  2,  1, 0x0),
-    gsSP2Triangles( 8, 11,  7, 0x0, 11,  2,  7, 0x0),
-    gsSP2Triangles( 5, 12, 13, 0x0, 13, 14,  5, 0x0),
-    gsSP2Triangles( 5,  3, 12, 0x0,  5, 14, 10, 0x0),
-    gsSP2Triangles(10, 14,  9, 0x0, 13,  9, 14, 0x0),
-    gsSP2Triangles( 8,  9, 13, 0x0,  2, 15,  0, 0x0),
-    gsSPVertex(snowman_seg5_vertex_0500C8E8, 9, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  3,  2,  1, 0x0),
-    gsSP2Triangles( 4,  5,  2, 0x0,  2,  6,  4, 0x0),
-    gsSP2Triangles( 2,  5,  7, 0x0,  0,  2,  7, 0x0),
-    gsSP2Triangles( 3,  6,  2, 0x0,  7,  8,  0, 0x0),
-    gsSPEndDisplayList(),
-};
-
-// 0x0500CAA8 - 0x0500CB08
-const Gfx snowman_seg5_dl_0500CAA8[] = {
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, 5, G_TX_NOLOD),
-    gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsSPDisplayList(snowman_seg5_dl_0500C978),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-    gsSPEndDisplayList(),
+const Gfx snowman_seg5_dl_0500CAA8[]={
+	gsDPPipeSync(),
+	gsSPLight(&snowman_lights_unused1.l, 1),
+	gsSPLight(&snowman_lights_unused1.a, 2),
+	gsSPVertex(&vtx_snowman_ball_standby0[0],15,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(0,3,4,0),
+	gsSP1Triangle(5,6,7,0),
+	gsSP1Triangle(8,9,10,0),
+	gsSP1Triangle(2,11,0,0),
+	gsSP1Triangle(12,10,9,0),
+	gsSP1Triangle(0,4,1,0),
+	gsSP1Triangle(9,8,13,0),
+	gsSP1Triangle(5,4,3,0),
+	gsSP1Triangle(3,6,5,0),
+	gsSP1Triangle(14,7,6,0),
+	gsSPVertex(&vtx_snowman_ball_standby0[15],14,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(3,4,5,0),
+	gsSP1Triangle(6,5,4,0),
+	gsSP1Triangle(6,4,7,0),
+	gsSP1Triangle(8,9,10,0),
+	gsSP1Triangle(11,12,13,0),
+	gsSP1Triangle(2,1,3,0),
+	gsSPVertex(&vtx_snowman_ball_standby0[29],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(3,4,5,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(8,9,4,0),
+	gsSP1Triangle(4,10,5,0),
+	gsSP1Triangle(11,10,4,0),
+	gsSP1Triangle(4,12,11,0),
+	gsSP1Triangle(13,14,15,0),
+	gsSPVertex(&vtx_snowman_ball_standby0[45],6,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(0,2,3,0),
+	gsSP1Triangle(0,3,4,0),
+	gsSP1Triangle(4,3,5,0),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPEndDisplayList()
 };
 
 // 0x0500CB08

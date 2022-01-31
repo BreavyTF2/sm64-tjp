@@ -393,7 +393,6 @@ s16 obj_angle_to_object(struct Object *obj1, struct Object *obj2) {
 
 s16 obj_turn_toward_object(struct Object *obj, struct Object *target, s16 angleIndex, s16 turnAmount) {
     f32 a, b, c, d;
-    UNUSED s32 unused;
     s16 targetAngle, startAngle;
 
     switch (angleIndex) {
