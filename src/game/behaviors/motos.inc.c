@@ -277,17 +277,38 @@ void motos_returnhome(void) {
 }	
 
 void motos_spawn_minion(s32 arg0, s32 arg1, s32 arg2, s16 arg3) {
-    struct Object *mbully =
-        spawn_object_abs_with_rot(o, 0, MODEL_BULLY, bhvSmallBully, arg0, arg1, arg2, 0, arg3, 0);
+struct Object *mbully =
+spawn_object_abs_with_rot(o, 0, MODEL_BULLY, bhvSmallBully, arg0, arg1, arg2, 0, arg3, 0);
     mbully->oBullySubtype = BULLY_STYPE_MINION;
     mbully->oBehParams2ndByte = BULLY_BP_SIZE_SMALL;
 }
 
+void motos_spawn_ice_minion(s32 arg0, s32 arg1, s32 arg2, s16 arg3) {
+    struct Object *mbully =
+        spawn_object_abs_with_rot(o, 0, MODEL_CHILL_BULLY, bhvSmallChillBully, arg0, arg1, arg2, 0, arg3, 0);
+    mbully->oBullySubtype = BULLY_STYPE_MINION;
+    mbully->oBehParams2ndByte = BULLY_BP_SIZE_SMALL;
+}
 void motos_minions(void) {
-    motos_spawn_minion(4454, 307, -5426, 0);
-    motos_spawn_minion(3840, 307, -6041, 0);
-    motos_spawn_minion(3226, 307, -5426, 0);
+s16 MotosPosX;
+s16 HeightOffset;
+s16 MotosPosZ;
 
+if (gCurrLevelNum == LEVEL_SL) {
+MotosPosX = 420;
+HeightOffset = 1400;
+MotosPosZ = -4550;
+    motos_spawn_ice_minion(MotosPosX+390, HeightOffset, MotosPosZ+95, 0);
+    motos_spawn_ice_minion(MotosPosX-196, HeightOffset, MotosPosZ-520, 0);
+    motos_spawn_ice_minion(MotosPosX-620, HeightOffset, MotosPosZ+95, 0);
+} else {
+MotosPosX = 4046;
+HeightOffset = 307;
+MotosPosZ = -5521;
+    motos_spawn_minion(MotosPosX+390, HeightOffset, MotosPosZ+95, 0);
+    motos_spawn_minion(MotosPosX-196, HeightOffset, MotosPosZ-520, 0);
+    motos_spawn_minion(MotosPosX-820, HeightOffset, MotosPosZ+95, 0);
+}
     o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
 
     cur_obj_become_intangible();
@@ -295,11 +316,15 @@ void motos_minions(void) {
     o->oAction = 11;
 }
 void motos_inactive(void) {
-	
+s16 Height;
+if (gCurrLevelNum == LEVEL_SL) {
+Height = 1421;
+} else Height = 323;
+
 	            if (o->oBullyKBTimerAndMinionKOCounter == 3) {
                 play_puzzle_jingle();
                 if (o->oTimer >= 91) {
-									o->oPosY = 1037.0f;
+									o->oPosY = Height+714.0f;
 			o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
                     o->oAction = 8;
             }

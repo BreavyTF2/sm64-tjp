@@ -174,6 +174,7 @@ extern const Gfx exclamation_box_seg8_dl_08019318[];
 extern const Gfx exclamation_box_seg8_dl_08019378[];
 extern const Gfx exclamation_box_seg8_dl_080193D8[];
 extern const Gfx exclamation_box_seg8_dl_08019438[];
+extern const Gfx exclamation_box_seg8_dl_08019498[];
 
 // exclamation_box_outline
 extern const GeoLayout exclamation_box_outline_geo[];
@@ -184,10 +185,12 @@ extern const Gfx exclamation_box_outline_seg8_dl_08024F88[];
 extern const Gfx exclamation_box_outline_seg8_dl_08024FA8[];
 extern const Gfx exclamation_box_outline_seg8_dl_08024FC8[];
 extern const Gfx exclamation_box_outline_seg8_dl_08024FE8[];
+extern const Gfx exclamation_box_outline_seg8_dl_08025008[];
 extern const Gfx exclamation_box_outline_seg8_dl_08025968[];
 extern const Gfx exclamation_box_outline_seg8_dl_080259F8[];
 extern const Gfx exclamation_box_outline_seg8_dl_08025EC0[];
 extern const Gfx exclamation_box_outline_seg8_dl_08025F08[];
+
 extern const Collision exclamation_box_outline_seg8_collision_08025F78[];
 
 // flyguy

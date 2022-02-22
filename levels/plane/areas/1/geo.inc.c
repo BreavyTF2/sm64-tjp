@@ -16,7 +16,7 @@ const GeoLayout RCP_Stage37Scene1[] = {
          GEO_OPEN_NODE(),
             GEO_CAMERA(16, 0, 2000, 6000, 0, 0, -6000, geo_camera_main),
             GEO_OPEN_NODE(),
-			GEO_SCALE(0x00, 0x320000),
+			GEO_SCALE(0x00, 0x31FFCE),
 			GEO_OPEN_NODE(),
 					hmsGfx(RM_SURF, RCP_plane)
 			GEO_CLOSE_NODE(),

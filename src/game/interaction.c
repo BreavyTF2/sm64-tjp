@@ -651,6 +651,7 @@ void push_mario_out_of_object(struct MarioState *m, struct Object *o, f32 paddin
 void bounce_back_from_attack(struct MarioState *m, u32 interaction) {
     if (interaction & (INT_PUNCH | INT_KICK | INT_TRIP)) {
         if (m->action == ACT_PUNCHING) {
+			set_environmental_camera_shake(SHAKE_ENV_UNUSED_5);
             m->action = ACT_MOVE_PUNCHING;
         }
 
@@ -659,7 +660,6 @@ void bounce_back_from_attack(struct MarioState *m, u32 interaction) {
         } else {
             mario_set_forward_vel(m, -48.0f);
         }
-
         set_camera_shake_from_hit(SHAKE_ATTACK);
         m->particleFlags |= PARTICLE_TRIANGLE;
     }
@@ -1737,9 +1737,10 @@ void check_kick_or_punch_wall(struct MarioState *m) {
         if (resolve_and_return_wall_collisions(detector, 80.0f, 5.0f) != NULL) {
             if (m->action != ACT_MOVE_PUNCHING || m->forwardVel >= 0.0f) {
                 if (m->action == ACT_PUNCHING) {
+		set_environmental_camera_shake(SHAKE_ENV_UNUSED_5);
+        set_camera_shake_from_hit(SHAKE_ATTACK);
                     m->action = ACT_MOVE_PUNCHING;
                 }
-				set_environmental_camera_shake(SHAKE_ENV_UNUSED_5);
                 mario_set_forward_vel(m, -48.0f);
                 play_sound(SOUND_ACTION_HIT_2, m->marioObj->header.gfx.cameraToObject);
                 m->particleFlags |= PARTICLE_TRIANGLE;

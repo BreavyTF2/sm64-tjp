@@ -45,7 +45,7 @@ static struct CreditsEntry *sDispCreditsEntry = NULL;
 
 // related to peach gfx?
 static s8 D_8032CBE4 = 0;
-static s8 D_8032CBE8 = 0;
+static s8 D_8032CBE8 = 1;
 static s8 D_8032CBEC[7] = { 2, 3, 2, 1, 2, 3, 2 };
 
 static u8 sStarsNeededForDialog[] = { 1, 3, 8, 30, 50, 70 };

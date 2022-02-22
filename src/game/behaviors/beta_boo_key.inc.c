@@ -96,6 +96,7 @@ static void beta_boo_key_dropped_loop(void) {
     // become tangible and handle collision.
     if (o->oMoveFlags & OBJ_MOVE_LANDED) {
         cur_obj_become_tangible();
+		set_environmental_camera_shake(SHAKE_ENV_UNUSED_6);
 		obj_set_hitbox(o, &sBooKeyHitbox);
 
         if (obj_check_if_collided_with_object(o, gMarioObject)) {

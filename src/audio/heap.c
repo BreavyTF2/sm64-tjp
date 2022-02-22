@@ -53,8 +53,6 @@ u8 gAudioResetPresetIdToLoad;
 s32 gAudioResetFadeOutFramesLeft;
 #endif
 
-u8 gAudioUnusedBuffer[0x1000];
-
 extern s32 gMaxAudioCmds;
 
 #ifdef VERSION_EU
@@ -832,8 +830,8 @@ void audio_reset_session(void) {
     gReverbDownsampleRate = preset->reverbDownsampleRate;
     gVolume = preset->volume;
     gMinAiBufferLength = gSamplesPerFrameTarget - 0x10;
-    updatesPerFrame = gSamplesPerFrameTarget / 137 + 1;
-    gAudioUpdatesPerFrame = gSamplesPerFrameTarget / 137 + 1;
+    updatesPerFrame = gSamplesPerFrameTarget / 140 + 1;
+    gAudioUpdatesPerFrame = gSamplesPerFrameTarget / 140 + 1;
 
     // Compute conversion ratio from the internal unit tatums/tick to the
     // external beats/minute (JP) or tatums/minute (US). In practice this is

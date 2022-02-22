@@ -55,6 +55,8 @@ const LevelScript level_yajima_entry[] = {
 	LOAD_MIO0(0x07, _yajima_segment_7SegmentRomStart, _yajima_segment_7SegmentRomEnd),
 	LOAD_MIO0(0x05	  , _group8_mio0SegmentRomStart	  , _group8_mio0SegmentRomEnd	),
 	LOAD_RAW(0x0C, _group8_geoSegmentRomStart	  , _group8_geoSegmentRomEnd	),
+	LOAD_MIO0(0x06	  , _group14_mio0SegmentRomStart	  , _group14_mio0SegmentRomEnd	),
+	LOAD_RAW(0x0D, _group14_geoSegmentRomStart	  , _group14_geoSegmentRomEnd	),
 	LOAD_MIO0(0x08	  ,  _common0_mio0SegmentRomStart,  _common0_mio0SegmentRomEnd),
 	LOAD_RAW(0x0F,  _common0_geoSegmentRomStart,  _common0_geoSegmentRomEnd),
 	ALLOC_LEVEL_POOL(),
@@ -62,6 +64,7 @@ const LevelScript level_yajima_entry[] = {
 		MARIO(MODEL_MARIO, 0x00000001, bhvMario),
 		JUMP_LINK(script_func_global_1),
 		JUMP_LINK(script_func_global_9),
+		JUMP_LINK(script_func_global_15),
 //		LOAD_MODEL_FROM_GEO(MODEL_UKIKI_YAJIMA,                   RCP_HmsEnemymonky_F_run),
 //		LOAD_MODEL_FROM_GEO(MODEL_HEAVE_HO_YAJIMA,                RCP_HmsEnemyomurobo),
 //		LOAD_MODEL_FROM_GEO(MODEL_KOOPA_WITH_SHELL_YAJIMA,        RCP_HmsEnemynokonoko),
@@ -124,9 +127,9 @@ const LevelScript level_yajima_entry[] = {
 
 			OBJECT_LEAK(MODEL_NONE				,	  200,    0,      0,  0,0,0,  0,1,0, bhvFloorSwitchHardcodedModel 	 ),
 			OBJECT_LEAK(MODEL_NONE				,	  600,    0,      0,  0,0,0,  0,0,0, bhvFloorSwitchHardcodedModel 	 ),
-			OBJECT_LEAK(MODEL_NONE	,	  0,   200,  0,   0,0,0,  0,0,0, bhvFish3	), //Added 
-//			OBJECT_LEAK(MODEL_UKIKI_YAJIMA			,      0,   200,     0,   0,0,0,  0,0,0, bhvMacroUkiki			),
-//			OBJECT_LEAK(MODEL_HEAVE_HO_YAJIMA			,   2000,   200,  2000,   0,0,0,  0,0,0, bhvHeaveHo			),
+			OBJECT_LEAK(MODEL_NONE	,	  0,   200,  0,   0,0,0,  0,0,0, bhvFish3	), //Added, existed at somepoint due to Fish having stage32 code.
+//			OBJECT_LEAK(MODEL_UKIKI			,      0,   200,     0,   0,0,0,  0,0,0, bhvMacroUkiki			),
+//			OBJECT_LEAK(MODEL_HEAVE_HO			,   2000,   200,  2000,   0,0,0,  0,0,0, bhvHeaveHo			),
 			OBJECT_LEAK(MODEL_UNKNOWN_58			,	    0,    0, -1500,   0,0,0,  0,0,0, bhvStub1D0C			),
 			OBJECT_LEAK(MODEL_BREAKABLE_BOX		,  	 1000,    0,     0,   0,0,0,  0,0,0, bhvBreakableBox			),
 			OBJECT_LEAK(MODEL_MARIOS_WINGED_METAL_CAP,    -200,  200,  2500,   0,0,0,  0,0,0, bhvMetalWingCap	),
@@ -141,7 +144,7 @@ const LevelScript level_yajima_entry[] = {
 			OBJECT_LEAK(MODEL_NONE 			,   -1200,  300,   500,   0,0,0,  0,2,0, bhvExclamationBox 			),
 			OBJECT_LEAK(MODEL_NONE 			,   -1400,  300,   500,   0,0,0,  0,3,0, bhvExclamationBox 			),
 
-//			OBJECT_LEAK(MODEL_KOOPA_WITH_SHELL_YAJIMA 		,       0,    0,  -500,   0,0,0,  0,1,0, bhvKoopa				),
+			OBJECT_LEAK(MODEL_KOOPA_WITH_SHELL 		,       0,    0,  -500,   0,0,0,  0,1,0, bhvKoopa				),
 
 			OBJECT_LEAK(MODEL_CAP_SWITCH	,	-1500,    0,     0,   0,0,0,  0,0,0, bhvCapSwitch	),
 			OBJECT_LEAK(MODEL_CAP_SWITCH	,	 -500,    0,     0,   0,0,0,  0,1,0, bhvCapSwitch	),

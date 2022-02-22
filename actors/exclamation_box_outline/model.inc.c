@@ -2,26 +2,32 @@
 
 // 0x08024CB8
 static const Lights1 exclamation_box_outline_seg8_lights_08024CB8 = gdSPDefLights1(
-    0x7f, 0x00, 0x00,
+    0x3f, 0x00, 0x00,
     0xff, 0x00, 0x00, 0x28, 0x28, 0x28
 );
 
 // 0x08024CD0
 static const Lights1 exclamation_box_outline_seg8_lights_08024CD0 = gdSPDefLights1(
-    0x00, 0x7f, 0x00,
+    0x00, 0x3f, 0x00,
     0x00, 0xff, 0x00, 0x28, 0x28, 0x28
 );
 
 // 0x08024CE8
 static const Lights1 exclamation_box_outline_seg8_lights_08024CE8 = gdSPDefLights1(
-    0x00, 0x00, 0x7f,
+    0x00, 0x00, 0x3f,
     0x00, 0x00, 0xff, 0x28, 0x28, 0x28
 );
 
 // 0x08024D00
 static const Lights1 exclamation_box_outline_seg8_lights_08024D00 = gdSPDefLights1(
-    0x7f, 0x6a, 0x00,
+    0x3f, 0x35, 0x00,
     0xff, 0xd4, 0x00, 0x28, 0x28, 0x28
+);
+
+// 0x08024D00
+static const Lights1 exclamation_box_outline_seg8_lights_08024D18 = gdSPDefLights1(
+    0x1f, 0x1f, 0x1f,
+    0x7f, 0x7f, 0x7f, 0x28, 0x28, 0x28
 );
 
 // 0x08024D18
@@ -120,6 +126,14 @@ const Gfx exclamation_box_outline_seg8_dl_08024FE8[] = {
     gsSPDisplayList(exclamation_box_outline_seg8_dl_08024F30),
     gsSPLight(&exclamation_box_outline_seg8_lights_08024D00.l, 1),
     gsSPLight(&exclamation_box_outline_seg8_lights_08024D00.a, 2),
+    gsSPBranchList(exclamation_box_outline_seg8_dl_08024F58),
+};
+
+// 0x08024FE8 - 0x08025008
+const Gfx exclamation_box_outline_seg8_dl_08025008[] = {
+    gsSPDisplayList(exclamation_box_outline_seg8_dl_08024F30),
+    gsSPLight(&exclamation_box_outline_seg8_lights_08024D18.l, 1),
+    gsSPLight(&exclamation_box_outline_seg8_lights_08024D18.a, 2),
     gsSPBranchList(exclamation_box_outline_seg8_dl_08024F58),
 };
 

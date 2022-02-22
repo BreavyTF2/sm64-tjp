@@ -457,7 +457,7 @@
 #define MODEL_YELLOW_COIN                 0x74        // yellow_coin_geo
 #define MODEL_YELLOW_COIN_NO_SHADOW       0x75        // yellow_coin_no_shadow_geo
 #define MODEL_BLUE_COIN                   0x76        // blue_coin_geo
-#define MODEL_BLUE_COIN_NO_SHADOW         0x77        // blue_coin_no_shadow_geo
+#define MODEL_BLUE_COIN_NO_SHADOW         0x77        // Never appears, Blue Coin's don't have a function to change them, plus the only one's floating high is RR
 #define MODEL_HEART                       0x78        // heart_geo
 #define MODEL_TRANSPARENT_STAR            0x79        // transparent_star_geo
 #define MODEL_STAR                        0x7A        // star_geo

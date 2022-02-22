@@ -14,7 +14,7 @@ default: all
 # Version of the game to build
 VERSION ?= us
 # Graphics microcode used
-GRUCODE ?= f3dzex
+GRUCODE ?= f3dex
 # If COMPARE is 1, check the output sha1sum when building 'all'
 COMPARE ?= 1
 # If NON_MATCHING is 1, define the NON_MATCHING and AVOID_UB macros when building (recommended)
@@ -532,11 +532,34 @@ $(BUILD_DIR)/assets/demo_data.c: assets/demo_data.json $(wildcard assets/demos/*
 ifeq ($(COMPILER),ido)
 # Source code
 $(BUILD_DIR)/levels/%.o: OPT_FLAGS := -O2
-$(BUILD_DIR)/actors/%.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/levels/scripts.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/actors/%.o: OPT_FLAGS := -O3
 $(BUILD_DIR)/bin/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/asm/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/data/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/assets/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/sound/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/engine/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/menu/%.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/obj_behaviors_2.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/obj_behaviors.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/object_helpers.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/object_helpers.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/interaction.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/mario_actions_cutscene.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/mario_actions_moving.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/mario_actions_airborne.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/mario_actions_submerged.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/mario_actions_stationary.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/mario_actions_automatic.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/mario.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/mario_misc.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/mario_step.o: OPT_FLAGS := -O3
+$(BUILD_DIR)/src/game/macro_special_objects.o: OPT_FLAGS := -O3
 $(BUILD_DIR)/src/goddard/%.o: OPT_FLAGS := -O3
 $(BUILD_DIR)/src/goddard/%.o: MIPSISET := -mips1
 $(BUILD_DIR)/lib/src/%.o: OPT_FLAGS := -O2
+$(BUILD_DIR)/lib/asm/%.o: OPT_FLAGS := -O3
 $(BUILD_DIR)/lib/src/math/ll%.o: MIPSISET := -mips3 -32
 $(BUILD_DIR)/lib/src/math/%.o: OPT_FLAGS := -O3
 $(BUILD_DIR)/lib/src/math/ll%.o: OPT_FLAGS := -O3

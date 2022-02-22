@@ -482,6 +482,11 @@ s32 analog_stick_held_back(struct MarioState *m) {
     return intendedDYaw < -0x471C || intendedDYaw > 0x471C;
 }
 
+s32 analog_stick_held_forward(struct MarioState *m) {
+    s16 intendedDYaw = m->intendedYaw - m->faceAngle[1];
+    return intendedDYaw > -0x10|| intendedDYaw < 0x10;
+}
+
 s32 check_ground_dive_or_punch(struct MarioState *m) {
     UNUSED s32 unused;
 
@@ -1415,6 +1420,61 @@ void common_slide_action(struct MarioState *m, u32 endAction, u32 airAction, s32
     }
 }
 
+void common_slide_action_with_speed(struct MarioState *m, u32 endAction, u32 airAction, s32 animation, s32 speed) {
+    Vec3f pos;
+
+    vec3f_copy(pos, m->pos);
+    play_sound(SOUND_MOVING_TERRAIN_SLIDE + m->terrainSoundAddend, m->marioObj->header.gfx.cameraToObject);
+
+#ifdef VERSION_SH
+    reset_rumble_timers();
+#endif
+
+    adjust_sound_for_speed(m);
+
+    switch (perform_ground_step(m)) {
+        case GROUND_STEP_LEFT_GROUND:
+            set_mario_action(m, airAction, 0);
+            if (m->forwardVel < -50.0f || 50.0f < m->forwardVel) {
+                play_sound(SOUND_MARIO_HOOHOO, m->marioObj->header.gfx.cameraToObject);
+            }
+            break;
+
+        case GROUND_STEP_NONE:
+            set_mario_anim_with_accel(m, animation, speed);
+            align_with_floor(m);
+            m->particleFlags |= PARTICLE_DUST;
+            break;
+
+        case GROUND_STEP_HIT_WALL:
+            if (!mario_floor_is_slippery(m)) {
+#ifdef VERSION_JP
+                m->particleFlags |= PARTICLE_VERTICAL_STAR;
+#else
+                if (m->forwardVel > 16.0f) {
+                    m->particleFlags |= PARTICLE_VERTICAL_STAR;
+                }
+#endif
+                slide_bonk(m, ACT_GROUND_BONK, endAction);
+            } else if (m->wall != NULL) {
+                s16 wallAngle = atan2s(m->wall->normal.z, m->wall->normal.x);
+                f32 slideSpeed = sqrtf(m->slideVelX * m->slideVelX + m->slideVelZ * m->slideVelZ);
+
+                if ((slideSpeed *= 0.9) < 4.0f) {
+                    slideSpeed = 4.0f;
+                }
+
+                m->slideYaw = wallAngle - (s16)(m->slideYaw - wallAngle) + 0x8000;
+
+                m->vel[0] = m->slideVelX = slideSpeed * sins(m->slideYaw);
+                m->vel[2] = m->slideVelZ = slideSpeed * coss(m->slideYaw);
+            }
+
+            align_with_floor(m);
+            break;
+    }
+}
+
 s32 common_slide_action_with_jump(struct MarioState *m, u32 stopAction, u32 jumpAction, u32 airAction,
                                   s32 animation) {
     if (m->actionTimer == 5) {
@@ -1434,20 +1494,38 @@ s32 common_slide_action_with_jump(struct MarioState *m, u32 stopAction, u32 jump
 }
 
 s32 act_butt_slide(struct MarioState *m) {
-    s32 cancel = common_slide_action_with_jump(m, ACT_BUTT_SLIDE_STOP, ACT_JUMP, ACT_BUTT_SLIDE_AIR,
-                                               MARIO_ANIM_SLIDE_MOTIONLESS);
+	s32 val04;
+	s32 val14;
+	s16 anim;
+	s32 speed;
+	val04 = m->intendedMag > m->forwardVel ? m->intendedMag : m->forwardVel;
+    if (val04 < 25.0f) {
+        val04 = 25.0f;
+    }
+	val14 = (s32)(val04 / 25.0f * 0x10000);
+
+    if (m->actionTimer == 5) {
+        if (m->input & INPUT_A_PRESSED) {
+            return set_jumping_action(m, ACT_JUMP, 0);
+        }
+    } else {
+        m->actionTimer++;
+    }
+    if (update_sliding(m, 4.0f)) {
+        return set_mario_action(m, ACT_BUTT_SLIDE_STOP, 0);
+    }
+
+
+	if (analog_stick_held_back(m)) {
+		anim = MARIO_ANIM_SLIDE_BRAKE; speed = val14; 
+	} else if (analog_stick_held_forward(m) && m->controller->stickMag > 48.0f) { 
+	anim = MARIO_ANIM_SLIDE_ACCELE; speed = val14;
+	} else { anim = MARIO_ANIM_SLIDE_MOTIONLESS;  speed = 0x10000;
+}
+
+    common_slide_action_with_speed(m, ACT_BUTT_SLIDE_STOP, ACT_BUTT_SLIDE_AIR, anim, speed);  
     tilt_body_butt_slide(m);
-#if 0 //Fix and add later
-	s32 anim;
-	if (m->intendedMag > 0.3f) {
-        anim = MARIO_ANIM_SLIDE_ACCELE;
-    }
-	else if (m->intendedMag < -0.3f) {
-        anim = MARIO_ANIM_SLIDE_BRAKE;
-    }
-	else anim = MARIO_ANIM_SLIDE_MOTIONLESS;
-#endif	
-    return cancel;
+    return FALSE;
 }
 
 s32 act_hold_butt_slide(struct MarioState *m) {

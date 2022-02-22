@@ -176,7 +176,7 @@ s16 sDynJrb[] = {
     DYN1(MARIO_IS_IN_AREA, AREA_JRB_SHIP & 0xf, 0),
     DYN1(MARIO_Y_GE, 1000, 0),
     DYN2(MARIO_Y_GE, -3100, MARIO_Z_LT, -900, 2),
-    5, // bogus entry, ignored (was JRB originally intended to have spooky music?)
+    1, // bogus entry, ignored (was JRB originally intended to have spooky music?)
 };
 s16 sDynWdw[] = {
     SEQ_LEVEL_UNDERGROUND,
@@ -190,7 +190,7 @@ s16 sDynHmc[] = {
     DYN2(MARIO_X_LT, 0, MARIO_Y_LT, -2400, 4),
     3,
 };
-s16 sDynUnk38[] = {
+s16 sDynUnk38[] = { //Cave Dungeon...
     SEQ_LEVEL_UNDERGROUND,
     DYN1(MARIO_IS_IN_AREA, 1, 3),
     DYN1(MARIO_IS_IN_AREA, 2, 4),

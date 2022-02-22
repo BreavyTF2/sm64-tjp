@@ -46,7 +46,7 @@ LEVEL_ELF_FILES := $(addprefix $(BUILD_DIR)/levels/,$(addsuffix .elf,$(LEVEL_FIL
 # Actor Directories
 KOOPA_DIRS       := koopa_flag poundable_pole koopa piranha_plant whomp chain_ball chain_chomp
 CAPSWITCH_DIRS   := capswitch springboard
-CHILLYCHIEF_DIRS := chillychief moneybag
+CHILLYCHIEF_DIRS := chillychief moneybag icemotos
 BULLY_DIRS       := bully blargg
 SPINDRIFT_DIRS   := spindrift penguin snowman
 KING_BOBOMB_DIRS := king_bobomb water_bubble ground_mine

@@ -174,7 +174,7 @@ void bully_step(void) {
     bully_play_stomping_sound();
     obj_check_floor_death(collisionFlags, sObjFloor);
 	
-    if (o->oBullySubtype & BULLY_STYPE_CHILL) {
+    if (o->oBullySubtype & BULLY_STYPE_CHILL && o->oBehParams2ndByte != BULLY_BP_SIZE_SMALL) {
         if (o->oPosY < 1030.0f)
             o->oAction = BULLY_ACT_LAVA_DEATH;
     }
@@ -198,7 +198,7 @@ void bully_spawn_coin(void) {
 void bully_act_level_death(void) {
     if (obj_lava_death() == 1) {
         if (o->oBehParams2ndByte == BULLY_BP_SIZE_SMALL) {
-            if (o->oBullySubtype == BULLY_STYPE_MINION)
+            if (o->oBullySubtype == BULLY_STYPE_MINION || o->oBullySubtype == BULLY_STYPE_CHILL)
                 o->parentObj->oBullyKBTimerAndMinionKOCounter++;
             bully_spawn_coin();
         } else {

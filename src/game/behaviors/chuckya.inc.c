@@ -79,6 +79,7 @@ void chuckya_act_0(void) {
     o->oAngleToMario = obj_angle_to_object(o, gMarioObject);
     switch (sp28 = o->oSubAction) {
         case 0:
+		cur_obj_init_animation_with_sound(4);
             o->oForwardVel = 0;
             if (cur_obj_lateral_dist_from_mario_to_home() < 2000.0f) {
                 cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x400);
@@ -89,6 +90,7 @@ void chuckya_act_0(void) {
                 o->oSubAction = 3;
             break;
         case 1:
+		cur_obj_init_animation_with_sound(4);
             approach_forward_vel(&o->oForwardVel, 30.0f, 4.0f);
             if (abs_angle_diff(o->oMoveAngleYaw, o->oAngleToMario) > 0x4000)
                 o->oSubAction = 2;
@@ -96,11 +98,13 @@ void chuckya_act_0(void) {
                 o->oSubAction = 3;
             break;
         case 2:
+		cur_obj_init_animation_with_sound(5);
             approach_forward_vel(&o->oForwardVel, 0, 4.0f);
             if (o->oChuckyaUnkFC > 48)
                 o->oSubAction = 0;
             break;
         case 3:
+		cur_obj_init_animation_with_sound(4);
             if (cur_obj_lateral_dist_to_home() < 500.0f)
                 o->oForwardVel = 0;
             else {
@@ -116,7 +120,6 @@ void chuckya_act_0(void) {
         o->oChuckyaUnkFC = 0;
     else
         o->oChuckyaUnkFC++;
-    cur_obj_init_animation_with_sound(4);
     if (o->oForwardVel > 1.0f)
         cur_obj_play_sound_1(SOUND_AIR_CHUCKYA_MOVE);
     print_debug_bottom_up("fg %d", sp3C);

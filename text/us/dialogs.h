@@ -26,9 +26,9 @@ worlds.\n\
 First, talk to the\n\
 Bob-omb Buddy. (Press [B]\n\
 to talk.) He'll certainly\n\
-help you out, and so will\n\
-his " COMRADES " in other\n\
-areas.\n\
+help you out.\n\
+\n\
+\n\
 To read signs, stop, face\n\
 them and press [B]. Press [A]\n\
 or [B] to scroll ahead. You\n\
@@ -84,8 +84,8 @@ just begun.\n\
 Other enemies are holding\n\
 the other Power Stars. If\n\
 you recover more Stars,\n\
-you can open new doors\n\
-that lead to new worlds!\n\
+you can open new doors.\n\
+Continue to new worlds!\n\
 My Bob-omb Buddies are\n\
 waiting for you. Be sure\n\
 to talk to them--they'll\n\
@@ -97,7 +97,7 @@ Bob-ombs, so we don't use\n\
 cannons.\n\
 But if you'd like\n\
 to blast off, we don't\n\
-mind. Help yourself.\n\
+mind. Please help yourself.\n\
 We'll prepare all of the\n\
 cannons in this course for\n\
 you to use. Bon Voyage!"))
@@ -181,9 +181,8 @@ DEFINE_DIALOG(DIALOG_012, 1, 5, 30, 200, _("\
 You've just stepped on\n\
 the Vanish Cap Switch.\n\
 Now Vanish Caps will pop\n\
-from all of the blue\n\
-blocks you find.\n\
-\n\
+from all of the blue blocks\n\
+you find.\n\
 Would you like to Save?\n\
 \n\
 //Yes////No"))
@@ -555,18 +554,18 @@ practice. You don't stand\n\
 a chance without them."))
 
 DEFINE_DIALOG(DIALOG_047, 1, 2, 95, 200, _("\
-Hi! I'll prepare the\n\
-cannon for you!"))
+Hi! I'll prepare the cannon\n\
+for you!"))
 
 DEFINE_DIALOG(DIALOG_048, 1, 4, 30, 200, _("\
 Snow Mountain Summit\n\
 Watch for slippery\n\
 conditions! Please enter\n\
-the cottage first."))
+cottage first."))
 
 DEFINE_DIALOG(DIALOG_049, 1, 5, 30, 200, _("\
 Remember that tricky Wall\n\
-Kick jump? It's a\n\
+Kick jump, It's a\n\
 technique you'll have to\n\
 master in order to reach\n\
 high places.\n\
@@ -1236,7 +1235,7 @@ your Power Meter.\n\
 You can check to see how\n\
 many coins you've\n\
 collected in each of the\n\
-15 enemy worlds.\n\
+15 painting worlds.\n\
 You can also recover\n\
 power by touching the\n\
 Spinning Heart.\n\
@@ -1705,10 +1704,10 @@ here that Bowser couldn't\n\
 find.\n\
 \n\
 \n\
-When you slide, press\n\
-forward to speed up,\n\
-pull back to slow down.\n\
-If you slide really\n\
+When you start to slide,\n\
+press forward to speed\n\
+up, pull back to slow\n\
+down. If you slide really\n\
 fast, you'll win the Star!"))
 
 DEFINE_DIALOG(DIALOG_150, 1, 4, 30, 200, _("\
@@ -1794,7 +1793,7 @@ bottomless pits."))
 
 DEFINE_DIALOG(DIALOG_158, 1, 6, 30, 200, _("\
 1. If you jump repeatedly\n\
-and time it right, you'll\n\
+and time it right, you\n\
 jump higher and higher.\n\
 If you run really fast and\n\
 time three jumps right,\n\

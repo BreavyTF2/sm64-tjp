@@ -18,7 +18,6 @@ extern struct AudioSessionSettingsEU gAudioSessionPresets[];
 #else
 extern struct AudioSessionSettings gAudioSessionPresets[18];
 #endif
-extern u16 D_80332388[128]; // unused
 
 #ifdef VERSION_EU
 extern f32 gPitchBendFrequencyScale[256];
@@ -109,8 +108,8 @@ extern u32 gAudioRandom;
 #define AUDIO_INIT_POOL_SIZE 0x2c00
 #else
 #define UNUSED_COUNT_80333EE8 16
-#define AUDIO_HEAP_SIZE 0x31150
-#define AUDIO_INIT_POOL_SIZE 0x2500
+#define AUDIO_HEAP_SIZE 0x2c500
+#define AUDIO_INIT_POOL_SIZE 0x2c00
 #endif
 
 

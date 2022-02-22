@@ -1,43 +1,19 @@
 // Chuckya
 
 // Unreferenced light group
-UNUSED static const Lights1 chuckya_lights_unused1 = gdSPDefLights1(
-    0x26, 0x00, 0x27,
-    0x9a, 0x00, 0x9c, 0x28, 0x28, 0x28
-);
-
-// Unreferenced light group
-UNUSED static const Lights1 chuckya_lights_unused2 = gdSPDefLights1(
+static const Lights1 chuckya_lights_unused2 = gdSPDefLights1(
     0x3f, 0x3f, 0x3f,
     0xff, 0xff, 0xff, 0x28, 0x28, 0x28
 );
 
 // Unreferenced light group
-UNUSED static const Lights1 chuckya_lights_unused3 = gdSPDefLights1(
-    0x3f, 0x00, 0x00,
-    0xff, 0x00, 0x00, 0x28, 0x28, 0x28
-);
-
-// Unreferenced light group
-UNUSED static const Lights1 chuckya_lights_unused4 = gdSPDefLights1(
+static const Lights1 chuckya_lights_unused4 = gdSPDefLights1(
     0x0e, 0x0e, 0x0e,
     0x39, 0x39, 0x39, 0x28, 0x28, 0x28
 );
 
 // Unreferenced light group
-UNUSED static const Lights1 chuckya_lights_unused5 = gdSPDefLights1(
-    0x39, 0x20, 0x00,
-    0xe4, 0x83, 0x00, 0x28, 0x28, 0x28
-);
-
-// Unreferenced light group
-UNUSED static const Lights1 chuckya_lights_unused6 = gdSPDefLights1(
-    0x3f, 0x27, 0x00,
-    0xff, 0x9e, 0x00, 0x28, 0x28, 0x28
-);
-
-// Unreferenced light group
-UNUSED static const Lights1 chuckya_lights_unused7 = gdSPDefLights1(
+static const Lights1 chuckya_lights_unused7 = gdSPDefLights1(
     0x15, 0x14, 0x16,
     0x57, 0x53, 0x58, 0x28, 0x28, 0x28
 );

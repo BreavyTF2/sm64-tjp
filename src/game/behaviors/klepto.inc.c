@@ -75,8 +75,10 @@ static void klepto_anim_dive(void) {
 
 void bhv_klepto_init(void) {
     if (o->oBehParams2ndByte != 0) {
-        o->oAnimState = KLEPTO_ANIM_STATE_HOLDING_STAR;
-    } else {
+		if (bit_shift_left(1) & save_file_get_star_flags(gCurrSaveFileNum - 1, gCurrCourseNum - 1)) {
+			o->oAnimState = 3;
+    } else o->oAnimState = 2;
+	} else {
         o->oKleptoStartPosX = o->oPosX;
         o->oKleptoStartPosY = o->oPosY;
         o->oKleptoStartPosZ = o->oPosZ;
@@ -362,7 +364,7 @@ void bhv_klepto_update(void) {
             if (o->oAnimState == KLEPTO_ANIM_STATE_HOLDING_CAP) {
                 save_file_clear_flags(SAVE_FLAG_CAP_ON_KLEPTO);
                 spawn_object(o, MODEL_MARIOS_CAP, bhvNormalCap);
-            } else if (o->oAnimState == KLEPTO_ANIM_STATE_HOLDING_STAR) {
+            } else if ((o->oAnimState == KLEPTO_ANIM_STATE_HOLDING_STAR) | (o->oAnimState == 3)) {
                 spawn_default_star(-5550.0f, 300.0f, -930.0f);
             }
 

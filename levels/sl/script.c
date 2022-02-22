@@ -36,7 +36,7 @@ static const LevelScript script_func_local_3[] = {
 	OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/ 250, 2150,  1400, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSmallPenguin),
     OBJECT(/*model*/ MODEL_NONE,               /*pos*/  700, 3428,   700, /*angle*/ 0,  30, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSLSnowmanWind),
     OBJECT(/*model*/ MODEL_NONE,               /*pos*/  480, 2300,  1370, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvIgloo),
-    OBJECT(/*model*/ MODEL_UNKNOWN_58,    /*pos*/  315, 1421, -4852, /*angle*/ 0,   0, 0, /*behParam*/ 0x05000000, /*beh*/ bhvStub1D0C),
+    OBJECT(/*model*/ MODEL_UNKNOWN_58,    /*pos*/  315, 1421, -4852, /*angle*/ 0,   0, 0, /*behParam*/ 0x05000000, /*beh*/ bhvBigBullyWithMinions),
     OBJECT(/*model*/ MODEL_MR_BLIZZARD_HIDDEN, /*pos*/ 2954,  970,   750, /*angle*/ 0,   0, 0, /*behParam*/ 0x00020000, /*beh*/ bhvBigMrBlizzard),
     RETURN(),
 };

@@ -4209,7 +4209,7 @@ const BehaviorScript bhvBowserBomb[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     SET_INT(oIntangibleTimer, 0),
-    SET_HITBOX_WITH_OFFSET(/*Radius*/ 40, /*Height*/ 40, /*Downwards offset*/ 40),
+    SET_HITBOX_WITH_OFFSET(/*Radius*/ 60, /*Height*/ 60, /*Downwards offset*/ 40),
     DELAY(1),
     BEGIN_LOOP(),
         SET_INT(oIntangibleTimer, 0),

@@ -926,27 +926,37 @@ s32 act_steep_jump(struct MarioState *m) {
 }
 
 s32 act_ground_pound(struct MarioState *m) {
-    u32 stepResult;
+    u32 stepResult = perform_air_step(m, 0);
+    f32 yOffset;
+
     play_sound_if_no_flag(m, SOUND_ACTION_THROW, MARIO_ACTION_SOUND_PLAYED);
-    if (m->actionState == 0) {
-		
-		mario_set_forward_vel(m, 0.0f);
+
+    if (m->actionState == 0 && stepResult != AIR_STEP_LANDED) {
+        if (m->actionTimer < 10) {
+            yOffset = 20 - 2 * m->actionTimer;
+            if (m->pos[1] + yOffset + 160.0f < m->ceilHeight) {
+                m->pos[1] += yOffset;
+                m->peakHeight = m->pos[1];
+                vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
+            }
+        }
+
+        mario_set_forward_vel(m, 0.0f);
+
         set_mario_animation(m, m->actionArg == 0 ? MARIO_ANIM_START_GROUND_POUND
                                                  : MARIO_ANIM_TRIPLE_JUMP_GROUND_POUND);
         if (m->actionTimer == 0) {
             play_sound(SOUND_ACTION_SPIN, m->marioObj->header.gfx.cameraToObject);
+			m->vel[1] = 0;
         }
 
         m->actionTimer++;
-		            m->actionState = 1;
-//					set_mario_animation(m, MARIO_ANIM_GROUND_POUND);
-        if (m->actionTimer >= m->marioObj->header.gfx.animInfo.curAnim->loopEnd + 4) {
-            play_sound(SOUND_MARIO_GROUND_POUND_WAH, m->marioObj->header.gfx.cameraToObject);
-
+          if (m->actionTimer >= m->marioObj->header.gfx.animInfo.curAnim->loopEnd) {
+            //play_sound(SOUND_MARIO_GROUND_POUND_WAH, m->marioObj->header.gfx.cameraToObject);
+            m->actionState = 1;
         }
     } else {
 
-        stepResult = perform_air_step(m, 0);
         if (stepResult == AIR_STEP_LANDED) {
             if (should_get_stuck_in_ground(m)) {
 #ifdef VERSION_SH
@@ -972,13 +982,14 @@ s32 act_ground_pound(struct MarioState *m) {
             if (m->vel[1] > 0.0f) {
                 m->vel[1] = 0.0f;
             }
+
+            m->particleFlags |= PARTICLE_VERTICAL_STAR;
             set_mario_action(m, ACT_BACKWARD_AIR_KB, 0);
         }
     }
 
     return FALSE;
 }
-
 
 s32 act_burning_jump(struct MarioState *m) {
     play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, m->actionArg == 0 ? 0 : -1);

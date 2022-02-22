@@ -72,7 +72,7 @@ void opened_cannon_act_6(void) {
 }
 
 void opened_cannon_act_5(void) {
-	set_environmental_camera_shake(SHAKE_ENV_UNUSED_6);
+	set_environmental_camera_shake(SHAKE_ENV_UNUSED_7);
     if (o->oTimer == 0)
         cur_obj_play_sound_2(SOUND_OBJ_CANNON3);
     if (o->oTimer < 4) {
@@ -101,11 +101,11 @@ void opened_cannon_act_2(void) {
 void opened_cannon_act_3(void) {
     struct Object *gas;
 	f32 scale;
-	set_environmental_camera_shake(SHAKE_ENV_UNUSED_6);
+	set_environmental_camera_shake(SHAKE_ENV_UNUSED_7);
 	if (o->oTimer > 3)
         o->oAction = 0;
 	if (o->oTimer < 30) {
-	    gas = spawn_object(o, MODEL_BURN_SMOKE_UNUSED, bhvBlackSmokeBowser);
+	    gas = spawn_object(o, MODEL_BURN_SMOKE, bhvBlackSmokeBowser);
 	    gas->oMoveAngleYaw = random_u16();
 	    gas->oForwardVel = random_float()*20+20;
 	    gas->oVelY = coss(gMarioObject->oMoveAnglePitch)*40;

@@ -923,7 +923,6 @@ SECTIONS
       BUILD_DIR/libgoddard.a:anim_group_1.o(.data);
       BUILD_DIR/libgoddard.a:anim_group_2.o(.data);
       BUILD_DIR/libgoddard.a:dynlist_test_cube.o(.rodata*);
-      BUILD_DIR/libgoddard.a:dynlist_unused.o(.rodata*);
       BUILD_DIR/libgoddard.a:*.o(.data);
       BUILD_DIR/libgoddard.a:*.o(.rodata);
    }

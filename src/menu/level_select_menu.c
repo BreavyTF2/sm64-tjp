@@ -118,7 +118,7 @@ s16 level_select_input_loop(void) {
     print_text_fmt_int(40, 60, "%2d", gCurrLevelNum);
     print_text(80, 60, gLevelSelect_StageNamesText[gCurrLevelNum - 1]); // print stage name
 
-#define QUIT_LEVEL_SELECT_COMBO (Z_TRIG | START_BUTTON | L_CBUTTONS | R_CBUTTONS)
+#define QUIT_LEVEL_SELECT_COMBO (Z_TRIG | START_BUTTON)
 
     // start being pressed signals the stage to be started. that is, unless...
     if (gPlayer1Controller->buttonPressed & START_BUTTON) {

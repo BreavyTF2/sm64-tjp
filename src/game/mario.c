@@ -1272,7 +1272,7 @@ void update_mario_button_inputs(struct MarioState *m) {
     if (m->controller->buttonDown & A_BUTTON) {
         m->input |= INPUT_A_DOWN;
     }    
-	#define QUIT_LEVEL_SELECT_COMBO (Z_TRIG | START_BUTTON | L_CBUTTONS | R_CBUTTONS)
+	#define QUIT_LEVEL_SELECT_COMBO (Z_TRIG | START_BUTTON)
 	if (m->controller->buttonPressed == QUIT_LEVEL_SELECT_COMBO) {
     if (gShowPosText) { gShowPosText = FALSE; }
 	else gShowPosText = TRUE;
