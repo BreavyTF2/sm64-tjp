@@ -13,41 +13,75 @@ struct ObjectHitbox sJumpingBoxHitbox = {
 };
 
 void jumping_box_act_0(void) {
+o->oAngleToMario = obj_angle_to_object(o, gMarioObject);
 
-	if ( o->oDistanceToMario < 750) {
-		if (gGlobalTimer % 15 == 0) {
-		o->oForwardVel += 1.0f;
-	}
-	obj_turn_toward_object(o, gMarioObject, 16, -0x100);
-	}
 	cur_obj_init_animation_with_sound(0);
-    if (o->oSubAction == 0) {
-        if (o->oJumpingBoxUnkF8-- < 0)
-            o->oSubAction++;
-        if (o->oTimer > o->oJumpingBoxUnkF4) {
-            o->oVelY = random_float() * 7.5f + 22.5f;
-            o->oSubAction++;
+	if ((!(o->oMoveFlags & OBJ_MOVE_ON_GROUND)) && ( o->oDistanceToMario <= 750)) cur_obj_rotate_yaw_toward(o->oAngleToMario + 0x8000, 0x300);
+    if (o->oMoveFlags & OBJ_MOVE_ON_GROUND) {
+		if ((( o->oDistanceToMario > 750) && (cur_obj_check_if_near_animation_end())) || (o->oDistanceToMario > 750 && (o->header.gfx.animInfo.animFrame <= 2))) o->oAction = 2;
+		if ((o->oForwardVel) > 0) o->oForwardVel = 0;
+		
+        if (cur_obj_check_anim_frame(25)) {
+			cur_obj_play_sound_2(SOUND_GENERAL_SOFT_LANDING);
+            o->oVelY = random_float() * 5.0f + 30.0f;
+			o->oForwardVel = random_float() * 10.0f + 22.5f;
         }
-    } else if (o->oMoveFlags & OBJ_MOVE_ON_GROUND) {
-        o->oSubAction = 0;
-        o->oJumpingBoxUnkF8 = random_float() * 240.0f + 120.0f;
-    }
+	}
 }
-
 void jumping_box_act_1(void) {
     if (o->oMoveFlags & (OBJ_MOVE_HIT_WALL | OBJ_MOVE_MASK_IN_WATER | OBJ_MOVE_LANDED)) {
 		o->oAction = 0;
     }
 }
 
-void (*sJumpingBoxActions[])(void) = { jumping_box_act_0, jumping_box_act_1 };
+void jumping_box_act_2(void) {
+	cur_obj_init_animation_with_sound(0);
+	o->header.gfx.animInfo.animFrame = 0;
+	if ((o->oForwardVel) > 0) o->oForwardVel = 0;
+	if (o->oTimer > 150) o->oAction = 3;
+	
+	if (o->oDistanceToMario <= 750) {
+		o->oAction = 0;
+	}
+}
+
+f32 jumping_box_home(void) {
+    f32 dist;
+    f32 dx = o->oHomeX - o->oPosX;
+    f32 dz = o->oHomeZ - o->oPosZ;
+
+    dist = sqrtf(dx * dx + dz * dz);
+    return dist;
+}
+void jumping_box_act_3(void) {
+	o->oAngleToHome = cur_obj_angle_to_home();
+	cur_obj_init_animation_with_sound(0);
+	if (!(o->oMoveFlags & OBJ_MOVE_ON_GROUND)) cur_obj_rotate_yaw_toward(o->oAngleToHome, 0x400);
+	if (o->oMoveFlags & OBJ_MOVE_ON_GROUND) {
+		if ((o->oForwardVel) > 0) o->oForwardVel = 0;
+	        if (cur_obj_check_anim_frame(25)) {
+				cur_obj_play_sound_2(SOUND_GENERAL_SOFT_LANDING);
+            o->oVelY = random_float() * 5.0f + 30.0f;
+			o->oForwardVel = random_float() * 10.0f + 22.5f;
+				}
+			if (jumping_box_home() < 500) {
+			o->oAction = 2;
+			}
+        }
+
+		if (o->oDistanceToMario <= 500) {
+		o->oAction = 0;
+	}
+}
+
+void (*sJumpingBoxActions[])(void) = { jumping_box_act_0, jumping_box_act_1, jumping_box_act_2, jumping_box_act_3 };
 
 void jumping_box_free_update(void) {
     cur_obj_set_model(MODEL_UNKNOWN_B8);
     cur_obj_scale(0.4f);
     obj_set_hitbox(o, &sJumpingBoxHitbox);
     cur_obj_update_floor_and_walls();
-    cur_obj_move_standard(78);
+    cur_obj_move_standard(30);
     cur_obj_call_action_function(sJumpingBoxActions);
 }
 
@@ -58,7 +92,6 @@ void bhv_jumping_box_loop(void) {
             break;
         case HELD_HELD:
             obj_copy_pos(o, gMarioObject);
-//             cur_obj_set_pos_relative(gMarioObject, 40, -500.0f, 100.0f);
             cur_obj_unrender_and_reset_state(0, 0);
             break;
         case HELD_THROWN:

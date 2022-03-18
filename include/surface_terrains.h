@@ -11,6 +11,7 @@
 #define SURFACE_CLOSE_CAMERA                 0x000B // Close camera
 #define SURFACE_WATER                        0x000D // Water, has no action, used on some waterboxes below
 #define SURFACE_FLOWING_WATER                0x000E // Water (flowing), has parameters
+#define SURFACE_SHIP                   0x0011 // Custom Ship Collision, initates wobbly camera and Oshinwait.
 #define SURFACE_INTANGIBLE                   0x0012 // Intangible (Separates BBH mansion from merry-go-round, for room usage)
 #define SURFACE_VERY_SLIPPERY                0x0013 // Very slippery, mostly used for slides
 #define SURFACE_SLIPPERY                     0x0014 // Slippery

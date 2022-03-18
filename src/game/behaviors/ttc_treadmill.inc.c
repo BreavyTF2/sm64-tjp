@@ -15,8 +15,8 @@ static Collision const *sTTCTreadmillCollisionModels[] = {
 };
 
 static s16 sTTCTreadmillSpeeds[] = {
-    /* TTC_SPEED_SLOW    */ 50,
-    /* TTC_SPEED_FAST    */ 100,
+    /* TTC_SPEED_SLOW    */ 60,
+    /* TTC_SPEED_FAST    */ 120,
     /* TTC_SPEED_RANDOM  */ 0,
     /* TTC_SPEED_STOPPED */ 0,
 };
@@ -51,7 +51,7 @@ void bhv_ttc_treadmill_update(void) {
                 // Then stop and select new target speed and time until switch
                 if (approach_f32_ptr(&o->oTTCTreadmillSpeed, 0.0f, 10.0f)) {
                     o->oTTCTreadmillTimeUntilSwitch = random_mod_offset(10, 20, 7);
-                    o->oTTCTreadmillTargetSpeed = random_sign() * 50.0f;
+                    o->oTTCTreadmillTargetSpeed = random_sign() * 60.0f;
                     o->oTimer = 0;
                 }
             } else if (o->oTimer > 5) {

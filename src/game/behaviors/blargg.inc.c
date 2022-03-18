@@ -31,10 +31,9 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 	
 	if ( o->oDistanceToMario >= 2000 ) {
 			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40);
-			o->oForwardVel = 1.0f;
+			o->oForwardVel = 0.0f;
 				if (gMarioState->action & ACT_FLAG_RIDING_SHELL) {
 				cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40*shellspeed);
-				o->oForwardVel = 2.0f;
 			}
 	}
 	if ( o->oDistanceToMario < 2000 ) {
@@ -68,14 +67,10 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 	o->oAction = 2;
 		}
 	}
-	if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
-		cur_obj_init_animation_with_accel_and_sound(0, 2);
-		if (cur_obj_check_if_near_animation_end()) {
-			cur_obj_init_animation_with_accel_and_sound(0, 2);
-			}
-		}
-			
 	cur_obj_init_animation_with_sound(UNBABA_ANIM_SWIM);
+    if (cur_obj_check_if_near_animation_end()) {
+     cur_obj_play_sound_2(SOUND_OBJ_SUSHI_SHARK_WATER_SOUND);   
+	}
 }
 void unbaba_act_attack(void) // Define Attacking Action for Blargg
 {
@@ -87,7 +82,6 @@ void unbaba_act_attack(void) // Define Attacking Action for Blargg
 			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x80);
 		cur_obj_init_animation_with_accel_and_sound(1, 1.5f);
 	}
-	        cur_obj_play_sound_2(SOUND_OBJ_SUSHI_SHARK_WATER_SOUND);
 	cur_obj_init_animation_with_sound(UNBABA_ANIM_ATTACK);
 		if (animTimer < (20)){
 			o->oForwardVel = 2.0*(animTimer)+1;
@@ -113,11 +107,15 @@ void unbaba_act_attack(void) // Define Attacking Action for Blargg
 			o->oForwardVel = 60/(animTimer-18)+4;
 			}
 	}
-	if (cur_obj_check_if_near_animation_end()) {	
-	 o->oForwardVel = 2.5f;
-	 o->hurtboxRadius = 201;
-	 o->hurtboxHeight = 123;
-	 o->oAction = 1;
+    if (cur_obj_check_anim_frame(3)) {
+        cur_obj_play_sound_2(SOUND_OBJ_EEL); //XDelta
+    } 
+    if (cur_obj_check_if_near_animation_end()) {
+     cur_obj_play_sound_2(SOUND_GENERAL_MOVING_WATER);    //XDelta
+     o->oForwardVel = 2.5f;
+     o->hurtboxRadius = 201;
+     o->hurtboxHeight = 123;
+     o->oAction = 1;
 
 	}
 }
@@ -132,9 +130,12 @@ void bhv_unbaba_loop(void) // Define what to do as well.
 {
 	switch (o->oAction) {
 	case 0:
-	unbaba_act_swim();
+	unbaba_act_init(); //Needed for swim anim
 	break;
 	case 1:
+	unbaba_act_swim();
+	break;
+	case 2:
 	unbaba_act_attack();
 	break;
 	}

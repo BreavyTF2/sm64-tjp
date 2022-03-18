@@ -2096,6 +2096,10 @@ s16 update_default_camera(struct Camera *c) {
     } else {
         zoomDist = gCameraZoomDist;
     }
+	
+	    if ((sMarioGeometry.currFloorType & SURFACE_SHIP) && (sMarioCamState->action & ACT_FLAG_IDLE)) {
+        set_handheld_shake(HAND_CAM_SHAKE_UNUSED);
+    }
 
     if (sMarioCamState->action & ACT_FLAG_HANGING ||
         sMarioCamState->action == ACT_RIDING_HOOT) {
