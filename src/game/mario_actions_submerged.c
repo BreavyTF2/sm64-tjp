@@ -1349,8 +1349,9 @@ static s32 act_metal_water_walking(struct MarioState *m) {
         return set_mario_action(m, ACT_METAL_WATER_JUMP, 0);
     }
 
-
-
+    m->faceAngle[1] =
+        m->intendedYaw - approach_s32((s16)(m->intendedYaw - m->faceAngle[1]), 0, 0x800, 0x800);
+		
     if (m->input & INPUT_UNKNOWN_5) {
         return set_mario_action(m, ACT_METAL_WATER_STANDING, 0);
     }

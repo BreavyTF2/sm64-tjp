@@ -290,6 +290,7 @@ void bhv_hoot_egg_true_init(void) {
 void bhv_hoot_egg_init(void) {
 	if (o->oInteractStatus == INT_STATUS_INTERACTED) {
 	obj_explode_and_spawn_coins(80.0f, 0);
+	play_sound(SOUND_GENERAL_WALL_EXPLOSION, o->header.gfx.cameraToObject);
 //	create_sound_spawner(SOUND_GENERAL_WALL_EXPLOSION); //This doesn't work, WHY???
 	spawn_object(o, MODEL_HOOT, bhvHoot);
 	}

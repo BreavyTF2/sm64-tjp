@@ -250,7 +250,6 @@ static s16 upper_cell_index(s16 coord) {
  */
 static void add_surface(struct Surface *surface, s32 dynamic) {
     // minY/maxY maybe? s32 instead of s16, though.
-    UNUSED s32 unused1, unused2;
     s16 minX, minZ, maxX, maxZ;
 
     s16 minCellX, minCellZ, maxCellX, maxCellZ;
@@ -456,17 +455,10 @@ static void load_static_surfaces(s16 **data, s16 *vertexData, s16 surfaceType, s
     }
 }
 
-/**
- * Read the data for vertices for reference by triangles.
- */
 static s16 *read_vertex_data(s16 **data) {
-    s32 numVertices;
-    s16 *vertexData;
+    s32 numVertices = *(*data)++;
 
-    numVertices = *(*data);
-    (*data)++;
-
-    vertexData = *data;
+    s16 *vertexData = *data;
     *data += 3 * numVertices;
 
     return vertexData;
@@ -486,19 +478,9 @@ static void load_environmental_regions(s16 **data) {
     }
 
     for (i = 0; i < numRegions; i++) {
-        UNUSED s16 val, loX, loZ, hiX, hiZ;
-        s16 height;
+		*data += 5;
 
-        val = *(*data)++;
-
-        loX = *(*data)++;
-        hiX = *(*data)++;
-        loZ = *(*data)++;
-        hiZ = *(*data)++;
-
-        height = *(*data)++;
-
-        gEnvironmentLevels[i] = height;
+        gEnvironmentLevels[i] = *(*data)++;
     }
 }
 
@@ -762,9 +744,7 @@ void load_object_collision_model(void) {
         }
     }
 
-    if (marioDist < gCurrentObject->oDrawingDistance) {
-        gCurrentObject->header.gfx.node.flags |= GRAPH_RENDER_ACTIVE;
-    } else {
-        gCurrentObject->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
+	    if (gCurrentObject->oCollisionDistance > gCurrentObject->oDrawingDistance) {
+        gCurrentObject->oDrawingDistance = gCurrentObject->oCollisionDistance;
     }
 }

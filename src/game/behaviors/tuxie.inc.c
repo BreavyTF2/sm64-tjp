@@ -13,17 +13,20 @@ void play_penguin_walking_sound(s32 walk) {
 
 void tuxies_mother_act_2(void) {
     f32 sp24;
-    
+    f32 sp25;
+	
     struct Object *sp1C = cur_obj_find_nearest_object_with_behavior(bhvSmallPenguin, &sp24);
-
+	struct Object *sp1D = cur_obj_find_nearest_object_with_behavior(bhvUnused20E0, &sp25);
     if (cur_obj_find_nearby_held_actor(bhvUnused20E0, 1000.0f) != NULL) {
         if (o->oSubAction == 0) {
             cur_obj_init_animation_with_sound(0);
             o->oForwardVel = 10.0f;
-            if (800.0f < cur_obj_lateral_dist_from_mario_to_home())
+            if (800.0f < cur_obj_lateral_dist_from_mario_to_home()) {
                 o->oSubAction = 1;
+			}
             cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x400);
-        } else {
+        } else if (o->oSubAction == 2) { o->oSubAction = 1;
+		} else {
             o->oForwardVel = 0.0f;
             cur_obj_init_animation_with_sound(3);
             if (cur_obj_lateral_dist_from_mario_to_home() < 700.0f)
@@ -32,6 +35,9 @@ void tuxies_mother_act_2(void) {
     } else {
         o->oForwardVel = 0.0f;
         cur_obj_init_animation_with_sound(3);
+		if (((sp1D != NULL) && ((sp25 > 350.0f) || (sp1D->oHeldState != HELD_FREE))) || sp1D == NULL) { o->oSubAction = 2;
+		} else { o->oSubAction = 1;
+		}
     }
     if (sp1C != NULL && sp24 < 300.0f && sp1C->oHeldState != HELD_FREE) {
         o->oAction = 1;
@@ -302,7 +308,10 @@ Gfx *geo_switch_tuxie_mother_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *
             switchCase->selectedCase = 2;
         else
             switchCase->selectedCase = 1;
-
+		
+		if ( ((obj->oAction != 2) && (obj->behavior == segmented_to_virtual(bhvTuxiesMother))) || ((obj->behavior == segmented_to_virtual(bhvTuxiesMother)) && (obj->oAction == 2 && obj->oSubAction == 2)) ) { //Sad
+            switchCase->selectedCase = 4;
+        }
         /** make Tuxie's Mother have angry eyes if Mario takes the correct baby
          * after giving it back. The easiest way to check this is to see if she's
          * moving, since she only does when she's chasing Mario.

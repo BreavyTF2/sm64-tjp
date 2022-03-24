@@ -1450,8 +1450,8 @@ void set_submerged_cam_preset_and_spawn_bubbles(struct MarioState *m) {
         camPreset = m->area->camera->mode;
 
         if (m->action & ACT_FLAG_METAL_WATER) {
-            if (camPreset != CAMERA_MODE_CLOSE) {
-                set_camera_mode(m->area->camera, CAMERA_MODE_CLOSE, 1);
+            if (camPreset != CAMERA_MODE_BEHIND_MARIO) {
+                set_camera_mode(m->area->camera, CAMERA_MODE_BEHIND_MARIO, 1);
             }
         } else {
             if ((heightBelowWater > 800.0f) && (camPreset != CAMERA_MODE_BEHIND_MARIO)) {

@@ -1,6 +1,6 @@
 // 0x0C00010C
 const GeoLayout unagi_geo[] = {
- hmsGroup()
+ hmsHeader(2000)
  hmsBegin()
  hmsScale(0.25f)
     hmsBegin()

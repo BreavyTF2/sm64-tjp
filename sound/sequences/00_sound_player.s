@@ -2085,7 +2085,7 @@ chan_end
 .layer_C4C:
 layer_transpose 254
 .layer_C4E:
-layer_note1 38, 0x18, 127
+layer_note1 38, 0x19, 127
 layer_end
 
 .sound_mario_jump_yah:
@@ -2097,7 +2097,6 @@ chan_end
 .layer_C5A:
 layer_transpose 254
 .layer_C5C:
-layer_portamento 0x82, 39, 127
 layer_note1 39, 0x22, 127
 layer_end
 

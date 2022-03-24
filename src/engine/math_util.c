@@ -25,6 +25,13 @@ void *vec3f_copy(Vec3f dest, Vec3f src) {
     return &dest; //! warning: function returns address of local variable
 }
 
+/// Finds the yaw between two vectors.
+void vec3f_get_yaw(Vec3f from, Vec3f to, s16 *yaw) {
+    register f32 dx = (to[0] - from[0]);
+    register f32 dz = (to[2] - from[2]);
+    *yaw = atan2s(dz, dx);
+}
+
 /// Set vector 'dest' to (x, y, z)
 void *vec3f_set(Vec3f dest, f32 x, f32 y, f32 z) {
     dest[0] = x;

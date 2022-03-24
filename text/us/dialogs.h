@@ -386,10 +386,10 @@ buzz.\n\
 When you want to take a\n\
 look at your surroundings,\n\
 stop and press [C]^. Press\n\
-A to resume game play.\n\
+[A] to resume game play.\n\
 \n\
 Switch camera modes with\n\
-the R Button. Signs along\n\
+the [R] Button. Signs along\n\
 the way will review these\n\
 instructions. That's all!\n\
 \n\
@@ -467,7 +467,7 @@ Read the Star names\n\
 at the beginning of the\n\
 course.\n\
 --Chucking,\n\
-    on the mountaintop"))
+// on the mountaintop"))
 
 DEFINE_DIALOG(DIALOG_040, 1, 3, 30, 200, _("\
 Warning!\n\
@@ -512,8 +512,8 @@ body feels heavier...\n\
 \n\
 Hey, why not take a short\n\
 flight with me? Press and\n\
-hold A to grab on to me.\n\
-Release A to let go.\n\
+hold [A] to grab on to me.\n\
+Release [A] to let go.\n\
 I'll take you wherever\n\
 you want to go. Watch my\n\
 shadow, and hold on!"))

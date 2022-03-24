@@ -120,7 +120,7 @@ s32 act_idle(struct MarioState *m) {
         return TRUE;
     }
 	if (m->actionState == 3) {
-		if (m->floor->type & SURFACE_SHIP) {
+		if (m->floor->type == SURFACE_SHIP) {
             return set_mario_action(m, ACT_CRYING, 0);
 		}
 	}

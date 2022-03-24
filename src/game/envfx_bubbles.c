@@ -25,8 +25,6 @@ static Gfx *sGfxCursor; // points to end of display list for bubble particles
 static s32 sBubbleParticleCount;
 static s32 sBubbleParticleMaxCount;
 
-UNUSED s32 D_80330690 = 0;
-UNUSED s32 D_80330694 = 0;
 
 /// Template for a bubble particle triangle
 Vtx_t gBubbleTempVtx[3] = {
@@ -151,12 +149,7 @@ void envfx_set_lava_bubble_position(s32 index, Vec3s centerPos) {
 void envfx_update_lava(Vec3s centerPos) {
     s32 i;
     s32 timer = gGlobalTimer;
-    s8 chance;
-    UNUSED s16 centerX, centerY, centerZ;
 
-    centerX = centerPos[0];
-    centerY = centerPos[1];
-    centerZ = centerPos[2];
 
     for (i = 0; i < sBubbleParticleMaxCount; i++) {
         if ((gEnvFxBuffer + i)->isAlive == 0) {
@@ -171,7 +164,7 @@ void envfx_update_lava(Vec3s centerPos) {
         }
     }
 
-    if ((chance = (s32)(random_float() * 16.0f)) == 8) {
+    if (((s8)(s32)(random_float() * 16.0f)) == 8) {
         play_sound(SOUND_GENERAL_QUIET_BUBBLE2, gDefaultSoundArgs);
     }
 }
