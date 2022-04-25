@@ -1560,7 +1560,7 @@ const Collision ssl_seg7_area_1_collision[] = {
     SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_level_geo_03, /*pos*/  -511,  0,  2935, /*yaw*/  0),
     SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_level_geo_03, /*pos*/  1024,  0,  3822, /*yaw*/  0),
     SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_level_geo_03, /*pos*/  3072,  0,   375, /*yaw*/  0),
-    SPECIAL_OBJECT(/*preset*/ special_palm_tree,    /*pos*/ -5989,  0, -4850),
+    SPECIAL_OBJECT(/*preset*/ special_unknown_tree,    /*pos*/ -5989,  0, -4850),
     COL_WATER_BOX_INIT(3),
     COL_WATER_BOX(51, 1024, -7065, 7578, -716, -50),
     COL_WATER_BOX(52, -3993, -7065, 1024, -4197, -50),

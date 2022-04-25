@@ -1,7 +1,7 @@
 static const struct Animation anim_D4[] = {
 	 1,			/* attribute       	 */
 	 189,							/* syncro			 */
-	 1,							/* start frame     	 */
+	 0,							/* start frame     	 */
 	 0,							/* loop frame		 */
 	 9,							/* number of frames	 */
     ANIMINDEX_NUMPARTS(anim_D4_indices),
@@ -13,7 +13,7 @@ static const struct Animation anim_D4[] = {
 static const u16 anim_D4_indices[] = {
 	    1,    0,	/* chn14_3_1_4translate x */
 	    1,    1,	/* chn14_3_1_4 translate y */
-	    1,    0,	/* chn14_3_1_4 translate z */
+	    1,    6,	/* chn14_3_1_4 translate z */
 	    1,    0,	/* chn14_3_1_4 rotate x */
 	    1,    2,	/* chn14_3_1_4 rotate y */
 	    1,    0,	/* chn14_3_1_4 rotate z */
@@ -80,7 +80,7 @@ static const u16 anim_D4_indices[] = {
 	    9,  147,	/* <m_rfoot>1 rotate z */
 };
 static const s16 anim_D4_values[] = {
-	    0,   54,16383,  261,  180,  107,   42,  -12,
+	    0,   95,16383,  261,  180,  107,   42,  -12,
 	  -57,  -90, -110, -118, -576, -764, -953,-1136,
 	-1304,-1449,-1563,-1638,-1664,-4492,-4383,-4285,
 	-4198,-4125,-4065,-4022,-3994,-3985,-4995,-6056,

@@ -27,6 +27,7 @@ void bhv_haunted_bookshelf_loop(void) {
             // intended to be used to set the action instead?
 			if (o->oDistanceToMario < 400 && gHudDisplay.keys >= 1) {
 				gMarioState->numKeys--;
+				play_puzzle_jingle();
 				o->oAction++;
 			}
             if (o->oHauntedBookshelfShouldOpen != FALSE) {

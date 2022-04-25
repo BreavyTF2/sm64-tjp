@@ -199,7 +199,7 @@ void update_air_with_turn(struct MarioState *m) {
             m->forwardVel -= 1.0f;
         }
         if (m->forwardVel < -16.0f) {
-            m->forwardVel += 2.0f;
+            m->forwardVel += 1.15f;
         }
 
         m->vel[0] = m->slideVelX = m->forwardVel * sins(m->faceAngle[1]);

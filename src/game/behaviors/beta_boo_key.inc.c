@@ -91,15 +91,7 @@ static void beta_boo_key_dropped_loop(void) {
 
     // Rotate the key
     o->oFaceAngleYaw += 0x800;
-
-    // If the key hits the floor or 90 frames have elapsed since it was dropped,
-    // become tangible and handle collision.
-    if (o->oMoveFlags & OBJ_MOVE_LANDED) {
-        cur_obj_become_tangible();
-		set_environmental_camera_shake(SHAKE_ENV_UNUSED_6);
-		obj_set_hitbox(o, &sBooKeyHitbox);
-
-        if (obj_check_if_collided_with_object(o, gMarioObject)) {
+        if (o->oInteractStatus & INT_STATUS_INTERACTED) {
             // This interaction status is 0x01, the first interaction status flag.
             // It was only used for Hoot in the final game, but it seems it could've
             // done something else or held some special meaning in beta.
@@ -109,13 +101,19 @@ static void beta_boo_key_dropped_loop(void) {
             // One theory about this code is that there was a boo spawner, which
             // spawned "false" boos and one "true" boo with the key, and the player
             // was intended to find the one with the key to progress.
-            o->parentObj->oInteractStatus = INT_STATUS_HOOT_GRABBED_BY_MARIO;
+//            o->parentObj->oInteractStatus = INT_STATUS_HOOT_GRABBED_BY_MARIO;
 
             // Delete the object and spawn sparkles
             obj_mark_for_deletion(o);
 			play_puzzle_jingle();
             spawn_object(o, MODEL_SPARKLES, bhvGoldenCoinSparkles);
         }
+    // If the key hits the floor or 90 frames have elapsed since it was dropped,
+    // become tangible and handle collision.
+    if (o->oMoveFlags & OBJ_MOVE_LANDED) {
+        cur_obj_become_tangible();
+		set_environmental_camera_shake(SHAKE_ENV_UNUSED_6);
+		obj_set_hitbox(o, &sBooKeyHitbox);
     }
 }
 
