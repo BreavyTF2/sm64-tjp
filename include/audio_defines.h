@@ -181,7 +181,7 @@
 #define SOUND_MARIO_PUNCH_YAH                   SOUND_ARG_LOAD(2, 4, 0x1E, 0x80, 8)
 #define SOUND_MARIO_PUNCH_HOO                   SOUND_ARG_LOAD(2, 4, 0x1F, 0x80, 8)
 #define SOUND_MARIO_MAMA_MIA                    SOUND_ARG_LOAD(2, 4, 0x20, 0x80, 8)
-#define SOUND_MARIO_OKEY_DOKEY                  0x2021
+#define SOUND_MARIO_OKEY_DOKEY                  SOUND_ARG_LOAD(2, 4, 0x21, 0x80, 8)
 #define SOUND_MARIO_GROUND_POUND_WAH            SOUND_ARG_LOAD(2, 4, 0x22, 0x80, 8)
 #define SOUND_MARIO_DROWNING                    SOUND_ARG_LOAD(2, 4, 0x23, 0xF0, 8)
 #define SOUND_MARIO_PUNCH_WAH                   SOUND_ARG_LOAD(2, 4, 0x24, 0x80, 8)

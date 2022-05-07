@@ -200,7 +200,7 @@ u32 determine_interaction(struct MarioState *m, struct Object *o) {
                     interaction = INT_KICK;
                 }
             }
-            if (m->flags & MARIO_TRIPPING) {
+            if (m->flags & MARIO_TRIPPING) { //Squat Kicking
                 // 180 degrees total, or 90 each way
                 if (-0x4000 <= dYawToObject && dYawToObject <= 0x4000) {
                     interaction = INT_TRIP;
@@ -220,7 +220,7 @@ u32 determine_interaction(struct MarioState *m, struct Object *o) {
             }
         } else if (action == ACT_SLIDE_KICK || action == ACT_SLIDE_KICK_SLIDE) {
             interaction = INT_SLIDE_KICK;
-        } else if (action & ACT_FLAG_RIDING_SHELL) {
+        } else if (action & ACT_FLAG_RIDING_SHELL || action == ACT_CHARGE) {
             interaction = INT_FAST_ATTACK_OR_SHELL;
         } else if (m->forwardVel <= -26.0f || 26.0f <= m->forwardVel) {
             interaction = INT_FAST_ATTACK_OR_SHELL;
@@ -1744,7 +1744,7 @@ void check_kick_or_punch_wall(struct MarioState *m) {
                 mario_set_forward_vel(m, -48.0f);
                 play_sound(SOUND_ACTION_HIT_2, m->marioObj->header.gfx.cameraToObject);
                 m->particleFlags |= PARTICLE_TRIANGLE;
-            } else if (m->action & ACT_FLAG_AIR) {
+            } else if (m->action & ACT_FLAG_AIR || m->action == ACT_CHARGE) {
                 mario_set_forward_vel(m, -16.0f);
                 play_sound(SOUND_ACTION_HIT_2, m->marioObj->header.gfx.cameraToObject);
                 m->particleFlags |= PARTICLE_TRIANGLE;
