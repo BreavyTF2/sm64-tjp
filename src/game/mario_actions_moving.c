@@ -454,7 +454,7 @@ void update_walking_speed(struct MarioState *m) {
         m->forwardVel += 1.1f;
     } else if (m->forwardVel <= targetSpeed) {
 		if (m->action == ACT_CHARGE) {
-        m->forwardVel += 1.2f - m->forwardVel / 44.0f;
+        m->forwardVel += 1.15f - m->forwardVel / 44.0f;
 		} else m->forwardVel += 1.1f - m->forwardVel / 44.0f;
     } else if (m->floor->normal.y >= 0.95f) {
         m->forwardVel -= 1.0f;
@@ -502,28 +502,19 @@ s32 check_ground_dive_or_punch(struct MarioState *m) {
 			return set_mario_action(m, ACT_DIVE, 0);
         }
         return set_mario_action(m, ACT_MOVE_PUNCHING, 0);
-    } else {
-		if (gPlayer1Controller->buttonDown != B_BUTTON && buffer > 0 && buffer < 6) {
-			if (m->forwardVel >= 29.0f && m->controller->stickMag > 48.0f) {
-				return set_mario_action(m, ACT_DIVE, 0);
-				buffer=0;
-			}
-		}
 	}
 	if (gPlayer1Controller->buttonDown == B_BUTTON) {
-		if (buffer < 21)
 		buffer++;
-		if (buffer == 20)
+		if (buffer > 19)
         return set_mario_action(m, ACT_CHARGE, 1);
-	} else if (gPlayer1Controller->buttonDown == B_BUTTON && buffer > 19) {
-		buffer=21;
-		set_mario_action(m, ACT_WALKING, 3);
+	
 	} else {
 		buffer=0;
 	}
 
     return FALSE;
 }
+
 s32 begin_braking_action(struct MarioState *m) {
     mario_drop_held_object(m);
 
@@ -806,6 +797,8 @@ void tilt_body_ground_shell(struct MarioState *m, s16 startYaw) {
 
 s32 act_charge(struct MarioState *m) {
 	
+	buffer=0;
+	
     if (should_begin_sliding(m)) {
         return set_mario_action(m, ACT_BEGIN_SLIDING, 0);
     }
@@ -814,7 +807,8 @@ s32 act_charge(struct MarioState *m) {
         return set_mario_action(m, ACT_DOUBLE_JUMP, 0);
     }
 	if (m->input & INPUT_B_PRESSED) {
-        return set_mario_action(m, ACT_WALKING, 3);
+		m->vel[1] = 20.0f;
+        return set_mario_action(m, ACT_DIVE, 0);
     }
     if (m->input & INPUT_UNKNOWN_5) {
         return begin_braking_action(m);
