@@ -848,8 +848,6 @@ s32 act_charge(struct MarioState *m) {
                 m->particleFlags |= PARTICLE_DUST;
                 break;   
         }
-        if (m->floor->type == SURFACE_BURNING) {
-        }
         adjust_sound_for_speed(m);
     }
     return FALSE;
