@@ -827,7 +827,6 @@ s32 act_charge(struct MarioState *m) {
         m->actionArg = 2;
     }
 
-
     if (m->actionArg == 2) {
         update_walking_speed(m);
         set_mario_anim_with_accel(m, MARIO_ANIM_DASHING, (s32)(0xC0000));
