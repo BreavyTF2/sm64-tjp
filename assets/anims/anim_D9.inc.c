@@ -1,4 +1,4 @@
-static const struct Animation anim_D9[] = { //Chasing
+static const struct Animation anim_D9[] = { //Chasing (Temporary)
 	 0,			/* attribute       	 */
 	 0,							/* syncro			 */
 	 0,							/* start frame     	 */
