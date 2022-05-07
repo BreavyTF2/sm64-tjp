@@ -819,6 +819,9 @@ s32 act_charge(struct MarioState *m) {
     if (m->input & INPUT_UNKNOWN_5) {
         return begin_braking_action(m);
     }
+	    if (m->input & INPUT_Z_PRESSED) {
+        return set_mario_action(m, ACT_CROUCH_SLIDE, 0);
+    }
     if (m->actionArg == 1 ) {
         play_sound(SOUND_MARIO_EEUH, m->marioObj->header.gfx.cameraToObject);
         m->actionArg = 2;
