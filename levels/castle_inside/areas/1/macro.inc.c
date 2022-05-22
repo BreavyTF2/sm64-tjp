@@ -11,6 +11,5 @@ const MacroObject inside_castle_seg7_area_1_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,      /*yaw*/   0, /*pos*/  -724,   388,  -324),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,      /*yaw*/   0, /*pos*/ -1324,   388,  -324),
     MACRO_OBJECT(/*preset*/ macro_hidden_1up_trigger, /*yaw*/   0, /*pos*/  2005,   800, -1694),
-    MACRO_OBJECT_WITH_BEH_PARAM(/*preset*/ macro_hidden_1up,         /*yaw*/   0, /*pos*/  2036,   800, -1673, /*behParam*/ 1),
     MACRO_OBJECT_END(),
 };

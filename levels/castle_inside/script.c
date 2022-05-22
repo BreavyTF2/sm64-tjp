@@ -48,6 +48,8 @@ static const LevelScript script_func_local_1[] = {
     WARP_NODE(/*id*/ 0x0B, /*destLevel*/ LEVEL_BITDW, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
     OBJECT(/*model*/ MODEL_NONE, /*pos*/  1963,  819,  1280, /*angle*/ 0,    0, 0, /*behParam*/ 0x050C0000, /*beh*/ bhvWarp),
     WARP_NODE(/*id*/ 0x0C, /*destLevel*/ LEVEL_SA, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
+    OBJECT(/*model*/ MODEL_NONE, /*pos*/  1963,  819,  -1740, /*angle*/ 0,    0, 0, /*behParam*/ 0x050D0000, /*beh*/ bhvWarp),
+	WARP_NODE(/*id*/ 0x0D, /*destLevel*/ LEVEL_UNKNOWN_3, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
     WARP_NODE(/*id*/ 0xF2, /*destLevel*/ LEVEL_TOTWC, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
     OBJECT(/*model*/ MODEL_NONE, /*pos*/ -1024,  512,  -650, /*angle*/ 0,    0, 0, /*behParam*/ 0x001E0000, /*beh*/ bhvInstantActiveWarp),
     OBJECT(/*model*/ MODEL_NONE, /*pos*/ -1024,  -50,   717, /*angle*/ 0,  180, 0, /*behParam*/ 0x001F0000, /*beh*/ bhvInstantActiveWarp),

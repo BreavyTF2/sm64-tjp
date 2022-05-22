@@ -25,6 +25,11 @@
 #include "make_const_nonconst.h"
 #include "levels/donjon/header.h"
 
+static const LevelScript script_func_local_1[] = {
+	OBJECT(/*model*/ MODEL_STAR,                  /*pos*/  -4600, 1350, -5600, /*angle*/ 0, 0, 0,    /*behParam*/ 0x00000000, /*beh*/ bhvStar),
+    RETURN(),
+};
+
 const LevelScript level_donjon_entry[] = {
 
 	INIT_LEVEL(),
@@ -45,7 +50,13 @@ const LevelScript level_donjon_entry[] = {
 
 		AREA(1, RCP_Stage3Scene1),
 			TERRAIN(donjon_info),
-			SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0004, /*seq*/ SEQ_LEVEL_INSIDE_CASTLE),
+	         JUMP_LINK(script_func_local_1),
+			SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0004, /*seq*/ SEQ_LOST_IN_TIME),
+        TERRAIN_TYPE(/*terrainType*/ TERRAIN_STONE),
+		         OBJECT(/*model*/ MODEL_NONE, /*pos*/ 500, 3000, 0, /*angle*/ 0, 180, 0, /*behParam*/ 0x000A0000, /*beh*/ bhvAirborneWarp),
+        WARP_NODE(/*id*/ 0x0A, /*destLevel*/ LEVEL_UNKNOWN_3, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
+        WARP_NODE(/*id*/ 0xF0, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x27, /*flags*/ WARP_NO_CHECKPOINT),
+        WARP_NODE(/*id*/ 0xF1, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x28, /*flags*/ WARP_NO_CHECKPOINT),
 		END_AREA(),
 
 	FREE_LEVEL_POOL(),

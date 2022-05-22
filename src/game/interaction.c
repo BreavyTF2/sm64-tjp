@@ -1378,7 +1378,7 @@ u32 interact_bounce_top(struct MarioState *m, UNUSED u32 interactType, struct Ob
 u32 interact_unknown_08(struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
     u32 interaction = determine_interaction(m, o);
 
-    if (interaction & INT_PUNCH) {
+    if (interaction & INT_PUNCH || interaction & INT_FAST_ATTACK_OR_SHELL) {
         o->oInteractStatus = INT_STATUS_INTERACTED | INT_STATUS_WAS_ATTACKED | ATTACK_PUNCH;
         bounce_back_from_attack(m, interaction);
     } else if (take_damage_and_knock_back(m, o)) {

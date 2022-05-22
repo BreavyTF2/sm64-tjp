@@ -7638,9 +7638,6 @@ BAD_RETURN(s32) cutscene_dance_fly_away_start(struct Camera *c) {
     if ((gLastCompletedStarNum == 1) && (gCurrCourseNum == COURSE_SL)) {
         star_dance_bound_yaw(c, 0x2000, 0x800);
     }
-    if ((gLastCompletedStarNum == 3) && (gCurrCourseNum == COURSE_RR)) {
-        star_dance_bound_yaw(c, 0x0,    0x800);
-    }
 }
 
 BAD_RETURN(s32) cutscene_dance_fly_away_approach_mario(struct Camera *c) {
