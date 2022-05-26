@@ -573,6 +573,7 @@ s32 act_standing_against_wall(struct MarioState *m) {
     if (m->input & INPUT_B_PRESSED) {
         return set_mario_action(m, ACT_PUNCHING, 0);
     }
+	m->marioObj->header.gfx.angle[1] = m->faceAngle[1] + 0x8000;
 
     set_mario_animation(m, MARIO_ANIM_STAND_AGAINST_WALL);
     stationary_ground_step(m);

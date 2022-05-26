@@ -708,9 +708,9 @@ void push_or_sidle_wall(struct MarioState *m, Vec3f startPos) {
         play_step_sound(m, 6, 18);
     } else {
         if (dWallAngle < 0) {
-            set_mario_anim_with_accel(m, MARIO_ANIM_SIDESTEP_RIGHT, val04);
-        } else {
             set_mario_anim_with_accel(m, MARIO_ANIM_SIDESTEP_LEFT, val04);
+        } else {
+            set_mario_anim_with_accel(m, MARIO_ANIM_SIDESTEP_RIGHT, val04);
         }
 
         if (m->marioObj->header.gfx.animInfo.animFrame < 20) {
@@ -720,8 +720,8 @@ void push_or_sidle_wall(struct MarioState *m, Vec3f startPos) {
 
         m->actionState = 1;
         m->actionArg = wallAngle + 0x8000;
-        m->marioObj->header.gfx.angle[1] = wallAngle + 0x8000;
-        m->marioObj->header.gfx.angle[2] = find_floor_slope(m, 0x4000);
+        m->marioObj->header.gfx.angle[1] = wallAngle;
+        m->marioObj->header.gfx.angle[2] = -find_floor_slope(m, 0x4000);
     }
 }
 

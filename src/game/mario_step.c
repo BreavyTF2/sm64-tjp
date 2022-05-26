@@ -249,7 +249,9 @@ s32 stationary_ground_step(struct MarioState *m) {
         m->pos[1] = m->floorHeight;
 
         vec3f_copy(marioObj->header.gfx.pos, m->pos);
+		if (m->action != ACT_STANDING_AGAINST_WALL) {
         vec3s_set(marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
+		} else {vec3s_set(marioObj->header.gfx.angle, 0, m->faceAngle[1] + 0x8000, 0);}
     }
 
     return stepResult;
