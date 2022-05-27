@@ -708,8 +708,10 @@ void push_or_sidle_wall(struct MarioState *m, Vec3f startPos) {
         play_step_sound(m, 6, 18);
     } else {
         if (dWallAngle < 0) {
+			m->marioBodyState->eyeState = MARIO_EYES_LOOK_RIGHT;
             set_mario_anim_with_accel(m, MARIO_ANIM_SIDESTEP_LEFT, val04);
         } else {
+			m->marioBodyState->eyeState = MARIO_EYES_LOOK_LEFT;
             set_mario_anim_with_accel(m, MARIO_ANIM_SIDESTEP_RIGHT, val04);
         }
 
