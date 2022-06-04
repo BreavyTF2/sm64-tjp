@@ -499,7 +499,7 @@ s32 check_ground_dive_or_punch(struct MarioState *m) {
     if (m->input & INPUT_B_PRESSED) {
         if (m->forwardVel >= 29.0f && m->controller->stickMag > 48.0f) {
             m->vel[1] = 20.0f;
-			return set_mario_action(m, ACT_DIVE, 0);
+			return set_mario_action(m, ACT_DIVE, 1);
         }
         return set_mario_action(m, ACT_MOVE_PUNCHING, 0);
 	}
