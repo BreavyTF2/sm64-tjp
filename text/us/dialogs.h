@@ -1930,5 +1930,9 @@ meet certain disaster."))
 DEFINE_DIALOG(DIALOG_170, 1, 4, 30, 200, _("\
 Sorry, this stage is\n\
 currently unfinished.\n\
-Estimated Completion\n\
-Date: April 1996"))
+This level will be complete\n\
+when the game ships.\n\
+Until then, have a coin\n\
+cake for your troubles.\n\
+\n\
+The Super Mario 64 Team"))

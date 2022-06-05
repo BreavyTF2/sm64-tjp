@@ -718,8 +718,6 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
             case WARP_OP_CREDITS_END:
                 sDelayedWarpTimer = 60;
                 sSourceWarpNodeId = WARP_NODE_F0;
-                val04 = FALSE;
-                gSavedCourseNum = COURSE_NONE;
                 play_transition(WARP_TRANSITION_FADE_INTO_COLOR, 0x3C, 0x00, 0x00, 0x00);
                 break;
 
@@ -842,7 +840,7 @@ void initiate_delayed_warp(void) {
 
                 case WARP_OP_CREDITS_END:
                     warp_special(-1);
-                    sound_banks_enable(2, 0x03F0);
+                    initiate_warp(LEVEL_ENDING, 1, 0x0A, 0);
                     break;
 
                 case WARP_OP_DEMO_NEXT:
