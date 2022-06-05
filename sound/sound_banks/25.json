@@ -21,9 +21,9 @@
             "hang"
         ],
         "envelope3": [
-            [6, 32700],
-            [298, 0],
-            [1, 0],
+            [2, 32700],
+            [103, 24112],
+            [409, 0],
             "hang"
         ],
         "envelope4": [
@@ -81,9 +81,9 @@
             "hang"
         ],
         "envelope13": [
-            [3, 32700],
-            [298, 0],
-            [1, 0],
+            [2, 32700],
+            [103, 24112],
+            [409, 0],
             "hang"
         ],
         "envelope14": [
@@ -112,7 +112,7 @@
         "inst3": {
             "release_rate": 10,
             "envelope": "envelope3",
-            "sound": "26"
+            "sound": "42"
         },
         "inst4": {
             "release_rate": 34,
@@ -173,7 +173,7 @@
         "inst12": {
             "release_rate": 10,
             "envelope": "envelope13",
-            "sound": "26"
+            "sound": "42"
         },
         "inst13": {
             "release_rate": 34,

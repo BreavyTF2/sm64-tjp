@@ -1163,7 +1163,7 @@ void bhv_bowser_init(void) {
         level = 0;
     o->oBehParams2ndByte = level;
     o->oBowserUnk1B2 = D_8032F690[level];
-    o->oHealth = D_8032F694[level];
+    o->oHealth = 1;
     cur_obj_start_cam_event(o, CAM_EVENT_BOWSER_INIT);
     o->oAction = 5;
     o->oBowserUnk1AE = 0;

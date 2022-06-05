@@ -1926,3 +1926,9 @@ Keep out!\n\
 Anyone entering this cave\n\
 without permission will\n\
 meet certain disaster."))
+
+DEFINE_DIALOG(DIALOG_170, 1, 4, 30, 200, _("\
+Sorry, this stage is\n\
+currently unfinished.\n\
+Estimated Completion\n\
+Date: April 1996"))

@@ -41,7 +41,7 @@ DEFINE_LEVEL("EXT3 HEAVEN",    LEVEL_BITS,             COURSE_BITS,     bits,   
 DEFINE_LEVEL("FIREB1 % INVLC", LEVEL_LLL,              COURSE_LLL,      lll,              fire,     22000,    0x08, 0x30, 0x30, _,         _)
 DEFINE_LEVEL("WATER LAND",     LEVEL_DDD,              COURSE_DDD,      ddd,              water,    17000,    0x10, 0x20, 0x20, sDynDdd,   _)
 DEFINE_LEVEL("MOUNTAIN",       LEVEL_WF,               COURSE_WF,       wf,               grass,    13000,    0x08, 0x08, 0x08, _,         _)
-DEFINE_LEVEL("ENDING",         LEVEL_ENDING,           COURSE_NONE, ending,           generic,  20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("ENDING",         LEVEL_ENDING,           COURSE_ENDING, ending,           generic,  20000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("URANIWA",        LEVEL_CASTLE_COURTYARD, COURSE_NONE,     castle_courtyard, outside,  20000,    0x08, 0x08, 0x08, _,         _)
 DEFINE_LEVEL("EXT4 MINI SLID", LEVEL_PSS,              COURSE_PSS,      pss,              mountain, 20000,    0x28, 0x28, 0x28, _,         _)
 DEFINE_LEVEL("IN THE FALL",    LEVEL_COTMC,            COURSE_COTMC,    cotmc,            cave,     18000,    0x28, 0x28, 0x28, _,         sCamCotMC)
