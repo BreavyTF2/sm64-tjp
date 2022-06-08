@@ -77,15 +77,24 @@ void hoot_free_step(s16 fastOscY, s32 speed) {
 }
 
 void hoot_player_set_yaw(void) {
-    s16 stickX = gPlayer3Controller->rawStickX;
-    s16 stickY = gPlayer3Controller->rawStickY;
-    UNUSED s16 pitch = o->oMoveAnglePitch;
+    s16 stickX = gPlayer1Controller->rawStickX;
+    s16 stickY = gPlayer1Controller->rawStickY;
+    s16 pitch = o->oMoveAnglePitch;
     if (stickX < 10 && stickX >= -9)
         stickX = 0;
     if (stickY < 10 && stickY >= -9)
         stickY = 0;
-
+	
+	    if (o->oMoveAnglePitch >= 0x2800) {
+        o->oMoveAnglePitch  = 0x2800;
+    } else if (o->oMoveAnglePitch <= -0x2800) {
+        o->oMoveAnglePitch = -0x2800;
+    }
+	
+	o->oMoveAnglePitch -= 5 * stickY;
     o->oMoveAngleYaw -= 5 * stickX;
+	    if (stickY == 0)
+        o->oMoveAnglePitch = 0;
 }
 
 // sp28 = speed
@@ -151,24 +160,6 @@ void hoot_surface_collision(f32 xPrev, UNUSED f32 yPrev, f32 zPrev) {
 // sp28 = xPrev
 // sp2c = zPrev
 
-void hoot_act_ascent(f32 xPrev, f32 zPrev) {
-    f32 negX = 0 - o->oPosX;
-    f32 negZ = 0 - o->oPosZ;
-    s16 angleToOrigin = atan2s(negZ, negX);
-
-    o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, angleToOrigin, 0x500);
-    o->oMoveAnglePitch = 0xCE38;
-
-    if (o->oTimer >= 29) {
-        cur_obj_play_sound_1(SOUND_ENV_WIND2);
-        o->header.gfx.animInfo.animFrame = 1;
-    }
-
-    if (o->oPosY > 6500.0f)
-        o->oAction = HOOT_ACT_CARRY;
-
-    hoot_carry_step(60, xPrev, zPrev);
-}
 
 void hoot_action_loop(void) {
     f32 xPrev = o->oPosX;
@@ -176,16 +167,10 @@ void hoot_action_loop(void) {
     f32 zPrev = o->oPosZ;
 
     switch (o->oAction) {
-        case HOOT_ACT_ASCENT:
-            hoot_act_ascent(xPrev, zPrev);
-            break;
-
         case HOOT_ACT_CARRY:
             hoot_player_set_yaw();
 
-            o->oMoveAnglePitch = 0x71C;
-
-            if (o->oPosY < 2700.0f) {
+            if (o->oPosY > 7000.0f) {
                 set_time_stop_flags(TIME_STOP_ENABLED | TIME_STOP_MARIO_AND_DOORS);
 
                 if (cutscene_object_with_dialog(CUTSCENE_DIALOG, o, DIALOG_045)) {

@@ -23,7 +23,7 @@ void bhv_beta_fish_splash_spawner_loop(void) {
             break;
         case 1:
             if ( water_level > -10000 ) {
-				
+			if (gPrevFrameObjectCount < 212) {
 				if (gGlobalTimer % 32 == 0 ) cur_obj_play_sound_2(SOUND_GENERAL_MOVING_WATER);
 				
 				for (i = 0; i < 2; i++) {
@@ -45,4 +45,5 @@ void bhv_beta_fish_splash_spawner_loop(void) {
 			if ( o->oDistanceToMario > 300) o->oAction = 0;
             break;
 }
+		}
 }

@@ -247,9 +247,8 @@
     #define HOOT_AVAIL_WANTS_TO_TALK 1
     #define HOOT_AVAIL_READY_TO_FLY 2
     /* oAction */
-    #define HOOT_ACT_ASCENT 0
-    #define HOOT_ACT_CARRY 1
-    #define HOOT_ACT_TIRED 2
+    #define HOOT_ACT_CARRY 0
+    #define HOOT_ACT_TIRED 1
 
 /* Bully (all variants) */
     /* oBehParams2ndByte */
