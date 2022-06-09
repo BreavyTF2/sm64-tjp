@@ -74,6 +74,7 @@ extern const GeoLayout castle_door_0_star_geo[];
 extern const GeoLayout castle_door_1_star_geo[];
 extern const GeoLayout castle_door_3_stars_geo[];
 extern const GeoLayout key_door_geo[];
+
 extern const Gfx door_seg3_dl_03013C10[];
 extern const Gfx door_seg3_dl_03013CC8[];
 extern const Gfx door_seg3_dl_03013D78[];
@@ -112,6 +113,9 @@ extern const Gfx door_seg3_dl_03015078[];
 extern const Gfx door_seg3_dl_030150E8[];
 extern const Gfx door_seg3_dl_03015158[];
 extern const struct Animation *const door_seg3_anims_030156C0[];
+
+extern const GeoLayout dice_geo[];
+extern Gfx dice_seg8_dl_08019318[];
 
 // explosion
 extern const GeoLayout explosion_geo[];

@@ -79,7 +79,6 @@ void hoot_free_step(s16 fastOscY, s32 speed) {
 void hoot_player_set_yaw(void) {
     s16 stickX = gPlayer1Controller->rawStickX;
     s16 stickY = gPlayer1Controller->rawStickY;
-    s16 pitch = o->oMoveAnglePitch;
     if (stickX < 10 && stickX >= -9)
         stickX = 0;
     if (stickY < 10 && stickY >= -9)

@@ -2318,9 +2318,18 @@ const BehaviorScript bhvLllSinkingRockBlock[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvStub1D70[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    BREAK(),
+const BehaviorScript bhvStub1D70[] = { //dice.s
+    BEGIN(OBJ_LIST_GENACTOR),
+    SET_INT(oInteractType, INTERACT_COIN),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_HOLDABLE)),
+	SET_INT(oInteractType, INTERACT_GRABBABLE),
+	DROP_TO_FLOOR(),
+    SET_HITBOX(/*Radius*/ 40, /*Height*/ 40),
+        CALL_NATIVE(s_dice_init),
+	BEGIN_LOOP(),
+	    SET_INT(oIntangibleTimer, 0),
+        CALL_NATIVE(s_dice_main),
+    END_LOOP(),
 };
 
 const BehaviorScript bhvLllMovingOctagonalMeshPlatform[] = {

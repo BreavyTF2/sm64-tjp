@@ -12,6 +12,7 @@
 #include "coin/geo.inc.c"
 #include "warp_pipe/geo.inc.c"
 #include "door/geo.inc.c"
+#include "dice/geo.inc.c"
 #include "bowser_key/geo.inc.c"
 #include "flame/geo.inc.c"
 #include "blue_fish/geo.inc.c"

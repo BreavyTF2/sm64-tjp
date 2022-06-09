@@ -1,16 +1,10 @@
-#define			oba_alphawork	o->oBooTargetOpacity
-#define			oba_scale	o->oBooBaseScale
-#define			oba_sinmoveY	o->oBooOscillationTimer
-#define			oba_damageANG	o->oBooMoveYawDuringHit
-#define			oba_stockY	o->oBooMoveYawBeforeHit
-#define		oba_kaidanptr	o->oBooParentBigBoo
-
 /*------------------
 
 ---------------*/
 
 #define	terecount(n)	n->oBigBooNumMinionBoosKilled
-
+#define	Mbitclr(work,bit)		(work) = (work) & ((bit)^-1)
+#define	Mbitset(work,bit)		(work) = (work) | (bit)
 
 /********************************************************************************
 		Appear / No-Appear Check
@@ -19,10 +13,10 @@
 static int obake_appearcheck(void)
 {
 
-	if ( obj_areamap == -1 ){
-	 	if ( obj_playerdist < 1500 )	return(1);
+	if ( o->oRoom == -1 ){
+	 	if ( o->oDistanceToMario < 1500 )	return(1);
 	} else {
-		if ( obj_playerdist < 1500 && ( obj_areamap == gMarioCurrentRoom ) ) return(1);
+		if ( o->oDistanceToMario < 1500 && ( o->oRoom == gMarioCurrentRoom ) ) return(1);
 	}
 	
 	return(0);
@@ -41,13 +35,13 @@ extern void s_make3teresa(void)
 	};
 
 	int i;
- 	StrategyRecord *stp;
+ 	struct Object *stp;
 
 	for (i=0;i<3;i++){
 		stp = spawn_object_relative(1,teredata[i][0],
 							    teredata[i][1],
 							    teredata[i][2],
-							    execstp,MODEL_BOO,bhvGhostHuntBoo);
+							    o,MODEL_BOO,bhvGhostHuntBoo);
 		stp->oMoveAngleYaw = random_u16();
 	}
 
@@ -62,18 +56,18 @@ static void oba_effect(void)
 
 	float s;
 
-	if ( oba_alphawork != obj_alpha ){
-		if ( oba_alphawork > obj_alpha ){
-			obj_alpha += 20;
-			if ( oba_alphawork < obj_alpha )	obj_alpha = oba_alphawork;
+	if ( o->oBooTargetOpacity != o->oOpacity ){
+		if ( o->oBooTargetOpacity > o->oOpacity ){
+			o->oOpacity += 20;
+			if ( o->oBooTargetOpacity < o->oOpacity )	o->oOpacity = o->oBooTargetOpacity;
 		} else {
-			obj_alpha -= 20;
-			if ( oba_alphawork > obj_alpha )	obj_alpha = oba_alphawork;
+			o->oOpacity -= 20;
+			if ( o->oBooTargetOpacity > o->oOpacity )	o->oOpacity = o->oBooTargetOpacity;
 		}
 	}
 
-	s = ( (obj_alpha  / 255.0f) * 0.4 + 0.6 ) * oba_scale;
-	s_scale( execstp , s );
+	s = ( (o->oOpacity  / 255.0f) * 0.4 + 0.6 ) * o->oBooBaseScale;
+	obj_scale( o , s );
 
 }
 
@@ -83,21 +77,21 @@ static void oba_effect(void)
 
 static void oba_animation_scale(void)
 {
-	execstp->oFaceAnglePitch = sins(oba_sinmoveY)*0x400;
+	o->oFaceAnglePitch = sins(o->oBooOscillationTimer)*0x400;
 
-	if ( obj_alpha == 255 ){
-		execstp->header.gfx.scale[0] = ( sins(oba_sinmoveY) * 0.08 + oba_scale); 
-		execstp->header.gfx.scale[1] = (-sins(oba_sinmoveY) * 0.08 + oba_scale);
-		execstp->header.gfx.scale[2] = execstp->header.gfx.scale[0];
-		obj_gravity = sins(oba_sinmoveY) * oba_scale;
+	if ( o->oOpacity == 255 ){
+		o->header.gfx.scale[0] = ( sins(o->oBooOscillationTimer) * 0.08 + o->oBooBaseScale); 
+		o->header.gfx.scale[1] = (-sins(o->oBooOscillationTimer) * 0.08 + o->oBooBaseScale);
+		o->header.gfx.scale[2] = o->header.gfx.scale[0];
+		o->oGravity = sins(o->oBooOscillationTimer) * o->oBooBaseScale;
 
 #if 0
-        if ( ( obj_worldY - obj_animepositionY - obj_groundY ) < (50*oba_scale) ){
-           if ( obj_gravity < 0 ) obj_gravity = -obj_gravity;
+        if ( ( o->oPosY - obj_animepositionY - obj_groundY ) < (50*o->oBooBaseScale) ){
+           if ( o->oGravity < 0 ) o->oGravity = -o->oGravity;
         }
 #endif
 
-		oba_sinmoveY	+= 0x400;
+		o->oBooOscillationTimer	+= 0x400;
 	}
 
 }
@@ -109,19 +103,19 @@ static void oba_animation_scale(void)
 static int teresa_modecheck(void)
 {
 
-	short 	dangle1 = s_calc_dangle(obj_targetangle,gMarioObject->oFaceAngleYaw);
-	short 	dangle2 = s_calc_dangle(obj_angleY,gMarioObject->oFaceAngleYaw);
+	short 	dangle1 = s_calc_dangle(o->oAngleToMario,gMarioObject->oFaceAngleYaw);
+	short 	dangle2 = s_calc_dangle(o->oMoveAngleYaw,gMarioObject->oFaceAngleYaw);
 	short 	data2	= 0x5000;
 	short 	data3 	= 0x5000;
 	int		flag 	= 0;
 
-	obj_speedY = 0;
+	o->oVelY = 0;
 
 	if ( dangle1 < data2 || dangle2 < data3 ){
-		oba_alphawork 	= 255;
-		if ( obj_alpha > 180 )	flag = 1;
+		o->oBooTargetOpacity 	= 255;
+		if ( o->oOpacity > 180 )	flag = 1;
 	} else {
-		oba_alphawork 	= 40;
+		o->oBooTargetOpacity 	= 40;
 	}
 
 	return(flag);
@@ -143,13 +137,13 @@ static int teresa_modecheck(void)
 
 static void obroll_init(void)
 {
-	s_hitOFF();
-	Mbitclr(obj_mainflag,stf_YangleSAME);
-	oba_stockY = obj_angleY;
-	if	( coss((short)obj_angleY-(short)obj_targetangle) < 0 ){
-		oba_damageANG	 = obj_angleY;
+	cur_obj_become_intangible();
+	Mbitclr(o->oFlags,stf_YangleSAME);
+	o->oBooMoveYawBeforeHit = o->oMoveAngleYaw;
+	if	( coss((short)o->oMoveAngleYaw-(short)o->oAngleToMario) < 0 ){
+		o->oBooMoveYawDuringHit	 = o->oMoveAngleYaw;
 	} else {
-		oba_damageANG	 = (short)(obj_angleY+0x8000);
+		o->oBooMoveYawDuringHit	 = (short)(o->oMoveAngleYaw+0x8000);
 	}
 
 }
@@ -157,41 +151,41 @@ static void obroll_init(void)
 static void obroll_roll(float sF)
 {
 	int 	time;
-	time = (obj_timer+1)*( 0x10000/MT_ROLL_TIME );
-	obj_speedF  = sF;		
-	obj_speedY	= coss(time);
-	obj_angleY	= oba_damageANG;
-	execstp->oFaceAngleYaw += D_8032F0CC[obj_timer];
-	execstp->oFaceAngleRoll += D_8032F0CC[obj_timer];
+	time = (o->oTimer+1)*( 0x10000/MT_ROLL_TIME );
+	o->oForwardVel  = sF;		
+	o->oVelY	= coss(time);
+	o->oMoveAngleYaw	= o->oBooMoveYawDuringHit;
+	o->oFaceAngleYaw += D_8032F0CC[o->oTimer];
+	o->oFaceAngleRoll += D_8032F0CC[o->oTimer];
 }
 /*------------------------------------------------------------------------------*/
 static void obroll_rollend(void)
 {
 	int	time;
-	time = (obj_timer-MT_ROLL_TIME+1) * 0x10000/MT_PULU_TIME;
-	execstp->oFaceAngleYaw += coss(time) * MT_PULU_SPEED;
+	time = (o->oTimer-MT_ROLL_TIME+1) * 0x10000/MT_PULU_TIME;
+	o->oFaceAngleYaw += coss(time) * MT_PULU_SPEED;
 }
 /*------------------------------------------------------------------------------*/
 static void obroll_exit(void)
 {
-	obj_angleY = oba_stockY;
-	Mbitset(obj_mainflag,stf_YangleSAME);
-	Mbitclr(obj_mail,EMAIL_PLAYERHITALL);
+	o->oMoveAngleYaw = o->oBooMoveYawBeforeHit;
+	Mbitset(o->oFlags,stf_YangleSAME);
+	Mbitclr(o->oInteractStatus,EMAIL_PLAYERHITALL);
 }
 
 /*------------------------------------------------------------------------------*/
 static int obake_roll(void)
 {
 
-	obj_speedF = 0;
-	obj_speedY = 0;
-	if 		( obj_timer == 0 )								obroll_init();
-	if 		( obj_timer <  MT_ROLL_TIME )					obroll_roll(D_8032F0CC[obj_timer]/5000.0f);
-	else if ( obj_timer < (MT_ROLL_TIME)+(MT_PULU_TIME) )	obroll_rollend();
+	o->oForwardVel = 0;
+	o->oVelY = 0;
+	if 		( o->oTimer == 0 )								obroll_init();
+	if 		( o->oTimer <  MT_ROLL_TIME )					obroll_roll(D_8032F0CC[o->oTimer]/5000.0f);
+	else if ( o->oTimer < (MT_ROLL_TIME)+(MT_PULU_TIME) )	obroll_rollend();
 	else {
-		s_hitON();
+		cur_obj_become_tangible();
 		obroll_exit();
-		obj_mode = mode_oba_playersearch;
+		o->oAction = mode_oba_playersearch;
 		return(1);
 	}
 
@@ -210,27 +204,27 @@ static int obake_roll(void)
 static int obake_hitaway(void)
 {
 
-	StrategyRecord *stp;
+	struct Object *stp;
 
-	if ( obj_timer == 0 ){ 
-		obj_speedF 			= 40;
-		obj_angleY			= gMarioObject->oMoveAngleYaw;
-		execstp->oBooDeathStatus = 1;	/* set message */
-		Mbitclr(execstp->oFlags,stf_YangleSAME);
+	if ( o->oTimer == 0 ){ 
+		o->oForwardVel 			= 40;
+		o->oMoveAngleYaw			= gMarioObject->oMoveAngleYaw;
+		o->oBooDeathStatus = 1;	/* set message */
+		Mbitclr(o->oFlags,stf_YangleSAME);
 	} else {
-		if ( obj_timer == MT_REMOVEDEMO_TIME-25 )	oba_alphawork = 0;
-		if ( obj_timer > MT_REMOVEDEMO_TIME || obj_movestatus & MOVESTAT_WALL ){
+		if ( o->oTimer == MT_REMOVEDEMO_TIME-25 )	o->oBooTargetOpacity = 0;
+		if ( o->oTimer > MT_REMOVEDEMO_TIME || obj_movestatus & MOVESTAT_WALL ){
 			s_kemuri();
-			execstp->oBooDeathStatus = 2;	/* set message */
-			if ( oba_kaidanptr != NULL ){
-			 	stp = (StrategyRecord *)oba_kaidanptr;
+			o->oBooDeathStatus = 2;	/* set message */
+			if ( o->oBooParentBigBoo != NULL ){
+			 	stp = (struct Object *)o->oBooParentBigBoo;
 				terecount(stp)++;
 			}
 			return(1);
 		}
 	}
 
-	obj_speedY 			= 5;
+	o->oVelY 			= 5;
 	obj_animeangleZ += 0x800;
 	obj_animeangleY += 0x800;
 
@@ -254,15 +248,15 @@ static int oba_hitcheck(void)
 
 	int flag = 0;
 
-	if ( (obj_mail & EMAIL_PLAYERHIT) != 0 ){
-		if ( obj_mail & EMAIL_PLAYERATTACK ){
-			s_hitOFF();
-			Mbitclr(obj_mail,EMAIL_PLAYERHITALL);
-			objsound(SOUND_OBJ_BOO_LAUGH_SHORT);
+	if ( (o->oInteractStatus & EMAIL_PLAYERHIT) != 0 ){
+		if ( o->oInteractStatus & EMAIL_PLAYERATTACK ){
+			cur_obj_become_intangible();
+			Mbitclr(o->oInteractStatus,EMAIL_PLAYERHITALL);
+			cur_obj_play_sound_2(SOUND_OBJ_BOO_LAUGH_SHORT);
 			flag = 1;
 		} else	{
-			objsound(SOUND_OBJ_BOO_BOUNCE_TOP);
-			Mbitclr(obj_mail,EMAIL_PLAYERHITALL);
+			cur_obj_play_sound_2(SOUND_OBJ_BOO_BOUNCE_TOP);
+			Mbitclr(o->oInteractStatus,EMAIL_PLAYERHITALL);
 			flag = -1;
 		}
 
@@ -289,26 +283,26 @@ static void obake_mainmove(float ymin,short anglespeed)
 	if ( teresa_modecheck() ){
 	 	o->oInteractType = 0x8000;		/* punch attack enemy */
 
-		if ( s_calc_playerscope() > 1500 ) angle = cur_obj_angle_to_home();
-		else							   angle = obj_targetangle;
-		s_chase_angleY(angle,anglespeed);
+		if ( cur_obj_lateral_dist_from_mario_to_home() > 1500 ) angle = cur_obj_angle_to_home();
+		else							   angle = o->oAngleToMario;
+		cur_obj_rotate_yaw_toward(angle,anglespeed);
 
-		obj_speedY = 0;
-		if(	s_check_playerjump() == 0 ){
-			Ydist =  obj_worldY - player_worldY;
+		o->oVelY = 0;
+		if(	mario_is_in_air_action() == 0 ){
+			Ydist =  o->oPosY - gMarioObject->oPosY;
 			if (  ( ymin < Ydist ) && ( Ydist < 500 ) ){
-				obj_speedY = increment_velocity_toward_range(obj_worldY,(player_worldY+60*oba_scale),10,2);
+				o->oVelY = increment_velocity_toward_range(o->oPosY,(gMarioObject->oPosY+60*o->oBooBaseScale),10,2);
 			}
 		}
 		cur_obj_set_vel_from_mario_vel(10,0.5);
 
-		if ( obj_speedF != 0 ) oba_animation_scale();
+		if ( o->oForwardVel != 0 ) oba_animation_scale();
 
 	} else {
 	 	o->oInteractType = 0;	/* hitcheck off	*/
-		obj_speedF  = 0;
-		obj_speedY  = 0;
-		obj_gravity = 0;
+		o->oForwardVel = 0;
+		o->oVelY  = 0;
+		o->oGravity = 0;
 	}
 
 }
@@ -320,11 +314,11 @@ static void obake_mainmove(float ymin,short anglespeed)
 static void oba_init(void)
 {
 
-	s_copy_initpos();
-	oba_kaidanptr	= (void *)s_find_obj(bhvGhostHuntBigBoo);	/* kaidan pointer */
-	oba_scale 		= 1.0;									/* scale 		  */
-	oba_alphawork	= 255;
-	if ( obake_appearcheck() ) obj_mode = mode_oba_playersearch;
+	cur_obj_set_pos_to_home();
+	o->oBooParentBigBoo	= (void *)cur_obj_nearest_object_with_behavior(bhvGhostHuntBigBoo);	/* kaidan pointer */
+	o->oBooBaseScale 		= 1.0;									/* scale 		  */
+	o->oBooTargetOpacity	= 255;
+	if ( obake_appearcheck() ) o->oAction = mode_oba_playersearch;
 
 }
 
@@ -339,9 +333,9 @@ static void oba_playersearch(void)
 	obake_mainmove(-100,0x200);
 	flag = oba_hitcheck();
 
-	if ( execstp->activeFlags & OBJECT_AREAOUT ) obj_mode = mode_oba_init;
-	if ( flag == -1 )	obj_mode = mode_oba_roll;
-	if ( flag ==  1 )	obj_mode = mode_oba_hitaway;
+	if ( o->activeFlags & OBJECT_AREAOUT ) o->oAction = mode_oba_init;
+	if ( flag == -1 )	o->oAction = mode_oba_roll;
+	if ( flag ==  1 )	o->oAction = mode_oba_hitaway;
 
 }
 
@@ -351,7 +345,7 @@ static void oba_playersearch(void)
 
 static void oba_roll(void)
 {
-	if ( obake_roll() ) obj_mode = mode_oba_playersearch;
+	if ( obake_roll() ) o->oAction = mode_oba_playersearch;
 }
 
 /********************************************************************************
@@ -361,11 +355,11 @@ static void oba_roll(void)
 static void oba_hitaway(void)
 {
 	if ( obake_hitaway() ){
-		if ( obj_programselect )	s_remove_obj(execstp);
+		if ( o->oBehParams2ndByte )	obj_mark_for_deletion(o);
 		else {		
-			obj_mode = mode_oba_endmessage;
-			s_shape_hide();
-			s_hitOFF();
+			o->oAction = mode_oba_endmessage;
+			cur_obj_hide();
+			cur_obj_become_intangible();
 		}
 	}
 }
@@ -377,8 +371,8 @@ static void oba_hitaway(void)
 static void oba_endmessage(void)
 {
 
-	if ( s_call_enemydemo(DLOG_LOOKUP,ENEMYDEMO_SETMESSAGE,99,0) ){
-		s_remove_obj(execstp);
+	if ( cur_obj_update_dialog(DLOG_LOOKUP,ENEMYDEMO_SETMESSAGE,99,0) ){
+		obj_mark_for_deletion(o);
 	}
 }
 
@@ -423,17 +417,17 @@ extern void s_oba(void)
 static void kaidanteresa_init(void)
 {
 
-	oba_kaidanptr	= NULL;
-	if ( terecount(execstp) >= (5) ){
-		s_copy_initpos();
-		s_shape_disp();
-		oba_alphawork = 255;
-		oba_scale	  = 2;
-		s_set_scale(2);
-		s_hitON();	
-		if ( obake_appearcheck() ) obj_mode = mode_kaidanteresa_main;
+	o->oBooParentBigBoo	= NULL;
+	if ( terecount(o) >= (5) ){
+		cur_obj_set_pos_to_home();
+		cur_obj_unhide();
+		o->oBooTargetOpacity = 255;
+		o->oBooBaseScale	  = 2;
+		cur_obj_scale(2);
+		cur_obj_become_tangible();	
+		if ( obake_appearcheck() ) o->oAction = mode_kaidanteresa_main;
 	} else {
-		s_shape_hide();
+		cur_obj_hide();
 	}
 
 }
@@ -448,9 +442,9 @@ static void kaidanteresa_main(void)
 	obake_mainmove(100,0x200);
 	flag = oba_hitcheck();
 
-	if ( execstp->activeFlags & OBJECT_AREAOUT ) obj_mode = mode_kaidanteresa_init;
-	if ( flag == -1 )						obj_mode = mode_kaidanteresa_roll;
-	if ( flag ==  1 )						obj_mode = mode_kaidanteresa_hitaway;
+	if ( o->activeFlags & OBJECT_AREAOUT ) o->oAction = mode_kaidanteresa_init;
+	if ( flag == -1 )						o->oAction = mode_kaidanteresa_roll;
+	if ( flag ==  1 )						o->oAction = mode_kaidanteresa_hitaway;
 
 }
 
@@ -459,7 +453,7 @@ static void kaidanteresa_main(void)
 /*------------------------------------------------------------------------------*/
 static void kaidanteresa_roll(void)
 {
-	if ( obake_roll() ) obj_mode = mode_kaidanteresa_main;
+	if ( obake_roll() ) o->oAction = mode_kaidanteresa_main;
 }
 
 /*------------------------------------------------------------------------------*/
@@ -468,12 +462,12 @@ static void kaidanteresa_roll(void)
 static void kaidanteresa_hitaway(void)
 {
 	if ( obake_hitaway() ){
-		obj_mode = mode_kaidanteresa_demo;
-		s_set_world(execstp,973,0,717);
-		s_set_angle(execstp,0,0,0);
-		s_makeobj_chain(0,0,0,   0,execstp,MODEL_BBH_STAIRCASE_STEP,bhvBooBossSpawnedBridge);
-		s_makeobj_chain(1,0,0,-200,execstp,MODEL_BBH_STAIRCASE_STEP,bhvBooBossSpawnedBridge);
-		s_makeobj_chain(2,0,0, 200,execstp,MODEL_BBH_STAIRCASE_STEP,bhvBooBossSpawnedBridge);
+		o->oAction = mode_kaidanteresa_demo;
+		s_set_world(o,973,0,717);
+		s_set_angle(o,0,0,0);
+		s_makeobj_chain(0,0,0,   0,o,MODEL_BBH_STAIRCASE_STEP,bhvBooBossSpawnedBridge);
+		s_makeobj_chain(1,0,0,-200,o,MODEL_BBH_STAIRCASE_STEP,bhvBooBossSpawnedBridge);
+		s_makeobj_chain(2,0,0, 200,o,MODEL_BBH_STAIRCASE_STEP,bhvBooBossSpawnedBridge);
 	}
 
 }
@@ -484,9 +478,9 @@ static void kaidanteresa_hitaway(void)
 static void kaidanteresa_demo(void)
 {
 
-	if ( obj_timer == 100 ){
-	 	spawn_object_abs_with_rot(execstp,0,MODEL_STAR,bhvStar,972,819+200,292,0,0,0);
-		s_remove_obj(execstp);
+	if ( o->oTimer == 100 ){
+	 	spawn_object_abs_with_rot(o,0,MODEL_STAR,bhvStar,972,819+200,292,0,0,0);
+		obj_mark_for_deletion(o);
 	}
 
 }
@@ -527,12 +521,12 @@ extern void s_kaidanteresa(void)
 /*------------------------------------------------------------------------------*/
 static void kagoteresa_init(void)
 {
-	oba_kaidanptr	= NULL;
-	oba_alphawork = 255;
-	oba_scale	  = 2;
-	s_set_scale(2);
-	s_hitON();	
-	if ( obake_appearcheck() ) obj_mode = mode_kagoteresa_main;
+	o->oBooParentBigBoo	= NULL;
+	o->oBooTargetOpacity = 255;
+	o->oBooBaseScale	  = 2;
+	cur_obj_scale(2);
+	cur_obj_become_tangible();	
+	if ( obake_appearcheck() ) o->oAction = mode_kagoteresa_main;
 
 }
 
@@ -546,9 +540,9 @@ static void kagoteresa_main(void)
 	obake_mainmove(100,0x200);
 	flag = oba_hitcheck();
 
-	if ( execstp->activeFlags & OBJECT_AREAOUT ) obj_mode = mode_kagoteresa_init;
-	if ( flag == -1 )						obj_mode = mode_kagoteresa_roll;
-	if ( flag ==  1 )						obj_mode = mode_kagoteresa_hitaway;
+	if ( o->activeFlags & OBJECT_AREAOUT ) o->oAction = mode_kagoteresa_init;
+	if ( flag == -1 )						o->oAction = mode_kagoteresa_roll;
+	if ( flag ==  1 )						o->oAction = mode_kagoteresa_hitaway;
 
 }
 
@@ -557,7 +551,7 @@ static void kagoteresa_main(void)
 /*------------------------------------------------------------------------------*/
 static void kagoteresa_roll(void)
 {
-	if ( obake_roll() ) obj_mode = mode_kagoteresa_main;
+	if ( obake_roll() ) o->oAction = mode_kagoteresa_main;
 }
 
 
@@ -567,7 +561,7 @@ static void kagoteresa_roll(void)
 static void kagoteresa_hitaway(void)
 {
 
-	if ( obake_hitaway() ) s_remove_obj(execstp);
+	if ( obake_hitaway() ) obj_mark_for_deletion(o);
 
 }
 
@@ -587,8 +581,8 @@ static void (*kagoteresa_modejmp[])(void) = {
 
 extern void s_kagoteresa_makekago(void)
 {
-	StrategyRecord *stp = s_makeobj_nowpos(execstp,MODEL_HAUNTED_CAGE,bhvBooCage);
-	stp->oBehParams = execstp->oBehParams;	
+	struct Object *stp = s_makeobj_nowpos(o,MODEL_HAUNTED_CAGE,bhvBooCage);
+	stp->oBehParams = o->oBehParams;	
 }
 
 extern void s_kagoteresa(void)

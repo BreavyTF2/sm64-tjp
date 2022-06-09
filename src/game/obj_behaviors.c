@@ -803,6 +803,7 @@ s32 UNUSED debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/amp.inc.c"
 #include "behaviors/butterfly.inc.c"
 #include "behaviors/hoot.inc.c"
+#include "behaviors/dice.inc.c"
 #include "behaviors/beta_holdable_object.inc.c"
 #include "behaviors/bubble.inc.c"
 #include "behaviors/water_wave.inc.c"

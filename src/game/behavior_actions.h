@@ -289,6 +289,8 @@ void bhv_hoot_loop(void);
 void bhv_hoot_egg_loop(void);
 void bhv_hoot_egg_true_init(void);
 void bhv_hoot_egg_init(void);
+void s_dice_init(void);
+void s_dice_main(void);
 void bhv_beta_holdable_object_init(void);
 void bhv_beta_holdable_object_loop(void);
 void bhv_object_bubble_init(void);

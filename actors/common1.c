@@ -26,6 +26,7 @@
 #include "door/model.inc.c"
 #include "door/anims/data.inc.c"
 #include "door/anims/table.inc.c"
+#include "dice/model.inc.c"
 
 
 #include "bowser_key/model.inc.c"

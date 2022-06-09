@@ -25,27 +25,29 @@
 #include "make_const_nonconst.h"
 #include "levels/yajima/header.h"
 static const LevelScript script_func_local_6[] = {
-		  OBJECT(/*model*/ MODEL_NONE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
+		  OBJECT(/*model*/ MODEL_CASTLE_GROUNDS_WARP_PIPE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
 		  WARP_NODE(/*id*/ 0x32, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
     RETURN(),
 };
 static const LevelScript script_func_local_7[] = {
-    OBJECT(/*model*/ MODEL_NONE, /*pos*/  4350, 0, 4400, /*angle*/ 0, 0, 0, /*behParam*/ 0x00320000, /*beh*/ bhvWarpPipe),
+    OBJECT(/*model*/ MODEL_CASTLE_GROUNDS_WARP_PIPE, /*pos*/  4350, 0, 4400, /*angle*/ 0, 0, 0, /*behParam*/ 0x00320000, /*beh*/ bhvWarpPipe),
     WARP_NODE(/*id*/ 0x32, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x02, /*destNode*/ 0x32, /*flags*/ WARP_NO_CHECKPOINT),
-   OBJECT(/*model*/ MODEL_NONE, /*pos*/  -4000, 0, 4350, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
+   OBJECT(/*model*/ MODEL_CASTLE_GROUNDS_WARP_PIPE, /*pos*/  -4000, 0, 4350, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
        WARP_NODE(/*id*/ 0x33, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x03, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
     RETURN(),
 };
 
 static const LevelScript script_func_local_8[] = {
-		  OBJECT(/*model*/ MODEL_NONE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00320000, /*beh*/ bhvWarpPipe),
+		  OBJECT(/*model*/ MODEL_CASTLE_GROUNDS_WARP_PIPE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00320000, /*beh*/ bhvWarpPipe),
 		  WARP_NODE(/*id*/ 0x32, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x32, /*flags*/ WARP_NO_CHECKPOINT),
     RETURN(),
 };
 
 static const LevelScript script_func_local_9[] = {
-		  OBJECT(/*model*/ MODEL_NONE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
+		  OBJECT(/*model*/ MODEL_CASTLE_GROUNDS_WARP_PIPE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
 		  WARP_NODE(/*id*/ 0x33, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
+		  OBJECT_LEAK(MODEL_UNKNOWN_7E		,	1000, 0,   -100,   0,0,0,  0,0,0, bhvStub1D70), //Dummy actor.
+		  
     RETURN(),
 };
 
@@ -68,7 +70,7 @@ const LevelScript level_yajima_entry[] = {
 //		LOAD_MODEL_FROM_GEO(MODEL_UKIKI_YAJIMA,                   RCP_HmsEnemymonky_F_run),
 //		LOAD_MODEL_FROM_GEO(MODEL_HEAVE_HO_YAJIMA,                RCP_HmsEnemyomurobo),
 //		LOAD_MODEL_FROM_GEO(MODEL_KOOPA_WITH_SHELL_YAJIMA,        RCP_HmsEnemynokonoko),
-
+		LOAD_MODEL_FROM_GEO(MODEL_CASTLE_GROUNDS_WARP_PIPE,    warp_pipe_geo),
 		AREA(1, RCP_Stage32Scene1),
         JUMP_LINK(script_func_local_7),
 		SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0001, /*seq*/ SEQ_LEVEL_GRASS),

@@ -11,6 +11,7 @@ extern const GeoLayout RCP_Stage32Scene3[];
 extern const GeoLayout RCP_HmsEnemymonky_F_run[];
 extern const GeoLayout RCP_HmsEnemynokonoko[];
 
+
 // leveldata
 extern const Gfx RCP_testmap1[];
 extern Gfx RCP_testmap2[];
