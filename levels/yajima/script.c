@@ -46,7 +46,7 @@ static const LevelScript script_func_local_8[] = {
 static const LevelScript script_func_local_9[] = {
 		  OBJECT(/*model*/ MODEL_CASTLE_GROUNDS_WARP_PIPE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
 		  WARP_NODE(/*id*/ 0x33, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
-		  OBJECT_LEAK(MODEL_UNKNOWN_7E		,	1000, 0,   -100,   0,0,0,  0,0,0, bhvStub1D70), //Dummy actor.
+		  OBJECT_LEAK(MODEL_DICE		,	1000, 0,   -100,   0,0,0,  0,0,0, bhvStub1D70), //Dummy actor.
 		  
     RETURN(),
 };
