@@ -6,7 +6,7 @@
 // geo
 extern const GeoLayout RCP_Stage1Scene1[];
 extern const Gfx gfx_castle[];
-
+extern const Gfx RCP_bar[];
 
 extern const Collision castle_info[];
 

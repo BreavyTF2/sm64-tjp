@@ -14,3 +14,5 @@
 #include "levels/castle/areas/1/1/model.inc.c"
 #include "levels/castle/areas/1/collision.inc.c"
 #include "levels/castle/areas/1/movtext.inc.c"
+#include "levels/castle/areas/pole_test/model.inc.c"
+
