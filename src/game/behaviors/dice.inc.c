@@ -6,7 +6,6 @@ void s_dice_init(void)
 	o->oGravity = 2.5;
     o->oFriction = 0.98;
     o->oBuoyancy = 1.3;
-	
 }
 
 /***************************************************************************************************
@@ -14,12 +13,10 @@ void s_dice_init(void)
 ***************************************************************************************************/
 static void DiceRotateEvent(void)
 {
-UNUSED short angleY = (short)o->oMoveAngleYaw;
+//UNUSED short angleY = (short)o->oMoveAngleYaw;
 
 	o->oFaceAnglePitch += (short)(o->oForwardVel*250);
 	o->oFaceAngleRoll += (short)(o->oForwardVel*125);
-
-
 }
 /***************************************************************************************************
 						Dice Move Event
@@ -40,30 +37,23 @@ static void DiceMoveEvent(void)
 		if (o->oForwardVel < 5.0 && ( (int)offsety==10 || (int)offsety==0)) {
 			o->oForwardVel = 0.0;
 		}
-
 	}
-
 }
 /***************************************************************************************************
 						Dice Catch
 ***************************************************************************************************/
 static void DiceCatch(void)
 {
-
 	o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
-
-
 }
 /***************************************************************************************************
 						Dice Drop
 ***************************************************************************************************/
 static void DiceDrop(void)
 {
-
 	cur_obj_unused_init_on_floor();	
 	o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
 	o->oHeldState = HELD_FREE;
-
 }
 /***************************************************************************************************
 						Dice Throw
@@ -84,7 +74,6 @@ static void DiceThrow(void)
 ***************************************************************************************************/
 void s_dice_main(void)
 {
-
 	switch(o->oHeldState) {
 		case HELD_FREE:
 		DiceMoveEvent();		
@@ -99,6 +88,4 @@ void s_dice_main(void)
 		DiceDrop();
 		break;
 	}
-
-
 }
