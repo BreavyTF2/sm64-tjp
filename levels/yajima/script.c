@@ -46,7 +46,8 @@ static const LevelScript script_func_local_8[] = {
 static const LevelScript script_func_local_9[] = {
 		  OBJECT(/*model*/ MODEL_CASTLE_GROUNDS_WARP_PIPE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
 		  WARP_NODE(/*id*/ 0x33, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
-		  OBJECT_LEAK(MODEL_DICE		,	1000, 0,   -100,   0,0,0,  0,0,0, bhvStub1D70), //Dummy actor.
+		  OBJECT_LEAK(MODEL_DICE		,	1000, 0,   -100,   0,0,0,  0,0,0, bhvStub1D70), //Dice
+		  OBJECT_LEAK(MODEL_UNKNOWN_58		,	-1000, 0,   400,   0,0,0,  0,1,0, bhvStub1D0C), //Fire Motos
 		  
     RETURN(),
 };
@@ -73,7 +74,6 @@ const LevelScript level_yajima_entry[] = {
 		LOAD_MODEL_FROM_GEO(MODEL_CASTLE_GROUNDS_WARP_PIPE,    warp_pipe_geo),
 		AREA(1, RCP_Stage32Scene1),
         JUMP_LINK(script_func_local_7),
-		SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0001, /*seq*/ SEQ_LEVEL_GRASS),
 		OBJECT_LEAK(MODEL_METAL_BOX,	1242, 200, 1959,   0,0,0,  0,0,0, bhvPushableMetalBox	),
 
 			 OBJECT_LEAK(MODEL_CHUCKYA		,	-1000, 0,  0,   0,0,0,  0,0,0, bhvChuckya	), 
@@ -168,12 +168,10 @@ const LevelScript level_yajima_entry[] = {
 		END_AREA(),
 		AREA(2, RCP_Stage32Scene2),
         JUMP_LINK(script_func_local_8),
-		SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0001, /*seq*/ SEQ_LEVEL_GRASS),
 					TERRAIN(testmap2_info),	
 					END_AREA(),
 		AREA(3, RCP_Stage32Scene3),
         JUMP_LINK(script_func_local_9),
-		SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0001, /*seq*/ SEQ_LEVEL_GRASS),
 					TERRAIN(testmap10_info),	
 					END_AREA(),
 	FREE_LEVEL_POOL(),

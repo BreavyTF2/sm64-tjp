@@ -12,11 +12,11 @@
 void s_motos_hand(void)
 {
 
-//	struct Object *firep;
+	struct Object *firep;
 
 	o->oParentRelativePosX = 100.0f;
 //	o->oParentRelativePosY = 0.0f;
-	o->oParentRelativePosZ = 150.0f;
+	o->oParentRelativePosZ = 131.0f;
 	o->oMoveAngleYaw = o->parentObj->oMoveAngleYaw;
 
 	switch (o->parentObj->oMotosUnk88 ){
@@ -39,10 +39,19 @@ void s_motos_hand(void)
                 (INT_STATUS_MARIO_UNK2 + INT_STATUS_MARIO_UNK6); // loads 2 interactions at once?
             gMarioStates[0].forwardVel = 20.0f;
             gMarioStates[0].vel[1] = 10.0f;
+			gMarioObject->oMoveAngleYaw = o->parentObj->oMoveAngleYaw;
 			o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
             o->parentObj->oMotosUnk88 = 0;
 			o->parentObj->oMotosUnk100 = 0;
             break;
+		case 4: //throw fire
+	 	firep = spawn_object(o, MODEL_RED_FLAME, bhvUnusedParticleSpawn);
+		firep->oForwardVel = 40.0f;
+		firep->oVelY = -25.0f + o->parentObj->oDistanceToMario * 0.075f;
+		firep->oMoveAngleYaw = o->parentObj->oMoveAngleYaw;
+            o->parentObj->oMotosUnk88 = 0;
+			break;
+		
     }
 	
 
@@ -74,9 +83,30 @@ Gfx *MotosProc1(s32 run, UNUSED struct GraphNode *node, Mat4 mtx) {
     return NULL;
 }
 
+s32 motos_velocity(f32 *forwardVel, f32 spC, f32 sp10) {
+    s32 sp4 = 0;
+
+    if (*forwardVel > spC) {
+        *forwardVel -= sp10;
+        if (*forwardVel < spC) {
+            *forwardVel = spC;
+        }
+    } else if (*forwardVel < spC) {
+        *forwardVel += sp10;
+        if (*forwardVel > spC) {
+            *forwardVel = spC;
+        }
+    } else {
+        sp4 = 1;
+    }
+
+    return sp4;
+}
+
+
 s32 s_ai_pitch()
 {
-	return (o->oTimer > 45) || (o->oMoveFlags & OBJ_MOVE_HIT_EDGE); //Credit to Render96 Team	
+	return (o->oTimer > 50) || (o->oMoveFlags & OBJ_MOVE_HIT_EDGE); //Credit to Render96 Team	
 }
 
 void bhv_motos_anchor_mario_loop(void) {
@@ -88,8 +118,8 @@ void motos_wait(void)
     o->oForwardVel = 0.0f;
     o->oVelY = 0.0f;
 	cur_obj_init_animation_with_sound(8);
-
-	if ( o->oDistanceToMario < 1000 )	o->oAction = 1;
+	cur_obj_become_tangible();
+	if ( o->oDistanceToMario < 1500 )	o->oAction = 1;
 
 }
 
@@ -101,7 +131,7 @@ void motos_player_search(void)
 		
 	cur_obj_init_animation_with_sound(9);
 	o->oForwardVel = 2.5f;
-	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x300);
+	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x200);
 	if ( o->oDistanceToMario > 2000 )	o->oAction = 0;
 	
 	if ((o->oPosY < o->oHomeY - 100) & (o->oTimer >= 20)) { //Should not happen unless Light Motos is performed, or the player lures motos of the platform in SL.
@@ -110,20 +140,30 @@ void motos_player_search(void)
 	if ( o->oInteractStatus & INT_STATUS_GRABBED_MARIO){
 		o->oAction = 2;
 	 	o->oMotosUnk88 = 1;
+	}  
+	if (o->oBehParams2ndByte == 0x01 && o->oDistanceToMario < 750 && !((o->oTimer+1) % 60) && o->oDistanceToMario > 250 && obj_check_if_facing_toward_angle(o->oMoveAngleYaw, o->oAngleToMario, 0x1000) == TRUE) {
+		cur_obj_become_intangible();
+		o->oAction = 12;
 	}
 }
 
 void motos_carry_start(void)
 {
+	o->oMotosUnk9F = ((random_float() - 0.5f) * 0x400);
+	motos_velocity(&o->oForwardVel, 0.0f, 1.0f);
+	if (o->oTimer == 0) {
 	cur_obj_init_animation_with_sound(3);
-	if (cur_obj_check_if_near_animation_end()) o->oAction = 3;	
+			cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN3);
+	}
+	if (cur_obj_check_if_near_animation_end()) o->oAction = 3;
+	
 }
 
 void motos_carry_run(void)
 {
 	o->oForwardVel = 10.0f;
-		if (cur_obj_check_anim_frame(2)| cur_obj_check_anim_frame(11)) 
-		cur_obj_play_sound_2(SOUND_OBJ_POUNDING1_HIGHPRIO);
+	cur_obj_rotate_yaw_toward(o->oAngleToMario+o->oMotosUnk9F, 300);
+		if (cur_obj_check_anim_frame(2)| cur_obj_check_anim_frame(11))  cur_obj_play_sound_2(SOUND_OBJ_POUNDING1_HIGHPRIO);
 
 	o->oMotosUnk100 += player_performed_grab_escape_action();
 	if (o->oMotosUnk100 > 10) {
@@ -131,7 +171,6 @@ void motos_carry_run(void)
 		o->oInteractStatus &= ~(INT_STATUS_GRABBED_MARIO);
 		o->oMotosUnk88 = 3;
 	}
-
 	cur_obj_init_animation_with_sound(2);
 	if ((s_ai_pitch()) & (o->oMotosUnk88 == 1)) {
 		o->oAction = 4;
@@ -141,15 +180,12 @@ void motos_carry_run(void)
 
 void motos_pitch(void)
 {
-	o->oForwardVel = 0.0f;
-	if (o->oTimer == 0) {
+	motos_velocity(&o->oForwardVel, 0.0f, 1.0f);
 	cur_obj_init_animation_with_sound(6);
-			cur_obj_play_sound_2(SOUND_OBJ_BULLY_METAL);
-	}
-	if ( cur_obj_check_anim_frame(14) ){
-		cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN4);
-		o->oMotosUnk88 = 2;
-	}
+	if ( cur_obj_check_anim_frame(7) ) cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN4);
+	
+	if ( cur_obj_check_anim_frame(14) ) o->oMotosUnk88 = 2;
+	
 	if ( cur_obj_check_if_near_animation_end() )	
 	o->oAction = 0;
 
@@ -188,16 +224,15 @@ void motos_fly(void)
 
 void motos_recover(void) {
 //   o->oForwardVel = 5.0f;
-if (o->oForwardVel > 0.0) { 
-    o->oForwardVel -= 0.3;
-}
- if (o->oTimer == 0) { cur_obj_become_intangible(); cur_obj_shake_screen(SHAKE_POS_SMALL); }
+	motos_velocity(&o->oForwardVel, 0.0f, 1.0f);
+ if (o->oTimer == 0) { cur_obj_become_intangible(); cur_obj_shake_screen(SHAKE_POS_SMALL); 
+  cur_obj_play_sound_2(SOUND_OBJ_BULLY_METAL);}
  
     if (o->oSubAction == 0) {
 		
         cur_obj_init_animation_with_sound(5);
 		if (o->oTimer == 10) {
-			cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
+			cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN3);
 		}
         if (cur_obj_check_if_near_animation_end()) {
 			
@@ -214,12 +249,9 @@ if (o->oForwardVel > 0.0) {
 
 void motos_recover2(void) { //Motos drops down
 //   o->oForwardVel = 5.0f;
-if (o->oForwardVel > 0.0) { 
-    o->oForwardVel -= 0.6;
-}
-	if (o->oVelY > 0.0) { 
-	    o->oVelY -= 1.0f;
-	}
+	motos_velocity(&o->oForwardVel, 0.0f, 1.0f);
+	motos_velocity(&o->oVelY, 0.0f, 1.0f);
+	
 	if (o->oTimer == 0) {
 		cur_obj_become_intangible();
 		cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
@@ -351,6 +383,23 @@ void motos_deactivate(void) {  //Added so motos doesn't make walking sounds afte
         cur_obj_become_intangible();
 }
 
+void motos_pitch2(void) //Throwing Fire action for Fire Motos
+{
+	motos_velocity(&o->oForwardVel, 0.0f, 1.0f);
+	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x100);
+	cur_obj_init_animation_with_sound(1);
+	if (o->oTimer == 0) cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN3);
+
+	if ( cur_obj_check_anim_frame(9) ) cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN4);
+		
+	if ( cur_obj_check_anim_frame(18) ){
+		o->oMotosUnk88 = 4;
+	}
+	if ( cur_obj_check_if_near_animation_end() ) {
+	o->oAction = 0;
+	}
+
+}
 void motos_main(void)
 {
     cur_obj_update_floor_and_walls();
@@ -393,6 +442,9 @@ void motos_main(void)
 	case 11:
 	motos_inactive();
 	break;
+	case 12:
+	motos_pitch2();
+	break;
 	}
 //	default: rmonpf(("Error objmode motos\n")); }
 
@@ -405,7 +457,7 @@ void motos_main(void)
 
 void s_motos(void)
 {
-    f32 sp2C = 10.0f;
+    f32 sp2C = 12.5f;
     f32 sp28 = 25.0f;
 
 	cur_obj_scale(2.0f);
