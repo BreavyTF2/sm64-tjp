@@ -173,8 +173,6 @@ Gfx *geo_switch_area(s32 callContext, struct GraphNode *node) {
 #endif
     s16 sp26;
     struct Surface *sp20;
-    UNUSED struct Object *sp1C =
-        (struct Object *) gCurGraphNodeObject; // TODO: change global type to Object pointer
     struct GraphNodeSwitchCase *switchCase = (struct GraphNodeSwitchCase *) node;
 
     if (callContext == GEO_CONTEXT_RENDER) {
@@ -188,7 +186,7 @@ Gfx *geo_switch_area(s32 callContext, struct GraphNode *node) {
             if (sp20) {
                 gMarioCurrentRoom = sp20->room;
                 sp26 = sp20->room - 1;
-                print_debug_top_down_objectinfo("areainfo %d", sp20->room);
+//                print_debug_top_down_objectinfo("areainfo %d", sp20->room);
 
                 if (sp26 >= 0) {
                     switchCase->selectedCase = sp26;
@@ -288,7 +286,7 @@ f32 lateral_dist_between_objects(struct Object *obj1, struct Object *obj2) {
     f32 dx = obj1->oPosX - obj2->oPosX;
     f32 dz = obj1->oPosZ - obj2->oPosZ;
 
-    return sqrtf(dx * dx + dz * dz);
+    return sqrtf(sqr(dx) + sqr(dz));
 }
 
 f32 dist_between_objects(struct Object *obj1, struct Object *obj2) {
@@ -296,7 +294,7 @@ f32 dist_between_objects(struct Object *obj1, struct Object *obj2) {
     f32 dy = obj1->oPosY - obj2->oPosY;
     f32 dz = obj1->oPosZ - obj2->oPosZ;
 
-    return sqrtf(dx * dx + dy * dy + dz * dz);
+	return sqrtf(sqr(dx) + sqr(dy) + sqr(dz));
 }
 
 void cur_obj_forward_vel_approach_upward(f32 target, f32 increment) {
@@ -392,30 +390,25 @@ s16 obj_angle_to_object(struct Object *obj1, struct Object *obj2) {
 }
 
 s16 obj_turn_toward_object(struct Object *obj, struct Object *target, s16 angleIndex, s16 turnAmount) {
-    f32 a, b, c, d;
+    Vec3f d;
     s16 targetAngle, startAngle;
 
     switch (angleIndex) {
         case O_MOVE_ANGLE_PITCH_INDEX:
         case O_FACE_ANGLE_PITCH_INDEX:
-            a = target->oPosX - obj->oPosX;
-            c = target->oPosZ - obj->oPosZ;
-            a = sqrtf(a * a + c * c);
+            d[0] = target->oPosX - obj->oPosX;
+            d[1] = -target->oPosY + obj->oPosY;
+            d[2] = target->oPosZ - obj->oPosZ;
 
-            b = -obj->oPosY;
-            d = -target->oPosY;
-
-            targetAngle = atan2s(a, d - b);
+            targetAngle = atan2s(sqrtf(sqr(d[0]) + sqr(d[2])), d[1]);
             break;
 
         case O_MOVE_ANGLE_YAW_INDEX:
         case O_FACE_ANGLE_YAW_INDEX:
-            a = obj->oPosZ;
-            c = target->oPosZ;
-            b = obj->oPosX;
-            d = target->oPosX;
+            d[0] = target->oPosX - obj->oPosX;
+            d[2] = target->oPosZ - obj->oPosZ;
 
-            targetAngle = atan2s(c - a, d - b);
+            targetAngle = atan2s(d[2], d[0]);
             break;
     }
 

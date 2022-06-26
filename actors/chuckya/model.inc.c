@@ -1,5 +1,6 @@
 // Chuckya
-
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 // Unreferenced light group
 static const Lights1 chuckya_lights_unused2 = gdSPDefLights1(
     0x3f, 0x3f, 0x3f,
@@ -318,8 +319,7 @@ static const Lights1 chuckya_seg8_lights_0800A668 = gdSPDefLights1(
     0x66, 0x66, 0x66,
     0xff, 0xff, 0xff, 0x28, 0x28, 0x28
 );
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmissing-braces"
+
 // 0x0800A680
 static const Vtx chuckya_seg8_vertex_0800A680[] = {
 	{194,133,0,0,480,-66,67,107,0,255},
@@ -329,7 +329,6 @@ static const Vtx chuckya_seg8_vertex_0800A680[] = {
 	{23,177,159,0,1012,932,64,101,40,255},
 	{146,99,159,0,1012,22,64,101,40,255},
 };
-#pragma GCC diagnostic pop
 
 // 0x0800A700 - 0x0800A758
 const Gfx chuckya_seg8_dl_0800A700[] = {
@@ -364,13 +363,6 @@ const Gfx chuckya_seg8_dl_0800A758[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x0800A7C8
-static const Lights1 chuckya_seg8_lights_0800A7C8 = gdSPDefLights1(
-    0x29, 0x29, 0x29,
-    0x89, 0x89, 0x8a, 0x28, 0x28, 0x28
-);
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmissing-braces"
 // 0x0800A7E0
 static const Vtx chuckya_seg8_vertex_0800A7E0[] = {
 	{86,-40,-42,0,0,0,-72,-73,-74,255},
@@ -383,7 +375,7 @@ static const Vtx chuckya_seg8_vertex_0800A7E0[] = {
 	{86,41,40,0,0,0,-73,73,73,255},
 	{86,59,0,0,0,0,-72,104,0,255},
 };
-#pragma GCC diagnostic pop
+
 // 0x0800A870 - 0x0800A8D0
 const Gfx chuckya_seg8_dl_0800A870[] = {
 	gsSPLight(&chuckya_lights_unused4.l, 1),
@@ -408,14 +400,6 @@ const Gfx chuckya_seg8_dl_0800A8D0[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x0800A8F0
-static const Lights1 chuckya_seg8_lights_0800A8F0 = gdSPDefLights1(
-    0x3f, 0x3f, 0x00,
-    0xff, 0xff, 0x00, 0x28, 0x28, 0x28
-);
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmissing-braces"
-
 // 0x0800A908
 static const Vtx chuckya_seg8_vertex_0800A908[] = {
 	{-9,1,0,0,0,0,-27,99,-73,255},
@@ -431,7 +415,7 @@ static const Vtx chuckya_seg8_vertex_0800A908[] = {
 	{78,1,33,0,0,0,-27,99,73,255},
 	{78,25,0,0,0,0,-27,99,73,255},
 };
-#pragma GCC diagnostic pop
+
 // 0x0800A958 - 0x0800A998
 const Gfx chuckya_seg8_dl_0800A958[] = {
     gsSPLight(&chuckya_lights_unused2.l, 1),
@@ -452,13 +436,6 @@ const Gfx chuckya_seg8_dl_0800A998[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x0800A9B8
-static const Lights1 chuckya_seg8_lights_0800A9B8 = gdSPDefLights1(
-    0x0c, 0x0c, 0x0c,
-    0x32, 0x32, 0x32, 0x28, 0x28, 0x28
-);
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmissing-braces"
 // 0x0800A9D0
 static const Vtx chuckya_seg8_vertex_0800A9D0[] = {
 	{-212,-112,0,0,0,0,-94,14,-83,255},
@@ -482,7 +459,6 @@ static const Vtx chuckya_seg8_vertex_0800A9D0[] = {
 	{-201,-49,-1,0,0,0,-93,18,84,255},
 	{-212,-112,0,0,0,0,-93,18,84,255},
 };
-#pragma GCC diagnostic pop
 
 // 0x0800AB70 - 0x0800ABE8
 const Gfx chuckya_seg8_dl_0800AB70[] = {
@@ -512,3 +488,5 @@ const Gfx chuckya_seg8_dl_0800ABE8[] = {
     gsSPSetGeometryMode(G_SHADING_SMOOTH),
     gsSPEndDisplayList(),
 };
+
+#pragma GCC diagnostic pop

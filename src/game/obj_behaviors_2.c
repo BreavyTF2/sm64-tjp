@@ -234,7 +234,7 @@ static void platform_on_track_update_pos_or_spawn_ball(s32 ballIndex, f32 x, f32
             obj_perform_position_op(POS_OP_COMPUTE_VELOCITY);
 
             o->oPlatformOnTrackPitch =
-                atan2s(sqrtf(o->oVelX * o->oVelX + o->oVelZ * o->oVelZ), -o->oVelY);
+                atan2s(sqrtf(sqr(o->oVelX) + sqr(o->oVelZ)), -o->oVelY);
             o->oPlatformOnTrackYaw = atan2s(o->oVelZ, o->oVelX);
         }
     }
@@ -546,14 +546,9 @@ static void obj_update_blinking(s32 *blinkTimer, s16 baseCycleLength, s16 cycleL
 
 static s32 obj_resolve_object_collisions(s32 *targetYaw) {
     struct Object *otherObject;
-    f32 dx;
-    f32 dz;
+    f32 dx, dz;
     s16 angle;
-    f32 radius;
-    f32 otherRadius;
-    f32 relativeRadius;
-    f32 newCenterX;
-    f32 newCenterZ;
+    f32 radius, otherRadius, relativeRadius, newCenterX, newCenterZ;
 
     if (o->numCollidedObjs != 0) {
         otherObject = o->collidedObjs[0];

@@ -154,7 +154,7 @@ void bhv_bubba_loop(void) {
         obj_smooth_turn(&o->oBubbaUnk1B2, &o->oMoveAngleYaw, o->oBubbaUnk1AE, 0.05f, 10, 50, 2000);
         obj_compute_vel_from_move_pitch(o->oBubbaUnkF4);
     } else {
-        o->oBubbaUnkF4 = sqrtf(o->oForwardVel * o->oForwardVel + o->oVelY * o->oVelY);
+        o->oBubbaUnkF4 = sqrtf(sqr(o->oForwardVel) + sqr(o->oVelY));
         o->oMoveAnglePitch = obj_get_pitch_from_vel();
         obj_face_pitch_approach(o->oMoveAnglePitch, 400);
         o->oBubbaUnk1B0 = 0;

@@ -257,6 +257,8 @@ void calc_new_obj_vel_and_pos_y(struct Surface *objFloor, f32 objFloorY, f32 obj
     f32 floor_nX = objFloor->normal.x;
     f32 floor_nY = objFloor->normal.y;
     f32 floor_nZ = objFloor->normal.z;
+    f32 nxz = sqr(floor_nX) + sqr(floor_nZ);
+    f32 vel = ((nxz) / (nxz + sqr(floor_nY))) * o->oGravity * 2;
     f32 objFriction;
 
     // Caps vertical speed with a "terminal velocity".
@@ -287,12 +289,8 @@ void calc_new_obj_vel_and_pos_y(struct Surface *objFloor, f32 objFloorY, f32 obj
         obj_orient_graph(o, floor_nX, floor_nY, floor_nZ);
 
         // Adds horizontal component of gravity for horizontal speed.
-        objVelX += floor_nX * (floor_nX * floor_nX + floor_nZ * floor_nZ)
-                   / (floor_nX * floor_nX + floor_nY * floor_nY + floor_nZ * floor_nZ) * o->oGravity
-                   * 2;
-        objVelZ += floor_nZ * (floor_nX * floor_nX + floor_nZ * floor_nZ)
-                   / (floor_nX * floor_nX + floor_nY * floor_nY + floor_nZ * floor_nZ) * o->oGravity
-                   * 2;
+        objVelX += floor_nX * vel;
+        objVelZ += floor_nZ * vel;
 
         if (objVelX < 0.000001 && objVelX > -0.000001) {
             objVelX = 0;
@@ -306,7 +304,7 @@ void calc_new_obj_vel_and_pos_y(struct Surface *objFloor, f32 objFloorY, f32 obj
         }
 
         calc_obj_friction(&objFriction, floor_nY);
-        o->oForwardVel = sqrtf(objVelX * objVelX + objVelZ * objVelZ) * objFriction;
+        o->oForwardVel = sqrtf(sqr(objVelX) + sqr(objVelZ)) * objFriction;
     }
 }
 

@@ -13,11 +13,6 @@ ALIGNED8 static const u8 lll_seg7_texture_07001000[] = {
 #include "levels/lll/2.rgba16.inc.c"
 };
 
-// 0x07001800 - 0x07002000
-ALIGNED8 static const u8 lll_seg7_texture_07001800[] = {
-#include "levels/lll/3.rgba16.inc.c"
-};
-
 // 0x07002000 - 0x07002800
 ALIGNED8 static const u8 lll_seg7_texture_07002000[] = {
 #include "levels/lll/4.rgba16.inc.c"
@@ -31,11 +26,6 @@ ALIGNED8 static const u8 lll_seg7_texture_07002800[] = {
 // 0x07003000 - 0x07003800
 ALIGNED8 static const u8 lll_seg7_texture_07003000[] = {
 #include "levels/lll/6.rgba16.inc.c"
-};
-
-// 0x07003800 - 0x07004000
-ALIGNED8 static const u8 lll_seg7_texture_07003800[] = {
-#include "levels/lll/7.rgba16.inc.c"
 };
 
 // 0x07004000 - 0x07004800

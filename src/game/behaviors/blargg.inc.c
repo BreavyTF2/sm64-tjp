@@ -22,8 +22,7 @@ obj_set_hitbox(o, &sBlarggHitbox);
 }
 void unbaba_act_swim(void) // Define Swimming Action for Blargg
 {
-	s32 shellspeed; //Turn Multiplier
-	shellspeed = 4;
+	s32 shellspeed = 4; //Turn Multiplier
 	cur_obj_become_tangible();
 	    if (o->oMoveFlags & OBJ_MOVE_HIT_WALL) {
         o->oAction = 2;
@@ -74,8 +73,7 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 }
 void unbaba_act_attack(void) // Define Attacking Action for Blargg
 {
-	s32 animTimer;	
-    animTimer = o->header.gfx.animInfo.animFrame;
+	s32 animTimer = o->header.gfx.animInfo.animFrame;
 	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x20);
 	cur_obj_become_tangible();
 	if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
@@ -90,33 +88,30 @@ void unbaba_act_attack(void) // Define Attacking Action for Blargg
 			if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
 			o->oForwardVel = 3.0*(animTimer)+1;
 			}
-		}
-		if (animTimer >= (20)){
+		} if (animTimer >= (20)){
 			o->oForwardVel = 1*(animTimer)+5;
 			o->hurtboxRadius = 330;
 			o->hurtboxHeight = 245;
 			if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
 			o->oForwardVel = 3.0*(animTimer)+6;
 			}
-	}
-			if (animTimer > (25)){
-			o->oForwardVel = 36/(animTimer-12)+3;
+	} if (animTimer > (25)){
+			o->oForwardVel = 36/(animTimer-12)+5;
 			o->hurtboxRadius = 255;
 			o->hurtboxHeight = 205;
 				if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
 			o->oForwardVel = 60/(animTimer-18)+4;
 			}
 	}
-    if (cur_obj_check_anim_frame(3)) {
-        cur_obj_play_sound_2(SOUND_OBJ_EEL); //XDelta
+    if (o->oTimer == 0) {
+        cur_obj_play_sound_2(SOUND_OBJ2_BLARGG_YELL); //XDelta
     } 
     if (cur_obj_check_if_near_animation_end()) {
-     cur_obj_play_sound_2(SOUND_GENERAL_MOVING_WATER);    //XDelta
+     cur_obj_play_sound_2(SOUND_GENERAL_BUBBLES);    //XDelta
      o->oForwardVel = 2.5f;
      o->hurtboxRadius = 201;
      o->hurtboxHeight = 123;
      o->oAction = 1;
-
 	}
 }
 

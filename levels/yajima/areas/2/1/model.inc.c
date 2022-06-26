@@ -16,13 +16,11 @@
 
 
 
-static long long dmmy1_testmap2 = 0;
 static Lights1 light_testmap2[] = {
 	ShapeColorYajima( 150, 50, 50 ),  /* attr (1) */
 	ShapeColorYajima( 100,  0,  0 ),  /* attr (0) */
 	ShapeColorYajima( 255,  0,  0 ),  /* attr (8) */
 };
-static long long dmmy2_testmap2 = 0;
  
 /*---------------------------------------------------------------------
    Vtx Data                                                            

@@ -220,7 +220,7 @@
 /* not verified */ #define SOUND_GENERAL_CLOSE_WOOD_DOOR    SOUND_ARG_LOAD(3, 0, 0x05, 0xC0, 8)
 /* not verified */ #define SOUND_GENERAL_OPEN_IRON_DOOR     SOUND_ARG_LOAD(3, 0, 0x06, 0xC0, 8)
 /* not verified */ #define SOUND_GENERAL_CLOSE_IRON_DOOR    SOUND_ARG_LOAD(3, 0, 0x07, 0xC0, 8)
-/* not verified */ #define SOUND_GENERAL_BUBBLES            0x3008
+/* not verified */ #define SOUND_GENERAL_BUBBLES            SOUND_ARG_LOAD(3, 0, 0x08, 0x00, 8)
 /* not verified */ #define SOUND_GENERAL_MOVING_WATER       SOUND_ARG_LOAD(3, 0, 0x09, 0x00, 8)
 /* not verified */ #define SOUND_GENERAL_SWISH_WATER        SOUND_ARG_LOAD(3, 0, 0x0A, 0x00, 8)
 /* not verified */ #define SOUND_GENERAL_QUIET_BUBBLE       SOUND_ARG_LOAD(3, 0, 0x0B, 0x00, 8)
@@ -553,6 +553,7 @@
 #define SOUND_OBJ2_SCUTTLEBUG_ALERT             SOUND_ARG_LOAD(9, 0, 0x44, 0x40, 8)
 #define SOUND_OBJ2_BABY_PENGUIN_YELL            SOUND_ARG_LOAD(9, 0, 0x45, 0x00, 8)
 #define SOUND_OBJ2_SWOOP                        SOUND_ARG_LOAD(9, 0, 0x49, 0x00, 8)
+#define SOUND_OBJ2_BLARGG_YELL                  SOUND_ARG_LOAD(9, 0, 0x4A, 0x00, 8)
 #define SOUND_OBJ2_BIRD_CHIRP1                  SOUND_ARG_LOAD(9, 0, 0x52, 0x40, 0)
 #define SOUND_OBJ2_LARGE_BULLY_ATTACKED         SOUND_ARG_LOAD(9, 0, 0x57, 0x00, 8)
 #define SOUND_OBJ2_EYEROK_SOUND_SHORT           SOUND_ARG_LOAD(9, 3, 0x5A, 0x00, 8)

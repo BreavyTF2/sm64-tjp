@@ -6,12 +6,6 @@ static const Lights1 piranha_plant_seg6_lights_060113B0 = gdSPDefLights1(
     0xff, 0xff, 0xff, 0x28, 0x28, 0x28
 );
 
-// 0x060113C8
-static const Lights1 piranha_plant_seg6_lights_060113C8 = gdSPDefLights1(
-    0x0a, 0x2b, 0x02,
-    0x2b, 0xae, 0x0a, 0x28, 0x28, 0x28
-);
-
 // 0x060113E0
 static const Lights1 piranha_plant_seg6_lights_060113E0 = gdSPDefLights1(
     0x3f, 0x00, 0x00,

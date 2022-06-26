@@ -342,10 +342,6 @@ static const short texture_menu_score[] = {
 
 };
 
-// 0x07005468 - 0x07005468
-ALIGNED8 static const u8 texture_menu_sound[] = {
-#include "levels/menu/main_menu_seg7.05468.rgba16.inc.c"
-};
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmissing-braces"
 // 0x07005C68 - 0x07005D68

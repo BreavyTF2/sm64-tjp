@@ -1,12 +1,6 @@
 // Koopa (Small Koopa, Big Koopa [Koopa the Quick])
 
 
-// Unreferenced light group
-UNUSED static const Lights1 koopa_lights_unused1 = gdSPDefLights1(
-    0x3f, 0x3f, 0x3f,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
-);
-
 // 0x060025A0
 static const Lights1 koopa_seg6_lights_060025A0 = gdSPDefLights1(
     0x00, 178/4, 0x00,
@@ -17,18 +11,6 @@ static const Lights1 koopa_seg6_lights_060025A0 = gdSPDefLights1(
 static const Lights1 koopa_seg6_lights_060025B8 = gdSPDefLights1(
     223/4, 109/4, 0x00,
     0xe0, 0xae, 0x00, 0x28, 0x28, 0x28
-);
-
-// 0x060025D0
-static const Lights1 koopa_seg6_lights_060025D0 = gdSPDefLights1(
-    0x3f, 0x3f, 0x3f,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
-);
-
-// Unreferenced light group
-UNUSED static const Lights1 koopa_lights_unused2 = gdSPDefLights1(
-    0x2d, 0x2d, 0x2d,
-    0xb2, 0xb2, 0xb2, 0x28, 0x28, 0x28
 );
 
 // 0x06002600
@@ -503,12 +485,6 @@ const Gfx koopa_seg6_dl_060080F8[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x060082C0
-static const Lights1 koopa_seg6_lights_060082C0 = gdSPDefLights1(
-    0x3f, 0x3f, 0x3f,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
-);
-
 // 0x060082D8
 static const Lights1 koopa_seg6_lights_060082D8 = gdSPDefLights1(
     0x00, 178/4, 0x00,
@@ -545,14 +521,6 @@ const Gfx koopa_seg6_dl_06008640[] = {
     gsSP2Triangles( 6, 11,  8, 0x0,  8, 11,  9, 0x0),
     gsSPEndDisplayList(),
 };
-
-
-
-// 0x06008740
-static const Lights1 koopa_seg6_lights_06008740 = gdSPDefLights1(
-    0x3f, 0x3f, 0x3f,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
-);
 
 // 0x06008758
 static const Lights1 koopa_seg6_lights_06008758 = gdSPDefLights1(

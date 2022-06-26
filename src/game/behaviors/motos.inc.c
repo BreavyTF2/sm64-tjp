@@ -193,7 +193,6 @@ void motos_pitch(void)
 
 void motos_fly(void)
 {
-//   o->oForwardVel = 5.0f;
 	cur_obj_init_animation_and_extend_if_at_end(5);
 		if ((gCurrLevelNum == LEVEL_SL) & (o->oPosY < 1000.0f)) {
 			cur_obj_play_sound_2(SOUND_OBJ_BULLY_EXPLODE_2);
@@ -223,7 +222,6 @@ void motos_fly(void)
 }
 
 void motos_recover(void) {
-//   o->oForwardVel = 5.0f;
 	motos_velocity(&o->oForwardVel, 0.0f, 1.0f);
  if (o->oTimer == 0) { cur_obj_become_intangible(); cur_obj_shake_screen(SHAKE_POS_SMALL); 
   cur_obj_play_sound_2(SOUND_OBJ_BULLY_METAL);}
@@ -248,7 +246,6 @@ void motos_recover(void) {
 }
 
 void motos_recover2(void) { //Motos drops down
-//   o->oForwardVel = 5.0f;
 	motos_velocity(&o->oForwardVel, 0.0f, 1.0f);
 	motos_velocity(&o->oVelY, 0.0f, 1.0f);
 	
@@ -322,9 +319,7 @@ void motos_spawn_ice_minion(s32 arg0, s32 arg1, s32 arg2, s16 arg3) {
     mbully->oBehParams2ndByte = BULLY_BP_SIZE_SMALL;
 }
 void motos_minions(void) {
-s16 MotosPosX;
-s16 HeightOffset;
-s16 MotosPosZ;
+s16 MotosPosX, HeightOffset, MotosPosZ;
 
 if (gCurrLevelNum == LEVEL_SL) {
 MotosPosX = 420;

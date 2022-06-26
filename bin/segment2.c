@@ -2532,12 +2532,6 @@ ALIGNED8 const u8 texture_waterbox_lava[] = {
 #include "textures/segment2/segment2.13C58.rgba16.inc.c"
 };
 
-// Unreferenced light group
-static const Lights1 segment2_lights_unused = gdSPDefLights1(
-    0x40, 0x40, 0x40,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
-);
-
 // 0x02014470 - 0x020144B0
 static const Mtx matrix_identity = {
 #ifndef GBI_FLOATS

@@ -5,9 +5,9 @@
 #include "types.h"
 
 #define ENVFX_MODE_NONE     0  // no effects
-#define ENVFX_SNOW_NORMAL   1  // CCM, SL
+#define ENVFX_SNOW_NORMAL   1  // CCM
 #define ENVFX_SNOW_WATER    2  // Secret Aquarium, Sunken Ship
-#define ENVFX_SNOW_BLIZZARD 3  // unused
+#define ENVFX_SNOW_BLIZZARD 3  // SL
 
 #define ENVFX_BUBBLE_START      10 // Separates snow effects and flower/bubble effects
 

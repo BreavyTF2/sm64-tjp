@@ -19,7 +19,6 @@
 
 
 
-static long long dmmy1_testmap1 = 0;
 static Lights1 light_testmap10[] = {
 	ShapeColorYajima( 100,100,100 ),  /* attr (30) */
 	ShapeColorYajima( 150,150,150 ),  /* attr (31) */
@@ -28,8 +27,6 @@ static Lights1 light_testmap10[] = {
 	ShapeColorYajima( 100,  0,  0 ),  /* attr (33) */
 	ShapeColorYajima( 150, 50,  0 ),  /* attr (32) */
 };
-static long long dmmy2_testmap10 = 0;
- 
 /*---------------------------------------------------------------------
    Vtx Data                                                            
 ---------------------------------------------------------------------*/
