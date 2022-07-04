@@ -1111,15 +1111,6 @@ void gdm_setup(void) {
 void Unknown8019C448(UNUSED u32 a0) {
 }
 
-/* 24AC2C -> 24AC80; not called; orig name: Unknown8019C45C */
-void print_gdm_stats(void) {
-    stop_memtracker("total");
-    gd_printf("\ngdm stats:\n");
-    print_all_memtrackers();
-    mem_stats();
-    start_memtracker("total");
-}
-
 /* 24AC80 -> 24AD14; orig name: func_8019C4B0 */
 struct ObjView *make_view_withgrp(char *name, struct ObjGroup *grp) {
     struct ObjView *view;            // 2c
@@ -1299,23 +1290,6 @@ void *gdm_gettestdl(s32 id) {
     return (void *) osVirtualToPhysical(gddl->gfx);
 }
 
-/* 24B418 -> 24B4CC; not called */
-void gdm_getpos(s32 id, struct GdVec3f *dst) {
-    struct GdObj *dobj; // 1c
-    switch (id) {
-        case 5:
-            set_gd_mtx_parameters(G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_PUSH);
-            dobj = d_use_obj("testnet2");
-            dst->x = ((struct ObjNet *) dobj)->unk14.x;
-            dst->y = ((struct ObjNet *) dobj)->unk14.y;
-            dst->z = ((struct ObjNet *) dobj)->unk14.z;
-            break;
-        default:
-            fatal_printf("gdm_getpos(): %d out of range", id);
-    }
-    return;
-}
-
 /* 24B4CC -> 24B5A8; orig name: func_8019CCFC */
 void bound_on_active_view(f32 *x, f32 *y) {
     struct ObjView *view = sActiveView;
@@ -1444,18 +1418,6 @@ struct GdDisplayList *new_gd_dl(s32 id, s32 gfxs, s32 verts, s32 mtxs, s32 light
 
     dl->dlptr = NULL;
     return dl;
-}
-
-/* 24BA48 -> 24BABC; not called */
-void gd_rsp_init(void) {
-    gSPDisplayList(next_gfx(), osVirtualToPhysical(&gd_dl_rsp_init));
-    gDPPipeSync(next_gfx());
-}
-
-/* 24BABC -> 24BB30; not called */
-void gd_rdp_init(void) {
-    gSPDisplayList(next_gfx(), osVirtualToPhysical(&gd_dl_rdp_init));
-    gDPPipeSync(next_gfx());
 }
 
 /* 24BB30 -> 24BED8; orig name: func_8019D360 */
@@ -2574,10 +2536,6 @@ void gd_setproperty(enum GdProperty prop, f32 f1, f32 f2, f32 f3) {
     }
 }
 
-/* 2522B0 -> 2522C0 */
-void stub_801A3AE0(void) {
-}
-
 /* 2522C0 -> 25245C */
 void gd_create_ortho_matrix(f32 l, f32 r, f32 b, f32 t, f32 n, f32 f) {
     uintptr_t orthoMtx;
@@ -2810,9 +2768,6 @@ void Unknown801A47B8(struct ObjView *v) {
     }
 }
 
-void stub_801A47DC(void) {
-}
-
 /* 252FC4 -> 252FD8 */
 void Unknown801A47F4(UNUSED u32 arg0) {
 }
@@ -2854,9 +2809,6 @@ void func_801A48D8(UNUSED char *s) {
 /* 2530C0 -> 2530D8; orig name: func_801A48F0 */
 void set_active_view(struct ObjView *v) {
     sActiveView = v;
-}
-
-void stub_801A4908(void) {
 }
 
 /* 2530E8 -> 2532D4 */
@@ -3196,10 +3148,6 @@ void Unknown801A5A80(UNUSED u32 arg0) {
 void Unknown801A5A94(UNUSED u32 arg0) {
 }
 
-/* 254278 -> 254288 */
-void stub_801A5AA8(void) {
-}
-
 /* 254288 -> 2542B0 */
 void *Unknown801A5AB8(s32 texnum) {
     return D_801BB020[texnum];
@@ -3439,123 +3387,6 @@ void view_proc_print_timers(struct ObjView *self) {
     print_all_timers();
 }
 
-/* 254FE4 -> 255600; not called; orig name: Unknown801A6814 */
-void make_timer_gadgets(void) {
-    struct ObjLabel *timerLabel; // 74
-    struct ObjGroup *timerg;     // 70
-    UNUSED u32 pad6C;
-    struct ObjView *timersview; // 68
-    struct ObjGadget *bar1;     // 64
-    struct ObjGadget *bar2;     // 60
-    struct ObjGadget *bar3;     // 5c
-    struct ObjGadget *bar4;     // 58
-    struct ObjGadget *bar5;     // 54
-    struct ObjGadget *bar6;     // 50
-    struct GdTimer *timer;      // 4c
-    s32 i;                      // 48
-    char timerNameBuf[0x20];    // 28
-
-    d_start_group("timerg");
-    d_makeobj(D_GADGET, "bar1");
-    d_set_obj_draw_flag(OBJ_IS_GRABBALE);
-    d_set_world_pos(20.0f, 5.0f, 0.0f);
-    d_set_scale(50.0f, 5.0f, 0.0f);
-    d_set_type(4);
-    d_set_parm_f(PARM_F_RANGE_LEFT, 0);
-    d_set_parm_f(PARM_F_RANGE_RIGHT, sTimeScaleFactor);
-    d_add_valptr(AsDynId(0), 0, 2, (uintptr_t) &sTimeScaleFactor);
-    bar1 = (struct ObjGadget *) d_use_obj("bar1");
-    bar1->unk5C = 1;
-
-    d_makeobj(D_GADGET, "bar2");
-    d_set_obj_draw_flag(OBJ_IS_GRABBALE);
-    d_set_world_pos(70.0f, 5.0f, 0.0f);
-    d_set_scale(50.0f, 5.0f, 0.0f);
-    d_set_type(4);
-    d_set_parm_f(PARM_F_RANGE_LEFT, 0);
-    d_set_parm_f(PARM_F_RANGE_RIGHT, sTimeScaleFactor);
-    d_add_valptr(AsDynId(0), 0, 2, (uintptr_t) &sTimeScaleFactor);
-    bar2 = (struct ObjGadget *) d_use_obj("bar2");
-    bar2->unk5C = 9;
-
-    d_makeobj(D_GADGET, "bar3");
-    d_set_obj_draw_flag(OBJ_IS_GRABBALE);
-    d_set_world_pos(120.0f, 5.0f, 0.0f);
-    d_set_scale(50.0f, 5.0f, 0.0f);
-    d_set_type(4);
-    d_set_parm_f(PARM_F_RANGE_LEFT, 0);
-    d_set_parm_f(PARM_F_RANGE_RIGHT, sTimeScaleFactor);
-    d_add_valptr(AsDynId(0), 0, 2, (uintptr_t) &sTimeScaleFactor);
-    bar3 = (struct ObjGadget *) d_use_obj("bar3");
-    bar3->unk5C = 1;
-
-    d_makeobj(D_GADGET, "bar4");
-    d_set_obj_draw_flag(OBJ_IS_GRABBALE);
-    d_set_world_pos(170.0f, 5.0f, 0.0f);
-    d_set_scale(50.0f, 5.0f, 0.0f);
-    d_set_type(4);
-    d_set_parm_f(PARM_F_RANGE_LEFT, 0);
-    d_set_parm_f(PARM_F_RANGE_RIGHT, sTimeScaleFactor);
-    d_add_valptr(AsDynId(0), 0, 2, (uintptr_t) &sTimeScaleFactor);
-    bar4 = (struct ObjGadget *) d_use_obj("bar4");
-    bar4->unk5C = 9;
-
-    d_makeobj(D_GADGET, "bar5");
-    d_set_obj_draw_flag(OBJ_IS_GRABBALE);
-    d_set_world_pos(220.0f, 5.0f, 0.0f);
-    d_set_scale(50.0f, 5.0f, 0.0f);
-    d_set_type(4);
-    d_set_parm_f(PARM_F_RANGE_LEFT, 0);
-    d_set_parm_f(PARM_F_RANGE_RIGHT, sTimeScaleFactor);
-    d_add_valptr(AsDynId(0), 0, 2, (uintptr_t) &sTimeScaleFactor);
-    bar5 = (struct ObjGadget *) d_use_obj("bar5");
-    bar5->unk5C = 1;
-
-    d_makeobj(D_GADGET, "bar6");
-    d_set_obj_draw_flag(OBJ_IS_GRABBALE);
-    d_set_world_pos(270.0f, 5.0f, 0.0f);
-    d_set_scale(50.0f, 5.0f, 0.0f);
-    d_set_type(4);
-    d_set_parm_f(PARM_F_RANGE_LEFT, 0);
-    d_set_parm_f(PARM_F_RANGE_RIGHT, sTimeScaleFactor);
-    d_add_valptr(AsDynId(0), 0, 2, (uintptr_t) &sTimeScaleFactor);
-    bar6 = (struct ObjGadget *) d_use_obj("bar6");
-    bar6->unk5C = 9;
-
-    for (i = 0; i < GD_NUM_TIMERS; i++) {
-        sprintf(timerNameBuf, "tim%d\n", i);
-        timer = get_timernum(i);
-        d_makeobj(D_GADGET, timerNameBuf);
-        d_set_obj_draw_flag(OBJ_IS_GRABBALE);
-        d_set_world_pos(20.0f, (f32)((i * 15) + 15), 0.0f);
-        d_set_scale(50.0f, 14.0f, 0);
-        d_set_type(4);
-        d_set_parm_f(PARM_F_RANGE_LEFT, 0.0f);
-        d_set_parm_f(PARM_F_RANGE_RIGHT, 1.0f);
-        d_add_valptr(AsDynId(0), 0, 2, (uintptr_t) &timer->prevScaledTotal);
-        sTimerGadgets[i] = (struct ObjGadget *) d_use_obj(timerNameBuf);
-        sTimerGadgets[i]->unk5C = timer->unk1C;
-        timerLabel = (struct ObjLabel *) d_makeobj(D_LABEL, AsDynId(0));
-        d_set_rel_pos(5.0f, 14.0f, 0);
-        d_set_parm_ptr(PARM_PTR_CHAR, (void *) timer->name);
-        d_add_valptr(timerNameBuf, 0x40000, 0, (uintptr_t) NULL);
-        timerLabel->unk30 = 3;
-    }
-
-    d_end_group("timerg");
-    timerg = (struct ObjGroup *) d_use_obj("timerg");
-    timersview = make_view(
-        "timersview", (VIEW_2_COL_BUF | VIEW_ALLOC_ZBUF | VIEW_1_CYCLE | VIEW_MOVEMENT | VIEW_DRAW), 2,
-        0, 10, 320, 270, timerg);
-    timersview->colour.r = 0.0f;
-    timersview->colour.g = 0.0f;
-    timersview->colour.b = 0.0f;
-    timersview->flags &= ~VIEW_UPDATE;
-    timersview->proc = view_proc_print_timers;
-    func_801A5BE8(timersview);
-
-    return;
-}
 
 /* 255600 -> 255614 */
 void Unknown801A6E30(UNUSED u32 a0) {
@@ -3649,106 +3480,3 @@ struct GdObj *load_dynlist(struct DynList *dynlist) {
 }
 #endif
 
-/* 255988 -> 25599C */
-void stub_801A71B8(UNUSED u32 a0) {
-}
-
-/* 25599C -> 255EB0; not called */
-void func_801A71CC(struct ObjNet *net) {
-    s32 i; // spB4
-    s32 j; // spB0
-    f32 spAC;
-    f32 spA8;
-    struct GdPlaneF sp90;
-    UNUSED u32 pad8C;
-    struct ObjZone *sp88;
-    register struct Links *link;  // s0 (84)
-    s32 sp80;                     // linked planes contained in zone?
-    s32 sp7C;                     // linked planes in net count?
-    register struct Links *link1; // s1 (78)
-    register struct Links *link2; // s2 (74)
-    register struct Links *link3; // s3 (70)
-    struct GdVec3f sp64;
-    UNUSED u32 pad60;
-    struct ObjPlane *plane; // 5c
-    UNUSED u32 pad58;
-    struct ObjZone *linkedZone; // 54
-    UNUSED u32 pad50;
-    struct ObjPlane *planeL2; // 4c
-    UNUSED u32 pad48;
-    struct ObjPlane *planeL3; // 44
-
-    if (net->unk21C == NULL) {
-        net->unk21C = make_group(0);
-    }
-
-    gd_print_plane("making zones for net=", &net->unkBC);
-
-    sp64.x = (ABS(net->unkBC.p0.x) + ABS(net->unkBC.p1.x)) / 16.0f;
-    sp64.z = (ABS(net->unkBC.p0.z) + ABS(net->unkBC.p1.z)) / 16.0f;
-
-    spA8 = net->unkBC.p0.z + sp64.z / 2.0f;
-
-    for (i = 0; i < 16; i++) {
-        spAC = net->unkBC.p0.x + sp64.x / 2.0f;
-
-        for (j = 0; j < 16; j++) {
-            sp90.p0.x = spAC - (sp64.x / 2.0f);
-            sp90.p0.y = 0.0f;
-            sp90.p0.z = spA8 - (sp64.z / 2.0f);
-
-            sp90.p1.x = spAC + (sp64.x / 2.0f);
-            sp90.p1.y = 0.0f;
-            sp90.p1.z = spA8 + (sp64.z / 2.0f);
-
-            sp88 = make_zone(NULL, &sp90, NULL);
-            addto_group(net->unk21C, &sp88->header);
-            sp88->unk2C = make_group(0);
-
-            spAC += sp64.x;
-        }
-        spA8 += sp64.z;
-    }
-
-    for (link = net->unk1CC->link1C; link != NULL; link = link->next) {
-        plane = (struct ObjPlane *) link->obj;
-        plane->unk18 = FALSE;
-    }
-
-    i = 0; // acts as Zone N here... kinda
-    for (link1 = net->unk21C->link1C; link1 != NULL; link1 = link1->next) {
-        linkedZone = (struct ObjZone *) link1->obj;
-        sp88 = linkedZone;
-        sp7C = 0;
-        sp80 = 0;
-
-        for (link2 = net->unk1CC->link1C; link2 != NULL; link2 = link2->next) {
-            planeL2 = (struct ObjPlane *) link2->obj;
-            sp7C += 1;
-            if (gd_plane_point_within(&planeL2->plane28, &sp88->unk14)) {
-                planeL2->unk18 = TRUE;
-                addto_group(sp88->unk2C, &planeL2->header);
-                sp80 += 1;
-            }
-        }
-
-        if (sp80 == 0) {
-            func_8017BED0(net->unk21C, &linkedZone->header); // stubbed fatal function?
-        } else {
-            gd_printf("%d/%d planes in zone %d\n", sp80, sp7C, i++);
-        }
-    }
-
-    for (link3 = net->unk1CC->link1C; link3 != NULL; link3 = link3->next) {
-        planeL3 = (struct ObjPlane *) link3->obj;
-
-        if (!planeL3->unk18) {
-            gd_print_plane("plane=", &planeL3->plane28);
-            fatal_printf("plane not in any zones\n");
-        }
-    }
-}
-
-/* 255EB0 -> 255EC0 */
-void stub_801A76E0(void) {
-}

@@ -32,6 +32,15 @@ extern f32 gCosineTable[];
 
 #define sqr(x) ((x) * (x))
 
+#define vec2_prod(dst, src1, src2) {    \
+    (dst)[0] = ((src1)[0] * (src2)[0]); \
+    (dst)[1] = ((src1)[1] * (src2)[1]); \
+}
+#define vec3_prod(dst, src1, src2) {    \
+    vec2_prod((dst), (src1), (src2));   \
+    (dst)[2] = ((src1)[2] * (src2)[2]); \
+}
+
 void *vec3f_copy(Vec3f dest, Vec3f src);
 void *vec3f_set(Vec3f dest, f32 x, f32 y, f32 z);
 void *vec3f_add(Vec3f dest, Vec3f a);
@@ -40,9 +49,12 @@ void *vec3s_copy(Vec3s dest, Vec3s src);
 void *vec3s_set(Vec3s dest, s16 x, s16 y, s16 z);
 void *vec3s_add(Vec3s dest, Vec3s a);
 void *vec3s_sum(Vec3s dest, Vec3s a, Vec3s b);
+#define vec2_sumsq(v)       (  sqr((v)[0]) + sqr((v)[1]))
+#define vec3_sumsq(v)       (vec2_sumsq(v) + sqr((v)[2]))
 void *vec3s_sub(Vec3s dest, Vec3s a);
 void *vec3s_to_vec3f(Vec3f dest, Vec3s a);
 void *vec3f_to_vec3s(Vec3s dest, Vec3f a);
+
 void *find_vector_perpendicular_to_plane(Vec3f dest, Vec3f a, Vec3f b, Vec3f c);
 void *vec3f_cross(Vec3f dest, Vec3f a, Vec3f b);
 void *vec3f_normalize(Vec3f dest);

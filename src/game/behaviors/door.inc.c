@@ -110,24 +110,7 @@ void bhv_door_init(void) {
 }
 
 void bhv_star_door_loop_2(void) {
-    s32 sp4 = 0;
-    if (gMarioCurrentRoom != 0) {
-        if (o->oDoorUnkF8 == gMarioCurrentRoom)
-            sp4 = 1;
-        else if (gMarioCurrentRoom == o->oDoorUnkFC)
-            sp4 = 1;
-        else if (gMarioCurrentRoom == o->oDoorUnk100)
-            sp4 = 1;
-        else if (gDoorAdjacentRooms[gMarioCurrentRoom][0] == o->oDoorUnkFC)
-            sp4 = 1;
-        else if (gDoorAdjacentRooms[gMarioCurrentRoom][0] == o->oDoorUnk100)
-            sp4 = 1;
-        else if (gDoorAdjacentRooms[gMarioCurrentRoom][1] == o->oDoorUnkFC)
-            sp4 = 1;
-        else if (gDoorAdjacentRooms[gMarioCurrentRoom][1] == o->oDoorUnk100)
-            sp4 = 1;
-    } else
-        sp4 = 1;
+    s32 sp4 = 1;
     if (sp4 == 1) {
         o->header.gfx.node.flags |= GRAPH_RENDER_ACTIVE;
         D_8035FEE4++;

@@ -1666,9 +1666,6 @@ struct ParallelTrackingPoint sBBHLibraryParTrackPath[] = {
 s32 unused_update_mode_5_camera(UNUSED struct Camera *c, UNUSED Vec3f focus, UNUSED Vec3f pos) {
 }
 
-static void stub_camera_1(UNUSED s32 unused) {
-}
-
 void mode_boss_fight_camera(struct Camera *c) {
     c->nextYaw = update_boss_fight_camera(c, c->focus, c->pos);
 }
@@ -2980,7 +2977,6 @@ void update_camera(struct Camera *c) {
     c->defMode = gLakituState.defMode;
 
     camera_course_processing(c);
-    stub_camera_3(c);
     sCButtonsPressed = find_c_buttons_pressed(sCButtonsPressed, gPlayer1Controller->buttonPressed,
                                               gPlayer1Controller->buttonDown);
 
@@ -3084,7 +3080,6 @@ void update_camera(struct Camera *c) {
     }
     // Start any Mario-related cutscenes
     start_cutscene(c, get_cutscene_from_mario_status(c));
-    stub_camera_2(c);
     gCheckingSurfaceCollisionsForCamera = FALSE;
     if (gCurrLevelNum != LEVEL_CASTLE) {
         // If fixed camera is selected as the alternate mode, then fix the camera as long as the right
@@ -3433,12 +3428,6 @@ Gfx *geo_camera_main(s32 callContext, struct GraphNode *g, void *context) {
     return NULL;
 }
 
-void stub_camera_2(UNUSED struct Camera *c) {
-}
-
-void stub_camera_3(UNUSED struct Camera *c) {
-}
-
 void vec3f_sub(Vec3f dst, Vec3f src) {
     dst[0] -= src[0];
     dst[1] -= src[1];
@@ -3455,12 +3444,6 @@ void vec3f_to_object_pos(struct Object *o, Vec3f src) {
     o->oPosX = src[0];
     o->oPosY = src[1];
     o->oPosZ = src[2];
-}
-
-void unused_object_angle_to_vec3s(Vec3s dst, struct Object *o) {
-    dst[0] = o->oMoveAnglePitch;
-    dst[1] = o->oMoveAngleYaw;
-    dst[2] = o->oMoveAngleRoll;
 }
 
 /**

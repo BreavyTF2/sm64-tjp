@@ -385,7 +385,7 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
     register s32 x1, z1, x2, z2, x3, z3;
     f32 nx, ny, nz, oo, height;
     struct Surface *floor = NULL;
-
+    *pheight = FLOOR_LOWER_LIMIT;
     // Iterate through the list of floors until there are no more floors.
     while (surfaceNode != NULL) {
         surf = surfaceNode->surface;
@@ -421,21 +421,28 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
         ny = surf->normal.y;
         nz = surf->normal.z;
         oo = surf->originOffset;
-
+		// If a wall, ignore it. Likely a remnant, should never occur.
+		if (ny == 0.0f) {
+			continue;
+		}
         // Find the height of the floor at a given location.
         height = -(x * nx + nz * z + oo) / ny;
-		
-
+        if (height < *pheight) {
+            continue;
+        }
         // Checks for floor interaction with a 78 unit buffer.
-        if (y - (height - 78.0f) < 0.0f) {
+        if (y < (height - 78.0f)) {
             continue;
         }
         *pheight = height;
         floor = surf;
-		break;
+        if (height - 78.0f == y) {
+            break;
+        }
     }
     return floor;
 }
+
 
 /**
  * Find the height of the highest floor below a point.

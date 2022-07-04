@@ -1,4 +1,4 @@
-//Uses some of the source data with modifications
+//Heavily modified version of the original Blargg code.
 struct ObjectHitbox sBlarggHitbox = { //Custom Hitbox
     /* interactType: */ INTERACT_DAMAGE,
     /* downOffset: */ 0,
@@ -10,12 +10,7 @@ struct ObjectHitbox sBlarggHitbox = { //Custom Hitbox
     /* hurtboxRadius: */ 201,
     /* hurtboxHeight: */ 123,
 };
-void bhv_unbaba_init(void)
-{
-o->oAction++;
-obj_set_hitbox(o, &sBlarggHitbox);
-}
-void unbaba_act_init(void) //Duplicated to copy the old table
+void unbaba_act_init(void) // Why is this needed?
 {
 o->oAction++;
 obj_set_hitbox(o, &sBlarggHitbox);
@@ -125,7 +120,7 @@ void bhv_unbaba_loop(void) // Define what to do as well.
 {
 	switch (o->oAction) {
 	case 0:
-	unbaba_act_init(); //Needed for swim anim
+	unbaba_act_init(); //Initilize Hitbox
 	break;
 	case 1:
 	unbaba_act_swim();
@@ -137,8 +132,8 @@ void bhv_unbaba_loop(void) // Define what to do as well.
 	cur_obj_become_tangible();
 	cur_obj_update_walls2();
 	cur_obj_if_hit_wall_bounce_away();// Initiate Wall Collision
-	 cur_obj_scale(2.0f); // Scale Model to 2.0
-	 cur_obj_move_standard(-87); // Set wall collision type
+	cur_obj_scale(2.0f); // Scale Model to 2.0
+	cur_obj_move_standard(-87); // Set wall collision angle
     obj_check_attacks(&sBlarggHitbox, o->oAction);
 	cur_obj_call_action_function(sBlarggActions);
 }

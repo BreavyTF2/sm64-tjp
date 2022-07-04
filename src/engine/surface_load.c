@@ -11,6 +11,7 @@
 #include "game/object_helpers.h"
 #include "game/macro_special_objects.h"
 #include "surface_collision.h"
+#include "math_util.h"
 #include "game/mario.h"
 #include "game/object_list_processor.h"
 #include "surface_load.h"
@@ -68,7 +69,7 @@ static struct Surface *alloc_surface(void) {
  * Iterates through the entire partition, clearing the surfaces.
  */
 static void clear_spatial_partition(SpatialPartitionCell *cells) {
-    register s32 i = NUM_CELLS * NUM_CELLS;
+    register s32 i = sqr(NUM_CELLS);
 
     while (i--) {
         (*cells)[SPATIAL_PARTITION_FLOORS].next = NULL;
@@ -272,9 +273,6 @@ static void add_surface(struct Surface *surface, s32 dynamic) {
             add_surface_to_cell(dynamic, cellX, cellZ, surface);
         }
     }
-}
-
-static void stub_surface_load_1(void) {
 }
 
 /**
@@ -566,8 +564,7 @@ void load_area_terrain(s16 index, s16 *data, s8 *surfaceRooms, s16 *macroObjects
     // are prefixed by a terrain "type." This type is reused for surfaces as the surface
     // type.
     while (TRUE) {
-        terrainLoadType = *data;
-        data++;
+        terrainLoadType = *data++;
 
         if (TERRAIN_LOAD_IS_SURFACE_TYPE_LOW(terrainLoadType)) {
             load_static_surfaces(&data, vertexData, terrainLoadType, &surfaceRooms);
@@ -666,12 +663,10 @@ void load_object_surfaces(s16 **data, s16 *vertexData) {
     s16 flags;
     s16 room;
 
-    surfaceType = *(*data);
-    (*data)++;
+    surfaceType = *(*data)++;
 
-    numSurfaces = *(*data);
-    (*data)++;
-
+    numSurfaces = *(*data)++;
+	
     hasForce = surface_has_force(surfaceType);
 
     flags = surf_has_no_cam_collision(surfaceType) | SURFACE_FLAG_DYNAMIC;
@@ -710,6 +705,24 @@ void load_object_surfaces(s16 **data, s16 *vertexData) {
     }
 }
 
+static void get_optimal_coll_dist(struct Object *obj) {
+	s16 *collisionData = gCurrentObject->collisionData;
+    register f32 thisVertDist, maxDist = 0.0f;
+	register u32 vertsLeft = *(collisionData)++;
+    Vec3f v;
+    
+    obj->oFlags |= OBJ_FLAG_DONT_CALC_COLL_DIST;
+    collisionData++;
+    while (vertsLeft) {
+        vec3_prod(v, collisionData, obj->header.gfx.scale);
+        thisVertDist = vec3_sumsq(v);
+        if (thisVertDist > maxDist) maxDist = thisVertDist;
+        collisionData += 3;
+        vertsLeft--;
+    }
+    obj->oCollisionDistance = (sqrtf(maxDist) + 100.0f);
+}
+
 /**
  * Transform an object's vertices, reload them, and render the object.
  */
@@ -718,22 +731,25 @@ void load_object_collision_model(void) {
 
     s16 *collisionData = gCurrentObject->collisionData;
     f32 marioDist = gCurrentObject->oDistanceToMario;
-    f32 tangibleDist = gCurrentObject->oCollisionDistance;
 
     // On an object's first frame, the distance is set to 19000.0f.
     // If the distance hasn't been updated, update it now.
     if (gCurrentObject->oDistanceToMario == 19000.0f) {
         marioDist = dist_between_objects(gCurrentObject, gMarioObject);
     }
+	
+    if (!(gCurrentObject->oFlags & OBJ_FLAG_DONT_CALC_COLL_DIST)) {
+        get_optimal_coll_dist(gCurrentObject);
+    }
 
     // If the object collision is supposed to be loaded more than the
     // drawing distance of 4000, extend the drawing range.
-    if (gCurrentObject->oCollisionDistance > 4000.0f) {
+    if (gCurrentObject->oCollisionDistance > gCurrentObject->oDrawingDistance) {
         gCurrentObject->oDrawingDistance = gCurrentObject->oCollisionDistance;
     }
 
     // Update if no Time Stop, in range, and in the current room.
-    if (!(gTimeStopState & TIME_STOP_ACTIVE) && marioDist < tangibleDist
+    if (!(gTimeStopState & TIME_STOP_ACTIVE) && marioDist < gCurrentObject->oCollisionDistance
         && !(gCurrentObject->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
         collisionData++;
         transform_object_vertices(&collisionData, vertexData);

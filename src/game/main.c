@@ -116,15 +116,6 @@ void unknown_main_func(void) {
 #pragma GCC diagnostic pop
 }
 
-void stub_main_1(void) {
-}
-
-void stub_main_2(void) {
-}
-
-void stub_main_3(void) {
-}
-
 void setup_mesg_queues(void) {
     osCreateMesgQueue(&gDmaMesgQueue, gDmaMesgBuf, ARRAY_COUNT(gDmaMesgBuf));
     osCreateMesgQueue(&gSIEventMesgQueue, gSIEventMesgBuf, ARRAY_COUNT(gSIEventMesgBuf));
@@ -232,7 +223,6 @@ void pretend_audio_sptask_done(void) {
 void handle_vblank(void) {
     UNUSED s32 pad; // needed to pad the stack
 
-    stub_main_3();
     sNumVblanks++;
 #ifdef VERSION_SH
     if (gResetTimer > 0 && gResetTimer < 100) {
@@ -372,7 +362,6 @@ void thread3_main(UNUSED void *arg) {
                 handle_nmi_request();
                 break;
         }
-        stub_main_2();
     }
 }
 
@@ -467,7 +456,6 @@ void main_func(void) {
     UNUSED u8 pad[64]; // needed to pad the stack
 
     osInitialize();
-    stub_main_1();
     create_thread(&gIdleThread, 1, thread1_idle, NULL, gIdleThreadStack + 0x800, 100);
     osStartThread(&gIdleThread);
 }

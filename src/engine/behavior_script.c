@@ -107,12 +107,6 @@ static uintptr_t cur_obj_bhv_stack_pop(void) {
     return bhvAddr;
 }
 
-static void stub_behavior_script_1(void) {
-    for (;;) {
-        ;
-    }
-}
-
 // Command 0x22: Hides the current object.
 // Usage: HIDE()
 static s32 bhv_cmd_hide(void) {
@@ -837,9 +831,6 @@ static s32 bhv_cmd_animate_texture(void) {
 
     gCurBhvCommand++;
     return BHV_PROC_CONTINUE;
-}
-
-void stub_behavior_script_2(void) {
 }
 
 typedef s32 (*BhvCommandProc)(void);

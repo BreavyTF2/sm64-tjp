@@ -1368,9 +1368,6 @@ void cur_obj_move_y(f32 gravity, f32 bounciness, f32 buoyancy) {
     }
 }
 
-static void stub_obj_helpers_1(void) {
-}
-
 static s32 clear_move_flag(u32 *bitSet, s32 flag) {
     if (*bitSet & flag) {
         *bitSet &= flag ^ 0xFFFFFFFF;
@@ -2250,9 +2247,6 @@ void bhv_dust_smoke_loop(void) {
     o->oSmokeTimer++;
 }
 
-static void stub_obj_helpers_2(void) {
-}
-
 s32 cur_obj_set_direction_table(s8 *a0) {
     o->oToxBoxMovementPattern = a0;
     o->oToxBoxMovementStep = 0;
@@ -2274,9 +2268,6 @@ s32 cur_obj_progress_direction_table(void) {
     }
 
     return spF;
-}
-
-void stub_obj_helpers_3(UNUSED s32 sp0, UNUSED s32 sp4) {
 }
 
 void cur_obj_scale_over_time(s32 a0, s32 a1, f32 sp10, f32 sp14) {
@@ -2301,9 +2292,6 @@ void cur_obj_set_pos_to_home_with_debug(void) {
     o->oPosY = o->oHomeY + gDebugInfo[5][1];
     o->oPosZ = o->oHomeZ + gDebugInfo[5][2];
     cur_obj_scale(gDebugInfo[5][3] / 100.0f + 1.0l);
-}
-
-void stub_obj_helpers_4(void) {
 }
 
 s32 cur_obj_is_mario_on_platform(void) {
@@ -2396,9 +2384,6 @@ s32 is_item_in_array(s8 item, s8 *array) {
     }
 
     return FALSE;
-}
-
-static void stub_obj_helpers_5(void) {
 }
 
 void bhv_init_room(void) {
