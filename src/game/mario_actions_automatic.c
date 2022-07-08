@@ -16,6 +16,7 @@
 #include "camera.h"
 #include "level_table.h"
 #include "thread6.h"
+#include "game_init.h"
 
 #define POLE_NONE          0
 #define POLE_TOUCHED_FLOOR 1
@@ -115,7 +116,6 @@ s32 set_pole_position(struct MarioState *m, f32 offsetY) {
 s32 act_holding_pole(struct MarioState *m) {
     struct Object *marioObj = m->marioObj;
 
-#ifdef VERSION_JP
     if (m->input & INPUT_A_PRESSED) {
         add_tree_leaf_particles(m);
         m->faceAngle[1] += 0x8000;
@@ -127,20 +127,7 @@ s32 act_holding_pole(struct MarioState *m) {
         m->forwardVel = -2.0f;
         return set_mario_action(m, ACT_SOFT_BONK, 0);
     }
-#else
-    if ((m->input & INPUT_Z_PRESSED) || m->health < 0x100) {
-        add_tree_leaf_particles(m);
-        m->forwardVel = -2.0f;
-        return set_mario_action(m, ACT_SOFT_BONK, 0);
-    }
-
-    if (m->input & INPUT_A_PRESSED) {
-        add_tree_leaf_particles(m);
-        m->faceAngle[1] += 0x8000;
-        return set_mario_action(m, ACT_WALL_KICK_AIR, 0);
-    }
-#endif
-
+	
     if (m->controller->stickY > 16.0f) {
         f32 poleTop = m->usedObj->hitboxHeight - 100.0f;
         const BehaviorScript *poleBehavior = virtual_to_segmented(0x13, m->usedObj->behavior);
@@ -209,13 +196,16 @@ s32 act_climbing_pole(struct MarioState *m) {
     if (m->controller->stickY < 8.0f) {
         return set_mario_action(m, ACT_HOLDING_POLE, 0);
     }
-
-    marioObj->oMarioPolePos += m->controller->stickY / 8.0f;
+	if (gPlayer1Controller->buttonDown == B_BUTTON) {
+    marioObj->oMarioPolePos += m->controller->stickY / 6.0f;
+	} else marioObj->oMarioPolePos += m->controller->stickY / 8.0f;
     marioObj->oMarioPoleYawVel = 0;
     m->faceAngle[1] = cameraAngle - approach_s32((s16)(cameraAngle - m->faceAngle[1]), 0, 0x400, 0x400);
 
     if (set_pole_position(m, 0.0f) == POLE_NONE) {
-        sp24 = m->controller->stickY / 4.0f * 0x10000;
+		if (gPlayer1Controller->buttonDown == B_BUTTON) {
+        sp24 = m->controller->stickY / 3.0f * 0x10000;
+		} else sp24 = m->controller->stickY / 4.0f * 0x10000;
         set_mario_anim_with_accel(m, MARIO_ANIM_CLIMB_UP_POLE, sp24);
         add_tree_leaf_particles(m);
         play_climbing_sounds(m, 1);
@@ -345,9 +335,14 @@ s32 perform_hanging_step(struct MarioState *m, Vec3f nextPos) {
 s32 update_hang_moving(struct MarioState *m) {
     s32 stepResult;
     Vec3f nextPos;
-    f32 maxSpeed = 4.0f;
-
+	f32 maxSpeed; 
+	if (gPlayer1Controller->buttonDown & B_BUTTON) {	
+	maxSpeed = 6.0f;
+    m->forwardVel += 1.5f;
+	} else {
+	maxSpeed = 4.0f;
     m->forwardVel += 1.0f;
+	}
     if (m->forwardVel > maxSpeed) {
         m->forwardVel = maxSpeed;
     }

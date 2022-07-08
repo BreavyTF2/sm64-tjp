@@ -39,8 +39,7 @@ s16 sSurfacePoolSize;
  * Allocate the part of the surface node pool to contain a surface node.
  */
 static struct SurfaceNode *alloc_surface_node(void) {
-    struct SurfaceNode *node = &sSurfaceNodePool[gSurfaceNodesAllocated];
-    gSurfaceNodesAllocated++;
+    struct SurfaceNode *node = &sSurfaceNodePool[gSurfaceNodesAllocated++];
 
     node->next = NULL;
 
@@ -53,8 +52,7 @@ static struct SurfaceNode *alloc_surface_node(void) {
  */
 static struct Surface *alloc_surface(void) {
 
-    struct Surface *surface = &sSurfacePool[gSurfacesAllocated];
-    gSurfacesAllocated++;
+    struct Surface *surface = &sSurfacePool[gSurfacesAllocated++];
 
     surface->type = 0;
     surface->force = 0;
@@ -123,7 +121,7 @@ static void add_surface_to_cell(s16 dynamic, s16 cellX, s16 cellZ, struct Surfac
     //  many functions only use the first triangle in surface order that fits,
     //  missing higher surfaces.
     //  upperY would be a better sort method.
-    surfacePriority = surface->vertex1[1] * sortDir;
+    surfacePriority = surface->upperY * sortDir;
 
     newNode->surface = surface;
 
@@ -135,7 +133,7 @@ static void add_surface_to_cell(s16 dynamic, s16 cellX, s16 cellZ, struct Surfac
 
     // Loop until we find the appropriate place for the surface in the list.
     while (list->next != NULL) {
-        priority = list->next->surface->vertex1[1] * sortDir;
+        priority = list->next->surface->upperY * sortDir;
 
         if (surfacePriority > priority) {
             break;
@@ -199,15 +197,10 @@ static s16 lower_cell_index(s16 coord) {
     //! Some wall checks are larger than the buffer, meaning wall checks can
     //  miss walls that are near a cell border.
     if (coord % CELL_SIZE < 50) {
-        index -= 1;
+        index--;
     }
 
-    if (index < 0) {
-        index = 0;
-    }
-
-    // Potentially > 15, but since the upper index is <= 15, not exploitable
-    return index;
+	return MAX(0, index);
 }
 
 /**
@@ -231,15 +224,10 @@ static s16 upper_cell_index(s16 coord) {
     //! Some wall checks are larger than the buffer, meaning wall checks can
     //  miss walls that are near a cell border.
     if (coord % CELL_SIZE > CELL_SIZE - 50) {
-        index += 1;
+        index++;
     }
 
-    if (index > (NUM_CELLS - 1)) {
-        index = (NUM_CELLS - 1);
-    }
-
-    // Potentially < 0, but since lower index is >= 0, not exploitable
-    return index;
+	return MIN((NUM_CELLS - 1), index);
 }
 
 /**
@@ -427,8 +415,7 @@ static void load_static_surfaces(s16 **data, s16 *vertexData, s16 surfaceType, s
 
     for (i = 0; i < numSurfaces; i++) {
         if (*surfaceRooms != NULL) {
-            room = *(*surfaceRooms);
-            *surfaceRooms += 1;
+            room = *(*surfaceRooms)++;
         }
 
         surface = read_surface_data(vertexData, data);
@@ -448,7 +435,7 @@ static void load_static_surfaces(s16 **data, s16 *vertexData, s16 surfaceType, s
 
         *data += 3;
         if (hasForce) {
-            *data += 1;
+            (*data)++;
         }
     }
 }
@@ -477,7 +464,6 @@ static void load_environmental_regions(s16 **data) {
 
     for (i = 0; i < numRegions; i++) {
 		*data += 5;
-
         gEnvironmentLevels[i] = *(*data)++;
     }
 }
@@ -490,7 +476,7 @@ void alloc_surface_pools(void) {
     sSurfaceNodePool = main_pool_alloc(7000 * sizeof(struct SurfaceNode), MEMORY_POOL_LEFT);
     sSurfacePool = main_pool_alloc(sSurfacePoolSize * sizeof(struct Surface), MEMORY_POOL_LEFT);
 
-    gCCMEnteredSlide = 0;
+    gCCMEnteredSlide = FALSE;
     reset_red_coins_collected();
 }
 
@@ -705,12 +691,12 @@ void load_object_surfaces(s16 **data, s16 *vertexData) {
     }
 }
 
+#if 0
 static void get_optimal_coll_dist(struct Object *obj) {
 	s16 *collisionData = gCurrentObject->collisionData;
     register f32 thisVertDist, maxDist = 0.0f;
 	register u32 vertsLeft = *(collisionData)++;
     Vec3f v;
-    
     obj->oFlags |= OBJ_FLAG_DONT_CALC_COLL_DIST;
     collisionData++;
     while (vertsLeft) {
@@ -722,7 +708,7 @@ static void get_optimal_coll_dist(struct Object *obj) {
     }
     obj->oCollisionDistance = (sqrtf(maxDist) + 100.0f);
 }
-
+#endif
 /**
  * Transform an object's vertices, reload them, and render the object.
  */
@@ -737,11 +723,11 @@ void load_object_collision_model(void) {
     if (gCurrentObject->oDistanceToMario == 19000.0f) {
         marioDist = dist_between_objects(gCurrentObject, gMarioObject);
     }
-	
+#if 0
     if (!(gCurrentObject->oFlags & OBJ_FLAG_DONT_CALC_COLL_DIST)) {
         get_optimal_coll_dist(gCurrentObject);
     }
-
+#endif
     // If the object collision is supposed to be loaded more than the
     // drawing distance of 4000, extend the drawing range.
     if (gCurrentObject->oCollisionDistance > gCurrentObject->oDrawingDistance) {

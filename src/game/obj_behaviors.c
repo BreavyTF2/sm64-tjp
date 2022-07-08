@@ -711,7 +711,7 @@ void obj_check_floor_death(s16 collisionFlags, struct Surface *floor) {
             case SURFACE_BURNING:
                 o->oAction = OBJ_ACT_LAVA_DEATH;
                 break;
-            //! @BUG Doesn't check for the vertical wind death floor.
+            case SURFACE_VERTICAL_WIND:
             case SURFACE_DEATH_PLANE:
                 o->oAction = OBJ_ACT_DEATH_PLANE_DEATH;
                 break;

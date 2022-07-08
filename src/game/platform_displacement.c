@@ -99,9 +99,6 @@ void apply_platform_displacement(u32 isMario, struct Object *platform) {
     Vec3f relativeOffset;
     Vec3f newObjectOffset;
     Vec3s rotation;
-    UNUSED s16 unused1;
-    UNUSED s16 unused2;
-    UNUSED s16 unused3;
     f32 displaceMatrix[4][4];
 
     rotation[0] = platform->oAngleVelPitch;
@@ -121,9 +118,6 @@ void apply_platform_displacement(u32 isMario, struct Object *platform) {
     z += platform->oVelZ;
 
     if (rotation[0] != 0 || rotation[1] != 0 || rotation[2] != 0) {
-        unused1 = rotation[0];
-        unused2 = rotation[2];
-        unused3 = platform->oFaceAngleYaw;
 
         if (isMario) {
             gMarioStates[0].faceAngle[1] += rotation[1];

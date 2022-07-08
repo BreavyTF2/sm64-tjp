@@ -660,13 +660,13 @@ const BehaviorScript bhvCannonBarrel[] = {
 const BehaviorScript bhvCannonBaseUnused[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-	LOAD_COLLISION_DATA(cannon_body_collision_080043D0),
+//	LOAD_COLLISION_DATA(cannon_body_collision_080043D0),
 	SET_FLOAT(oCollisionDistance, 500),
     BILLBOARD(),
     SET_INT(oAnimState, -1),
     BEGIN_REPEAT(8),
         CALL_NATIVE(bhv_cannon_base_unused_loop),
-	CALL_NATIVE(load_object_collision_model),
+//	CALL_NATIVE(load_object_collision_model),
         ADD_INT(oAnimState, 1),
     END_REPEAT(),
     DEACTIVATE(),
@@ -5731,24 +5731,18 @@ const BehaviorScript bhvRecoveryHeart[] = {
 };
 
 const BehaviorScript bhvWaterBombCannon[] = {
-    BEGIN(OBJ_LIST_SURFACE),
+    BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-	LOAD_COLLISION_DATA(cannon_body_collision_080043D0),
-	SET_FLOAT(oCollisionDistance, 500),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_water_bomb_cannon_loop),
-	CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 
 const BehaviorScript bhvCannonBarrelBubbles[] = {
-    BEGIN(OBJ_LIST_SURFACE),
-LOAD_COLLISION_DATA(cannon_barrel_collision_080053D0),
-	SET_FLOAT(oCollisionDistance, 500),
+    BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_bubble_cannon_barrel_loop),
-CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 

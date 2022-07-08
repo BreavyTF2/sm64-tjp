@@ -38,7 +38,6 @@ s16 gSnowParticleMaxCount;
 
 /* DATA */
 s8 gEnvFxMode = 0;
-UNUSED s32 D_80330644 = 0;
 
 /// Template for a snow particle triangle
 Vtx gSnowTempVtx[3] = { { { { -5, 5, 0 }, 0, { 0, 0 }, { 0x7F, 0x7F, 0x7F, 0xFF } } },

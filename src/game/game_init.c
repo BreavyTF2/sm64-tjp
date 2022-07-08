@@ -43,7 +43,6 @@ void *D_80339CF0;
 void *D_80339CF4;
 struct MarioAnimation D_80339D10;
 struct MarioAnimation gDemo;
-UNUSED u8 filler80339D30[0x90];
 
 s32 unused8032C690 = 0;
 u32 gGlobalTimer = 0;
@@ -371,7 +370,6 @@ static void record_demo(void) {
 // take the updated controller struct and calculate
 // the new x, y, and distance floats.
 void adjust_analog_stick(struct Controller *controller) {
-    UNUSED u8 pad[8];
 
     // reset the controller's x and y floats.
     controller->stickX = 0;
@@ -560,7 +558,6 @@ void init_controllers(void) {
 }
 
 void setup_game_memory(void) {
-    UNUSED u8 pad[8];
 
     set_segment_base_addr(0, (void *) 0x80000000);
     osCreateMesgQueue(&D_80339CB8, &D_80339CD4, 1);

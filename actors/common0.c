@@ -15,10 +15,7 @@
 #include "cannon_lid/model.inc.c"
 #include "cannon_lid/collision.inc.c"
 #include "cannon_base/model.inc.c"
-#include "cannon_base/collision.inc.c"
-
 #include "cannon_barrel/model.inc.c"
-#include "cannon_barrel/collision.inc.c"
 
 #include "chuckya/model.inc.c"
 #include "chuckya/anims/data.inc.c"

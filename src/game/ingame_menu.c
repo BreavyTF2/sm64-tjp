@@ -2822,8 +2822,8 @@ void render_course_complete_lvl_info_and_hud_str(void) {
 #define textCourse gTextCourseArr[gInGameLanguage]
 #else
     u8 textCourse[] = { TEXT_COURSE };
-    UNUSED u8 textCatch[] = { TEXT_CATCH }; // unused in US
-    UNUSED u8 textClear[] = { TEXT_CLEAR };
+    u8 textCatch[] = { TEXT_CATCH }; // unused in US
+    u8 textClear[] = { TEXT_CLEAR };
     u8 textSymStar[] = { GLYPH_STAR, GLYPH_SPACE };
 #endif
 

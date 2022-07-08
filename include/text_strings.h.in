@@ -200,8 +200,8 @@
 #define TEXT_NORMAL_FIXED __("(NORMAL)(FIXED)")
 
 // Course Completed Misc Text
-#define TEXT_CATCH _("CATCH")
-#define TEXT_CLEAR _("CLEAR")
+#define TEXT_CATCH _("CATCH!")
+#define TEXT_CLEAR _("CLEAR!")
 #define TEXT_HUD_HI_SCORE _("HI SCORE")
 
 // Save Options
