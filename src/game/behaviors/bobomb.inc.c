@@ -17,18 +17,21 @@ void bhv_bobomb_init(void) {
     o->oFriction = 0.8;
     o->oBuoyancy = 1.3;
     o->oInteractionSubtype = INT_SUBTYPE_KICKABLE;
-	cur_obj_scale(2.0f);
+	if (o->oBehParams2ndByte == 3) {
+	cur_obj_scale(3.0f);
+	} else cur_obj_scale(2.0f);
 }
 
 void bobomb_spawn_coin(void) {
     if (((o->oBehParams >> 8) & 0x1) == 0) {
         obj_spawn_yellow_coins(o, 1);
         o->oBehParams = 0x100;
-        set_object_respawn_info_bits(o, 1);
+        set_object_respawn_info_bits(o, 2);
     }
 }
 
 void bobomb_act_explode(void) {
+	struct Object *respawner;
     struct Object *explosion;
 	o->oBobombFuseTimer = 151;
 	cur_obj_init_animation(1);
@@ -37,7 +40,7 @@ void bobomb_act_explode(void) {
     else {
         explosion = spawn_object(o, MODEL_EXPLOSION, bhvExplosion);
         explosion->oGraphYOffset += 50.0f;
-
+		explosion->oBehParams = o->oBehParams;
         bobomb_spawn_coin();
         create_respawner(MODEL_BLACK_BOBOMB, bhvBobomb, 3000);
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
@@ -168,7 +171,7 @@ void stationary_bobomb_free_loop(void) {
 }
 
 void bobomb_free_loop(void) {
-    if (o->oBehParams2ndByte == BOBOMB_BP_STYPE_GENERIC)
+    if (o->oBehParams2ndByte == BOBOMB_BP_STYPE_GENERIC || o->oBehParams2ndByte == 3)
         generic_bobomb_free_loop();
     else
         stationary_bobomb_free_loop();

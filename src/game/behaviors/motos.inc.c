@@ -184,8 +184,9 @@ void motos_pitch(void)
 	cur_obj_init_animation_with_sound(6);
 	if ( cur_obj_check_anim_frame(7) ) cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN4);
 	
-	if ( cur_obj_check_anim_frame(14) ) o->oMotosUnk88 = 2;
-	
+	if ( cur_obj_check_anim_frame(14) ) { o->oMotosUnk88 = 2;
+	o->numCollidedObjs = 10;
+	}
 	if ( cur_obj_check_if_near_animation_end() )	
 	o->oAction = 0;
 
@@ -389,6 +390,7 @@ void motos_pitch2(void) //Throwing Fire action for Fire Motos
 		
 	if ( cur_obj_check_anim_frame(18) ){
 		o->oMotosUnk88 = 4;
+		o->numCollidedObjs = 10;
 	}
 	if ( cur_obj_check_if_near_animation_end() ) {
 	o->oAction = 0;

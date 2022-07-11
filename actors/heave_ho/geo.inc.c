@@ -3,13 +3,14 @@ const GeoLayout heave_ho_geo[] = {
  hmsBegin()
  hmsScale(0.25f)
     hmsBegin()
-      hmsJoint(RM_SURF,NULL,0,0,0)
+      hmsJoint(RM_SURF,NULL,0,0,-47)
       hmsBegin()
          hmsJoint(RM_SURF,RCP_omurobo_anim_run9,0,0,0)  /* ,omu_bar,(14) */
          hmsBegin()
             hmsJoint(RM_SURF,NULL,189,-28,0)  /* ,chn4,(13) */
             hmsBegin()
                hmsJoint(RM_SURF,RCP_omurobo_anim_run8,0,0,0)  /* ,omu_ita,(10) */
+			   hmsCProg(0, MotosProc1)
                hmsJoint(RM_SURF,RCP_omurobo_anim_run5,0,0,0)  /* ,omu_Larm,(6) */
                hmsJoint(RM_SURF,RCP_omurobo_anim_run0,0,0,0)  /* ,omu_Rarm,(0) */
 	           hmsBegin()

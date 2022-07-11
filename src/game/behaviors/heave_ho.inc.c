@@ -12,6 +12,7 @@ void bhv_heave_ho_throw_mario_loop(void) {
         case 0:
             break;
         case 1:
+			obj_set_gfx_pos_at_obj_pos(gMarioObject, o);
             break;
         case 2:
             cur_obj_play_sound_2(SOUND_OBJ_HEAVEHO_TOSSED);
@@ -65,7 +66,7 @@ void heave_ho_act_3(void) {
         o->oHeaveHoUnk88 = 2;
     if (o->oTimer == 1) {
         cur_obj_init_animation_with_accel_and_sound(1, 1.0f);
-        o->numCollidedObjs = 20;
+//        o->numCollidedObjs = 20;
     }
     if (cur_obj_check_if_near_animation_end())
         o->oAction = 1;

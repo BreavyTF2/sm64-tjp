@@ -819,7 +819,7 @@ s32 act_charge(struct MarioState *m) {
         return set_mario_action(m, ACT_CROUCH_SLIDE, 0);
     }
     if (m->actionArg == 1 ) {
-        play_sound(SOUND_MARIO_EEUH, m->marioObj->header.gfx.cameraToObject);
+        play_sound(SOUND_MARIO_OKEY_DOKEY, m->marioObj->header.gfx.cameraToObject);
         m->actionArg = 2;
     }
 

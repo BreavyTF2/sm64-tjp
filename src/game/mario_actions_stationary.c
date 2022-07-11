@@ -107,6 +107,7 @@ s32 act_idle(struct MarioState *m) {
     if (m->quicksandDepth > 30.0f) {
         return set_mario_action(m, ACT_IN_QUICKSAND, 0);
     }
+	
 
     if (m->input & INPUT_IN_POISON_GAS) {
         return set_mario_action(m, ACT_COUGHING, 0);
@@ -122,6 +123,9 @@ s32 act_idle(struct MarioState *m) {
 	if (m->actionState == 3) {
 		if (m->floor->type == SURFACE_SHIP) {
             return set_mario_action(m, ACT_CRYING, 0);
+		}
+		if (m->floor->type == SURFACE_ELECTRIC) {
+			return set_mario_action(m, ACT_UNKNOWN_0002020E, 0);
 		}
 	}
     if (m->actionState == 4) {
@@ -599,6 +603,25 @@ s32 act_in_quicksand(struct MarioState *m) {
     return FALSE;
 }
 
+s32 act_electric_idle(struct MarioState *m) {
+    play_sound_if_no_flag(m, SOUND_MARIO_MAMA_MIA, MARIO_ACTION_SOUND_PLAYED);
+    play_sound(SOUND_MOVING_SHOCKED, m->marioObj->header.gfx.cameraToObject);
+    set_camera_shake_from_hit(SHAKE_SHOCK);
+	m->health -= 12;
+    if (set_mario_animation(m, MARIO_ANIM_SHOCKED) == 0) {
+		
+        m->actionTimer++;
+        m->flags |= MARIO_METAL_SHOCK;
+    }
+
+    if (m->actionTimer >= 4) {
+            m->invincTimer = 30;
+            set_mario_action(m, m->health < 0x0100 ? ACT_ELECTROCUTION : ACT_IDLE, 0);
+    }
+    stationary_ground_step(m);
+    return FALSE;
+}
+
 s32 act_crouching(struct MarioState *m) {
     if (m->input & INPUT_UNKNOWN_10) {
         return set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
@@ -645,6 +668,9 @@ s32 act_panting(struct MarioState *m) {
     if (m->input & INPUT_UNKNOWN_10) {
         return set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
     }
+	if (m->floor->type == SURFACE_ELECTRIC && m->actionTimer >= 4) {
+			return set_mario_action(m, ACT_UNKNOWN_0002020E, 0);
+		}
 	m->health += 1;
     if (m->health >= 0x500) {
         return set_mario_action(m, ACT_IDLE, 0);
@@ -656,7 +682,8 @@ s32 act_panting(struct MarioState *m) {
 
     if (set_mario_animation(m, MARIO_ANIM_WALK_PANTING) == 1) {
         play_sound(SOUND_MARIO_PANTING + ((gAudioRandom % 3U) << 0x10),
-                   m->marioObj->header.gfx.cameraToObject);
+        m->marioObj->header.gfx.cameraToObject);
+		m->actionTimer++;
     }
 
     stationary_ground_step(m);
@@ -1215,6 +1242,7 @@ s32 mario_execute_stationary_action(struct MarioState *m) {
         case ACT_HOLD_IDLE:               cancel = act_hold_idle(m);                        break;
         case ACT_HOLD_HEAVY_IDLE:         cancel = act_hold_heavy_idle(m);                  break;
         case ACT_IN_QUICKSAND:            cancel = act_in_quicksand(m);                     break;
+        case ACT_UNKNOWN_0002020E:        cancel = act_electric_idle(m);                    break;
         case ACT_STANDING_AGAINST_WALL:   cancel = act_standing_against_wall(m);            break;
         case ACT_COUGHING:                cancel = act_coughing(m);                         break;
         case ACT_SHIVERING:               cancel = act_shivering(m);                        break;

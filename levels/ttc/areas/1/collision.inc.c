@@ -1473,7 +1473,7 @@ const Collision ttc_seg7_collision_level[] = {
     COL_TRI(324, 329, 330),
     COL_TRI(324, 331, 329),
     COL_TRI(324, 330, 327),
-    COL_TRI_INIT(SURFACE_NO_CAM_COLLISION, 414),
+    COL_TRI_INIT(SURFACE_ELECTRIC, 414),
     COL_TRI(360, 361, 362),
     COL_TRI(360, 362, 363),
     COL_TRI(360, 364, 361),

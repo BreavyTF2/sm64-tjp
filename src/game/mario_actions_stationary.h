@@ -17,6 +17,7 @@ s32 act_crying(struct MarioState *m);
 s32 act_coughing(struct MarioState *m);
 s32 act_standing_against_wall(struct MarioState *m);
 s32 act_in_quicksand(struct MarioState *m);
+s32 act_electric_idle(struct MarioState *m);
 s32 act_crouching(struct MarioState *m);
 s32 act_panting(struct MarioState *m);
 void stopping_step(struct MarioState *m, s32 animID, u32 action);
