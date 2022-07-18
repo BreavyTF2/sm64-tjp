@@ -1532,9 +1532,6 @@ s32 update_boss_fight_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
         switch (gCurrLevelArea) {
             case AREA_BOB:
                 pos[1] += 125.f;
-                //! fall through, makes the BoB boss fight camera move up twice as high as it should
-            case AREA_WF:
-                pos[1] += 125.f;
         }
     }
 
@@ -6278,12 +6275,8 @@ s16 camera_course_processing(struct Camera *c) {
                 if (set_mode_if_not_set_by_surface(c, CAMERA_MODE_NONE) == 0) {
                     if (sMarioGeometry.currFloorType == SURFACE_BOSS_FIGHT_CAMERA) {
                         set_camera_mode_boss_fight(c);
-                    } else {
-                        if (c->mode == CAMERA_MODE_CLOSE) {
-                            transition_to_camera_mode(c, CAMERA_MODE_RADIAL, 60);
-                        } else {
-                            set_camera_mode_radial(c, 60);
-                        }
+                    } else if (c->mode != (CAMERA_MODE_FREE_ROAM | CAMERA_MODE_RADIAL)) {
+                            transition_to_camera_mode(c, CAMERA_MODE_FREE_ROAM, 90);
                     }
                 }
                 break;

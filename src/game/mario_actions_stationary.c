@@ -607,7 +607,7 @@ s32 act_electric_idle(struct MarioState *m) {
     play_sound_if_no_flag(m, SOUND_MARIO_MAMA_MIA, MARIO_ACTION_SOUND_PLAYED);
     play_sound(SOUND_MOVING_SHOCKED, m->marioObj->header.gfx.cameraToObject);
     set_camera_shake_from_hit(SHAKE_SHOCK);
-	m->health -= 12;
+	m->health -= 8;
     if (set_mario_animation(m, MARIO_ANIM_SHOCKED) == 0) {
 		
         m->actionTimer++;
