@@ -8,8 +8,6 @@
 #include "common0.h"
 
 #include "blue_coin_switch/geo.inc.c"
-// Hmm, this is included earlier.
-#include "test_platform/geo.inc.c"
 #include "amp/geo.inc.c"
 #include "cannon_base/geo.inc.c"
 #include "cannon_barrel/geo.inc.c"

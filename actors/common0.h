@@ -248,5 +248,8 @@ extern const Gfx purple_switch_seg8_dl_0800C6E0[];
 extern const Gfx purple_switch_seg8_dl_0800C718[];
 extern const Collision purple_switch_seg8_collision_0800C7A8[];
 
+// test_platform
+extern const Gfx unknown_seg8_dl_08026260[];
+extern const Collision unknown_seg8_collision_080262F8[];
 
 #endif

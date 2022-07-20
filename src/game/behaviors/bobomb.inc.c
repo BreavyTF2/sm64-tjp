@@ -31,7 +31,6 @@ void bobomb_spawn_coin(void) {
 }
 
 void bobomb_act_explode(void) {
-	struct Object *respawner;
     struct Object *explosion;
 	o->oBobombFuseTimer = 151;
 	cur_obj_init_animation(1);

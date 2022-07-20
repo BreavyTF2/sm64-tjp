@@ -58,3 +58,6 @@
 #include "motos/anims/data.inc.c"
 #include "motos/anims/table.inc.c"
 #include "icemotos/model.inc.c"
+
+#include "test_platform/model.inc.c"
+#include "test_platform/collision.inc.c"

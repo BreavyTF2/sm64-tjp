@@ -150,6 +150,7 @@ void spawn_mist_particles_variable(s32 count, s32 offsetY, f32 size) {
 #include "behaviors/wind.inc.c"
 #include "behaviors/unused_particle_spawn.inc.c"
 #include "behaviors/ukiki_cage.inc.c"
+#include "behaviors/testlift.inc.c"
 #include "behaviors/falling_rising_platform.inc.c"
 #include "behaviors/fishing_boo.inc.c"
 #include "behaviors/flamethrower.inc.c"

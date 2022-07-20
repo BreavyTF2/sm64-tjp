@@ -39,10 +39,11 @@ static const LevelScript script_func_local_8[] = {
 };
 
 static const LevelScript script_func_local_9[] = {
-		  OBJECT(/*model*/ MODEL_CASTLE_GROUNDS_WARP_PIPE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
+		  OBJECT(/*model*/ MODEL_CASTLE_GROUNDS_WARP_PIPE, /*pos*/ 0, 0, -1000, /*angle*/ 0, 0, 0, /*behParam*/ 0x00330000, /*beh*/ bhvWarpPipe),
 		  WARP_NODE(/*id*/ 0x33, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x33, /*flags*/ WARP_NO_CHECKPOINT),
+		  OBJECT_LEAK(MODEL_VCUTM_CHECKERBOARD_PLATFORM_SPAWNER,	0, 0, 1000,   0,0,0,  0,0,0, bhvTestLift), //TestLift
 		  OBJECT_LEAK(MODEL_DICE		,	1000, 0,   -100,   0,0,0,  0,0,0, bhvStub1D70), //Dice
-		  OBJECT_LEAK(MODEL_UNKNOWN_58		,	-1000, 0,   400,   0,0,0,  0,1,0, bhvStub1D0C), //Fire Motos
+		  OBJECT_LEAK(MODEL_UNKNOWN_58		,	-2500, 0,   400,   0,0,0,  0,1,0, bhvStub1D0C), //Fire Motos
 		  
     RETURN(),
 };
@@ -83,7 +84,7 @@ const LevelScript level_yajima_entry[] = {
 //			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,    -800,  250,  1500,   0,0,0,  0,1, 0, bhvExclamationBox 	 	),
 //			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,   -1200,  250,  1500,   0,0,0,  0,2, 0, bhvExclamationBox 	 	),
 
-			 OBJECT_LEAK(MODEL_BREAKABLE_BOX		,	-2867, 331,   -895,   0,0,0,  0,0,0, bhvUnused2A54	), //Dummy actor.
+			 OBJECT_LEAK(MODEL_BREAKABLE_BOX		,	-2867, 331,   -895,   0,0,0,  0,0,0, bhvUnused2A54	), //Rolling Sphere Test Object?
 
 			OBJECT_LEAK(MODEL_PURPLE_SWITCH,    0, 0, -900,   0,0,0,  0,0,0,	bhvFloorSwitchGrills ),
 

@@ -3197,6 +3197,17 @@ const BehaviorScript bhvUnused2A54[] = {
     BREAK(),
 };
 
+const BehaviorScript bhvTestLift[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+	OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW)),
+	LOAD_COLLISION_DATA(unknown_seg8_collision_080262F8),
+	SET_FLOAT(oCollisionDistance, 5000),
+    BEGIN_LOOP(),
+        CALL_NATIVE(s_testlift),
+    END_LOOP(),
+    BREAK(),
+};
+
 const BehaviorScript bhvCastleFloorTrap[] = {
     BEGIN(OBJ_LIST_DEFAULT),
 //    DISABLE_RENDERING(),

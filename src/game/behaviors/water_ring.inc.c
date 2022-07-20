@@ -2,7 +2,7 @@
 
 f32 water_ring_calc_mario_dist(void) {
     f32 marioDistX = o->oPosX - gMarioObject->header.gfx.pos[0];
-    f32 marioDistY = o->oPosY - (gMarioObject->header.gfx.pos[1] + 20.0f);
+    f32 marioDistY = o->oPosY - (gMarioObject->header.gfx.pos[1] + 80.0f);
     f32 marioDistZ = o->oPosZ - gMarioObject->header.gfx.pos[2];
     f32 marioDistInFront = marioDistX * o->oWaterRingNormalX + marioDistY * o->oWaterRingNormalY
                            + marioDistZ * o->oWaterRingNormalZ;
@@ -21,7 +21,7 @@ void water_ring_init(void) {
     //  This cause the ring's orientation for the purposes of collision to be
     //  different than the graphical orientation, which means that Mario won't
     //  necessarily collect a ring even if he appears to swim through it.
-    o->oWaterRingNormalX = coss(o->oFaceAnglePitch) * sins(o->oFaceAngleYaw);
+    o->oWaterRingNormalX = coss(o->oFaceAnglePitch) * sins(o->oFaceAngleYaw) * -1.0f;
     o->oWaterRingNormalY = coss(o->oFaceAnglePitch) * coss(o->oFaceAngleYaw);
     o->oWaterRingNormalZ = sins(o->oFaceAnglePitch);
 

@@ -42,8 +42,8 @@ void manta_ray_move(void) {
     o->oMantaUnkF8 = o->oPathedTargetYaw;
     o->oMantaUnkF4 = o->oPathedTargetPitch;
     o->oForwardVel = 10.0f;
-    o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oMantaUnkF8, 0x80);
-    o->oMoveAnglePitch = approach_s16_symmetric(o->oMoveAnglePitch, o->oMantaUnkF4, 0x80);
+    o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oMantaUnkF8, 10*0x10);
+    o->oMoveAnglePitch = approach_s16_symmetric(o->oMoveAnglePitch, o->oMantaUnkF4, 10*0x10);
     if ((s16) o->oMantaUnkF8 != (s16) o->oMoveAngleYaw) {
         o->oMoveAngleRoll -= 91;
         if (o->oMoveAngleRoll < -5461.3332)
