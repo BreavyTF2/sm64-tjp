@@ -68,86 +68,24 @@ s8 gameOverBackgroundTable[] = {
 s8 gameOverBackgroundFlipOrder[] = { 0x00, 0x01, 0x02, 0x03, 0x07, 0x0B,
                                      0x0a, 0x09, 0x08, 0x04, 0x05, 0x06 };
 
-Gfx *geo_title_screen(s32 sp50, struct GraphNode *sp54, UNUSED void *context) {
+Gfx *geo_title_screen(s32 sp50, UNUSED struct GraphNode *sp54, UNUSED void *context) {
     struct GraphNode *graphNode; // sp4c
     Gfx *displayList;            // sp48
     Gfx *displayListIter;        // sp44
     Mtx *scaleMat;               // sp40
-    f32 *scaleTable1;            // sp3c
-    f32 *scaleTable2;            // sp38
-    f32 scaleX;                  // sp34
-    f32 scaleY;                  // sp30
-    f32 scaleZ;                  // sp2c
     graphNode = sp54;
     displayList = NULL;
     displayListIter = NULL;
-    scaleTable1 = segmented_to_virtual(intro_seg7_table_0700C790);
-    scaleTable2 = segmented_to_virtual(intro_seg7_table_0700C880);
-    if (sp50 != 1) {
-        gTitleZoomCounter = 0;
-    } else if (sp50 == 1) {
+    if (sp50 == 1) {
         graphNode->flags = (graphNode->flags & 0xFF) | 0x100;
         scaleMat = alloc_display_list(sizeof(*scaleMat));
         displayList = alloc_display_list(4 * sizeof(*displayList));
         displayListIter = displayList;
-        if (gTitleZoomCounter >= 0 && gTitleZoomCounter < INTRO_STEPS_ZOOM_IN) {
-            scaleX = scaleTable1[gTitleZoomCounter * 3];
-            scaleY = scaleTable1[gTitleZoomCounter * 3 + 1];
-            scaleZ = scaleTable1[gTitleZoomCounter * 3 + 2];
-        } else if (gTitleZoomCounter >= INTRO_STEPS_ZOOM_IN && gTitleZoomCounter < INTRO_STEPS_HOLD_1) {
-            scaleX = 1.0f;
-            scaleY = 1.0f;
-            scaleZ = 1.0f;
-        } else if (gTitleZoomCounter >= INTRO_STEPS_HOLD_1
-                   && gTitleZoomCounter < INTRO_STEPS_ZOOM_OUT) {
-            scaleX = scaleTable2[(gTitleZoomCounter - INTRO_STEPS_HOLD_1) * 3];
-            scaleY = scaleTable2[(gTitleZoomCounter - INTRO_STEPS_HOLD_1) * 3 + 1];
-            scaleZ = scaleTable2[(gTitleZoomCounter - INTRO_STEPS_HOLD_1) * 3 + 2];
-        } else {
-            scaleX = 0.0f;
-            scaleY = 0.0f;
-            scaleZ = 0.0f;
-        }
-        guScale(scaleMat, scaleX, scaleY, scaleZ);
+        guScale(scaleMat, 1.0f, 1.0f, 0.0f);
         gSPMatrix(displayListIter++, scaleMat, G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
-        gSPDisplayList(displayListIter++, &intro_seg7_dl_0700B3A0);
+        gSPDisplayList(displayListIter++, &nintendo_logo_dl_mesh);
         gSPPopMatrix(displayListIter++, G_MTX_MODELVIEW);
         gSPEndDisplayList(displayListIter);
-        gTitleZoomCounter++;
-    }
-    return displayList;
-}
-
-Gfx *geo_fade_transition(s32 sp40, struct GraphNode *sp44, UNUSED void *context) {
-    struct GraphNode *graphNode = sp44; // sp3c
-    Gfx *displayList = NULL;            // sp38
-    Gfx *displayListIter = NULL;        // sp34
-    if (sp40 != 1) {
-        gTitleFadeCounter = 0; // D_801B985C
-    } else if (sp40 == 1) {
-        displayList = alloc_display_list(5 * sizeof(*displayList));
-        displayListIter = displayList;
-        gSPDisplayList(displayListIter++, dl_proj_mtx_fullscreen);
-        gDPSetEnvColor(displayListIter++, 255, 255, 255, gTitleFadeCounter);
-        if (gTitleFadeCounter == 255) {
-            if (0) {
-            }
-            graphNode->flags = (graphNode->flags & 0xFF) | 0x100;
-            gDPSetRenderMode(displayListIter++, G_RM_AA_OPA_SURF, G_RM_AA_OPA_SURF2);
-        } else {
-            graphNode->flags = (graphNode->flags & 0xFF) | 0x500;
-            gDPSetRenderMode(displayListIter++, G_RM_AA_XLU_SURF, G_RM_AA_XLU_SURF2);
-            if (0) {
-            }
-        }
-        gSPDisplayList(displayListIter++, &intro_seg7_dl_0700C6A0);
-        gSPEndDisplayList(displayListIter);
-        if (gTitleZoomCounter >= 0x13) {
-            gTitleFadeCounter += 0x1a;
-            if (gTitleFadeCounter >= 0x100) {
-                gTitleFadeCounter = 0xFF;
-            }
-        }
     }
     return displayList;
 }

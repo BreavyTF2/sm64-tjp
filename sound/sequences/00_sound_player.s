@@ -7284,42 +7284,13 @@ layer_note1 51, 0x5, 73
 layer_end
 
 .sound_menu_coin_its_a_me_mario:
-chan_setbank 9
-chan_setinstr 3
-chan_setenvelope .envelope_3358
-chan_setvibratoextent 3
-chan_setvibratorate 60
-chan_setval 25
-chan_call .set_reverb
-chan_setlayer 0, .layer_2E28
-chan_setlayer 1, .layer_2E3D
-chan_setlayer 2, .layer_2E34
-chan_setval 70
-chan_call .delay
 chan_setbank 10
 chan_setinstr 8
+chan_setlayer 0, .layer_2E28
 chan_end
 
 .layer_2E28:
-layer_call .layer_11E4
-layer_delay 0x12
-layer_transpose 0
-layer_note1 39, 0xc8, 120
-layer_end
-
-.layer_2E34:
-layer_delay 0x6e
-layer_transpose 0
-layer_note1 39, 0xc8, 31
-layer_end
-
-.layer_2E3D:
-layer_transpose 24
-layer_delay 0x1e
-layer_note1 25, 0x2, 18
-layer_note1 37, 0x7, 36
-layer_note1 30, 0x5, 18
-layer_note1 42, 0x37, 36
+layer_note1 39, 0x4E, 127
 layer_end
 
 .sound_menu_yoshi_gain_lives:

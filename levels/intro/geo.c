@@ -36,13 +36,10 @@ const GeoLayout intro_geo_0002D0[] = {
             GEO_CLOSE_NODE(),
          GEO_CLOSE_NODE(),
       GEO_CLOSE_NODE(),
-      GEO_ZBUFFER(0),
-      GEO_OPEN_NODE(),
-         GEO_ASM(0, geo_fade_transition),
-      GEO_CLOSE_NODE(),
    GEO_CLOSE_NODE(),
    GEO_END(),
 };
+
 
 // 0x0E00035C
 const GeoLayout intro_geo_00035C[] = {
