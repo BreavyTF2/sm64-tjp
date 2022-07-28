@@ -2857,6 +2857,27 @@ const BehaviorScript bhvMistParticleSpawner[] = {
     DEACTIVATE(),
 };
 
+const BehaviorScript bhvSleepParticleSpawner[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    PARENT_BIT_CLEAR(oActiveParticleFlags, ACTIVE_PARTICLE_UNUSED_2),
+    DISABLE_RENDERING(),
+    SPAWN_CHILD(/*Model*/ MODEL_SLEEP, /*Behavior*/ bhvSleepParticle),
+    DELAY(7),
+	SPAWN_CHILD(/*Model*/ MODEL_SLEEP, /*Behavior*/ bhvSleepParticle),
+	DELAY(7),
+	SPAWN_CHILD(/*Model*/ MODEL_SLEEP, /*Behavior*/ bhvSleepParticle),
+    DEACTIVATE(),
+};
+const BehaviorScript bhvSleepParticle[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+	SET_FLOAT(oGraphYOffset, 100),
+    BILLBOARD(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_sleep_loop),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvWhitePuff1[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     PARENT_BIT_CLEAR(oActiveParticleFlags, ACTIVE_PARTICLE_DUST),

@@ -26,3 +26,4 @@
 #include "white_particle/geo.inc.c"
 #include "wooden_signpost/geo.inc.c"
 #include "tree/geo.inc.c"
+#include "sleep/geo.inc.c"

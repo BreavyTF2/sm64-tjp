@@ -241,6 +241,8 @@ extern const BehaviorScript bhvSunkenShipPart2[];
 extern const BehaviorScript bhvInSunkenShip[];
 extern const BehaviorScript bhvInSunkenShip2[];
 extern const BehaviorScript bhvMistParticleSpawner[];
+extern const BehaviorScript bhvSleepParticleSpawner[];
+extern const BehaviorScript bhvSleepParticle[];
 extern const BehaviorScript bhvWhitePuff1[];
 extern const BehaviorScript bhvWhitePuff2[];
 extern const BehaviorScript bhvWhitePuffSmoke2[];

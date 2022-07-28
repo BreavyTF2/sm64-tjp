@@ -174,7 +174,7 @@ s32 act_idle(struct MarioState *m) {
                 } else {
                     // If Mario hasn't turned his head 10 times yet, stay idle instead of going to sleep.
                     m->actionTimer++;
-                    if (m->actionTimer < 10) {
+                    if (m->actionTimer < 1) {
                         m->actionState = 0;
                     }
                 }
@@ -295,6 +295,7 @@ s32 act_sleeping(struct MarioState *m) {
             }
 
             if (animFrame == 2) {
+				m->particleFlags |= PARTICLE_2;
                 play_sound(SOUND_MARIO_SNORING1, m->marioObj->header.gfx.cameraToObject);
             }
 
@@ -323,9 +324,13 @@ s32 act_sleeping(struct MarioState *m) {
         case 2:
             animFrame = set_mario_animation(m, MARIO_ANIM_SLEEP_LYING);
 #ifndef VERSION_JP
+            if (animFrame == 2) {
+				m->particleFlags |= PARTICLE_2;
+            }
             play_sound_if_no_flag(m, SOUND_MARIO_SNORING3, MARIO_ACTION_SOUND_PLAYED);
 #else
             if (animFrame == 2) {
+				m->particleFlags |= PARTICLE_2;
                 play_sound(SOUND_MARIO_SNORING2, m->marioObj->header.gfx.cameraToObject);
             }
 

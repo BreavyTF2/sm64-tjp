@@ -67,3 +67,4 @@
 #include "wooden_signpost/collision.inc.c"
 
 #include "tree/model.inc.c"
+#include "sleep/model.inc.c"

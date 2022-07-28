@@ -114,6 +114,7 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_CARTOON_STAR,            cartoon_star_geo),
 	LOAD_MODEL_FROM_DL( MODEL_VCUTM_CHECKERBOARD_PLATFORM_SPAWNER,       unknown_seg8_dl_08026260,           LAYER_OPAQUE),
 	LOAD_MODEL_FROM_GEO(MODEL_DICE,            dice_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_SLEEP,            sleep_particle_geo),
     FREE_LEVEL_POOL(),
     CALL(/*arg*/ 0, /*func*/ lvl_init_from_save_file),
     LOOP_BEGIN(),
