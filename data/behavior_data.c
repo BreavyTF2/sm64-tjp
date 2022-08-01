@@ -2858,18 +2858,19 @@ const BehaviorScript bhvMistParticleSpawner[] = {
 };
 
 const BehaviorScript bhvSleepParticleSpawner[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
+    BEGIN(OBJ_LIST_UNIMPORTANT),
     PARENT_BIT_CLEAR(oActiveParticleFlags, ACTIVE_PARTICLE_UNUSED_2),
     DISABLE_RENDERING(),
-    SPAWN_CHILD(/*Model*/ MODEL_SLEEP, /*Behavior*/ bhvSleepParticle),
+    SPAWN_CHILD(/*Model*/ MODEL_ZZZ, /*Behavior*/ bhvSleepParticle),
     DELAY(7),
-	SPAWN_CHILD(/*Model*/ MODEL_SLEEP, /*Behavior*/ bhvSleepParticle),
-	DELAY(7),
-	SPAWN_CHILD(/*Model*/ MODEL_SLEEP, /*Behavior*/ bhvSleepParticle),
+	SPAWN_CHILD(/*Model*/ MODEL_ZZZ, /*Behavior*/ bhvSleepParticle),
+	DELAY(6),
+	SPAWN_CHILD(/*Model*/ MODEL_ZZZ, /*Behavior*/ bhvSleepParticle),
     DEACTIVATE(),
 };
 const BehaviorScript bhvSleepParticle[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
+    BEGIN(OBJ_LIST_UNIMPORTANT),
+	SET_RANDOM_INT(oWaterObjUnkF4, /*Minimum*/ 0, /*Range*/ 3),	
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
 	SET_FLOAT(oGraphYOffset, 100),
     BILLBOARD(),

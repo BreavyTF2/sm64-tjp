@@ -29,10 +29,17 @@ const LevelScript level_dummy_entry[] = {
 
 	INIT_LEVEL(),
 	LOAD_MIO0(0x07, _dummy_segment_7SegmentRomStart, _dummy_segment_7SegmentRomEnd),
-
+	LOAD_MIO0(0x05	  ,  _group1_mio0SegmentRomStart,     _group1_mio0SegmentRomEnd),
+	LOAD_RAW(0x0C,  _group1_geoSegmentRomStart,     _group1_geoSegmentRomEnd),
+	LOAD_MIO0(0x06	  ,  _group15_mio0SegmentRomStart,     _group15_mio0SegmentRomEnd),
+	LOAD_RAW(0x0D,  _group15_geoSegmentRomStart,  	  _group15_geoSegmentRomEnd),
+	LOAD_MIO0(0x08	  ,  _common0_mio0SegmentRomStart,  _common0_mio0SegmentRomEnd),
+	LOAD_RAW(0x0F,  _common0_geoSegmentRomStart,  _common0_geoSegmentRomEnd),
 	ALLOC_LEVEL_POOL(),
 		MARIO(MODEL_MARIO, 0x00000001, bhvMario),
-
+		JUMP_LINK(script_func_global_1),
+		JUMP_LINK(script_func_global_2),
+		JUMP_LINK(script_func_global_16),
 		AREA(1, RCP_Stage35Scene1),
 
 			TERRAIN(dummy35_info),

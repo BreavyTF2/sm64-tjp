@@ -799,23 +799,32 @@ void tilt_body_ground_shell(struct MarioState *m, s16 startYaw) {
 
 s32 act_charge(struct MarioState *m) {
 	
-	buffer=0;
-	
     if (should_begin_sliding(m)) {
+		buffer = 0;
         return set_mario_action(m, ACT_BEGIN_SLIDING, 0);
     }
 
     if (m->input & INPUT_A_PRESSED) {
+		buffer = 0;
         return set_mario_action(m, ACT_DOUBLE_JUMP, 0);
     }
+	buffer--;
 	if (m->input & INPUT_B_PRESSED) {
+		buffer = 0;
 		m->vel[1] = 20.0f;
         return set_mario_action(m, ACT_DIVE, 0);
     }
+		if (gPlayer1Controller->buttonDown == B_BUTTON && buffer < 10) {
+			buffer++;
+			buffer++;
+		}
+		
     if (m->input & INPUT_UNKNOWN_5) {
+		buffer = 0;
         return begin_braking_action(m);
     }
 	    if (m->input & INPUT_Z_PRESSED) {
+		buffer = 0;
         return set_mario_action(m, ACT_CROUCH_SLIDE, 0);
     }
     if (m->actionArg == 1 ) {
@@ -823,7 +832,7 @@ s32 act_charge(struct MarioState *m) {
         m->actionArg = 2;
     }
 
-    if (m->actionArg == 2) {
+    if (buffer > 0 && m->actionArg == 2) {
         update_walking_speed(m);
         set_mario_anim_with_accel(m, MARIO_ANIM_DASHING, (s32)(0xC0000));
         play_step_sound(m, 9, 45);
@@ -847,6 +856,9 @@ s32 act_charge(struct MarioState *m) {
                 break;   
         }
         adjust_sound_for_speed(m);
+    }
+	else if (buffer == 0) {
+        set_mario_action(m, ACT_WALKING, 0);
     }
     return FALSE;
 }

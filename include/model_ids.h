@@ -490,9 +490,9 @@
 #define MODEL_SPARKLES                    0x95        // sparkles_geo
 #define MODEL_SMOKE                       0x96        // smoke_geo
 // find me
-// find me
-// find me
-#define MODEL_SLEEP                       0x9A
+#define MODEL_ZZZ                         0x98        // switches between ZZZ and ZZZ3 on spawn
+#define MODEL_ZZZ2                        0x99
+#define MODEL_ZZZ3                        0x9A
 #define MODEL_STAR_DUST_SCRAPPED          0x9B
 #define MODEL_BURN_SMOKE_UNUSED           0x9C        // burn_smoke_geo - unused & duplicated
 // find me

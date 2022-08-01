@@ -816,7 +816,7 @@ const const Gfx gfx_fireC_blue[] = {
 /********************************************************************************/
 /*	Graphic display list of FireC_Blue. Each.									*/
 /********************************************************************************/
-const const Gfx RCP_FireC_Blue01[] = {
+const Gfx RCP_FireC_Blue01[] = {
 	gsDPPipeSync(),
 	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_01_txt),
 	gsSPBranchList(gfx_fireC_blue)

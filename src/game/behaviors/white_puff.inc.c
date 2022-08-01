@@ -16,7 +16,7 @@ void bhv_white_puff_1_loop(void) {
 
 void bhv_sleep_loop(void) {
     f32 sp1C = 0.01f;
-    f32 sp18 = 0.08f;
+    f32 sp18 = 0.07f;
     if (o->oTimer == 0) {
 		cur_obj_set_pos_relative(gMarioObject, 0, -10, 25.2f);
         obj_translate_xz_random(o, 50.0f);
@@ -28,6 +28,7 @@ void bhv_sleep_loop(void) {
 	o->oForwardVel = (0.6+o->oDistanceToMario/25);
 	}
     cur_obj_scale(o->oTimer * sp18 + sp1C);
+	cur_obj_set_model(MODEL_ZZZ+o->oWaterObjUnkF4);
 	o->oPosY += 4.0f;
     o->oOpacity = (255 - (o->oTimer*8) + 100);
     cur_obj_move_using_fvel_and_gravity();
