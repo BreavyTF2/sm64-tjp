@@ -51,6 +51,14 @@ static const LevelScript script_func_local_3[] = {
 
 static const LevelScript script_func_local_4[] = {
     OBJECT(/*model*/ MODEL_NONE, /*pos*/ 3404, -3319, -489, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvJetStream),
+    OBJECT(/*model*/ MODEL_WATER_MINE,   /*pos*/  4685,   -75, 4021, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBowserBomb),
+    OBJECT(/*model*/ MODEL_WATER_MINE,   /*pos*/  4542,  -262, 4455, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBowserBomb),
+    OBJECT(/*model*/ MODEL_WATER_MINE,   /*pos*/  4638,  -448, 3471, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBowserBomb),
+    OBJECT(/*model*/ MODEL_WATER_MINE,   /*pos*/  3851,  -788, 3913, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBowserBomb),
+    OBJECT(/*model*/ MODEL_WATER_MINE,   /*pos*/  3366, -1293, 3416, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBowserBomb),
+    OBJECT(/*model*/ MODEL_WATER_MINE,   /*pos*/  2755, -1201, 3431, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBowserBomb),
+    OBJECT(/*model*/ MODEL_WATER_MINE,   /*pos*/  3647,  -617, 4865, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBowserBomb),
+    OBJECT(/*model*/ MODEL_WATER_MINE,   /*pos*/  3398,  -115, 5395, /*angle*/ 0, 0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBowserBomb),
     RETURN(),
 };
 

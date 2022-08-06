@@ -261,8 +261,8 @@
 /* not verified */ #define SOUND_GENERAL_COIN_SPURT_2       SOUND_ARG_LOAD(3, 8, 0x30, 0x00, 8)
 /* not verified */ #define SOUND_GENERAL_COIN_SPURT_EU      SOUND_ARG_LOAD(3, 8, 0x30, 0x20, 8)
 
-/* not verified */ #define SOUND_GENERAL_EXPLOSION6         0x3031
-/* not verified */ #define SOUND_GENERAL_UNK32              0x3032
+/* not verified */ #define SOUND_GENERAL_EXPLOSION6         SOUND_ARG_LOAD(3, 0, 0x31, 0x00, 8)
+/* not verified */ #define SOUND_GENERAL_UNK32              SOUND_ARG_LOAD(3, 0, 0x32, 0x00, 8)
 /* not verified */ #define SOUND_GENERAL_BOAT_TILT1         SOUND_ARG_LOAD(3, 0, 0x34, 0x40, 8)
 /* not verified */ #define SOUND_GENERAL_BOAT_TILT2         SOUND_ARG_LOAD(3, 0, 0x35, 0x40, 8)
 /* not verified */ #define SOUND_GENERAL_COIN_DROP          SOUND_ARG_LOAD(3, 0, 0x36, 0x40, 8)

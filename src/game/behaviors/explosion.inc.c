@@ -1,7 +1,10 @@
 // explosion.c.inc
 
 void bhv_explosion_init(void) {
-    create_sound_spawner(SOUND_GENERAL2_BOBOMB_EXPLOSION);
+	if (find_water_level(o->oPosX, o->oPosZ) > o->oPosY) {
+    create_sound_spawner(SOUND_GENERAL_EXPLOSION6); 
+	} else create_sound_spawner(SOUND_GENERAL2_BOBOMB_EXPLOSION);
+	
     set_environmental_camera_shake(SHAKE_ENV_EXPLOSION);
 
     o->oOpacity = 255;

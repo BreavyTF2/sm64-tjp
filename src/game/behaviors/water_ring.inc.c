@@ -76,7 +76,7 @@ void water_ring_check_collection(f32 avgScale, struct Object *ringManager) {
             } else
                 ringSpawner->oWaterRingSpawnerRingsCollected = 0;
         }
-
+		create_sound_spawner(SOUND_GENERAL_UNK32);
         o->oAction = WATER_RING_ACT_COLLECTED;
     }
 
@@ -115,8 +115,10 @@ void water_ring_act_not_collected(void) {
 
     if (o->oTimer >= 226) {
         o->oOpacity -= 2;
-        if (o->oOpacity < 3)
+        if (o->oOpacity < 3) {
+			create_sound_spawner(SOUND_GENERAL_UNK32);
             o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
+		}
     }
 
     water_ring_check_collection(avgScale, ringManager);

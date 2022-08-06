@@ -3347,11 +3347,15 @@ layer_end
 chan_setbank 4
 chan_setinstr 6
 chan_setlayer 0, .layer_13DC
+chan_setlayer 1, .layer_13DD
 chan_end
 
 .layer_13DC:
 layer_portamento 0x81, 37, 255
 layer_note1 39, 0x8, 127
+layer_end
+
+.layer_13DD:
 layer_setinstr 5
 layer_portamento 0x81, 20, 255
 layer_note1 25, 0x60, 127
