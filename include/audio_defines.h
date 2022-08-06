@@ -527,6 +527,7 @@
 // to play two channel 3 sounds at once (since just one sound from each channel
 // can play at a given time).
 #define SOUND_GENERAL2_BOBOMB_EXPLOSION         SOUND_ARG_LOAD(8, 0, 0x2E, 0x20, 8)
+#define SOUND_GENERAL2_EXPLOSION6               SOUND_ARG_LOAD(8, 0, 0x31, 0x00, 8)
 #define SOUND_GENERAL2_PURPLE_SWITCH            SOUND_ARG_LOAD(8, 0, 0x3E, 0xC0, 8)
 #define SOUND_GENERAL2_ROTATING_BLOCK_CLICK     SOUND_ARG_LOAD(8, 0, 0x40, 0x00, 8)
 #define SOUND_GENERAL2_SPINDEL_ROLL             SOUND_ARG_LOAD(8, 0, 0x48, 0x20, 8)
