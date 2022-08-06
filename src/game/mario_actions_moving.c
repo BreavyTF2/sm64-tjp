@@ -505,7 +505,7 @@ s32 check_ground_dive_or_punch(struct MarioState *m) {
 	}
 	if (gPlayer1Controller->buttonDown == B_BUTTON) {
 		buffer++;
-		if (buffer > 19)
+		if (buffer > 19 && m->forwardVel >= 16.0f)
         return set_mario_action(m, ACT_CHARGE, 1);
 	
 	} else {
