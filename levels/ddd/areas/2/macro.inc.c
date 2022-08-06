@@ -47,5 +47,13 @@ const MacroObject ddd_seg7_area_2_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_hidden_blue_coin,            /*yaw*/   0, /*pos*/  1414,  1020,   922),
     MACRO_OBJECT(/*preset*/ macro_hidden_blue_coin,            /*yaw*/   0, /*pos*/  1814,  1020,   922),
     MACRO_OBJECT(/*preset*/ macro_koopa_shell_underwater,      /*yaw*/   0, /*pos*/  3886, -4050,  5100),
+	MACRO_OBJECT(/*preset*/ macro_water_mine,            /*yaw*/   0, /*pos*/  4685,  -75,   4021),
+    MACRO_OBJECT(/*preset*/ macro_water_mine,            /*yaw*/   0, /*pos*/  4542,  -262,   4455),
+    MACRO_OBJECT(/*preset*/ macro_water_mine,            /*yaw*/   0, /*pos*/  4638,  -448,  3471),
+    MACRO_OBJECT(/*preset*/ macro_water_mine,            /*yaw*/   0, /*pos*/  3851,  -788,  3913),
+    MACRO_OBJECT(/*preset*/ macro_water_mine,            /*yaw*/   0, /*pos*/  3366,  -1293,   3416),
+    MACRO_OBJECT(/*preset*/ macro_water_mine,            /*yaw*/   0, /*pos*/  2755,  -1201,   3431),
+    MACRO_OBJECT(/*preset*/ macro_water_mine,            /*yaw*/   0, /*pos*/  3647,  -617,   4865),
+    MACRO_OBJECT(/*preset*/ macro_water_mine,            /*yaw*/   0, /*pos*/  3398,  -115,   5395),
     MACRO_OBJECT_END(),
 };
