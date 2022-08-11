@@ -13,10 +13,11 @@ struct ObjectHitbox sSkullSlidingBoxHitbox = {
 };
 
 void bhv_sunken_ship_part_loop(void) {
+	o->activeFlags |= ACTIVE_FLAG_DITHERED_ALPHA;
     if (o->oDistanceToMario > 10000.0f)
         o->oOpacity = 140;
     else
-        o->oOpacity = o->oDistanceToMario * 140.0f / 10000.0;
+        o->oOpacity = o->oDistanceToMario * 140.0f / 10000.0f;
 }
 
 void bhv_ship_part_3_loop(void) {
@@ -39,7 +40,6 @@ void bhv_jrb_sliding_box_loop(void) {
     Vec3s sp40;
     struct Object *sp3C;
     struct Surface *sp38;
-    UNUSED Vec3f sp2C;
     Vec3f sp20;
     s16 sp1E;
     if (o->oJrbSlidingBoxUnkF4 == NULL) {
@@ -69,9 +69,6 @@ void bhv_jrb_sliding_box_loop(void) {
     sp20[2] = o->oPosZ;
     find_floor(sp20[0], sp20[1], sp20[2], &sp38);
     if (sp38 != NULL) {
-        sp2C[0] = sp38->normal.x;
-        sp2C[1] = sp38->normal.y;
-        sp2C[2] = sp38->normal.z;
         o->oFaceAnglePitch = sp1E;
     }
     o->oJrbSlidingBoxUnkFC = sins(o->oJrbSlidingBoxUnkF8) * 20.0f;

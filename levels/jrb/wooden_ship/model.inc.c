@@ -377,6 +377,7 @@ const Gfx jrb_seg7_dl_070090B0[] = {
     gsSPClearGeometryMode(G_FOG),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsDPSetEnvColor(255, 255, 255, 255),
+	gsDPSetAlphaCompare(G_AC_NONE),
     gsSPEndDisplayList(),
 };
 
@@ -662,6 +663,7 @@ const Gfx jrb_seg7_dl_07009B30[] = {
     gsDPSetRenderMode(G_RM_AA_ZB_XLU_SURF, G_RM_NOOP2),
     gsSPClearGeometryMode(G_FOG),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsDPSetAlphaCompare(G_AC_NONE),
     gsDPSetEnvColor(255, 255, 255, 255),
     gsSPEndDisplayList(),
 };

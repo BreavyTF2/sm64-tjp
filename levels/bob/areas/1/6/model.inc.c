@@ -1,6 +1,6 @@
 // 0x0700DE30 - 0x0700DE48
 static const Lights1 bob_seg7_lights_0700DE30 = gdSPDefLights1(
-    0x14, 0x14, 0x14,
+    0x28, 0x28, 0x28,
     0x64, 0x64, 0x64, 0x28, 0x28, 0x28
 );
 
@@ -130,7 +130,6 @@ const Gfx bob_seg7_dl_0700E338[] = {
     gsDPSetCycleType(G_CYC_1CYCLE),
     gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_NOOP2),
     gsSPClearGeometryMode(G_FOG),
-	gsSPSetGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPEndDisplayList(),
 };

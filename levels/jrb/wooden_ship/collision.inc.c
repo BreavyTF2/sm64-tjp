@@ -259,38 +259,6 @@ const Collision jrb_seg7_collision_in_sunken_ship[] = {
     COL_END(),
 };
 
-// This is probably part of the "wooden ship" collision file as the standstill box.
-// 0x0700CEF0 - 0x0700CF80
-const Collision jrb_seg7_collision_0700CEF0[] = {
-    COL_INIT(),
-    COL_VERTEX_INIT(0xA),
-    COL_VERTEX(307, 1024, -101),
-    COL_VERTEX(307, 819, -101),
-    COL_VERTEX(307, 819, -409),
-    COL_VERTEX(307, 1024, -409),
-    COL_VERTEX(512, 1024, -409),
-    COL_VERTEX(512, 819, -409),
-    COL_VERTEX(512, 819, -101),
-    COL_VERTEX(512, 1024, -101),
-    COL_VERTEX(512, 819, -306),
-    COL_VERTEX(307, 819, -306),
-    COL_TRI_INIT(SURFACE_SHIP, 12),
-    COL_TRI(0, 1, 2),
-    COL_TRI(0, 2, 3),
-    COL_TRI(4, 5, 6),
-    COL_TRI(4, 6, 7),
-    COL_TRI(1, 6, 8),
-    COL_TRI(1, 8, 9),
-    COL_TRI(3, 7, 0),
-    COL_TRI(3, 4, 7),
-    COL_TRI(4, 3, 2),
-    COL_TRI(4, 2, 5),
-    COL_TRI(5, 9, 8),
-    COL_TRI(5, 2, 9),
-    COL_TRI_STOP(),
-    COL_END(),
-};
-
 // 0x0700CF80 - 0x0700D196
 const Collision jrb_seg7_collision_in_sunken_ship_2[] = {
     COL_INIT(),
