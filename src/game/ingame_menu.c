@@ -536,7 +536,7 @@ void print_hud_lut_string(s8 hudLUT, s16 x, s16 y, const u8 *str) {
     u32 xStride; // X separation
 
     if (hudLUT == HUD_LUT_JPMENU) {
-        xStride = 16;
+        xStride = 14;
     } else { // HUD_LUT_GLOBAL
 #if defined(VERSION_JP)
         xStride = 14;

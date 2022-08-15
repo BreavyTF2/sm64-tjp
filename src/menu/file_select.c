@@ -1793,10 +1793,18 @@ void print_main_menu_strings(void) {
     // Print file names
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
+#ifdef VERSION_US
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X1-1, 65-3, textMarioA);
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X2-1, 65-3, textMarioB);
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X1-1, 105-3, textMarioC);
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X2-1, 105-3, textMarioD);
+#endif
+#ifndef VERSION_US
     print_menu_generic_string(MARIOTEXT_X1, 65, textMarioA);
     print_menu_generic_string(MARIOTEXT_X2, 65, textMarioB);
     print_menu_generic_string(MARIOTEXT_X1, 105, textMarioC);
     print_menu_generic_string(MARIOTEXT_X2, 105, textMarioD);
+#endif
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
 }
 
@@ -1947,10 +1955,18 @@ void print_score_menu_strings(void) {
     // Print file names
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
-    print_menu_generic_string(89, 62, textMarioA);
-    print_menu_generic_string(211, 62, textMarioB);
-    print_menu_generic_string(89, 105, textMarioC);
-    print_menu_generic_string(211, 105, textMarioD);
+#ifdef VERSION_US
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X1-1, 65-3, textMarioA);
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X2-1, 65-3, textMarioB);
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X1-1, 105-3, textMarioC);
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X2-1, 105-3, textMarioD);
+#endif
+#ifndef VERSION_US
+    print_menu_generic_string(MARIOTEXT_X1, 65, textMarioA);
+    print_menu_generic_string(MARIOTEXT_X2, 65, textMarioB);
+    print_menu_generic_string(MARIOTEXT_X1, 105, textMarioC);
+    print_menu_generic_string(MARIOTEXT_X2, 105, textMarioD);
+#endif
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
 #endif
 }
@@ -2129,10 +2145,18 @@ void print_copy_menu_strings(void) {
     // Print file names
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
-    print_menu_generic_string(89, 62, textMarioA);
-    print_menu_generic_string(211, 62, textMarioB);
-    print_menu_generic_string(89, 105, textMarioC);
-    print_menu_generic_string(211, 105, textMarioD);
+#ifdef VERSION_US
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X1-1, 65-3, textMarioA);
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X2-1, 65-3, textMarioB);
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X1-1, 105-3, textMarioC);
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X2-1, 105-3, textMarioD);
+#endif
+#ifndef VERSION_US
+    print_menu_generic_string(MARIOTEXT_X1, 65, textMarioA);
+    print_menu_generic_string(MARIOTEXT_X2, 65, textMarioB);
+    print_menu_generic_string(MARIOTEXT_X1, 105, textMarioC);
+    print_menu_generic_string(MARIOTEXT_X2, 105, textMarioD);
+#endif
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
 #endif
 }
@@ -2233,7 +2257,7 @@ void print_erase_menu_prompt(s16 x, s16 y) {
 #else
     #define ERASE_FILE_X     98
     #define NOSAVE_DATA_X3   100
-    #define MARIO_ERASED_VAR 6
+    #define MARIO_ERASED_VAR 5
     #define MARIO_ERASED_X   100
     #define SAVE_EXISTS_X2   100
 #endif
@@ -2386,10 +2410,18 @@ void print_erase_menu_strings(void) {
     // Print file names
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_begin);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, sTextBaseAlpha);
-    print_menu_generic_string(89, 62, textMarioA);
-    print_menu_generic_string(211, 62, textMarioB);
-    print_menu_generic_string(89, 105, textMarioC);
-    print_menu_generic_string(211, 105, textMarioD);
+#ifdef VERSION_US
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X1-1, 65-3, textMarioA);
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X2-1, 65-3, textMarioB);
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X1-1, 105-3, textMarioC);
+    print_hud_lut_string(HUD_LUT_JPMENU, MARIOTEXT_X2-1, 105-3, textMarioD);
+#endif
+#ifndef VERSION_US
+    print_menu_generic_string(MARIOTEXT_X1, 65, textMarioA);
+    print_menu_generic_string(MARIOTEXT_X2, 65, textMarioB);
+    print_menu_generic_string(MARIOTEXT_X1, 105, textMarioC);
+    print_menu_generic_string(MARIOTEXT_X2, 105, textMarioD);
+#endif
     gSPDisplayList(gDisplayListHead++, dl_menu_ia8_text_end);
 #endif
 }

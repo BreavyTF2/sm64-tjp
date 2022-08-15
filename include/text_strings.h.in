@@ -136,10 +136,10 @@
 #define TEXT_COPY_FILE _("COPY FILE")
 #define TEXT_ERASE_FILE _("ERASE FILE")
 #define TEXT_SOUND_SELECT _("SOUND SELECT")
-#define TEXT_FILE_MARIO_A _("MARIO A")
-#define TEXT_FILE_MARIO_B _("MARIO B")
-#define TEXT_FILE_MARIO_C _("MARIO C")
-#define TEXT_FILE_MARIO_D _("MARIO D")
+#define TEXT_FILE_MARIO_A _("FILEA")
+#define TEXT_FILE_MARIO_B _("FILEB")
+#define TEXT_FILE_MARIO_C _("FILEC")
+#define TEXT_FILE_MARIO_D _("FILED")
 
 // Menu Options
 #define TEXT_SCORE _("SCORE")
@@ -179,7 +179,7 @@
 #define TEXT_SURE _("SURE?")
 #define TEXT_YES _("YES")
 #define TEXT_NO _("NO")
-#define TEXT_FILE_MARIO_A_JUST_ERASED _("MARIO A JUST ERASED")
+#define TEXT_FILE_MARIO_A_JUST_ERASED _("FILE A JUST ERASED")
 
 /**
  * Menus Text (Pause, Course Completed)
