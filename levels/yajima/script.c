@@ -53,7 +53,7 @@ const LevelScript level_yajima_entry[] = {
 	INIT_LEVEL(),
 	LOAD_MIO0(0x07, _yajima_segment_7SegmentRomStart, _yajima_segment_7SegmentRomEnd),
 	LOAD_MIO0(0x05	  , _group8_mio0SegmentRomStart	  , _group8_mio0SegmentRomEnd	),
-	LOAD_MIO0(0x0C, _group8_geoSegmentRomStart	  , _group8_geoSegmentRomEnd	),
+	LOAD_RAW(0x0C, _group8_geoSegmentRomStart	  , _group8_geoSegmentRomEnd	),
 	LOAD_MIO0(0x06	  , _group14_mio0SegmentRomStart	  , _group14_mio0SegmentRomEnd	),
 	LOAD_RAW(0x0D, _group14_geoSegmentRomStart	  , _group14_geoSegmentRomEnd	),
 	LOAD_MIO0(0x08	  ,  _common0_mio0SegmentRomStart,  _common0_mio0SegmentRomEnd),
