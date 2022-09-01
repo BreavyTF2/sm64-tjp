@@ -323,15 +323,11 @@ void bobomb_buddy_act_idle(void) {
     collisionFlags = object_step();
 
     if ((sp1a == 5) || (sp1a == 16)) cur_obj_play_sound_2(SOUND_OBJ_BOBOMB_WALK);
-
-	if (gCurrLevelNum == LEVEL_JRB) {
-    o->oForwardVel = 0.0f;
-	} else o->oForwardVel = 5.0f;
-
-
-    if ((obj_return_home_if_safe(o, o->oHomeX, o->oHomeY, o->oHomeZ, 400) == 1)
-		&& (obj_check_if_facing_toward_angle(o->oMoveAngleYaw, o->oAngleToMario, 0x2000) == TRUE)) {
+	
+    if (o->oDistanceToMario < 1000.0f) {
+        o->oMoveAngleYaw = approach_s16_symmetric(o->oMoveAngleYaw, o->oAngleToMario, 0x140);
     }
+
 	obj_check_floor_death(collisionFlags, sObjFloor);
     if (o->oInteractStatus == INT_STATUS_INTERACTED)
         o->oAction = BOBOMB_BUDDY_ACT_TURN_TO_TALK;
@@ -349,7 +345,6 @@ void bobomb_buddy_cannon_dialog(s16 dialogFirstText, s16 dialogSecondText) {
     struct Object *cannonClosed;
     s16 buddyText, cutscene;
 	cur_obj_init_animation(0);
-	o->oForwardVel = 0.0f;
     switch (o->oBobombBuddyCannonStatus) {
         case BOBOMB_BUDDY_CANNON_UNOPENED:
             buddyText = cutscene_object_with_dialog(CUTSCENE_DIALOG, o, dialogFirstText);
@@ -390,7 +385,6 @@ void bobomb_buddy_cannon_dialog(s16 dialogFirstText, s16 dialogSecondText) {
 
 void bobomb_buddy_act_talk(void) {
 	cur_obj_init_animation(0);
-	o->oForwardVel = 0.0f;
     if (set_mario_npc_dialog(1) == 2) {
         o->activeFlags |= ACTIVE_FLAG_INITIATED_TIME_STOP;
 
@@ -419,7 +413,6 @@ void bobomb_buddy_act_talk(void) {
 
 void bobomb_buddy_act_turn_to_talk(void) {
     s16 sp1e = o->header.gfx.animInfo.animFrame;
-	o->oForwardVel = 0.0f;
     if ((sp1e == 5) || (sp1e == 16))
         cur_obj_play_sound_2(SOUND_OBJ_BOBOMB_WALK);
 
