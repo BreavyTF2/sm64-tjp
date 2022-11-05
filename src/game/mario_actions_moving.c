@@ -454,7 +454,7 @@ void update_walking_speed(struct MarioState *m) {
         m->forwardVel += 1.1f;
     } else if (m->forwardVel <= targetSpeed) {
 		if (m->action == ACT_CHARGE) {
-        m->forwardVel += 1.15f - m->forwardVel / 44.0f;
+        m->forwardVel += 1.2f - m->forwardVel / 44.0f;
 		} else m->forwardVel += 1.1f - m->forwardVel / 44.0f;
     } else if (m->floor->normal.y >= 0.95f) {
         m->forwardVel -= 1.0f;

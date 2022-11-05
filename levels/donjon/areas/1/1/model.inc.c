@@ -3634,7 +3634,7 @@ Gfx gfx_donjon[] = {
 							 G_TX_WRAP|G_TX_NOMIRROR , 5 , G_TX_NOLOD,
 							 G_TX_WRAP|G_TX_NOMIRROR , 5 , G_TX_NOLOD	),
 
-	gsSPClearGeometryMode(G_SHADING_SMOOTH),
+//	gsSPClearGeometryMode(G_SHADING_SMOOTH),
 	gsSPNumLights(NUMLIGHTS_1),
 	gsSPTexture(0xffff,0xffff, 0, 0, G_ON),
 

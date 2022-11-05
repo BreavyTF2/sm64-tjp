@@ -3,37 +3,37 @@
 #pragma GCC diagnostic ignored "-Wmissing-braces"
 // 0x04000000 # solid color blue - butt, left thigh, right thigh - all poly types
 static const Lights1 mario_blue_lights_group = gdSPDefLights1(
-    0x00, 0x00, 0xff/4,
+    0x00, 0x00, 0xff/3,
     0x00, 0x00, 0xff, 0x28, 0x28, 0x28
 );
 
 // 0x04000018 # solid color red - left & right arm, torso (tshirt part), caps - all poly types
 static const Lights1 mario_red_lights_group = gdSPDefLights1(
-    0xff/4, 0x00, 0x00,
+    0xff/3, 0x00, 0x00,
     0xff, 0x00, 0x00, 0x28, 0x28, 0x28
 );
 
 // 0x04000030 # solid color white - metal butt & left thigh - normal left & right hand closed & open (with cap too) and all wings - all poly types
 static const Lights1 mario_white_lights_group = gdSPDefLights1(
-    0xff/4, 0xff/4, 0xff/4,
+    0xff/3, 0xff/3, 0xff/3,
     0xff, 0xff, 0xff, 0x28, 0x28, 0x28
 );
 
 // 0x04000048 # solid color brown 1 - foot - all poly types
 static const Lights1 mario_brown1_lights_group = gdSPDefLights1(
-    0x72/4, 0x1c/4, 0x0e/4,
+    0x72/3, 0x1c/3, 0x0e/3,
     0x72, 0x1c, 0x0e, 0x28, 0x28, 0x28
 );
 
 // 0x04000060 # solid color beige skin - face (cap on and off dls) - all poly types
 static const Lights1 mario_beige_lights_group = gdSPDefLights1(
-    0xfe/4, 0xc1/4, 0x79/4,
+    0xfe/3, 0xc1/3, 0x79/3,
     0xfe, 0xc1, 0x79, 0x28, 0x28, 0x28
 );
 
 // 0x04000078  # solid color brown 2 - hair - all poly types
 static const Lights1 mario_brown2_lights_group = gdSPDefLights1(
-    0x44/4, 0x06/4, 0x00,
+    0x44/3, 0x06/3, 0x00,
     0x44, 0x06, 0x00, 0x28, 0x28, 0x28
 );
 
