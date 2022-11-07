@@ -149,8 +149,11 @@ void motos_player_search(void)
 
 void motos_carry_start(void)
 {
-	o->oMotosUnk9F = ((random_float() - 0.5f) * 0x400);
+	o->oMotosUnk9F = ((random_float() - 0.5f) * 0x200);
 	motos_velocity(&o->oForwardVel, 0.0f, 1.0f);
+	if (o->oMotosUnk9F < 0) {
+		o->oMontyMoleHeightRelativeToFloor = (o->oMotosUnk9F*-1);
+	} else { o->oMontyMoleHeightRelativeToFloor = o->oMotosUnk9F; }
 	if (o->oTimer == 0) {
 	cur_obj_init_animation_with_sound(3);
 			cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN3);
@@ -162,7 +165,7 @@ void motos_carry_start(void)
 void motos_carry_run(void)
 {
 	o->oForwardVel = 10.0f;
-	cur_obj_rotate_yaw_toward(o->oAngleToMario+o->oMotosUnk9F, 300);
+	cur_obj_rotate_yaw_toward(o->oAngleToMario+o->oMotosUnk9F, o->oMontyMoleHeightRelativeToFloor);
 		if (cur_obj_check_anim_frame(2)| cur_obj_check_anim_frame(11))  cur_obj_play_sound_2(SOUND_OBJ_POUNDING1_HIGHPRIO);
 
 	o->oMotosUnk100 += player_performed_grab_escape_action();

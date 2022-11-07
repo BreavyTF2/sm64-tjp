@@ -233,7 +233,7 @@ ledges, are the best\n\
 ways to deal with them."))
 
 DEFINE_DIALOG(DIALOG_017, 1, 5, 30, 200, _("\
-I'm Chucking king\n\
+I'm Chucking, king\n\
 of all throwing matter!\n\
 Nice work, scaling my\n\
 mountain.\n\
@@ -1286,7 +1286,7 @@ select this Star from the\n\
 menu. See you later!"))
 
 DEFINE_DIALOG(DIALOG_117, 1, 4, 95, 200, _("\
-So we surprised you, did\n\
+So we surprised you, didn't\n\
 we? We have a bigger\n\
 surprise yet in store!\n\
 Let us give you a hand..."))

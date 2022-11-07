@@ -149,11 +149,7 @@ static void racing_penguin_act_show_final_text(void) {
             o->oTimer = 0;
         }
     } else if (o->oRacingPenguinMarioWon) {
-#ifdef VERSION_JP
-        spawn_default_star(-7339.0f, -5700.0f, -6774.0f);
-#else
-        cur_obj_spawn_star_at_y_offset(-6550.0f, -4500.0f, -7500.0f, 200.0f);
-#endif
+        spawn_default_star(-6550.0f, -4500.0f, -7500.0f);
         o->oRacingPenguinMarioWon = FALSE;
     }
 }
