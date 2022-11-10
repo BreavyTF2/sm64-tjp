@@ -34,6 +34,13 @@ static const LevelScript script_func_local_7[] = {
 
 static const LevelScript script_func_local_8[] = {
 		  OBJECT(/*model*/ MODEL_CASTLE_GROUNDS_WARP_PIPE, /*pos*/ 0, 0, 0, /*angle*/ 0, 0, 0, /*behParam*/ 0x00320000, /*beh*/ bhvWarpPipe),
+			OBJECT_LEAK(MODEL_EXCLAMATION_BOX 			,    -400,  300,   500,   0,0,0,  0,0,0, bhvExclamationBox				),
+			OBJECT_LEAK(MODEL_EXCLAMATION_BOX 			,    -800,  300,   500,   0,0,0,  0,1,0, bhvExclamationBox				),
+			OBJECT_LEAK(MODEL_EXCLAMATION_BOX 			,   -1200,  300,   500,   0,0,0,  0,2,0, bhvExclamationBox 			),
+			OBJECT_LEAK(MODEL_EXCLAMATION_BOX 			,   -1400,  300,   500,   0,0,0,  0,3,0, bhvExclamationBox 			),
+			OBJECT_LEAK(MODEL_CAP_SWITCH	,	-1500,   0,  -1000,   0,0,0,  0,0,0, bhvCapSwitch	),
+			OBJECT_LEAK(MODEL_CAP_SWITCH	,	 -500,   0,  -1000,   0,0,0,  0,1,0, bhvCapSwitch	),
+ 			OBJECT_LEAK(MODEL_CAP_SWITCH	,	  500,   0,  -1000,   0,0,0,  0,2,0, bhvCapSwitch	),
 		  WARP_NODE(/*id*/ 0x32, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x32, /*flags*/ WARP_NO_CHECKPOINT),
     RETURN(),
 };
@@ -44,6 +51,12 @@ static const LevelScript script_func_local_9[] = {
 		  OBJECT_LEAK(MODEL_VCUTM_CHECKERBOARD_PLATFORM_SPAWNER,	0, 0, 1000,   0,0,0,  0,0,0, bhvTestLift), //TestLift
 		  OBJECT_LEAK(MODEL_DICE		,	1000, 0,   -100,   0,0,0,  0,0,0, bhvStub1D70), //Dice
 		  OBJECT_LEAK(MODEL_UNKNOWN_58		,	-2500, 0,   400,   0,0,0,  0,1,0, bhvStub1D0C), //Fire Motos
+			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,    -400,  250,  1500,   0,0,0,  0,0, 0, bhvExclamationBox 	 	), //Duplicate objects, moved to testmap1_old
+			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,    -800,  250,  1500,   0,0,0,  0,1, 0, bhvExclamationBox 	 	),
+			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,   -1200,  250,  1500,   0,0,0,  0,2, 0, bhvExclamationBox 	 	),
+			OBJECT_LEAK(MODEL_CAP_SWITCH	,	-1500,   0,   1000,   0,0,0,  0,0,0, bhvCapSwitch	),
+			OBJECT_LEAK(MODEL_CAP_SWITCH	,	 -500,   0,  -1000,   0,0,0,  0,1,0, bhvCapSwitch	),
+			OBJECT_LEAK(MODEL_CAP_SWITCH	,	  500,   0,  -1000,   0,0,0,  0,2,0, bhvCapSwitch	),
 		  
     RETURN(),
 };
@@ -72,19 +85,11 @@ const LevelScript level_yajima_entry[] = {
         JUMP_LINK(script_func_local_7),
 		OBJECT_LEAK(MODEL_METAL_BOX,	1242, 200, 1959,   0,0,0,  0,0,0, bhvPushableMetalBox	),
 
-			 OBJECT_LEAK(MODEL_CHUCKYA		,	-1000, 0,  0,   0,0,0,  0,0,0, bhvChuckya	), 
-			 OBJECT_LEAK(MODEL_CHUCKYA		,	-1000, 0,  0,   0,0,0,  0,0,0, bhvChuckya	), 
-			 OBJECT_LEAK(MODEL_TRAMPOLINE	,       0, 300,0,   0,0,0,  0,0,0, bhvBetaTrampolineTop),
+			OBJECT_LEAK(MODEL_CHUCKYA		,	-1000, 0,  0,   0,0,0,  0,0,0, bhvChuckya	), 
+			OBJECT_LEAK(MODEL_CHUCKYA		,	-1000, 0,  0,   0,0,0,  0,0,0, bhvChuckya	), 
+			OBJECT_LEAK(MODEL_TRAMPOLINE	,       0, 150,0,   0,0,0,  0,0,0, bhvBetaTrampolineTop),
 
-			OBJECT_LEAK(MODEL_CAP_SWITCH	,	-1500,   0,   1000,   0,0,0,  0,0,0, bhvCapSwitch	),
-			OBJECT_LEAK(MODEL_CAP_SWITCH	,	 -500,   0,  -1000,   0,0,0,  0,1,0, bhvCapSwitch	),
-			OBJECT_LEAK(MODEL_CAP_SWITCH	,	  500,   0,  -1000,   0,0,0,  0,2,0, bhvCapSwitch	),
-
-//			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,    -400,  250,  1500,   0,0,0,  0,0, 0, bhvExclamationBox 	 	), //Duplicate objects.
-//			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,    -800,  250,  1500,   0,0,0,  0,1, 0, bhvExclamationBox 	 	),
-//			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,   -1200,  250,  1500,   0,0,0,  0,2, 0, bhvExclamationBox 	 	),
-
-			 OBJECT_LEAK(MODEL_BREAKABLE_BOX		,	-2867, 331,   -895,   0,0,0,  0,0,0, bhvUnused2A54	), //Rolling Sphere Test Object?
+			OBJECT_LEAK(MODEL_BOWLING_BALL		,	-2867, 331,   -895,   0,0,0,  0,0,0, bhvFreeBowlingBall	), //Rolling Sphere Test Object, replaced with iron ball
 
 			OBJECT_LEAK(MODEL_PURPLE_SWITCH,    0, 0, -900,   0,0,0,  0,0,0,	bhvFloorSwitchGrills ),
 
@@ -119,9 +124,6 @@ const LevelScript level_yajima_entry[] = {
 			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,   -2400,  250,  1500,   0,0,0,  0,5, 0, bhvExclamationBox  	 	),
 			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,   -2800,  250,  1500,   0,0,0,  0,6, 0, bhvExclamationBox  	 	),
 			OBJECT_LEAK(MODEL_EXCLAMATION_BOX			,   -3200,  250,  1500,   0,0,0,  0,8, 0, bhvExclamationBox  	 	),
-			OBJECT_LEAK(MODEL_CAP_SWITCH	,	-1500,   0,  -1000,   0,0,0,  0,0,0, bhvCapSwitch	),
-			OBJECT_LEAK(MODEL_CAP_SWITCH	,	 -500,   0,  -1000,   0,0,0,  0,1,0, bhvCapSwitch	),
-			OBJECT_LEAK(MODEL_CAP_SWITCH	,	  500,   0,  -1000,   0,0,0,  0,2,0, bhvCapSwitch	),
 
 			OBJECT_LEAK(MODEL_NONE				,	  200,    0,      0,  0,0,0,  0,1,0, bhvFloorSwitchHardcodedModel 	 ),
 			OBJECT_LEAK(MODEL_NONE				,	  600,    0,      0,  0,0,0,  0,0,0, bhvFloorSwitchHardcodedModel 	 ),
@@ -137,10 +139,7 @@ const LevelScript level_yajima_entry[] = {
 			OBJECT_LEAK(MODEL_BREAKABLE_BOX		,       0,  200,  3000,   0,0,0,  0,0,0, bhvBreakableBox		),
 			OBJECT_LEAK(MODEL_BREAKABLE_BOX		,     500,    0,  3000,   0,0,0,  0,0,0, bhvBreakableBox		),
 
-			OBJECT_LEAK(MODEL_NONE 			,    -400,  300,   500,   0,0,0,  0,0,0, bhvExclamationBox				),
-			OBJECT_LEAK(MODEL_NONE 			,    -800,  300,   500,   0,0,0,  0,1,0, bhvExclamationBox				),
-			OBJECT_LEAK(MODEL_NONE 			,   -1200,  300,   500,   0,0,0,  0,2,0, bhvExclamationBox 			),
-			OBJECT_LEAK(MODEL_NONE 			,   -1400,  300,   500,   0,0,0,  0,3,0, bhvExclamationBox 			),
+
 
 			OBJECT_LEAK(MODEL_KOOPA_WITH_SHELL 		,       0,    0,  -500,   0,0,0,  0,1,0, bhvKoopa				),
 
@@ -173,7 +172,7 @@ const LevelScript level_yajima_entry[] = {
 	FREE_LEVEL_POOL(),
 
 
-	MARIO_POS(1, 0,  0,0,0),
+	MARIO_POS(1, 0,  0,150,0),
 
 	CALL(0, lvl_init_or_update),
 	CALL_LOOP(1, lvl_init_or_update),
