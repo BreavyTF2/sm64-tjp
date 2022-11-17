@@ -454,8 +454,8 @@ void update_walking_speed(struct MarioState *m) {
         m->forwardVel += 1.1f;
     } else if (m->forwardVel <= targetSpeed) {
 		if (m->action == ACT_CHARGE) {
-        m->forwardVel += 1.2f - m->forwardVel / 44.0f;
-		} else m->forwardVel += 1.1f - m->forwardVel / 44.0f;
+        m->forwardVel += 0.55f + m->forwardVel / 43.0f;
+		} else m->forwardVel += 1.1f - m->forwardVel / 43.0f;
     } else if (m->floor->normal.y >= 0.95f) {
         m->forwardVel -= 1.0f;
     }
@@ -505,7 +505,7 @@ s32 check_ground_dive_or_punch(struct MarioState *m) {
 	}
 	if (gPlayer1Controller->buttonDown == B_BUTTON) {
 		buffer++;
-		if (buffer > 19 && m->forwardVel >= 16.0f)
+		if (buffer > 19 && m->forwardVel >= 12.0f)
         return set_mario_action(m, ACT_CHARGE, 1);
 	
 	} else {

@@ -375,35 +375,17 @@ void mtxf_align_terrain_normal(Mat4 dest, Vec3f upDir, Vec3f pos, s16 yaw) {
     Vec3f lateralDir;
     Vec3f leftDir;
     Vec3f forwardDir;
-
-    vec3f_set(lateralDir, sins(yaw), 0, coss(yaw));
+    vec3f_set(lateralDir, sins(yaw), 0.0f, coss(yaw));
     vec3f_normalize(upDir);
-
     vec3f_cross(leftDir, upDir, lateralDir);
     vec3f_normalize(leftDir);
-
     vec3f_cross(forwardDir, leftDir, upDir);
     vec3f_normalize(forwardDir);
-
-    dest[0][0] = leftDir[0];
-    dest[0][1] = leftDir[1];
-    dest[0][2] = leftDir[2];
-    dest[3][0] = pos[0];
-
-    dest[1][0] = upDir[0];
-    dest[1][1] = upDir[1];
-    dest[1][2] = upDir[2];
-    dest[3][1] = pos[1];
-
-    dest[2][0] = forwardDir[0];
-    dest[2][1] = forwardDir[1];
-    dest[2][2] = forwardDir[2];
-    dest[3][2] = pos[2];
-
-    dest[0][3] = 0.0f;
-    dest[1][3] = 0.0f;
-    dest[2][3] = 0.0f;
-    dest[3][3] = 1.0f;
+    vec3f_copy(dest[0], leftDir);
+    vec3f_copy(dest[1], upDir);
+    vec3f_copy(dest[2], forwardDir);
+    vec3f_copy(dest[3], pos);
+    MTXF_END(dest);
 }
 
 /**
@@ -420,9 +402,7 @@ void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius) {
     Vec3f point1;
     Vec3f point2;
     Vec3f forward;
-    Vec3f xColumn;
-    Vec3f yColumn;
-    Vec3f zColumn;
+    Vec3f xColumn, yColumn, zColumn;
     f32 avgY;
     f32 minY = -radius * 3;
 
@@ -451,33 +431,21 @@ void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius) {
 
     avgY = (point0[1] + point1[1] + point2[1]) / 3;
 
-    vec3f_set(forward, sins(yaw), 0, coss(yaw));
+    vec3f_set(forward, sins(yaw), 0.0f, coss(yaw));
     find_vector_perpendicular_to_plane(yColumn, point0, point1, point2);
     vec3f_normalize(yColumn);
     vec3f_cross(xColumn, yColumn, forward);
     vec3f_normalize(xColumn);
     vec3f_cross(zColumn, xColumn, yColumn);
     vec3f_normalize(zColumn);
-
-    mtx[0][0] = xColumn[0];
-    mtx[0][1] = xColumn[1];
-    mtx[0][2] = xColumn[2];
+    vec3f_copy(mtx[0], xColumn);
+    vec3f_copy(mtx[1], yColumn);
+    vec3f_copy(mtx[2], zColumn);
+	
     mtx[3][0] = pos[0];
-
-    mtx[1][0] = yColumn[0];
-    mtx[1][1] = yColumn[1];
-    mtx[1][2] = yColumn[2];
     mtx[3][1] = (avgY < pos[1]) ? pos[1] : avgY;
-
-    mtx[2][0] = zColumn[0];
-    mtx[2][1] = zColumn[1];
-    mtx[2][2] = zColumn[2];
     mtx[3][2] = pos[2];
-
-    mtx[0][3] = 0;
-    mtx[1][3] = 0;
-    mtx[2][3] = 0;
-    mtx[3][3] = 1;
+    MTXF_END(mtx);
 }
 
 /**
@@ -489,49 +457,28 @@ void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius) {
  * then a.
  */
 void mtxf_mul(Mat4 dest, Mat4 a, Mat4 b) {
-    Mat4 temp;
-    register f32 entry0;
-    register f32 entry1;
-    register f32 entry2;
+    Vec3f entry;
+    register f32 *temp  = (f32 *)a;
+    register f32 *temp2 = (f32 *)dest;
+    register f32 *temp3;
+    register s32 i;
+    for (i = 0; i < 16; i++) {
+        vec3f_copy(entry, temp);
+        for (temp3 = (f32 *)b; (i & 3) != 3; i++) {
+            *temp2 = ((entry[0] * temp3[0])
+                    + (entry[1] * temp3[4])
+                    + (entry[2] * temp3[8]));
+            temp2++;
+            temp3++;
+        }
+        *temp2 = 0;
+        temp += 4;
+        temp2++;
+    }
+    vec3f_add(&dest[3][0], &b[3][0]);
+    ((u32 *) dest)[15] = 0x3f800000;
 
-    // column 0
-    entry0 = a[0][0];
-    entry1 = a[0][1];
-    entry2 = a[0][2];
-    temp[0][0] = entry0 * b[0][0] + entry1 * b[1][0] + entry2 * b[2][0];
-    temp[0][1] = entry0 * b[0][1] + entry1 * b[1][1] + entry2 * b[2][1];
-    temp[0][2] = entry0 * b[0][2] + entry1 * b[1][2] + entry2 * b[2][2];
-
-    // column 1
-    entry0 = a[1][0];
-    entry1 = a[1][1];
-    entry2 = a[1][2];
-    temp[1][0] = entry0 * b[0][0] + entry1 * b[1][0] + entry2 * b[2][0];
-    temp[1][1] = entry0 * b[0][1] + entry1 * b[1][1] + entry2 * b[2][1];
-    temp[1][2] = entry0 * b[0][2] + entry1 * b[1][2] + entry2 * b[2][2];
-
-    // column 2
-    entry0 = a[2][0];
-    entry1 = a[2][1];
-    entry2 = a[2][2];
-    temp[2][0] = entry0 * b[0][0] + entry1 * b[1][0] + entry2 * b[2][0];
-    temp[2][1] = entry0 * b[0][1] + entry1 * b[1][1] + entry2 * b[2][1];
-    temp[2][2] = entry0 * b[0][2] + entry1 * b[1][2] + entry2 * b[2][2];
-
-    // column 3
-    entry0 = a[3][0];
-    entry1 = a[3][1];
-    entry2 = a[3][2];
-    temp[3][0] = entry0 * b[0][0] + entry1 * b[1][0] + entry2 * b[2][0] + b[3][0];
-    temp[3][1] = entry0 * b[0][1] + entry1 * b[1][1] + entry2 * b[2][1] + b[3][1];
-    temp[3][2] = entry0 * b[0][2] + entry1 * b[1][2] + entry2 * b[2][2] + b[3][2];
-
-    temp[0][3] = temp[1][3] = temp[2][3] = 0;
-    temp[3][3] = 1;
-
-    mtxf_copy(dest, temp);
 }
-
 /**
  * Set matrix 'dest' to 'mtx' scaled by vector s
  */

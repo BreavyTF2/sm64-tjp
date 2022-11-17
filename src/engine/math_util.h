@@ -41,6 +41,11 @@ extern f32 gCosineTable[];
     (dst)[2] = ((src1)[2] * (src2)[2]); \
 }
 
+#define MTXF_END(mtx) {                         \
+    (mtx)[0][3] = (mtx)[1][3] = (mtx)[2][3] = 0;\
+    ((u32 *)(mtx))[15] = 0x3F800000;             \
+}
+
 void *vec3f_copy(Vec3f dest, Vec3f src);
 void *vec3f_set(Vec3f dest, f32 x, f32 y, f32 z);
 void *vec3f_add(Vec3f dest, Vec3f a);

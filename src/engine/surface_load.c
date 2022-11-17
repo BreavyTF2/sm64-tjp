@@ -22,6 +22,14 @@
  */
 SpatialPartitionCell gStaticSurfacePartition[NUM_CELLS][NUM_CELLS];
 SpatialPartitionCell gDynamicSurfacePartition[NUM_CELLS][NUM_CELLS];
+struct CellCoords {
+    u8 z;
+    u8 x;
+    u8 partition;
+};
+struct CellCoords sCellsUsed[NUM_CELLS];
+u16 sNumCellsUsed;
+u8 sClearAllCells;
 
 /**
  * Pools of data to contain either surface nodes or surfaces.
@@ -127,9 +135,20 @@ static void add_surface_to_cell(s16 dynamic, s16 cellX, s16 cellZ, struct Surfac
 
     if (dynamic) {
         list = &gDynamicSurfacePartition[cellZ][cellX][listIndex];
-    } else {
+        if (sNumCellsUsed >= sizeof(sCellsUsed) / sizeof(struct CellCoords)) {
+            sClearAllCells = TRUE;
+        } else {
+            if (list->next == NULL) {
+                sCellsUsed[sNumCellsUsed].z = cellZ;
+                sCellsUsed[sNumCellsUsed].x = cellX;
+                sCellsUsed[sNumCellsUsed].partition = listIndex;
+                sNumCellsUsed++;
+            }
+        }
+	} else {
         list = &gStaticSurfacePartition[cellZ][cellX][listIndex];
     }
+
 
     // Loop until we find the appropriate place for the surface in the list.
     while (list->next != NULL) {
@@ -591,11 +610,20 @@ void load_area_terrain(s16 index, s16 *data, s8 *surfaceRooms, s16 *macroObjects
  * If not in time stop, clear the surface partitions.
  */
 void clear_dynamic_surfaces(void) {
+	u32 i;
     if (!(gTimeStopState & TIME_STOP_ACTIVE)) {
         gSurfacesAllocated = gNumStaticSurfaces;
         gSurfaceNodesAllocated = gNumStaticSurfaceNodes;
 
-        clear_spatial_partition(&gDynamicSurfacePartition[0][0]);
+        if (sClearAllCells) {
+            clear_spatial_partition(&gDynamicSurfacePartition[0][0]);
+        } else {
+            for (i = 0; i < sNumCellsUsed; i++) {
+                gDynamicSurfacePartition[sCellsUsed[i].z][sCellsUsed[i].x][sCellsUsed[i].partition].next = NULL;
+            }
+        }
+        sNumCellsUsed = 0;
+        sClearAllCells = FALSE;
     }
 }
 
