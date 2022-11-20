@@ -314,13 +314,13 @@ void render_hud_keys(void) {
  * Renders the timer when Mario start sliding in PSS.
  */
 void render_hud_timer(void) {
-    u8 *(*hudLUT)[58];
+ //   u8 *(*hudLUT)[58];
     u16 timerValFrames;
     u16 timerMins;
     u16 timerSecs;
     u16 timerFracSecs;
 
-    hudLUT = segmented_to_virtual(&main_hud_lut);
+//    hudLUT = segmented_to_virtual(&main_hud_lut);
     timerValFrames = gHudDisplay.timer;
 #ifdef VERSION_EU
     switch (eu_get_language()) {

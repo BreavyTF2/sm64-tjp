@@ -47,11 +47,11 @@ extern f32 gCosineTable[];
 }
 
 void *vec3f_copy(Vec3f dest, Vec3f src);
-void *vec3f_set(Vec3f dest, f32 x, f32 y, f32 z);
+void *vec3f_set(Vec3f dest, const f32 x, const f32 y, const f32 z);
 void *vec3f_add(Vec3f dest, Vec3f a);
 void *vec3f_sum(Vec3f dest, Vec3f a, Vec3f b);
 void *vec3s_copy(Vec3s dest, Vec3s src);
-void *vec3s_set(Vec3s dest, s16 x, s16 y, s16 z);
+void *vec3s_set(Vec3s dest, const s16 x, const s16 y, const s16 z);
 void *vec3s_add(Vec3s dest, Vec3s a);
 void *vec3s_sum(Vec3s dest, Vec3s a, Vec3s b);
 #define vec2_sumsq(v)       (  sqr((v)[0]) + sqr((v)[1]))
@@ -59,8 +59,36 @@ void *vec3s_sum(Vec3s dest, Vec3s a, Vec3s b);
 void *vec3s_sub(Vec3s dest, Vec3s a);
 void *vec3s_to_vec3f(Vec3f dest, Vec3s a);
 void *vec3f_to_vec3s(Vec3s dest, Vec3f a);
+#define vec2_set(dst, x, y) {           \
+    (dst)[0] = (x);                     \
+    (dst)[1] = (y);                     \
+}
+#define vec3_set(dst, x, y, z) {        \
+    vec2_set((dst), (x), (y));          \
+    (dst)[2] = (z);                     \
+}
+#define vec4_set(dst, x, y, z, w) {     \
+    vec3_set((dst), (x), (y), (z));     \
+    (dst)[3] = (w);                     \
+}
+#define vec2_diff(dst, src1, src2) {    \
+    (dst)[0] = ((src1)[0] - (src2)[0]); \
+    (dst)[1] = ((src1)[1] - (src2)[1]); \
+}
+#define vec3_diff(dst, src1, src2) {    \
+    vec2_diff((dst), (src1), (src2));   \
+    (dst)[2] = ((src1)[2] - (src2)[2]); \
+}
+#define vec4_diff(dst, src1, src2) {    \
+    vec3_diff((dst), (src1), (src2));   \
+    (dst)[3] = ((src1)[3] - (src2)[3]); \
+}
 
-void *find_vector_perpendicular_to_plane(Vec3f dest, Vec3f a, Vec3f b, Vec3f c);
+#define find_vector_perpendicular_to_plane(dest, a, b, c) {                                     \
+    (dest)[0] = ((b)[1] - (a)[1]) * ((c)[2] - (b)[2]) - ((c)[1] - (b)[1]) * ((b)[2] - (a)[2]);  \
+    (dest)[1] = ((b)[2] - (a)[2]) * ((c)[0] - (b)[0]) - ((c)[2] - (b)[2]) * ((b)[0] - (a)[0]);  \
+    (dest)[2] = ((b)[0] - (a)[0]) * ((c)[1] - (b)[1]) - ((c)[0] - (b)[0]) * ((b)[1] - (a)[1]);  \
+}
 void *vec3f_cross(Vec3f dest, Vec3f a, Vec3f b);
 void *vec3f_normalize(Vec3f dest);
 void vec3f_get_yaw(Vec3f from, Vec3f to, s16 *yaw);
