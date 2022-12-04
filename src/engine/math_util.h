@@ -83,7 +83,17 @@ void *vec3f_to_vec3s(Vec3s dest, Vec3f a);
     vec3_diff((dst), (src1), (src2));   \
     (dst)[3] = ((src1)[3] - (src2)[3]); \
 }
-
+#define vec2_copy(dst, src) {           \
+    (dst)[0] = (src)[0];                \
+    (dst)[1] = (src)[1];                \
+}
+#define vec3_copy(dst, src) {           \
+    vec2_copy((dst), (src));            \
+    (dst)[2] = (src)[2];                \
+}
+#define vec2_dot(a, b)       (((a)[0] * (b)[0]) + ((a)[1] * (b)[1]))
+#define vec3_dot(a, b)      (vec2_dot((a), (b)) + ((a)[2] * (b)[2]))
+#define vec4_dot(a, b)      (vec3_dot((a), (b)) + ((a)[3] * (b)[3]))
 #define find_vector_perpendicular_to_plane(dest, a, b, c) {                                     \
     (dest)[0] = ((b)[1] - (a)[1]) * ((c)[2] - (b)[2]) - ((c)[1] - (b)[1]) * ((b)[2] - (a)[2]);  \
     (dest)[1] = ((b)[2] - (a)[2]) * ((c)[0] - (b)[0]) - ((c)[2] - (b)[2]) * ((b)[0] - (a)[0]);  \

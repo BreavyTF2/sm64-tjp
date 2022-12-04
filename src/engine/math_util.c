@@ -19,12 +19,8 @@ int gSplineState;
 
 /// Copy vector 'src' to 'dest'
 void *vec3f_copy(Vec3f dest, Vec3f src) {
-    register u32 x = ((u32 *) src)[0];
-    register u32 y = ((u32 *) src)[1];
-    register u32 z = ((u32 *) src)[2];
-    ((u32 *) dest)[0] = x;
-    ((u32 *) dest)[1] = y;
-    ((u32 *) dest)[2] = z;
+    ((u64 *) dest)[0] = ((u64 *) src)[0];
+    ((u32 *) dest)[2] = ((u32 *) src)[2];
 }
 
 /// Finds the yaw between two vectors.
@@ -155,25 +151,29 @@ void mtxf_copy(register Mat4 dest, register Mat4 src) {
  * Set mtx to the identity matrix
  */
 void mtxf_identity(Mat4 mtx) {
-    register s32 i;
-    register f32 *dest;
-    // These loops must be one line to match on -O2
-
-    // initialize everything except the first and last cells to 0
-    for (dest = (f32 *) mtx + 1, i = 0; i < 14; dest++, i++) *dest = 0;
-
-    // initialize the diagonal cells to 1
-    for (dest = (f32 *) mtx, i = 0; i < 4; dest += 5, i++) *dest = 1;
+    s32 i;
+    f32 *dest;
+    for (dest = ((f32 *) mtx + 1), i = 0; i < 14; dest++, i++) {
+        *dest = 0;
+    }
+    for (dest = (f32 *) mtx, i = 0; i < 4; dest += 5, i++) {
+        *dest = 1;
+    }
 }
 
 /**
  * Set dest to a translation matrix of vector b
  */
 void mtxf_translate(Mat4 dest, Vec3f b) {
-    mtxf_identity(dest);
-    dest[3][0] = b[0];
-    dest[3][1] = b[1];
-    dest[3][2] = b[2];
+    register s32 i;
+    register f32 *pen;
+    for (pen = ((f32 *) dest + 1), i = 0; i < 12; pen++, i++) {
+        *pen = 0;
+    }
+    for (pen = (f32 *) dest, i = 0; i < 4; pen += 5, i++) {
+        *pen = 1;
+    }
+    vec3f_copy(&dest[3][0], &b[0]);
 }
 
 /**
@@ -183,64 +183,34 @@ void mtxf_translate(Mat4 dest, Vec3f b) {
  * angle allows a bank rotation of the camera.
  */
 void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to, s16 roll) {
-    register f32 invLength;
-    f32 dx;
-    f32 dz;
-    f32 xColY, yColY, zColY, xColZ, yColZ, zColZ, xColX, yColX, zColX;
-
-    dx = to[0] - from[0];
-    dz = to[2] - from[2];
-
-    invLength = -1.0 / sqrtf(sqr(dx) + sqr(dz));
+    Vec3f colX, colY, colZ;
+    register f32 dx = (to[0] - from[0]);
+    register f32 dz = (to[2] - from[2]);
+    f32 invLength = -1.0 / sqrtf(sqr(dx) + sqr(dz));
+	f32 sr  = sins(roll);
     dx *= invLength;
-    dz *= invLength;
-
-    yColY = coss(roll);
-    xColY = sins(roll) * dz;
-    zColY = -sins(roll) * dx;
-
-    xColZ = to[0] - from[0];
-    yColZ = to[1] - from[1];
-    zColZ = to[2] - from[2];
-
-    invLength = -1.0 / sqrtf(sqr(xColZ) + sqr(yColZ) + sqr(zColZ));
-    xColZ *= invLength;
-    yColZ *= invLength;
-    zColZ *= invLength;
-
-    xColX = yColY * zColZ - zColY * yColZ;
-    yColX = zColY * xColZ - xColY * zColZ;
-    zColX = xColY * yColZ - yColY * xColZ;
-
-    invLength = 1.0 / sqrtf(sqr(xColX) + sqr(yColX) + sqr(zColX));
-
-    xColX *= invLength;
-    yColX *= invLength;
-    zColX *= invLength;
-
-    xColY = yColZ * zColX - zColZ * yColX;
-    yColY = zColZ * xColX - xColZ * zColX;
-    zColY = xColZ * yColX - yColZ * xColX;
-
-    invLength = 1.0 / sqrtf(sqr(xColY) + sqr(yColY) + sqr(zColY));
-    xColY *= invLength;
-    yColY *= invLength;
-    zColY *= invLength;
-
-    mtx[0][0] = xColX;
-    mtx[1][0] = yColX;
-    mtx[2][0] = zColX;
-    mtx[3][0] = -(from[0] * xColX + from[1] * yColX + from[2] * zColX);
-
-    mtx[0][1] = xColY;
-    mtx[1][1] = yColY;
-    mtx[2][1] = zColY;
-    mtx[3][1] = -(from[0] * xColY + from[1] * yColY + from[2] * zColY);
-
-    mtx[0][2] = xColZ;
-    mtx[1][2] = yColZ;
-    mtx[2][2] = zColZ;
-    mtx[3][2] = -(from[0] * xColZ + from[1] * yColZ + from[2] * zColZ);
+    dz *= invLength; 
+    colY[1] = coss(roll);
+    colY[0] = ( sr * dz);
+    colY[2] = (-sr * dx);
+    vec3_diff(colZ, from, to); // to & from are swapped
+    vec3f_normalize(colZ);
+    vec3f_cross(colX, colY, colZ);
+    vec3f_normalize(colX);
+    vec3f_cross(colY, colZ, colX);
+    vec3f_normalize(colY);
+    mtx[0][0] = colX[0];
+    mtx[1][0] = colX[1];
+    mtx[2][0] = colX[2];
+    mtx[0][1] = colY[0];
+    mtx[1][1] = colY[1];
+    mtx[2][1] = colY[2];
+    mtx[0][2] = colZ[0];
+    mtx[1][2] = colZ[1];
+    mtx[2][2] = colZ[2];
+    mtx[3][0] = -vec3_dot(from, colX);
+    mtx[3][1] = -vec3_dot(from, colY);
+    mtx[3][2] = -vec3_dot(from, colZ);
     MTXF_END(mtx);
 }
 
@@ -249,32 +219,27 @@ void mtxf_lookat(Mat4 mtx, Vec3f from, Vec3f to, s16 roll) {
  * axis, and then translates.
  */
 void mtxf_rotate_zxy_and_translate(Mat4 dest, Vec3f translate, Vec3s rotate) {
-    register f32 sx = sins(rotate[0]);
-    register f32 cx = coss(rotate[0]);
-
-    register f32 sy = sins(rotate[1]);
-    register f32 cy = coss(rotate[1]);
-
-    register f32 sz = sins(rotate[2]);
-    register f32 cz = coss(rotate[2]);
-
-    dest[0][0] = cy * cz + sx * sy * sz;
-    dest[1][0] = -cy * sz + sx * sy * cz;
-    dest[2][0] = cx * sy;
-    dest[3][0] = translate[0];
-
-    dest[0][1] = cx * sz;
-    dest[1][1] = cx * cz;
+    register f32 sx   = sins(rotate[0]);
+    register f32 cx   = coss(rotate[0]);
+    register f32 sy   = sins(rotate[1]);
+    register f32 cy   = coss(rotate[1]);
+    register f32 sz   = sins(rotate[2]);
+    register f32 cz   = coss(rotate[2]);
+    register f32 sysz = (sy * sz);
+    register f32 cycz = (cy * cz);
+    register f32 cysz = (cy * sz);
+    register f32 sycz = (sy * cz);
+    dest[0][0] = ((sysz * sx) + cycz);
+    dest[1][0] = ((sycz * sx) - cysz);
+    dest[2][0] = (cx * sy);
+    dest[0][1] = (cx * sz);
+    dest[1][1] = (cx * cz);
     dest[2][1] = -sx;
-    dest[3][1] = translate[1];
-
-    dest[0][2] = -sy * cz + sx * cy * sz;
-    dest[1][2] = sy * sz + sx * cy * cz;
-    dest[2][2] = cx * cy;
-    dest[3][2] = translate[2];
-
-    dest[0][3] = dest[1][3] = dest[2][3] = 0.0f;
-    dest[3][3] = 1.0f;
+    dest[0][2] = ((cysz * sx) - sycz);
+    dest[1][2] = ((cycz * sx) + sysz);
+    dest[2][2] = (cx * cy);
+    vec3f_copy(dest[3], translate);
+    MTXF_END(dest);
 }
 
 /**
@@ -282,34 +247,27 @@ void mtxf_rotate_zxy_and_translate(Mat4 dest, Vec3f translate, Vec3s rotate) {
  * axis, and then translates.
  */
 void mtxf_rotate_xyz_and_translate(Mat4 dest, Vec3f b, Vec3s c) {
-    register f32 sx = sins(c[0]);
-    register f32 cx = coss(c[0]);
-
-    register f32 sy = sins(c[1]);
-    register f32 cy = coss(c[1]);
-
-    register f32 sz = sins(c[2]);
-    register f32 cz = coss(c[2]);
-
-    dest[0][0] = cy * cz;
-    dest[0][1] = cy * sz;
+    register f32 sx   = sins(c[0]);
+    register f32 cx   = coss(c[0]);
+    register f32 sy   = sins(c[1]);
+    register f32 cy   = coss(c[1]);
+    register f32 sz   = sins(c[2]);
+    register f32 cz   = coss(c[2]);
+    register f32 sxcz = (sx * cz);
+    register f32 cxsz = (cx * sz);
+    register f32 sxsz = (sx * sz);
+    register f32 cxcz = (cx * cz);
+    dest[0][0] = (cy * cz);
+    dest[0][1] = (cy * sz);
     dest[0][2] = -sy;
-    dest[0][3] = 0;
-
-    dest[1][0] = sx * sy * cz - cx * sz;
-    dest[1][1] = sx * sy * sz + cx * cz;
-    dest[1][2] = sx * cy;
-    dest[1][3] = 0;
-
-    dest[2][0] = cx * sy * cz + sx * sz;
-    dest[2][1] = cx * sy * sz - sx * cz;
-    dest[2][2] = cx * cy;
-    dest[2][3] = 0;
-
-    dest[3][0] = b[0];
-    dest[3][1] = b[1];
-    dest[3][2] = b[2];
-    dest[3][3] = 1;
+    dest[1][0] = ((sxcz * sy) - cxsz);;
+    dest[1][1] = ((sxsz * sy) + cxcz);
+    dest[1][2] = (sx * cy);
+    dest[2][0] = ((cxcz * sy) + sxsz);
+    dest[2][1] = ((cxsz * sy) - sxcz);
+    dest[2][2] = (cx * cy);
+    vec3f_copy(dest[3], b);
+    MTXF_END(dest);
 }
 
 /**
@@ -442,7 +400,7 @@ void mtxf_mul(Mat4 dest, Mat4 a, Mat4 b) {
     register f32 *temp3;
     register s32 i;
     for (i = 0; i < 16; i++) {
-        vec3f_copy(entry, temp);
+        vec3_copy(entry, temp);
         for (temp3 = (f32 *)b; (i & 3) != 3; i++) {
             *temp2 = ((entry[0] * temp3[0])
                     + (entry[1] * temp3[4])
@@ -455,7 +413,7 @@ void mtxf_mul(Mat4 dest, Mat4 a, Mat4 b) {
         temp2++;
     }
     vec3f_add(&dest[3][0], &b[3][0]);
-    ((u32 *) dest)[15] = 0x3f800000;
+    (*dest)[15] = 1;
 
 }
 /**
@@ -558,16 +516,27 @@ void mtxf_rotate_xy(Mtx *mtx, s16 angle) {
  * the camera position.
  */
 void get_pos_from_transform_mtx(Vec3f dest, Mat4 objMtx, Mat4 camMtx) {
-    f32 camX = camMtx[3][0] * camMtx[0][0] + camMtx[3][1] * camMtx[0][1] + camMtx[3][2] * camMtx[0][2];
-    f32 camY = camMtx[3][0] * camMtx[1][0] + camMtx[3][1] * camMtx[1][1] + camMtx[3][2] * camMtx[1][2];
-    f32 camZ = camMtx[3][0] * camMtx[2][0] + camMtx[3][1] * camMtx[2][1] + camMtx[3][2] * camMtx[2][2];
+    register s32 i;
+    register f32 *temp1 = (f32 *)dest;
+    register f32 *temp2 = (f32 *)camMtx;
+    f32 y[3];
+    register f32 *x = y;
+    register f32 *temp3 = (f32 *)objMtx;
 
-    dest[0] =
-        objMtx[3][0] * camMtx[0][0] + objMtx[3][1] * camMtx[0][1] + objMtx[3][2] * camMtx[0][2] - camX;
-    dest[1] =
-        objMtx[3][0] * camMtx[1][0] + objMtx[3][1] * camMtx[1][1] + objMtx[3][2] * camMtx[1][2] - camY;
-    dest[2] =
-        objMtx[3][0] * camMtx[2][0] + objMtx[3][1] * camMtx[2][1] + objMtx[3][2] * camMtx[2][2] - camZ;
+    for (i = 0; i < 3; i++) {
+        *x = (temp3[12] - temp2[12]);
+        temp2++;
+        temp3++;
+        x = (f32 *)(((u32)x) + 4);
+    }
+    temp2 -= 3;
+    for (i = 0; i < 3; i++) {
+        *temp1 = ((x[-3] * temp2[0])
+                + (x[-2] * temp2[1])
+                + (x[-1] * temp2[2]));
+        temp1++;
+        temp2 += 4;
+    }
 }
 
 /**
