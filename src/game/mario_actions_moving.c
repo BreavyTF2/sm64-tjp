@@ -164,7 +164,6 @@ void update_sliding_angle(struct MarioState *m, f32 accel, f32 lossFactor) {
     struct Surface *floor = m->floor;
     s16 slopeAngle = atan2s(floor->normal.z, floor->normal.x);
     f32 steepness = sqrtf(floor->normal.x * floor->normal.x + floor->normal.z * floor->normal.z);
-    UNUSED f32 normalY = floor->normal.y;
 
     m->slideVelX += accel * steepness * sins(slopeAngle);
     m->slideVelZ += accel * steepness * coss(slopeAngle);

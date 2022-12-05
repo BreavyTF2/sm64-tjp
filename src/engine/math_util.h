@@ -99,6 +99,23 @@ void *vec3f_to_vec3s(Vec3s dest, Vec3f a);
     (dest)[1] = ((b)[2] - (a)[2]) * ((c)[0] - (b)[0]) - ((c)[2] - (b)[2]) * ((b)[0] - (a)[0]);  \
     (dest)[2] = ((b)[0] - (a)[0]) * ((c)[1] - (b)[1]) - ((c)[0] - (b)[0]) * ((b)[1] - (a)[1]);  \
 }
+#define vec2_prod_val(dst, src, x) {    \
+    (dst)[0] = ((src)[0] * (x));        \
+    (dst)[1] = ((src)[1] * (x));        \
+}
+#define vec3_prod_val(dst, src, x) {    \
+    vec2_prod_val((dst), (src), (x));   \
+    (dst)[2] = ((src)[2] * (x));        \
+}
+#define vec4_prod_val(dst, src, x) {    \
+    vec3_prod_val((dst), (src), (x));   \
+    (dst)[3] = ((src)[3] * (x));        \
+}
+
+#define vec2_mul_val(dst, x) vec2_prod_val(dst, dst, x)
+#define vec3_mul_val(dst, x) vec3_prod_val(dst, dst, x)
+#define vec4_mul_val(dst, x) vec4_prod_val(dst, dst, x)
+
 void *vec3f_cross(Vec3f dest, Vec3f a, Vec3f b);
 void *vec3f_normalize(Vec3f dest);
 void vec3f_get_yaw(Vec3f from, Vec3f to, s16 *yaw);

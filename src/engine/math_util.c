@@ -36,30 +36,30 @@ void *vec3f_set(Vec3f dest, const f32 x, const f32 y, const f32 z) { vec3_set(de
 /// Add vector 'a' to 'dest'
 void *vec3f_add(Vec3f dest, Vec3f a) {
     register f32 *temp = (f32 *)dest;
-    register s32 j;
     register f32 sum, sum2;
-    for (j = 0; j < 3; j++) {
-        sum = *a;
-        a++;
+    register s32 i;
+    for (i = 0; i < 3; i++) {
+        sum = *(a);
+        (a)++;
         sum2 = *temp;
+        *temp = (sum + sum2);
         temp++;
-        temp[-1] = (sum + sum2);
-    }
+	}
 }
 
 /// Make 'dest' the sum of vectors a and b.
 void *vec3f_sum(Vec3f dest, Vec3f a, Vec3f b) {
     register f32 *temp = (f32 *)dest;
-    register s32 j;
-    register f32 x, y;
-    for (j = 0; j < 3; j++) {
-        x = *a;
-        a++;
-        y = *b;
-        b++;
-        *temp = x + y;
+    register f32 sum, sum2;
+    register s32 i;
+    for (i = 0; i < 3; i++) {
+        sum = *(a);
+        (a)++;
+        sum2 = *(b);
+        (b)++;
+        *temp = (sum + sum2);
         temp++;
-    }
+	}
 }
 
 /// Copy vector src to dest
@@ -76,16 +76,31 @@ void *vec3s_set(Vec3s dest, const s16 x, const s16 y, const s16 z) { vec3_set(de
 
 /// Add vector a to 'dest'
 void *vec3s_add(Vec3s dest, Vec3s a) {
-    dest[0] += a[0];
-    dest[1] += a[1];
-    dest[2] += a[2];
+    register s16 *temp = (s16 *)dest;
+    register s16 sum, sum2;
+    register s32 i;
+    for (i = 0; i < 3; i++) {
+        sum = *(a);
+        (a)++;
+        sum2 = *temp;
+        *temp = (sum + sum2);
+        temp++;
+	}
 }
 
 /// Make 'dest' the sum of vectors a and b.
 void *vec3s_sum(Vec3s dest, Vec3s a, Vec3s b) {
-    dest[0] = a[0] + b[0];
-    dest[1] = a[1] + b[1];
-    dest[2] = a[2] + b[2];
+    register s16 *temp = (s16 *)dest;
+    register s16 sum, sum2;
+    register s32 i;
+    for (i = 0; i < 3; i++) {
+        sum = *(a);
+        (a)++;
+        sum2 = *(b);
+        (b)++;
+        *temp = (sum + sum2);
+        temp++;
+	}
 }
 
 /// Subtract vector a from 'dest'
@@ -128,12 +143,16 @@ void *vec3f_cross(Vec3f dest, Vec3f a, Vec3f b) {
 
 /// Scale vector 'dest' so it has length 1
 void *vec3f_normalize(Vec3f dest) {
-    //! Possible division by zero
-    f32 invsqrt = 1.0f / sqrtf(sqr(dest[0]) + sqr(dest[1]) + sqr(dest[2]));
-
-    dest[0] *= invsqrt;
-    dest[1] *= invsqrt;
-    dest[2] *= invsqrt;
+    register f32 mag = (sqr(dest[0]) + sqr(dest[1]) + sqr(dest[2]));
+    if (mag > 0.00001f) {
+        register f32 invsqrt = (1.0f / sqrtf(mag));
+        vec3_mul_val(dest, invsqrt);
+    } else {
+        // Default to up vector.
+        dest[0] = 0;
+        ((u32 *) dest)[1] = 0x3F800000;
+        dest[2] = 0;
+    }
 }
 
 #pragma GCC diagnostic pop
@@ -277,28 +296,35 @@ void mtxf_rotate_xyz_and_translate(Mat4 dest, Vec3f b, Vec3s c) {
  * 'angle' rotates the object while still facing the camera.
  */
 void mtxf_billboard(Mat4 dest, Mat4 mtx, Vec3f position, s16 angle) {
-    dest[0][0] = coss(angle);
-    dest[0][1] = sins(angle);
-    dest[0][2] = 0;
-    dest[0][3] = 0;
-
-    dest[1][0] = -dest[0][1];
-    dest[1][1] = dest[0][0];
-    dest[1][2] = 0;
-    dest[1][3] = 0;
-
-    dest[2][0] = 0;
-    dest[2][1] = 0;
-    dest[2][2] = 1;
+    register s32 i;
+    register f32 *temp, *temp2;
+    temp = (f32 *)dest;
+    for (i = 0; i < 16; i++) {
+        *temp = 0;
+        temp++;
+    }
+    if (angle == 0x0) {
+        dest[0][0] = 1;
+        dest[0][1] = 0;
+        dest[1][0] = 0;
+        dest[1][1] = 1;
+    } else {
+        dest[0][0] = coss(angle);
+        dest[0][1] = sins(angle);
+        dest[1][0] = -dest[0][1];
+        dest[1][1] =  dest[0][0];
+    }
+    ((u32 *) dest)[10] = 0x3F800000;
     dest[2][3] = 0;
+    ((u32 *) dest)[15] = 0x3F800000;
 
-    dest[3][0] =
-        mtx[0][0] * position[0] + mtx[1][0] * position[1] + mtx[2][0] * position[2] + mtx[3][0];
-    dest[3][1] =
-        mtx[0][1] * position[0] + mtx[1][1] * position[1] + mtx[2][1] * position[2] + mtx[3][1];
-    dest[3][2] =
-        mtx[0][2] * position[0] + mtx[1][2] * position[1] + mtx[2][2] * position[2] + mtx[3][2];
-    dest[3][3] = 1;
+    temp = (f32 *)dest;
+    temp2 = (f32 *)mtx;
+    for (i = 0; i < 3; i++) {
+        temp[12] = (temp2[0] * position[0]) + (temp2[4] * position[1]) + (temp2[8] * position[2]) + temp2[12];
+        temp++;
+        temp2++;
+    }
 }
 
 /**
@@ -335,9 +361,7 @@ void mtxf_align_terrain_normal(Mat4 dest, Vec3f upDir, Vec3f pos, s16 yaw) {
  */
 void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius) {
     struct Surface *sp74;
-    Vec3f point0;
-    Vec3f point1;
-    Vec3f point2;
+    Vec3f point0, point1, point2;
     Vec3f forward;
     Vec3f xColumn, yColumn, zColumn;
     f32 avgY;
@@ -349,22 +373,13 @@ void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius) {
     point1[2] = pos[2] + radius * coss(yaw + 0x8000);
     point2[0] = pos[0] + radius * sins(yaw + 0xD555);
     point2[2] = pos[2] + radius * coss(yaw + 0xD555);
-
     point0[1] = find_floor(point0[0], pos[1] + 150, point0[2], &sp74);
     point1[1] = find_floor(point1[0], pos[1] + 150, point1[2], &sp74);
     point2[1] = find_floor(point2[0], pos[1] + 150, point2[2], &sp74);
 
-    if (point0[1] - pos[1] < minY) {
-        point0[1] = pos[1];
-    }
-
-    if (point1[1] - pos[1] < minY) {
-        point1[1] = pos[1];
-    }
-
-    if (point2[1] - pos[1] < minY) {
-        point2[1] = pos[1];
-    }
+    if ((point0[1] - pos[1]) < minY) point0[1] = pos[1];
+    if ((point1[1] - pos[1]) < minY) point1[1] = pos[1];
+    if ((point2[1] - pos[1]) < minY) point2[1] = pos[1];
 
     avgY = (point0[1] + point1[1] + point2[1]) / 3;
 
@@ -569,19 +584,11 @@ void vec3f_set_dist_and_angle(Vec3f from, Vec3f to, f32 dist, s16 pitch, s16 yaw
  * most 'inc' and going down at most 'dec'.
  */
 s32 approach_s32(s32 current, s32 target, s32 inc, s32 dec) {
-    //! If target is close to the max or min s32, then it's possible to overflow
-    // past it without stopping.
-
-    if (current < target) {
-        current += inc;
-        if (current > target) {
-            current = target;
-        }
-    } else {
-        current -= dec;
-        if (current < target) {
-            current = target;
-        }
+    s32 dist = (target - current);
+    if (dist > 0) { // current < target
+        current = ((dist >  inc) ? (current + inc) : target);
+    } else if (dist < 0) { // current > target
+        current = ((dist < -dec) ? (current - dec) : target);
     }
     return current;
 }
@@ -591,16 +598,11 @@ s32 approach_s32(s32 current, s32 target, s32 inc, s32 dec) {
  * most 'inc' and going down at most 'dec'.
  */
 f32 approach_f32(f32 current, f32 target, f32 inc, f32 dec) {
-    if (current < target) {
-        current += inc;
-        if (current > target) {
-            current = target;
-        }
-    } else {
-        current -= dec;
-        if (current < target) {
-            current = target;
-        }
+    f32 dist = (target - current);
+    if (dist >= 0.0f) { // target >= current
+        current = ((dist >  inc) ? (current + inc) : target);
+    } else { // target < current
+        current = ((dist < -dec) ? (current - dec) : target);
     }
     return current;
 }
@@ -610,14 +612,9 @@ f32 approach_f32(f32 current, f32 target, f32 inc, f32 dec) {
  * the resulting angle is in range [0, 0x2000] (1/8 of a circle).
  */
 static u16 atan2_lookup(f32 y, f32 x) {
-    u16 ret;
-
-    if (x == 0) {
-        ret = gArctanTable[0];
-    } else {
-        ret = gArctanTable[(s32)(y / x * 1024 + 0.5f)];
-    }
-    return ret;
+    return x == 0
+        ? 0x0
+        : gArctanTable[(s32)((y / x) * 1024 + 0.5f)];;
 }
 
 /**
@@ -626,7 +623,6 @@ static u16 atan2_lookup(f32 y, f32 x) {
  */
 s16 atan2s(f32 y, f32 x) {
     u16 ret;
-
     if (x >= 0) {
         if (y >= 0) {
             if (y >= x) {
@@ -700,44 +696,44 @@ f32 atan2f(f32 y, f32 x) {
  * TODO: verify the classification of the spline / figure out how polynomials were computed
  */
 void spline_get_weights(Vec4f result, f32 t, UNUSED s32 c) {
-    f32 tinv = 1 - t;
-    f32 tinv2 = tinv * tinv;
+    f32 tinv  = 1 - t;
+    f32 tinv2 = tinv  * tinv;
     f32 tinv3 = tinv2 * tinv;
-    f32 t2 = t * t;
-    f32 t3 = t2 * t;
+    f32 t2    = t     * t   ;
+    f32 t3    = t2    * t   ;
 
     switch (gSplineState) {
         case CURVE_BEGIN_1:
             result[0] = tinv3;
-            result[1] = t3 * 1.75f - t2 * 4.5f + t * 3.0f;
-            result[2] = -t3 * (11 / 12.0f) + t2 * 1.5f;
+            result[1] = ( t3 *        1.75f) - (t2 * 4.5f) + (t * 3.0f);
+            result[2] = (-t3 * (11 / 12.0f)) + (t2 * 1.5f);
             result[3] = t3 * (1 / 6.0f);
             break;
         case CURVE_BEGIN_2:
             result[0] = tinv3 * 0.25f;
-            result[1] = t3 * (7 / 12.0f) - t2 * 1.25f + t * 0.25f + (7 / 12.0f);
-            result[2] = -t3 * 0.5f + t2 * 0.5f + t * 0.5f + (1 / 6.0f);
+            result[1] = (t3 * (7 / 12.0f)) - (t2 * 1.25f) + (t * 0.25f) + (7 / 12.0f);
+            result[2] = (-t3 * 0.5f) + (t2 * 0.5f) + (t * 0.5f) + (1 / 6.0f);
             result[3] = t3 * (1 / 6.0f);
             break;
         case CURVE_MIDDLE:
-            result[0] = tinv3 * (1 / 6.0f);
-            result[1] = t3 * 0.5f - t2 + (4 / 6.0f);
-            result[2] = -t3 * 0.5f + t2 * 0.5f + t * 0.5f + (1 / 6.0f);
-            result[3] = t3 * (1 / 6.0f);
+            result[0] = tinv3 * (1.0f / 6.0f);
+            result[1] = (t3 * 0.5f) - t2 + (4.0f / 6.0f);
+            result[2] = (-t3 * 0.5f) + (t2 * 0.5f) + (t * 0.5f) + (1.0f / 6.0f);
+            result[3] = t3 * (1.0f / 6.0f);
             break;
         case CURVE_END_1:
-            result[0] = tinv3 * (1 / 6.0f);
-            result[1] = -tinv3 * 0.5f + tinv2 * 0.5f + tinv * 0.5f + (1 / 6.0f);
-            result[2] = tinv3 * (7 / 12.0f) - tinv2 * 1.25f + tinv * 0.25f + (7 / 12.0f);
+            result[0] = tinv3 * (1.0f /  6.0f);
+            result[1] = (-tinv3 * 0.5f) + (tinv2 * 0.5f) + (tinv * 0.5f) + (1.0f / 6.0f);
+            result[2] = (tinv3 * (7.0f / 12.0f)) - (tinv2 * 1.25f) + (tinv * 0.25f) + (7.0f / 12.0f);
             result[3] = t3 * 0.25f;
             break;
         case CURVE_END_2:
-            result[0] = tinv3 * (1 / 6.0f);
-            result[1] = -tinv3 * (11 / 12.0f) + tinv2 * 1.5f;
-            result[2] = tinv3 * 1.75f - tinv2 * 4.5f + tinv * 3.0f;
+            result[0] = tinv3 * (1.0f / 6.0f);
+            result[1] = (-tinv3 * (11.0f / 12.0f)) + (tinv2 * 1.5f);
+            result[2] = (tinv3 * 1.75f) - (tinv2 * 4.5f) + (tinv * 3.0f);
             result[3] = t3;
             break;
-    }
+	}
 }
 
 /**
