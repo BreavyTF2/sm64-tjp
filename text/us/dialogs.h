@@ -1235,7 +1235,7 @@ your Power Meter.\n\
 You can check to see how\n\
 many coins you've\n\
 collected in each of the\n\
-15 painting worlds.\n\
+14 painting worlds.\n\
 You can also recover\n\
 power by touching the\n\
 Spinning Heart.\n\
