@@ -1638,7 +1638,7 @@ const Collision bob_seg7_collision_level[] = {
     COL_TRI(137, 140, 141),
     COL_TRI(137, 142, 140),
     COL_TRI(137, 141, 138),
-    COL_TRI_INIT(SURFACE_DEFAULT, 4),
+    COL_TRI_INIT(SURFACE_CAMERA_ROTATE_LEFT, 4),
     COL_TRI(259, 124, 105),
     COL_TRI(54, 260, 259),
     COL_TRI(54, 261, 260),

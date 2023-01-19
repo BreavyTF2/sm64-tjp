@@ -5452,6 +5452,7 @@ BAD_RETURN(s32) cam_bob_tower(struct Camera *c) {
  * @see sCamBOB
  */
 BAD_RETURN(s32) cam_bob_default_free_roam(struct Camera *c) {
+	sStatusFlags |= CAM_FLAG_BLOCK_AREA_PROCESSING;
     transition_to_camera_mode(c, CAMERA_MODE_FREE_ROAM, 90);
 }
 
@@ -6276,7 +6277,7 @@ s16 camera_course_processing(struct Camera *c) {
                     if (sMarioGeometry.currFloorType == SURFACE_BOSS_FIGHT_CAMERA) {
                         set_camera_mode_boss_fight(c);
                     } else if (c->mode != (CAMERA_MODE_FREE_ROAM | CAMERA_MODE_RADIAL)) {
-                            transition_to_camera_mode(c, CAMERA_MODE_FREE_ROAM, 90);
+							                    c->defMode = CAMERA_MODE_FREE_ROAM;
                     }
                 }
                 break;
