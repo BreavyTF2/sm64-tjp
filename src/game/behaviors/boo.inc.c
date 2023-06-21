@@ -85,8 +85,8 @@ static void oba_animation_scale(void)
 		o->header.gfx.scale[2] = o->header.gfx.scale[0];
 		o->oGravity = sins(o->oBooOscillationTimer) * o->oBooBaseScale;
 
-#if 0
-        if ( ( o->oPosY - obj_animepositionY - obj_groundY ) < (50*o->oBooBaseScale) ){
+#if 0 
+        if ( ( o->oPosY - obj_animepositionY - obj_groundY ) < (50*o->oBooBaseScale) ){ //Causes the boo to slightly shake when approuching on the ground
            if ( o->oGravity < 0 ) o->oGravity = -o->oGravity;
         }
 #endif

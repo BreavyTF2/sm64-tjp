@@ -1332,12 +1332,12 @@ layer_end
 .chan_7A5:
 chan_setbank 1
 chan_setinstr 7
-chan_setenvelope .envelope_3344
 chan_setlayer 0, .layer_7B9
 chan_setval 4
 chan_call .delay
 chan_setbank 9
 chan_setinstr 3
+chan_setenvelope .envelope_3344
 chan_end
 
 .layer_7B9:
@@ -4747,9 +4747,8 @@ layer_note1 39, 0x22, 110
 layer_jump .layer_1D18
 
 .chan_1D42:
-chan_setbank 4
-chan_setinstr 2
 chan_setbank 6
+chan_setinstr 2
 chan_setenvelope .envelope_3314
 chan_setdecayrelease 200
 chan_setlayer 0, .layer_1D51
@@ -6744,8 +6743,8 @@ layer_jump .layer_2A33
 layer_end
 
 .chan_2A3D:
-chan_setbank 3
-chan_setinstr 9
+chan_setbank 0
+chan_setinstr 3
 chan_setlayer 0, .layer_2A45
 chan_end
 

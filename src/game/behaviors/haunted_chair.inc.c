@@ -15,7 +15,7 @@ struct ObjectHitbox sHauntedChairHitbox = {
 void bhv_haunted_chair_init(void) {
     struct Object *val04;
     f32 val00;
-
+	bhv_init_room();
     val04 = cur_obj_find_nearest_object_with_behavior(bhvMadPiano, &val00);
     if (val04 != NULL && val00 < 300.0f) {
         o->parentObj = val04;

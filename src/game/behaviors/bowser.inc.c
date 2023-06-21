@@ -1435,6 +1435,8 @@ void bhv_flame_large_burning_out_init(void) {
 void bowser_flame_move(void) {
     s32 sp4;
     sp4 = ((o->oFlameUnkF8 + gGlobalTimer) & 0x3F) << 10;
+	if (o->oForwardVel > 0) o->oForwardVel -= 0.3; 
+	if (o->oVelY < -8) 	o->oVelY = -8;
     o->oPosX += sins(o->oMoveAngleYaw) * sins(sp4) * 4.0f;
     o->oPosZ += coss(o->oMoveAngleYaw) * sins(sp4) * 4.0f;
 }
@@ -1442,8 +1444,7 @@ void bowser_flame_move(void) {
 void bhv_flame_bowser_loop(void) {
     cur_obj_update_floor_and_walls();
     cur_obj_move_standard(78);
-    if (o->oVelY < -4.0f)
-        o->oVelY = -4.0f;
+	
     if (o->oAction == 0) {
         cur_obj_become_intangible();
         bowser_flame_move();

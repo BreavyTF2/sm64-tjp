@@ -8,6 +8,9 @@
 #define ENVFX_SNOW_NORMAL   1  // CCM
 #define ENVFX_SNOW_WATER    2  // Secret Aquarium, Sunken Ship
 #define ENVFX_SNOW_BLIZZARD 3  // SL
+#define ENVFX_SNOW_CASTLE   4  // MirrorRoom
+
+
 
 #define ENVFX_BUBBLE_START      10 // Separates snow effects and flower/bubble effects
 

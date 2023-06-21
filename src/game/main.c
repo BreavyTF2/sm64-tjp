@@ -451,9 +451,14 @@ void thread1_idle(UNUSED void *arg) {
         ;
     }
 }
+extern u8 _mainSegmentEnd[];
+// Clear RAM on boot
+void ClearRAM(void) {
+    bzero(_mainSegmentEnd, (size_t)osMemSize - (size_t)(u32)(((char *)(_mainSegmentEnd)-0x80000000)));
+}
 
 void main_func(void) {
-    UNUSED u8 pad[64]; // needed to pad the stack
+    ClearRAM();
 
     osInitialize();
     create_thread(&gIdleThread, 1, thread1_idle, NULL, gIdleThreadStack + 0x800, 100);

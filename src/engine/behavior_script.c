@@ -67,17 +67,12 @@ u16 random_u16(void) {
 
 // Generate a pseudorandom float in the range [0, 1).
 f32 random_float(void) {
-    f32 rnd = random_u16();
-    return rnd / (double) 0x10000;
+    return ((f32) random_u16() / (f32) 0x10000);
 }
 
 // Return either -1 or 1 with a 50:50 chance.
 s32 random_sign(void) {
-    if (random_u16() >= 0x7FFF) {
-        return 1;
-    } else {
-        return -1;
-    }
+    return ((random_u16() >= 0x7FFF) ? 1 : -1);
 }
 
 // Update an object's graphical position and rotation to match its real position and rotation.
@@ -99,12 +94,8 @@ static void cur_obj_bhv_stack_push(uintptr_t bhvAddr) {
 
 // Retrieve the last behavior command address from the object's behavior stack.
 static uintptr_t cur_obj_bhv_stack_pop(void) {
-    uintptr_t bhvAddr;
-
     gCurrentObject->bhvStackIndex--;
-    bhvAddr = gCurrentObject->bhvStack[gCurrentObject->bhvStackIndex];
-
-    return bhvAddr;
+    return gCurrentObject->bhvStack[gCurrentObject->bhvStackIndex];
 }
 
 // Command 0x22: Hides the current object.
@@ -539,11 +530,7 @@ static s32 bhv_cmd_animate(void) {
 // Command 0x1E: Finds the floor triangle directly under the object and moves the object down to it.
 // Usage: DROP_TO_FLOOR()
 static s32 bhv_cmd_drop_to_floor(void) {
-    f32 x = gCurrentObject->oPosX;
-    f32 y = gCurrentObject->oPosY;
-    f32 z = gCurrentObject->oPosZ;
-
-    f32 floor = find_floor_height(x, y + 200.0f, z);
+    f32 floor = find_floor_height(gCurrentObject->oPosX, gCurrentObject->oPosY + 200.0f, gCurrentObject->oPosZ);
     gCurrentObject->oPosY = floor;
     gCurrentObject->oMoveFlags |= OBJ_MOVE_ON_GROUND;
 
@@ -661,11 +648,6 @@ static s32 bhv_cmd_nop_4(void) {
 static s32 bhv_cmd_begin(void) {
     // These objects were likely very early objects, which is why this code is here
     // instead of in the respective behavior scripts.
-
-    // Initiate the room if the object is a haunted chair or the mad piano.
-    if (cur_obj_has_behavior(bhvHauntedChair)) {
-        bhv_init_room();
-    }
     if (cur_obj_has_behavior(bhvMadPiano)) {
         bhv_init_room();
     }
@@ -895,8 +877,6 @@ static BhvCommandProc BehaviorCmdTable[] = {
 
 // Execute the behavior script of the current object, process the object flags, and other miscellaneous code for updating objects.
 void cur_obj_update(void) {
-    UNUSED u32 unused;
-
     s16 objFlags = gCurrentObject->oFlags;
     f32 distanceFromMario;
     BhvCommandProc bhvCmdProc;

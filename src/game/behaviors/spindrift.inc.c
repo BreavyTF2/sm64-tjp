@@ -17,9 +17,10 @@ void bhv_spindrift_loop(void) {
     if (cur_obj_set_hitbox_and_die_if_attacked(&sSpindriftHitbox, SOUND_OBJ_DYING_ENEMY1, 0))
         cur_obj_change_action(1);
     cur_obj_update_floor_and_walls();
+	cur_obj_init_animation_with_sound(0);
     switch (o->oAction) {
         case 0:
-		if (o->oForwardVel > 3.5f) cur_obj_play_sound_1(SOUND_AIR_UNK07);
+			cur_obj_play_sound_1(SOUND_AIR_UNK07);
             approach_forward_vel(&o->oForwardVel, 4.0f, 1.0f);
             if (cur_obj_lateral_dist_from_mario_to_home() > 1000.0f)
                 o->oAngleToMario = cur_obj_angle_to_home();

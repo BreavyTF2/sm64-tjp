@@ -191,7 +191,7 @@ const GeoLayout castle_geo_001858[] = {
                   GEO_BRANCH(1, castle_geo_001800), // 0x0E001800
                GEO_CLOSE_NODE(),
                GEO_RENDER_OBJ(),
-               GEO_ASM(0, geo_envfx_main),
+               GEO_ASM(4, geo_envfx_main),
             GEO_CLOSE_NODE(),
          GEO_CLOSE_NODE(),
       GEO_CLOSE_NODE(),

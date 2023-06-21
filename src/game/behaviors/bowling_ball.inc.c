@@ -154,8 +154,10 @@ void bhv_bowling_ball_loop(void) {
             break;
     }
 
-    if (o->oBehParams2ndByte != 4)
+    if (o->oBehParams2ndByte != 4){
         set_camera_shake_from_point(SHAKE_POS_BOWLING_BALL, o->oPosX, o->oPosY, o->oPosZ);
+	}
+	cur_obj_play_sound_1(SOUND_ENV_UNKNOWN2);
 
     set_object_visibility(o, 4000);
 }

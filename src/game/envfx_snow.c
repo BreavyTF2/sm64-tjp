@@ -76,6 +76,10 @@ s32 envfx_init_snow(s32 mode) {
             gSnowParticleMaxCount = 140;
             gSnowParticleCount = 140;
             break;
+		case ENVFX_SNOW_CASTLE:
+            gSnowParticleMaxCount = 140;
+            gSnowParticleCount = 140;
+            break;
     }
 
     gEnvFxBuffer = mem_pool_alloc(gEffectsMemoryPool, gSnowParticleMaxCount * sizeof(struct EnvFxParticle));
@@ -124,6 +128,8 @@ void envfx_update_snowflake_count(s32 mode, Vec3s marioPos) {
             break;
 
         case ENVFX_SNOW_BLIZZARD:
+            break;
+        case ENVFX_SNOW_CASTLE:
             break;
     }
 }
@@ -209,7 +215,7 @@ void envfx_update_snow_normal(s32 snowCylinderX, s32 snowCylinderY, s32 snowCyli
     for (i = 0; i < gSnowParticleCount; i++) {
         (gEnvFxBuffer + i)->isAlive =
             envfx_is_snowflake_alive(i, snowCylinderX, snowCylinderY, snowCylinderZ);
-        if ((gEnvFxBuffer + i)->isAlive) {
+        if (!(gEnvFxBuffer + i)->isAlive) {
             (gEnvFxBuffer + i)->xPos =
                 400.0f * random_float() - 200.0f + snowCylinderX + (s16)(deltaX * 2);
             (gEnvFxBuffer + i)->zPos =
@@ -243,7 +249,7 @@ void envfx_update_snow_blizzard(s32 snowCylinderX, s32 snowCylinderY, s32 snowCy
     for (i = 0; i < gSnowParticleCount; i++) {
         (gEnvFxBuffer + i)->isAlive =
             envfx_is_snowflake_alive(i, snowCylinderX, snowCylinderY, snowCylinderZ);
-        if ((gEnvFxBuffer + i)->isAlive) {
+        if (!(gEnvFxBuffer + i)->isAlive) {
             (gEnvFxBuffer + i)->xPos =
                 400.0f * random_float() - 200.0f + snowCylinderX + (s16)(deltaX * 2);
             (gEnvFxBuffer + i)->zPos =
@@ -271,11 +277,11 @@ void envfx_update_snow_blizzard(s32 snowCylinderX, s32 snowCylinderY, s32 snowCy
  *  find it. The radius of 3000 units is quite large for that though, covering
  *  more than half of the mirror room.
  */
-UNUSED static s32 is_in_mystery_snow_area(s32 x, UNUSED s32 y, s32 z) {
+static s32 is_in_mystery_snow_area(s32 x, UNUSED s32 y, s32 z) {
     if (sqr(x - 3380) + sqr(z + 520) < sqr(3000)) {
         return TRUE;
     }
-    return FALSE;
+	return FALSE;
 }
 
 /**
@@ -288,7 +294,7 @@ void envfx_update_snow_water(s32 snowCylinderX, s32 snowCylinderY, s32 snowCylin
     for (i = 0; i < gSnowParticleCount; i++) {
         (gEnvFxBuffer + i)->isAlive =
             envfx_is_snowflake_alive(i, snowCylinderX, snowCylinderY, snowCylinderZ);
-        if ((gEnvFxBuffer + i)->isAlive) {
+        if (!(gEnvFxBuffer + i)->isAlive) {
             (gEnvFxBuffer + i)->xPos = 400.0f * random_float() - 200.0f + snowCylinderX;
             (gEnvFxBuffer + i)->zPos = 400.0f * random_float() - 200.0f + snowCylinderZ;
             (gEnvFxBuffer + i)->yPos = 400.0f * random_float() - 200.0f + snowCylinderY;
@@ -432,11 +438,23 @@ Gfx *envfx_update_snow(s32 snowMode, Vec3s marioPos, Vec3s camFrom, Vec3s camTo)
             pos_from_orbit(camTo, snowCylinderPos, radius, pitch, yaw);
             envfx_update_snow_blizzard(snowCylinderPos[0], snowCylinderPos[1], snowCylinderPos[2]);
             break;
+        case ENVFX_SNOW_CASTLE:
+            if (radius > 250) {
+                radius -= 250;
+            } else {
+                radius = 1;
+            }
+
+            pos_from_orbit(camTo, snowCylinderPos, radius, pitch, yaw);
+			if (is_in_mystery_snow_area(snowCylinderPos[0],snowCylinderPos[1],snowCylinderPos[2])) {
+				envfx_update_snow_blizzard(snowCylinderPos[0], snowCylinderPos[1], snowCylinderPos[2]);
+			}
+            break;
     }
 
     rotate_triangle_vertices((s16 *) &vertex1, (s16 *) &vertex2, (s16 *) &vertex3, pitch, yaw);
 
-    if (snowMode == ENVFX_SNOW_NORMAL || snowMode == ENVFX_SNOW_BLIZZARD) {
+    if (snowMode == ENVFX_SNOW_NORMAL || snowMode == ENVFX_SNOW_BLIZZARD || snowMode == ENVFX_SNOW_CASTLE ) {
         gSPDisplayList(gfx++, &tiny_bubble_dl_0B006A50); // snowflake with gray edge
     } else if (snowMode == ENVFX_SNOW_WATER) {
         gSPDisplayList(gfx++, &tiny_bubble_dl_0B006CD8); // snowflake with blue edge

@@ -1,7 +1,8 @@
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wmissing-braces"
+
 #define ShapeColor_dosun(r,g,b)   {{r/4 ,g/4 ,b/4 ,0 ,r/4 ,g/4 ,b/4 ,0 },{ r,g,b,0, r,g,b,0, 40, 40, 40, 0} }
 
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wmissing-braces"
 static Lights1 light_dosun[] = {
 	ShapeColor_dosun(255,255,255),
 	ShapeColor_dosun(149,203,255),
@@ -275,6 +276,7 @@ static Vtx vtx_dosun_2[] = {
 	{    -97,     52,    142,     0,   -16,  1964,   187,  208,   94,  255}, 
 	{    106,    252,    157,     0,  1010,     0,    48,   70,   93,  255}, 
 };
+#pragma GCC diagnostic pop
 
 /********************************************************************************/
 /*	Graphic display list.														*/
@@ -374,4 +376,4 @@ Gfx gfx_dosun[] = {
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 	gsSPEndDisplayList() 
 };
-#pragma GCC diagnostic pop
+
