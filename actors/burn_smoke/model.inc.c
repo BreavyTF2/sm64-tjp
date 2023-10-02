@@ -8,14 +8,6 @@ static const Vtx burn_smoke_seg4_vertex_040217C0[] = {
     {{{   -50,     50,      0}, 0, {     0,      0}, {0x14, 0x0a, 0x0a, 0xff}}},
 };
 
-// //! Wrong texture format. Called as rgba16, which makes the burn smoke appear
-//     as a transparent black burn smoke. Probably meant to show up as white-ish
-//     burn smoke, but mistakened for being intended as black smoke.
-// 0x04021800
-ALIGNED8 static const u8 burn_smoke_seg4_texture_04021800[] = {
-#include "actors/burn_smoke/burn_smoke.ia16.inc.c"
-};
-
 // 0x04022000 - 0x04022028
 const Gfx burn_smoke_seg4_dl_04022000[] = {
     gsDPPipeSync(),
@@ -44,7 +36,61 @@ const Gfx burn_smoke_seg4_dl_04022048[] = {
 // 0x04022070 - 0x040220C8
 const Gfx burn_smoke_seg4_dl_04022070[] = {
     gsSPDisplayList(burn_smoke_seg4_dl_04022000),
-    gsDPLoadTextureBlock(burn_smoke_seg4_texture_04021800, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(smoke_seg4_texture_0401DEA0, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsSPDisplayList(burn_smoke_seg4_dl_04022028),
+    gsSPDisplayList(burn_smoke_seg4_dl_04022048),
+    gsSPEndDisplayList(),
+};
+
+// 0x04022070 - 0x040220C8
+const Gfx burn_smoke_seg4_dl_04022071[] = {
+    gsSPDisplayList(burn_smoke_seg4_dl_04022000),
+    gsDPLoadTextureBlock(smoke_seg4_texture_0401E6A0, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsSPDisplayList(burn_smoke_seg4_dl_04022028),
+    gsSPDisplayList(burn_smoke_seg4_dl_04022048),
+    gsSPEndDisplayList(),
+};
+
+// 0x04022070 - 0x040220C8
+const Gfx burn_smoke_seg4_dl_04022072[] = {
+    gsSPDisplayList(burn_smoke_seg4_dl_04022000),
+    gsDPLoadTextureBlock(smoke_seg4_texture_0401EEA0, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsSPDisplayList(burn_smoke_seg4_dl_04022028),
+    gsSPDisplayList(burn_smoke_seg4_dl_04022048),
+    gsSPEndDisplayList(),
+};
+
+// 0x04022070 - 0x040220C8
+const Gfx burn_smoke_seg4_dl_04022073[] = {
+    gsSPDisplayList(burn_smoke_seg4_dl_04022000),
+    gsDPLoadTextureBlock(smoke_seg4_texture_0401F6A0, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsSPDisplayList(burn_smoke_seg4_dl_04022028),
+    gsSPDisplayList(burn_smoke_seg4_dl_04022048),
+    gsSPEndDisplayList(),
+};
+
+// 0x04022070 - 0x040220C8
+const Gfx burn_smoke_seg4_dl_04022074[] = {
+    gsSPDisplayList(burn_smoke_seg4_dl_04022000),
+    gsDPLoadTextureBlock(smoke_seg4_texture_0401FEA0, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsSPDisplayList(burn_smoke_seg4_dl_04022028),
+    gsSPDisplayList(burn_smoke_seg4_dl_04022048),
+    gsSPEndDisplayList(),
+};
+
+// 0x04022070 - 0x040220C8
+const Gfx burn_smoke_seg4_dl_04022075[] = {
+    gsSPDisplayList(burn_smoke_seg4_dl_04022000),
+    gsDPLoadTextureBlock(smoke_seg4_texture_040206A0, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsSPDisplayList(burn_smoke_seg4_dl_04022028),
+    gsSPDisplayList(burn_smoke_seg4_dl_04022048),
+    gsSPEndDisplayList(),
+};
+
+// 0x04022070 - 0x040220C8
+const Gfx burn_smoke_seg4_dl_04022076[] = {
+    gsSPDisplayList(burn_smoke_seg4_dl_04022000),
+    gsDPLoadTextureBlock(smoke_seg4_texture_04020EA0, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPDisplayList(burn_smoke_seg4_dl_04022028),
     gsSPDisplayList(burn_smoke_seg4_dl_04022048),
     gsSPEndDisplayList(),

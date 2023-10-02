@@ -112,9 +112,9 @@
 #define SOUND_ACTION_METAL_JUMP_WATER                   SOUND_ARG_LOAD(0, 4, 0x50, 0x90, 8)
 #define SOUND_ACTION_METAL_LAND_WATER                   SOUND_ARG_LOAD(0, 4, 0x51, 0x90, 8)
 #define SOUND_ACTION_METAL_STEP_WATER                   SOUND_ARG_LOAD(0, 4, 0x52, 0x90, 8)
-/* not verified */ #define SOUND_ACTION_UNK53           0x0053
-/* not verified */ #define SOUND_ACTION_UNK54           SOUND_ARG_LOAD(0, 4, 0x54, 0x90, 8)
-/* not verified */ #define SOUND_ACTION_UNK55           0x0055
+/* not verified */ #define SOUND_ACTION_UNK53           SOUND_ARG_LOAD(0, 4, 0x53, 0x90, 8) //Metal Down Water
+/* not verified */ #define SOUND_ACTION_UNK54           SOUND_ARG_LOAD(0, 4, 0x54, 0x90, 8) //Metal Slowwalk Water
+/* not verified */ #define SOUND_ACTION_UNK55           SOUND_ARG_LOAD(0, 4, 0x55, 0x90, 8) //Metal Attack Hit
 /* not verified */ #define SOUND_ACTION_FLYING_FAST     SOUND_ARG_LOAD(0, 4, 0x56, 0x80, 8) // "swoop"?
 #define SOUND_ACTION_TELEPORT                           SOUND_ARG_LOAD(0, 4, 0x57, 0xC0, 8)
 /* not verified */ #define SOUND_ACTION_UNKNOWN458      SOUND_ARG_LOAD(0, 4, 0x58, 0xA0, 8)
@@ -142,7 +142,7 @@
 #define SOUND_MOVING_FLYING                     SOUND_ARG_LOAD(1, 4, 0x17, 0x00, 0)
 #define SOUND_MOVING_ALMOST_DROWNING            SOUND_ARG_LOAD(1, 0xC, 0x18, 0x00, 0)
 #define SOUND_MOVING_AIM_CANNON                 SOUND_ARG_LOAD(1, 0xD, 0x19, 0x20, 0)
-#define SOUND_MOVING_UNK1A                      0x101A // ?
+#define SOUND_MOVING_UNK1A                      SOUND_ARG_LOAD(1, 4, 0x1A, 0x00, 0)
 #define SOUND_MOVING_RIDING_SHELL_LAVA          SOUND_ARG_LOAD(1, 4, 0x28, 0x00, 0)
 
 /* Mario Sound Effects */
@@ -391,8 +391,7 @@
 #define SOUND_OBJ_GOOMBA_WALK                               SOUND_ARG_LOAD(5, 0, 0x20, 0x00, 8)
 #define SOUND_OBJ_UKIKI_CHATTER_LONG                        SOUND_ARG_LOAD(5, 0, 0x21, 0x00, 8)
 #define SOUND_OBJ_MONTY_MOLE_ATTACK                         SOUND_ARG_LOAD(5, 0, 0x22, 0x00, 8)
-#define SOUND_OBJ_EVIL_LAKITU_THROW                         SOUND_ARG_LOAD(5, 0, 0x22, 0x20, 8)
-/* not verified */ #define SOUND_OBJ_UNK23                  0x5023
+#define SOUND_OBJ_EVIL_LAKITU_THROW                         SOUND_ARG_LOAD(5, 0, 0x23, 0x00, 8)
 #define SOUND_OBJ_DYING_ENEMY1                              SOUND_ARG_LOAD(5, 0, 0x24, 0x40, 8)
 /* not verified */ #define SOUND_OBJ_CANNON4                SOUND_ARG_LOAD(5, 0, 0x25, 0x40, 8)
 /* not verified */ #define SOUND_OBJ_DYING_ENEMY2           SOUND_ARG_LOAD(5, 0, 0x26, 0x80, 8) //Old Goomba Death
@@ -464,7 +463,7 @@
 #define SOUND_OBJ_ENEMY_DEFEAT_SHRINK                       SOUND_ARG_LOAD(5, 0, 0x74, 0x40, 8)
 
 #define SOUND_AIR_BOWSER_SPIT_FIRE              SOUND_ARG_LOAD(6, 0, 0x00, 0x00, 0)
-#define SOUND_AIR_UNK01                         0x6001 // ?
+#define SOUND_AIR_UNK01                         SOUND_ARG_LOAD(6, 0, 0x01, 0xFF, 0)
 #define SOUND_AIR_LAKITU_FLY                    SOUND_ARG_LOAD(6, 0, 0x02, 0x80, 0)
 #define SOUND_AIR_LAKITU_FLY_HIGHPRIO           SOUND_ARG_LOAD(6, 0, 0x02, 0xFF, 0)
 #define SOUND_AIR_AMP_BUZZ                      SOUND_ARG_LOAD(6, 0, 0x03, 0x40, 0)

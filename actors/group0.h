@@ -15,6 +15,12 @@ extern const Gfx burn_smoke_seg4_dl_04022000[];
 extern const Gfx burn_smoke_seg4_dl_04022028[];
 extern const Gfx burn_smoke_seg4_dl_04022048[];
 extern const Gfx burn_smoke_seg4_dl_04022070[];
+extern const Gfx burn_smoke_seg4_dl_04022071[];
+extern const Gfx burn_smoke_seg4_dl_04022072[];
+extern const Gfx burn_smoke_seg4_dl_04022073[];
+extern const Gfx burn_smoke_seg4_dl_04022074[];
+extern const Gfx burn_smoke_seg4_dl_04022075[];
+extern const Gfx burn_smoke_seg4_dl_04022076[];
 
 // mario
 extern const GeoLayout mario_geo_face_and_wings[];

@@ -102,6 +102,7 @@ void opened_cannon_act_3(void) {
     struct Object *gas;
 	f32 scale;
 	set_environmental_camera_shake(SHAKE_ENV_UNUSED_7);
+	cur_obj_play_sound_2(SOUND_AIR_UNK01);
 	if (o->oTimer > 3)
         o->oAction = 0;
 	if (o->oTimer < 30) {
