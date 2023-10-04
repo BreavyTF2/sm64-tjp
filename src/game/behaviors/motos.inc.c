@@ -55,7 +55,7 @@ void s_motos_hand(void)
     }
 	
 
-
+//Below is legacy code that was commented out for pathmotos.p
 
 //	if (o->parentObj->oMotosUnk88 != 0){
 //		o->parentObj->oMotosUnk88 = 0;
@@ -187,7 +187,8 @@ void motos_pitch(void)
 	cur_obj_init_animation_with_sound(6);
 	if ( cur_obj_check_anim_frame(7) ) cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN4);
 	
-	if ( cur_obj_check_anim_frame(14) ) { o->oMotosUnk88 = 2;
+	if ( cur_obj_check_anim_frame(14) ) { 
+	o->oMotosUnk88 = 2;
 	o->numCollidedObjs = 10;
 	}
 	if ( cur_obj_check_if_near_animation_end() )	
@@ -198,40 +199,32 @@ void motos_pitch(void)
 void motos_fly(void)
 {
 	cur_obj_init_animation_and_extend_if_at_end(5);
-		if ((gCurrLevelNum == LEVEL_SL) & (o->oPosY < 1000.0f)) {
+		if (((gCurrLevelNum == LEVEL_SL) & (o->oPosY < 1000.0f)) || ((o->oFloor->type == SURFACE_BURNING) && ( o->oMoveFlags & OBJ_MOVE_LANDED))) {
+			if ((o->oFloor->type == SURFACE_BURNING)) { 
+				spawn_object_with_scale(o, MODEL_BURN_SMOKE, bhvBlackSmokeBowser, o->header.gfx.scale[0]);
+			}
 			cur_obj_play_sound_2(SOUND_OBJ_BULLY_EXPLODE_2);
-							cur_obj_play_sound_2(SOUND_OBJ2_LARGE_BULLY_ATTACKED);     
+			cur_obj_play_sound_2(SOUND_OBJ2_LARGE_BULLY_ATTACKED);
 			o->oHealth--;
-			if (o->oHealth) 
+			if (o->oHealth && o->oHealth != 0) {
                 o->oAction = 9;
-            if (o->oHealth == 0) 
-                o->oAction = 7;
-	}
-		if ((o->oFloor->type == SURFACE_BURNING) && ( o->oMoveFlags & OBJ_MOVE_LANDED)) {
-			spawn_object_with_scale(o, MODEL_BURN_SMOKE, bhvBlackSmokeBowser, o->header.gfx.scale[0]);
-			cur_obj_play_sound_2(SOUND_OBJ_BULLY_EXPLODE_2);
-							cur_obj_play_sound_2(SOUND_OBJ2_LARGE_BULLY_ATTACKED);     
-			o->oHealth--;
-			if (o->oHealth) 
-                o->oAction = 9;
-            if (o->oHealth == 0) 
-                o->oAction = 7;
+			} else  o->oAction = 7;
 	}
 	if (( o->oMoveFlags & OBJ_MOVE_LANDED) && (o->oFloor->type != SURFACE_BURNING)  ) {
-		
 		cur_obj_play_sound_2(SOUND_OBJ2_BULLY_ATTACKED);
-	o->oAction = 6;
+		o->oAction = 6;
 	}
-
 }
 
 void motos_recover(void) {
 	motos_velocity(&o->oForwardVel, 0.0f, 1.0f);
- if (o->oTimer == 0) { cur_obj_become_intangible(); cur_obj_shake_screen(SHAKE_POS_SMALL); 
-  cur_obj_play_sound_2(SOUND_OBJ_BULLY_METAL);}
+	if (o->oTimer == 0) { 
+	cur_obj_become_intangible();
+	cur_obj_shake_screen(SHAKE_POS_SMALL); 
+	cur_obj_play_sound_2(SOUND_OBJ_BULLY_METAL);
+	}
  
     if (o->oSubAction == 0) {
-		
         cur_obj_init_animation_with_sound(5);
 		if (o->oTimer == 10) {
 			cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN3);
@@ -250,18 +243,21 @@ void motos_recover(void) {
 }
 
 void motos_recover2(void) { //Motos drops down
-	motos_velocity(&o->oForwardVel, 0.0f, 1.0f);
-	motos_velocity(&o->oVelY, 0.0f, 1.0f);
-	
 	if (o->oTimer == 0) {
+		o->oBounciness = 0;
 		cur_obj_become_intangible();
 		cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
 		cur_obj_init_animation_with_sound(8);
 	}
 	
 		if (o->oPosY < (o->oHomeY + 15)){
+		if (cur_obj_check_anim_frame(0)) {
+		cur_obj_shake_screen(SHAKE_POS_MEDIUM); 
+		cur_obj_play_sound_2(SOUND_OBJ_BULLY_METAL);
+		}
 		cur_obj_init_animation_with_sound(7);
-	if ( cur_obj_check_if_near_animation_end() )	{
+		if (cur_obj_check_if_near_animation_end()) {
+			o->oBounciness = -0.5f;
 	cur_obj_become_tangible();
 	o->oAction = 1;
 		}
@@ -329,17 +325,19 @@ if (gCurrLevelNum == LEVEL_SL) {
 MotosPosX = 420;
 HeightOffset = 1400;
 MotosPosZ = -4550;
-    motos_spawn_ice_minion(MotosPosX+390, HeightOffset, MotosPosZ+95, 0);
-    motos_spawn_ice_minion(MotosPosX-196, HeightOffset, MotosPosZ-520, 0);
-    motos_spawn_ice_minion(MotosPosX-620, HeightOffset, MotosPosZ+95, 0);
+motos_spawn_ice_minion(MotosPosX+390, HeightOffset, MotosPosZ+95, 0);
+motos_spawn_ice_minion(MotosPosX-196, HeightOffset, MotosPosZ-520, 0);
+motos_spawn_ice_minion(MotosPosX-620, HeightOffset, MotosPosZ+95, 0);
 } else {
 MotosPosX = 4046;
 HeightOffset = 307;
 MotosPosZ = -5521;
-    motos_spawn_minion(MotosPosX+390, HeightOffset, MotosPosZ+95, 0);
-    motos_spawn_minion(MotosPosX-196, HeightOffset, MotosPosZ-520, 0);
-    motos_spawn_minion(MotosPosX-820, HeightOffset, MotosPosZ+95, 0);
+motos_spawn_minion(MotosPosX+390, HeightOffset, MotosPosZ+95, 0);
+motos_spawn_minion(MotosPosX-196, HeightOffset, MotosPosZ-520, 0);
+motos_spawn_minion(MotosPosX-820, HeightOffset, MotosPosZ+95, 0);
 }
+
+
     o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
 
     cur_obj_become_intangible();
