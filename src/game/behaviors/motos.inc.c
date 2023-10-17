@@ -134,7 +134,7 @@ void motos_player_search(void)
 	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x200);
 	if ( o->oDistanceToMario > 2000 )	o->oAction = 0;
 	
-	if ((o->oPosY < o->oHomeY - 100) & (o->oTimer >= 20)) { //Should not happen unless Light Motos is performed, or the player lures motos of the platform in SL.
+	if ((o->oPosY < o->oHomeY - 100) & (o->oTimer >= 20)) { //Should not happen unless Light Motos is performed, or the player lures motos off the platform in SL.
 			o->oAction = 9;
 	}
 	if ( o->oInteractStatus & INT_STATUS_GRABBED_MARIO){
@@ -242,9 +242,9 @@ void motos_recover(void) {
 	}
 }
 
-void motos_recover2(void) { //Motos drops down
+void motos_recover2(void) { //Motos drops down after minions die
 	if (o->oTimer == 0) {
-		o->oBounciness = 0;
+		o->oBounciness = -0.05f; //Small bounce, no bounce looks weird.
 		cur_obj_become_intangible();
 		cur_obj_play_sound_2(SOUND_OBJ_THWOMP);
 		cur_obj_init_animation_with_sound(8);

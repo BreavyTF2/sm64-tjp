@@ -3,9 +3,9 @@
 ***************************************************************************************************/
 void s_dice_init(void)
 {
-	o->oGravity = 2.5;
-    o->oFriction = 0.98;
-    o->oBuoyancy = 1.3;
+	o->oGravity = 2.5f;
+    o->oFriction = 0.98f;
+    o->oBuoyancy = 1.3f;
 }
 
 /***************************************************************************************************
@@ -64,9 +64,8 @@ static void DiceThrow(void)
 	o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
 	o->oHeldState = HELD_FREE;
 //	o->oFlags &= ~OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW;
-	
-	o->oForwardVel = 25.;
-	o->oVelY = 20.;
+	o->oForwardVel = (25+((random_float() - 0.5f) * 10)); //rng
+	o->oVelY = (20+((random_float() - 0.5f) * 5)); //rng
 	o->oButterflyYPhase = 2;
 }
 /***************************************************************************************************
