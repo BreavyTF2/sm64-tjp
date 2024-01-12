@@ -29,7 +29,7 @@ struct Struct80331A54 D_80331A54[][5] = {
     },
 };
 
-s16 D_80331ACC[] = { 250, 200, 200 };
+s16 D_80331ACC[] = { 250, 250, 200 };
 
 void bhv_animates_on_floor_switch_press_init(void) {
     o->parentObj = cur_obj_nearest_object_with_behavior(bhvFloorSwitchAnimatesObject);
@@ -57,7 +57,9 @@ void bhv_animates_on_floor_switch_press_loop(void) {
         } else {
             cur_obj_play_sound_1(SOUND_GENERAL2_SWITCH_TICK_FAST);
         }
-
+		if (o->oFloorSwitchPressAnimationUnkF4 < 5) {
+			cur_obj_play_sound_1(SOUND_ENV_UNK07);
+		}
         if (--o->oFloorSwitchPressAnimationUnkF4 == 0) {
             o->oFloorSwitchPressAnimationUnkFC = 0;
         }

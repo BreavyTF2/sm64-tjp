@@ -220,13 +220,14 @@ static const Vtx amp_seg8_vertex_080038D0[] = {
 
 // 0x08003910 - 0x08003940
 const Gfx amp_seg8_dl_08003910[] = {
+	gsDPPipeSync(),
 	gsSPClearGeometryMode(G_CULL_BACK),
     gsSPLight(&amp_seg8_lights_08002EC8.l, 1),
     gsSPLight(&amp_seg8_lights_08002EC8.a, 2),
     gsSPVertex(amp_seg8_vertex_08002EE0, 6, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  5, 0x0),
-	gsSPSetGeometryMode(G_CULL_BACK),
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPSetGeometryMode(G_CULL_BACK),
     gsSPEndDisplayList(),
 };
 

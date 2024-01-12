@@ -82,9 +82,22 @@ extern const Gfx tornado_seg5_dl_05014450[];
 extern const Gfx tornado_seg5_dl_050145C0[];
 extern const GeoLayout tweester_geo[];
 
-extern const Gfx angry_sun_seg8_dl_0[];
-extern const Gfx angry_sun_seg8_dl_1[];
-extern const Gfx angry_sun_seg8_dl_2[];
+extern const Gfx angry_sun_seg8_dl_netural_0[];
+extern const Gfx angry_sun_seg8_dl_netural_1[];
+extern const Gfx angry_sun_seg8_dl_netural_2[];
+extern const Gfx angry_sun_seg8_dl_netural_3[];
+extern const Gfx angry_sun_seg8_dl_angry_0[];
+extern const Gfx angry_sun_seg8_dl_angry_1[];
+extern const Gfx angry_sun_seg8_dl_angry_2[];
+extern const Gfx angry_sun_seg8_dl_angry_3[];
+extern const Gfx angry_sun_seg8_dl_netural_angry_0[];
+extern const Gfx angry_sun_seg8_dl_netural_angry_1[];
+extern const Gfx angry_sun_seg8_dl_netural_angry_2[];
+extern const Gfx angry_sun_seg8_dl_netural_angry_3[];
+extern const Gfx angry_sun_seg8_dl_netural_angry_4[];
+extern const Gfx angry_sun_seg8_dl_netural_angry_5[];
+extern const Gfx angry_sun_seg8_dl_netural_angry_6[];
+extern const Gfx angry_sun_seg8_dl_netural_angry_7[];
 extern const GeoLayout sun_geo[];
 
 #endif

@@ -4003,7 +4003,7 @@ const BehaviorScript bhvHoot[] = {
 };
 
 const BehaviorScript bhvBetaHoldableObject[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
+    BEGIN(OBJ_LIST_DESTRUCTIVE),
     OR_INT(oFlags, (OBJ_FLAG_HOLDABLE | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     SET_INT(oInteractType, INTERACT_GRABBABLE),
     DROP_TO_FLOOR(),
@@ -5282,8 +5282,6 @@ const BehaviorScript bhvGoomba[] = {
     BEGIN(OBJ_LIST_PUSHABLE),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     DROP_TO_FLOOR(),
-	SET_INT(oInteractType, INTERACT_GRABBABLE),
-	
     LOAD_ANIMATIONS(oAnimations, goomba_seg8_anims_0801DA4C),
     SET_HOME(),
     SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 40, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 0, /*Unused*/ 0, 0),
@@ -6010,6 +6008,22 @@ const BehaviorScript bhvKlepto[] = {
     CALL_NATIVE(bhv_klepto_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_klepto_update),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSun[] = {
+    BEGIN(OBJ_LIST_DESTRUCTIVE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 100, /*Gravity*/ 0, /*Bounciness*/ -20, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    SET_HOME(),
+	SET_INTERACT_TYPE(INTERACT_FLAME),
+    SET_INT(oDamageOrCoinValue, 2),
+    SET_INT(oIntangibleTimer, 0),
+	SET_HITBOX(/*Radius*/ 160, /*Height*/ 300),
+    SET_HURTBOX(/*Radius*/ 250, /*Height*/ 200),
+    CALL_NATIVE(bhv_sun_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_sun_update),
     END_LOOP(),
 };
 

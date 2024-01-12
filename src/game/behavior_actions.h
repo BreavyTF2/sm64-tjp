@@ -537,6 +537,8 @@ void bhv_eyerok_boss_loop(void);
 void bhv_eyerok_hand_loop(void);
 void bhv_klepto_init(void);
 void bhv_klepto_update(void);
+void bhv_sun_init(void);
+void bhv_sun_update(void);
 void bhv_bird_update(void);
 void bhv_racing_penguin_init(void);
 void bhv_racing_penguin_update(void);
