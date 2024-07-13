@@ -6021,9 +6021,11 @@ const BehaviorScript bhvSun[] = {
     SET_INT(oIntangibleTimer, 0),
 	SET_HITBOX(/*Radius*/ 160, /*Height*/ 300),
     SET_HURTBOX(/*Radius*/ 250, /*Height*/ 200),
+	SET_INT(oAnimState, 0),
     CALL_NATIVE(bhv_sun_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_sun_update),
+		ANIMATE_TEXTURE(oAnimState, 1),
     END_LOOP(),
 };
 

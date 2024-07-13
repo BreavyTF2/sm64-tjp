@@ -14,7 +14,7 @@ const MacroObject ssl_seg7_area_2_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_yellow_coin,                 /*yaw*/   0, /*pos*/   736,  2652, -2250),
 	MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/  2500,   800, -3000), //100 Star build location
 	MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/     0,  1750,  2800), //Coin Line Replaced
-    MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/  -400,  2000,  -2250),//Recovery Heart Replaced
+    MACRO_OBJECT(/*preset*/ macro_recovery_heart,              /*yaw*/   0, /*pos*/  -400,  1978, -2250),
     MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/  -900,  4500,   100), //Above the final Grindel
     MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/   0, /*pos*/  -260,  2940,  -600), //Secret 1 Replaced
     MACRO_OBJECT(/*preset*/ macro_red_coin,                    /*yaw*/  0, /*pos*/   260,   1967,  -600), //Secret 2 Replaced

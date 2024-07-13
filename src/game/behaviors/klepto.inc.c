@@ -194,7 +194,7 @@ static void klepto_act_turn_toward_mario(void) {
     klepto_target_mario();
 
     if (klepto_set_and_check_if_anim_at_end() && cur_obj_check_if_at_animation_end() && o->oKleptoDistanceToTarget > 800.0f
-        && abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x800 && o->oKleptoUnk1B0 < 0x400) {
+        && abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x2000 && o->oKleptoUnk1B0 < 0x400) {
         cur_obj_play_sound_2(SOUND_OBJ_KLEPTO1);
         o->oAction = KLEPTO_ACT_DIVE_AT_MARIO;
         o->oMoveAngleYaw = o->oFaceAngleYaw;
@@ -203,7 +203,7 @@ static void klepto_act_turn_toward_mario(void) {
         cur_obj_init_animation_with_sound(3);
     }
 
-    klepto_circle_target(500.0f, 40.0f);
+    klepto_circle_target(400.0f, 40.0f);
     obj_face_yaw_approach(o->oAngleToMario, 1000);
 }
 
@@ -368,7 +368,6 @@ void bhv_klepto_update(void) {
             } else if ((o->oAnimState == KLEPTO_ANIM_STATE_HOLDING_STAR) | (o->oAnimState == 3)) {
                 spawn_default_star(-5550.0f, 300.0f, -930.0f);
             }
-
             o->oAnimState = KLEPTO_ANIM_STATE_HOLDING_NOTHING;
             o->oAction = KLEPTO_ACT_STRUCK_BY_MARIO;
             o->oGravity = -2.0f;
@@ -390,8 +389,6 @@ void bhv_klepto_update(void) {
 }
 
 static Vec3f sSunTargetPositions[] = {
-    { 5000.0f, 750.0f, -4000.0f },
-    { 3750.0f, 850.0f, -5000.0f },
     { 2500.0f, 900.0f, -5000.0f },
 	{ 1250.0f, 800.0f, -4800.0f },
     { 0.0f, 825.0f,  -5000.0f },
@@ -400,7 +397,7 @@ static Vec3f sSunTargetPositions[] = {
 
 static void sun_target_mario(void) {
     o->oKleptoDistanceToTarget = lateral_dist_between_objects(gMarioObject, o);
-    o->oKleptoUnk1B0 = obj_turn_pitch_toward_mario(250.0f, 10);
+    o->oKleptoUnk1B0 = obj_turn_pitch_toward_mario(250.0f, 20);
     o->oKleptoYawToTarget = o->oAngleToMario;
     o->oKleptoUnk1AE = -60;
 	
@@ -412,7 +409,7 @@ static void sun_anim_dive(void) {
             o->oKleptoUnk1AE = 0;
         } else {
             if (o->oSoundStateID == 0) {
-                    cur_obj_play_sound_2(SOUND_GENERAL_SWISH_WATER);
+                    cur_obj_play_sound_2(SOUND_ACTION_FLYING_FAST);
             } else if (--o->oKleptoUnk1AE == 0) {
                 o->oKleptoUnk1AE = -random_linear_offset(60, 60);
             }
@@ -421,23 +418,15 @@ static void sun_anim_dive(void) {
         }
     } else {
         obj_move_pitch_approach(o->oKleptoUnk1B0, 600);
-        if (klepto_set_and_check_if_anim_at_end() != 0) {
             if (o->oKleptoUnk1AE != 0) {
                 o->oKleptoUnk1AE += 1;
-            } else if (o->oKleptoUnk1B0 > -100) {
+            }
+			if (o->oKleptoUnk1B0 > -100) {
                 o->oKleptoUnk1AE = random_linear_offset(60, 60);
             }
-        }
     }
 
     obj_face_pitch_approach(0, 1000);
-}
-
-void bhv_sun_init(void) {
-        o->oKleptoStartPosX = 7000;
-        o->oKleptoStartPosY = 1500;
-        o->oKleptoStartPosZ = 6500;
-        o->oAction = KLEPTO_ACT_WAIT_FOR_MARIO;
 }
 
 static void sun_change_target(void) {
@@ -474,19 +463,22 @@ static void sun_change_target(void) {
     o->oKleptoUnkFC = cur_obj_lateral_dist_to_home() / 2;
 }
 
+void bhv_sun_init(void) {
+        o->oKleptoStartPosX = o->oPosX;
+        o->oKleptoStartPosY = o->oPosY;
+        o->oKleptoStartPosZ = o->oPosZ;
+		sun_change_target();
+        o->oAction = KLEPTO_ACT_WAIT_FOR_MARIO;
+}
+
 static void sun_circle_target(f32 radius, f32 targetSpeed) {
     s16 turnAmount;
     f32 accel;
-	
-	if(o->oAnimState < 4 || o->oAnimState > 8) {
-		o->oAnimState = 4;
+	o->oFlyGuyOscTimer++;
+o->oPosY += coss(0x400 * o->oFlyGuyOscTimer) * 6;
+	if (o->oTimer==0) {cur_obj_set_model(MODEL_SUN2);
 	}
-	if ((gGlobalTimer & 0x03) == 0) {
-		if(o->oAnimState == 8) {
-		o->oAnimState = 4;
-		} else o->oAnimState++;
-	}
-    o->oFlyGuyOscTimer += 1;
+
 	{
         turnAmount = 0x3000 - atan2s(radius, o->oKleptoDistanceToTarget - radius);
         accel = 2.0f;
@@ -513,15 +505,7 @@ static void sun_circle_target(f32 radius, f32 targetSpeed) {
 }
 
 static void sun_approach_target(f32 targetSpeed) {
-	if( o->oAnimState < 12 ) {
-		o->oAnimState = 12;
-	}
-	if ((gGlobalTimer & 0x03) == 0) {
-		if(o->oAnimState == 16) {
-		o->oAnimState = 12;
-		} else { o->oAnimState++;
-		}
-	}
+	if (o->oTimer==0) cur_obj_set_model(MODEL_SUN4);
 
     if (o->oKleptoDistanceToTarget < 1800.0f) {
         o->oAction = KLEPTO_ACT_CIRCLE_TARGET_HOLDING;
@@ -539,38 +523,31 @@ static void sun_approach_target(f32 targetSpeed) {
 }
 
 static void sun_act_wait_for_mario(void) {
-    if (o->oKleptoDistanceToTarget < 1000.0f) {
+    if (o->oKleptoDistanceToTarget < 2000.0f) {
         sun_target_mario();
         if (o->oKleptoDistanceToTarget < 1000.0f) {
             o->oAction = KLEPTO_ACT_TURN_TOWARD_MARIO;
         }
     }
 
-    klepto_circle_target(300.0f, 40.0f);
+    sun_circle_target(300.0f, 40.0f);
 }
 
 static void sun_act_turn_toward_mario(void) {
     sun_target_mario();
 
-    if (o->oTimer > 100 && abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x1000 && o->oKleptoUnk1B0 < 0x1000) {
+    if ((o->oTimer > 300 &&  o->oKleptoDistanceToTarget > 600.0f) || ( o->oKleptoDistanceToTarget > 600.0f && abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x2000 && o->oKleptoUnk1B0 < 0x800)) {
         cur_obj_play_sound_2(SOUND_OBJ_KLEPTO1);
         o->oAction = KLEPTO_ACT_DIVE_AT_MARIO;
         o->oMoveAngleYaw = o->oFaceAngleYaw;
     }
 
-    sun_circle_target(350.0f, 20.0f);
-    obj_face_yaw_approach(o->oAngleToMario, 1000);
+    sun_circle_target(450.0f, 25.0f);
+    obj_face_yaw_approach(o->oAngleToMario, 0x800);
 }
 
 static void sun_act_dive_at_mario(void) {
-	if(o->oAnimState < 4 || o->oAnimState > 8) {
-		o->oAnimState = 4;
-	}
-	if ((gGlobalTimer & 0x03) == 0) {
-		if(o->oAnimState == 8) {
-		o->oAnimState = 4;
-		} else o->oAnimState++;
-	}
+	if (o->oTimer==0) cur_obj_set_model(MODEL_SUN2);
 	
     approach_f32_ptr(&o->oKleptoSpeed, 60.0f, 10.0f);
 	
@@ -600,14 +577,8 @@ static void sun_act_retreat(void) {
     approach_f32_ptr(&o->oKleptoSpeed, 10.0f, 1.0f);
 
     obj_move_pitch_approach(o->oKleptoUnk1B0, 1000);
-	if(o->oAnimState < 12 || o->oAnimState > 16) {
-		o->oAnimState = 12;
-	}
-	if ((gGlobalTimer & 0x03) == 0) {
-		if(o->oAnimState == 16) {
-		o->oAnimState = 12;
-		} else o->oAnimState++;
-	}
+	
+	if (o->oTimer==0) cur_obj_set_model(MODEL_SUN4);
 	
     obj_face_pitch_approach(o->oMoveAnglePitch, 1000);
     obj_rotate_yaw_and_bounce_off_walls(o->oKleptoYawToTarget, 1000);
@@ -622,6 +593,7 @@ static void sun_act_retreat(void) {
 }
 
 static void sun_act_reset_position(void) {
+	if (o->oTimer==0) cur_obj_set_model(MODEL_SUN);
     if (o->oTimer < 300) {
         sun_circle_target(300.0f, 20.0f);
     } else {
@@ -667,8 +639,7 @@ void bhv_sun_update(void) {
                 break;
         }
             cur_obj_become_tangible();
-			
-
+	cur_obj_scale(0.6f);
 //    obj_roll_to_match_yaw_turn(o->oKleptoYawToTarget, 0x3000, 600);
     cur_obj_move_standard(78);
 }

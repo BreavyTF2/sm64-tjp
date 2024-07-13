@@ -246,7 +246,10 @@ const LevelScript script_func_global_6[] = {
     LOAD_MODEL_FROM_GEO(MODEL_KLEPTO,                  klepto_geo),
     LOAD_MODEL_FROM_GEO(MODEL_EYEROK_LEFT_HAND,        eyerok_left_hand_geo),
     LOAD_MODEL_FROM_GEO(MODEL_EYEROK_RIGHT_HAND,       eyerok_right_hand_geo),
-	LOAD_MODEL_FROM_GEO(MODEL_SUN,				       sun_geo),
+	LOAD_MODEL_FROM_GEO(MODEL_SUN,				       sun_geo_neutral),
+	LOAD_MODEL_FROM_GEO(MODEL_SUN2,				       sun_geo_angry),
+	LOAD_MODEL_FROM_GEO(MODEL_SUN3,				       sun_geo_neutral_angry),
+	LOAD_MODEL_FROM_GEO(MODEL_SUN4,				       sun_geo_angry_neutral),
     RETURN(),
 };
 

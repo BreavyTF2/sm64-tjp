@@ -22,7 +22,7 @@ void bhv_snowmans_bottom_init(void) {
     o->oGravity = 10.0f;
     o->oFriction = 0.999f;
     o->oBuoyancy = 2.0f;
-
+	o->oOpacity = 255;
     o->oVelY = 0;
     o->oForwardVel = 0;
     o->oSnowmansBottomUnkF4 = 0.4f;
@@ -37,9 +37,22 @@ void bhv_snowmans_bottom_init(void) {
 void set_rolling_sphere_hitbox(void) {
     obj_set_hitbox(o, &sRollingSphereHitbox);
 
-    if ((o->oInteractStatus & INT_STATUS_INTERACTED) != 0) {
-        o->oInteractStatus = 0;
+    if ((o->oInteractStatus & INT_STATUS_INTERACTED) != 0 && gCurrLevelNum == LEVEL_HMC && o->oSubAction==0) {
+		cur_obj_become_intangible();
+		cur_obj_disable_rendering();
+		o->oPosY += 125;
+		spawn_triangle_break_particles(1, 58, 4.0f, 0);
+        spawn_triangle_break_particles(2, 59, 4.0f, 0);
+		play_sound(SOUND_GENERAL_EXPLOSION7, o->header.gfx.cameraToObject);
+		o->oSubAction++;
     }
+	if (o->oSubAction >=1) {
+		o->oForwardVel = 0;
+        o->oSubAction++;
+	}
+	if (o->oSubAction >=30) {
+        obj_mark_for_deletion(o);
+	}
 }
 
 void adjust_rolling_face_pitch(f32 f12) {

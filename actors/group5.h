@@ -98,6 +98,9 @@ extern const Gfx angry_sun_seg8_dl_netural_angry_4[];
 extern const Gfx angry_sun_seg8_dl_netural_angry_5[];
 extern const Gfx angry_sun_seg8_dl_netural_angry_6[];
 extern const Gfx angry_sun_seg8_dl_netural_angry_7[];
-extern const GeoLayout sun_geo[];
+extern const GeoLayout sun_geo_neutral[];
+extern const GeoLayout sun_geo_angry[];
+extern const GeoLayout sun_geo_neutral_angry[];
+extern const GeoLayout sun_geo_angry_neutral[];
 
 #endif
