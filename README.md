@@ -1,4 +1,4 @@
-The Junuary Project
+# The Junuary Project
 
 A hack that implements most of the non-redundant things in the Gigaleak.
 
@@ -12,7 +12,7 @@ In development longer than Super Mario 64.
 
 
 
-####Compilation
+## Compilation
 Ubuntu 18.04 is recommend for compilation.
 Pre-requisites.
 ```
