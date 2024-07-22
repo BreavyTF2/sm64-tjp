@@ -1,16 +1,8 @@
 # The Junuary Project
 
-A hack that implements most of the non-redundant things in the Gigaleak.
+A hack that implements most of the non-redundant things in the Gigaleak, in a mostly finalized style.
 
 August 16th 2020 - Present
-
-Two years have gone by, just like dust.
-
-Sometimes, Beta Hacks just don't work out.
-
-In development longer than Super Mario 64.
-
-
 
 ## Compilation
 Ubuntu 18.04 is recommend for compilation.
