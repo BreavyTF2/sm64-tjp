@@ -174,7 +174,7 @@ s32 act_idle(struct MarioState *m) {
                 } else {
                     // If Mario hasn't turned his head 10 times yet, stay idle instead of going to sleep.
                     m->actionTimer++;
-                    if (m->actionTimer < 1) {
+                    if (m->actionTimer < 10) {
                         m->actionState = 0;
                     }
                 }

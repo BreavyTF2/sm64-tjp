@@ -58,6 +58,7 @@
 #include "levels/sand/header.h"
 #include "levels/donjon/header.h"
 #include "levels/dummy/header.h"
+#include "levels/firebubble2/header.h"
 #include "make_const_nonconst.h"
 #include "behavior_data.h"
 

@@ -533,7 +533,7 @@ static void sun_act_wait_for_mario(void) {
 
 static void sun_act_turn_toward_mario(void) {
     sun_target_mario();
-    if ((o->oTimer > 300 && o->oKleptoDistanceToTarget < 2000.0f && o->oKleptoDistanceToTarget > 300.0f) || ( o->oKleptoDistanceToTarget > 300.0f && o->oKleptoDistanceToTarget < 2000.0f && o->oTimer > 60 && abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x3000 && o->oKleptoUnk1B0 < 0x400)) {
+    if ((o->oTimer > 300 && o->oKleptoDistanceToTarget < 2000.0f && o->oKleptoDistanceToTarget > 300.0f) || ( o->oKleptoDistanceToTarget > 300.0f && o->oKleptoDistanceToTarget < 2000.0f && o->oTimer > 60 && abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x2000 && o->oKleptoUnk1B0 < 0x400)) {
         o->oMoveAngleYaw = o->oAngleToMario+((random_u16() * 0.064f)-0x800);
         cur_obj_play_sound_2(SOUND_OBJ_FLAME_BLOWN);
         o->oAction = KLEPTO_ACT_DIVE_AT_MARIO;
