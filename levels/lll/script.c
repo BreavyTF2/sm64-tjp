@@ -66,26 +66,8 @@ static const LevelScript script_func_local_3[] = {
 };
 
 static const LevelScript script_func_local_4[] = {
-    OBJECT(/*model*/ MODEL_NONE,            /*pos*/ -3199,  307,  3456, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvMrI),
     OBJECT(/*model*/ MODEL_BULLY_BOSS,      /*pos*/     0,  307, -4385, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBigBully),
-    OBJECT(/*model*/ MODEL_BULLY,           /*pos*/ -5119,  307, -2482, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSmallBully),
     OBJECT(/*model*/ MODEL_UNKNOWN_58,      /*pos*/  3850,  323,  -5600, /*angle*/ 0,   0, 0, /*behParam*/ 0x01000000, /*beh*/ bhvBigBullyWithMinions),
-    OBJECT(/*model*/ MODEL_BULLY,           /*pos*/  6813,  307,  1613, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSmallBully),
-    OBJECT(/*model*/ MODEL_BULLY,           /*pos*/  7168,  307,   998, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSmallBully),
-    OBJECT(/*model*/ MODEL_BULLY,           /*pos*/ -5130,  285, -1663, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSmallBully),
-    OBJECT(/*model*/ MODEL_NONE,            /*pos*/     0,  200, -2048, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvFlamethrower),
-    OBJECT(/*model*/ MODEL_NONE,            /*pos*/   500,    2,  5000, /*angle*/ 0, 270, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBouncingFireball),
-    OBJECT(/*model*/ MODEL_NONE,            /*pos*/  -700,    2,  4500, /*angle*/ 0,  90, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBouncingFireball),
-    OBJECT(/*model*/ MODEL_NONE,            /*pos*/ -6300,    2,  2625, /*angle*/ 0,  90, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBouncingFireball),
-    OBJECT(/*model*/ MODEL_NONE,            /*pos*/ -3280,    2, -4854, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBouncingFireball),
-    OBJECT(/*model*/ MODEL_NONE,            /*pos*/  5996,    2,  -390, /*angle*/ 0, 315, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBouncingFireball),
-    OBJECT(/*model*/ MODEL_NONE,            /*pos*/  5423,    2, -1991, /*angle*/ 0, 315, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBouncingFireball),
-    OBJECT(/*model*/ MODEL_NONE,            /*pos*/  4921,    2, -1504, /*angle*/ 0,  90, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBouncingFireball),
-	OBJECT(/*model*/ MODEL_BLARGG,            /*pos*/  -2886,    65,  -400, /*angle*/ 0, 25, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBlargg),
-	OBJECT(/*model*/ MODEL_BLARGG,            /*pos*/   -1960,    65,  3693, /*angle*/ 0, 5, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBlargg),
-    OBJECT(/*model*/ MODEL_BLARGG,            /*pos*/  6400,    65, -4800, /*angle*/ 0,  355, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBlargg),
-	OBJECT(/*model*/ MODEL_BLARGG,            /*pos*/  -6000,    65, -6000, /*angle*/ 0,  45, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBlargg),
-	OBJECT(/*model*/ MODEL_BLARGG,            /*pos*/  -1250,    65, -2100, /*angle*/ 0,  265, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBlargg),
     RETURN(),
 };
 

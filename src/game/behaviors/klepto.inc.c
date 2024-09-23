@@ -475,12 +475,9 @@ static void sun_circle_target(f32 radius, f32 targetSpeed) {
     s16 turnAmount;
     f32 accel;
 	o->oFlyGuyOscTimer++;
-o->oPosY += coss(0x400 * o->oFlyGuyOscTimer) * 6;
-	if (o->oTimer==0) {cur_obj_set_model(MODEL_SUN2);
-	}
-
+o->oPosY += coss(0x300 * o->oFlyGuyOscTimer) * 6;
 	{
-        turnAmount = 0x3000 - atan2s(radius, o->oKleptoDistanceToTarget - radius);
+        turnAmount = 0x4000 - atan2s(radius, o->oKleptoDistanceToTarget - radius);
         accel = 2.0f;
         if ((s16)(o->oMoveAngleYaw - o->oKleptoYawToTarget) < 0) {
             turnAmount = -turnAmount;
@@ -523,6 +520,7 @@ static void sun_approach_target(f32 targetSpeed) {
 }
 
 static void sun_act_wait_for_mario(void) {
+	if (o->oTimer==0) cur_obj_set_model(MODEL_SUN);
     if (o->oKleptoDistanceToTarget < 2000.0f) {
         sun_target_mario();
         if (o->oKleptoDistanceToTarget < 1000.0f) {
@@ -535,15 +533,16 @@ static void sun_act_wait_for_mario(void) {
 
 static void sun_act_turn_toward_mario(void) {
     sun_target_mario();
-
-    if ((o->oTimer > 300 &&  o->oKleptoDistanceToTarget > 600.0f) || ( o->oKleptoDistanceToTarget > 600.0f && abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) < 0x2000 && o->oKleptoUnk1B0 < 0x800)) {
-        cur_obj_play_sound_2(SOUND_OBJ_KLEPTO1);
+    if ((o->oTimer > 300 && o->oKleptoDistanceToTarget < 2000.0f && o->oKleptoDistanceToTarget > 300.0f) || ( o->oKleptoDistanceToTarget > 300.0f && o->oKleptoDistanceToTarget < 2000.0f && o->oTimer > 60 && abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x3000 && o->oKleptoUnk1B0 < 0x400)) {
+        o->oMoveAngleYaw = o->oAngleToMario+((random_u16() * 0.064f)-0x800);
+        cur_obj_play_sound_2(SOUND_OBJ_FLAME_BLOWN);
         o->oAction = KLEPTO_ACT_DIVE_AT_MARIO;
-        o->oMoveAngleYaw = o->oFaceAngleYaw;
+
     }
 
     sun_circle_target(450.0f, 25.0f);
-    obj_face_yaw_approach(o->oAngleToMario, 0x800);
+    obj_rotate_yaw_and_bounce_off_walls(o->oAngleToMario, 600);
+    obj_face_yaw_approach(o->oAngleToMario, 1000);
 }
 
 static void sun_act_dive_at_mario(void) {
@@ -551,7 +550,7 @@ static void sun_act_dive_at_mario(void) {
 	
     approach_f32_ptr(&o->oKleptoSpeed, 60.0f, 10.0f);
 	
-    if (o->oTimer > 100) {
+    if (o->oTimer > 60) {
                 o->oAction = KLEPTO_ACT_WAIT_FOR_MARIO;
         }
      {
@@ -560,7 +559,7 @@ static void sun_act_dive_at_mario(void) {
         o->oKleptoUnk1B0 = -0x3000;
             if (o->oSubAction == 0) {
                 o->oKleptoUnk1B0 = obj_turn_pitch_toward_mario(0.0f, 0);
-                o->oKleptoYawToTarget = o->oAngleToMario;
+                o->oKleptoYawToTarget = o->oAngleToMario+((random_u16() * 0.064f)-0x800);
 
                 if (dy < 160.0f) {
                     o->oSubAction += 1;
@@ -568,9 +567,9 @@ static void sun_act_dive_at_mario(void) {
             }
     }
 
-    obj_move_pitch_approach(o->oKleptoUnk1B0, 600);
-    obj_face_pitch_approach(o->oMoveAnglePitch, 600);
-    obj_rotate_yaw_and_bounce_off_walls(o->oKleptoYawToTarget, 600);
+    obj_move_pitch_approach(o->oKleptoUnk1B0, 400);
+    obj_face_pitch_approach(o->oMoveAnglePitch, 400);
+    obj_rotate_yaw_and_bounce_off_walls(o->oKleptoYawToTarget, 500);
 }
 
 static void sun_act_retreat(void) {
@@ -639,7 +638,7 @@ void bhv_sun_update(void) {
                 break;
         }
             cur_obj_become_tangible();
-	cur_obj_scale(0.6f);
+	cur_obj_scale(0.5f);
 //    obj_roll_to_match_yaw_turn(o->oKleptoYawToTarget, 0x3000, 600);
     cur_obj_move_standard(78);
 }

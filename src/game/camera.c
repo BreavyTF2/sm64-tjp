@@ -3192,6 +3192,11 @@ void init_camera(struct Camera *c) {
             }
             if (is_within_100_units_of_mario(5408.f, 4500.f, 3637.f) == 1) {
                 start_cutscene(c, CUTSCENE_EXIT_FALL_WMOTR);
+				
+            }
+            if (is_within_100_units_of_mario(-3799.f, -1199.f, -5816.f) == 1) {
+                start_cutscene(c, CUTSCENE_UNUSED_EXIT);
+				
             }
             gLakituState.mode = CAMERA_MODE_FREE_ROAM;
             break;

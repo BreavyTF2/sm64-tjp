@@ -174,7 +174,7 @@ s32 act_idle(struct MarioState *m) {
                 } else {
                     // If Mario hasn't turned his head 10 times yet, stay idle instead of going to sleep.
                     m->actionTimer++;
-                    if (m->actionTimer < 10) {
+                    if (m->actionTimer < 1) {
                         m->actionState = 0;
                     }
                 }
@@ -271,7 +271,7 @@ s32 act_start_sleeping(struct MarioState *m) {
 s32 act_sleeping(struct MarioState *m) {
     s32 animFrame;
     if (m->input
-        & (INPUT_NONZERO_ANALOG | INPUT_A_PRESSED | INPUT_OFF_FLOOR | INPUT_ABOVE_SLIDE
+        & (INPUT_NONZERO_ANALOG | INPUT_OFF_FLOOR | INPUT_ABOVE_SLIDE
            | INPUT_FIRST_PERSON | INPUT_UNKNOWN_10 | INPUT_B_PRESSED | INPUT_Z_PRESSED)) {
         return set_mario_action(m, ACT_WAKING_UP, m->actionState);
     }
@@ -288,6 +288,9 @@ s32 act_sleeping(struct MarioState *m) {
     stationary_ground_step(m);
     switch (m->actionState) {
         case 0:
+    if (m->input & INPUT_A_PRESSED) {
+        return set_mario_action(m, ACT_WAKING_UP, 3);
+    }
             animFrame = set_mario_animation(m, MARIO_ANIM_SLEEP_IDLE);
 
             if (animFrame == -1 && !m->actionTimer) {
@@ -312,6 +315,9 @@ s32 act_sleeping(struct MarioState *m) {
             break;
 
         case 1:
+    if (m->input & INPUT_A_PRESSED) {
+        return set_mario_action(m, ACT_WAKING_UP, 1);
+    }
             if (set_mario_animation(m, MARIO_ANIM_SLEEP_START_LYING) == 18) {
                 play_mario_heavy_landing_sound(m, SOUND_ACTION_TERRAIN_BODY_HIT_GROUND);
             }
@@ -322,6 +328,9 @@ s32 act_sleeping(struct MarioState *m) {
             break;
 
         case 2:
+    if (m->input & INPUT_A_PRESSED) {
+        return set_mario_action(m, ACT_WAKING_UP, 2);
+    }
             animFrame = set_mario_animation(m, MARIO_ANIM_SLEEP_LYING);
 #ifndef VERSION_JP
             if (animFrame == 2) {
@@ -367,13 +376,29 @@ s32 act_waking_up(struct MarioState *m) {
 
     m->actionTimer++;
 
-    if (m->actionTimer > 20) {
+    if (is_anim_past_end(m)) {
         return set_mario_action(m, ACT_IDLE, 0);
     }
 
     stationary_ground_step(m);
 
-    set_mario_animation(m, !m->actionArg ? MARIO_ANIM_WAKE_FROM_SLEEP : MARIO_ANIM_WAKE_FROM_LYING);
+	switch (m->actionArg) {
+            case 0:
+                set_mario_animation(m, MARIO_ANIM_WAKE_FROM_SLEEP);
+                break;
+
+            case 1:
+                set_mario_animation(m, MARIO_ANIM_WAKE_FROM_LYING);
+                break;
+
+            case 2:
+                set_mario_animation(m, MARIO_ANIM_WAKE_FROM_LYING);
+                break;
+				
+			case 3:
+				set_mario_animation(m, MARIO_ANIM_GIDDY_WAKE_UP);
+				break;
+        }
 
     return FALSE;
 }

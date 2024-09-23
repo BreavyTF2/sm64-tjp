@@ -290,7 +290,7 @@
 /* not verified */ #define SOUND_GENERAL_CANNON_UP          SOUND_ARG_LOAD(3, 0, 0x47, 0x80, 8)
 /* not verified */ #define SOUND_GENERAL_GRINDEL_ROLL       SOUND_ARG_LOAD(3, 0, 0x48, 0x00, 8)
 /* not verified */ #define SOUND_GENERAL_EXPLOSION7         SOUND_ARG_LOAD(3, 0, 0x49, 0xFF, 8)
-/* not verified */ #define SOUND_GENERAL_SHAKE_COFFIN       0x304A
+/* not verified */ #define SOUND_GENERAL_SHAKE_COFFIN       SOUND_ARG_LOAD(3, 0, 0x4A, 0xFF, 8)
 /* not verified */ #define SOUND_GENERAL_RACE_GUN_SHOT      SOUND_ARG_LOAD(3, 1, 0x4D, 0x40, 8)
 /* not verified */ #define SOUND_GENERAL_STAR_DOOR_OPEN     SOUND_ARG_LOAD(3, 0, 0x4E, 0xC0, 8)
 /* not verified */ #define SOUND_GENERAL_STAR_DOOR_CLOSE    SOUND_ARG_LOAD(3, 0, 0x4F, 0xC0, 8)

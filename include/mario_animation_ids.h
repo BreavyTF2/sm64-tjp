@@ -222,7 +222,8 @@ enum MarioAnimID
     /* 0xD6 */ MARIO_ANIM_SLIDE_BRAKE,
     /* 0xD7 */ MARIO_ANIM_METAL_WATER_LAND,
     /* 0xD8 */ MARIO_ANIM_METAL_WATER_JUMP,
-    /* 0xD9 */ MARIO_ANIM_DASHING  //Currently Chasing as a placeholder.
+    /* 0xD9 */ MARIO_ANIM_DASHING, //Wario Like Dash
+	/* 0xDA */ MARIO_ANIM_GIDDY_WAKE_UP //Wakeup by pressing A
 };
 
 #endif // MARIO_ANIMATION_IDS_H
