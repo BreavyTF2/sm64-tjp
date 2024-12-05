@@ -36,7 +36,7 @@ static const u16 blargg_seg5_animindex_05006028[] = {
 
 // 0x05006070
 static const struct Animation blargg_seg5_anim_05006070 = {
-    0,
+    1,
     0,
     0,
     0,

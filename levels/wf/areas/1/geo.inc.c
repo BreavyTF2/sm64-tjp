@@ -19,6 +19,7 @@ const GeoLayout wf_geo_000BF8[] = {
                GEO_DISPLAY_LIST(LAYER_OPAQUE_DECAL, wf_seg7_dl_070052B8),
                GEO_DISPLAY_LIST(LAYER_TRANSPARENT_DECAL, wf_seg7_dl_07005538),
                GEO_DISPLAY_LIST(LAYER_TRANSPARENT, wf_seg7_dl_07005690),
+               GEO_DISPLAY_LIST(LAYER_ALPHA, wf_seg7_dl_07007220),
                GEO_RENDER_OBJ(),
                GEO_ASM(   0, geo_movtex_pause_control),
                GEO_ASM(0x2401, geo_movtex_draw_water_regions),

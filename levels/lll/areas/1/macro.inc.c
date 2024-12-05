@@ -46,6 +46,7 @@ const MacroObject lll_seg7_area_1_macro_objs[] = {
 //    MACRO_OBJECT(/*preset*/ macro_1up,                         /*yaw*/   0, /*pos*/ -6780,   275, -6766),
     MACRO_OBJECT_WITH_BEH_PARAM(/*preset*/ macro_wooden_signpost,             /*yaw*/   0, /*pos*/ -3980,   154,  6057, /*behParam*/ DIALOG_086),
     MACRO_OBJECT(/*preset*/ macro_jumping_box,                 /*yaw*/   0, /*pos*/  4170,   154, -1940),
+    MACRO_OBJECT(/*preset*/ macro_box_koopa_shell,             /*yaw*/   0, /*pos*/  7600,   550,  1400),
     MACRO_OBJECT(/*preset*/ macro_flamethrower,                /*yaw*/   0, /*pos*/  1400,   -20,  3720),
     MACRO_OBJECT(/*preset*/ macro_flamethrower,                /*yaw*/   0, /*pos*/  7100,   -20,  3420),
     MACRO_OBJECT(/*preset*/ macro_flamethrower,                /*yaw*/   0, /*pos*/  7300,   -20,  5160),

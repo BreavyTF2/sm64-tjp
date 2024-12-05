@@ -409,26 +409,26 @@ void mtxf_align_terrain_triangle(Mat4 mtx, Vec3f pos, s16 yaw, f32 radius) {
  * then a.
  */
 void mtxf_mul(Mat4 dest, Mat4 a, Mat4 b) {
-    Vec3f entry;
-    register f32 *temp  = (f32 *)a;
-    register f32 *temp2 = (f32 *)dest;
-    register f32 *temp3;
-    register s32 i;
-    for (i = 0; i < 16; i++) {
-        vec3_copy(entry, temp);
-        for (temp3 = (f32 *)b; (i & 3) != 3; i++) {
-            *temp2 = ((entry[0] * temp3[0])
-                    + (entry[1] * temp3[4])
-                    + (entry[2] * temp3[8]));
-            temp2++;
-            temp3++;
+    s32 i, j;
+    register f32 entry0;
+    register f32 entry1;
+    register f32 entry2;
+
+    for (i = 0; i < 4; i++) {
+        entry0 = a[i][0];
+        entry1 = a[i][1];
+        entry2 = a[i][2];
+        for (j = 0; j < 3; j++) {
+            dest[i][j] = entry0 * b[0][j] + entry1 * b[1][j] + entry2 * b[2][j];
         }
-        *temp2 = 0;
-        temp += 4;
-        temp2++;
+        if (i == 3) {
+            dest[i][0] += b[3][0];
+            dest[i][1] += b[3][1];
+            dest[i][2] += b[3][2];
+        }
     }
-    vec3f_add(&dest[3][0], &b[3][0]);
-    (*dest)[15] = 1;
+    dest[0][3] = dest[1][3] = dest[2][3] = 0;
+    dest[3][3] = 1;
 
 }
 /**

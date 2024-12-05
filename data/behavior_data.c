@@ -2259,7 +2259,7 @@ const BehaviorScript bhvBlargg[] = {
     BEGIN(OBJ_LIST_GENACTOR),
 	 OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
 	LOAD_ANIMATIONS(oAnimations, blargg_seg5_anims_0500616C),
-		SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 150, /*Gravity*/ 0, /*Bounciness*/ 0, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ -200, /*Unused*/ 0, 0),
+		SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 170, /*Gravity*/ 0, /*Bounciness*/ 0, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ -200, /*Unused*/ 0, 0),
 		DROP_TO_FLOOR(),
 	SET_FLOAT(oDrawingDistance, 5000),	
 	SET_HOME(),

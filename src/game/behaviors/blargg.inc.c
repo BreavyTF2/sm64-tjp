@@ -5,9 +5,9 @@ struct ObjectHitbox sBlarggHitbox = { //Custom Hitbox
     /* damageOrCoinValue: */ 2,
     /* health: */ 0,
     /* numLootCoins: */ 0,
-    /* radius: */ 200,
+    /* radius: */ 180,
     /* height: */ 113,
-    /* hurtboxRadius: */ 201,
+    /* hurtboxRadius: */ 181,
     /* hurtboxHeight: */ 123,
 };
 void unbaba_act_init(void) // Why is this needed?
@@ -21,7 +21,7 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 	
 	cur_obj_become_tangible();
 	if (gMarioState->action & ACT_FLAG_RIDING_SHELL) {
-	shellspeed = 3;
+	shellspeed = 2;
 	} else shellspeed = 1;
 
 	    if (o->oMoveFlags & OBJ_MOVE_HIT_WALL) {
@@ -43,45 +43,38 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 		}
 	}
 	if ( o->oDistanceToMario < 1000 ) {
-		if ((gMarioState->action & ACT_FLAG_RIDING_SHELL) && (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x200)) {
+		if ((gMarioState->action & ACT_FLAG_RIDING_SHELL) && o->oTimer > 20 && (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x200)) {
 		o->oAction = 2;
 		}
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x20*shellspeed);
 		o->oForwardVel = 3.75f;
 		}
 	if ( o->oDistanceToMario < 750) {
-		if (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x200) {
+		if (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x200 && o->oTimer > 25) {
 	o->oAction = 2;
 		}
 	}
-	cur_obj_init_animation_with_sound(UNBABA_ANIM_SWIM);
+	cur_obj_init_animation_with_accel_and_sound(0, 1);
 }
 void unbaba_act_attack(void) // Define Attacking Action for Blargg
 {
 	s32 animTimer = o->header.gfx.animInfo.animFrame;
 	f32 shellspeed; ////turn and speed multiplier
 	if (gMarioState->action & ACT_FLAG_RIDING_SHELL) {
-	shellspeed = 1.5f;
+	shellspeed = 1.4f;
 	} else shellspeed = 1;
 	
-	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40);
 	cur_obj_become_tangible();
-	if (gMarioState->action & ACT_FLAG_RIDING_SHELL){
-			cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x60);
-		cur_obj_init_animation_with_accel_and_sound(1, 1.5f);
-	}
-	cur_obj_init_animation_with_sound(UNBABA_ANIM_ATTACK);
+	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40*shellspeed);
+	cur_obj_init_animation_with_accel_and_sound(1, 1*shellspeed);
 	if (animTimer < (20)){
-			o->oForwardVel = (2.0*(animTimer)+1)*shellspeed;
-			o->hurtboxRadius = 255;
+			o->oForwardVel = ((1.5f*animTimer)*shellspeed);
 			o->hurtboxHeight = 205;
 	} if (animTimer >= (20)){
-			o->oForwardVel = (1*(animTimer)+5)*shellspeed;
-			o->hurtboxRadius = 330;
+			o->oForwardVel = ((animTimer)+5)*shellspeed;
 			o->hurtboxHeight = 245;
 	} if (animTimer > (25)){
-			o->oForwardVel = (36/(animTimer-12)+5)*shellspeed;
-			o->hurtboxRadius = 255;
+			o->oForwardVel = (36/(animTimer-12)+4)*shellspeed;
 			o->hurtboxHeight = 205;
 	}
     if (o->oTimer == 0) {
@@ -89,9 +82,9 @@ void unbaba_act_attack(void) // Define Attacking Action for Blargg
     } 
     if (cur_obj_check_if_near_animation_end()) {
      cur_obj_play_sound_2(SOUND_GENERAL_BUBBLES);    //XDelta
-     o->hurtboxRadius = 201;
      o->hurtboxHeight = 123;
      o->oAction = 1;
+	 o->oTimer = 1;
 	}
 }
 
