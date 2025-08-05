@@ -4,7 +4,7 @@
 // Surface Types
 #define SURFACE_DEFAULT                      0x0000 // Environment default
 #define SURFACE_BURNING                      0x0001 // Lava / Frostbite (in SL), but is used mostly for Lava
-#define SURFACE_0004                         0x0004 // Unused, has no function and has parameters
+#define SURFACE_0004                         0x0004 // Unused, has no function and has parameters (labelled as お花畑 in tag.cnf, meaning Flower Field)
 #define SURFACE_HANGABLE                     0x0005 // Ceiling that Mario can climb on
 #define SURFACE_SLOW                         0x0009 // Slow down Mario, unused
 #define SURFACE_DEATH_PLANE                  0x000A // Death floor
@@ -32,7 +32,7 @@
 #define SURFACE_WALL_MISC                    0x0028 // Used for some walls, Cannon to adjust the camera, and some objects like Warp Pipe
 #define SURFACE_NOISE_DEFAULT                0x0029 // Default floor with noise
 #define SURFACE_NOISE_SLIPPERY               0x002A // Slippery floor with noise
-#define SURFACE_ELECTRIC                     0x002B // Electric Floor, shocks the player if standing still for too long.
+#define SURFACE_ELECTRIC                     0x002B // Electric floor, shocks the player if standing still for too long.
 #define SURFACE_HORIZONTAL_WIND              0x002C // Horizontal wind, has parameters
 #define SURFACE_INSTANT_MOVING_QUICKSAND     0x002D // Quicksand (lethal, flowing)
 #define SURFACE_ICE                          0x002E // Slippery Ice, in snow levels and THI's water floor

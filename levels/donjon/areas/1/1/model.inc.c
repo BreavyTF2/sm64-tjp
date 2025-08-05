@@ -3618,7 +3618,7 @@ Gfx gfx_donjon[] = {
 
 
     gsDPPipeSync(),
-#if ENABLE_STAGE3_FOG
+#if STAGE3_FOG
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
     gsDPSetDepthSource(G_ZS_PIXEL),
@@ -3634,7 +3634,7 @@ Gfx gfx_donjon[] = {
 							 G_TX_WRAP|G_TX_NOMIRROR , 5 , G_TX_NOLOD,
 							 G_TX_WRAP|G_TX_NOMIRROR , 5 , G_TX_NOLOD	),
 
-//	gsSPClearGeometryMode(G_SHADING_SMOOTH),
+	gsSPClearGeometryMode(G_SHADING_SMOOTH),
 	gsSPNumLights(NUMLIGHTS_1),
 	gsSPTexture(0xffff,0xffff, 0, 0, G_ON),
 
@@ -3658,16 +3658,16 @@ Gfx gfx_donjon[] = {
 	gsSPTexture(0xffff, 0xffff, 0, 0, G_OFF),
 
 	gsDPPipeSync(),
+#if STAGE3_FOG
+	gsDPSetCycleType(G_CYC_1CYCLE),
+    gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_NOOP2),
+    gsSPClearGeometryMode(G_FOG),
+#endif
 	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
 
 		gsSPDisplayList(gfx_donjon_10),
 
 	gsSPSetGeometryMode(G_SHADING_SMOOTH),
-#if ENABLE_STAGE3_FOG
-	gsDPSetCycleType(G_CYC_1CYCLE),
-    gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_NOOP2),
-    gsSPClearGeometryMode(G_FOG),
-#endif
 	gsSPEndDisplayList() 
 };
 
