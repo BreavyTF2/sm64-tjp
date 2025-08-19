@@ -1,11 +1,3 @@
-static const Lights1 thi_seg7_lights_07001001 = gdSPDefLights1(
-    0x0f, 0x0f, 0x0f,
-    0x3f, 0x3f, 0x3f, 0x0a, 0x0a, 0x0a
-);
-static const Lights1 thi_seg7_lights_07001002 = gdSPDefLights1(
-    0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x0a, 0x0a, 0x0a
-);
 // 0x07009740 - 0x07009820
 static const Vtx thi_seg7_vertex_07009740[] = {
     {{{  -101,   3482,    102}, 0, {  1398,   -168}, {0x00, 0x00, 0x00, 0xff}}},
@@ -103,8 +95,8 @@ static const Vtx thi_seg7_vertex_07009B30[] = {
 
 // 0x07009B70 - 0x07009C40
 static const Gfx thi_seg7_dl_07009B70[] = {
-    gsSPLight(&thi_seg7_lights_07001001.l, 1),
-    gsSPLight(&thi_seg7_lights_07001001.a, 2),
+    gsSPLight(&thi_seg7_lights_07007CD8.l, 1),
+    gsSPLight(&thi_seg7_lights_07007CD8.a, 2),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, grass_0900B800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -126,8 +118,8 @@ static const Gfx thi_seg7_dl_07009B70[] = {
 
 // 0x07009C40 - 0x07009CF8
 static const Gfx thi_seg7_dl_07009C40[] = {
-    gsSPLight(&thi_seg7_lights_07001001.l, 1),
-    gsSPLight(&thi_seg7_lights_07001001.a, 2),
+    gsSPLight(&thi_seg7_lights_07007CD8.l, 1),
+    gsSPLight(&thi_seg7_lights_07007CD8.a, 2),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, thi_seg7_texture_07000000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -148,8 +140,8 @@ static const Gfx thi_seg7_dl_07009C40[] = {
 
 // 0x07009CF8 - 0x07009D30
 static const Gfx thi_seg7_dl_07009CF8[] = {
-    gsSPLight(&thi_seg7_lights_07001001.l, 1),
-    gsSPLight(&thi_seg7_lights_07001001.a, 2),
+    gsSPLight(&thi_seg7_lights_07007CD8.l, 1),
+    gsSPLight(&thi_seg7_lights_07007CD8.a, 2),
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, grass_09005800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
@@ -160,8 +152,8 @@ static const Gfx thi_seg7_dl_07009CF8[] = {
 
 // 0x07009D30 - 0x07009D50
 static const Gfx thi_seg7_dl_07009D30[] = {
-	gsSPLight(&thi_seg7_lights_07001002.l, 1),
-    gsSPLight(&thi_seg7_lights_07001002.a, 2),
+	gsSPLight(&thi_seg7_lights_07007C90.l, 1),
+    gsSPLight(&thi_seg7_lights_07007C90.a, 2),
     gsSPVertex(thi_seg7_vertex_07009B30, 4, 0),
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
     gsSPEndDisplayList(),

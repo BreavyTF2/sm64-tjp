@@ -7,14 +7,16 @@
 #include "special_preset_names.h"
 #include "textures.h"
 #include "dialog_ids.h"
-#define		STAGE13_FOG_R		41/3
-#define		STAGE13_FOG_G		41/3
-#define		STAGE13_FOG_B		197/3
-#define		STAGE13_FOG_START	940
-#define		STAGE13B_FOG_R		41/6 //Wiggler's Cave, should be dark
-#define		STAGE13B_FOG_G		41/6
-#define		STAGE13B_FOG_B		197/6
-#define		STAGE13B_FOG_START	800
+#define		STAGE13_FOG_R		15
+#define		STAGE13_FOG_G		15
+#define		STAGE13_FOG_B		65
+#define		STAGE13_FOG_START	980  
+#define		STAGE13B_FOG_R		10  //Wiggler's Cave, should be darker than regular stage
+#define		STAGE13B_FOG_G		10  
+#define		STAGE13B_FOG_B		35
+#define		STAGE13B_FOG_START	930
+#define		STAGE13_LSCALE		6
+#define		STAGE13_LSCALE2		3
 #include "make_const_nonconst.h"
 #include "levels/thi/texture.inc.c"
 #include "levels/thi/areas/1/1/model.inc.c" // Area 2 defines a share path to load these DLs as part of its geo script.

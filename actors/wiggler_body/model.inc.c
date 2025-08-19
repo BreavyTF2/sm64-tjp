@@ -1,8 +1,8 @@
 // Wiggler Body
-#define		STAGE13_HANA_FOG_R		 41/6
-#define		STAGE13_HANA_FOG_G		 41/6
-#define		STAGE13_HANA_FOG_B		 197/6
-#define		STAGE13_HANA_FOG_START	800
+#define		STAGE13_HANA_FOG_R		10
+#define		STAGE13_HANA_FOG_G		10
+#define		STAGE13_HANA_FOG_B		35
+#define		STAGE13_HANA_FOG_START	930
 // 0x05007A30
 ALIGNED8 static const u8 wiggler_seg5_texture_05007A30[] = {
 #include "actors/wiggler/wiggler_eye.rgba16.inc.c"
@@ -20,19 +20,19 @@ ALIGNED8 static const u8 wiggler_seg5_texture_05008A30[] = {
 
 // 0x0500B230
 static const Lights1 wiggler_seg5_lights_0500B230 = gdSPDefLights1(
-    0x37/2, 0x00, 0x00,
+    0xdf/4, 0x00, 0x00,
     0xdf/2, 0x00, 0x00, 0x28, 0x28, 0x28
 );
 
 // 0x0500B248
 static const Lights1 wiggler_seg5_lights_0500B248 = gdSPDefLights1(
-    0x39/2, 0x11/2, 0x00,
+    0xe7/4, 0x47/4, 0x00,
     0xe7/2, 0x47/2, 0x00, 0x28, 0x28, 0x28
 );
 
 // Unreferenced light group
 UNUSED static const Lights1 wiggler_body_lights_unused = gdSPDefLights1(
-    0x3a/2, 0x22/2, 0x05/2,
+    0xea/4, 0x8b/4, 0x16/4,
     0xea/2, 0x8b/2, 0x16/2, 0x28, 0x28, 0x28
 );
 

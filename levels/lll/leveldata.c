@@ -8,6 +8,11 @@
 #include "textures.h"
 #include "dialog_ids.h"
 
+#define		STAGE22_FOG_R		100
+#define		STAGE22_FOG_G		20
+#define		STAGE22_FOG_B		0
+#define		STAGE22_FOG_START	980
+
 #include "make_const_nonconst.h"
 #include "levels/lll/texture.inc.c"
 #include "levels/lll/areas/1/light.inc.c" // What the hell? Every level up until LLL hasn't needed this. Some models share lights, so we'll assume its a shared area file for level optimization.

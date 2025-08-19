@@ -11,7 +11,7 @@ void spawn_wind_particles(s16 pitch, s16 yaw) {
 
 void bhv_wind_loop(void) {
     s16 sp2E = 500;
-    f32 sp28 = 1.0f;
+//    f32 sp28 = 1.0f;
     if (o->oTimer == 0) {
         o->oOpacity = 100;
         if (o->oMoveAnglePitch == 0) {
@@ -28,8 +28,17 @@ void bhv_wind_loop(void) {
             o->oMoveAngleYaw = random_u16();
             o->oForwardVel = 10.0f;
         }
-        obj_set_billboard(o);
-        cur_obj_scale(sp28);
+//       obj_set_billboard(o);
+//        cur_obj_scale(sp28);
+
+		if ( random_float() < 0.3 ){
+			cur_obj_scale(0.5f);
+			obj_set_billboard(o);
+		} else {
+			s_change_shape(S_grass);
+			cur_obj_scale(1.5f);
+		}
+
     }
     if (o->oTimer > 8)
         obj_mark_for_deletion(o);
