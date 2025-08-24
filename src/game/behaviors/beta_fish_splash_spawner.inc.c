@@ -23,7 +23,7 @@ void bhv_beta_fish_splash_spawner_loop(void) {
             break;
         case 1:
             if ( water_level > -10000 ) {
-			if (gPrevFrameObjectCount < 212) {
+			if (gPrevFrameObjectCount < (OBJECT_POOL_CAPACITY - 28)) {
 				if (gGlobalTimer % 32 == 0 ) cur_obj_play_sound_2(SOUND_GENERAL_MOVING_WATER);
 				
 				for (i = 0; i < 2; i++) {
