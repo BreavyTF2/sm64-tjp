@@ -22,7 +22,7 @@ NON_MATCHING ?= 1
 # Build for the N64 (turn this off for ports)
 TARGET_N64 ?= 1
 # Compiler to use (ido or gcc)
-COMPILER ?= ido
+COMPILER ?= gcc
 
 ifeq ($(COMPILER),gcc)
   NON_MATCHING := 1

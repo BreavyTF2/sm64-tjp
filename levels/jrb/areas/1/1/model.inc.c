@@ -174,8 +174,8 @@ const Gfx jrb_seg7_dl_07002FD0[] = {
     gsDPSetCycleType(G_CYC_2CYCLE),
     gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_TEX_EDGE2),
     gsDPSetDepthSource(G_ZS_PIXEL),
-    gsDPSetFogColor(15, 65, 100, 255),
-    gsSPFogFactor(0x0724, 0xF9DC), // This isn't gsSPFogPosition since there is no valid min/max pair that corresponds to 0x0724F9DC
+	gsDPSetFogColor(STAGE12_FOG_R, STAGE12_FOG_G, STAGE12_FOG_B, 255), //uses STAGE12A Fog Normally.
+	gsSPFogPosition(STAGE12_FOG_START, 1000),
     gsSPSetGeometryMode(G_FOG),
     gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_PASS2),
     gsSPClearGeometryMode(G_LIGHTING),
