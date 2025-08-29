@@ -56,5 +56,10 @@ const MacroObject bits_seg7_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_fire_spitter,           /*yaw*/   0, /*pos*/ -3600, -2433,  -800),
     MACRO_OBJECT(/*preset*/ macro_fire_spitter,           /*yaw*/   0, /*pos*/ -2656, -2442,  -800),
     MACRO_OBJECT(/*preset*/ macro_box_1up_running_away,   /*yaw*/   0, /*pos*/  4100, -1050, -1800),
+    MACRO_OBJECT(/*preset*/ macro_bits_octagonal_platform,/*yaw*/   0, /*pos*/ -6459,  1732,  -904),
+    MACRO_OBJECT(/*preset*/ macro_bits_ferris_wheel_axle, /*yaw*/   0, /*pos*/ -1748, -1330, -1094),
+    MACRO_OBJECT(/*preset*/ macro_bits_ferris_wheel_axle, /*yaw*/   0, /*pos*/  2275,  5628, -1315),
+    MACRO_OBJECT(/*preset*/ macro_bits_ferris_wheel_axle, /*yaw*/   0, /*pos*/  3114,  4701, -1320),
+    MACRO_OBJECT(/*preset*/ macro_bits_staircase,         /*yaw*/   0, /*pos*/  1769,  -234,  -899),
     MACRO_OBJECT_END(),
 };
