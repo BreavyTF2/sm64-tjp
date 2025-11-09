@@ -47,7 +47,7 @@ void bhv_red_coin_init(void) {
 	} else {
 		cur_obj_set_model(MODEL_RED_COIN);
 	}
-
+	cur_obj_scale(1.5f);
 
     obj_set_hitbox(o, &sRedCoinHitbox);
 }

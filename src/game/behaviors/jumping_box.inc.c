@@ -16,13 +16,13 @@ void jumping_box_act_0(void) {
 o->oAngleToMario = obj_angle_to_object(o, gMarioObject);
 
 	cur_obj_init_animation_with_sound(0);
-	if ((!(o->oMoveFlags & OBJ_MOVE_ON_GROUND)) && ( o->oDistanceToMario <= 750)) cur_obj_rotate_yaw_toward(o->oAngleToMario + 0x8000, 0x300);
+	if ((!(o->oMoveFlags & OBJ_MOVE_ON_GROUND)) && ( o->oDistanceToMario <= 750)) cur_obj_rotate_yaw_toward(o->oAngleToMario + 0x8000, 0x300); // Mario is scary
     if (o->oMoveFlags & OBJ_MOVE_ON_GROUND) {
 		if ((( o->oDistanceToMario > 750) && (cur_obj_check_if_near_animation_end())) || (o->oDistanceToMario > 750 && (o->header.gfx.animInfo.animFrame <= 2))) o->oAction = 2;
 		if ((o->oForwardVel) > 0) o->oForwardVel = 0;
 		
-        if (cur_obj_check_anim_frame(25)) {
-			cur_obj_play_sound_2(SOUND_GENERAL_SOFT_LANDING);
+        if (cur_obj_check_anim_frame(24)) {
+			cur_obj_play_sound_2(SOUND_GENERAL_BOING3);
             o->oVelY = random_float() * 5.0f + 30.0f;
 			o->oForwardVel = random_float() * 10.0f + 22.5f;
         }

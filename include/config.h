@@ -22,6 +22,9 @@
 #define BUGFIX_PIRANHA_PLANT_SLEEP_DAMAGE (0 || VERSION_SH)
 /// Fixes bug where it shows a star when you grab a key in bowser battle stages
 #define BUGFIX_STAR_BOWSER_KEY (0 || VERSION_EU)
+/// Updated Dice Behavior
+#define NEWDICE (1)
+
 
 // Screen Size Defines
 #define SCREEN_WIDTH 320
