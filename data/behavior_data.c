@@ -3232,7 +3232,19 @@ const BehaviorScript bhvTestLift[] = {
     END_LOOP(),
     BREAK(),
 };
-
+#if 0
+const BehaviorScript bhvCrash[] = { //Old version of bonking
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BILLBOARD(),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 0, /*Gravity*/ 0, /*Bounciness*/ 0, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    SET_INT(oAnimState, -1),
+    BEGIN_LOOP(),
+        CALL_NATIVE(s_crasheffect),
+    END_LOOP(),
+    BREAK(),
+};
+#endif
 const BehaviorScript bhvCastleFloorTrap[] = {
     BEGIN(OBJ_LIST_DEFAULT),
 //    DISABLE_RENDERING(),

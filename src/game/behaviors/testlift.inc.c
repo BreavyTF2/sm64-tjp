@@ -1,3 +1,5 @@
+/// testlift and other generic objects leftover in the "data/p" folder.
+
 static Trajectory test_liftdata[] = {
 	TRAJECTORY_POS(0,0,	0,1000),	/* (X),(Y),(Z) */
 	TRAJECTORY_POS(1,1000, 100,1000),	/* (X),(Y),(Z) */
@@ -23,3 +25,31 @@ void s_testlift(void)
 	load_object_collision_model();
 
 }
+
+#if 0 //Old Crash Effect leftovers.
+void s_make_crasheffect(struct Object *mother,int number)
+{
+
+	StrategyRecord *o;
+	int	i;
+
+
+	for(i=0;i<number;i++){
+		o = spawn_object(mother,MODEL_SMOKE,e_crasheffect);
+
+		o->oPosX += random_float()*keydebug_z-(keydebug_z)/2;
+		o->oPosZ += random_float()*keydebug_z-(keydebug_z)/2;
+
+		o->oForwardVel = keydebug_x;
+		o->oVelY = random_float()*keydebug_y-(keydebug_y)/2;
+		o->oMoveAngleYaw = random_u16();
+	}
+
+}
+
+void s_crasheffect(void)
+{
+	cur_obj_update_floor_and_walls();		/* bg check 	*/
+	cur_obj_move_standard(78);		/* move enemy	*/
+}
+#endif
