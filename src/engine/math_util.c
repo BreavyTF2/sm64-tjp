@@ -12,16 +12,17 @@ Vec4s *gSplineKeyframe;
 float gSplineKeyframeFraction;
 int gSplineState;
 
-// These functions have bogus return values.
-// Disable the compiler warning.
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wreturn-local-addr"
-
 /// Copy vector 'src' to 'dest'
-void *vec3f_copy(Vec3f dest, Vec3f src) {
-    ((u64 *) dest)[0] = ((u64 *) src)[0];
-    ((u32 *) dest)[2] = ((u32 *) src)[2];
+#define vec3_copy_bits(destFmt, dest, srcFmt, src) { \
+    register destFmt x = ((srcFmt *) src)[0];        \
+    register destFmt y = ((srcFmt *) src)[1];        \
+    register destFmt z = ((srcFmt *) src)[2];        \
+    ((destFmt *) dest)[0] = x;                       \
+    ((destFmt *) dest)[1] = y;                       \
+    ((destFmt *) dest)[2] = z;                       \
 }
+/// Copy vector 'src' to 'dest'
+void vec3f_copy    (Vec3f dest, const Vec3f src) { vec3_copy_bits(f32, dest, f32, src); } // 32 -> 32
 
 /// Finds the yaw between two vectors.
 void vec3f_get_yaw(Vec3f from, Vec3f to, s16 *yaw) {
@@ -31,91 +32,61 @@ void vec3f_get_yaw(Vec3f from, Vec3f to, s16 *yaw) {
 }
 
 /// Set vector 'dest' to (x, y, z)
-void *vec3f_set(Vec3f dest, const f32 x, const f32 y, const f32 z) { vec3_set(dest, x, y, z); }
+void vec3f_set(Vec3f dest, const f32 x, const f32 y, const f32 z) { vec3_set(dest, x, y, z); }
+
+#define vec3_add_func(fmt, dest, a) {   \
+    register fmt *temp = (fmt *)(dest); \
+    register fmt sum, sum2;             \
+    register s32 i;                     \
+    for (i = 0; i < 3; i++) {           \
+        sum = *(a);                     \
+        (a)++;                          \
+        sum2 = *temp;                   \
+        *temp = (sum + sum2);           \
+        temp++;                         \
+    }                                   \
+}
 
 /// Add vector 'a' to 'dest'
-void *vec3f_add(Vec3f dest, Vec3f a) {
-    register f32 *temp = (f32 *)dest;
-    register f32 sum, sum2;
-    register s32 i;
-    for (i = 0; i < 3; i++) {
-        sum = *(a);
-        (a)++;
-        sum2 = *temp;
-        *temp = (sum + sum2);
-        temp++;
-	}
-}
+void vec3f_add(Vec3f dest, const Vec3f a) { vec3_add_func(f32, dest, a); }
 
-/// Make 'dest' the sum of vectors a and b.
-void *vec3f_sum(Vec3f dest, Vec3f a, Vec3f b) {
-    register f32 *temp = (f32 *)dest;
-    register f32 sum, sum2;
-    register s32 i;
-    for (i = 0; i < 3; i++) {
-        sum = *(a);
-        (a)++;
-        sum2 = *(b);
-        (b)++;
-        *temp = (sum + sum2);
-        temp++;
-	}
+#define vec3_sum_func(fmt, dest, a, b) {\
+    register fmt *temp = (fmt *)(dest); \
+    register fmt sum, sum2;             \
+    register s32 i;                     \
+    for (i = 0; i < 3; i++) {           \
+        sum = *(a);                     \
+        (a)++;                          \
+        sum2 = *(b);                    \
+        (b)++;                          \
+        *temp = (sum + sum2);           \
+        temp++;                         \
+    }                                   \
 }
+/// Make 'dest' the sum of vectors a and b.
+void vec3f_sum(Vec3f dest, const Vec3f a, const Vec3f b) { vec3_sum_func(f32, dest, a, b); }
 
 /// Copy vector src to dest
-void *vec3s_copy(Vec3s dest, Vec3s src) {
-    register s16 x = src[0];
-    register s16 y = src[1];
-    register s16 z = src[2];
-    dest[0] = x;
-    dest[1] = y;
-    dest[2] = z;
-}
+void vec3s_copy    (Vec3s dest, const Vec3s src) { vec3_copy_bits(s16, dest, s16, src); } // 16 -> 16
 
-void *vec3s_set(Vec3s dest, const s16 x, const s16 y, const s16 z) { vec3_set(dest, x, y, z); }
+void vec3s_set(Vec3s dest, const s16 x, const s16 y, const s16 z) { vec3_set(dest, x, y, z); }
 
 /// Add vector a to 'dest'
-void *vec3s_add(Vec3s dest, Vec3s a) {
-    register s16 *temp = (s16 *)dest;
-    register s16 sum, sum2;
-    register s32 i;
-    for (i = 0; i < 3; i++) {
-        sum = *(a);
-        (a)++;
-        sum2 = *temp;
-        *temp = (sum + sum2);
-        temp++;
-	}
-}
+void vec3s_add(Vec3s dest, const Vec3s a) { vec3_add_func(s16, dest, a); }
 
 /// Make 'dest' the sum of vectors a and b.
-void *vec3s_sum(Vec3s dest, Vec3s a, Vec3s b) {
-    register s16 *temp = (s16 *)dest;
-    register s16 sum, sum2;
-    register s32 i;
-    for (i = 0; i < 3; i++) {
-        sum = *(a);
-        (a)++;
-        sum2 = *(b);
-        (b)++;
-        *temp = (sum + sum2);
-        temp++;
-	}
-}
+void vec3s_sum(Vec3s dest, const Vec3s a, const Vec3s b) { vec3_sum_func(s16, dest, a, b); }
 
 /// Subtract vector a from 'dest'
 void *vec3s_sub(Vec3s dest, Vec3s a) {
     dest[0] -= a[0];
     dest[1] -= a[1];
     dest[2] -= a[2];
+	return 0;
 }
 
 /// Convert short vector a to float vector 'dest'
-void *vec3s_to_vec3f(Vec3f dest, Vec3s a) {
-    dest[0] = a[0];
-    dest[1] = a[1];
-    dest[2] = a[2];
-}
+void vec3s_to_vec3f(Vec3f dest, const Vec3s src) { vec3_copy_bits(f32, dest, s16, src); } // 16 -> 32
 
 /**
  * Convert float vector a to a short vector 'dest' by rounding the components
@@ -126,6 +97,7 @@ void *vec3f_to_vec3s(Vec3s dest, Vec3f a) {
     dest[0] = a[0] + ((a[0] > 0) ? 0.5f : -0.5f);
     dest[1] = a[1] + ((a[1] > 0) ? 0.5f : -0.5f);
     dest[2] = a[2] + ((a[2] > 0) ? 0.5f : -0.5f);
+	return 0;
 }
 
 /**
@@ -139,6 +111,7 @@ void *vec3f_cross(Vec3f dest, Vec3f a, Vec3f b) {
     dest[0] = a[1] * b[2] - a[2] * b[1];
     dest[1] = a[2] * b[0] - a[0] * b[2];
     dest[2] = a[0] * b[1] - a[1] * b[0];
+	return 0;
 }
 
 /// Scale vector 'dest' so it has length 1
@@ -153,9 +126,9 @@ void *vec3f_normalize(Vec3f dest) {
         ((u32 *) dest)[1] = 0x3F800000;
         dest[2] = 0;
     }
+	return 0;
 }
 
-#pragma GCC diagnostic pop
 
 /// Struct the same data size as a Mat4
 struct CopyMat4 {
@@ -279,7 +252,7 @@ void mtxf_rotate_xyz_and_translate(Mat4 dest, Vec3f b, Vec3s c) {
     dest[0][0] = (cy * cz);
     dest[0][1] = (cy * sz);
     dest[0][2] = -sy;
-    dest[1][0] = ((sxcz * sy) - cxsz);;
+    dest[1][0] = ((sxcz * sy) - cxsz);
     dest[1][1] = ((sxsz * sy) + cxcz);
     dest[1][2] = (sx * cy);
     dest[2][0] = ((cxcz * sy) + sxsz);

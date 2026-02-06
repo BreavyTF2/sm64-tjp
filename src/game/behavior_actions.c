@@ -120,6 +120,8 @@ s16 D_8032F0CC[] = { 6047, 5664, 5292, 4934, 4587, 4254, 3933, 3624, 3329, 3046,
 
 // not in behavior file
 struct SpawnParticlesInfo D_8032F270 = { 2, 20, MODEL_MIST, 0, 40, 5, 30, 20, 252, 30, 330.0f, 10.0f };
+// not in behavior file
+struct SpawnParticlesInfo D_8032F271 = { 2, 20, MODEL_WHITE_PUFF, 0, 40, 5, 30, 20, 252, 30, 330.0f, 10.0f };
 
 // generate_wind_puffs/dust (something like that)
 void spawn_mist_particles_variable(s32 count, s32 offsetY, f32 size) {
@@ -134,6 +136,15 @@ void spawn_mist_particles_variable(s32 count, s32 offsetY, f32 size) {
         D_8032F270.count = 4;
     }
     cur_obj_spawn_particles(&D_8032F270);
+}
+
+// bomb smoke
+void spawn_bomb_smoke(s32 offsetY, f32 size) {
+    D_8032F271.sizeBase = size;
+    D_8032F271.sizeRange = size / 20.0;
+    D_8032F271.offsetY = offsetY;
+    D_8032F271.count = 20;
+    cur_obj_spawn_particles(&D_8032F271);
 }
 
 #include "behaviors/sparkle_spawn_star.inc.c"

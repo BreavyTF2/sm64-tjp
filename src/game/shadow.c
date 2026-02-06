@@ -131,17 +131,13 @@ f32 atan2_deg(f32 a, f32 b) {
  * initial size of the shadow and the current distance.
  */
 f32 scale_shadow_with_distance(f32 initial, f32 distFromFloor) {
-    f32 newScale;
-
-    if (distFromFloor <= 0.0) {
-        newScale = initial;
-    } else if (distFromFloor >= 600.0) {
-        newScale = initial * 0.5;
+    if (distFromFloor <= 0.0f) {
+        return initial;
+    } else if (distFromFloor >= 600.0f) {
+        return initial * 0.5f;
     } else {
-        newScale = initial * (1.0 - (0.5 * distFromFloor / 600.0));
+        return initial * (1.0f - ((distFromFloor * 0.5f) / 600.0f));
     }
-
-    return newScale;
 }
 
 /**
@@ -159,17 +155,14 @@ f32 disable_shadow_with_distance(f32 shadowScale, f32 distFromFloor) {
  * Dim a shadow when its parent object is further from the ground.
  */
 u8 dim_shadow_with_distance(u8 solidity, f32 distFromFloor) {
-    f32 ret;
-
     if (solidity < 121) {
         return solidity;
-    } else if (distFromFloor <= 0.0) {
+    } else if (distFromFloor <= 0.0f) {
         return solidity;
-    } else if (distFromFloor >= 600.0) {
+    } else if (distFromFloor >= 600.0f) {
         return 120;
     } else {
-        ret = ((120 - solidity) * distFromFloor) / 600.0 + (f32) solidity;
-        return ret;
+        return (((120 - solidity) * distFromFloor) / 600.0f) + (f32) solidity;
     }
 }
 
@@ -442,7 +435,9 @@ void make_shadow_vertex(Vtx *vertices, s8 index, struct Shadow s, s8 shadowVerte
      * The gShadowAboveWaterOrLava check is redundant, since `floor_local_tilt`
      * will always be 0 over water or lava (since they are always flat).
      */
-    if (shadowVertexType == SHADOW_WITH_9_VERTS && floor_local_tilt(s, xPosVtx, yPosVtx, zPosVtx) > 0) {
+    if (shadowVertexType == SHADOW_WITH_9_VERTS && (floor_local_tilt(s, xPosVtx, yPosVtx, zPosVtx) <= -30.0f || floor_local_tilt(s, xPosVtx, yPosVtx, zPosVtx) >= 30.0f)) 
+	{
+		yPosVtx = extrapolate_vertex_y_position(s, xPosVtx, zPosVtx);
         solidity = 0;
     }
     relX = xPosVtx - s.parentX;

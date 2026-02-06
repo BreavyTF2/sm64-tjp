@@ -2,6 +2,7 @@
 #define BEHAVIOR_ACTIONS_H
 
 void spawn_mist_particles_variable(s32 count, s32 offsetY, f32 size);
+void spawn_bomb_smoke(s32 offsetY, f32 size);
 void bhv_spawn_star_no_level_exit(u32);
 void bhv_star_door_loop_2(void);
 void spawn_triangle_break_particles(s16 numTris, s16 triModel, f32 triSize, s16 triAnimState);

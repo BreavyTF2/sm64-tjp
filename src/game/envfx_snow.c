@@ -105,7 +105,7 @@ void envfx_update_snowflake_count(s32 mode, Vec3s marioPos) {
     switch (mode) {
         case ENVFX_SNOW_NORMAL:
             if (gSnowParticleMaxCount > gSnowParticleCount) {
-                if ((timer & 63) == 0) {
+                if ((timer & 0x3F) == 0) {
                     gSnowParticleCount += 5;
                 }
             }
@@ -139,7 +139,7 @@ void envfx_update_snowflake_count(s32 mode, Vec3s marioPos) {
  * to none.
  */
 void envfx_cleanup_snow(void *snowParticleArray) {
-    if (gEnvFxMode != ENVFX_MODE_NONE) {
+    if (gEnvFxMode) {
         if (snowParticleArray) {
             mem_pool_free(gEffectsMemoryPool, snowParticleArray);
         }
@@ -358,19 +358,19 @@ void append_snowflake_vertex_buffer(Gfx *gfx, s32 index, Vec3s vertex1, Vec3s ve
 
     for (i = 0; i < 15; i += 3) {
         vertBuf[i] = gSnowTempVtx[0];
-        (vertBuf + i)->v.ob[0] = (gEnvFxBuffer + (index + i / 3))->xPos + vertex1[0];
-        (vertBuf + i)->v.ob[1] = (gEnvFxBuffer + (index + i / 3))->yPos + vertex1[1];
-        (vertBuf + i)->v.ob[2] = (gEnvFxBuffer + (index + i / 3))->zPos + vertex1[2];
+        vertBuf[i].v.ob[0] = gEnvFxBuffer[index + i / 3].xPos + vertex1[0];
+        vertBuf[i].v.ob[1] = gEnvFxBuffer[index + i / 3].yPos + vertex1[1];
+        vertBuf[i].v.ob[2] = gEnvFxBuffer[index + i / 3].zPos + vertex1[2];
 
         vertBuf[i + 1] = gSnowTempVtx[1];
-        (vertBuf + i + 1)->v.ob[0] = (gEnvFxBuffer + (index + i / 3))->xPos + vertex2[0];
-        (vertBuf + i + 1)->v.ob[1] = (gEnvFxBuffer + (index + i / 3))->yPos + vertex2[1];
-        (vertBuf + i + 1)->v.ob[2] = (gEnvFxBuffer + (index + i / 3))->zPos + vertex2[2];
+        vertBuf[i + 1].v.ob[0] = gEnvFxBuffer[index + i / 3].xPos + vertex2[0];
+        vertBuf[i + 1].v.ob[1] = gEnvFxBuffer[index + i / 3].yPos + vertex2[1];
+        vertBuf[i + 1].v.ob[2] = gEnvFxBuffer[index + i / 3].zPos + vertex2[2];
 
         vertBuf[i + 2] = gSnowTempVtx[2];
-        (vertBuf + i + 2)->v.ob[0] = (gEnvFxBuffer + (index + i / 3))->xPos + vertex3[0];
-        (vertBuf + i + 2)->v.ob[1] = (gEnvFxBuffer + (index + i / 3))->yPos + vertex3[1];
-        (vertBuf + i + 2)->v.ob[2] = (gEnvFxBuffer + (index + i / 3))->zPos + vertex3[2];
+        vertBuf[i + 2].v.ob[0] = gEnvFxBuffer[index + i / 3].xPos + vertex3[0];
+        vertBuf[i + 2].v.ob[1] = gEnvFxBuffer[index + i / 3].yPos + vertex3[1];
+        vertBuf[i + 2].v.ob[2] = gEnvFxBuffer[index + i / 3].zPos + vertex3[2];
     }
 
     gSPVertex(gfx, VIRTUAL_TO_PHYSICAL(vertBuf), 15, 0);
@@ -503,8 +503,15 @@ Gfx *envfx_update_particles(s32 mode, Vec3s marioPos, Vec3s camTo, Vec3s camFrom
         case ENVFX_MODE_NONE:
             envfx_cleanup_snow(gEnvFxBuffer);
             return NULL;
-        default:
+        case ENVFX_SNOW_NORMAL:
+        case ENVFX_SNOW_WATER:
+        case ENVFX_SNOW_BLIZZARD:
+        case ENVFX_SNOW_CASTLE:
             gfx = envfx_update_snow(mode, marioPos, camFrom, camTo);
+            break;
+
+        default:
+            return NULL;
     }
 
     return gfx;

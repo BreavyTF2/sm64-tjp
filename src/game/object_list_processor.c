@@ -598,6 +598,7 @@ void unload_deactivated_objects(void) {
 /**
  * Unused profiling function.
  */
+ #if 0
 static u16 unused_get_elapsed_time(u64 *cycleCounts, s32 index) {
     u16 time;
     f64 cycles;
@@ -614,7 +615,7 @@ static u16 unused_get_elapsed_time(u64 *cycleCounts, s32 index) {
 
     return time;
 }
-
+#endif
 /**
  * Update all objects. This includes script execution, object collision detection,
  * and object surface management.
