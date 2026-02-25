@@ -1,7 +1,7 @@
 Hierarchy RCP_HmsEnemymotos_basedata_A[] = {
  hmsShadow(100, 155, 1)
  hmsBegin()
-  GEO_TRANSLATE_NODE(0x00,0,-65,0),
+ hmsTrans(0,-65,0)
   hmsBegin()
   hmsScale(0.25f)
     hmsBegin()

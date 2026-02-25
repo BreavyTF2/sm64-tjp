@@ -39,9 +39,9 @@ OSMesg D_80339CD4;
 struct VblankHandler gGameVblankHandler;
 uintptr_t gPhysicalFrameBuffers[3];
 uintptr_t gPhysicalZBuffer;
-void *D_80339CF0;
+void *D_80339CF0[2];
 void *D_80339CF4;
-struct MarioAnimation D_80339D10;
+struct MarioAnimation D_80339D10[2];
 struct MarioAnimation gDemo;
 
 s32 unused8032C690 = 0;
@@ -67,6 +67,7 @@ struct DemoInput gRecordedDemoInput = { 0 }; // possibly removed in EU. TODO: Ch
 void my_rdp_init(void) {
     gDPPipeSync(gDisplayListHead++);
     gDPPipelineMode(gDisplayListHead++, G_PM_1PRIMITIVE);
+//	gDPPipelineMode(gDisplayListHead++, G_PM_NPRIMITIVE);
 
     gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     gDPSetCombineMode(gDisplayListHead++, G_CC_SHADE, G_CC_SHADE);
@@ -297,6 +298,7 @@ void rendering_init(void) {
     init_render_image();
     clear_frame_buffer(0);
     end_master_display_list();
+	//send_sp_task_message(&gGfxPool->spTask);
     send_display_list(&gGfxPool->spTask);
 
     frameBufferIndex++;
@@ -304,7 +306,7 @@ void rendering_init(void) {
 }
 
 void config_gfx_pool(void) {
-    gGfxPool = &gGfxPools[gGlobalTimer % 2];
+    gGfxPool = &gGfxPools[gGlobalTimer & 1];
     set_segment_base_addr(1, gGfxPool->buffer);
     gGfxSPTask = &gGfxPool->spTask;
     gDisplayListHead = gGfxPool->buffer;
@@ -324,6 +326,7 @@ void display_and_vsync(void) {
     osRecvMesg(&gGameVblankQueue, &D_80339BEC, OS_MESG_BLOCK);
     osViSwapBuffer((void *) PHYSICAL_TO_VIRTUAL(gPhysicalFrameBuffers[sCurrFBNum]));
     profiler_log_thread5_time(THREAD5_END);
+	//send_sp_task_message(&gGfxPool->spTask);
     osRecvMesg(&gGameVblankQueue, &D_80339BEC, OS_MESG_BLOCK);
     if (++sCurrFBNum == 3) {
         sCurrFBNum = 0;
@@ -376,20 +379,20 @@ void adjust_analog_stick(struct Controller *controller) {
     controller->stickY = 0;
 
     // modulate the rawStickX and rawStickY to be the new f32 values by adding/subtracting 6.
-    if (controller->rawStickX <= -8) {
-        controller->stickX = controller->rawStickX + 6;
+    if (controller->rawStickX <= -10) {
+        controller->stickX = controller->rawStickX + 10;
     }
 
-    if (controller->rawStickX >= 8) {
-        controller->stickX = controller->rawStickX - 6;
+    if (controller->rawStickX >= 10) {
+        controller->stickX = controller->rawStickX - 10;
     }
 
-    if (controller->rawStickY <= -8) {
-        controller->stickY = controller->rawStickY + 6;
+    if (controller->rawStickY <= -10) {
+        controller->stickY = controller->rawStickY + 10;
     }
 
-    if (controller->rawStickY >= 8) {
-        controller->stickY = controller->rawStickY - 6;
+    if (controller->rawStickY >= 10) {
+        controller->stickY = controller->rawStickY - 10;
     }
 
     // calculate f32 magnitude from the center by vector length.
@@ -518,8 +521,8 @@ void read_controller_inputs(void) {
     gPlayer3Controller->stickX = gPlayer1Controller->stickX;
     gPlayer3Controller->stickY = gPlayer1Controller->stickY;
     gPlayer3Controller->stickMag = gPlayer1Controller->stickMag;
-    gPlayer3Controller->buttonPressed = gPlayer1Controller->buttonPressed;
-    gPlayer3Controller->buttonDown = gPlayer1Controller->buttonDown;
+    gPlayer3Controller->buttonPressed = gPlayer1Controller->buttonPressed | gPlayer2Controller->buttonDown;
+    gPlayer3Controller->buttonDown = gPlayer1Controller->buttonDown | gPlayer2Controller->buttonDown;
 }
 
 // initialize the controller structs to point at the OSCont information.
@@ -566,9 +569,13 @@ void setup_game_memory(void) {
     gPhysicalFrameBuffers[0] = VIRTUAL_TO_PHYSICAL(gFrameBuffer0);
     gPhysicalFrameBuffers[1] = VIRTUAL_TO_PHYSICAL(gFrameBuffer1);
     gPhysicalFrameBuffers[2] = VIRTUAL_TO_PHYSICAL(gFrameBuffer2);
-    D_80339CF0 = main_pool_alloc(0x4000, MEMORY_POOL_LEFT);
-    set_segment_base_addr(17, (void *) D_80339CF0);
-    func_80278A78(&D_80339D10, gMarioAnims, D_80339CF0);
+    D_80339CF0[0] = main_pool_alloc(0x2000, MEMORY_POOL_LEFT);
+	D_80339CF0[1] = main_pool_alloc(0x2000, MEMORY_POOL_LEFT);
+    set_segment_base_addr(17, (void *) D_80339CF0[0]);
+	set_segment_base_addr(18, (void *) D_80339CF0[1]); //luigi stuff, real beta
+    func_80278A78(&D_80339D10[0], gMarioAnims, D_80339CF0[0]);
+    func_80278A78(&D_80339D10[1], NULL, D_80339CF0[1]);
+	D_80339D10[1] = D_80339D10[0];
     D_80339CF4 = main_pool_alloc(2048, MEMORY_POOL_LEFT);
     set_segment_base_addr(24, (void *) D_80339CF4);
     func_80278A78(&gDemo, gDemoInputs, D_80339CF4);
@@ -622,7 +629,7 @@ void thread5_game_loop(UNUSED void *arg) {
         read_controller_inputs();
         addr = level_script_execute(addr);
         display_and_vsync();
-
+		handle_debug_key_sequences();
         // when debug info is enabled, print the "BUF %d" information.
         if (gShowDebugText) {
             // subtract the end of the gfx pool with the display list to obtain the

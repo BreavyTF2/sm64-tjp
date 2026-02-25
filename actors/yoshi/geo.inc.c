@@ -2,9 +2,11 @@
 const GeoLayout yoshi_geo[] = {
  hmsShadow(200, 155, 1)
  hmsBegin()
+ hmsTrans(0,-72,0)
+  hmsBegin()
  hmsScale(0.25f)
     hmsBegin()
-      hmsJoint(RM_SURF,NULL,0,-14,0)  /* ,chn2,(23) */
+      hmsJoint(RM_SURF,NULL,0,288,-14)  /* ,chn2,(23) */
       hmsBegin()
          hmsJoint(RM_SURF,RCP_yoshi_base_data16,0,0,0)  /* ,y_bodyB1,(22) */
          hmsBegin()
@@ -65,6 +67,7 @@ const GeoLayout yoshi_geo[] = {
          hmsEnd()
       hmsEnd()
    hmsEnd()
+    hmsEnd()
  hmsEnd()
  hmsExit()
 };

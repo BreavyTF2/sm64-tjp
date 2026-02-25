@@ -9,7 +9,7 @@
 #define RM_SOFT_SPRITE RM_SPRITE
 
 #define	_msU32(dat) ((unsigned long)(dat*65536.0f))
-#define hmsTrans(x,y,z) GEO_TRANSLATE_NODE(0x00,x,y,z) 
+#define hmsTrans(x,y,z) GEO_TRANSLATE_NODE(0x00,x,y,z),
 #define hmsBegin() GEO_OPEN_NODE(),
 #define hmsEnd() GEO_CLOSE_NODE(),
 #define hmsSelect(code, proc) GEO_SWITCH_CASE(code, proc),
