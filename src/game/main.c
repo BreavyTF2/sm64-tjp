@@ -71,7 +71,6 @@ s8 D_8032C650 = 0;
 s8 gShowProfiler = FALSE;
 s8 gShowDebugText = FALSE;
 s8 gShowPosText = FALSE;
-s8 gShowSpeedText = FALSE;
 
 // unused
 void handle_debug_key_sequences(void) {

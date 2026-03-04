@@ -13,3 +13,5 @@
 
 #include "ground_mine/model.inc.c"
 
+
+#include "wiggler/model.inc.c"

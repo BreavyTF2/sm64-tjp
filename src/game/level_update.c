@@ -995,7 +995,8 @@ s32 play_mode_paused(void) {
     if (gPauseScreenMode == 0) {
         set_menu_mode(RENDER_PAUSE_SCREEN);
     } else if (gPauseScreenMode == 1) {
-		if (gPlayer1Controller->buttonDown & L_TRIG && gPlayer1Controller->buttonDown & R_TRIG) {
+	#define QUIT_LEVEL_SELECT_COMBO (Z_TRIG | START_BUTTON)
+		if (gPlayer1Controller->buttonDown == QUIT_LEVEL_SELECT_COMBO) {
 		set_mario_action(gMarioState, ACT_DEBUG_FREE_MOVE, 0);
 		}
         raise_background_noise(1);

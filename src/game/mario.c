@@ -1239,22 +1239,20 @@ void debug_print_speed_action_normal(struct MarioState *m) {
     f32 steepness;
     f32 floor_nY;
 	if (gShowPosText){		
-print_text_fmt_int(210, 88, "X %d", m->pos[0]);
-print_text_fmt_int(210, 72, "Y %d", m->pos[1]);
-print_text_fmt_int(210, 56, "Z %d", m->pos[2]);
-}
-	if (gShowSpeedText) {
-	print_text_fmt_int(208, 36, "HSPD %d", m->forwardVel);
-	print_text_fmt_int(208, 20, "VSPD %x", (m->vel[1]));
-}
+		print_text_fmt_int(210, 152, "X %d", m->pos[0]);
+		print_text_fmt_int(210, 136, "Y %d", m->pos[1]);
+		print_text_fmt_int(210, 120, "Z %d", m->pos[2]);
+	}
+
     if (gShowDebugText) {
         steepness = sqrtf(
             ((m->floor->normal.x * m->floor->normal.x) + (m->floor->normal.z * m->floor->normal.z)));
         floor_nY = m->floor->normal.y;
 
-        print_text_fmt_int(210, 88, "ANG %d", (atan2s(floor_nY, steepness) * 180.0f) / 32768.0f);
+		print_text_fmt_int(198, 104, "VSPD %x", (m->vel[1]));
+        print_text_fmt_int(210, 88, "SPD %d", m->forwardVel);
 
-        print_text_fmt_int(210, 72, "SPD %d", m->forwardVel);
+        print_text_fmt_int(210, 72, "ANG %d", (atan2s(floor_nY, steepness) * 180.0f) / 32768.0f);
 
         // STA short for "status," the official action name via SMS map.
         print_text_fmt_int(210, 56, "STA %x", (m->action & ACT_ID_MASK));
@@ -1272,12 +1270,6 @@ void update_mario_button_inputs(struct MarioState *m) {
     if (m->controller->buttonDown & A_BUTTON) {
         m->input |= INPUT_A_DOWN;
     }    
-	#define QUIT_LEVEL_SELECT_COMBO (Z_TRIG | START_BUTTON)
-	if (m->controller->buttonPressed == QUIT_LEVEL_SELECT_COMBO) {
-    if (gShowPosText) { gShowPosText = FALSE; }
-	else gShowPosText = TRUE;
-		
-    }
     if (m->controller->buttonDown & B_BUTTON) {
         m->input |= INPUT_UNKNOWN_12;
     }
@@ -1295,8 +1287,8 @@ void update_mario_button_inputs(struct MarioState *m) {
             m->input |= INPUT_Z_PRESSED;
         }
 		if (m->controller->buttonPressed & L_TRIG) {
-           if (gShowSpeedText == FALSE) gShowSpeedText = TRUE;
-		   else gShowSpeedText = FALSE;
+           if (gShowPosText == FALSE) gShowPosText = TRUE;
+		   else gShowPosText = FALSE;
         }
     }
 
@@ -1901,7 +1893,7 @@ void init_mario_from_save_file(void) {
     gMarioState->statusForCamera = &gPlayerCameraState[0];
     gMarioState->marioBodyState = &gBodyStates[0];
     gMarioState->controller = &gControllers[0];
-    gMarioState->animation = &D_80339D10;
+    gMarioState->animation = &D_80339D10[0];
 
     gMarioState->numCoins = 0;
     gMarioState->numStars =

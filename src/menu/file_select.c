@@ -1557,6 +1557,7 @@ void bhv_menu_button_manager_loop(void) {
 
     sClickPos[0] = -10000;
     sClickPos[1] = -10000;
+//	print_text_fmt_int(20, 100, "select %d", (sSelectedButtonID));
 }
 
 /**

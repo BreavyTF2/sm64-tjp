@@ -19,6 +19,10 @@
 #define STUB_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8) textname,
 #define DEFINE_LEVEL(textname, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10) textname,
 
+extern char _mainSegmentEnd[];
+extern char _engineSegmentEnd[];
+extern char _mainSegmentStart[];
+extern char _engineSegmentStart[];
 static char gLevelSelect_StageNamesText[64][16] = {
     #include "levels/level_defines.h"
 };
@@ -113,6 +117,8 @@ s16 level_select_input_loop(void) {
 
     gCurrSaveFileNum = 4; // file 4 is used for level select tests
     gCurrActNum = 6;
+//	print_text_fmt_int(200, 116, "CODE %dK", ((int)_engineSegmentStart - (int)_mainSegmentEnd) / 1024 - 5);
+//	print_text_fmt_int(200, 100, "ULIB %dK", ((int)_mainSegmentStart   - (int)_engineSegmentEnd) / 1024	);
     print_text_centered(160, 80, "SELECT STAGE");
     print_text_centered(160, 30, "PRESS START BUTTON");
     print_text_fmt_int(40, 60, "%2d", gCurrLevelNum);

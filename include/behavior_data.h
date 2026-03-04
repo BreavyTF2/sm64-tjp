@@ -120,6 +120,7 @@ extern const BehaviorScript bhvBlackSmokeBowser[];
 extern const BehaviorScript bhvBlackSmokeUpward[];
 extern const BehaviorScript bhvBetaFishSplashSpawner[];
 extern const BehaviorScript bhvSpindrift[];
+extern const BehaviorScript bhvHana[];
 extern const BehaviorScript bhvTowerPlatformGroup[];
 extern const BehaviorScript bhvWfSlidingTowerPlatform[];
 extern const BehaviorScript bhvWfElevatorTowerPlatform[];

@@ -33,4 +33,33 @@ extern const Gfx ground_mine_seg6_dl_0600D268[];
 extern const Gfx ground_mine_seg6_dl_0600D2E0[];
 extern const Gfx ground_mine_seg6_dl_0600D3F8[];
 
+// hana (Early Wiggler)
+extern const GeoLayout RCP_HmsEnemyhana[];
+extern const Gfx RCP_hana_walk1[];
+extern const Gfx RCP_hana_walk2[];
+extern const Gfx RCP_hana_walk3[];
+extern const Gfx RCP_hana_walk4[];
+extern const Gfx RCP_hana_walk5[];
+extern const Gfx RCP_hana_walk6[];
+extern const Gfx RCP_hana_walk7[];
+extern const Gfx RCP_hana_walk8[];
+extern const Gfx RCP_hana_walk9[];
+extern const Gfx RCP_hana_walk10[];
+extern const Gfx RCP_hana_walk11[];
+extern const Gfx RCP_hana_walk12[];
+extern const Gfx RCP_hana_walk13[];
+extern const Gfx RCP_hana_walk14[];
+extern const Gfx RCP_hana_walk15[];
+extern const Gfx RCP_hana_walk16[];
+extern const Gfx RCP_hana_walk17[];
+extern const Gfx RCP_hana_walk18[];
+extern const Gfx RCP_hana_walk19[];
+extern const Gfx RCP_hana_walk20[];
+extern const Gfx RCP_hana_walk21[];
+extern const Gfx RCP_hana_walk22[];
+extern const Gfx RCP_hana_walk23[];
+extern const Gfx RCP_hana_walk24[];
+extern const Gfx RCP_hana_walk25[];
+extern const struct Animation *const hana_anime[];
+
 #endif

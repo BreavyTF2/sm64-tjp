@@ -132,4 +132,12 @@ void bhv_scuttlebug_spawn_loop(void) {
         o->oScuttlebugSpawnerUnk88 = 0;
         o->oAction = 0;
     }
+
+	if ( gPlayer1Controller->buttonPressed & R_TRIG )	
+	{
+            scuttlebug = spawn_object(o, MODEL_SCUTTLEBUG, bhvScuttlebug);
+            scuttlebug->oForwardVel = 20.0f;
+            scuttlebug->oVelY = 80.0f;
+	}
+
 }
