@@ -677,6 +677,8 @@ void update_objects(UNUSED s32 unused) {
     } else {
         gTimeStopState &= ~TIME_STOP_ACTIVE;
     }
-//	print_text_fmt_int(208, 180,"obj  %d", gObjectCounter);
+#if VIEW_OBJECT_COUNT
+	print_text_fmt_int(208, 180,"obj  %d", gObjectCounter);
+#endif
     gPrevFrameObjectCount = gObjectCounter;
 }

@@ -723,9 +723,8 @@ const BehaviorScript bhvTower[] = {
     LOAD_COLLISION_DATA(wf_seg7_collision_tower),
     SET_FLOAT(oCollisionDistance, 32000),
     SET_FLOAT(oDrawingDistance, 32000),
-    BEGIN_LOOP(),
-        CALL_NATIVE(load_object_collision_model),
-    END_LOOP(),
+	CALL_NATIVE(load_object_static_model),
+    BREAK(),
 };
 
 const BehaviorScript bhvBulletBillCannon[] = {
@@ -734,9 +733,8 @@ const BehaviorScript bhvBulletBillCannon[] = {
     LOAD_COLLISION_DATA(wf_seg7_collision_bullet_bill_cannon),
     SET_FLOAT(oCollisionDistance, 32000),
 	    SET_FLOAT(oDrawingDistance, 32000),
-    BEGIN_LOOP(),
-        CALL_NATIVE(load_object_collision_model),
-    END_LOOP(),
+	CALL_NATIVE(load_object_static_model),
+	BREAK(),
 };
 
 const BehaviorScript bhvWfBreakableWallRight[] = {
@@ -2756,9 +2754,8 @@ const BehaviorScript bhvBowsersSub[] = {
     SET_FLOAT(oDrawingDistance, 20000),
     SET_FLOAT(oCollisionDistance, 6000),
     LOAD_COLLISION_DATA(ddd_seg7_collision_submarine),
-    BEGIN_LOOP(),
-        CALL_NATIVE(load_object_collision_model),
-    END_LOOP(),
+	CALL_NATIVE(load_object_static_model),
+	BREAK(),
 };
 
 const BehaviorScript bhvSushiShark[] = {
@@ -3948,9 +3945,9 @@ const BehaviorScript bhvMessagePanel[] = {
     DROP_TO_FLOOR(),
     SET_HITBOX(/*Radius*/ 150, /*Height*/ 80),
     SET_INT(oWoodenPostTotalMarioAngle, 0),
+    CALL_NATIVE(load_object_static_model),
     BEGIN_LOOP(),
         SET_INT(oIntangibleTimer, 0),
-        CALL_NATIVE(load_object_collision_model),
         SET_INT(oInteractStatus, 0),
     END_LOOP(),
 };

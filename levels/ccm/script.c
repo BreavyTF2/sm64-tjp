@@ -22,7 +22,7 @@ static const LevelScript script_func_local_1[] = {
 };
 
 static const LevelScript script_func_local_2[] = {
-//    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  -470, 3460,  -870, /*angle*/ 0,   0, 0, /*behParam*/ 0x00010000, /*beh*/ bhvSmallPenguin), //Broken for some reason.
+    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  -470, 3460,  -870, /*angle*/ 0,   0, 0, /*behParam*/ 0x00010000, /*beh*/ bhvSmallPenguin),
     OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  -470, 3460,  -870, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvSmallPenguin),
     OBJECT(/*model*/ MODEL_MR_BLIZZARD,      /*pos*/ -2376, -1589,  4256, /*angle*/ 0, 252, 0, /*behParam*/ 0x00010000, /*beh*/ bhvMrBlizzard),
     OBJECT(/*model*/ MODEL_MR_BLIZZARD,      /*pos*/  -394, -1589,  4878, /*angle*/ 0,  74, 0, /*behParam*/ 0x00010000, /*beh*/ bhvMrBlizzard),
@@ -31,11 +31,12 @@ static const LevelScript script_func_local_2[] = {
 };
 
 static const LevelScript script_func_local_3[] = {
-//    OBJECT_WITH_ACTS(/*model*/ MODEL_NONE,             /*pos*/  2665, -4607,  4525, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvCcmTouchedStarSpawn, /*acts*/ ALL_ACTS),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_PENGUIN,          /*pos*/  3650, -200, -1200, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvTuxiesMother,          /*acts*/ ALL_ACTS),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_NONE,             /*pos*/  3500, -4400, 4650, /*angle*/ 0,   0, 0, /*behParam*/ 0x03000000, /*beh*/ bhvHiddenRedCoinStar,   /*acts*/ ALL_ACTS),
+//  OBJECT_WITH_ACTS(/*model*/ MODEL_NONE,             /*pos*/  2665, -4607,  4525, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvCcmTouchedStarSpawn, /*acts*/ ALL_ACTS),
+    OBJECT_WITH_ACTS(/*model*/ MODEL_PENGUIN,          /*pos*/  3500, -4700,  4650, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvTuxiesMother,          /*acts*/ ALL_ACTS),
+//  OBJECT_WITH_ACTS(/*model*/ MODEL_NONE,             /*pos*/  3500, -4400, 4650, /*angle*/ 0,   0, 0, /*behParam*/  0x03000000, /*beh*/ bhvHiddenRedCoinStar,   /*acts*/ ALL_ACTS),
     OBJECT_WITH_ACTS(/*model*/ MODEL_CCM_SNOWMAN_HEAD, /*pos*/ -4230, -1169,  1813, /*angle*/ 0, 270, 0, /*behParam*/ 0x01000000, /*beh*/ bhvSnowmansHead,          /*acts*/ ALL_ACTS),
     OBJECT_WITH_ACTS(/*model*/ MODEL_STAR,             /*pos*/ -2000, -2200, -3000, /*angle*/ 0,   0, 0, /*behParam*/ 0x02000000, /*beh*/ bhvStar,                   /*acts*/ ALL_ACTS),
+    OBJECT_WITH_ACTS(/*model*/ MODEL_PENGUIN,          /*pos*/  3650, -200, -1200, /*angle*/ 0,   0, 0, /*behParam*/  0x03010000, /*beh*/ bhvTuxiesMother,          /*acts*/ ALL_ACTS),
     RETURN(),
 };
 

@@ -24,7 +24,13 @@
 #define BUGFIX_STAR_BOWSER_KEY (0 || VERSION_EU)
 /// Updated Dice Behavior
 #define NEWDICE (1)
+/// View the current number of objects
+#define VIEW_OBJECT_COUNT (0)
 
+/**
+ * The maximum number of objects that can be loaded at once.
+ */
+#define OBJECT_POOL_CAPACITY 360 // Vanilla: 240
 
 // Screen Size Defines
 #define SCREEN_WIDTH 320

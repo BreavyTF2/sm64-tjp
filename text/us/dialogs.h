@@ -12,7 +12,7 @@
 #define PLASTERED "plastered"
 #define SCAM_ME "scam\nME. "
 #define SCRAM "scram--"
-#define YOU_CANT_SWIM_IN_IT "You can't swim in it."
+#define YOU_CANT_SWIM_IN_IT "you can't swim in it."
 #define GIVE_UP "give"
 #endif
 
@@ -331,14 +331,18 @@ quietly.\n\
 When you want to take a\n\
 look around, turn the\n\
 camera using [C]^ and [C]^.\n\
-Press C^ to view from a\n\
+Press [C]^ to view from a\n\
 distance.\n\
 When you can't move the\n\
 camera any farther, a\n\
 buzzer will sound."))
 
 DEFINE_DIALOG(DIALOG_031, 1, 5, 30, 200, _("\
-"))//Koopa the Quick THI Win Message, removed for isle
+Drat!! You beat me again!\n\
+I really thought I'd win\n\
+this time...but you're\n\
+sooo fast! Here, take\n\
+this Star!"))//Koopa the Quick THI Win Message, removed for isle
 
 DEFINE_DIALOG(DIALOG_032, 1, 4, 30, 200, _("\
 You have the Wing Cap!\n\
@@ -399,8 +403,8 @@ Lakitu Bros."))
 
 DEFINE_DIALOG(DIALOG_035, 1, 5, 30, 200, _("\
 There are four camera, or\n\
-『[C],』 Buttons. Press [C]^\n\
-to look around using the\n\
+『[C],』 Buttons. Press [C]^ to\n\
+look around using the\n\
 Control Stick.\n\
 \n\
 You'll usually see Mario\n\
@@ -409,13 +413,13 @@ It is the camera\n\
 recommended for normal\n\
 play.\n\
 You can change angles by\n\
-pressing [C]>. If you press\n\
+pressing [C]^. If you press\n\
 [R], the view switches to\n\
 Mario's camera, which\n\
 is directly behind him.\n\
 Press [R] again to return\n\
 to Lakitu's camera. Press\n\
-[C]| to see Mario from\n\
+[C]^ to see Mario from\n\
 afar, using either\n\
 Lakitu's or Mario's view."))
 
@@ -579,8 +583,8 @@ Practice makes perfect!"))
 DEFINE_DIALOG(DIALOG_050, 1, 4, 30, 200, _("\
 Hold [Z] to crouch and\n\
 slide down a slope.\n\
-Or press [Z] while in the\n\
-air to Pound the Ground!\n\
+Or press [Z] in the air to\n\
+Pound the Ground!\n\
 If you stop, crouch, then\n\
 jump, you'll do a\n\
 Backward Somersault!\n\
@@ -659,7 +663,7 @@ He coos so sweetly when I\n\
 hold him! Where can my\n\
 brrr-baby be?"))
 
-DEFINE_DIALOG(DIALOG_058, 1, 4, 30, 200, _("\
+DEFINE_DIALOG(DIALOG_058, 1, 3, 30, 200, _("\
 My brrr-baby!! Haven't I\n\
 told you not to go\n\
 sliding off alone?\n\
@@ -667,7 +671,7 @@ Thank you, Mario! Here's\n\
 a token of gratitude. Its\n\
 power will warm you!"))
 
-DEFINE_DIALOG(DIALOG_059, 1, 4, 30, 200, _("\
+DEFINE_DIALOG(DIALOG_059, 1, 3, 30, 200, _("\
 That's not my brrr-baby!\n\
 His parents must be\n\
 worried sick!"))
@@ -734,7 +738,7 @@ through secret walls, too."))
 DEFINE_DIALOG(DIALOG_064, 1, 5, 30, 200, _("\
 When you put on the Wing\n\
 Cap that comes from a\n\
-red block, do the Triple\n\
+Red Block, do the Triple\n\
 Jump to soar high into\n\
 the sky.\n\
 Use the Control Stick to\n\
@@ -802,7 +806,7 @@ like you won't throw me\n\
 out of here! Never! Ha!"))
 
 DEFINE_DIALOG(DIALOG_068, 1, 5, 30, 200, _("\
-It's Lethal Lava Land!\n\
+It's the Fire Volcano!\n\
 If you catch fire or fall\n\
 into a pool of flames,\n\
 you'll be hopping mad, but\n\
@@ -865,10 +869,10 @@ DEFINE_DIALOG(DIALOG_072, 1, 5, 30, 200, _("\
 High winds ahead!\n\
 Pull your Cap down tight.\n\
 If it blows off, you'll\n\
-have to find it on this\n\
+to find it on this\n\
 mountain."))
 
-DEFINE_DIALOG(DIALOG_073, 1, 4, 95, 200, _("\
+DEFINE_DIALOG(DIALOG_073, 1, 3, 95, 200, _("\
 Open the Treasure Chests\n\
 in the correct order to\n\
 win the prize.\n\
@@ -967,8 +971,8 @@ DEFINE_DIALOG(DIALOG_080, 1, 1, 30, 200, _("\
 Eeeh hee hee hee!"))
 
 DEFINE_DIALOG(DIALOG_081, 1, 5, 30, 200, _("\
-You've reached Wet-Dry\n\
-World. The city welcomes\n\
+You've reached the Water\n\
+Town. The city welcomes\n\
 you with the depth of\n\
 water you bring as you\n\
 enter."))
@@ -1053,7 +1057,7 @@ Red Circle: Elevator 2\n\
 Arrow: You are here"))
 
 DEFINE_DIALOG(DIALOG_090, 1, 6, 30, 200, _("\
-Bwa ha ha ha!\n\
+Buwha ha ha ha!\n\
 You've stepped right into\n\
 my trap, just as I knew\n\
 you would! I warn you,\n\
@@ -1083,7 +1087,7 @@ been looking for something\n\
 to fry with my fire\n\
 breath!\n\
 Your Star Power is\n\
-useless against me!\n\
+is useless against me!\n\
 Your friends are all\n\
 trapped within the\n\
 walls...\n\
@@ -1347,7 +1351,7 @@ Bwa ha ha!"))
 
 DEFINE_DIALOG(DIALOG_122, 1, 4, 30, 200, _("\
 The Black Hole\n\
-Right: Work Elevator\n\
+Right: Work Elevator,\n\
 /// Cloudy Maze\n\
 Left: Underground Lake"))
 
@@ -1846,7 +1850,7 @@ PS: Go back to that locked\n\
 grate in the castle.\n\
 Code for Level Select:\n\
 Press [C]> & [C]< &\n\
-[Z] & START\n\
+[Z] & Start\n\
 at the Title Screen."))
 
 DEFINE_DIALOG(DIALOG_162, 1, 5, 30, 200, _("\
@@ -1898,9 +1902,9 @@ from running around\n\
 this post."))
 
 DEFINE_DIALOG(DIALOG_166, 1, 4, 30, 200, _("\
-I moved to Battle Field.\n\
-So I'll stash this star\n\
-somewhere safe for now.\n\
+Sorry, I'm out training\n\
+right now. If you want to\n\
+race, come back later.\n\
 //--Koopa the Quick"))
 
 DEFINE_DIALOG(DIALOG_167, 1, 4, 30, 200, _("\

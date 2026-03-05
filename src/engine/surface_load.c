@@ -670,7 +670,7 @@ void transform_object_vertices(s16 **data, s16 *vertexData) {
 /**
  * Load in the surfaces for the gCurrentObject. This includes setting the flags, exertion, and room.
  */
-void load_object_surfaces(s16 **data, s16 *vertexData) {
+void load_object_surfaces(s16 **data, s16 *vertexData, s8 dynamic) {
     s32 surfaceType;
     s32 i;
     s32 numSurfaces;
@@ -709,7 +709,7 @@ void load_object_surfaces(s16 **data, s16 *vertexData) {
 
             surface->flags |= flags;
             surface->room = (s8) room;
-            add_surface(surface, TRUE);
+            add_surface(surface, dynamic);
         }
 
         if (hasForce) {
@@ -720,7 +720,7 @@ void load_object_surfaces(s16 **data, s16 *vertexData) {
     }
 }
 
-#if 0
+
 static void get_optimal_coll_dist(struct Object *obj) {
 	s16 *collisionData = gCurrentObject->collisionData;
     register f32 thisVertDist, maxDist = 0.0f;
@@ -737,7 +737,7 @@ static void get_optimal_coll_dist(struct Object *obj) {
     }
     obj->oCollisionDistance = (sqrtf(maxDist) + 100.0f);
 }
-#endif
+
 /**
  * Transform an object's vertices, reload them, and render the object.
  */
@@ -752,11 +752,11 @@ void load_object_collision_model(void) {
     if (gCurrentObject->oDistanceToMario == 19000.0f) {
         marioDist = dist_between_objects(gCurrentObject, gMarioObject);
     }
-#if 0
+
     if (!(gCurrentObject->oFlags & OBJ_FLAG_DONT_CALC_COLL_DIST)) {
         get_optimal_coll_dist(gCurrentObject);
     }
-#endif
+
     // If the object collision is supposed to be loaded more than the
     // drawing distance of 4000, extend the drawing range.
     if (gCurrentObject->oCollisionDistance > gCurrentObject->oDrawingDistance) {
@@ -771,11 +771,27 @@ void load_object_collision_model(void) {
 
         // TERRAIN_LOAD_CONTINUE acts as an "end" to the terrain data.
         while (*collisionData != TERRAIN_LOAD_CONTINUE) {
-            load_object_surfaces(&collisionData, vertexData);
+            load_object_surfaces(&collisionData, vertexData, TRUE);
         }
     }
 
 	    if (gCurrentObject->oCollisionDistance > gCurrentObject->oDrawingDistance) {
         gCurrentObject->oDrawingDistance = gCurrentObject->oCollisionDistance;
     }
+}
+
+void load_object_static_model(void) {
+    s16 vertexData[600]; //454 is the amount the Sub needs, but just in case.
+    s16 *collisionData = gCurrentObject->collisionData;
+
+    collisionData++;
+    transform_object_vertices(&collisionData, vertexData);
+
+    // TERRAIN_LOAD_CONTINUE acts as an "end" to the terrain data.
+    while (*collisionData != TERRAIN_LOAD_CONTINUE) {
+        load_object_surfaces(&collisionData, vertexData, FALSE);
+    }
+
+    gNumStaticSurfaceNodes = gSurfaceNodesAllocated;
+    gNumStaticSurfaces = gSurfacesAllocated;
 }

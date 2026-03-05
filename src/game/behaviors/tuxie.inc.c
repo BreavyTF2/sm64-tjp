@@ -15,17 +15,24 @@ void tuxies_mother_act_2(void) {
     f32 sp24;
     f32 sp25;
 	
+    s32 sp2C;
+    s32 sp28;
     struct Object *sp1C = cur_obj_find_nearest_object_with_behavior(bhvSmallPenguin, &sp24);
 	struct Object *sp1D = cur_obj_find_nearest_object_with_behavior(bhvUnused20E0, &sp25);
+	sp2C = (o->oBehParams >> 0x10) & 0xFF;
+    sp28 = (o->prevObj->oBehParams >> 0x10) & 0xFF;
     if (cur_obj_find_nearby_held_actor(bhvUnused20E0, 1000.0f) != NULL) {
         if (o->oSubAction == 0) {
-            cur_obj_init_animation_with_sound(0);
-            o->oForwardVel = 10.0f;
-            if (800.0f < cur_obj_lateral_dist_from_mario_to_home()) {
-                o->oSubAction = 1;
+			if (sp2C == sp28) {
+				cur_obj_init_animation_with_sound(0);
+				o->oForwardVel = 10.0f;
+				if (800.0f < cur_obj_lateral_dist_from_mario_to_home()) {
+					o->oSubAction = 1;
+				}
+				cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x400);
 			}
-            cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x400);
-        } else if (o->oSubAction == 2) { o->oSubAction = 1;
+        } else if (o->oSubAction == 2) { 
+			o->oSubAction = 1;
 		} else {
             o->oForwardVel = 0.0f;
             cur_obj_init_animation_with_sound(3);
@@ -35,8 +42,10 @@ void tuxies_mother_act_2(void) {
     } else {
         o->oForwardVel = 0.0f;
         cur_obj_init_animation_with_sound(3);
-		if (((sp1D != NULL) && ((sp25 > 350.0f) || (sp1D->oHeldState != HELD_FREE))) || sp1D == NULL) { o->oSubAction = 2;
-		} else { o->oSubAction = 1;
+		if (sp1D != NULL && sp25 > 1000.0f) { 
+			o->oSubAction = 2;
+		} else {
+			o->oSubAction = 1;
 		}
     }
     if (sp1C != NULL && sp24 < 300.0f && sp1C->oHeldState != HELD_FREE) {
@@ -62,10 +71,12 @@ void tuxies_mother_act_1(void) {
                     dialogID = DIALOG_059;
                 if (cur_obj_update_dialog_with_cutscene(2, 1, CUTSCENE_DIALOG, dialogID)) {
                     if (dialogID == DIALOG_058)
+					{
                         o->oSubAction = 1;
+						o->prevObj->oInteractionSubtype |= INT_SUBTYPE_DROP_IMMEDIATELY;
+					}
                     else
                         o->oSubAction = 2;
-                    o->prevObj->oInteractionSubtype |= INT_SUBTYPE_DROP_IMMEDIATELY;
                 }
             } else
                 cur_obj_init_animation_with_sound(0);
@@ -84,8 +95,10 @@ void tuxies_mother_act_1(void) {
                 obj_set_behavior(o->prevObj, bhvUnused20E0);
 				if (gCurrLevelNum == LEVEL_SL)
                 spawn_default_star(4300.0f, 1400.0f, 500.0f);
-				else
+				else if (o->oBehParams2ndByte == 1)
                 spawn_default_star(3650.0f, 200.0f, -1200.0f);
+				else
+				spawn_default_star(3500.0f, -4300.0f, 4650.0f);
                 o->oAction = 2;
             }
             break;
@@ -277,6 +290,8 @@ void bhv_small_penguin_loop(void) {
 #endif
             break;
         case HELD_THROWN:
+            if (cur_obj_has_behavior(bhvPenguinBaby))
+                obj_set_behavior(o, bhvSmallPenguin);
             cur_obj_get_thrown_or_placed(15.0f, 20.0f, 3);
             break;
         case HELD_DROPPED:
@@ -309,7 +324,7 @@ Gfx *geo_switch_tuxie_mother_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *
         else
             switchCase->selectedCase = 1;
 		
-		if ( ((obj->oAction != 2) && (obj->behavior == segmented_to_virtual(bhvTuxiesMother))) || ((obj->behavior == segmented_to_virtual(bhvTuxiesMother)) && (obj->oAction == 2 && obj->oSubAction == 2)) ) { //Sad
+		if ( (obj->behavior == segmented_to_virtual(bhvTuxiesMother) && ((obj->oAction == 0) || (obj->oAction == 2 && obj->oSubAction == 2)) )) { //Sad
             switchCase->selectedCase = 4;
         }
         /** make Tuxie's Mother have angry eyes if Mario takes the correct baby

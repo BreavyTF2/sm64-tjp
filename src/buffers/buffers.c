@@ -35,7 +35,7 @@ ALIGNED8 u8 gAudioSPTaskYieldBuffer[OS_YIELD_AUDIO_SIZE];
 // Probably Thread 2 stack space. Unreferenced, and stubbed out with f3dex to
 // avoid an overflowing .buffers segment.
 #if !defined(F3DEX_GBI_SHARED) && !defined(VERSION_EU)
-ALIGNED8 u8 gUnusedThread2Stack[0x1400];
+//ALIGNED8 u8 gUnusedThread2Stack[0x1400];
 #endif
 
 

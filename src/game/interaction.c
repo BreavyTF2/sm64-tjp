@@ -752,8 +752,8 @@ if (o->oDamageOrCoinValue <= 9) {
 		m->numKeys++;
 		m->healCounter++;
 	}
-    if (((gCurrLevelNum != LEVEL_CASTLE) || (gCurrLevelNum != LEVEL_CASTLE_COURTYARD)) && m->numCoins - o->oDamageOrCoinValue < 100
-        && m->numCoins >= 100) {
+    if (COURSE_IS_MAIN_COURSE(gCurrCourseNum)
+        && m->numCoins - o->oDamageOrCoinValue < 100 && m->numCoins >= 100) {
         bhv_spawn_star_no_level_exit(6);
     }
 #ifdef VERSION_SH
