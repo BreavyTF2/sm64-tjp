@@ -10,7 +10,7 @@ void bhv_unused_particle_spawn_loop(void) {
     cur_obj_update_floor_and_walls();
     cur_obj_move_standard(78);
 
-    if (o->oMoveFlags & OBJ_MOVE_ON_GROUND) {
+    if (o->oMoveFlags & OBJ_MOVE_ON_GROUND && !o->oMotosUnk100) {
         obj_mark_for_deletion(o);
     }
 
@@ -18,7 +18,7 @@ void bhv_unused_particle_spawn_loop(void) {
         obj_mark_for_deletion(o);
 
         for (i = 0; i < 10; i++) {
-            spawn_object(o, MODEL_BLOOD_PARTICLE, bhvPurpleParticle);
+            spawn_object_with_scale(o, MODEL_BLOOD_PARTICLE, bhvPurpleParticle, o->header.gfx.scale[0]);
         }
     }
 }

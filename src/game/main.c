@@ -71,6 +71,7 @@ s8 D_8032C650 = 0;
 s8 gShowProfiler = FALSE;
 s8 gShowDebugText = FALSE;
 s8 gShowPosText = FALSE;
+s8 g100Percent = FALSE;
 
 // unused
 void handle_debug_key_sequences(void) {
@@ -79,8 +80,11 @@ void handle_debug_key_sequences(void) {
     };
     static u16 sDebugTextKeySequence[] = { D_JPAD, D_JPAD, U_JPAD, U_JPAD,
                                            L_JPAD, R_JPAD, L_JPAD, R_JPAD };
+	static u16 s100PercentKeySequence[] = { L_JPAD, L_JPAD, R_JPAD, R_JPAD,
+                                           U_JPAD, D_JPAD, U_JPAD, D_JPAD };
     static s16 sProfilerKey = 0;
     static s16 sDebugTextKey = 0;
+    static s16 s100PercentKey = 0;
     if (gPlayer3Controller->buttonPressed != 0) {
         if (sProfilerKeySequence[sProfilerKey++] == gPlayer3Controller->buttonPressed) {
             if (sProfilerKey == ARRAY_COUNT(sProfilerKeySequence)) {
@@ -97,6 +101,15 @@ void handle_debug_key_sequences(void) {
         } else {
             sDebugTextKey = 0;
         }
+
+        if (s100PercentKeySequence[s100PercentKey++] == gPlayer3Controller->buttonPressed) {
+            if (s100PercentKey == ARRAY_COUNT(s100PercentKeySequence)) {
+                s100PercentKey = 0, g100Percent ^= 1;
+            }
+        } else {
+            s100PercentKey = 0;
+        }
+
     }
 }
 
