@@ -19,4 +19,7 @@
 #include "levels/yajima/areas/1/collision.inc.c"
 #include "levels/yajima/areas/2/collision.inc.c"
 #include "levels/yajima/areas/3/collision.inc.c"
-
+#include "levels/yajima/objects/cube/model.inc.c"
+#include "levels/yajima/objects/cube/collision.inc.c"
+//#include "levels/yajima/objects/monky/model.inc.c"
+//#include "levels/yajima/objects/omurobo/model.inc.c"

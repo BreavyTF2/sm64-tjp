@@ -4,7 +4,7 @@
 
 #include "sm64.h"
 
-#if defined(TARGET_N64) && (defined(VERSION_EU) || defined(VERSION_SH))
+#if defined(TARGET_N64)
 
 #include "lib/src/printf.h"
 

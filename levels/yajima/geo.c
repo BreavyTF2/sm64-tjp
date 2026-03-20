@@ -16,3 +16,5 @@
 #include "levels/yajima/areas/1/geo.inc.c"
 #include "levels/yajima/areas/2/geo.inc.c"
 #include "levels/yajima/areas/3/geo.inc.c"
+//#include "levels/yajima/objects/monky/geo.inc.c"
+//#include "levels/yajima/objects/omurobo/geo.inc.c"

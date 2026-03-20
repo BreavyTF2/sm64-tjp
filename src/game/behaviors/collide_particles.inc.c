@@ -43,7 +43,7 @@ void bhv_wall_tiny_star_particle_loop(void) {
         o->oMoveAngleYaw = sp1E;
     }
     cur_obj_move_using_fvel_and_gravity();
-    o->oAnimState = 4;
+    o->oAnimState = 5;
     cur_obj_scale(o->oCollisionParticleUnkF4);
     o->oCollisionParticleUnkF4 -= 0.015f;
 }
@@ -68,7 +68,7 @@ void bhv_pound_tiny_star_particle_loop(void) {
         o->oVelY = 14.0f;
     }
     cur_obj_move_using_fvel_and_gravity();
-    o->oAnimState = 4;
+    o->oAnimState = 5;
     cur_obj_scale(o->oCollisionParticleUnkF4);
     o->oCollisionParticleUnkF4 -= 0.015f;
 }

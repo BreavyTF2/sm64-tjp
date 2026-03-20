@@ -235,6 +235,14 @@ void fade_into_special_warp(u32 arg, u32 color) {
     warp_special(arg);
 }
 
+void stub_level_update_1(void) {
+	if (!gWarpTransition.isActive && (gPlayer1Controller->buttonDown == (Z_TRIG | L_CBUTTONS | R_CBUTTONS | START_BUTTON)) && (gPlayer1Controller->buttonPressed & START_BUTTON)) {
+// 		reset_dialog_render_state(); //Breaks pause warp
+		if (gDebugLevelSelect	)  fade_into_special_warp(-9, 1);
+						 else  fade_into_special_warp(-2, 0);
+	}
+}
+
 void load_level_init_text(u32 arg) {
     s32 gotAchievement;
     u32 dialogID = gCurrentArea->dialog[arg];
@@ -1134,6 +1142,8 @@ s32 update_level(void) {
             break;
     }
 
+if (sCurrPlayMode != PLAY_MODE_CHANGE_LEVEL ) stub_level_update_1();
+
     if (changeLevel) {
         reset_volume();
         enable_background_sound();
@@ -1150,7 +1160,6 @@ s32 init_level(void) {
     sDelayedWarpOp = WARP_OP_NONE;
     sTransitionTimer = 0;
     D_80339EE0 = 0;
- if (gPlayer1Controller->buttonDown & START_BUTTON && gPlayer1Controller->buttonDown & B_BUTTON) sCurrPlayMode = PLAY_MODE_FRAME_ADVANCE;
     if (gCurrCreditsEntry == NULL) {
         gHudDisplay.flags = HUD_DISPLAY_DEFAULT;
     } else {

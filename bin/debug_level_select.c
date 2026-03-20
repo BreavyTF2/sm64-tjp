@@ -3053,8 +3053,8 @@ const Gfx RCP_TitleUltraA[]={
 
 static Lights1 mat_mariotitle_cube = gdSPDefLights1(
 	255,153,24,
-	255,153,24,
-	255,255,255
+	255,255,255,
+	50, 0, 0
 );
 static Vtx vtx_mariotitle_cube[]={
 	{-292,-292,-292,0,0,0,0,128,128,0},
@@ -3376,7 +3376,7 @@ const Gfx RCP_TitleRight2[] = {
 
 static Lights1 mat_mariotitle_face = gdSPDefLights1(
     0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0xff, 0xff, 0xff
+    0xFF, 0xFF, 0xFF, 50, 0, 0
 );
 
 static Vtx vtx_mariotitle_face[]={

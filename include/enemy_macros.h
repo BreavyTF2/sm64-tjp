@@ -223,15 +223,6 @@
 #define mode_oba_hitaway                    3
 #define mode_oba_endmessage                 4
 
-#define mode_motos_wait                     0
-#define mode_motos_player_search            1
-#define mode_motos_carry_start              2
-#define mode_motos_carry_run				3
-#define mode_motos_pitch					4
-#define mode_motos_fly						5
-#define mode_motos_player_carry             13
-#define mode_motos_player_pitch             14
-
 #define	OBJECT_ON                    1
 #define	OBJECT_ERASE                 2
 #define	OBJECT_CALC_MOVEBG           4

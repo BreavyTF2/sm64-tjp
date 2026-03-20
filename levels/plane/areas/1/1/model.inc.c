@@ -1,6 +1,5 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmissing-braces"
-#define ShapeColor(R,G,B) {{R*0.25 ,G*0.25 ,B*0.25 ,0 ,R*0.25 ,G*0.25 ,B*0.25 ,0 },{ R, G, B, 0, R, G, B, 0, 40, 40, 40, 0} }
 static Lights1 light_plane[] = {
 	ShapeColor(   0,100, 50 ),  /* attr (8) */
 	ShapeColor(   0,200,100 ),  /* attr (7) */

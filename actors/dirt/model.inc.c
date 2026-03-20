@@ -24,6 +24,13 @@ static const Lights1 dirt_seg3_lights_0302BDB0 = gdSPDefLights1(
     0xff, 0xff, 0x64, 0x28, 0x28, 0x28
 );
 
+// 0x0302BDB0
+static const Lights1 dirt_seg3_lights_0302BDB0_2 = gdSPDefLights1(
+    0x19, 0x19, 0x19,
+    0x64, 0x64, 0x64, 0x28, 0x28, 0x28
+);
+
+
 // 0x0302BDC8
 static const Vtx dirt_seg3_vertex_0302BDC8[] = {
     {{{  -101,    -60,      0}, 0, {  -130,    467}, {0x00, 0x00, 0x7f, 0xff}}},
@@ -150,6 +157,13 @@ const Gfx dirt_seg3_dl_0302C2F8[] = {
     gsSPEndDisplayList(),
 };
 
+// 0x0302C2F8 - 0x0302C318
+const Gfx dirt_seg3_dl_0302C2F8_2[] = {
+    gsSPLight(&dirt_seg3_lights_0302BDB0_2.l, 1),
+    gsSPLight(&dirt_seg3_lights_0302BDB0_2.a, 2),
+    gsSPDisplayList(dirt_seg3_dl_0302C238),
+    gsSPEndDisplayList(),
+};
 // 0x0302C318 - 0x0302C378
 const Gfx dirt_seg3_dl_0302C318[] = {
     gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK),

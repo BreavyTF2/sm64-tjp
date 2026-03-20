@@ -2287,13 +2287,11 @@ const BehaviorScript bhvStub1D0C[] = { // Motos original ID
     SET_HITBOX(/*Radius*/ 100, /*Height*/ 100),
     SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
 	SPAWN_OBJ(/*Model*/ MODEL_NONE, /*Behavior*/ bhvStub1D0D),
-	SET_INT(oHealth, 2),
 	ANIMATE(0),
 	    SET_INT(oIntangibleTimer, 0),
     SET_HOME(),
-//	CALL_NATIVE(motos_main),
-//	DROP_TO_FLOOR(),
-		    BEGIN_LOOP(),
+	CALL_NATIVE(motos_minions),
+	BEGIN_LOOP(),
         CALL_NATIVE(s_motos),
 		END_LOOP(),
 };
@@ -4200,21 +4198,15 @@ const BehaviorScript bhvBigBully[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvBigBullyWithMinions[] = { //Motos Replacement
+const BehaviorScript bhvBigBullyWithMinions[] = {
     BEGIN(OBJ_LIST_GENACTOR),
-	OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW  | OBJ_FLAG_1000 | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_8000)),
-	LOAD_ANIMATIONS(oAnimations, motos_seg8_anims_0801DA4C),
-	    SET_INT(oInteractType, INTERACT_GRABBABLE),
-    SET_HITBOX(/*Radius*/ 100, /*Height*/ 100),
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-	SPAWN_OBJ(/*Model*/ MODEL_NONE, /*Behavior*/ bhvStub1D0D),
-	SET_INT(oHealth, 3),
-	ANIMATE(0),
-	    SET_INT(oIntangibleTimer, 0),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_ANIMATIONS(oAnimations, bully_seg5_anims_0500470C),
     SET_HOME(),
-    CALL_NATIVE(motos_minions),
+    CALL_NATIVE(bhv_big_bully_init),
+    CALL_NATIVE(bhv_big_bully_with_minions_init),
     BEGIN_LOOP(),
-        CALL_NATIVE(s_motos),
+        CALL_NATIVE(bhv_big_bully_with_minions_loop),
     END_LOOP(),
 };
 
@@ -4226,6 +4218,20 @@ const BehaviorScript bhvSmallChillBully[] = {
     SET_HOME(),
     SET_INT(oBullySubtype, 0x0010),
     CALL_NATIVE(bhv_small_bully_init),
+    BEGIN_LOOP(),
+        SET_INT(oIntangibleTimer, 0),
+        CALL_NATIVE(bhv_bully_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvBigChillBully[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_ANIMATIONS(oAnimations, chilly_chief_seg6_anims_06003994),
+    DROP_TO_FLOOR(),
+    SET_HOME(),
+    SET_INT(oBullySubtype, 0x0010),
+    CALL_NATIVE(bhv_big_bully_init),
     BEGIN_LOOP(),
         SET_INT(oIntangibleTimer, 0),
         CALL_NATIVE(bhv_bully_loop),

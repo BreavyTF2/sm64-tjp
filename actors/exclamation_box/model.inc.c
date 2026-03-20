@@ -56,6 +56,15 @@ ALIGNED8 static const u8 exclamation_box_seg8_texture_08018E28[] = {
 #include "actors/exclamation_box/metal_wing_cap_box_side.rgba16.inc.c"
 };
 
+// 0x08017E28
+ALIGNED8 static const u8 qbox_side[] = {
+#include "actors/exclamation_box/qbox_side.rgba16.inc.c"
+};
+// 0x08017E28
+ALIGNED8 static const u8 qbox_top[] = {
+#include "actors/exclamation_box/qbox_top.rgba16.inc.c"
+};
+
 // 0x08018E28
 static const Vtx exclamation_box_seg8_vertex_08018E28[] = {
     {{{   -25,      1,    -25}, 0, {   992,    992}, {0x00, 0x00, 0x81, 0xff}}},
@@ -202,5 +211,19 @@ const Gfx exclamation_box_seg8_dl_08019498[] = {
     gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, exclamation_box_seg8_texture_08018E28),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 64 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
+    gsSPBranchList(exclamation_box_seg8_dl_08019008),
+};
+
+// 0x08019438 - 0x08019498
+const Gfx exclamation_box_seg8_dl_qbox[] = {
+    gsSPDisplayList(exclamation_box_seg8_dl_08019058),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, qbox_side),
+    gsDPLoadSync(),
+    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
+    gsSPDisplayList(exclamation_box_seg8_dl_08018FA8),
+    gsDPTileSync(),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, qbox_top),
+    gsDPLoadSync(),
+    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPBranchList(exclamation_box_seg8_dl_08019008),
 };

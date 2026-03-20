@@ -67,7 +67,7 @@ static const LevelScript script_func_local_3[] = {
 
 static const LevelScript script_func_local_4[] = {
     OBJECT(/*model*/ MODEL_BULLY_BOSS,      /*pos*/     0,  307, -4385, /*angle*/ 0,   0, 0, /*behParam*/ 0x00000000, /*beh*/ bhvBigBully),
-    OBJECT(/*model*/ MODEL_UNKNOWN_58,      /*pos*/  3850,  323,  -5600, /*angle*/ 0,   0, 0, /*behParam*/ 0x01000000, /*beh*/ bhvBigBullyWithMinions),
+    OBJECT(/*model*/ MODEL_UNKNOWN_58,      /*pos*/  3850,  323,  -5600, /*angle*/ 0,   0, 0, /*behParam*/ 0x01000101, /*beh*/ bhvStub1D0C),
     RETURN(),
 };
 

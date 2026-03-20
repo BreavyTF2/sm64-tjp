@@ -44,7 +44,7 @@ void exclamation_box_act_0(void) {
         else
             o->oAction = 1;
     } else {
-        o->oAnimState = 3;
+        o->oAnimState = 5;
         o->oAction = 2;
     }
 }

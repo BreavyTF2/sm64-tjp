@@ -55,6 +55,7 @@ extern const Gfx dirt_seg3_dl_0302C298[];
 extern const Gfx dirt_seg3_dl_0302C2B8[];
 extern const Gfx dirt_seg3_dl_0302C2D8[];
 extern const Gfx dirt_seg3_dl_0302C2F8[];
+extern const Gfx dirt_seg3_dl_0302C2F8_2[];
 extern const Gfx dirt_seg3_dl_0302C318[];
 extern const Gfx dirt_seg3_dl_0302C378[];
 extern const Gfx dirt_seg3_dl_0302C3B0[];

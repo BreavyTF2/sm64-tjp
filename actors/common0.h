@@ -175,6 +175,7 @@ extern const Gfx exclamation_box_seg8_dl_08019378[];
 extern const Gfx exclamation_box_seg8_dl_080193D8[];
 extern const Gfx exclamation_box_seg8_dl_08019438[];
 extern const Gfx exclamation_box_seg8_dl_08019498[];
+extern const Gfx exclamation_box_seg8_dl_qbox[];
 
 // exclamation_box_outline
 extern const GeoLayout exclamation_box_outline_geo[];

@@ -347,6 +347,9 @@ void thread3_main(UNUSED void *arg) {
     alloc_pool();
     load_engine_code_segment();
 
+#if defined(TARGET_N64)
+	crash_screen_init();
+#endif
     create_thread(&gSoundThread, 4, thread4_sound, NULL, gThread4Stack + 0x2000, 20);
     osStartThread(&gSoundThread);
 

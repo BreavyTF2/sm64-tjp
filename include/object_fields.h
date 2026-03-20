@@ -700,10 +700,9 @@
 #define /*0x0F4*/ oMontyMoleHoleCooldown OBJECT_FIELD_S32(0x1B)
 
  /* Motos */
-#define /*0x088*/ oMotosUnk88  OBJECT_FIELD_S32(0x00)
-#define /*0x100*/ oMotosUnk9F OBJECT_FIELD_F32(0x1D)
-#define /*0x100*/ oMotosUnk100 OBJECT_FIELD_S32(0x1E)
-#define /*0x104*/ oMotosUnk104 OBJECT_FIELD_S32(0x1F)
+#define /*0x088*/ oMotosHandStatus  OBJECT_FIELD_S32(0x00)
+#define /*0x0F8*/ oMotosUnk100 OBJECT_FIELD_S32(0x1C)
+#define /*0x104*/ oMotosUnk104 OBJECT_FIELD_S32(0x1D)
 
 /* Mr. Blizzard */
 #define /*0x0F4*/ oMrBlizzardScale             OBJECT_FIELD_F32(0x1B)

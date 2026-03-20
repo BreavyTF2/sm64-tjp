@@ -55,7 +55,7 @@ void hidden_breakable_box_actions(void) {
         if (cur_obj_was_attacked_or_ground_pounded()) {
             spawn_mist_particles();
             spawn_triangle_break_particles(30, 138, 3.0f, 4);
-            o->oAction++;
+            obj_explode_and_spawn_coins(46.0f, 2);
             cur_obj_play_sound_2(SOUND_GENERAL_BREAK_BOX);
         }
         load_object_collision_model();
@@ -71,6 +71,9 @@ void hidden_breakable_box_actions(void) {
 
 void hidden_unbreakable_box_actions(void) {
     struct Object *sp1C;
+
+	obj_set_collision_data(o, wdw_seg7_collision_07018528);
+
     if (o->oAction == 0) {
         cur_obj_disable_rendering();
         cur_obj_become_intangible();
@@ -91,7 +94,7 @@ void hidden_unbreakable_box_actions(void) {
 }
 
 void bhv_hidden_object_loop(void) {
-    if (o->oBehParams2ndByte == 0)
+    if (o->oBehParams2ndByte < 4)
         hidden_breakable_box_actions(); // Confused, that function has code depending on the action
     else
         hidden_unbreakable_box_actions();
