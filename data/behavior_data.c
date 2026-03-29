@@ -661,13 +661,10 @@ const BehaviorScript bhvCannonBarrel[] = {
 const BehaviorScript bhvCannonBaseUnused[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-//	LOAD_COLLISION_DATA(cannon_body_collision_080043D0),
-	SET_FLOAT(oCollisionDistance, 500),
     BILLBOARD(),
     SET_INT(oAnimState, -1),
     BEGIN_REPEAT(8),
         CALL_NATIVE(bhv_cannon_base_unused_loop),
-//	CALL_NATIVE(load_object_collision_model),
         ADD_INT(oAnimState, 1),
     END_REPEAT(),
     DEACTIVATE(),
@@ -3237,6 +3234,17 @@ const BehaviorScript bhvTestLift[] = {
 	SET_FLOAT(oCollisionDistance, 5000),
     BEGIN_LOOP(),
         CALL_NATIVE(s_testlift),
+    END_LOOP(),
+    BREAK(),
+};
+const BehaviorScript bhvTestElevetor[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+	OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW)),
+	LOAD_COLLISION_DATA(sl_seg7_collision_pound_explodes),
+	SET_FLOAT(oCollisionDistance, 5000),
+	SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(s_elevetor),
     END_LOOP(),
     BREAK(),
 };

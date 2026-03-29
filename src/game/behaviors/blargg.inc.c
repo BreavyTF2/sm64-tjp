@@ -13,7 +13,7 @@ struct ObjectHitbox sBlarggHitbox = { //Custom Hitbox
 void unbaba_act_init(void) // Why is this needed?
 {
 	o->oAction++;
-	o->oGraphYOffset = -175;
+	o->oGraphYOffset = -210;
 	obj_set_hitbox(o, &sBlarggHitbox);
 }
 void unbaba_act_swim(void) // Define Swimming Action for Blargg
@@ -31,7 +31,7 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 	if ( o->oDistanceToMario >= 2000 ) {
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40*shellspeed);
 		approach_forward_vel(&o->oForwardVel, 0.0f, .4f);
-		approach_forward_vel(&o->oGraphYOffset, -175, 1.0f);
+		approach_forward_vel(&o->oGraphYOffset, -210, 1.5f);
 	} else if ( o->oDistanceToMario < 2000 ) {
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x60*shellspeed);
 		approach_forward_vel(&o->oForwardVel, 2.0f*shellspeed, .8f);
@@ -39,7 +39,7 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 			if (cur_obj_check_if_near_animation_end()) {
 				cur_obj_play_sound_2(SOUND_OBJ_SUSHI_SHARK_WATER_SOUND);   
 			}
-			approach_forward_vel(&o->oGraphYOffset, -100, 1.0f);
+			approach_forward_vel(&o->oGraphYOffset, -100, 2.0f);
 		} if ( o->oDistanceToMario < 1000 ) {
 			if ( o->oDistanceToMario < 750 || (gMarioState->action & ACT_FLAG_RIDING_SHELL)) {
 				if (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x200 && o->oTimer > 20) {
@@ -84,17 +84,6 @@ void (*sBlarggActions[])(void) = { // Initiate action table for Blargg
 
 void bhv_unbaba_loop(void) // Define what to do as well.
 {
-	switch (o->oAction) {
-	case 0:
-	unbaba_act_init(); //Initilize Hitbox
-	break;
-	case 1:
-	unbaba_act_swim();
-	break;
-	case 2:
-	unbaba_act_attack();
-	break;
-	}
 	cur_obj_become_tangible();
 	cur_obj_update_walls2();
 	cur_obj_if_hit_wall_bounce_away();// Initiate Wall Collision

@@ -270,7 +270,7 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
 			continue;
 		}
 		// Checks for ceiling interaction
-		if (y > height) {
+		if (y > (height - 78.0f)) {
 			continue;
 		}
 		if (y >= surf->upperY) {
@@ -278,13 +278,12 @@ static struct Surface *find_ceil_from_list(struct SurfaceNode *surfaceNode, s32 
 		}
 		*pheight = height;
 		ceil = surf;
-		if (height == y) {
+		if (height - 78.0f == y) {
 			break;
 		}
     }
     return ceil;
 }
-
 /**
  * Find the lowest ceiling above a given position and return the height.
  */
@@ -421,10 +420,7 @@ static struct Surface *find_floor_from_list(struct SurfaceNode *surfaceNode, s32
         ny = surf->normal.y;
         nz = surf->normal.z;
         oo = surf->originOffset;
-		// If a wall, ignore it. Likely a remnant, should never occur.
-		if (ny == 0.0f) {
-			continue;
-		}
+
         // Find the height of the floor at a given location.
         height = -(x * nx + nz * z + oo) / ny;
         if (height < *pheight) {

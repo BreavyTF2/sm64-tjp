@@ -238,6 +238,7 @@ void bhv_play_music_track_when_touched_loop(void);
 void bhv_beta_bowser_anchor_loop(void);
 void bhv_static_checkered_platform_loop(void);
 void s_testlift(void);
+void s_elevetor(void);
 void bhv_castle_floor_trap_init(void);
 void bhv_castle_floor_trap_loop(void);
 void bhv_floor_trap_in_castle_loop(void);

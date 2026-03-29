@@ -282,6 +282,7 @@ extern const BehaviorScript bhvStar[];
 extern const BehaviorScript bhvStaticObject[];
 extern const BehaviorScript bhvUnused2A54[];
 extern const BehaviorScript bhvTestLift[];
+extern const BehaviorScript bhvTestElevetor[];
 extern const BehaviorScript bhvCastleFloorTrap[];
 extern const BehaviorScript bhvFloorTrapInCastle[];
 extern const BehaviorScript bhvTree[];

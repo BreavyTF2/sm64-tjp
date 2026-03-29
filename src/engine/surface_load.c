@@ -720,24 +720,6 @@ void load_object_surfaces(s16 **data, s16 *vertexData, s8 dynamic) {
     }
 }
 
-
-static void get_optimal_coll_dist(struct Object *obj) {
-	s16 *collisionData = gCurrentObject->collisionData;
-    register f32 thisVertDist, maxDist = 0.0f;
-	register u32 vertsLeft = *(collisionData)++;
-    Vec3f v;
-    obj->oFlags |= OBJ_FLAG_DONT_CALC_COLL_DIST;
-    collisionData++;
-    while (vertsLeft) {
-        vec3_prod(v, collisionData, obj->header.gfx.scale);
-        thisVertDist = vec3_sumsq(v);
-        if (thisVertDist > maxDist) maxDist = thisVertDist;
-        collisionData += 3;
-        vertsLeft--;
-    }
-    obj->oCollisionDistance = (sqrtf(maxDist) + 100.0f);
-}
-
 /**
  * Transform an object's vertices, reload them, and render the object.
  */
@@ -751,10 +733,6 @@ void load_object_collision_model(void) {
     // If the distance hasn't been updated, update it now.
     if (gCurrentObject->oDistanceToMario == 19000.0f) {
         marioDist = dist_between_objects(gCurrentObject, gMarioObject);
-    }
-
-    if (!(gCurrentObject->oFlags & OBJ_FLAG_DONT_CALC_COLL_DIST)) {
-        get_optimal_coll_dist(gCurrentObject);
     }
 
     // If the object collision is supposed to be loaded more than the

@@ -26,6 +26,59 @@ void s_testlift(void)
 
 }
 
+static void elevetor_wait(void)
+{
+
+	if ( gMarioObject->platform == o )	o->oAction = 1;
+
+}
+
+static void elevetor_move(void)
+{
+
+
+
+
+	if ( o->oPosY < 2816 )	o->oPosY += 10;
+
+	if ( gMarioObject->platform != o )	o->oAction = 2;
+
+}
+
+static void elevetor_reset(void)
+{
+
+	if ( gMarioObject->platform == o )	o->oAction = 1;
+	if ( o->oTimer > 60 ){
+		o->oPosX = o->oHomeX;
+		o->oPosY = o->oHomeY;
+		o->oPosZ = o->oHomeZ;
+		o->oAction = 0;
+	}
+
+}
+
+
+
+
+/********************************************************************************
+		C Program
+ ********************************************************************************/
+
+static void (*elevetor_modejmp[])(void) = {
+	
+	 elevetor_wait,
+	 elevetor_move,
+	 elevetor_reset
+	
+};
+
+void s_elevetor(void)
+{
+	cur_obj_call_action_function(elevetor_modejmp);
+	load_object_collision_model();
+}
+
 #if 0 //Old Crash Effect leftovers.
 void s_make_crasheffect(struct Object *mother,int number)
 {
