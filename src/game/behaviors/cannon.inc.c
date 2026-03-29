@@ -103,17 +103,19 @@ void opened_cannon_act_3(void) {
 	f32 scale;
 	set_environmental_camera_shake(SHAKE_ENV_UNUSED_7);
 	cur_obj_play_sound_2(SOUND_AIR_UNK01);
-	if (o->oTimer > 3)
-        o->oAction = 0;
+
 	if (o->oTimer < 30) {
-	    gas = spawn_object(o, MODEL_BURN_SMOKE, bhvBlackSmokeBowser);
+	    gas = spawn_object(o, MODEL_BURN_SMOKE, bhvCannonBaseUnused);
+		gas->oTimer = 1;
 	    gas->oMoveAngleYaw = random_u16();
-	    gas->oForwardVel = random_float()*20+20;
-	    gas->oVelY = coss(gMarioObject->oMoveAnglePitch)*40;
-	    scale = random_float()*3.0+3.0;
+	    gas->oForwardVel = random_float()*20.0f+20.0f;
+	    gas->oVelY = coss(gMarioObject->oMoveAnglePitch)*40.0f;
+	    scale = random_float()*3.0f+3.0f;
 	    gas->header.gfx.scale[0] = scale;
-	   gas->header.gfx.scale[1] = scale;
+	    gas->header.gfx.scale[1] = scale;
 	}
+	if (o->oTimer > 3)
+		o->oAction = 0;
 }
 void (*sOpenedCannonActions[])(void) = { opened_cannon_act_0, opened_cannon_act_1, opened_cannon_act_2,
                                          opened_cannon_act_3, opened_cannon_act_4, opened_cannon_act_5,
