@@ -142,6 +142,7 @@ static const LevelScript script_func_local_8[] = {
 			OBJECT_LEAK(MODEL_BLUE_COIN			,	 -200,    0,   200,   0,0,0,  0,0,0, bhvHiddenBlueCoin			),
 			OBJECT_LEAK(MODEL_BLUE_COIN			,	 -400,    0,   200,   0,0,0,  0,0,0, bhvHiddenBlueCoin			),
 		  OBJECT_LEAK(MODEL_VCUTM_CHECKERBOARD_PLATFORM_SPAWNER,	0, 0, 1000,   0,0,0,  0,0,0, bhvTestLift), //TestLift
+		  OBJECT_LEAK(MODEL_NONE		,	700, 1000,   -300,   0,0,0,  0,0,0, bhvBetaMovingFlamesSpawn), //SideFire
 		  OBJECT_LEAK(MODEL_DICE		,	1000, 0,   -100,   0,0,0,  0,0,0, bhvStub1D70), //Dice
 		  OBJECT_LEAK(MODEL_UNKNOWN_58		,	-2000, 50,   400,   0,0,0,  0,1,0, bhvStub1D0C), //Fire Motos
 		  WARP_NODE(/*id*/ 0x32, /*destLevel*/ LEVEL_UNKNOWN_32, /*destArea*/ 0x01, /*destNode*/ 0x32, /*flags*/ WARP_NO_CHECKPOINT),
