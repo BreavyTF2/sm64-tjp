@@ -44,7 +44,6 @@ u32 main_pool_pop_state(void);
 void *load_segment(s32 segment, u8 *srcStart, u8 *srcEnd, u32 side);
 void *load_to_fixed_pool_addr(u8 *destAddr, u8 *srcStart, u8 *srcEnd);
 void *load_segment_decompress(s32 segment, u8 *srcStart, u8 *srcEnd);
-void *load_segment_decompress_heap(u32 segment, u8 *srcStart, u8 *srcEnd);
 void load_engine_code_segment(void);
 #else
 #define load_segment(...)

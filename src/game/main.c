@@ -455,7 +455,7 @@ void thread1_idle(UNUSED void *arg) {
     osViSetSpecialFeatures(OS_VI_DITHER_FILTER_ON);
     osViSetSpecialFeatures(OS_VI_GAMMA_OFF);
     osCreatePiManager(OS_PRIORITY_PIMGR, &gPIMesgQueue, gPIMesgBuf, ARRAY_COUNT(gPIMesgBuf));
-    create_thread(&gMainThread, 3, thread3_main, NULL, gThread3Stack + 0x2000, 100);
+    create_thread(&gMainThread, 3, thread3_main, NULL, gThread3Stack + 0x240, 100);
     if (D_8032C650 == 0) {
         osStartThread(&gMainThread);
     }
@@ -476,6 +476,6 @@ void main_func(void) {
     ClearRAM();
 
     osInitialize();
-    create_thread(&gIdleThread, 1, thread1_idle, NULL, gIdleThreadStack + 0x800, 100);
+    create_thread(&gIdleThread, 1, thread1_idle, NULL, gIdleThreadStack + 0x100, 100);
     osStartThread(&gIdleThread);
 }

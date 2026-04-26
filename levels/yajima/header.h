@@ -11,17 +11,9 @@ extern const GeoLayout RCP_Stage32Scene3[];
 extern Hierarchy RCP_HmsEnemymonky_F_run[];
 extern AnimePtr monky_anime[];
 extern const GeoLayout heave_ho_geoYJ[];
-extern const Gfx RCP_omurobo_anim_runYJ9[];
-extern const Gfx RCP_omurobo_anim_runYJ8[];
-extern const Gfx RCP_omurobo_anim_runYJ5[];
-extern const Gfx RCP_omurobo_anim_runYJ0[];
-extern const Gfx RCP_omurobo_anim_runYJ7[];
-extern const Gfx RCP_omurobo_anim_runYJ6[];
-extern const Gfx RCP_omurobo_anim_runYJ1[];
-extern const Gfx RCP_omurobo_anim_runYJ3[];
-extern const Gfx RCP_omurobo_anim_runYJ2[];
-extern const Gfx RCP_omurobo_anim_runYJ4[];
-extern const struct Animation *const heave_ho_seg5_animsYJ_0501534C[];
+extern const Gfx RCP_cube[];
+extern const Gfx RCP_cube2[];
+extern const Gfx RCP_cube3[];
 
 // leveldata
 extern const Gfx RCP_testmap1[];
@@ -29,6 +21,8 @@ extern Gfx RCP_testmap2[];
 extern const Gfx RCP_testmap10[];
 
 extern const Collision cube_info[];
+extern const Collision cube2_info[];
+extern const Collision cube3_info[];
 extern const Collision testmap1_info[];
 extern const Collision testmap2_info[];
 extern const Collision testmap10_info[];

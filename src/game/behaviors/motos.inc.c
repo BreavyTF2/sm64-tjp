@@ -1,5 +1,5 @@
-//#define ANM_motos_basedata_A    	0
-//#define ANM_motos_carry         	1
+#define ANM_motos_basedata_A    	0
+#define ANM_motos_carry         	1
 #define ANM_motos_carry_run     	2
 #define ANM_motos_carry_start   	3
 #define ANM_motos_down_recover  	4
@@ -19,7 +19,6 @@
 #define mode_motos_fly				7
 #define mode_motos_recover			8
 #define mode_motos_death			9
-//#define mode_motos_recover2			10
 
 void s_motos_hand(void)
 {
@@ -309,17 +308,7 @@ void motos_recover(void) {
             o->oAction = mode_motos_player_search;
 	}
 }
-#if 0 //Not used after rework
-void motos_recover2(void) {
-		cur_obj_init_animation_with_sound(ANM_motos_safe_down);
-		approach_forward_vel(&o->oForwardVel, 0.0f, 2.0f);
-		o->oVelY = 0.0f;
-		if (cur_obj_check_if_near_animation_end()) {
-			cur_obj_become_tangible();
-			o->oAction = mode_motos_player_search;
-	}
-}
-#endif
+
 void motos_spawn_minion(s32 arg0, s32 arg1, s32 arg2, u32 model, const BehaviorScript *behavior) {
 	struct Object *mbully =
 		spawn_object_abs_with_rot(o, 0, model, behavior, arg0, arg1, arg2, 0, 0, 0);
@@ -445,6 +434,7 @@ void s_motos(void)
             cur_obj_unrender_and_reset_state(8, 1);
             break;
         case HELD_THROWN:
+		case HELD_DROPPED:
             cur_obj_get_thrown_or_placed(sp2C, sp28, mode_motos_fly);
             break;
 	}

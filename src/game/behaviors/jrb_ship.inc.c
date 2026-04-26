@@ -22,13 +22,13 @@ void bhv_sunken_ship_part_loop(void) {
 
 void bhv_ship_part_3_loop(void) {
     s16 sp1E = o->oFaceAnglePitch;
-    s16 sp1C = o->oFaceAngleRoll;
-    cur_obj_set_pos_to_home_with_debug();
+//  s16 sp1C = o->oFaceAngleRoll;
+//  cur_obj_set_pos_to_home_with_debug();
     o->oShipPart3UnkF4 += 0x100;
     o->oFaceAnglePitch = sins(o->oShipPart3UnkF4) * 1024.0f;
-    o->oFaceAngleRoll = sins(o->oShipPart3UnkF8) * 1024.0f;
+//  o->oFaceAngleRoll = sins(o->oShipPart3UnkF8) * 1024.0f;
     o->oAngleVelPitch = o->oFaceAnglePitch - sp1E;
-    o->oAngleVelRoll = o->oFaceAngleRoll - sp1C;
+//  o->oAngleVelRoll = o->oFaceAngleRoll - sp1C;
     if (gMarioObject->oPosY > 1000.0f)
         cur_obj_play_sound_1(SOUND_ENV_BOAT_ROCKING1);
 }

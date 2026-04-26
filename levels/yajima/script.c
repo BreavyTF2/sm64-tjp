@@ -65,6 +65,10 @@ static const LevelScript script_func_local_7[] = {
 			OBJECT_LEAK(MODEL_NONE,	      0, 200, 1000,   0,0,0,  0,0x13,0,	bhvCoinFormation  ),
 			OBJECT_LEAK(MODEL_NONE,	    500, 200, 1000,   0,0,0,  0,0x14,0,	bhvCoinFormation  ),
 
+			OBJECT_LEAK(MODEL_LEVEL_GEOMETRY_03,	   550,  50,  -2500,   0,0,0, 0,   0,0,	bhvYajimaCube  ),
+			OBJECT_LEAK(MODEL_LEVEL_GEOMETRY_04,	   800,  200, -2500,   0,0,0, 0,   0,0,	bhvYajimaCube2  ),
+			OBJECT_LEAK(MODEL_LEVEL_GEOMETRY_05,	   1500,  500, -2500,   0,0,0, 0,   0,0,	bhvYajimaCube3  ),
+
 //			OBJECT_LEAK(MODEL_NONE , 	0, 100,-500,   0,0,0,   0,0,0, bhvSLSnowmanWind	), 
 	//		OBJECT_LEAK(MODEL_PENGUIN ,-900,   0, 500,   0,90,0,  0,0,0, bhvSLWalkingPenguin ) 
 #if 0 //testmap1_old stuff
@@ -201,7 +205,10 @@ const LevelScript level_yajima_entry[] = {
 //		LOAD_MODEL_FROM_GEO(0xC4,					RCP_HmsEnemymonky_F_run),
 //		LOAD_MODEL_FROM_GEO(0xC5,							heave_ho_geoYJ),
 //		LOAD_MODEL_FROM_GEO(MODEL_KOOPA_WITH_SHELL_YAJIMA,        RCP_HmsEnemynokonoko),
-		LOAD_MODEL_FROM_GEO(MODEL_CASTLE_GROUNDS_WARP_PIPE,    warp_pipe_geo),
+		LOAD_MODEL_FROM_DL(MODEL_LEVEL_GEOMETRY_03, RCP_cube,  LAYER_OPAQUE),
+		LOAD_MODEL_FROM_DL(MODEL_LEVEL_GEOMETRY_04, RCP_cube2, LAYER_OPAQUE),
+		LOAD_MODEL_FROM_DL(MODEL_LEVEL_GEOMETRY_05, RCP_cube3, LAYER_OPAQUE),
+		LOAD_MODEL_FROM_GEO(MODEL_CASTLE_GROUNDS_WARP_PIPE,         warp_pipe_geo),
 		AREA(1, RCP_Stage32Scene1),
         JUMP_LINK(script_func_local_7),
 		OBJECT_LEAK(MODEL_METAL_BOX,	1242, 200, 1959,   0,0,0,  0,0,0, bhvPushableMetalBox	),

@@ -6,9 +6,9 @@ struct ObjectHitbox sBlarggHitbox = { //Custom Hitbox
     /* health: */ 0,
     /* numLootCoins: */ 0,
     /* radius: */ 200,
-    /* height: */ 250,
+    /* height: */ 200,
     /* hurtboxRadius: */ 201,
-    /* hurtboxHeight: */ 251,
+    /* hurtboxHeight: */ 201,
 };
 void unbaba_act_init(void) // Why is this needed?
 {
@@ -19,7 +19,8 @@ void unbaba_act_init(void) // Why is this needed?
 void unbaba_act_swim(void) // Define Swimming Action for Blargg
 {
 	s8 shellspeed; //turn and speed multiplier
-
+    o->hitboxHeight = 200;
+	o->hurtboxHeight = 201;
 	if (gMarioState->action & ACT_FLAG_RIDING_SHELL) {
 	shellspeed = 2;
 	} else shellspeed = 1;
@@ -31,7 +32,7 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 	if ( o->oDistanceToMario >= 2000 ) {
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40*shellspeed);
 		approach_forward_vel(&o->oForwardVel, 0.0f, .4f);
-		approach_forward_vel(&o->oGraphYOffset, -210, 1.5f);
+		approach_forward_vel(&o->oGraphYOffset, -210, 1.5f*shellspeed);
 	} else if ( o->oDistanceToMario < 2000 ) {
 		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x60*shellspeed);
 		approach_forward_vel(&o->oForwardVel, 2.0f*shellspeed, .8f);
@@ -39,40 +40,44 @@ void unbaba_act_swim(void) // Define Swimming Action for Blargg
 			if (cur_obj_check_if_near_animation_end()) {
 				cur_obj_play_sound_2(SOUND_OBJ_SUSHI_SHARK_WATER_SOUND);   
 			}
-			approach_forward_vel(&o->oGraphYOffset, -100, 2.0f);
+			approach_forward_vel(&o->oGraphYOffset, -100, 3.0f*shellspeed);
 		} if ( o->oDistanceToMario < 1000 ) {
 			if ( o->oDistanceToMario < 750 || (gMarioState->action & ACT_FLAG_RIDING_SHELL)) {
-				if (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x200 && o->oTimer > 20) {
+				if (abs_angle_diff(o->oAngleToMario, o->oMoveAngleYaw) < 0x800*shellspeed && o->oTimer > 15) {
 					o->oAction = 2;
 				}
 			}
 		}
 	}
-	cur_obj_init_animation_with_accel_and_sound(0, 1);
+	cur_obj_init_animation_with_sound(0);
 }
 void unbaba_act_attack(void) // Define Attacking Action for Blargg
 {
 	s32 animTimer = o->header.gfx.animInfo.animFrame;
 	f32 shellspeed; ////turn and speed multiplier
+	o->hitboxHeight = 300;
+	o->hurtboxHeight = 301;
 	if (gMarioState->action & ACT_FLAG_RIDING_SHELL) {
-		shellspeed = 1.4f;
+		shellspeed = 1.5f;
+		cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x100);
 	} else shellspeed = 1;
     if (o->oTimer == 0) {
         cur_obj_play_sound_2(SOUND_OBJ2_BLARGG_YELL); //XDelta
     } 
-	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x40);
-	cur_obj_init_animation_with_accel_and_sound(1, 1*shellspeed);	
+	cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x60);
+	cur_obj_init_animation_with_sound(1);	
 	if (animTimer >= (0) ){
 		approach_forward_vel(&o->oForwardVel, 16.0f*shellspeed, 1.6f*shellspeed);
-		approach_forward_vel(&o->oGraphYOffset, 0, 8.0f);
+		approach_forward_vel(&o->oGraphYOffset, 30, 8.0f*shellspeed);
 	} if (animTimer > (21) ){
 		approach_forward_vel(&o->oForwardVel, 0, 2.0f*shellspeed);
-		approach_forward_vel(&o->oGraphYOffset, -100, 16.0f);
+		approach_forward_vel(&o->oGraphYOffset, -100, 16.0f*shellspeed);
 	}
     if (cur_obj_check_if_near_animation_end()) {
      cur_obj_play_sound_2(SOUND_GENERAL_BUBBLES);    //XDelta
      o->oAction = 1;
 	 o->oTimer = 1;
+
 	}
 }
 
