@@ -59,9 +59,11 @@ void bully_check_mario_collision(void) {
             cur_obj_play_sound_2(SOUND_OBJ2_LARGE_BULLY_ATTACKED);
 
         o->oInteractStatus &= ~INT_STATUS_INTERACTED;
+		if (o->oAction != BULLY_ACT_JUMP && o->oAction != BULLY_ACT_THROWN) {
         o->oAction = BULLY_ACT_KNOCKBACK;
-        o->oFlags &= ~0x8; /* bit 3 */
         cur_obj_init_animation(3);
+		}
+		o->oFlags &= ~0x8; /* bit 3 */
         o->oBullyMarioCollisionAngle = o->oMoveAngleYaw;
     }
 }
@@ -70,7 +72,16 @@ void bully_act_chase_mario(void) {
     f32 homeX = o->oHomeX;
     f32 posY = o->oPosY;
     f32 homeZ = o->oHomeZ;
-	
+    struct Surface *floor;
+	f32 floorHeight = find_floor(gMarioObject->oPosX, gMarioObject->oPosY, gMarioObject->oPosZ, &floor);
+	o->oBullyJumpCooldown++;
+	if ((lateral_dist_between_objects(o, gMarioObject) <= 350) && (o->oBullyJumpCooldown >= 20) && abs_angle_diff(o->oAngleToMario, o->oFaceAngleYaw) <= 0x1000) {
+		if (floor != NULL) {
+			if (floor->type != SURFACE_BURNING && gMarioObject->oPosY - floorHeight >= 25) {
+				o->oAction = BULLY_ACT_JUMP;
+			}
+		}
+	}
     if (o->oTimer < 10) {
         o->oForwardVel = 3.0;
         obj_turn_toward_object(o, gMarioObject, 16, 4096);
@@ -115,7 +126,7 @@ void bully_act_back_up(void) {
 
     o->oForwardVel = 5.0;
 	o->oVelY = 3.0;
-	cur_obj_init_animation(2);
+
     //! bully_backup_check() happens after this function, and has the potential to reset
     //  the bully's action to BULLY_ACT_BACK_UP. Because the back up action is only
     //  set to end when the timer EQUALS 15, if this happens on that frame, the bully
@@ -127,9 +138,72 @@ void bully_act_back_up(void) {
         o->oMoveAngleYaw = o->oFaceAngleYaw;
 		o->oVelY = 0.0;
         o->oFlags |= 0x8; /* bit 3 */
-		cur_obj_init_animation(0);
         o->oAction = BULLY_ACT_PATROL;
     }
+}
+
+s32 arc_to_goal_pos_mult(Vec3f a0, Vec3f a1, f32 yVel, f32 gravity, f32 mult, f32 minForwardVel) {
+    f32 dx = a0[0] - a1[0];
+    f32 dz = a0[2] - a1[2];
+    f32 planarDist = sqrtf(dx * dx + dz * dz);
+    s32 time;
+
+	o->oMoveAngleYaw = atan2s(dz, dx);
+    o->oVelY = yVel;
+    o->oGravity = gravity;
+
+    time = -2.0f / o->oGravity * yVel - 1.0f;
+
+    o->oForwardVel = planarDist / time * mult + minForwardVel;
+
+    return time;
+}
+
+void bully_act_jump(void) {
+	s16 collisionFlags = object_step();
+	f32 mult;
+	f32 minspeed;
+	if (o->oBullySubtype == BULLY_STYPE_CHILL) {
+		// Chilly Bullies only jump vertically
+		mult = 0.0f;
+		minspeed = 0.0f;
+	} else { 
+		mult = -1.1f;
+		minspeed = 2.5f;
+	}
+	if (o->oTimer == 0) {
+		o->oBullyJumpCooldown = 0;
+		cur_obj_init_animation_and_extend_if_at_end(2);
+		if (o->oBehParams2ndByte == BULLY_BP_SIZE_SMALL) {
+			arc_to_goal_pos_mult(&gMarioObject->oPosX, &o->oPosX, 42.5f, 4.0f, mult, minspeed);
+		} else {
+			arc_to_goal_pos_mult(&gMarioObject->oPosX, &o->oPosX, 52.5f, 5.0f, mult, minspeed);
+		}
+		cur_obj_play_sound_2(SOUND_OBJ_BULLY_METAL);
+	} else {
+		if ((collisionFlags & OBJ_COL_FLAG_GROUNDED)) {
+			o->oForwardVel = minspeed;
+			o->oVelY = 0.0f;
+			o->oAction = BULLY_ACT_KNOCKBACK;
+			cur_obj_init_animation(3);
+		}
+	}
+}
+
+// Thrown by Motos/Tossya
+void bully_act_thrown(void) {
+	s16 collisionFlags = object_step();
+	if (o->oTimer == 0) {
+		o->oBullyJumpCooldown = 0;
+		cur_obj_init_animation_and_extend_if_at_end(2);
+	} else {
+		if ((collisionFlags & OBJ_COL_FLAG_GROUNDED)) {
+			o->oForwardVel = 5.0f;
+			o->oVelY = 0.0f;
+			o->oAction = BULLY_ACT_KNOCKBACK;
+			cur_obj_init_animation(3);
+		}
+	}
 }
 
 void bully_backup_check(s16 collisionFlags) {
@@ -173,8 +247,7 @@ void bully_step(void) {
     bully_backup_check(collisionFlags);
     bully_play_stomping_sound();
     obj_check_floor_death(collisionFlags, sObjFloor);
-	
-    if (o->oBullySubtype & BULLY_STYPE_CHILL && o->oBehParams2ndByte != BULLY_BP_SIZE_SMALL) {
+    if (o->oBullySubtype & BULLY_STYPE_CHILL) {
         if (o->oPosY < 1030.0f)
             o->oAction = BULLY_ACT_LAVA_DEATH;
     }
@@ -247,6 +320,14 @@ void bhv_bully_loop(void) {
         case BULLY_ACT_BACK_UP:
             bully_act_back_up();
             bully_step();
+            break;
+
+		case BULLY_ACT_JUMP:
+            bully_act_jump();
+            break;
+
+		case BULLY_ACT_THROWN:
+            bully_act_thrown();
             break;
 
         case BULLY_ACT_LAVA_DEATH:
@@ -330,6 +411,10 @@ void bhv_big_bully_with_minions_loop(void) {
         case BULLY_ACT_BACK_UP:
             bully_act_back_up();
             bully_step();
+            break;
+
+		case BULLY_ACT_JUMP:
+            bully_act_jump();
             break;
 
         case BULLY_ACT_INACTIVE:

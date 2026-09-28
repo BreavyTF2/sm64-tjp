@@ -53,6 +53,7 @@ const MacroObject lll_seg7_area_1_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_flamethrower,                /*yaw*/   0, /*pos*/  7100,   -20,  5700),
     MACRO_OBJECT(/*preset*/ macro_flamethrower,                /*yaw*/   0, /*pos*/     0,   200, -2048),
     MACRO_OBJECT(/*preset*/ macro_bully,                       /*yaw*/   0, /*pos*/ -5119,   307, -2482),
+    MACRO_OBJECT(/*preset*/ macro_bully,                       /*yaw*/   0, /*pos*/     0,   307,  3712),
     MACRO_OBJECT(/*preset*/ macro_bully,                       /*yaw*/   0, /*pos*/  6813,   307,  1613),
     MACRO_OBJECT(/*preset*/ macro_bully,                       /*yaw*/   0, /*pos*/  7168,   307,   998),
     MACRO_OBJECT(/*preset*/ macro_bully,                       /*yaw*/   0, /*pos*/ -5130,   285, -1613),

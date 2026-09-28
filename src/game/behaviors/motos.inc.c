@@ -40,7 +40,7 @@ void s_motos_hand(void)
 				o->parentObj->prevObj->oVelY = (-30.0f + o->parentObj->oDistanceToMario * 0.066f);
 				o->parentObj->prevObj->oMoveAngleYaw = o->parentObj->oMoveAngleYaw;
 				o->parentObj->prevObj->oFaceAngleYaw = o->parentObj->oFaceAngleYaw;
-				o->parentObj->prevObj->oAction = BULLY_ACT_KNOCKBACK;
+				o->parentObj->prevObj->oAction = BULLY_ACT_THROWN;
 				o->parentObj->prevObj->oFlags &= ~OBJ_FLAG_ACTIVE_FROM_AFAR;
 				o->parentObj->prevObj->oMotosUnk100 = 0;
 			}
@@ -67,7 +67,8 @@ void s_motos_hand(void)
 				o->parentObj->prevObj->oMoveAngleYaw = o->parentObj->oMoveAngleYaw;
 				o->parentObj->prevObj->oFaceAngleYaw = o->parentObj->oFaceAngleYaw;
 				o->parentObj->prevObj->oFlags |= OBJ_FLAG_ACTIVE_FROM_AFAR;
-				o->parentObj->prevObj->oAction = BULLY_ACT_KNOCKBACK;
+				o->parentObj->prevObj->oAction = BULLY_ACT_THROWN;
+				o->parentObj->prevObj->header.gfx.animInfo.animFrame = 0;
 				o->parentObj->prevObj->oMotosUnk100 = 1;
 			}
 			break;
@@ -120,6 +121,7 @@ void motos_wait(void)
 {
     o->oForwardVel = 0.0f;
     o->oVelY = 0.0f;
+	o->oMotosUnk104 = FALSE;
 	cur_obj_init_animation_with_sound(ANM_motos_wait);
 	if ( o->oDistanceToMario < 1500 )
 		o->oAction = mode_motos_player_search;
@@ -268,7 +270,6 @@ void motos_pitch(void)
 	}
 	if ( cur_obj_check_if_near_animation_end() ) {
 		o->oAction = mode_motos_wait;
-		o->oMotosUnk104 = FALSE;
 	}
 }
 

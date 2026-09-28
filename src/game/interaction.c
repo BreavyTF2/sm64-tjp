@@ -1211,18 +1211,21 @@ u32 interact_bully(struct MarioState *m, UNUSED u32 interactType, struct Object 
     m->interactObj = o;
 
     if (interaction & INT_ATTACK_NOT_FROM_BELOW) {
-#ifdef VERSION_SH
-        queue_rumble_data(5, 80);
-#endif
-        push_mario_out_of_object(m, o, 5.0f);
+		if ((interaction & INT_HIT_FROM_ABOVE) == INT_HIT_FROM_ABOVE && (o->oAction == BULLY_ACT_JUMP || o->oAction == BULLY_ACT_THROWN)) {
+		} else {
+	#ifdef VERSION_SH
+			queue_rumble_data(5, 80);
+	#endif
+			push_mario_out_of_object(m, o, 5.0f);
 
-        m->forwardVel = -16.0f;
-        o->oMoveAngleYaw = m->faceAngle[1];
-        o->oForwardVel = 3392.0f / o->hitboxRadius;
+			m->forwardVel = -16.0f;
+			o->oMoveAngleYaw = m->faceAngle[1];
+			o->oForwardVel = 3392.0f / o->hitboxRadius;
 
-        attack_object(o, interaction);
-        bounce_back_from_attack(m, interaction);
-        return TRUE;
+			attack_object(o, interaction);
+			bounce_back_from_attack(m, interaction);
+			return TRUE;
+		}
     }
 
     else if (!sInvulnerable && !(m->flags & MARIO_VANISH_CAP)

@@ -13,4 +13,5 @@
 
 #include "levels/athletic/areas/1/1/model.inc.c"
 #include "levels/athletic/areas/1/collision.inc.c"
+#include "levels/athletic/objects/cube/model.inc.c"
 //#include "levels/athletic/texture.inc.c"

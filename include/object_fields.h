@@ -333,6 +333,7 @@
 #define /*0x100*/ oBullyPrevZ                     OBJECT_FIELD_F32(0x1E)
 #define /*0x104*/ oBullyKBTimerAndMinionKOCounter OBJECT_FIELD_S32(0x1F)
 #define /*0x108*/ oBullyMarioCollisionAngle       OBJECT_FIELD_S32(0x20)
+#define /*0x108*/ oBullyJumpCooldown              OBJECT_FIELD_S32(0x21)
 
 /* Butterfly */
 #define /*0x0F4*/ oButterflyYPhase OBJECT_FIELD_S32(0x1B)

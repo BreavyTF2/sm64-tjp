@@ -98,6 +98,8 @@ void bully_check_mario_collision(void);
 void bully_act_chase_mario(void);
 void bully_act_knockback(void);
 void bully_act_back_up(void);
+void bully_act_jump(void);
+void bully_act_thrown(void);
 void bully_backup_check(s16 collisionFlags);
 void bully_play_stomping_sound(void);
 void bully_step(void);

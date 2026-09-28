@@ -262,6 +262,8 @@
     #define BULLY_ACT_BACK_UP 3
     #define BULLY_ACT_INACTIVE 4
     #define BULLY_ACT_ACTIVATE_AND_FALL 5
+	#define BULLY_ACT_JUMP 6
+	#define BULLY_ACT_THROWN 7
     #define BULLY_ACT_LAVA_DEATH 100
     #define BULLY_ACT_DEATH_PLANE_DEATH 101
     /* oBullySubtype */

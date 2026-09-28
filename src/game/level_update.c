@@ -1142,7 +1142,7 @@ s32 update_level(void) {
             break;
     }
 
-if (sCurrPlayMode != PLAY_MODE_CHANGE_LEVEL ) stub_level_update_1();
+    if (sCurrPlayMode != PLAY_MODE_CHANGE_LEVEL ) stub_level_update_1();
 
     if (changeLevel) {
         reset_volume();
